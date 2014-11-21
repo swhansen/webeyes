@@ -12,6 +12,7 @@
   "dependencies": {
     "easyrtc": "~1.0.10",
     "express": "^4.x.x",
+    "body-parser":  "*",
     "jade": "~1.0.2",
     "express": "^4.x.x",
     "socket.io": "~0.9.16"
