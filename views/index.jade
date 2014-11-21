@@ -1,0 +1,12 @@
+// Jade
+html
+    head
+      title WEG2RT
+      link(rel='stylesheet', href='/css/style.css')
+    body
+        h1 #{message}
+            #buttons
+                if title == 'available'
+                    form Click to:
+                        button#Audio(type='submit', value='Audio', formaction="/call", disabled) Audio
+                        button#Video(type='submit', value='Video', formaction="/video") Video

@@ -1,0 +1,37 @@
+{
+  "name": "weg2rt",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "description": "Experimental WebRTC Augmented Collaboration",
+  "main": "server.js",
+  "dependencies": {
+    "easyrtc": "~1.0.10",
+    "express": "^4.x.x",
+    "jade": "~1.0.2",
+    "express": "^4.x.x",
+    "socket.io": "~0.9.16"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/sw_hansen/weg2rt"
+  },
+  "keywords": [
+    "WEG2RT",
+    "WebRTC"
+  ],
+  "author": "Steve Hansen",
+  "contributors": {
+      "name": "Steve Hansen",
+      "email": "sw_hansen@obliquevision.org"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://bitbucket.org/sw_hansen/weg2rt/issues"
+  }
+}
