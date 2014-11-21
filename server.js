@@ -112,10 +112,10 @@ app.get('/video', function (req, res) {
     res.send("Please try later.");
   }
 });
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
 var webServer = app.listen(port);
-console.log('Listening on port ' + 8080);
+console.log('Listening on port ' + 80);
 
 // Start Socket.io so it attaches itself to Express server
 var socketServer = io.listen(webServer);
