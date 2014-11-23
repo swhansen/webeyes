@@ -3,7 +3,7 @@ body {
     background-color: #000;
     background-position: left;
     background-image: url("/img/irongrip.png");
-    background-repeat: repeat-x;
+    background-repeat: repeat;
     background-size: contain;
     width: 640px; 
     height: 480px;

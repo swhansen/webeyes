@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <title>WEG2RT Login</title>
-    <link rel='stylesheet', href='/css/style.css'>
-</head>
-
-<body>
-    <h1>You are about to initiate a WEG2RT Session</h1>
+<h1>You are about to initiate a WEG2RT Session</h1>
     <form action="">
         password:
         <input type="password" />
@@ -23,7 +12,7 @@
             var pw = {
                 "pw": $("input").val()
             };
-            $.post("/test", pw, function(response, status) {
+            $.post("/", pw, function(response, status) {
                 console.log("PW:" + JSON.stringify(pw.pw) + "\nstatus:" + status);
                 if (response == "logged in") {
                     location.reload();
@@ -35,7 +24,3 @@
         });
     });
     </script>
-</body>
-
-</html>
-

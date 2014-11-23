@@ -8,50 +8,55 @@ app.use("/js", express.static(__dirname + '/easyrtc/js'));
 app.use("/images", express.static(__dirname + '/easyrtc/images'));
 app.use("/css", express.static(__dirname + '/easyrtc/css'));
 
-//For the test homepage
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-
 app.use("/css", express.static(__dirname + '/public/css'));
 app.use("/img", express.static(__dirname + '/public/img'));
+
+app.get('/style.css', function (req, res) {
+  res.sendFile(__dirname + '../public/css/style.css');
+});
 
 // Needed to parse form data(changed for express 4.x)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//global variables
 var loggedIn = false;
 var password = 'weg2rt';
 
-//Test home page
-app.get('/', function (req, res) {
-  if (loggedIn === true) {
-    res.render('index', {
-      title: 'available',
-      message: "WEG2RT is ready to go"
-    });
-    console.log("homepage -logged in");
-  } else {
-    res.render('index', {
-      title: 'not',
-      message: "WEG2RT does not have anyone logged in"
-    });
-    console.log("homepage -not logged in");
-  }
-});
+var handlebars = require('express-handlebars')
+        .create({ defaultLayout: 'main' });
 
-//Serve a static login page if not logged in already
-app.get('/login', function (req, res) {
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+
+//Test home page
+//app.get('/', function (req, res) {
+//  if (loggedIn === true) {
+//    res.render('index', {
+//      title: 'available',
+//      message: "WEG2RT is ready to go"
+//    });
+//    console.log("homepage -logged in");
+//  } else {
+//    res.render('index', {
+//      title: 'not',
+//      message: "WEG2RT does not have anyone logged in"
+//    });
+//    console.log("homepage -not logged in");
+//  }
+//});
+
+// Main entry point
+app.get('/', function (req, res) {
   console.log('Login attempt');
   if (loggedIn === true) {
     res.sendfile(__dirname + '/views/multiparty.html');
   } else {
-    res.sendfile(__dirname + '/views/login.html');
-  }
+  res.render('entry');
+}
 });
 
 //Respond to POST from login form
-app.post('/login', function (req, res) {
+app.post('/', function (req, res) {
   if (loggedIn === true) {
     res.send("Already logged in.");
   } else {
