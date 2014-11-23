@@ -7,14 +7,14 @@
   "engines": {
     "node": "0.10.x"
   },
-  "description": "Experimental WebRTC Augmented Collaboration",
+  "description": "Experimental WebRTC Augmented Collaboration System",
   "main": "server.js",
   "dependencies": {
     "easyrtc": "~1.0.10",
     "express": "^4.x.x",
     "body-parser":  "*",
     "jade": "~1.0.2",
-    "express": "^4.x.x",
+    "express-handlebars": "^1.1.0",
     "socket.io": "~0.9.16"
   },
   "devDependencies": {},

@@ -2,7 +2,6 @@
 
 * Prototype for initial version of an Collaborative Augmented Information Sharing System
 * Version: 0.1
-* Original based on webrtc.io  (https://github.com/webRTC/webrtc.io-demo)
 
 ## Technologies
 
@@ -11,6 +10,7 @@
 * Handlebars - semantic templating (http://handlebarsjs.com/)
 * webrtc.io - javascript (RTC) -  (https://github.com/webRTC/webRTC.io)
 * WebGL -  web 3D graphics (http://get.webgl.org/, http://www.chromeexperiments.com/webgl/)
+* socket.io
 * EasyRTC
 * buildAR
 * Jasmine - TDD framework

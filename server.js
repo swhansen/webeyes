@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
   if (loggedIn === true) {
     res.render('index', {
       title: 'available',
-      message: "WEG2RT is ready"
+      message: "WEG2RT is ready to go"
     });
     console.log("homepage -logged in");
   } else {
@@ -60,12 +60,9 @@ app.post('/login', function (req, res) {
       loggedIn = true;
       res.send("logged in");
       console.log("Logged in");
-
-      // Start EasyRTC server
       var easyrtcServer = easyrtc.listen(app, socketServer, {
         'apiEnable': 'true'
       });
-
     } else {
       res.send("Incorrect password.");
     }
@@ -112,10 +109,10 @@ app.get('/video', function (req, res) {
     res.send("Please try later.");
   }
 });
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
 var webServer = app.listen(port);
-console.log('Listening on port ' + 80);
+console.log('Listening on port ' + port);
 
 // Start Socket.io so it attaches itself to Express server
 var socketServer = io.listen(webServer);
