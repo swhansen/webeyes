@@ -5,11 +5,15 @@ var io = require("socket.io");
 var easyrtc = require("easyrtc");
 
 app.use("/js", express.static(__dirname + '/easyrtc/js'));
+app.use(express.static(__dirname + '/public'));
+
 app.use("/images", express.static(__dirname + '/easyrtc/images'));
 app.use("/css", express.static(__dirname + '/easyrtc/css'));
 
 app.use("/css", express.static(__dirname + '/public/css'));
 app.use("/img", express.static(__dirname + '/public/img'));
+
+
 
 // Needed to parse form data(changed for express 4.x)
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +27,12 @@ var handlebars = require('express-handlebars')
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
+
+app.use(function(req, res, next){
+        res.locals.showTests = app.get('env') !== 'production' &&
+                req.query.test === '1';
+        next();
+});
 
 //Test home page
 //app.get('/', function (req, res) {
@@ -47,7 +57,7 @@ app.get('/', function (req, res) {
   if (loggedIn === true) {
     res.sendFile(__dirname + '/views/multiparty.html');
   } else {
-  res.render('entry');
+  res.render('entry', {pageTestScript: '/qa/tests-entry.js'});
 }
 });
 
@@ -110,7 +120,7 @@ app.get('/video', function (req, res) {
     res.send("Please try later.");
   }
 });
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
 var webServer = app.listen(port);
 console.log('Listening on port ' + port);

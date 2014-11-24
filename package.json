@@ -12,12 +12,15 @@
   "dependencies": {
     "easyrtc": "~1.0.10",
     "express": "^4.x.x",
-    "body-parser":  "*",
+    "body-parser": "*",
     "jade": "~1.0.2",
     "express-handlebars": "^1.1.0",
     "socket.io": "~0.9.16"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/sw_hansen/weg2rt"
@@ -28,8 +31,8 @@
   ],
   "author": "Steve Hansen",
   "contributors": {
-      "name": "Steve Hansen",
-      "email": "sw_hansen@obliquevision.org"
+    "name": "Steve Hansen",
+    "email": "sw_hansen@obliquevision.org"
   },
   "license": "MIT",
   "bugs": {
