@@ -9,8 +9,54 @@ body {
     height: 480px;
     
     /*defaults*/
-    font-family: Consolas;
+    font-family: Sans-Serif;
 }
+
+.centerFlex {
+    width: 600px;
+    height: 200px; 
+    font-size: 28px;
+    color: #fff;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#submit {
+      border-top: 1px solid #dcedf7;
+   background: #2b2b2b;
+   background: -webkit-gradient(linear, left top, left bottom, from(#dddfe0), to(#2b2b2b));
+   background: -webkit-linear-gradient(top, #dddfe0, #2b2b2b);
+   background: -moz-linear-gradient(top, #dddfe0, #2b2b2b);
+   background: -ms-linear-gradient(top, #dddfe0, #2b2b2b);
+   background: -o-linear-gradient(top, #dddfe0, #2b2b2b);
+   padding: 8.5px 17px;
+   -webkit-border-radius: 18px;
+   -moz-border-radius: 18px;
+   border-radius: 18px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 17px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #919191;
+   background: #919191;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
 h1{
     text-align: left;
     font-size: large;

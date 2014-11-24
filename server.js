@@ -11,10 +11,6 @@ app.use("/css", express.static(__dirname + '/easyrtc/css'));
 app.use("/css", express.static(__dirname + '/public/css'));
 app.use("/img", express.static(__dirname + '/public/img'));
 
-app.get('/style.css', function (req, res) {
-  res.sendFile(__dirname + '../public/css/style.css');
-});
-
 // Needed to parse form data(changed for express 4.x)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -49,7 +45,7 @@ app.set('view engine', 'handlebars');
 app.get('/', function (req, res) {
   console.log('Login attempt');
   if (loggedIn === true) {
-    res.sendfile(__dirname + '/views/multiparty.html');
+    res.sendFile(__dirname + '/views/multiparty.html');
   } else {
   res.render('entry');
 }
