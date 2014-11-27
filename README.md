@@ -25,6 +25,13 @@
 
 ## Testing
 
+Grunt is used to tie the testing togather
+
+* Mocha - Test Framework
+* Chai - Assertion Library
+* jshint - syntax
+* zombie
+
 ## Protocol, Best Practices, Style
 
 Use the following guides for getting things done, programming well, and

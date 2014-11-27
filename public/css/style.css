@@ -5,17 +5,22 @@ body {
     background-image: url("/img/irongrip.png");
     background-repeat: repeat;
     background-size: contain;
-    width: 640px; 
+    width: 640px;
     height: 480px;
-    
+
     /*defaults*/
     font-family: Sans-Serif;
 }
 
 .centerFlex {
-    width: 600px;
-    height: 200px; 
-    font-size: 28px;
+
+    font-family: Optima;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    width: 800px;
+    height: 200px;
+    font-size: 56px;
     color: #fff;
     position: absolute;
     top:0;
@@ -25,50 +30,55 @@ body {
     margin: auto;
 }
 
-#submit {
-      border-top: 1px solid #dcedf7;
-   background: #2b2b2b;
-   background: -webkit-gradient(linear, left top, left bottom, from(#dddfe0), to(#2b2b2b));
-   background: -webkit-linear-gradient(top, #dddfe0, #2b2b2b);
-   background: -moz-linear-gradient(top, #dddfe0, #2b2b2b);
-   background: -ms-linear-gradient(top, #dddfe0, #2b2b2b);
-   background: -o-linear-gradient(top, #dddfe0, #2b2b2b);
-   padding: 8.5px 17px;
-   -webkit-border-radius: 18px;
-   -moz-border-radius: 18px;
-   border-radius: 18px;
+form    {
+    margin:auto;
+    position:relative;
+    width:550px;
+    height:450px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+#entry-submit {
+   border-top: 1px solid #96d1f8;
+   background: #ffffff;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+   background: -webkit-linear-gradient(top, #ffffff, #ffffff);
+   background: -moz-linear-gradient(top, #ffffff, #ffffff);
+   background: -ms-linear-gradient(top, #ffffff, #ffffff);
+   background: -o-linear-gradient(top, #ffffff, #ffffff);
+   padding: 16px 32px;
+   -webkit-border-radius: 35px;
+   -moz-border-radius: 35px;
+   border-radius: 35px;
    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
    box-shadow: rgba(0,0,0,1) 0 1px 0;
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
-   font-size: 17px;
+   color: #000000;
+   font-size: 21px;
    font-family: Helvetica, Arial, Sans-Serif;
    text-decoration: none;
    vertical-align: middle;
    }
 .button:hover {
-   border-top-color: #919191;
-   background: #919191;
-   color: #ccc;
+   border-top-color: #000000;
+   background: #000000;
+   color: #ffffff;
    }
 .button:active {
    border-top-color: #1b435e;
    background: #1b435e;
    }
 
-h1{
-    text-align: left;
-    font-size: large;
-    font-weight: 400;
-    color: #fff;
-}
-
 footer{
     color: #e7e7e7;
     position: absolute ;
     bottom: 0;
-    left: 40%;  
+    left: 40%;
     text-align: center;
     font-size: small;
 }
@@ -80,7 +90,7 @@ img{
 }
 table{
     width:  100%;
-    position: absolute; 
+    position: absolute;
 }
 #buttons{
     font-size: 60%;
