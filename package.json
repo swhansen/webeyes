@@ -1,7 +1,8 @@
 {
   "name": "weg2rt",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha qa/user.js"
   },
   "version": "0.0.1",
   "engines": {

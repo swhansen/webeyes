@@ -13,12 +13,6 @@ describe("The Todo App", function() {
     });
 
     beforeEach(function() {
-        // before EACH test, create a new zombie browser
-        // 
-        // some useful options when things go wrong:
-        // debug: true  =  outputs debug information for zombie
-        // waitDuration: 500  =  will only wait 500 milliseconds
-        //   for the page to load before moving on
         browser = new Browser();
     });
 

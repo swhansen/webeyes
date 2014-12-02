@@ -30,6 +30,7 @@ var handlebars = require('express-handlebars')
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+// test for tests....
 app.use(function (req, res, next) {
     res.locals.showTests = app.get('env') !== 'production' &&
         req.query.test === '1';
