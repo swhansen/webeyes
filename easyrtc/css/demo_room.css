@@ -15,6 +15,22 @@
     position:absolute;
 }
 
+#box0 { z-index:2;
+    box-shadow: 10px 10px 10px #000000;
+  }
+
+#box1 { z-index:2;
+    box-shadow: 10px 10px 10px #FF9E8C;
+  }
+
+#box2 { z-index:2;
+    box-shadow: 10px 10px 10px #FFCC3;
+}
+
+#box3 { z-index:2;
+    box-shadow: 10px 10px 10px #D0D0D0;
+}
+
 .closeButton {
     display: none; /* hide the easyApp's close button because we have our own */
 }
