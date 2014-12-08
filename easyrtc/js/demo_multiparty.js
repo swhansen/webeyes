@@ -11,6 +11,10 @@ function getIdOfBox(boxNum) {
     return "box" + boxNum;
 }
 
+function getIdOfCanvas(canvasNum) {
+    return "canvas" + canvasNum;
+}
+
 
 function reshapeFull(parentw, parenth) {
     return {
@@ -426,7 +430,6 @@ function setReshaper(elementId, reshapeFn) {
     element.reshapeMe = reshapeFn;
 }
 
-
 function collapseToThumbHelper() {
     if (activeBox >= 0) {
         var id = getIdOfBox(activeBox);
@@ -490,6 +493,32 @@ function prepVideoBox(whichBox) {
         expandThumb(whichBox);
     };
 }
+
+function prepCanvasBox(whichCanvas) {
+    var id = getIdOfCanvas(whichCanvas);
+    setReshaper(id, reshapeThumbs[whichCanvas]);
+    document.getElementById(id).onclick = function() {
+        expandThumb(whichCanvas);
+
+var canvas = document.getElementById('canvas0');
+      var context = canvas.getContext('2d');
+      var centerX = canvas.width / 2;
+      var centerY = canvas.height / 2;
+      var radius = 70;
+
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+      context.fillStyle= "#b0c2f7";
+      context.globalAlpha=0.3; //opacity
+      context.fill();
+      //context.lineWidth = 5;
+      context.strokeStyle = '#003300';
+      context.stroke();
+    };
+}
+
+
+
 
 
 function killActiveBox() {
@@ -659,7 +688,6 @@ function messageListener(easyrtcid, msgType, content) {
     }
 }
 
-
 function appInit() {
 
     // Prep for the top-down layout manager
@@ -667,6 +695,123 @@ function appInit() {
     for (var i = 0; i < numVideoOBJS; i++) {
         prepVideoBox(i);
     }
+    prepCanvasBox(0);
+
+// Draw on Canvas
+
+
+var canvas, ctx, flag = false,
+    prevX = 0,
+    currX = 0,
+    prevY = 0,
+    currY = 0,
+    dot_flag = false;
+
+var x = "red",
+    y = 2;
+
+
+canvas = document.getElementById('canvas0');
+    ctx = canvas.getContext("2d");
+    w = canvas.width;
+    h = canvas.height;
+
+canvas.addEventListener("mousemove", function (e) {
+        findxy('move', e)
+    }, false);
+    canvas.addEventListener("mousedown", function (e) {
+        findxy('down', e)
+    }, false);
+    canvas.addEventListener("mouseup", function (e) {
+        findxy('up', e)
+    }, false);
+    canvas.addEventListener("mouseout", function (e) {
+        findxy('out', e)
+    }, false);
+
+
+function draw() {
+    ctx.beginPath();
+    ctx.moveTo(prevX, prevY);
+    ctx.lineTo(currX, currY);
+    ctx.strokeStyle = x;
+    ctx.lineWidth = y;
+    ctx.stroke();
+    ctx.closePath();
+}
+
+function findxy(res, e) {
+    if (res == 'down') {
+        prevX = currX;
+        prevY = currY;
+        currX = e.clientX - canvas.offsetLeft;
+        currY = e.clientY - canvas.offsetTop;
+
+        flag = true;
+        dot_flag = true;
+        if (dot_flag) {
+            ctx.beginPath();
+            ctx.fillStyle = x;
+            ctx.fillRect(currX, currY, 2, 2);
+            ctx.closePath();
+            dot_flag = false;
+        }
+    }
+    if (res == 'up' || res == "out") {
+        flag = false;
+    }
+    if (res == 'move') {
+        if (flag) {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+            draw();
+        }
+    }
+}
+
+
+//var mousePressed = false;
+//var lastX, lastY;
+//var ctx;
+//
+//ctx = document.getElementById('canvas0').getContext("2d");
+//
+//    $('#canvas0').mousedown(function (e) {
+//        mousePressed = true;
+//        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
+//    });
+//
+//    $('#canvas0').mousemove(function (e) {
+//        if (mousePressed) {
+//            Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
+//        }
+//    });
+//
+//    $('#canvas0').mouseup(function (e) {
+//        mousePressed = false;
+//    });
+//        $('#canvas0').mouseleave(function (e) {
+//        mousePressed = false;
+//    });
+//
+//function Draw(x, y, isDown) {
+//    if (isDown) {
+//        ctx.beginPath();
+//        ctx.strokeStyle = "red";
+//        ctx.lineWidth = "4";
+//        ctx.lineJoin = "round";
+//        ctx.moveTo(lastX, lastY);
+//        ctx.lineTo(x, y);
+//        ctx.closePath();
+//        ctx.stroke();
+//    }
+//    lastX = x; lastY = y;
+//}
+
+// end Draw on Canvas
+
     setReshaper('killButton', killButtonReshaper);
     setReshaper('muteButton', muteButtonReshaper);
     setReshaper('textentryBox', reshapeTextEntryBox);

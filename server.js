@@ -12,6 +12,7 @@ app.use("/css", express.static(__dirname + '/easyrtc/css'));
 
 app.use("/css", express.static(__dirname + '/public/css'));
 app.use("/img", express.static(__dirname + '/public/img'));
+app.use("/javascript", express.static(__dirname + '/public/javascripts'));
 
 // Needed to parse form data(changed for express 4.x)
 app.use(bodyParser.urlencoded({
@@ -126,7 +127,7 @@ app.get('/video', function(req, res) {
     }
 });
 // set port to 80 for heroku ???
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
 var webServer = app.listen(port);
 console.log('Listening on port ' + port);

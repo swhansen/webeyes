@@ -6,6 +6,11 @@
     -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
 }
 
+.drawMirror {
+        -webkit-transform: scaleX(-1);
+      -moz-transform: scaleX(-1);
+   }
+
 .hidden {
     background-color: transparent;
     border-color: 2px solid blue;
@@ -14,7 +19,9 @@
 .boxCommon {
     position:absolute;
 }
-/* Color the user panel shadow */
+
+#canvas0 {z-index: 3;}
+
 #box0 { z-index:2;
     box-shadow: 10px 10px 10px #000000;
   }
