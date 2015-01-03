@@ -1,15 +1,13 @@
-<div class = "centerFlex">
-<p id="login-message">Start a new WEG2RT Session</p>
-    <form id ="pwform" action="">
+//jade
+div#centerFlex
+    p(id="login-message") Start a new WEG2RT Session
+    <orm action=""
         Password
-        <input type="password" name="password" value="password"/>
-        <input type="submit" value="Go Collaborate" id="entry-submit" />
-    </form>
- </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $("#pwform").submit(function() {
+        input(type="password", name="password")
+        input(type=submit, value="Go Collaborate" id="entry-submit")
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+    script(type='text/javascript)$(document).ready(function() {
+        $("form").submit(function() {
             console.log("password sumbitted");
             var pw = {
                 "pw": $("input").val()
@@ -25,4 +23,3 @@
             });
         });
     });
-    </script>

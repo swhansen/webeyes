@@ -15,7 +15,6 @@ function getIdOfCanvas(canvasNum) {
     return "canvas" + canvasNum;
 }
 
-
 function reshapeFull(parentw, parenth) {
     return {
         left: 0,
@@ -130,8 +129,6 @@ function reshape1of2(parentw, parenth) {
         }
     }
 }
-
-
 
 function reshape2of2(parentw, parenth) {
     if (layout == 'p') {
@@ -373,6 +370,16 @@ function muteButtonReshaper(parentw, parenth) {
     }
 }
 
+function drawButtonReshaper(parentw, parenth) {
+    var imagew = 32;
+    var imageh = 32;
+    if (parentw < parenth) {
+        return setThumbSizeButton(0.10, -.51, 0.01, parentw, parenth, imagew, imageh);
+    } else {
+        return setThumbSizeButton(0.10, 0.01, -.51, parentw, parenth, imagew, imageh);
+    }
+}
+
 function reshapeTextEntryButton(parentw, parenth) {
     var imagew = 32;
     var imageh = 32;
@@ -497,20 +504,20 @@ function prepVideoBox(whichBox) {
 function prepCanvasBox(whichCanvas) {
     var id = getIdOfCanvas(whichCanvas);
     setReshaper(id, reshapeThumbs[whichCanvas]);
-    document.getElementById(id).onclick = function() {
-        expandThumb(whichCanvas);
+    //document.getElementById(id).onclick = function() {
+    //   expandThumb(whichCanvas);
 
-//var canvas = document.getElementById('canvas0');
-//      var context = canvas.getContext('2d');
-//      var centerX = canvas.width / 2;
-//      var centerY = canvas.height / 2;
-//      var radius = 70;
-//      context.beginPath();
-//      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-//      context.fillStyle= "#b0c2f7";
-//      context.globalAlpha=0.1; //opacity
-//      context.fill();
-    };
+    // var canvas = document.getElementById('canvas0');
+    // var context = canvas.getContext('2d');
+    // var centerX = canvas.width / 2;
+    // var centerY = canvas.height / 2;
+    // var radius = 70;
+    // context.beginPath();
+    // context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    // context.fillStyle= "#b0c2f7";
+    // context.globalAlpha=0.1; //opacity
+    // context.fill();
+    //;
 }
 
 function killActiveBox() {
@@ -523,13 +530,9 @@ function killActiveBox() {
     }
 }
 
-
 function muteActiveBox() {
     updateMuteImage(true);
 }
-
-
-
 
 function callEverybodyElse(roomName, otherPeople) {
 
@@ -680,8 +683,6 @@ function messageListener(easyrtcid, msgType, content) {
     }
 }
 
-
-
 function appInit() {
 
     // Prep for the top-down layout manager
@@ -695,6 +696,8 @@ function appInit() {
 
     setReshaper('killButton', killButtonReshaper);
     setReshaper('muteButton', muteButtonReshaper);
+    setReshaper('drawButton', drawButtonReshaper);
+
     setReshaper('textentryBox', reshapeTextEntryBox);
     setReshaper('textentryField', reshapeTextEntryField);
     setReshaper('textEntryButton', reshapeTextEntryButton);
@@ -738,3 +741,118 @@ function appInit() {
         }, 20);
     });
 }
+
+
+
+//function canvasDraw(c) {
+//
+////ß    // Connect to the nodeJs Server
+////ßsocketServer = io.connect('/');
+////ß
+////ß// (1): Send a ping event with 
+////ß// some data to the server
+////ßconsole.log( "socket: browser says ping (1)" )
+////ßsocketServer.emit('ping', { some: 'data' } );
+////ß
+////ß// (4): When the browser recieves a pong event
+////ß// console log a message and the events data
+////ßsocketServer.on('pong', function (data) {
+////ß  console.log( 'socket: server said pong to browser (4)', data );
+////ß});
+//
+//canvas = document.getElementById('canvas0');
+//context = canvas.getContext("2d");
+//
+//tool = new tool_pencil();
+//
+//canvas.addEventListener('mousedown', ev_canvas, false);
+//canvas.addEventListener('mousemove', ev_canvas, false);
+//canvas.addEventListener('mouseup',   ev_canvas, false);
+//
+//function tool_pencil () {
+//
+//    var tool = this;
+//    context.lineWidth = 1;
+//    this.started = false;
+//    context.strokeStyle = "red";
+//
+//    this.mousedown = function (ev) {
+//            context.beginPath();
+//            context.moveTo(ev._x * .3, ev._y * .2);
+//            tool.started = true;
+//    };
+//
+//    this.mousemove = function (ev) {
+//        if (tool.started) {
+//            context.lineTo(ev._x * .3, ev._y * .2);
+//            context.stroke();
+//    var data = {
+//    x: ev._x,
+//    y: ev._y
+//  };
+//  console.log( data );
+//  emitDraw(data);
+//    // emit the draw events
+//     //       socketServer.emit( "canvasDraw", data )
+//        }
+//    };
+//
+//    // This is called when you release the mouse button
+//    this.mouseup = function (ev) {
+//        if (tool.started) {
+//            tool.mousemove(ev);
+//            tool.started = false;
+//        }
+//    };
+//}
+//
+//// The general-purpose event handler. This function just determines
+//// the mouse position relative to the <canvas> element
+//    function ev_canvas(ev) {
+//        // Firefox
+//        if (ev.layerX || ev.layerX == 0) {
+//            ev._x = ev.layerX;
+//            ev._y = ev.layerY;
+//            // Opera
+//        } else if (ev.offsetX || ev.offsetX == 0) {
+//            ev._x = ev.offsetX;
+//            ev._y = ev.offsetY;
+//        }
+//
+//        // Call the event handler of the tool
+//        var func = tool[ev.type];
+//        if (func) {
+//            func(ev);
+//        }
+//    }
+//
+//}
+//
+//function emitDraw(data) {
+//
+//    var sessionId = socketServer.sessionid;
+//
+//    // An object to describe the points for the draw event
+//    //var data = {
+//    //    x: x,
+//    //    y: y,
+//    //};
+//
+//    // send a 'canvasDraw' event with data and sessionId to the server
+//    socketServer.emit( 'ping', data, sessionId);
+//
+//    // Lets have a look at the data
+//        console.log('from emit');
+//        console.log( data );
+//
+//}
+//
+//socketServer.on( 'canvasDraw', function( data ) {
+//
+//  console.log( 'canvasDraw event recieved:', data );
+//
+//  // Draw the circle using the data sent
+//  // from another user
+//  canvasDraw( data.x, data.y);
+//})
+//

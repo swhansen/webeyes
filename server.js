@@ -55,7 +55,8 @@ app.use(function (req, res, next) {
 //  }
 //});
 
-// Main entry point
+//  Main entry point
+
 app.get('/', function(req, res) {
     console.log('Login attempt');
     if (loggedIn === true) {
@@ -133,4 +134,32 @@ var webServer = app.listen(port);
 console.log('Listening on port ' + port);
 
 // Start Socket.io so it attaches itself to Express server
-var socketServer = io.listen(webServer);
+var socketServer =  io.listen(webServer);
+console.log('socketServer set in server.js');
+
+// Collabortive  drawing stuff
+socketServer.sockets.on('connection', function (client) {
+
+    // (2): The server recieves a ping event
+    // from the browser on this socket
+    client.on('ping', function ( data ) {
+
+    console.log('socketServer recieves ping from browser (2)');
+
+    // (3): Return a pong event to the browser
+    // echoing back the data from the ping event
+    client.emit( 'pong', data );
+
+    console.log('socketServer sends pong  to all browsers (3)');
+
+     });
+
+    client.on('drawLine', function(data, session) {
+
+    console.log( "session " + session + " drew:");
+    console.log( data );
+
+    client.broadcast.emit('drawLine',  data);
+    } );
+
+});
