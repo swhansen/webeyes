@@ -10,8 +10,6 @@
 
         <script type="text/javascript" src="javascript/multiparty.js"></script>
 
-        <script type="text/javascript" src="javascript/paper.js"></script>
-
         <script type="text/jpapersript" src="js/prettify/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
         <link rel="stylesheet" type="text/css" href="css/room.css" />
@@ -34,7 +32,7 @@
             <img id="killButton" class="transit boxCommon" onclick="killActiveBox()" src="images/button_close.png" style="display:none;z-index:3" alt="close button" />
             <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png" style="display:none;z-index:3" alt="mute button" />
             <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png" style="z-index:3;display:none" alt="text button" />
-            <img id="drawButton" class="transit boxCommon" onclick ="draw_rect()" src="images/pencil.png" style="z-index:3;" alt="pencil button" />
+            <img id="drawButton" class="transit boxCommon" onclick ="initdraw()" src="images/pencil.png" style="z-index:3;" alt="pencil button" />
         </div>
          <canvas id="canvas0" class="transit boxCommon thumbCommon" ></canvas>
          <script type="text/javascript"  src="javascript/draw.js" ></script>

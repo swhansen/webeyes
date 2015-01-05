@@ -3,6 +3,8 @@ var express = require('express');
 var app = express();
 var io = require("socket.io");
 var easyrtc = require("easyrtc");
+var clients = [];
+var linecolors = new Array("#000000", "#FF9E8C", "#FFCC3ue", "#D0D0D0");
 
 app.use("/js", express.static(__dirname + '/easyrtc/js'));
 app.use(express.static(__dirname + '/public'));
@@ -32,7 +34,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 // test for tests....
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     res.locals.showTests = app.get('env') !== 'production' &&
         req.query.test === '1';
     next();
@@ -134,32 +136,39 @@ var webServer = app.listen(port);
 console.log('Listening on port ' + port);
 
 // Start Socket.io so it attaches itself to Express server
-var socketServer =  io.listen(webServer);
-console.log('socketServer set in server.js');
+var socketServer = io.listen(webServer);
+//console.log('socketServer set in server.js');
 
 // Collabortive  drawing stuff
-socketServer.sockets.on('connection', function (client) {
+socketServer.sockets.on('connection', function(client) {
 
     // (2): The server recieves a ping event
     // from the browser on this socket
-    client.on('ping', function ( data ) {
+    client.on('ping', function(data) {
 
-    console.log('socketServer recieves ping from browser (2)');
+    //    console.log('socketServer recieves ping from browser (2)');
 
-    // (3): Return a pong event to the browser
-    // echoing back the data from the ping event
-    client.emit( 'pong', data );
+        // (3): Return a pong event to the browser
+        // echoing back the data from the ping event
+        client.emit('pong', data);
 
-    console.log('socketServer sends pong  to all browsers (3)');
-
-     });
+        //     console.log('socketServer sends pong  to all browsers (3)');
+    });
 
     client.on('drawLine', function(data, session) {
 
-    console.log( "session " + session + " drew:");
-    console.log( data );
+        if (!(client.id in clients)) {
 
-    client.broadcast.emit('drawLine',  data);
-    } );
+            var linecolor = linecolors[Object.keys(clients).length];
+            clients[client.id] = linecolor;
+        }
+
+        data.color = clients[client.id];
+        data.client = client.id;
+        //console.log("data at broadcast drawLine:");
+        //console.log(data);
+        client.emit('drawLine', data);
+        client.broadcast.emit('drawLine', data);
+    });
 
 });

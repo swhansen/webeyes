@@ -1,43 +1,38 @@
 
 canvas = document.getElementById('canvas0');
 context = canvas.getContext("2d");
+var clientList = [];
 
 tool = new tool_pencil();
 
+function initdraw() {
 canvas.addEventListener('mousedown', ev_canvas, false);
 canvas.addEventListener('mousemove', ev_canvas, false);
 canvas.addEventListener('mouseup',   ev_canvas, false);
+}
 
 function tool_pencil () {
 
     var tool = this;
     context.lineWidth = 1;
     this.started = false;
-    context.strokeStyle = "red";
 
     this.mousedown = function (ev) {
             context.beginPath();
-            context.moveTo(ev._x , ev._y );
+           context.moveTo(ev._x , ev._y );
             tool.started = true;
     };
-
     this.mousemove = function (ev) {
         if (tool.started) {
-
-        var data = { x: ev._x, y: ev._y};
-
-        drawline(data);
-
-        // emit the draw events
-        //    socketServer.emit( "canvasDraw", data )
-        emitDraw(data);
-            }
+          var data = { x: ev._x, y: ev._y};
+        //drawline(data);
+          emitDraw(data);
+          }
     };
-
     // This is called when you release the mouse button
     this.mouseup = function (ev) {
         if (tool.started) {
-            tool.mousemove(ev);
+          tool.mousemove(ev);
             tool.started = false;
         }
     };
@@ -63,21 +58,21 @@ function tool_pencil () {
     }
 
 function drawline (data) {
+    context.strokeStyle = data.color;
     context.lineTo(data.x,  data.y);
     context.stroke();
  }
 
 function emitDraw(data) {
-
     var sessionId = socketServer.sessionid;
-
     // send a 'drawLine event with data and sessionId to the server
     socketServer.emit( 'drawLine', data, sessionId);
-    console.log( data );
+    //console.log( data );
  }
 
 socketServer.on( 'drawLine', function( data ) {
-  console.log( 'drawLine event recieved:', data );
+  //console.log(this.socket.sessionid);
+  console.log( 'drawLine event recieved in client:', data );
   // Draw the line using the data recieved
   drawline( data);
 });
