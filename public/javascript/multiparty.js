@@ -4,7 +4,6 @@ var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS + 1;
 var layout;
 
-
 easyrtc.dontAddCloseButtons(true);
 
 function getIdOfBox(boxNum) {
@@ -504,8 +503,8 @@ function prepVideoBox(whichBox) {
 function prepCanvasBox(whichCanvas) {
     var id = getIdOfCanvas(whichCanvas);
     setReshaper(id, reshapeThumbs[whichCanvas]);
-    //document.getElementById(id).onclick = function() {
-    //   expandThumb(whichCanvas);
+    document.getElementById(id).onclick = function() {
+     expandThumb(whichCanvas);
 
     // var canvas = document.getElementById('canvas0');
     // var context = canvas.getContext('2d');
@@ -518,6 +517,7 @@ function prepCanvasBox(whichCanvas) {
     // context.globalAlpha=0.1; //opacity
     // context.fill();
     //;
+};
 }
 
 function killActiveBox() {
@@ -690,7 +690,7 @@ function appInit() {
     for (var i = 0; i < numVideoOBJS; i++) {
         prepVideoBox(i);
     }
-    prepCanvasBox(0);
+      //  prepCanvasBox(0);
 
     setReshaper('killButton', killButtonReshaper);
     setReshaper('muteButton', muteButtonReshaper);

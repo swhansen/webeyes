@@ -4,44 +4,45 @@ var app = express();
 var io = require("socket.io");
 var easyrtc = require("easyrtc");
 var clients = [];
-var linecolors = new Array("#000000", "#FF9E8C", "#FFCC3ue", "#D0D0D0");
+var linecolors = ["red", "yellow", "green", "blue"];
 
-app.use("/js", express.static(__dirname + '/easyrtc/js'));
+app.use('/js', express.static(__dirname + '/easyrtc/js'));
 app.use(express.static(__dirname + '/public'));
 
-app.use("/images", express.static(__dirname + '/easyrtc/images'));
-app.use("/css", express.static(__dirname + '/easyrtc/css'));
+app.use('/images', express.static(__dirname + '/easyrtc/images'));
+app.use('/css', express.static(__dirname + '/easyrtc/css'));
 
-app.use("/css", express.static(__dirname + '/public/css'));
-app.use("/img", express.static(__dirname + '/public/img'));
-app.use("/javascript", express.static(__dirname + '/public/javascripts'));
+app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/img', express.static(__dirname + '/public/img'));
+app.use('/javascript', express.static(__dirname + '/public/javascripts'));
 
 // Needed to parse form data(changed for express 4.x)
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false
 }));
 app.use(bodyParser.json());
+
 
 var loggedIn = false;
 var password = 'weg2rt';
 
 var handlebars = require('express-handlebars')
-    .create({
-        defaultLayout: 'main'
-    });
+  .create({
+    defaultLayout: 'main'
+  });
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 // test for tests....
-app.use(function(req, res, next) {
-    res.locals.showTests = app.get('env') !== 'production' &&
-        req.query.test === '1';
-    next();
+app.use(function (req, res, next) {
+  res.locals.showTests = app.get('env') !== 'production' &&
+    req.query.test === '1';
+  next();
 });
 
 //Test home page
-//app.get('/', function (req, res) {
+//app.get('/', function   (req, res) {
 //  if (loggedIn === true) {
 //    res.render('index', {
 //      title: 'available',
@@ -59,76 +60,77 @@ app.use(function(req, res, next) {
 
 //  Main entry point
 
-app.get('/', function(req, res) {
-    console.log('Login attempt');
-    if (loggedIn === true) {
-        res.sendFile(__dirname + '/views/multiparty.html');
-    } else {
-        res.render('entry', {
-            pageTestScript: '/qa/tests-entry.js'
-        });
-    }
+app.get('/', function (req, res) {
+  console.log('Login attempt');
+  if (loggedIn === true) {
+    res.sendFile(__dirname + '/views/multiparty.html');
+  } else {
+    res.render('entry', {
+      pageTestScript: '/qa/tests-entry.js'
+    });
+  }
 });
 
 //Respond to POST from login form
-app.post('/', function(req, res) {
-    if (loggedIn === true) {
-        res.send("Already logged in.");
+app.post('/', function (req, res) {
+  if (loggedIn === true) {
+    res.send("Already logged in.");
+  } else {
+    console.log("Posted data:" + JSON.stringify(req.body) );
+    if (req.body.pw === password) {
+      loggedIn = true;
+      res.send("logged in");
+      console.log("Logged in");
+      var easyrtcServer = easyrtc.listen(app, socketServer, {
+        'apiEnable': 'true'
+      });
     } else {
-        console.log("Posted data:" + JSON.stringify(req.body));
-        if (req.body.pw === password) {
-            loggedIn = true;
-            res.send("logged in");
-            console.log("Logged in");
-            var easyrtcServer = easyrtc.listen(app, socketServer, {
-                'apiEnable': 'true'
-            });
-        } else {
-            res.send("Incorrect password.");
-        }
+      res.send("Incorrect password.");
     }
+  }
 });
 
 //Serve a static logout page
-app.get('/logout', function(req, res) {
-    if (loggedIn === true) {
-        res.sendfile(__dirname + '/public/logout.html');
-        console.log("logout page");
+app.get('/logout', function (req, res) {
+  if (loggedIn === true) {
+    res.sendfile(__dirname + '/public/logout.html');
+    console.log("logout page");
 
-    } else {
-        res.send("Not logged in.");
-    }
+  } else {
+    res.send("Not logged in.");
+  }
 });
 
 //Check the password to prevent unauthoried logouts
-app.post('/logout', function(req, res) {
-    console.log("Posted data:" + JSON.stringify(req.body));
-    if (req.body.pw === password) {
-        if (loggedIn === true) {
-            loggedIn = false;
-            res.send("Logged out");
-            console.log("logged out");
+app.post('/logout', function (req, res) {
+  console.log("Posted data:" + JSON.stringify(req.body));
+  if (req.body.pw === password) {
+    if (loggedIn === true) {
+      loggedIn = false;
+      res.send("Logged out");
+      console.log("logged out");
 
-            //Consider killing all active sessions here
-            easyrtc.setOption('apiEnable', 'false');
-        } else {
-            res.send("You were already logged out");
-            console.log("Attempt to logout when not logged in");
-        }
+      //Consider killing all active sessions here
+      easyrtc.setOption('apiEnable', 'false');
     } else {
-        console.log("Bad password attempt");
-        res.send("Incorrect password");
+      res.send("You were already logged out");
+      console.log("Attempt to logout when not logged in");
     }
+  } else {
+    console.log("Bad password attempt");
+    res.send("Incorrect password");
+  }
 });
 
 //Initiate a video call
-app.get('/video', function(req, res) {
-    if (loggedIn === true) {
-        res.sendfile(__dirname + '/views/multiparty.html');
-    } else {
-        res.send("Please try later.");
-    }
+app.get('/video', function (req, res) {
+  if (loggedIn === true) {
+    res.sendfile(__dirname + '/views/multiparty.html');
+  } else {
+    res.send("Please try later.");
+  }
 });
+
 // set port to 80 for heroku ???
 var port = process.env.PORT || 8080;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
@@ -137,38 +139,45 @@ console.log('Listening on port ' + port);
 
 // Start Socket.io so it attaches itself to Express server
 var socketServer = io.listen(webServer);
-//console.log('socketServer set in server.js');
+
 
 // Collabortive  drawing stuff
-socketServer.sockets.on('connection', function(client) {
+socketServer.sockets.on('connection', function (client) {
 
-    // (2): The server recieves a ping event
-    // from the browser on this socket
-    client.on('ping', function(data) {
+  // (2): The server recieves a ping event
+  // from the browser on this socket
+  client.on('ping', function (data) {
 
-    //    console.log('socketServer recieves ping from browser (2)');
+    //    console.log('socketServenode serverr recieves ping from browser (2)');
 
-        // (3): Return a pong event to the browser
-        // echoing back the data from the ping event
-        client.emit('pong', data);
+    // (3): Return a pong event to the browser
+    // echoing back the data from the ping event
+    client.emit('pong', data);
 
-        //     console.log('socketServer sends pong  to all browsers (3)');
-    });
+    //     console.log('socketServer sends pong  to all browsers (3)');
+  });
 
-    client.on('drawLine', function(data, session) {
+  client.on('drawLine', function (data, session) {
+    // build up the colors for  drawing
+    if (!(client.id in clients)) {
+      clients[client.id] = linecolors[Object.keys(clients).length];
+    }
+    // set the emitted colors
+    data.color = clients[client.id];
+    data.client = client.id;
+    //console.log("data at broadcast drawLine:");
+    //console.log(data);
+    //var keys =[];
+    //for (var key in clients) {
+    //  if (clients.hasOwnProperty(key)) {
+    //    keys.push(key);
+    //    socketServer.to(key).emit('drawLine', data);
+    //  }
+    //}
+    // console.log("client list", keys);
 
-        if (!(client.id in clients)) {
-
-            var linecolor = linecolors[Object.keys(clients).length];
-            clients[client.id] = linecolor;
-        }
-
-        data.color = clients[client.id];
-        data.client = client.id;
-        //console.log("data at broadcast drawLine:");
-        //console.log(data);
-        client.emit('drawLine', data);
-        client.broadcast.emit('drawLine', data);
-    });
-
+    client.emit('drawLine', data);
+    console.log("back to client", data);
+    client.broadcast.emit('drawLine', data);
+  });
 });
