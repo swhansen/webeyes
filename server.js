@@ -140,44 +140,17 @@ console.log('Listening on port ' + port);
 // Start Socket.io so it attaches itself to Express server
 var socketServer = io.listen(webServer);
 
-
 // Collabortive  drawing stuff
 socketServer.sockets.on('connection', function (client) {
-
-  // (2): The server recieves a ping event
-  // from the browser on this socket
-  client.on('ping', function (data) {
-
-    //    console.log('socketServenode serverr recieves ping from browser (2)');
-
-    // (3): Return a pong event to the browser
-    // echoing back the data from the ping event
-    client.emit('pong', data);
-
-    //     console.log('socketServer sends pong  to all browsers (3)');
-  });
-
   client.on('drawLine', function (data, session) {
     // build up the colors for  drawing
     if (!(client.id in clients)) {
       clients[client.id] = linecolors[Object.keys(clients).length];
     }
-    // set the emitted colors
     data.color = clients[client.id];
     data.client = client.id;
-    //console.log("data at broadcast drawLine:");
-    //console.log(data);
-    //var keys =[];
-    //for (var key in clients) {
-    //  if (clients.hasOwnProperty(key)) {
-    //    keys.push(key);
-    //    socketServer.to(key).emit('drawLine', data);
-    //  }
-    //}
-    // console.log("client list", keys);
 
     client.emit('drawLine', data);
-    console.log("back to client", data);
     client.broadcast.emit('drawLine', data);
   });
 });

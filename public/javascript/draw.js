@@ -22,10 +22,20 @@ function ev_canvas(ev) {
   }
 }
 
-function initdraw() {
+function initDraw() {
   canvas.addEventListener('mousedown', ev_canvas, false);
   canvas.addEventListener('mousemove', ev_canvas, false);
   canvas.addEventListener('mouseup', ev_canvas, false);
+
+  document.getElementById("canvaspane").className = "cancenter";
+
+  canvas.style.width ='100%';
+  canvas.style.height='100%';
+  // ...then set the internal size to match
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  document.getElementById("canvaspane").style.visibility = "visible";
 }
 
 // grab the mouse state and "emit" is to the server
@@ -34,28 +44,29 @@ function tool_pencil() {
   context.lineWidth = 1;
   this.started = false;
 
-  this.mousedown = function(ev) {
+  this.mousedown = function (ev) {
     //context.beginPath();
     // context.moveTo(ev._x, ev._y);
     tool.started = true;
-    data.mousestate = "mousedown";
+    data.mouseState = "mouseDown";
     emitDraw(data);
   };
-  this.mousemove = function(ev) {
+
+  this.mousemove = function (ev) {
     if (tool.started) {
       data.x = Math.round(ev._x);
       data.y = Math.round(ev._y);
-      data.mousestate = "mousemove";
+      data.mouseState = "mouseMove";
       //  data.started = tool.started
       //drawline(data);
       emitDraw(data);
     }
   };
-  // This is called when you release the mouse button
-  this.mouseup = function(ev) {
+
+  this.mouseup = function (ev) {
     if (tool.started) {
       //  tool.mousemove(ev);
-      data.mousestate = "mouseup";
+      data.mouseState = "mouseUp";
       emitDraw(data);
       tool.started = false;
     }
@@ -64,18 +75,18 @@ function tool_pencil() {
 
 // draw the line when recieving an emit from the server
 function drawline(data) {
-  console.log("drawline at client", data);
-  switch (data.mousestate) {
-    case "mousedown":
+  //console.log("drawline at client", data);
+  switch (data.mouseState) {
+    case "mouseDown":
       context.moveTo(data.x, data.y);
       context.beginPath();
       break;
-    case "mousemove":
+    case "mouseMove":
       context.strokeStyle = data.color;
       context.lineTo(data.x, data.y);
       context.stroke();
       break;
-    case "mouseup":
+    case "mouseUp":
       context.strokeStyle = data.color;
       context.lineTo(data.x, data.y);
       context.stroke();
@@ -85,6 +96,7 @@ function drawline(data) {
 
 function emitDraw(data) {
   var sessionId = socketServer.sessionid;
+  console.log("Client emit:", data);
   socketServer.emit('drawLine', data, sessionId);
 }
 

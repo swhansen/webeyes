@@ -690,7 +690,7 @@ function appInit() {
     for (var i = 0; i < numVideoOBJS; i++) {
         prepVideoBox(i);
     }
-      //  prepCanvasBox(0);
+    //prepCanvasBox(0);
 
     setReshaper('killButton', killButtonReshaper);
     setReshaper('muteButton', muteButtonReshaper);
