@@ -27,7 +27,7 @@ function initDraw() {
   canvas.addEventListener('mousemove', ev_canvas, false);
   canvas.addEventListener('mouseup', ev_canvas, false);
 
-  document.getElementById("canvaspane").className = "cancenter";
+  document.getElementById("canvaspane").className = "canvascenter";
 
   canvas.style.width ='100%';
   canvas.style.height='100%';
