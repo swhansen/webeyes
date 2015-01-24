@@ -1,8 +1,20 @@
 var canvas = document.getElementById('canvas0');
 var context = canvas.getContext("2d");
 var data = {};
+var points = [];
+var s = 0;
 
 tool = new tool_pencil();
+
+
+
+
+
+
+
+
+
+
 
 // The general-purpose event handler.
 function ev_canvas(ev) {
@@ -31,11 +43,16 @@ function initDraw() {
 
   canvas.style.width ='100%';
   canvas.style.height='100%';
-  // ...then set the internal size to match
   canvas.width  = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 
   document.getElementById("canvaspane").style.visibility = "visible";
+
+  box0Height = document.getElementById("box0").offsetHeight;
+  box0Width = document.getElementById("box0").offsetWidth;
+
+  document.getElementById("canvaspane").offsetHeight = box0Height;
+  document.getElementById("canvaspane").offsetWidth = box0Width;
 }
 
 // grab the mouse state and "emit" is to the server
@@ -72,31 +89,79 @@ function tool_pencil() {
     }
   };
 }
+_____________________________________________________________________
 
-// draw the line when recieving an emit from the server
+// draw the line (points) when recieving an emit from the server
 function drawline(data) {
   //console.log("drawline at client", data);
   switch (data.mouseState) {
     case "mouseDown":
       context.moveTo(data.x, data.y);
       context.beginPath();
+      // reset the array for a new line
+      points.length = 0;
       break;
     case "mouseMove":
       context.strokeStyle = data.color;
       context.lineTo(data.x, data.y);
       context.stroke();
+    // build the array of points coming in
+      points.push({x: data.x, y: data.y, color: data.color, client: data.client});
+      //console.log(points);
       break;
     case "mouseUp":
       context.strokeStyle = data.color;
       context.lineTo(data.x, data.y);
       context.stroke();
+      fadeOut();
       break;
   }
 }
 
+
+
+
+
+
+
+//function fadeOut() {
+//    content.fillStyle = "rgba(255,255,255,0.3)";
+//    content.fillRect(0, 0, canvas.width, canvas.height);
+//    setTimeout(fadeOut,100);
+//}
+//
+//fadeOut();
+
+function fadeLatestLine() {
+
+    s += 0.50;
+    var ss = parseInt(s);
+    if (s > points.length - 2) {
+        return;
+    }
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.beginPath();
+    context.moveTo(points[ss].x, points[ss].y);
+    for (var i = ss; i < points.length; i++) {
+        context.lineTo(points[i].x, points[i].y);
+    }
+    context.stroke();
+}
+
+//var fadeTimer=setInterval(function(){fadeOut()},1000);
+
+function fadeOut() {
+
+    var opac = .1;
+    context.lineWidth = 3;
+    context.strokeStyle = "rgba(215, 44, 244, " + opac + ")";
+    fadeLatestLine();
+    //setTimeout(fadeout , 1000);
+}
+
+
 function emitDraw(data) {
   var sessionId = socketServer.sessionid;
-  console.log("Client emit:", data);
   socketServer.emit('drawLine', data, sessionId);
 }
 

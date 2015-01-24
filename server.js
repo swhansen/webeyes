@@ -16,6 +16,8 @@ app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/img', express.static(__dirname + '/public/img'));
 app.use('/javascript', express.static(__dirname + '/public/javascripts'));
 
+app.use('/bower', express.static(__dirname + '/bower_components'));
+
 // Needed to parse form data(changed for express 4.x)
 app.use(bodyParser.urlencoded({
   extended: false
@@ -149,7 +151,6 @@ socketServer.sockets.on('connection', function (client) {
     }
     data.color = clients[client.id];
     data.client = client.id;
-
     client.emit('drawLine', data);
     client.broadcast.emit('drawLine', data);
   });

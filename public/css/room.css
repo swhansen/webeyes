@@ -30,8 +30,8 @@
 }
 
 .canvascenter {
-    width: 500px;
-    height: 500px;
+    width: 1020px;
+    height: 760px;
     position: absolute;
     top:0;
     bottom: 0;
@@ -43,7 +43,8 @@
 }
 
 #canvas0 {
-    border: 1px solid red;
+
+
     box-shadow: 5px 5px 5px red;
   }
 
