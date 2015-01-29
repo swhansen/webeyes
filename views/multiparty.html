@@ -6,13 +6,13 @@
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
         <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
         <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="/bower/underscore/underscore-min.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="javascript/socket.js"></script>
 
         <script type="text/javascript" src="javascript/multiparty.js"></script>
 
-        <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
         <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
         <link rel="stylesheet" type="text/css" href="css/room.css" />
@@ -36,11 +36,14 @@
             <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png" style="z-index:3;display:none" alt="text button" />
             <img id="drawButton" class="transit boxCommon" onclick ="initDraw()" src="images/pencil.png" style="z-index:3;" alt="pencil button" />
         </div>
-        <div id="canvaspane" style="visibility:hidden">
+        <div id="canvaspane"  class="canvasStyle" style="visibility:hidden">
             <canvas id="canvas0" ></canvas>
         </div>
+        <div id="toolbar" class="toolbarCenter" style="visibility:hidden">
+                <div align="center" style="padding:15px;font-size:200%">
+                 Tool Context Bar </div>
+        </div>
          <script type="text/javascript"  src="javascript/draw.js" ></script>
-         <script type="text/javascript"  src="javascript/lines.js" ></script>
 
     </body>
 </html>

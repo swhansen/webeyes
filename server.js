@@ -4,7 +4,7 @@ var app = express();
 var io = require("socket.io");
 var easyrtc = require("easyrtc");
 var clients = [];
-var linecolors = ["red", "yellow", "green", "blue"];
+var linecolors = ["rgba(255, 0, 0, 1)", "rgba(255, 225, 225, 1)", "rgba(255, 115, 0, 1)", "rgba(0, 0, 225, 1)"];
 
 app.use('/js', express.static(__dirname + '/easyrtc/js'));
 app.use(express.static(__dirname + '/public'));
@@ -134,7 +134,7 @@ app.get('/video', function (req, res) {
 });
 
 // set port to 80 for heroku ???
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
 var webServer = app.listen(port);
 console.log('Listening on port ' + port);
