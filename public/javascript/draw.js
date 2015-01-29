@@ -40,6 +40,24 @@ function initDraw() {
   document.getElementById("canvaspane").offsetWidth = box0Width;
 
   document.getElementById("toolbar").style.visibility = "visible";
+
+
+$( ".slider" ).slider({
+  animate: true,
+      range: "min",
+      value: 2,
+      min: 1,
+      max: 10,
+      step: 1,
+      //this gets a live reading of the value and prints it on the page
+      slide: function( event, ui ) {
+          $( "#slider-result" ).html( ui.value );
+      },
+      //this updates the hidden form field so we can submit the data using a form
+      change: function(event, ui) {
+      $('#hidden').attr('value', ui.value);
+      }
+      });
 }
 
 // The general-purpose event handler.
@@ -172,7 +190,7 @@ function drawCanvaslineArray () {
 
   foo = getColorValues(lineArray[i].color);
   bar = (foo.alpha / 1.2)
-  if (bar < .015) { bar = .015};
+  if (bar < .02) { bar = .02};
   a = (bar) + ")";
   lineArray[i].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
 
