@@ -41,6 +41,8 @@ function initDraw() {
 
   document.getElementById("toolbar").style.visibility = "visible";
 
+  // The UI widget for the draw canvas
+
   drawUI();
 }
 
@@ -165,6 +167,9 @@ function drawCanvaslineArray () {
        context.lineWidth = 5;
       context.stroke();
     }
+
+
+//--------------
 //
 // create the "comet tail, dripping watter, etc. effect
 //
@@ -187,7 +192,6 @@ function drawCanvaslineArray () {
   setTimeout(drawCanvaslineArray, 1000);
 }
 
-//drawCanvaslineArray();
 
 function getColorValues( color ){
   var values = { red:null, green:null, blue:null, alpha:null };
