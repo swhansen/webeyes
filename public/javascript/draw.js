@@ -5,12 +5,19 @@ var points = [];
 var line = [];
 var lineArray = [];
 var s = 0;
+var fade = false;
+var fadeTimer;
 
 context.lineWidth = 5;
+context.lineJoin = 'round';
+context.lineCap = 'round';
+context.shadowBlur = 5;
+context.shadowColor = 'rgb(0, 0, 0)';
+
 
 tool = new tool_pencil();
 
-var Line = function (line, c, client){
+var Line = function(line, c, client) {
   this.line = line;
   this.color = c;
   this.client = client;
@@ -27,9 +34,9 @@ function initDraw() {
 
   document.getElementById("canvaspane").className = "canvascenter";
 
-  canvas.style.width ='100%';
-  canvas.style.height='100%';
-  canvas.width  = canvas.offsetWidth;
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 
   box0Height = document.getElementById("box0").offsetHeight;
@@ -41,9 +48,17 @@ function initDraw() {
 
   document.getElementById("toolbar").style.visibility = "visible";
 
-  // The UI widget for the draw canvas
+  //initGumby(); // Test utility canvas
+  drawUI(); // Test UI widget for the draw canvas
 
-  drawUI();
+  //fadeTimer = setInterval(drawCanvaslineArray, 75);
+
+  // utility to find z-index values - caution only css declared
+  $('*').filter(function() {
+    return $(this).css('z-index') >= 10;
+  }).each(function() {
+    console.log("z-index:", $(this), "is:", $(this).css('z-index'))
+  });
 }
 
 // The general-purpose event handler.
@@ -68,10 +83,10 @@ function ev_canvas(ev) {
 
 function tool_pencil() {
   var tool = this;
-  context.lineWidth = 1;
+  //context.lineWidth = 5;
   this.started = false;
 
-  this.mousedown = function (ev) {
+  this.mousedown = function(ev) {
     //context.beginPath();
     // context.moveTo(ev._x, ev._y);
     tool.started = true;
@@ -79,7 +94,7 @@ function tool_pencil() {
     emitDraw(data);
   };
 
-  this.mousemove = function (ev) {
+  this.mousemove = function(ev) {
     if (tool.started) {
       data.x = Math.round(ev._x);
       data.y = Math.round(ev._y);
@@ -88,7 +103,7 @@ function tool_pencil() {
     }
   };
 
-  this.mouseup = function (ev) {
+  this.mouseup = function(ev) {
     if (tool.started) {
       //  tool.mousemove(ev);
       data.mouseState = "mouseUp";
@@ -103,6 +118,7 @@ function tool_pencil() {
 //   - draw the initial line in real-time to provide the live drawing effect
 
 function recieveLineFromServer(data) {
+
   //console.log("drawline at client", data);
   switch (data.mouseState) {
     case "mouseDown":
@@ -116,82 +132,120 @@ function recieveLineFromServer(data) {
       context.strokeStyle = data.color;
       context.lineTo(data.x, data.y);
       context.lineWidth = 5;
+      context.lineJoin = 'round';
+      context.lineCap = 'round';
+      context.shadowBlur = 5;
+      context.shadowColor = data.color;
       context.stroke();
-    // build the array of points coming in
-      points.push({x: data.x, y: data.y, color: data.color, client: data.client});
+      // build the array of points coming in
+      points.push({
+        x: data.x,
+        y: data.y,
+        color: data.color,
+        client: data.client
+      });
       //arr = [data.x, data.y];
-      line.push({x: data.x, y: data.y});
+      line.push({
+        x: data.x,
+        y: data.y
+      });
       break;
     case "mouseUp":
       context.lineTo(data.x, data.y);
       context.stroke();
-
-      // add the new complete line
+  // add the new complete line
       lineArray.push(new Line(line, data.color, data.client));
-      //zero the line fron the server
-      line= [];
+      line = [];
       context.beginPath();
-
- //     console.log("new line added ---------------------------");
-
+  //console.log("new line added ---------------------------");
       drawCanvaslineArray();
       break;
   }
 }
 
-function drawCanvaslineArray () {
+function drawCanvaslineArray() {
 
-// run through the array of lines
+  //console.log("enter drawCanvaslineArray - fade :", fade);
+  if (fade == false) {
+    fade = true;
+    toggleFade();
+  }
+  //console.log("called toggleFade in drawCanvaslineArray - fade :", fade);
+  //fadeTimer = setInterval(drawCanvaslineArray, 75);
+  //  console.log("fade timer turned on in entry drawCanvaslineArray", fade);
+
+  // run through the array of lines
   context.clearRect(0, 0, canvas.width, canvas.height);
   for (var i = 0; i < lineArray.length; i++) {
 
-   //console.log("Line number:", i);
-   //console.log("Line length:", lineArray[i].line.length);
-   //console.log("Line color:", lineArray[i].color);
-   //console.log("Line client:", lineArray[i].client);
-
+    //console.log("Line number:", i);
+    //console.log("Line length:", lineArray[i].line.length);
+    //console.log("Line color:", lineArray[i].color);
+    //console.log("Line client:", lineArray[i].client);
     var points = lineArray[i].line;
-  //  context.strokeStyle = lineArray[i].color
-   // console.log("points length", points.length);
 
-// draw the points for a line
+    // draw the points for a line
 
-  for (var j = 0; j < points.length; j++) {
+    for (var j = 0; j < points.length; j++) {
       context.strokeStyle = lineArray[i].color;
-    if(j === 0) {
-      context.beginPath();
-      context.moveTo(points[j].x, points[j].y);
-    }
+      if (j === 0) {
+        context.beginPath();
+        context.moveTo(points[j].x, points[j].y);
+      }
       context.lineTo(points[j].x, points[j].y);
-       // console.log("point:", points[j].x, points[j].y);
-       context.lineWidth = 5;
+      // console.log("point:", points[j].x, points[j].y);
+      context.lineWidth = 5;
+      context.lineJoin = 'round';
+      context.lineCap = 'round';
+      context.shadowBlur = 5;
+      context.shadowColor = lineArray[i].color;
       context.stroke();
     }
 
+    // create the fade "comet tail, dripping water, etc." effect
 
-//--------------
-//
-// create the "comet tail, dripping watter, etc. effect
-//
     lineArray[i].line.shift();
 
-// modify the alpha
+    // modify the alpha
 
-  foo = getColorValues(lineArray[i].color);
-  bar = (foo.alpha / 1.2)
-  if (bar < .02) { bar = .02};
-  a = (bar) + ")";
-  lineArray[i].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
+    foo = getColorValues(lineArray[i].color);
+    bar = (foo.alpha / 1.2)
+    if (bar < .03) {
+      bar = .03;
+    };
+    a = (bar) + ")";
+    lineArray[i].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
 
-  // cleanup
+    // cleanup
 
-  if (lineArray[i].line.length ==0) {
-    lineArray.splice(i);
+    if (lineArray[i].line.length == 0) {
+      lineArray.splice(i);
+    }
+    console.log(" at cleanup lineArray Length:", lineArray.length);
+
+    // if the lineArray is empty turn off the fadder
+
+    if (lineArray.length == 0) {
+      fade = false;
+      toggleFade();
+      //console.log("botton of drawCanvaslineArray, fade:", fade);
+    }
   }
-  }
-  setTimeout(drawCanvaslineArray, 1000);
 }
 
+// toggle the interval for the fade effect
+
+function toggleFade() {
+  if (fade == true) {
+    fade = true;
+    fadeTimer = setInterval(drawCanvaslineArray, 75);
+    console.log("fade timer turned ON in in toggleFade", fade);
+  } else {
+    fade == false;
+    console.log("fade timer turned OFF in in toggleFade", fade);
+    clearInterval(fadeTimer);
+  }
+}
 
 function getColorValues( color ){
   var values = { red:null, green:null, blue:null, alpha:null };
@@ -245,13 +299,11 @@ function getColorValues( color ){
   return values
 }
 
-
-
 function emitDraw(data) {
   var sessionId = socketServer.sessionid;
   socketServer.emit('drawLine', data, sessionId);
 }
 
-socketServer.on('drawLine', function (data) {
+socketServer.on('drawLine', function(data) {
   recieveLineFromServer(data);
 });

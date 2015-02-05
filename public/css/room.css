@@ -30,6 +30,10 @@
 }
 
 #canvaspane {
+  z-index: 22;
+}
+
+#utilcanvaspane {
   z-index: 12;
 }
 
@@ -37,7 +41,7 @@
   z-index: 20;
 }
 #slider {
-  z-index: 100;
+  z-index: 20;
 }
 
 .toolbarCenter {

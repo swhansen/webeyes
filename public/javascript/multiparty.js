@@ -694,7 +694,7 @@ function appInit() {
 
     setReshaper('killButton', killButtonReshaper);
     setReshaper('muteButton', muteButtonReshaper);
-    setReshaper('drawButton', drawButtonReshaper);
+    //setReshaper('drawButton', drawButtonReshaper);
 
     setReshaper('textentryBox', reshapeTextEntryBox);
     setReshaper('textentryField', reshapeTextEntryField);
