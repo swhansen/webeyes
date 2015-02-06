@@ -36,7 +36,7 @@
             <img id="killButton" class="transit boxCommon" onclick="killActiveBox()" src="images/button_close.png" style="display:none;z-index:3" alt="close button" />
             <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png" style="display:none;z-index:3" alt="mute button" />
             <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png" style="z-index:3;display:none" alt="text button" />
-            <img id="drawButton" class="transit boxCommon" onclick ="initDraw()" src="images/pencil.png" style="z-index:3;" alt="pencil button" />
+            <!--<img id="drawButton"  onclick ="initDraw()" src="images/pencil.png" style="z-index:3;" alt="pencil button" /> -->
         </div>
         <div id="canvaspane"  class="canvasStyle" style="visibility:hidden">
             <canvas id="canvas0" ></canvas>
@@ -46,17 +46,33 @@
             <canvas id="util-canvas" ></canvas>
         </div>
 
-        <div id="toolbar" class="toolbarCenter" style="visibility:hidden">
-            <div><img src="images/pencil.png" alt="Pencil" height="30" width="30" class="context-image"></div>
+        <div id="ui-box">
+            <img id="layer-menu-button" src="img/menu48.png" height="50" width="50" alt="menubutton" />
+            <div id="div1"  style="width:60px;height:60px;display:none;background-color:red;"></div><br>
+            <div id="div2"  style="width:60px;height:60px;display:none;background-color:green"></div><br>
+            <div id="div3" style="width:60px;height:60px;display:none;background-color:blue"></div><br>
+           <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
+            <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none; z-index:3;" alt="pencil button" />
+        </div>
+
+
+        <div id="draw-box">
+            <img id="snailButton" class="img-swap" src="img/snail-on.png" height="64" width="64" style="display:none; z-index: 3;" alt="snail button" />
+        </div>
+
+
+        <!--<div id="toolbar" class="toolbarCenter" style="visibility:hidden">
+            <div><img src="img/pencil.png" alt="Pencil" height="30" width="30" class="context-image"></div>
             <div class="slider slider-1"></div>
                 <div id="slider-result" >2</div>
-                <input type="hidden" id="hidden"/>
+                <input type="hidden" id="hidden"/> -->
         </div>
 
         <img id="gumby" src="img/gandp.png" alt="gumby" width="220" height="277" style="visibility:hidden">
          <script type="text/javascript"  src="javascript/draw.js" ></script>
          <script type="text/javascript"  src="javascript/draw-ui.js" ></script>
          <script type="text/javascript"  src="javascript/util-canvas.js" ></script>
+         <script type="text/javascript"  src="javascript/ui-manager.js" ></script>
 
     </body>
 </html>

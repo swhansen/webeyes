@@ -7,6 +7,7 @@ var lineArray = [];
 var s = 0;
 var fade = false;
 var fadeTimer;
+var fadeSwitch = true;
 
 context.lineWidth = 5;
 context.lineJoin = 'round';
@@ -46,9 +47,12 @@ function initDraw() {
   document.getElementById("canvaspane").offsetHeight = box0Height;
   document.getElementById("canvaspane").offsetWidth = box0Width;
 
-  document.getElementById("toolbar").style.visibility = "visible";
+ // document.getElementById("toolbar").style.visibility = "visible";
 
-  //initGumby(); // Test utility canvas
+
+
+
+  initGumby(); // Test utility canvas
   drawUI(); // Test UI widget for the draw canvas
 
   //fadeTimer = setInterval(drawCanvaslineArray, 75);
@@ -202,6 +206,8 @@ function drawCanvaslineArray() {
       context.stroke();
     }
 
+    if (fadeSwitch == true) {
+
     // create the fade "comet tail, dripping water, etc." effect
 
     lineArray[i].line.shift();
@@ -231,20 +237,31 @@ function drawCanvaslineArray() {
       //console.log("botton of drawCanvaslineArray, fade:", fade);
     }
   }
+  }
 }
 
 // toggle the interval for the fade effect
 
 function toggleFade() {
-  if (fade == true) {
-    fade = true;
-    fadeTimer = setInterval(drawCanvaslineArray, 75);
-    console.log("fade timer turned ON in in toggleFade", fade);
-  } else {
-    fade == false;
-    console.log("fade timer turned OFF in in toggleFade", fade);
-    clearInterval(fadeTimer);
-  }
+
+if (fadeSwitch == true) {
+    if (fade == true) {
+     fade = true;
+     fadeTimer = setInterval(drawCanvaslineArray, 75);
+     console.log("fade timer turned ON in in toggleFade", fade);
+
+  }else {
+      fade == false;
+      console.log("fade timer turned OFF in in toggleFade", fade);
+      clearInterval(fadeTimer);
+    }
+}
+
+if (fadeSwitch == false) {
+     fade == false;
+      console.log("fade timer turned OFF in in toggleFade with fadeSwitch", fade);
+      clearInterval(fadeTimer);
+}
 }
 
 function getColorValues( color ){
@@ -307,3 +324,10 @@ function emitDraw(data) {
 socketServer.on('drawLine', function(data) {
   recieveLineFromServer(data);
 });
+
+
+
+
+
+
+

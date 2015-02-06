@@ -44,6 +44,24 @@
   z-index: 20;
 }
 
+#layer-menu-button {
+}
+
+
+#ui-box {
+z-index=30;
+  position: fixed;
+    top: 150px;
+    left: 10px;
+  }
+
+#draw-box {
+z-index=30;
+  position: fixed;
+    top: 150px;
+    right: 10px;
+}
+
 .toolbarCenter {
   width:500px;
   height:100px;
