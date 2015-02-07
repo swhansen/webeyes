@@ -13,6 +13,9 @@ var drawFunctions = {
   draw: "#d-button"
 }
 
+//frob = _.map(layerFunctions, function(num, key){return num;});
+//console.log("frob map:", frob);
+
 // the main menue collapse-expand
 
 var collapsed = true;

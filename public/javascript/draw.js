@@ -205,63 +205,57 @@ function drawCanvaslineArray() {
       context.shadowColor = lineArray[i].color;
       context.stroke();
     }
-
+    // only fade when the UI switch is toggled on
     if (fadeSwitch == true) {
 
-    // create the fade "comet tail, dripping water, etc." effect
+      // create the fade "comet tail, dripping water, etc." effect
 
-    lineArray[i].line.shift();
+      lineArray[i].line.shift();
 
-    // modify the alpha
+      foo = getColorValues(lineArray[i].color);
+      bar = (foo.alpha / 1.2)
+      if (bar < .03) {
+        bar = .03;
+      };
+      a = (bar) + ")";
+      lineArray[i].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
 
-    foo = getColorValues(lineArray[i].color);
-    bar = (foo.alpha / 1.2)
-    if (bar < .03) {
-      bar = .03;
-    };
-    a = (bar) + ")";
-    lineArray[i].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
+      // cleanup
 
-    // cleanup
+      if (lineArray[i].line.length == 0) {
+        lineArray.splice(i);
+      }
+      //console.log(" at cleanup lineArray Length:", lineArray.length);
 
-    if (lineArray[i].line.length == 0) {
-      lineArray.splice(i);
+      // if the lineArray is empty turn off the fadder
+
+      if (lineArray.length == 0) {
+        fade = false;
+        toggleFade();
+        //console.log("botton of drawCanvaslineArray, fade:", fade);
+      }
     }
-    console.log(" at cleanup lineArray Length:", lineArray.length);
-
-    // if the lineArray is empty turn off the fadder
-
-    if (lineArray.length == 0) {
-      fade = false;
-      toggleFade();
-      //console.log("botton of drawCanvaslineArray, fade:", fade);
-    }
-  }
   }
 }
 
-// toggle the interval for the fade effect
+// toggle the fade effect
+//  - fadeSwitch: UI high level on/off
+//  - fade: local for running setInterval
 
 function toggleFade() {
-
-if (fadeSwitch == true) {
+  if (fadeSwitch == true) {
     if (fade == true) {
-     fade = true;
-     fadeTimer = setInterval(drawCanvaslineArray, 75);
-     console.log("fade timer turned ON in in toggleFade", fade);
-
-  }else {
+      fade = true;
+      fadeTimer = setInterval(drawCanvaslineArray, 75);
+    } else {
       fade == false;
-      console.log("fade timer turned OFF in in toggleFade", fade);
       clearInterval(fadeTimer);
     }
-}
-
-if (fadeSwitch == false) {
-     fade == false;
-      console.log("fade timer turned OFF in in toggleFade with fadeSwitch", fade);
-      clearInterval(fadeTimer);
-}
+  }
+  if (fadeSwitch == false) {
+    fade == false;
+    clearInterval(fadeTimer);
+  }
 }
 
 function getColorValues( color ){

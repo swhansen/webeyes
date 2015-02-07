@@ -22,10 +22,11 @@ $("#snailButton").fadeIn(2000);
 //
 
 // toggle fade drawing line
+//  - fadeSwitch controls fading on/off
 
 $(function(){
-  $( ".img-swap" ).click(function() {
-    if ($(this).attr("class") == "img-swap") {
+  $( ".fade-swap" ).click(function() {
+    if ($(this).attr("class") == "fade-swap") {
       this.src = this.src.replace("img/snail-on","img/snail-off");
       fadeSwitch = false;
       toggleFade();
