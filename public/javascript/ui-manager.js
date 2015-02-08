@@ -3,7 +3,8 @@ var layerFunctions = {
   p2: "#div2",
   p3: "#div3",
   draw: "#drawButton",
-  text: "#textButton"
+  //text: "#textButton",
+  text: "#utilButton"
 }
 
 var drawFunctions = {
@@ -39,3 +40,14 @@ $(document).ready(function() {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
+

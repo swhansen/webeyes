@@ -47,19 +47,25 @@
 #layer-menu-button {
 }
 
-
 #ui-box {
 z-index=30;
   position: fixed;
-    top: 150px;
-    left: 10px;
+  top: 150px;
+  left: 10px;
   }
 
 #draw-box {
-z-index=30;
+  z-index=30;
   position: fixed;
-    top: 150px;
-    right: 10px;
+  top: 150px;
+  right: 10px;
+}
+
+#util-box {
+  z-index=30;
+  position: fixed;
+  top: 250px;
+  right: 10px;
 }
 
 .toolbarCenter {

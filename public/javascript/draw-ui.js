@@ -38,5 +38,4 @@ $(function(){
     $(this).toggleClass("on");
   });
 });
-
 }

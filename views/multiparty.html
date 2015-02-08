@@ -21,7 +21,9 @@
 
     </head>
     <body onload="appInit()">
-        <div id="fullpage"  class="boxCommon" style="background-image:url(images/irongrip.png)">
+        <!--<div id="fullpage"  class="boxCommon" style="background-image:url(images/irongrip.png)"> -->
+
+        <div id="fullpage"  class="boxCommon" style="background-color: #607D8B">
 
             <video id="box0" class="transit boxCommon thumbCommon easyRTCMirror" muted="muted" volume="0" ></video>
             <video id="box1" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
@@ -52,12 +54,18 @@
             <div id="div2"  style="width:60px;height:60px;display:none;background-color:green"></div><br>
             <div id="div3" style="width:60px;height:60px;display:none;background-color:blue"></div><br>
            <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
-            <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none; z-index:3;" alt="pencil button" />
+            <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none; z-index:3;" alt="pencil button" /><br>
+
+            <img id="utilButton"  onclick="initUtil()" src="img/util.png" height="64" width="64" style=" display:none; z-index:3;" alt="utility button" />
         </div>
 
 
         <div id="draw-box">
             <img id="snailButton" class="fade-swap" src="img/snail-on.png" height="64" width="64" style="display:none; z-index: 3;" alt="snail button" />
+        </div>
+
+        <div id="util-box">
+            <img id="utilSideButton" class="util-swap" src="img/gumby-on.png" height="64" width="64" style="display:none; z-index: 3;" alt="util button" />
         </div>
 
 
@@ -68,10 +76,13 @@
                 <input type="hidden" id="hidden"/> -->
         </div>
 
-        <img id="gumby" src="img/gandp.png" alt="gumby" width="220" height="277" style="visibility:hidden">
+       // <img id="gumby" src="img/gandp.png" alt="gumby" width="220" height="277" style="visibility:hidden">
+
+
+
          <script type="text/javascript"  src="javascript/draw.js" ></script>
          <script type="text/javascript"  src="javascript/draw-ui.js" ></script>
-         <script type="text/javascript"  src="javascript/util-canvas.js" ></script>
+         <script type="text/javascript"  src="javascript/util.js" ></script>
          <script type="text/javascript"  src="javascript/ui-manager.js" ></script>
 
     </body>

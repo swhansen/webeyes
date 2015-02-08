@@ -49,10 +49,7 @@ function initDraw() {
 
  // document.getElementById("toolbar").style.visibility = "visible";
 
-
-
-
-  initGumby(); // Test utility canvas
+  //initGumby(); // Test utility canvas
   drawUI(); // Test UI widget for the draw canvas
 
   //fadeTimer = setInterval(drawCanvaslineArray, 75);
