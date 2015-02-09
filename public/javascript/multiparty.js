@@ -505,18 +505,6 @@ function prepCanvasBox(whichCanvas) {
     setReshaper(id, reshapeThumbs[whichCanvas]);
     document.getElementById(id).onclick = function() {
      expandThumb(whichCanvas);
-
-    // var canvas = document.getElementById('canvas0');
-    // var context = canvas.getContext('2d');
-    // var centerX = canvas.width / 2;
-    // var centerY = canvas.height / 2;
-    // var radius = 70;
-    // context.beginPath();
-    // context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-    // context.fillStyle= "#b0c2f7";
-    // context.globalAlpha=0.1; //opacity
-    // context.fill();
-    //;
 };
 }
 

@@ -166,14 +166,10 @@ function recieveLineFromServer(data) {
 
 function drawCanvaslineArray() {
 
-  //console.log("enter drawCanvaslineArray - fade :", fade);
   if (fade == false) {
     fade = true;
     toggleFade();
   }
-  //console.log("called toggleFade in drawCanvaslineArray - fade :", fade);
-  //fadeTimer = setInterval(drawCanvaslineArray, 75);
-  //  console.log("fade timer turned on in entry drawCanvaslineArray", fade);
 
   // run through the array of lines
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -183,6 +179,7 @@ function drawCanvaslineArray() {
     //console.log("Line length:", lineArray[i].line.length);
     //console.log("Line color:", lineArray[i].color);
     //console.log("Line client:", lineArray[i].client);
+
     var points = lineArray[i].line;
 
     // draw the points for a line

@@ -22,12 +22,12 @@ var drawFunctions = {
 var collapsed = true;
 
 $(document).ready(function() {
-  var t = 0;
+  var t = 1000;
   $("#layer-menu-button").click(function() {
     if (collapsed == true) {
       collapsed = false
       for (var prop in layerFunctions) {
-        t = t + 500;
+       // t = t + 500;
         $(layerFunctions[prop]).fadeIn(t);
       }
     } else {
