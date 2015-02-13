@@ -15,7 +15,6 @@ context.lineCap = 'round';
 context.shadowBlur = 5;
 context.shadowColor = 'rgb(0, 0, 0)';
 
-
 tool = new tool_pencil();
 
 var Line = function(line, c, client) {
@@ -47,14 +46,10 @@ function initDraw() {
   document.getElementById("canvaspane").offsetHeight = box0Height;
   document.getElementById("canvaspane").offsetWidth = box0Width;
 
- // document.getElementById("toolbar").style.visibility = "visible";
-
-  //initGumby(); // Test utility canvas
   drawUI(); // Test UI widget for the draw canvas
 
-  //fadeTimer = setInterval(drawCanvaslineArray, 75);
+  // list the z-factors
 
-  // utility to find z-index values - caution only css declared
   $('*').filter(function() {
     return $(this).css('z-index') >= 10;
   }).each(function() {
@@ -148,17 +143,19 @@ function recieveLineFromServer(data) {
       //arr = [data.x, data.y];
       line.push({
         x: data.x,
-        y: data.y
+        y: data.y,
+        color: data.color
       });
       break;
     case "mouseUp":
       context.lineTo(data.x, data.y);
       context.stroke();
-  // add the new complete line
+      // add the new complete line
+      line.reverse;
       lineArray.push(new Line(line, data.color, data.client));
       line = [];
       context.beginPath();
-  //console.log("new line added ---------------------------");
+      //console.log("new line added ---------------------------");
       drawCanvaslineArray();
       break;
   }
@@ -166,88 +163,128 @@ function recieveLineFromServer(data) {
 
 function drawCanvaslineArray() {
 
+  //console.log("enter drawCanvaslineArray - fade :", fade);
   if (fade == false) {
     fade = true;
     toggleFade();
   }
 
-  // run through the array of lines
   context.clearRect(0, 0, canvas.width, canvas.height);
   for (var i = 0; i < lineArray.length; i++) {
 
-    //console.log("Line number:", i);
-    //console.log("Line length:", lineArray[i].line.length);
-    //console.log("Line color:", lineArray[i].color);
-    //console.log("Line client:", lineArray[i].client);
-
     var points = lineArray[i].line;
+
+    points.slice(10, points.length);
 
     // draw the points for a line
 
     for (var j = 0; j < points.length; j++) {
-      context.strokeStyle = lineArray[i].color;
+      context.strokeStyle = lineArray[i].line[j].color;
+      context.shadowColor = lineArray[i].line[j].shadowColor;
+
       if (j === 0) {
         context.beginPath();
-        context.moveTo(points[j].x, points[j].y);
+        context.moveTo(lineArray[i].line[j].x, lineArray[i].line[j].y);
       }
-      context.lineTo(points[j].x, points[j].y);
-      // console.log("point:", points[j].x, points[j].y);
-      context.lineWidth = 5;
-      context.lineJoin = 'round';
-      context.lineCap = 'round';
-      context.shadowBlur = 5;
-      context.shadowColor = lineArray[i].color;
+      context.lineTo(lineArray[i].line[j].x, lineArray[i].line[j].y);
+      //console.log("point:",  j, points[j].x, points[j].y);
+      context.lineWidth = 3;
+      //context.lineJoin = 'round';
+      //context.lineCap = 'round';
+      //context.shadowBlur = 5;
+      //context.shadowColor = lineArray[i].color;
+
       context.stroke();
     }
-    // only fade when the UI switch is toggled on
+
     if (fadeSwitch == true) {
 
-      // create the fade "comet tail, dripping water, etc." effect
+      // create the fade "comet tail, dripping water, etc."
 
-      lineArray[i].line.shift();
+      var tail = [];
+      tail = lineArray[i].line.slice(0, 5);
 
-      foo = getColorValues(lineArray[i].color);
-      bar = (foo.alpha / 1.2)
-      if (bar < .03) {
-        bar = .03;
-      };
-      a = (bar) + ")";
-      lineArray[i].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
+      tail.reverse;
 
-      // cleanup
+      lineArray[i].line.shift(10);
 
-      if (lineArray[i].line.length == 0) {
-        lineArray.splice(i);
+      var l = lineArray[i].line.length;
+
+      for (var k = 0; k < l; k++) {
+
+        // console.log("tail", tail);
+
+        for (var p = 0; p < tail.length; p++) {
+
+          //foo = getColorValues(tail[p].color);
+          //
+          //console.log(foo);
+          //
+          //var r = f//oo.red;
+          //var g = f//oo.green;
+          //var b = f//oo.blue;
+          //var alpha// = foo.alpha;
+          //
+          //bar = foo.blue - 10;
+          //// baz = foo.red - 10;
+          //
+          //tail[p].color = 'rgba(' + r + ', ' + g + ', ' + b +' , ' + alpha + ' )';
+
+          //a = (bar) + ")";
+          //tail[p].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
+
+          context.strokeStyle = tail[p].color;
+          if (p === 0) {
+            context.beginPath();
+            context.moveTo(tail[p].x, tail[p].y);
+          }
+          context.lineTo(tail[p].x, tail[p].y);
+          //console.log("point:",  j, points[j].x, points[j].y);
+          context.lineWidth = 5;
+          context.lineJoin = 'round';
+          context.lineCap = 'round';
+          context.shadowBlur = 5;
+          // context.shadowColor = lineArray[i].color;
+
+          context.stroke();
+        }
       }
-      //console.log(" at cleanup lineArray Length:", lineArray.length);
+    }
+    // cleanup
 
-      // if the lineArray is empty turn off the fadder
+    if (lineArray[i].line.length == 0) {
+      lineArray.splice(i);
+    }
+    //console.log(" at cleanup lineArray Length:", lineArray.length);
 
-      if (lineArray.length == 0) {
-        fade = false;
-        toggleFade();
-        //console.log("botton of drawCanvaslineArray, fade:", fade);
-      }
+    // if the lineArray is empty turn off the fadder
+
+    if (lineArray.length == 0) {
+      fade = false;
+      toggleFade();
+      //console.log("botton of drawCanvaslineArray, fade:", fade);
     }
   }
 }
 
-// toggle the fade effect
-//  - fadeSwitch: UI high level on/off
-//  - fade: local for running setInterval
+// toggle the interval for the fade effect
 
 function toggleFade() {
+
   if (fadeSwitch == true) {
     if (fade == true) {
       fade = true;
       fadeTimer = setInterval(drawCanvaslineArray, 75);
+      console.log("fade timer turned ON in in toggleFade", fade);
     } else {
       fade == false;
+      console.log("fade timer turned OFF in in toggleFade", fade);
       clearInterval(fadeTimer);
     }
   }
   if (fadeSwitch == false) {
     fade == false;
+    console.log("fade timer turned OFF in in toggleFade with fadeSwitch", fade);
     clearInterval(fadeTimer);
   }
 }

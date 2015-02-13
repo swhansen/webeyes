@@ -1,7 +1,22 @@
-// an experimental slider widget for the drawing control box
+
 function drawUI() {
 
 $("#snailButton").fadeIn(2000);
+$("#b1").fadeIn(3000);
+
+
+$(function() {
+    $("#b1" )
+      .button({
+        label: "Test Button"
+      })
+      .click(function( event ) {
+        alert('clicked button');
+      });
+  });
+
+
+// toggle line drawing fade
 
 $(function(){
   $( ".fade-swap" ).click(function() {

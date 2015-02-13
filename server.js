@@ -4,7 +4,7 @@ var app = express();
 var io = require("socket.io");
 var easyrtc = require("easyrtc");
 var clients = [];
-var linecolors = ["rgba(255, 0, 0, 1)", "rgba(255, 225, 225, 1)", "rgba(255, 115, 0, 1)", "rgba(0, 0, 225, 1)"];
+var linecolors = ["rgba(255, 0, 0, 1)", "rgba(255, 0, 225, 1)", "rgba(255, 115, 0, 1)", "rgba(0, 0, 225, 1)"];
 
 app.use('/js', express.static(__dirname + '/easyrtc/js'));
 app.use(express.static(__dirname + '/public'));

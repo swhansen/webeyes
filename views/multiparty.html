@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="css/room.css" />
         <link rel="stylesheet" type="text/css" href="javascript/jquery-ui/themes/smoothness/jquery-ui.css" />
 
-<!--<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
     </head>
     <body onload="appInit()">
@@ -61,31 +61,18 @@
             <img id="utilButton"  onclick="initUtil()" src="img/util.png" height="64" width="64" style=" display:none; z-index:3;" alt="utility button" /><br>
         </div>
 
-
-
-
         <div id="draw-box">
             <img id="snailButton" class="fade-swap" src="img/snail-on.png" height="64" width="64" style="display:none; z-index: 3;" alt="snail button" />
+            <div id='b1' style="display:none"> </div>
         </div>
 
         <div id="util-box">
             <img id="utilSideButton" class="util-swap" src="img/gumby-on.png" height="64" width="64" style="display:none; z-index: 3;" alt="util button" />
         </div>
 
-
-        <!--<div id="toolbar" class="toolbarCenter" style="visibility:hidden">
-            <div><img src="img/pencil.png" alt="Pencil" height="30" width="30" class="context-image"></div>
-            <div class="slider slider-1"></div>
-                <div id="slider-result" >2</div>
-                <input type="hidden" id="hidden"/> -->
-        </div>
-
-       // <img id="gumby" src="img/gandp.png" alt="gumby" width="220" height="277" style="visibility:hidden">
-
-
+       <img id="gumby" src="img/gandp.png" alt="gumby" width="220" height="277" style="visibility:hidden">
 
          <script type="text/javascript"  src="javascript/draw.js" ></script>
-         <script type="text/javascript"  src="javascript/draw-ui.js" ></script>
          <script type="text/javascript"  src="javascript/util.js" ></script>
          <script type="text/javascript"  src="javascript/ui-manager.js" ></script>
 

@@ -9,17 +9,19 @@
 * express - node  application framework (http://expressjs.com/)
 * Handlebars - semantic templating (http://handlebarsjs.com/)
 * webrtc.io - javascript (RTC) -  (https://github.com/webRTC/webRTC.io)
-* WebGL -  web 3D graphics (http://get.webgl.org/, http://www.chromeexperiments.com/webgl/)
 * socket.io
 * EasyRTC
 * buildAR
 * Jasmine - TDD framework
+* HTML5 Canvas
+* jQuery and jQuery-UI
+* underscore
 
 ## Repository:
 
     https://bitbucket.org/sw_hansen/weg2rt
 
-## Deploy: 
+## Deploy:
 
 [Heroku Dev Center](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)
 

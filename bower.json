@@ -1,0 +1,27 @@
+{
+  "name": "weg2rt",
+  "version": "0.0.1",
+  "description": "Contextual Collaboration",
+  "main": "server.js",
+  "keywords": [
+    "webrtc"
+  ],
+  "authors": [
+    "S.W.Hansen"
+  ],
+  "license": "MIT",
+  "homepage": "www.obliquevision.org",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "jquery-ui": "~1.11.2",
+    "underscore": "~1.7.0"
+  }
+}
