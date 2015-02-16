@@ -1,8 +1,8 @@
 
 function drawUI() {
 
-$("#snailButton").fadeIn(2000);
-$("#b1").fadeIn(3000);
+//$("#snailButton").fadeIn(2000);
+//$("#b1").fadeIn(3000);
 
 
 $(function() {

@@ -1,21 +1,63 @@
-var layerFunctions = {
-  p1: "#div1",
-  p2: "#div2",
-  p3: "#div3",
-  draw: "#drawButton",
-  //text: "#textButton",
-  text: "#utilButton"
-}
+//
+//  Declare the high level UI Structure
+//    - Main function buttons (left menu)
+//    - Function detail buttons (right menu)
+//
+var uiStructure = {
+  structure: {
+    util: {
+      mainButton: "#utilButton",
+      functions: "#utility-box",
+      buttons: ["#utilTestButton"],
+      desc: "utility layer",
+      initState: "none"
+    },
+    draw: {
+      mainButton: "#drawButton",
+      functions: "#draw-box",
+      buttons: ["#snailButton", "#b1"],
+      desc: "drawing layer",
+      initState: "none"
+    },
+    p1: {
+      mainButton: "#div1",
+      functions: "#draw-box",
+      buttons: [],
+      desc: "tmp",
+      initState: "none"
+    },
+    p2: {
+      mainButton: "#div2",
+      functions: "#draw-box",
+      buttons: [],
+      desc: "tmp",
+      initState: "none"
+    },
+    p3: {
+      mainButton: "#div3",
+      functions: "#draw-box",
+      buttons: [],
+      desc: "tmp",
+      initState: "none"
+    }
+  }
+};
 
-var drawFunctions = {
-  p1: "#pause-fade",
-  p2: "#div2",
-  p3: "#div3",
-  draw: "#d-button"
-}
+function buildSideMenu(layer) {
 
-//frob = _.map(layerFunctions, function(num, key){return num;});
-//console.log("frob map:", frob);
+  // remove existing side menu(s)
+  // expand div and buttons for layer specific menu
+
+  _.each(uiStructure.structure, function(fcn) {
+    $(fcn.functions).fadeOut(5);
+  });
+
+  $(uiStructure.structure[layer].functions).fadeIn(5);
+
+  _.each(uiStructure.structure[layer].buttons, function(foo) {
+    $(foo).fadeIn(2000);
+  });
+};
 
 // the main menue collapse-expand
 
@@ -26,28 +68,44 @@ $(document).ready(function() {
   $("#layer-menu-button").click(function() {
     if (collapsed == true) {
       collapsed = false
-      for (var prop in layerFunctions) {
-        $(layerFunctions[prop]).fadeIn(t);
+      for (var button in uiStructure.structure) {
+        $(uiStructure.structure[button].mainButton).fadeIn(t);
       }
     } else {
       collapsed = true;
       t = 1000;
-      for (var prop in layerFunctions) {
+      for (var button in uiStructure.structure) {
         t = 1000;
-        $(layerFunctions[prop]).fadeOut(t);
+        $(uiStructure.structure[button].mainButton).fadeOut(t);
       }
     }
   });
 });
 
 //
-//   Uitility layer
+//   Utility layer UI
 //
-// div id= utilcanvaspane
-// canvas id = util-canvas
 function utilUI() {
 
-  $("#utilSideButton").fadeIn(2000);
+buildSideMenu('util');
+
+//$( "#draw-box").fadeOut(10);
+//$( "#utility-box").fadeIn(10);
+//$( "#utilTestButton").fadeIn(2000);
+}
+//
+//   Drawing  Layer UI
+//
+function drawUI() {
+
+buildSideMenu('draw');
+
+//$(uiStructure.util.functions).fadeOut(50);
+//$("#draw-box").fadeIn(10);
+//$("#snailButton").fadeIn(2000);
+//$("#b1").fadeIn(3000);
+}
+
   //toggle switch to render Gumby
 
   $(function() {
@@ -62,16 +120,6 @@ function utilUI() {
       $(this).toggleClass("on");
     });
   });
-}
-
-//
-//   Drawing UI
-//
-function drawUI() {
-
-  $("#snailButton").fadeIn(2000);
-  $("#b1").fadeIn(3000);
-
 
   $(function() {
     $("#b1")
@@ -99,4 +147,4 @@ function drawUI() {
       $(this).toggleClass("on");
     });
   });
-}
+

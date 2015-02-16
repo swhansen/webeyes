@@ -5,7 +5,7 @@ var img = document.getElementById("gumby");
 
 function initUtil() {
 
-  $("#utilSideButton").fadeIn(2000);
+ // $("#utilSideButton").fadeIn(2000);
 
   document.getElementById("utilcanvaspane").className = "canvascenter";
 
