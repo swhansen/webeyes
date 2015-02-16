@@ -46,7 +46,7 @@ var uiStructure = {
 function buildSideMenu(layer) {
 
   // remove existing side menu(s)
-  // expand div and buttons for layer specific menu
+  // expand right element div and buttons for layer specific menu
 
   _.each(uiStructure.structure, function(fcn) {
     $(fcn.functions).fadeOut(5);
