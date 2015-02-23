@@ -54,8 +54,8 @@ function buildSideMenu(layer) {
 
   $(uiStructure.structure[layer].functions).fadeIn(5);
 
-  _.each(uiStructure.structure[layer].buttons, function(foo) {
-    $(foo).fadeIn(2000);
+  _.each(uiStructure.structure[layer].buttons, function(button) {
+    $(button).fadeIn(2000);
   });
 };
 

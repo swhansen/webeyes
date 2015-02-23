@@ -9,11 +9,12 @@ var fade = false;
 var fadeTimer;
 var fadeSwitch = true;
 
-context.lineWidth = 5;
-context.lineJoin = 'round';
-context.lineCap = 'round';
-context.shadowBlur = 5;
-context.shadowColor = 'rgb(0, 0, 0)';
+function baseLineStyle() {
+  context.lineWidth = 2;
+  context.lineJoin = 'round';
+  context.lineCap = 'round';
+  context.shadowBlur = 2;
+};
 
 tool = new tool_pencil();
 
@@ -32,6 +33,10 @@ function initDraw() {
   canvas.addEventListener('mousemove', ev_canvas, false);
   canvas.addEventListener('mouseup', ev_canvas, false);
 
+  canvas.addEventListener('touchstart', touchStartHandler, false);
+  canvas.addEventListener('touchmove', touchMoveHandler, false);
+  canvas.addEventListener('touchend', touchEndHandler, false);
+
   document.getElementById("canvaspane").className = "canvascenter";
 
   canvas.style.width = '100%';
@@ -46,18 +51,20 @@ function initDraw() {
   document.getElementById("canvaspane").offsetHeight = box0Height;
   document.getElementById("canvaspane").offsetWidth = box0Width;
 
+  baseLineStyle();
+
   drawUI(); // Test UI widget for the draw canvas
 
   // list the z-factors
 
-  $('*').filter(function() {
-    return $(this).css('z-index') >= 10;
-  }).each(function() {
-    console.log("z-index:", $(this), "is:", $(this).css('z-index'))
-  });
+  //$('*').filter(function() {
+ //   return $(this).css('z-index') >= 10;
+ // }).each(function() {
+  //  console.log("z-index:", $(this), "is:", $(this).css('z-index'))
+  //});
 }
 
-// The general-purpose event handler.
+// The general-purpose event handler for mouse events.
 function ev_canvas(ev) {
   // Firefox
   if (ev.layerX || ev.layerX === 0) {
@@ -71,15 +78,45 @@ function ev_canvas(ev) {
   // Call the event handler of the tool (tool_pencil)
   var func = tool[ev.type];
   if (func) {
+    console.log("at func:", ev._x, ev._y);
+    console.log("at func:", func);
     func(ev);
   }
-}
+};
+
+function touchStartHandler(e) {
+    tool.started = true;
+    data.mouseState = "mouseDown";
+    console.log("touchstart:", data);
+    emitDraw(data);
+  };
+
+function touchMoveHandler(e) {
+  e.preventDefault();
+  if (tool.started) {
+    touches = e.touches.item(0);
+    console.log('touchMoveHandler:', touches.pageX, touches.pageY);
+    var canvasLocation = canvas.getBoundingClientRect();
+    data.x = Math.round(touches.clientX - canvasLocation.left);
+    data.y = Math.round(touches.clientY - canvasLocation.top);
+    data.mouseState = "mouseMove";
+    emitDraw(data);
+  }
+};
+
+  function touchEndHandler(e) {
+    if (tool.started) {
+      data.mouseState = "mouseUp";
+      console.log("touchend:", data)
+      emitDraw(data);
+      tool.started = false;
+    }
+  };
 
 // grab the mouse state and "emit" is TO the server
 
 function tool_pencil() {
   var tool = this;
-  //context.lineWidth = 5;
   this.started = false;
 
   this.mousedown = function(ev) {
@@ -126,12 +163,9 @@ function recieveLineFromServer(data) {
       break;
     case "mouseMove":
       context.strokeStyle = data.color;
-      context.lineTo(data.x, data.y);
-      context.lineWidth = 5;
-      context.lineJoin = 'round';
-      context.lineCap = 'round';
-      context.shadowBlur = 5;
       context.shadowColor = data.color;
+      context.lineTo(data.x, data.y);
+      baseLineStyle();
       context.stroke();
       // build the array of points coming in
       points.push({
@@ -188,11 +222,12 @@ function drawCanvaslineArray() {
       }
       context.lineTo(lineArray[i].line[j].x, lineArray[i].line[j].y);
       //console.log("point:",  j, points[j].x, points[j].y);
-      context.lineWidth = 3;
-      //context.lineJoin = 'round';
-      //context.lineCap = 'round';
-      //context.shadowBlur = 5;
-      //context.shadowColor = lineArray[i].color;
+
+
+      context.lineWidth = 5;
+  context.lineJoin = 'round';
+  context.lineCap = 'round';
+  context.shadowBlur = 5;
 
       context.stroke();
     }
@@ -240,10 +275,7 @@ function drawCanvaslineArray() {
           }
           context.lineTo(tail[p].x, tail[p].y);
           //console.log("point:",  j, points[j].x, points[j].y);
-          context.lineWidth = 5;
-          context.lineJoin = 'round';
-          context.lineCap = 'round';
-          context.shadowBlur = 5;
+          baseLineStyle();
           // context.shadowColor = lineArray[i].color;
 
           context.stroke();
