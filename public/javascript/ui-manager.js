@@ -27,15 +27,15 @@ var uiStructure = {
       initState: "none"
     },
     p2: {
-      mainButton: "#div2",
-      functions: "#draw-box",
+      mainButton: "#textEntryButton",
+      functions: "",
       buttons: [],
       desc: "tmp",
       initState: "none"
     },
     p3: {
-      mainButton: "#div3",
-      functions: "#draw-box",
+      mainButton: "#muteButton",
+      functions: "",
       buttons: [],
       desc: "tmp",
       initState: "none"

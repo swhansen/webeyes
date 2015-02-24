@@ -55,14 +55,44 @@ function initDraw() {
 
   drawUI(); // Test UI widget for the draw canvas
 
+
   // list the z-factors
 
-  //$('*').filter(function() {
- //   return $(this).css('z-index') >= 10;
- // }).each(function() {
-  //  console.log("z-index:", $(this), "is:", $(this).css('z-index'))
-  //});
+  $('*').filter(function() {
+    return $(this).css('z-index') >= 10;
+  }).each(function() {
+    console.log("z-index:", $(this), "is:", $(this).css('z-index'))
+  });
 }
+
+// -------------------------------------------
+
+// temp video stuff
+function initVideo() {
+  //var video-list;
+  var select = document.getElementById("select-video");
+
+  // fill in the select box with the video options
+
+  easyrtc.getVideoSourceList(function(list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+      alert("Label=" + list[i].label + ", id= " + list[i].id);
+      var opt = list[i].id;
+      var el = document.createElement("option");
+      el.textContent = opt;
+      el.value = opt;
+      select.appendChild(el);
+    }
+  });
+}
+
+// get the selected value
+ // $( "#select-video option:selected" ).text();
+// => "Mr"
+
+// ---------------------------------------------------------
+
 
 // The general-purpose event handler for mouse events.
 function ev_canvas(ev) {
@@ -78,8 +108,8 @@ function ev_canvas(ev) {
   // Call the event handler of the tool (tool_pencil)
   var func = tool[ev.type];
   if (func) {
-    console.log("at func:", ev._x, ev._y);
-    console.log("at func:", func);
+    //console.log("at func:", ev._x, ev._y);
+    //console.log("at func:", func);
     func(ev);
   }
 };

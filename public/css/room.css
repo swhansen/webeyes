@@ -29,6 +29,13 @@
   height: 500px;
 }
 
+#select-video {
+  z-index=30;
+  position: fixed;
+  top: 150px;
+  right: 10px;
+}
+
 #canvaspane {
   z-index: 22;
 }
@@ -113,7 +120,7 @@ z-index=30;
     left: 0;
     right: 0;
     margin: auto;
-    z-index:999;
+    z-index:25;
     visibility: hidden;
 }
 
@@ -175,7 +182,7 @@ body {
 #textentryBox {
     border:2px solid #a0ffa0;
     border-radius:10px;
-    z-index:5;
+    z-index:30;
     position: absolute;
     background-color: #ffffff;
     box-shadow: 5px 5px 5px #000000;
