@@ -33,3 +33,20 @@ $(function(){
   });
 });
 }
+
+
+//function updateMuteImage(toggle) {
+//    var muteButton = document.getElementById('muteButton');
+//    if (activeBox > 0) { // no kill button for self video
+//        muteButton.style.display = "block";
+//        var videoObject = document.getElementById(getIdOfBox(activeBox));
+//        var isMuted = videoObject.muted ? true : false;
+//        if (toggle) {
+//            isMuted = !isMuted;
+//            videoObject.muted = isMuted;
+//        }
+//        muteButton.src = isMuted ? "images/button_unmute.png" : "images/button_mute.png";
+//    } else {
+//        muteButton.style.display = "none";
+//    }
+//}

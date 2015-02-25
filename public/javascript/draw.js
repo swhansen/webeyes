@@ -68,28 +68,43 @@ function initDraw() {
 // -------------------------------------------
 
 // temp video stuff
-function initVideo() {
-  //var video-list;
-  var select = document.getElementById("select-video");
-
-  // fill in the select box with the video options
-
-  easyrtc.getVideoSourceList(function(list) {
-    var i;
-    for (i = 0; i < list.length; i++) {
-      alert("Label=" + list[i].label + ", id= " + list[i].id);
-      var opt = list[i].id;
-      var el = document.createElement("option");
-      el.textContent = opt;
-      el.value = opt;
-      select.appendChild(el);
-    }
-  });
-}
-
-// get the selected value
- // $( "#select-video option:selected" ).text();
-// => "Mr"
+//function initVideo() {
+//  //var video-list;
+//  var select = document.getElementById("select-video");
+//
+//  // fill in the select box with the video options
+//
+//  easyrtc.getVideoSourceList(function(list) {
+//    var i;
+//    for (i = 0; i < list.length; i++) {
+//      alert("Label=" + list[i].label + ", id= " + list[i].id);
+//      var opt = list[i].label;
+//      var el = document.createElement("option");
+//      el.textContent = opt;
+//      el.value = opt;
+//      select.appendChild(el);
+//    }
+//  });
+//}
+//
+//function getSelectedVideo() {
+//// get the selected value
+//
+//var selectedVideo = $( "#select-video option:selected" ).text();
+//
+//// ...and execute when changed
+//
+//$( "select" )
+//  .change(function () {
+//    var str = "";
+//    $( "select option:selected" ).each(function() {
+//      str += $( this ).text() + " ";
+//    });
+//    $( "div" ).text( str );
+//  })
+//  .change();
+//
+//}
 
 // ---------------------------------------------------------
 

@@ -10,35 +10,40 @@ var uiStructure = {
       functions: "#utility-box",
       buttons: ["#utilTestButton"],
       desc: "utility layer",
-      initState: "none"
+      initState: "none",
+      baseZ: "20"
     },
     draw: {
       mainButton: "#drawButton",
       functions: "#draw-box",
       buttons: ["#snailButton", "#b1"],
       desc: "drawing layer",
-      initState: "none"
+      initState: "none",
+      baseZ: "20"
     },
     p1: {
       mainButton: "#div1",
       functions: "#draw-box",
       buttons: [],
       desc: "tmp",
-      initState: "none"
+      initState: "none",
+      baseZ: "20"
     },
     p2: {
       mainButton: "#textEntryButton",
       functions: "",
       buttons: [],
       desc: "tmp",
-      initState: "none"
+      initState: "none",
+      baseZ: "20"
     },
     p3: {
       mainButton: "#muteButton",
       functions: "",
       buttons: [],
       desc: "tmp",
-      initState: "none"
+      initState: "none",
+      baseZ: "20"
     }
   }
 };
