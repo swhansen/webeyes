@@ -65,50 +65,6 @@ function initDraw() {
   });
 }
 
-// -------------------------------------------
-
-// temp video stuff
-//function initVideo() {
-//  //var video-list;
-//  var select = document.getElementById("select-video");
-//
-//  // fill in the select box with the video options
-//
-//  easyrtc.getVideoSourceList(function(list) {
-//    var i;
-//    for (i = 0; i < list.length; i++) {
-//      alert("Label=" + list[i].label + ", id= " + list[i].id);
-//      var opt = list[i].label;
-//      var el = document.createElement("option");
-//      el.textContent = opt;
-//      el.value = opt;
-//      select.appendChild(el);
-//    }
-//  });
-//}
-//
-//function getSelectedVideo() {
-//// get the selected value
-//
-//var selectedVideo = $( "#select-video option:selected" ).text();
-//
-//// ...and execute when changed
-//
-//$( "select" )
-//  .change(function () {
-//    var str = "";
-//    $( "select option:selected" ).each(function() {
-//      str += $( this ).text() + " ";
-//    });
-//    $( "div" ).text( str );
-//  })
-//  .change();
-//
-//}
-
-// ---------------------------------------------------------
-
-
 // The general-purpose event handler for mouse events.
 function ev_canvas(ev) {
   // Firefox
@@ -140,7 +96,7 @@ function touchMoveHandler(e) {
   e.preventDefault();
   if (tool.started) {
     touches = e.touches.item(0);
-    console.log('touchMoveHandler:', touches.pageX, touches.pageY);
+   // console.log('touchMoveHandler:', touches.pageX, touches.pageY);
     var canvasLocation = canvas.getBoundingClientRect();
     data.x = Math.round(touches.clientX - canvasLocation.left);
     data.y = Math.round(touches.clientY - canvasLocation.top);
@@ -152,7 +108,7 @@ function touchMoveHandler(e) {
   function touchEndHandler(e) {
     if (tool.started) {
       data.mouseState = "mouseUp";
-      console.log("touchend:", data)
+     // console.log("touchend:", data)
       emitDraw(data);
       tool.started = false;
     }
@@ -278,54 +234,54 @@ function drawCanvaslineArray() {
     }
 
     if (fadeSwitch == true) {
-
-      // create the fade "comet tail, dripping water, etc."
-
-      var tail = [];
-      tail = lineArray[i].line.slice(0, 5);
-
-      tail.reverse;
-
+//
+    //  // create the fade "comet tail, dripping water, etc."
+//
+    //  var tail = [];
+    //  tail = lineArray[i].line.slice(0, 5);
+//
+    //  tail.reverse;
+//
       lineArray[i].line.shift(10);
-
-      var l = lineArray[i].line.length;
-
-      for (var k = 0; k < l; k++) {
-
-        // console.log("tail", tail);
-
-        for (var p = 0; p < tail.length; p++) {
-
-          //foo = getColorValues(tail[p].color);
-          //
-          //console.log(foo);
-          //
-          //var r = f//oo.red;
-          //var g = f//oo.green;
-          //var b = f//oo.blue;
-          //var alpha// = foo.alpha;
-          //
-          //bar = foo.blue - 10;
-          //// baz = foo.red - 10;
-          //
-          //tail[p].color = 'rgba(' + r + ', ' + g + ', ' + b +' , ' + alpha + ' )';
-
-          //a = (bar) + ")";
-          //tail[p].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
-
-          context.strokeStyle = tail[p].color;
-          if (p === 0) {
-            context.beginPath();
-            context.moveTo(tail[p].x, tail[p].y);
-          }
-          context.lineTo(tail[p].x, tail[p].y);
-          //console.log("point:",  j, points[j].x, points[j].y);
-          baseLineStyle();
-          // context.shadowColor = lineArray[i].color;
-
+//
+    //  var l = lineArray[i].line.length;
+//
+    //  for (var k = 0; k < l; k++) {
+//
+    //    // console.log("tail", tail);
+//
+    //    for (var p = 0; p < tail.length; p++) {
+//
+    //      //foo = getColorValues(tail[p].color);
+    //      //
+    //      //console.log(foo);
+    //      //
+    //      //var r = f//oo.red;
+    //      //var g = f//oo.green;
+    //      //var b = f//oo.blue;
+    //      //var alpha// = foo.alpha;
+    //      //
+    //      //bar = foo.blue - 10;
+    //      //// baz = foo.red - 10;
+    //      //
+    //      //tail[p].color = 'rgba(' + r + ', ' + g + ', ' + b +' , ' + alpha + ' )';
+//
+    //      //a = (bar) + ")";
+    //      //tail[p].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
+//
+    //      //context.strokeStyle = tail[p].color;
+    //      //if (p === 0) {
+    //      //  context.beginPath();
+    //      //  context.moveTo(tail[p].x, tail[p].y);
+    //      //}
+    //      //context.lineTo(tail[p].x, tail[p].y);
+    //      //console.log("point:",  j, points[j].x, points[j].y);
+    //      baseLineStyle();
+    //      // context.shadowColor = lineArray[i].color;
+//
           context.stroke();
-        }
-      }
+    //    }
+    //  }
     }
     // cleanup
 
