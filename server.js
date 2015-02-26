@@ -92,8 +92,6 @@ app.post('/', function (req, res) {
   }
 });
 
-
-
 //Serve a static logout page
 app.get('/logout', function (req, res) {
   if (loggedIn === true) {
@@ -136,7 +134,7 @@ app.get('/video', function (req, res) {
 });
 
 // set port to 80 for heroku ???
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
 var webServer = app.listen(port);
 //console.log('Listening on port ' + port);

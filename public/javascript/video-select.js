@@ -1,18 +1,14 @@
 
 // -------------------------------------------
 
-// temp video stuff
-function initVideo() {
-  //var video-list;
+// Get the list of available video sources
 
-//navigator.getUserMedia = navigator.getUserMedia ||
- // navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+function initVideoSelect() {
 
 
 
-
-
-
+  navigator.getUserMedia = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
   var select = document.getElementById("select-video");
 
@@ -22,7 +18,7 @@ function initVideo() {
     var i;
     for (i = 0; i < list.length; i++) {
      alert("Label=" + list[i].label + ", id= " + list[i].id);
-      var opt = list[i].label;
+      var opt = list[i].id;
       var el = document.createElement("option");
       el.textContent = opt;
       el.value = opt;
@@ -31,26 +27,92 @@ function initVideo() {
   });
 }
 
-initVideo();
+initVideoSelect();
+
+// Grab the selected value
+
+$("#select-video").change(function() {
+  var selectedValue = $(this).find(":selected").val();
+  alert("the value you selected: " + selectedValue);
+  var constraints = {
+    video: {
+      optional: [{
+        sourceId: selectedValue
+      }]
+    }
+  };
+  navigator.getUserMedia(constraints, successCallback, errorCallback);
+
+  easyrtc.setVideoSource(selectedValue);
+  easyrtc.setVideoObjectSrc(document.getElementById("box0"), selectedValue);
+
+  easyrtc.initMediaSource(
+    function(stream) {
+      createLocalVideo(stream, selectedValue);
+    })
+});
+
+function createLocalVideo(stream, streamName) {
+var v = $( "#box0" );
+    addMediaStreamToDiv(v, stream, streamName);
+}
+
+
+function addMediaStreamToDiv(divId, stream)
+{
+    var video = $( "#box0" );
+    alert("video at addmedia:", video);
+       video.autoplay = true;
+    video.muted = false;
+    easyrtc.setVideoObjectSrc(video, stream);
+}
+
+function successCallback(stream) {
+  var videoElement = document.querySelector('video');
+  window.stream = stream; // make stream available to console
+  videoElement.src = window.URL.createObjectURL(stream);
+  videoElement.play();
+}
+
+function errorCallback(error){
+  console.log('navigator.getUserMedia error: ', error);
+}
+
+//function addSrcButton(buttonLabel, videoId) {
+//    var button = createLabelledButton(buttonLabel);
+//    button.onclick = function() {
+//        easyrtc.setVideoSource(videoId);
+//        easyrtc.initMediaSource(
+//                function(stream) {
+//                    createLocalVideo(stream, buttonLabel)
+//                },
+//                function(errCode, errText) {
+//                    easyrtc.showError(errCode, errText);
+//                }, buttonLabel);
+//    };
+//}
+
+
 
 
 
 //function getSelectedVideo() {
-//// get the selected value
-//
+// get the selected value
+
 //var selectedVideo = $( "#select-video option:selected" ).text();
-//
-//
-//$( "select" )
-//  .change(function () {
-//    var str = "";
-//    $( "select option:selected" ).each(function() {
-//      str += $( this ).text() + " ";
-//    });
-//    $( "div" ).text( str );
-//  })
-//  .change();
-//
+
+//alert("Your Video is:", selectedVideo);
+
+//( "select" )
+// .change(function () {
+//   var str = "";
+//   $( "select option:selected" ).each(function() {
+//     str += $( this ).text() + " ";
+//   });
+//   $( "div" ).text( str );
+// })
+// .change();
+
 //}
 
 // ---------------------------------------------------------
