@@ -15,8 +15,8 @@ function initVideoSelect() {
   easyrtc.getVideoSourceList(function(list) {
     var i;
     for (i = 0; i < list.length; i++) {
-     alert("Facing=", list[i].facing, "Label=", list[i].label , "id= ", list[i].id);
-      var opt = list[i].id;
+     //alert("Facing=", list[i].facing, "Label=", list[i].label , "id= ", list[i].id);
+      var opt = list[i].facing;
       var el = document.createElement("option");
       el.textContent = opt;
       el.value = opt;
@@ -44,7 +44,7 @@ function initVideoSelect() {
 
 $("#select-video").change(function() {
   var selectedValue = $(this).find(":selected").val();
-  alert("the value you selected: " + selectedValue);
+  //alert("the value you selected: " + selectedValue);
 
   var constraints = {
     video: {
@@ -73,15 +73,9 @@ $("#select-video").change(function() {
          function(errorCode, errorText){
               easyrtc.showError(errorCode, errorText);
          });
-
-
 }
 
 );
-
-
-
-
 
 
 
@@ -94,7 +88,7 @@ var v = $( "#box0" );
 function addMediaStreamToDiv(divId, stream)
 {
     var video = $( "#box0" );
-    alert("video at addmedia:", video);
+    //alert("video at addmedia:", video);
        video.autoplay = true;
     video.muted = false;
     easyrtc.setVideoObjectSrc(video, stream);
