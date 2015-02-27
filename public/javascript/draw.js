@@ -86,6 +86,7 @@ function ev_canvas(ev) {
 };
 
 function touchStartHandler(e) {
+  e.preventDefault();
     tool.started = true;
     data.mouseState = "mouseDown";
     console.log("touchstart:", data);
@@ -106,6 +107,7 @@ function touchMoveHandler(e) {
 };
 
   function touchEndHandler(e) {
+    e.preventDefault();
     if (tool.started) {
       data.mouseState = "mouseUp";
      // console.log("touchend:", data)

@@ -5,8 +5,6 @@
 
 function initVideoSelect() {
 
-
-
   navigator.getUserMedia = navigator.getUserMedia ||
   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
@@ -27,14 +25,26 @@ function initVideoSelect() {
   });
 }
 
-initVideoSelect();
+//initVideoSelect();
+
+
+/// setVideoObjectSrc( vObj, stream)   takea a blob URL
+
+//called after initMediaSource
+
+//call befor easyrtc.enableVideo
+
+// initMediaSource(successCallback, errorCallback, streamName)
+
+// easyrtc.getLocalStream()
+
+
 
 // Grab the selected value
 
 $("#select-video").change(function() {
   var selectedValue = $(this).find(":selected").val();
   alert("the value you selected: " + selectedValue);
-
 
   var constraints = {
     video: {
@@ -43,6 +53,8 @@ $("#select-video").change(function() {
       }]
     }
   };
+
+
   navigator.getUserMedia(constraints, successCallback, errorCallback);
 
   easyrtc.setVideoSource(selectedValue);
@@ -63,12 +75,15 @@ $("#select-video").change(function() {
          });
 
 
+}
+
+);
 
 
 
 
 
-});
+
 
 function createLocalVideo(stream, streamName) {
 var v = $( "#box0" );
@@ -87,6 +102,7 @@ function addMediaStreamToDiv(divId, stream)
 
 function successCallback(stream) {
   var videoElement = $( '#box0' );
+  console.log("videoElement:", videoElement);
   window.stream = stream; // make stream available to console
   videoElement.src = window.URL.createObjectURL(stream);
   videoElement.play();
