@@ -42,69 +42,69 @@ function initVideoSelect() {
 
 // Grab the selected value
 
-$("#select-video").change(function() {
-  var selectedValue = $(this).find(":selected").val();
-  //alert("the value you selected: " + selectedValue);
-
-  var constraints = {
-    video: {
-      optional: [{
-        sourceId: selectedValue
-      }]
-    }
-  };
-
-
-  navigator.getUserMedia(constraints, successCallback, errorCallback);
-
-  easyrtc.setVideoSource(selectedValue);
-  easyrtc.setVideoObjectSrc(document.getElementById("box0"), selectedValue);
+//$("#select-video").change(function() {
+//  var selectedValue = $(this).find(":selected").val();
+//  //alert("the value you selected: " + selectedValue);
+//
+//  var constraints = {
+//    video: {
+//      optional: [{
+//        sourceId: selectedValue
+//      }]
+//    }
+//  };
 
 
-  //easyrtc.initMediaSource(
-  //  function(stream) {
-  //    createLocalVideo(stream, selectedValue);
-  //  })
+// navigator.getUserMedia(constraints, successCallback, errorCallback);
 
-  easyrtc.initMediaSource(
-         function(mediastream){
-             easyrtc.setVideoObjectSrc( document.getElementById("box0"), mediastream);
-         },
-         function(errorCode, errorText){
-              easyrtc.showError(errorCode, errorText);
-         });
-}
-
-);
+// easyrtc.setVideoSource(selectedValue);
+// easyrtc.setVideoObjectSrc(document.getElementById("box0"), selectedValue);
 
 
+// //easyrtc.initMediaSource(
+// //  function(stream) {
+// //    createLocalVideo(stream, selectedValue);
+// //  })
 
-function createLocalVideo(stream, streamName) {
-var v = $( "#box0" );
-    addMediaStreamToDiv(v, stream, streamName);
-}
+// easyrtc.initMediaSource(
+//        function(mediastream){
+//            easyrtc.setVideoObjectSrc( document.getElementById("box0"), mediastream);
+//        },
+//        function(errorCode, errorText){
+//             easyrtc.showError(errorCode, errorText);
+//        });
+//
+
+//;
 
 
-function addMediaStreamToDiv(divId, stream)
-{
-    var video = $( "#box0" );
-    //alert("video at addmedia:", video);
-       video.autoplay = true;
-    video.muted = false;
-    easyrtc.setVideoObjectSrc(video, stream);
-}
 
-function successCallback(stream) {
-  var videoElement = $( '#box0' );
-  console.log("videoElement:", videoElement);
-  window.stream = stream; // make stream available to console
-  videoElement.src = window.URL.createObjectURL(stream);
-  videoElement.play();
-}
+//unction createLocalVideo(stream, streamName) {
+//ar v = $( "#box0" );
+//   addMediaStreamToDiv(v, stream, streamName);
+//
 
-function errorCallback(error){
-  console.log('navigator.getUserMedia error: ', error);
-}
+
+//unction addMediaStreamToDiv(divId, stream)
+//
+//   var video = $( "#box0" );
+//   //alert("video at addmedia:", video);
+//      video.autoplay = true;
+//   video.muted = false;
+//   easyrtc.setVideoObjectSrc(video, stream);
+//
+
+//unction successCallback(stream) {
+// var videoElement = $( '#box0' );
+// console.log("videoElement:", videoElement);
+// window.stream = stream; // make stream available to console
+// videoElement.src = window.URL.createObjectURL(stream);
+// videoElement.play();
+//
+
+//unction errorCallback(error){
+// console.log('navigator.getUserMedia error: ', error);
+//
 
 //function addSrcButton(buttonLabel, videoId) {
 //    var button = createLabelledButton(buttonLabel);
