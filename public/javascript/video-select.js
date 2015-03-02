@@ -28,7 +28,7 @@ function initVideoSelect() {
 //initVideoSelect();
 
 
-/// setVideoObjectSrc( vObj, stream)   takea a blob URL
+/// setVideoObjectSrc( vObj, stream)   takes a blob URL
 
 //called after initMediaSource
 

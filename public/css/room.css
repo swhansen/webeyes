@@ -29,6 +29,10 @@
   height: 500px;
 }
 
+.ui-zindex {
+  z-index: 30;
+}
+
 #select-video {
   z-index=30;
   position: fixed;
