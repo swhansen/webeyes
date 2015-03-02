@@ -53,25 +53,26 @@
 
         <select id="select-video"> <option>Choose a Camera</option> </select>
 
-        <div id="ui-box">
+        <div id="main-ui-container" class="ui-zindex">
 
-            <img id="div1"  onclick ="initVideo()" src="img/wc.png" height="64" width="64" style=" display:none; z-index:3;" alt="WC button" /><br>
+            <img id="div1"  onclick ="initVideo()" src="img/wc.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
 
             <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png" height="55" width="55" style="z-index:3;display:none" alt="text button" />
             <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png" height="55" width="55" style="display:none;z-index:3" alt="mute button" />
            <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
-            <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none; z-index:3;" alt="pencil button" /><br>
-            <img id="utilButton"  onclick="initUtil()" src="img/util.png" height="64" width="64" style=" display:none; z-index:3;" alt="utility button" /><br>
+            <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
+            <img id="utilButton"  onclick="initUtil()" src="img/util.png" height="64" width="64" style=" display:none" alt="utility button" /><br>
         </div>
 
-        <div id="draw-box" >
-            <img id="snailButton" class="fade-swap" src="img/erase-on.png" height="64" width="64" style="display:none; z-index: 3;" alt="snail button" /><br>
+        <div id="draw-ui-container" class="ui-zindex">
+            <img id="snailButton" class="fade-swap" src="img/erase-on.png" height="64" width="64" style="display:none" alt="snail button" /><br>
 
-            <img id="b1"  src="img/br_status_pass.png" height="64" width="64" style="display:none; z-index: 3;" alt="b1 button" /><br>
+            <img id="b1"  src="img/br_status_pass.png" height="64" width="64" style="display:none" alt="b1 button" /><br>
         </div>
 
-        <div id="utility-box" >
-            <img id="utilTestButton" class="util-swap" src="img/gumby-on.png" height="64" width="64" style="display:none; z-index: 3;" alt="util button" />
+        <div id="utility-container" class="ui-zindex">
+            <img id="utilTestButton" class="gumby-swap" src="img/gumby-on.png" height="64" width="64" style="display:none" alt="util button" /><br>
+            <img id="bullseye"  class="bullseye-swap" src="img/bullseye.png" height="64" width="64" style="display:none" alt="bullseyebutton" /><br>
         </div>
 
 

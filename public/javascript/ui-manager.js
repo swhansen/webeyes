@@ -7,15 +7,15 @@ var uiStructure = {
   structure: {
     util: {
       mainButton: "#utilButton",
-      functions: "#utility-box",
-      buttons: ["#utilTestButton"],
+      functions: "#utility-container",
+      buttons: ["#utilTestButton", "#bullseye"],
       desc: "utility layer",
       initState: "none",
       baseZ: "20"
     },
     draw: {
       mainButton: "#drawButton",
-      functions: "#draw-box",
+      functions: "#draw-ui-container",
       buttons: ["#snailButton", "#b1"],
       desc: "drawing layer",
       initState: "none",
@@ -23,7 +23,7 @@ var uiStructure = {
     },
     p1: {
       mainButton: "#div1",
-      functions: "#draw-box",
+      functions: "#draw-ui-container",
       buttons: [],
       desc: "tmp",
       initState: "none",
@@ -93,36 +93,38 @@ $(document).ready(function() {
 //   Utility layer UI
 //
 function utilUI() {
-
 buildSideMenu('util');
-
-//$( "#draw-box").fadeOut(10);
-//$( "#utility-box").fadeIn(10);
-//$( "#utilTestButton").fadeIn(2000);
 }
 //
 //   Drawing  Layer UI
 //
 function drawUI() {
-
 buildSideMenu('draw');
-
-//$(uiStructure.util.functions).fadeOut(50);
-//$("#draw-box").fadeIn(10);
-//$("#snailButton").fadeIn(2000);
-//$("#b1").fadeIn(3000);
 }
 
   //toggle switch to render Gumby
 
   $(function() {
-    $(".util-swap").click(function() {
-      if ($(this).attr("class") == "util-swap") {
-        this.src = this.src.replace("img/gumby-on", "img/gumby-off");
+    $(".gumby-swap").click(function() {
+      if ($(this).attr("class") == "gumby-swap") {
+        //this.src = this.src.replace("img/gumby-on", "img/gumby-off");
         drawGumby();
       } else {
-        this.src = this.src.replace("img/gumby-off", "img/gumby-on");
-        clearGumby();
+        //this.src = this.src.replace("img/gumby-off", "img/gumby-on");
+        clearUtilCanvas();
+      }
+      $(this).toggleClass("on");
+    });
+  });
+
+  $(function() {
+    $(".bullseye-swap").click(function() {
+      if ($(this).attr("class") == "bullseye-swap") {
+        //this.src = this.src.replace("img/bullseye", "img/bullseye");
+        drawBullsEye();
+      } else {
+        //this.src = this.src.replace("img/bullseye", "img/bullseye");
+        clearUtilCanvas();
       }
       $(this).toggleClass("on");
     });

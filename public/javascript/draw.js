@@ -55,7 +55,6 @@ function initDraw() {
 
   drawUI(); // Test UI widget for the draw canvas
 
-
   // list the z-factors
 
   $('*').filter(function() {
@@ -88,7 +87,7 @@ function ev_canvas(ev) {
 function touchStartHandler(e) {
   e.preventDefault();
     tool.started = true;
-    data.mouseState = "mouseDown";
+    data.pointerState = "pointerDown";
     console.log("touchstart:", data);
     emitDraw(data);
   };
@@ -97,11 +96,10 @@ function touchMoveHandler(e) {
   e.preventDefault();
   if (tool.started) {
     touches = e.touches.item(0);
-   // console.log('touchMoveHandler:', touches.pageX, touches.pageY);
     var canvasLocation = canvas.getBoundingClientRect();
     data.x = Math.round(touches.clientX - canvasLocation.left);
     data.y = Math.round(touches.clientY - canvasLocation.top);
-    data.mouseState = "mouseMove";
+    data.pointerState = "pointerMove";
     emitDraw(data);
   }
 };
@@ -109,7 +107,7 @@ function touchMoveHandler(e) {
   function touchEndHandler(e) {
     e.preventDefault();
     if (tool.started) {
-      data.mouseState = "mouseUp";
+      data.pointerState = "pointerUp";
      // console.log("touchend:", data)
       emitDraw(data);
       tool.started = false;
@@ -126,7 +124,7 @@ function tool_pencil() {
     //context.beginPath();
     // context.moveTo(ev._x, ev._y);
     tool.started = true;
-    data.mouseState = "mouseDown";
+    data.pointerState = "pointerDown";
     emitDraw(data);
   };
 
@@ -134,7 +132,7 @@ function tool_pencil() {
     if (tool.started) {
       data.x = Math.round(ev._x);
       data.y = Math.round(ev._y);
-      data.mouseState = "mouseMove";
+      data.pointerState = "pointerMove";
       emitDraw(data);
     }
   };
@@ -142,7 +140,7 @@ function tool_pencil() {
   this.mouseup = function(ev) {
     if (tool.started) {
       //  tool.mousemove(ev);
-      data.mouseState = "mouseUp";
+      data.pointerState = "pointerUp";
       emitDraw(data);
       tool.started = false;
     }
@@ -156,15 +154,15 @@ function tool_pencil() {
 function recieveLineFromServer(data) {
 
   //console.log("drawline at client", data);
-  switch (data.mouseState) {
-    case "mouseDown":
+  switch (data.pointerState) {
+    case "pointerDown":
       context.beginPath();
       context.moveTo(data.x, data.y);
       context.beginPath();
       // reset the array for a new line
       points.length = 0;
       break;
-    case "mouseMove":
+    case "pointerMove":
       context.strokeStyle = data.color;
       context.shadowColor = data.color;
       context.lineTo(data.x, data.y);
@@ -177,14 +175,13 @@ function recieveLineFromServer(data) {
         color: data.color,
         client: data.client
       });
-      //arr = [data.x, data.y];
       line.push({
         x: data.x,
         y: data.y,
         color: data.color
       });
       break;
-    case "mouseUp":
+    case "pointerUp":
       context.lineTo(data.x, data.y);
       context.stroke();
       // add the new complete line
@@ -192,7 +189,6 @@ function recieveLineFromServer(data) {
       lineArray.push(new Line(line, data.color, data.client));
       line = [];
       context.beginPath();
-      //console.log("new line added ---------------------------");
       drawCanvaslineArray();
       break;
   }
@@ -205,99 +201,83 @@ function drawCanvaslineArray() {
     fade = true;
     toggleFade();
   }
-
   context.clearRect(0, 0, canvas.width, canvas.height);
   for (var i = 0; i < lineArray.length; i++) {
-
     var points = lineArray[i].line;
-
     points.slice(10, points.length);
-
     // draw the points for a line
-
     for (var j = 0; j < points.length; j++) {
       context.strokeStyle = lineArray[i].line[j].color;
       context.shadowColor = lineArray[i].line[j].shadowColor;
-
       if (j === 0) {
         context.beginPath();
         context.moveTo(lineArray[i].line[j].x, lineArray[i].line[j].y);
       }
       context.lineTo(lineArray[i].line[j].x, lineArray[i].line[j].y);
       //console.log("point:",  j, points[j].x, points[j].y);
-
-
-      context.lineWidth = 5;
-  context.lineJoin = 'round';
-  context.lineCap = 'round';
-  context.shadowBlur = 5;
-
+      baseLineStyle();
       context.stroke();
     }
 
     if (fadeSwitch == true) {
-//
-    //  // create the fade "comet tail, dripping water, etc."
-//
-    //  var tail = [];
-    //  tail = lineArray[i].line.slice(0, 5);
-//
-    //  tail.reverse;
-//
+
+      // create the fade "comet tail, dripping water, etc."
+
+      //  var tail = [];
+      //  tail = lineArray[i].line.slice(0, 5);
+
+      //  tail.reverse;
+
       lineArray[i].line.shift(10);
-//
-    //  var l = lineArray[i].line.length;
-//
-    //  for (var k = 0; k < l; k++) {
-//
-    //    // console.log("tail", tail);
-//
-    //    for (var p = 0; p < tail.length; p++) {
-//
-    //      //foo = getColorValues(tail[p].color);
-    //      //
-    //      //console.log(foo);
-    //      //
-    //      //var r = f//oo.red;
-    //      //var g = f//oo.green;
-    //      //var b = f//oo.blue;
-    //      //var alpha// = foo.alpha;
-    //      //
-    //      //bar = foo.blue - 10;
-    //      //// baz = foo.red - 10;
-    //      //
-    //      //tail[p].color = 'rgba(' + r + ', ' + g + ', ' + b +' , ' + alpha + ' )';
-//
-    //      //a = (bar) + ")";
-    //      //tail[p].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
-//
-    //      //context.strokeStyle = tail[p].color;
-    //      //if (p === 0) {
-    //      //  context.beginPath();
-    //      //  context.moveTo(tail[p].x, tail[p].y);
-    //      //}
-    //      //context.lineTo(tail[p].x, tail[p].y);
-    //      //console.log("point:",  j, points[j].x, points[j].y);
-    //      baseLineStyle();
-    //      // context.shadowColor = lineArray[i].color;
-//
-          context.stroke();
-    //    }
-    //  }
+      //
+      //  var l = lineArray[i].line.length;
+
+      //  for (var k = 0; k < l; k++) {
+      //
+      // console.log("tail", tail);
+      //
+      //for (var p = 0; p < tail.length; p++) {
+      //
+      //      //foo = getColorValues(tail[p].color);
+      //      //
+      //      //console.log(foo);
+      //      //
+      //      //var r = f//oo.red;
+      //      //var g = f//oo.green;
+      //      //var b = f//oo.blue;
+      //      //var alpha// = foo.alpha;
+      //      //
+      //      //bar = foo.blue - 10;
+      //      //// baz = foo.red - 10;
+      //      //
+      //      //tail[p].color = 'rgba(' + r + ', ' + g + ', ' + b +' , ' + alpha + ' )';
+      //
+      //      //a = (bar) + ")";
+      //      //tail[p].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
+
+      //      //context.strokeStyle = tail[p].color;
+      //      //if (p === 0) {
+      //      //  context.beginPath();
+      //      //  context.moveTo(tail[p].x, tail[p].y);
+      //      //}
+      //      //context.lineTo(tail[p].x, tail[p].y);
+      //      //console.log("point:",  j, points[j].x, points[j].y);
+      //      baseLineStyle();
+      //      // context.shadowColor = lineArray[i].color;
+      //
+      context.stroke();
+      //    }
+      //  }
     }
     // cleanup
 
     if (lineArray[i].line.length == 0) {
       lineArray.splice(i);
     }
-    //console.log(" at cleanup lineArray Length:", lineArray.length);
-
     // if the lineArray is empty turn off the fadder
-
     if (lineArray.length == 0) {
       fade = false;
       toggleFade();
-      //console.log("botton of drawCanvaslineArray, fade:", fade);
     }
   }
 }
@@ -384,10 +364,3 @@ function emitDraw(data) {
 socketServer.on('drawLine', function(data) {
   recieveLineFromServer(data);
 });
-
-
-
-
-
-
-

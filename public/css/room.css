@@ -56,27 +56,24 @@
 }
 
 #layer-menu-button {
-  z-index: 30;
   position: fixed;
     bottom: 0px;
     left: 25px;
 }
 
-#ui-box {
-z-index=30;
+#main-ui-container {
   position: fixed;
     bottom:60px;
     left: 20px;
   }
 
-#draw-box {
-  z-index=30;
+#draw-ui-container {
   position: fixed;
   top: 150px;
   right: 10px;
 }
 
-#utility-box {
+#utility-container {
   z-index=30;
   position: fixed;
   top: 250px;
