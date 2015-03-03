@@ -144,6 +144,12 @@ var socketServer = io.listen(webServer);
 
 // Collabortive  drawing stuff
 socketServer.sockets.on('connection', function (client) {
+
+  client.on('utility', function (data, session) {
+    client.emit('utility', data);
+    client.broadcast.emit('utility', data);
+  })
+
   client.on('drawLine', function (data, session) {
     // build up the colors for  drawing
     if (!(client.id in clients)) {

@@ -52,36 +52,38 @@ function buildSideMenu(layer) {
 
   // remove existing side menu(s)
   // expand right element div and buttons for layer specific menu
+  // collapse main menu
 
-  _.each(uiStructure.structure, function(fcn) {
+  _.each(uiStructure.structure, function (fcn) {
     $(fcn.functions).fadeOut(5);
   });
 
-  $( "#layer-menu-button" ).trigger( "click");
+  $("#layer-menu-button").trigger("click");
 
   $(uiStructure.structure[layer].functions).fadeIn(5);
 
-  _.each(uiStructure.structure[layer].buttons, function(button) {
+  _.each(uiStructure.structure[layer].buttons, function (button) {
     $(button).fadeIn(2000);
   });
-};
+}
 
 // the main menue collapse-expand
 
 var collapsed = true;
 
-$(document).ready(function() {
+$(document).ready(function () {
   var t = 1000;
-  $("#layer-menu-button").click(function() {
-    if (collapsed == true) {
-      collapsed = false
-      for (var button in uiStructure.structure) {
+  $("#layer-menu-button").click(function () {
+    var button;
+    if (collapsed === true) {
+      collapsed = false;
+      for (button in uiStructure.structure) {
         $(uiStructure.structure[button].mainButton).fadeIn(t);
       }
     } else {
       collapsed = true;
       t = 1000;
-      for (var button in uiStructure.structure) {
+      for (button in uiStructure.structure) {
         t = 1000;
         $(uiStructure.structure[button].mainButton).fadeOut(t);
       }
@@ -105,10 +107,11 @@ buildSideMenu('draw');
   //toggle switch to render Gumby
 
   $(function() {
-    $(".gumby-swap").click(function() {
+    $(".gumby-swap").click(function () {
       if ($(this).attr("class") == "gumby-swap") {
         //this.src = this.src.replace("img/gumby-on", "img/gumby-off");
-        drawGumby();
+        //drawGumby();
+        emitUtility('gumby');
       } else {
         //this.src = this.src.replace("img/gumby-off", "img/gumby-on");
         clearUtilCanvas();
@@ -118,10 +121,11 @@ buildSideMenu('draw');
   });
 
   $(function() {
-    $(".bullseye-swap").click(function() {
+    $(".bullseye-swap").click(function () {
       if ($(this).attr("class") == "bullseye-swap") {
         //this.src = this.src.replace("img/bullseye", "img/bullseye");
-        drawBullsEye();
+        //drawBullsEye();
+        emitUtility('bullseye');
       } else {
         //this.src = this.src.replace("img/bullseye", "img/bullseye");
         clearUtilCanvas();
@@ -130,7 +134,7 @@ buildSideMenu('draw');
     });
   });
 
-  $(function() {
+  $(function () {
     $("#b1")
       .button({
         label: "Test Button"
@@ -143,7 +147,7 @@ buildSideMenu('draw');
   // toggle line drawing fade
 
   $(function() {
-    $(".fade-swap").click(function() {
+    $(".fade-swap").click(function () {
       if ($(this).attr("class") == "fade-swap") {
         this.src = this.src.replace("img/erase-on", "img/erase-off");
         fadeSwitch = false;

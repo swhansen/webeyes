@@ -14,12 +14,12 @@ function initUtil() {
   utilCanvas.width = utilCanvas.offsetWidth;
   utilCanvas.height = utilCanvas.offsetHeight;
 
-  box0Height = document.getElementById("box0").offsetHeight;
-  box0Width = document.getElementById("box0").offsetWidth;
+  var box0Height = document.getElementById("box0").offsetHeight;
+  var box0Width = document.getElementById("box0").offsetWidth;
 
   document.getElementById("utilcanvaspane").style.visibility = "visible";
   document.getElementById("utilcanvaspane").offsetHeight = box0Height;
-  document.getElementById("utilcanvaspane").offsetWidth = box0Width
+  document.getElementById("utilcanvaspane").offsetWidth = box0Width;
 
   utilUI();
 }
@@ -33,7 +33,7 @@ function clearUtilCanvas() {
 }
 
 function drawBullsEye() {
-  var outerRadius = 300
+  var outerRadius = 300;
   var innerRadius = 275;
   ctx.beginPath();
   ctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
@@ -53,3 +53,23 @@ function drawBullsEye() {
   ctx.lineTo(500, 400 + innerRadius);
   ctx.stroke();
 }
+//
+//  Emit the experimental utility functions
+//
+function emitUtility(data) {
+  var sessionId = socketServer.sessionid;
+  console.log("emitUtility:", data);
+  socketServer.emit('utility', data, sessionId);
+}
+
+socketServer.on('utility', function(data) {
+  switch (data) {
+    case "bullseye":
+    console.log("drawing bullseye:", data)
+      drawBullsEye();
+      break;
+    case "gumby":
+      drawGumby();
+      break;
+  }
+});
