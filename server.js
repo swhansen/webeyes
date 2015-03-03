@@ -134,7 +134,7 @@ app.get('/video', function (req, res) {
 });
 
 // set port to 80 for heroku ???
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
 var webServer = app.listen(port);
 //console.log('Listening on port ' + port);
@@ -157,7 +157,6 @@ socketServer.sockets.on('connection', function (client) {
     }
     data.color = clients[client.id];
     data.client = client.id;
-    console.log("data at server emit:",data)
     client.emit('drawLine', data);
     client.broadcast.emit('drawLine', data);
   });
