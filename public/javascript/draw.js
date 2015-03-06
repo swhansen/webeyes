@@ -5,16 +5,16 @@ var points = [];
 var line = [];
 var lineArray = [];
 var s = 0;
-var fade = false;       // turn on/off fade
-var fadeTimer;          // bound to set interval
-var fadeSwitch = true;  // UI fading
+var fade = false;
+var fadeTimer;
+var fadeSwitch = true;
 
 function baseLineStyle() {
   context.lineWidth = 2;
   context.lineJoin = 'round';
   context.lineCap = 'round';
   context.shadowBlur = 2;
-}
+};
 
 tool = new tool_pencil();
 
@@ -60,9 +60,8 @@ function initDraw() {
   $('*').filter(function() {
     return $(this).css('z-index') >= 10;
   }).each(function() {
-    console.log("z-index:", $(this), "is:", $(this).css('z-index'));
+    console.log("z-index:", $(this), "is:", $(this).css('z-index'))
   });
-
 }
 
 // The general-purpose event handler for mouse events.
@@ -79,11 +78,11 @@ function ev_canvas(ev) {
   // Call the event handler of the tool (tool_pencil)
   var func = tool[ev.type];
   if (func) {
-    console.log("at func:", ev._x, ev._y);
-    console.log("at func:", func);
+    //console.log("at func:", ev._x, ev._y);
+    //console.log("at func:", func);
     func(ev);
   }
-}
+};
 
 function touchStartHandler(e) {
   e.preventDefault();
@@ -91,7 +90,8 @@ function touchStartHandler(e) {
     data.pointerState = "pointerDown";
     console.log("touchstart:", data);
     emitDraw(data);
-  }
+  };
+
 function touchMoveHandler(e) {
   e.preventDefault();
   if (tool.started) {
@@ -102,7 +102,8 @@ function touchMoveHandler(e) {
     data.pointerState = "pointerMove";
     emitDraw(data);
   }
-}
+};
+
   function touchEndHandler(e) {
     e.preventDefault();
     if (tool.started) {
@@ -111,13 +112,14 @@ function touchMoveHandler(e) {
       emitDraw(data);
       tool.started = false;
     }
-  }
+  };
 
 // grab the mouse state and "emit" is TO the server
 
 function tool_pencil() {
   var tool = this;
   this.started = false;
+
   this.mousedown = function(ev) {
     //context.beginPath();
     // context.moveTo(ev._x, ev._y);
@@ -125,6 +127,7 @@ function tool_pencil() {
     data.pointerState = "pointerDown";
     emitDraw(data);
   };
+
   this.mousemove = function(ev) {
     if (tool.started) {
       data.x = Math.round(ev._x);
@@ -133,6 +136,7 @@ function tool_pencil() {
       emitDraw(data);
     }
   };
+
   this.mouseup = function(ev) {
     if (tool.started) {
       //  tool.mousemove(ev);
@@ -147,7 +151,9 @@ function tool_pencil() {
 // collect the points FROM the server and form the canvas lineArray
 //   - draw the initial line in real-time to provide the live drawing effect
 
-function receivePointsFromServer(data) {
+function recieveLineFromServer(data) {
+
+  //console.log("drawline at client", data);
   switch (data.pointerState) {
     case "pointerDown":
       context.beginPath();
@@ -179,7 +185,7 @@ function receivePointsFromServer(data) {
       context.lineTo(data.x, data.y);
       context.stroke();
       // add the new complete line
-      //line.reverse;
+      line.reverse;
       lineArray.push(new Line(line, data.color, data.client));
       line = [];
       context.beginPath();
@@ -189,7 +195,9 @@ function receivePointsFromServer(data) {
 }
 
 function drawCanvaslineArray() {
-  if (fade === false) {
+
+  //console.log("enter drawCanvaslineArray - fade :", fade);
+  if (fade == false) {
     fade = true;
     toggleFade();
   }
@@ -211,7 +219,7 @@ function drawCanvaslineArray() {
       context.stroke();
     }
 
-    if (fadeSwitch === true) {
+    if (fadeSwitch == true) {
 
       // create the fade "comet tail, dripping water, etc."
 
@@ -261,14 +269,13 @@ function drawCanvaslineArray() {
       //    }
       //  }
     }
-
     // cleanup
 
-    if (lineArray[i].line.length === 0) {
+    if (lineArray[i].line.length == 0) {
       lineArray.splice(i);
     }
     // if the lineArray is empty turn off the fadder
-    if (lineArray.length === 0) {
+    if (lineArray.length == 0) {
       fade = false;
       toggleFade();
     }
@@ -279,19 +286,19 @@ function drawCanvaslineArray() {
 
 function toggleFade() {
 
-  if (fadeSwitch === true) {
-    if (fade === true) {
+  if (fadeSwitch == true) {
+    if (fade == true) {
       fade = true;
       fadeTimer = setInterval(drawCanvaslineArray, 75);
       console.log("fade timer turned ON in in toggleFade", fade);
     } else {
-      fade = false;
+      fade == false;
       console.log("fade timer turned OFF in in toggleFade", fade);
       clearInterval(fadeTimer);
     }
   }
-  if (fadeSwitch === false) {
-    //fade == false;
+  if (fadeSwitch == false) {
+    fade == false;
     console.log("fade timer turned OFF in in toggleFade with fadeSwitch", fade);
     clearInterval(fadeTimer);
   }
@@ -355,5 +362,5 @@ function emitDraw(data) {
 }
 
 socketServer.on('drawLine', function(data) {
-  receivePointsFromServerFromServer(data);
+  recieveLineFromServer(data);
 });

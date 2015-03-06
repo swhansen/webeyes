@@ -48,10 +48,10 @@ var uiStructure = {
   }
 };
 
-var data = document.querySelector('#geo-data');
+var geoData = document.querySelector('#geo-data');
 
 function log(message){
-  data.innerHTML += message + '<br />' + data.innerHTML;
+  geoData.innerHTML += message + '<br />' + geoData.innerHTML;
 }
 
 navigator.geolocation.watchPosition(logPosition);
