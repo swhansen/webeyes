@@ -5,9 +5,9 @@ var points = [];
 var line = [];
 var lineArray = [];
 var s = 0;
-var fade = false;
-var fadeTimer;
-var fadeSwitch = true;
+var fade = false;       // turn on/off fade
+var fadeTimer;          // bound to set interval
+var fadeSwitch = true;  // UI fading
 
 function baseLineStyle() {
   context.lineWidth = 2;
@@ -62,6 +62,7 @@ function initDraw() {
   }).each(function() {
     console.log("z-index:", $(this), "is:", $(this).css('z-index'));
   });
+
 }
 
 // The general-purpose event handler for mouse events.
@@ -78,8 +79,8 @@ function ev_canvas(ev) {
   // Call the event handler of the tool (tool_pencil)
   var func = tool[ev.type];
   if (func) {
-    //console.log("at func:", ev._x, ev._y);
-    //console.log("at func:", func);
+    console.log("at func:", ev._x, ev._y);
+    console.log("at func:", func);
     func(ev);
   }
 }
@@ -91,7 +92,6 @@ function touchStartHandler(e) {
     console.log("touchstart:", data);
     emitDraw(data);
   }
-
 function touchMoveHandler(e) {
   e.preventDefault();
   if (tool.started) {
@@ -103,7 +103,6 @@ function touchMoveHandler(e) {
     emitDraw(data);
   }
 }
-
   function touchEndHandler(e) {
     e.preventDefault();
     if (tool.started) {
@@ -119,7 +118,6 @@ function touchMoveHandler(e) {
 function tool_pencil() {
   var tool = this;
   this.started = false;
-
   this.mousedown = function(ev) {
     //context.beginPath();
     // context.moveTo(ev._x, ev._y);
@@ -127,7 +125,6 @@ function tool_pencil() {
     data.pointerState = "pointerDown";
     emitDraw(data);
   };
-
   this.mousemove = function(ev) {
     if (tool.started) {
       data.x = Math.round(ev._x);
@@ -136,7 +133,6 @@ function tool_pencil() {
       emitDraw(data);
     }
   };
-
   this.mouseup = function(ev) {
     if (tool.started) {
       //  tool.mousemove(ev);
@@ -151,9 +147,7 @@ function tool_pencil() {
 // collect the points FROM the server and form the canvas lineArray
 //   - draw the initial line in real-time to provide the live drawing effect
 
-function recieveLineFromServer(data) {
-
-  //console.log("drawline at client", data);
+function receivePointsFromServer(data) {
   switch (data.pointerState) {
     case "pointerDown":
       context.beginPath();
@@ -195,8 +189,6 @@ function recieveLineFromServer(data) {
 }
 
 function drawCanvaslineArray() {
-
-  //console.log("enter drawCanvaslineArray - fade :", fade);
   if (fade === false) {
     fade = true;
     toggleFade();
@@ -269,6 +261,7 @@ function drawCanvaslineArray() {
       //    }
       //  }
     }
+
     // cleanup
 
     if (lineArray[i].line.length === 0) {
@@ -362,5 +355,5 @@ function emitDraw(data) {
 }
 
 socketServer.on('drawLine', function(data) {
-  recieveLineFromServer(data);
+  receivePointsFromServerFromServer(data);
 });

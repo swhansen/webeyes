@@ -39,22 +39,26 @@
             <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png" style="display:none;z-index:3" alt="mute button" />
             <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png" style="z-index:3;display:none" alt="text button" />
         </div>
+
+
+
         <div id="canvaspane"  class="canvasStyle" style="visibility:hidden">
             <canvas id="canvas0" ></canvas>
         </div>
 
         <div id="utilcanvaspane"  class="canvasStyle" style="visibility:hidden">
             <canvas id="util-canvas" ></canvas>
+            <p id="geo-data"</p>
         </div>
 
         <div id="layer-menu-button" class="ui-zindex">
         <img src="img/menu48.png" height="50" width="50" alt="menubutton" />
         </div>
 
-        <select id="select-video"> <option>Choose a Camera</option> </select>
+        <!--<select id="select-video"> <option>Choose a Camera</option> </select> -->
 
         <div id="main-ui-container" class="ui-zindex">
-            <img id="div1"  onclick ="initVideo()" src="img/wc.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
+            <img id="div1"   src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
 
             <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png" height="55" width="55" style="z-index:3;display:none" alt="text button" />
             <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png" height="55" width="55" style="display:none;z-index:3" alt="mute button" />
@@ -72,6 +76,11 @@
             <img id="utilTestButton" class="gumby-swap" src="img/gumby-on.png" height="64" width="64" style="display:none" alt="util button" /><br>
             <img id="bullseye"  class="bullseye-swap" src="img/bullseye.png" height="64" width="64" style="display:none" alt="bullseyebutton" /><br>
         </div>
+
+<div id="dialog" class="uiz-index" align="" title="Basic dialog">
+  <p>This is a test modal dialog for an upcomming email WEG2RT session invite. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+
 
 
        <img id="gumby" src="img/gandp.png" alt="gumby" width="220" height="277" style="visibility:hidden">

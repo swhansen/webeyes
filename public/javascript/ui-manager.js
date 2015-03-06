@@ -48,6 +48,19 @@ var uiStructure = {
   }
 };
 
+var data = document.querySelector('#geo-data');
+
+function log(message){
+  data.innerHTML += message + '<br />' + data.innerHTML;
+}
+
+navigator.geolocation.watchPosition(logPosition);
+
+function logPosition(position){
+  console.log(position);
+  log(position.coords.latitude + '<br />' + position.coords.longitude);
+}
+
 function buildSideMenu(layer) {
 
   // remove existing side menu(s)
@@ -159,5 +172,13 @@ buildSideMenu('draw');
       }
       $(this).toggleClass("on");
     });
+  });
+
+// invite dialog
+
+  $(function() {
+    $("#div1").click( function () {
+     $( "#dialog" ).dialog();
+  });
   });
 

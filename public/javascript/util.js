@@ -65,7 +65,6 @@ function emitUtility(data) {
 socketServer.on('utility', function(data) {
   switch (data) {
     case "bullseye":
-    console.log("drawing bullseye:", data)
       drawBullsEye();
       break;
     case "gumby":

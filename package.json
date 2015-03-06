@@ -11,12 +11,12 @@
   "description": "Experimental WebRTC Augmented Collaboration System",
   "main": "server.js",
   "dependencies": {
-    "easyrtc": "~1.0.10",
+    "easyrtc": "1.0.x",
     "express": "^4.x.x",
     "body-parser": "*",
     "jade": "~1.0.2",
     "express-handlebars": "^1.1.0",
-    "socket.io": "~0.9.16"
+    "socket.io": "0.9.x"
   },
   "devDependencies": {
     "assert": "^1.1.2",

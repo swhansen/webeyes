@@ -33,6 +33,13 @@
   z-index: 30;
 }
 
+#geo-data {
+  z-index: 60;
+  position: fixed;
+  top: 50px;
+  right: 10px;
+}
+
 #select-video {
   z-index=30;
   position: fixed;
