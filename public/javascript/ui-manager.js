@@ -48,18 +48,15 @@ var uiStructure = {
   }
 };
 
+// Experiment with sensor data
+
 var geoData = document.querySelector('#geo-data');
 
-function log(message){
-  geoData.innerHTML += message + '<br />' + geoData.innerHTML;
-}
-
-navigator.geolocation.watchPosition(logPosition);
-
-function logPosition(position){
-  console.log(position);
-  log(position.coords.latitude + '<br />' + position.coords.longitude);
-}
+navigator.geolocation.watchPosition(function(position){
+  geoData.innerHTML = position.coords.latitude.toFixed(5)
+                      + '<br />' +
+                      position.coords.longitude.toFixed(5);
+});
 
 function buildSideMenu(layer) {
 
@@ -174,11 +171,33 @@ buildSideMenu('draw');
     });
   });
 
-// invite dialog
 
-  $(function() {
-    $("#div1").click( function () {
-     $( "#dialog" ).dialog();
-  });
-  });
+// Email Invite Form
+
+$(document).ready(function() {
+$(function() {
+$("#invite-dialog").dialog({
+autoOpen: false
+});
+$("#div1").on("click", function() {
+$("#invite-dialog").dialog("open");
+});
+});
+
+// Validating Form Fields.....
+$("#submit").click(function(e) {
+var email = $("#email").val();
+var name = $("#name").val();
+var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+if (email === '' || name === '') {
+alert("Please fill all fields...!!!!!!");
+e.preventDefault();
+} else if (!(email).match(emailReg)) {
+alert("Invalid Email...!!!!!!");
+e.preventDefault();
+} else {
+alert("Form Submitted Successfully......");
+}
+});
+});
 

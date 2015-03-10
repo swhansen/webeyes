@@ -29,6 +29,12 @@
   height: 500px;
 }
 
+#invite-dialog {
+width: 1000px;
+    height: 700px;
+    z-index: 100;
+}
+
 .ui-zindex {
   z-index: 30;
 }

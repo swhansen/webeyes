@@ -1,11 +1,11 @@
-var canvas = document.getElementById('canvas0');
-var context = canvas.getContext("2d");
-var data = {};
-var points = [];
-var line = [];
-var lineArray = [];
-var s = 0;
-var fade = false;
+var canvas     = document.getElementById('canvas0');
+var context    = canvas.getContext("2d");
+var data       = {};
+var points     = [];
+var line       = [];
+var lineArray  = [];
+var s          = 0;
+var fade       = false;
 var fadeTimer;
 var fadeSwitch = true;
 
@@ -14,7 +14,7 @@ function baseLineStyle() {
   context.lineJoin = 'round';
   context.lineCap = 'round';
   context.shadowBlur = 2;
-};
+}
 
 tool = new tool_pencil();
 
@@ -60,7 +60,7 @@ function initDraw() {
   $('*').filter(function() {
     return $(this).css('z-index') >= 10;
   }).each(function() {
-    console.log("z-index:", $(this), "is:", $(this).css('z-index'))
+    console.log("z-index:", $(this), "is:", $(this).css('z-index'));
   });
 }
 
@@ -82,7 +82,7 @@ function ev_canvas(ev) {
     //console.log("at func:", func);
     func(ev);
   }
-};
+}
 
 function touchStartHandler(e) {
   e.preventDefault();
@@ -90,7 +90,7 @@ function touchStartHandler(e) {
     data.pointerState = "pointerDown";
     console.log("touchstart:", data);
     emitDraw(data);
-  };
+  }
 
 function touchMoveHandler(e) {
   e.preventDefault();
@@ -102,7 +102,7 @@ function touchMoveHandler(e) {
     data.pointerState = "pointerMove";
     emitDraw(data);
   }
-};
+}
 
   function touchEndHandler(e) {
     e.preventDefault();
@@ -112,7 +112,7 @@ function touchMoveHandler(e) {
       emitDraw(data);
       tool.started = false;
     }
-  };
+  }
 
 // grab the mouse state and "emit" is TO the server
 
@@ -290,16 +290,13 @@ function toggleFade() {
     if (fade == true) {
       fade = true;
       fadeTimer = setInterval(drawCanvaslineArray, 75);
-      console.log("fade timer turned ON in in toggleFade", fade);
     } else {
       fade == false;
-      console.log("fade timer turned OFF in in toggleFade", fade);
       clearInterval(fadeTimer);
     }
   }
   if (fadeSwitch == false) {
     fade == false;
-    console.log("fade timer turned OFF in in toggleFade with fadeSwitch", fade);
     clearInterval(fadeTimer);
   }
 }
