@@ -43,7 +43,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-//Test home page
+////Test home page
 //app.get('/', function   (req, res) {
 //  if (loggedIn === true) {
 //    res.render('index', {
@@ -132,6 +132,17 @@ app.get('/video', function (req, res) {
     res.send("Please try later.");
   }
 });
+
+
+app.get('/geo', function (req, res) {
+  if (loggedIn === true) {
+    res.sendfile(__dirname + '/views/geo-ar.html');
+  } else {
+    res.send("Please try later.");
+  }
+});
+
+
 
 // set port to 80 for heroku ???
 var port = process.env.PORT || 8080;
