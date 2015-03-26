@@ -47,7 +47,8 @@
           {
             capabilities: ['gum','gyro','webgl'],
             files: [
-              [ '../public/javascript/awe-ar/awe-standard-dependencies.js', '../public/javascript/awe-ar/awe-standard.js' ], // core dependencies for this app
+              [ '../public/javascript/awe-ar/awe-standard-dependencies.js',
+               '../public/javascript/awe-ar/awe-standard.js' ], // core dependencies for this app
               '../public/javascript/awe-ar/awe-standard-window_resized.js', // window resize handling plugin
               '../public/javascript/awe-ar/awe-standard-object_clicked.js', // object click/tap handling plugin
               '../public/javascript/awe_geo_ar.js', // geo ar plugin
@@ -58,15 +59,15 @@
               //       so for now we are excluding all others to make sure your first experience is a happy one
               var device_type = awe.device_type();
               var browser_unsupported = false;
-              if (device_type != 'android') {
-                browser_unsupported = true;
-              } else if (!navigator.userAgent.match(/chrome|firefox/i)) {
-                browser_unsupported = true;
-              }
-              if (browser_unsupported) {
-                document.body.innerHTML = '<p>This demo currently requires a standards compliant Android browser (e.g. Chrome M33).</p>';
-                return;
-              }
+              //if (device_type != 'android') {
+              //  browser_unsupported = true;
+              //} else if (!navigator.userAgent.match(/chrome|firefox/i)) {
+              //  browser_unsupported = true;
+              //}
+              //if (browser_unsupported) {
+              //  document.body.innerHTML = '<p>This demo currently requires a standards compliant Android browser (e//.g. Chrome M33).</p>';
+              //  return;
+              //}
 
               // setup and paint the scene
 			        window.awe.setup_scene();
