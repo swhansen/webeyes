@@ -7,6 +7,7 @@ var clients    = [];
 var linecolors = ["rgba(255, 0, 0, 1)", "rgba(255, 0, 225, 1)", "rgba(255, 115, 0, 1)", "rgba(0, 0, 225, 1)"];
 
 app.use('/js', express.static(__dirname + '/easyrtc/js'));
+
 app.use(express.static(__dirname + '/public'));
 
 app.use('/images', express.static(__dirname + '/easyrtc/images'));
@@ -134,13 +135,13 @@ app.get('/video', function (req, res) {
 });
 
 
-app.get('/geo', function (req, res) {
-  if (loggedIn === true) {
-    res.sendfile(__dirname + '/views/geo-ar.html');
-  } else {
-    res.send("Please try later.");
-  }
-});
+//app.get('/geo', function (req, res) {
+// if (loggedIn === true) {
+//   res.sendfile(__dirname + '/views/geo-ar.html');
+// } else {
+//   res.send("Please try later.");
+// }
+//);
 
 
 

@@ -65,6 +65,7 @@ function initDraw() {
 }
 
 // The general-purpose event handler for mouse events.
+
 function ev_canvas(ev) {
   // Firefox
   if (ev.layerX || ev.layerX === 0) {
@@ -83,6 +84,8 @@ function ev_canvas(ev) {
     func(ev);
   }
 }
+
+// Handlers fot touch events
 
 function touchStartHandler(e) {
   e.preventDefault();
@@ -114,7 +117,7 @@ function touchMoveHandler(e) {
     }
   }
 
-// grab the mouse state and "emit" is TO the server
+// grab the mouse state and "emit"  to the server
 
 function tool_pencil() {
   var tool = this;
@@ -148,12 +151,11 @@ function tool_pencil() {
 }
 
 //
-// collect the points FROM the server and form the canvas lineArray
+// collect the points FROM the server and build the canvas lineArray
 //   - draw the initial line in real-time to provide the live drawing effect
 
 function recieveLineFromServer(data) {
 
-  //console.log("drawline at client", data);
   switch (data.pointerState) {
     case "pointerDown":
       context.beginPath();
@@ -194,9 +196,10 @@ function recieveLineFromServer(data) {
   }
 }
 
+// Rendering and fading of the line arrays
+
 function drawCanvaslineArray() {
 
-  //console.log("enter drawCanvaslineArray - fade :", fade);
   if (fade == false) {
     fade = true;
     toggleFade();

@@ -2,7 +2,7 @@
 
 	The MIT License
 
-	Copyright (c) 2013 Rob Manson & Malgorzata Wierzbicka, http://buildAR.com. 
+	Copyright (c) 2013 Rob Manson & Malgorzata Wierzbicka, http://buildAR.com.
 	All rights reserved.
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,7 +30,7 @@
   var _clickable_objects = [];
 	if (window.awe) {
     this_awe = window.awe;
-    
+
     this_awe.constructor.prototype.renderers = new awe_v8();
     this_awe.constructor.prototype.renderers.add = function(BODY, HEAD) {
       if (!BODY) { BODY = {}; }
@@ -43,7 +43,7 @@
           // spotlight is required to add shadows!
           // see https://github.com/mrdoob/three.js/issues/748
           if (shadows) {
-            renderer.shadowMapEnabled = shadows; 
+            renderer.shadowMapEnabled = shadows;
             var shadow_map_type = this_awe.settings.view('shadow_map_type') || "pcf_soft";
             if (shadow_map_type == "basic") {
               renderer.shadowMapType = THREE.BasicShadowMap;
@@ -80,7 +80,7 @@
             }
             catch(e) { /* TODO */ };
           }
-          else {						 
+          else {
             awe_canvas.style.position = 'absolute';
             awe_canvas.style.top = '0px';
             awe_canvas.style.left = '0px';
@@ -108,7 +108,7 @@
 
     this_awe.constructor.prototype.renderer = function() {
       return this_awe.renderers.view({ id: 'default' });
-    }; 
+    };
 
     this_awe.constructor.prototype.lights = new awe_v8();
     this_awe.constructor.prototype.lights.add = function(BODY, HEAD) {
@@ -146,7 +146,7 @@
           light = new THREE.SpotLight(BODY.color);
           break;
       }
-      
+
       if (light.position && BODY.position && typeof(BODY.position) == 'object') {
         for (var p in BODY.position) {
           light.position[p] = BODY.position[p];
@@ -164,7 +164,7 @@
       this_awe.scene_needs_rendering = 1;
       return this.constructor.prototype.add.call(this, { id: id, value: light }); // super
     }
-    
+
     this_awe.constructor.prototype.video_streams = new awe_v8();
     this_awe.constructor.prototype.video_streams.add = function(BODY, HEAD) {
       if (this_awe.capabilities.view('gum')) {
@@ -176,13 +176,13 @@
             width = 640,	// TODO should be based on viewport width
             height = 480, // TODO should be based on viewport height
             video = document.createElement('video');
-          
+
           video.setAttribute('id', video_id);
           video.setAttribute('autoplay', true);
 
           BODY.video_element = video;
           var result = this.constructor.prototype.add.call(this, BODY, HEAD); // super
-          
+
           // if many sources try to get the environemt-facing camera
           var go = function(video_source_id){
             var options = {
@@ -193,9 +193,9 @@
                 optional: [{ facingMode: "environment" }, {sourceId: video_source_id}]
               };
             }
-            this_awe.util.get_user_media(options, 
+            this_awe.util.get_user_media(options,
               function(stream) {
-                video.setAttribute('width', '100%');	
+                video.setAttribute('width', '100%');
                 video.setAttribute('height', '100%');
                 document.body.appendChild(video);
                 video.style.position = 'absolute';
@@ -203,21 +203,21 @@
                 video.style.left = '-999em';
                 video.style.height = '100%';
                 video.style.width = '100%';
-                
+
                 BODY.stream = stream;
                 self.constructor.prototype.update.call(this, {data: {stream: stream}, where: {id: BODY.id}}, HEAD); // super
                 this_awe.util.connect_stream_to_src(stream, video);
-                
+
                 var event = new CustomEvent('gum_ready');
                 window.dispatchEvent(event);
-              }, 
+              },
               function(e) {
                 var event = new CustomEvent('gum_error');
                 window.dispatchEvent(event);
               }
             );
           }
-          
+
           if (window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
             MediaStreamTrack.getSources(function(source_infos) {
               var selected_source = null;
@@ -270,8 +270,8 @@
 
     this_awe.constructor.prototype.video_stream = function() {
       return this_awe.video_streams.view({ id: 'default' });
-    }; 
-    
+    };
+
     this_awe.constructor.prototype.scenes = new awe_v8();
     this_awe.constructor.prototype.scenes.add = function(BODY, HEAD) {
       if (!BODY) { BODY = {}; }
@@ -288,7 +288,7 @@
     this_awe.constructor.prototype.scene.stringify = function() {
       // TODO walk the scene and stringify to JSON
     }
-    
+
     this_awe.constructor.prototype.povs = new awe_v8();
     this_awe.constructor.prototype.povs.add = function(BODY, HEAD) {
       if (!BODY) { BODY = {}; }
@@ -297,7 +297,7 @@
       var near = this_awe.settings.view('near') || 1;
       var far = this_awe.settings.view('far') || 10000;
       var renderer = this_awe.renderer();
-      var aspect_ratio = renderer.domElement.clientWidth / renderer.domElement.clientHeight; 
+      var aspect_ratio = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
       if (BODY.renderer_id) {
         renderer = awe.renderers.view(BODY.renderer_id) || this_awe.renderer();
         if (renderer) {
@@ -305,7 +305,7 @@
         }
       }
       delete(BODY.renderer_id);
-      
+
       var pov = new THREE.PerspectiveCamera(
         fov,
         aspect_ratio,
@@ -359,7 +359,7 @@
       if (!HEAD) { HEAD = {}; }
       if (BODY.data && BODY.where && BODY.where.id) {
         var fields_updated = [];
-        if (BODY.data.position) { 
+        if (BODY.data.position) {
           fields_updated.push('position');
           var position = this_awe.pov().position;
           for (var p in BODY.data.position) {
@@ -368,12 +368,12 @@
           if (this_awe.capabilities.view("audio")) {
             this_awe.util.audio_context.listener.setPosition(position.x, position.y, position.z);
           }
-        } 
-        if (BODY.data.scale) { fields_updated.push('scale'); } 
-        if (BODY.data.rotation) { 
-          fields_updated.push('rotation'); 
+        }
+        if (BODY.data.scale) { fields_updated.push('scale'); }
+        if (BODY.data.rotation) {
+          fields_updated.push('rotation');
           _map_audio_listener_to_pov();
-        } 
+        }
         if (fields_updated.length) {
           HEAD.fields_updated = fields_updated;
         }
@@ -412,7 +412,7 @@
       var projection_io = {};
       var result = this.constructor.prototype.add.call(this, BODY, HEAD); // super
       var poi = this_awe.pois.view(BODY.id);
-      this_awe.projections.add({ 
+      this_awe.projections.add({
         id: origin_id,
         position: BODY.position || { x: 0, y: 0, z: 0 },
         scale: BODY.scale || { x: 1, y: 1, z: 1 },
@@ -437,9 +437,9 @@
       if (!HEAD) { HEAD = {}; }
       if (BODY.data && BODY.where && BODY.where.id) {
         var fields_updated = [];
-        if (BODY.data.position) { fields_updated.push('position'); } 
-        if (BODY.data.scale) { fields_updated.push('scale'); } 
-        if (BODY.data.rotation) { fields_updated.push('rotation'); } 
+        if (BODY.data.position) { fields_updated.push('position'); }
+        if (BODY.data.scale) { fields_updated.push('scale'); }
+        if (BODY.data.rotation) { fields_updated.push('rotation'); }
         if (fields_updated.length) {
           HEAD.fields_updated = fields_updated;
         }
@@ -541,50 +541,50 @@
         if (BODY.geometry.shape) {
           var shape = _validate_shape(BODY.geometry);
           switch(BODY.geometry.shape) {
-            case 'cube': 
+            case 'cube':
               geometry = new THREE.CubeGeometry(shape.x, shape.y, shape.z);
               break;
-            case 'sphere': 
+            case 'sphere':
               geometry = new THREE.SphereGeometry(shape.radius, shape.widthSegments, shape.heightSegments, shape.phiStart, shape.phiLength, shape.thetaStart, shape.thetaLength);
               break;
-            case 'cylinder': 
+            case 'cylinder':
               geometry = new THREE.CylinderGeometry(shape.radiusTop, shape.radiusBottom, shape.height, shape.radiusSegments, shape.heightSegments, shape.openEnded);
               break;
-            case 'lathe': 
+            case 'lathe':
               geometry = new THREE.LatheGeometry(shape.points, shape.segments, shape.phiStart, shape.phiLength);
               break;
-            case 'octahedron': 
+            case 'octahedron':
               geometry = new THREE.OctahedronGeometry(shape.radius, shape.detail);
               break;
-            case 'plane': 
+            case 'plane':
               geometry = new THREE.PlaneGeometry(shape.width, shape.height, shape.widthSegments, shape.heightSegments)
               break;
-            case 'tetrahedron': 
+            case 'tetrahedron':
               geometry = new THREE.TetrahedronGeometry(shape.radius, shape.detail);
               break;
-            case 'text': 
+            case 'text':
               geometry = new THREE.TextGeometry(shape.text, shape.parameters)
               break;
-            case 'torus': 
+            case 'torus':
               geometry = new THREE.TorusGeometry(shape.radius, shape.tube, shape.radialSegments, shape.tubularSegments, shape.arc);
               break;
-            case 'torusknot': 
+            case 'torusknot':
               geometry = new THREE.TorusKnotGeometry(shape.radius, shape.tube, shape.radialSegments, shape.tubularSegments, shape.p, shape.q, shape.heightScale);
               break;
-            case 'tube': 
+            case 'tube':
               geometry = new THREE.TubeGeometry(shape.path, shape.segments, shape.radius, shape.radiusSegments, shape.closed, shape.debug)
               break;
-            default: 
+            default:
               geometry = new THREE.CubeGeometry(10,10,10);
           }
           if (geometry) {
             var texture, material;
             if (BODY.texture.path) {
-              if (BODY.geometry.x) { 
-                BODY.texture.width = BODY.geometry.x; 
+              if (BODY.geometry.x) {
+                BODY.texture.width = BODY.geometry.x;
               }
-              if (BODY.geometry.y) { 
-                BODY.texture.height = BODY.geometry.y; 
+              if (BODY.geometry.y) {
+                BODY.texture.height = BODY.geometry.y;
               }
               var texture_id = this_awe.textures.add(BODY.texture);
 							if (BODY.texture.color) {
@@ -605,13 +605,13 @@
             loader.load(BODY.geometry.path, BODY.material.path, function(mesh) {
               BODY.mesh = _update_mesh_io(BODY, mesh, true);
               if (parent.origin) {
-	            	parent.origin.mesh.add(BODY.mesh); 
+	            	parent.origin.mesh.add(BODY.mesh);
               }
               else {
-	              parent.add(BODY.mesh); 
+	              parent.add(BODY.mesh);
               }
               var _clickable_id = _clickable_objects.length;
-              BODY.mesh.projection_id = BODY.id; 
+              BODY.mesh.projection_id = BODY.id;
               _clickable_objects.push(BODY.mesh);
               this_awe.projections.update({ data:{ _clickable_object_id:_clickable_id }, where:{ id:BODY.id } });
               this_awe.scene_needs_rendering = 1;
@@ -624,11 +624,11 @@
             loader = new THREE.OBJLoader();
             var texture;
             if (BODY.texture.path) {
-              if (BODY.geometry.x) { 
-                BODY.texture.width = BODY.geometry.x; 
+              if (BODY.geometry.x) {
+                BODY.texture.width = BODY.geometry.x;
               }
               if (BODY.geometry.y) {
-                BODY.texture.height = BODY.geometry.y; 
+                BODY.texture.height = BODY.geometry.y;
               }
               var texture_id = this_awe.textures.add(BODY.texture);
               texture = this_awe.textures.view(texture_id);
@@ -645,14 +645,14 @@
               });
               BODY.mesh = _update_mesh_io(BODY, mesh, true);
               if (parent.origin) {
-	            	parent.origin.mesh.add(BODY.mesh); 
+	            	parent.origin.mesh.add(BODY.mesh);
               }
               else {
-	              parent.add(BODY.mesh); 
+	              parent.add(BODY.mesh);
               }
-              
+
               var _clickable_id = _clickable_objects.length;
-              BODY.mesh.projection_id = BODY.id; 
+              BODY.mesh.projection_id = BODY.id;
               _clickable_objects.push(BODY.mesh);
               this_awe.projections.update({ data:{ _clickable_object_id:_clickable_id }, where:{ id:BODY.id } });
               this_awe.scene_needs_rendering = 1;
@@ -683,15 +683,15 @@
       }
       else {
         var _clickable_id = _clickable_objects.length;
-        BODY.mesh.projection_id = result.id; 
+        BODY.mesh.projection_id = result.id;
         _clickable_objects.push(BODY.mesh);
         this_awe.projections.update({ data:{ _clickable_object_id:_clickable_id }, where:{ id:result.id } });
-        
+
         if (parent.origin) {
-        	parent.origin.mesh.add(BODY.mesh); 
+        	parent.origin.mesh.add(BODY.mesh);
         }
         else {
-          parent.add(BODY.mesh); 
+          parent.add(BODY.mesh);
         }
       }
       if (!parent.projections) {
@@ -711,7 +711,7 @@
           x: projection.mesh.position.x,
           y: projection.mesh.position.y,
           z: projection.mesh.position.z,
-        }; 
+        };
         projection.scale = {
           x: projection.mesh.scale.x,
           y: projection.mesh.scale.y,
@@ -730,9 +730,9 @@
       if (!HEAD) { HEAD = {}; }
       if (BODY.data && BODY.where && BODY.where.id) {
         var fields_updated = [];
-        if (BODY.data.position) { fields_updated.push('position'); } 
-        if (BODY.data.scale) { fields_updated.push('scale'); } 
-        if (BODY.data.rotation) { fields_updated.push('rotation'); } 
+        if (BODY.data.position) { fields_updated.push('position'); }
+        if (BODY.data.scale) { fields_updated.push('scale'); }
+        if (BODY.data.rotation) { fields_updated.push('rotation'); }
         if (fields_updated.length) {
           HEAD.fields_updated = fields_updated;
         }
@@ -795,17 +795,17 @@
           path = BODY.path;
         }
         if (path) {
-          if (BODY.width) { 
-            v.width = BODY.width; 
-          } 
-          else { 
-            v.width = 320; 
+          if (BODY.width) {
+            v.width = BODY.width;
           }
-          if (BODY.height) { 
-            v.height = BODY.height; 
-          } 
-          else { 
-            v.height = 240; 
+          else {
+            v.width = 320;
+          }
+          if (BODY.height) {
+            v.height = BODY.height;
+          }
+          else {
+            v.height = 240;
           }
           v.src = path;
           var autoplay = true;
@@ -835,17 +835,17 @@
         }
         else if (BODY.path.match(/^camerastream$/i)) {
           var v = this_awe.video_stream().video_element;
-          if (BODY.width) { 
-            v.width = BODY.width; 
-          } 
-          else { 
-            v.width = 320; 
+          if (BODY.width) {
+            v.width = BODY.width;
           }
-          if (BODY.height) { 
-            v.height = BODY.height; 
+          else {
+            v.width = 320;
           }
-          else { 
-            v.height = 240; 
+          if (BODY.height) {
+            v.height = BODY.height;
+          }
+          else {
+            v.height = 240;
           }
           v.autoplay = true;
           v.play();
@@ -870,7 +870,7 @@
       else {
         throw { code: 500, message: 'texture.path required' };
       }
-    } 
+    }
 
     this_awe.constructor.prototype.materials = new awe_v8();
     this_awe.constructor.prototype.materials.add = function(BODY, HEAD) {
@@ -946,7 +946,7 @@
         return io.step/io.steps_total;
       }
     });
-          
+
     this_awe.constructor.prototype.setup_scene = function(io) {
       this.origin = new THREE.Vector3(0,0,0);
       this_awe.renderers.add({ id: 'default' });
@@ -958,7 +958,7 @@
       var lights = this_awe.lights.list();
       if (!lights.length) {
         var default_lights = this_awe.settings.view('default_lights');
-        if (default_lights && Array.isArray(default_lights)) { 
+        if (default_lights && Array.isArray(default_lights)) {
           for (var i=0,l=default_lights.length;i<l;i++) {
             try {
             	this_awe.lights.add(default_lights[i]);
@@ -1008,7 +1008,7 @@
 				}
 			};
 		}
-				
+
 		function _extend() {
 			var src, copy, name, options,
 				target = arguments[0] || {},
@@ -1033,7 +1033,7 @@
 			}
 			return target;
 		}
-		
+
 		function _transform(ob) {
 			ob = ob ? ob : {};
 			var def = {
@@ -1054,8 +1054,8 @@
 				}
 			};
 			this.rotation = _extend(def.rotation, ob.rotation);
-			this.scale = _extend(def.scale, ob.scale); 
-			this.position = _extend(def.position, ob.position);	 
+			this.scale = _extend(def.scale, ob.scale);
+			this.position = _extend(def.position, ob.position);
 			return this;
 		};
 
@@ -1092,21 +1092,21 @@
 				return io;
 			}
 			switch(geometry.shape) {
-				case 'cube': 
+				case 'cube':
 					io = {
 						x: 1,
 						y: 1,
 						z: 1
 					};
 					break;
-				case 'plane': 
+				case 'plane':
 					io = {
 						width: 1,
 						height: 1,
 						widthSegments: 1,
 						heightSegments: 1
 					};
-				case 'text': 
+				case 'text':
 					io = {
 						text: 'theAWEsomeWEB'
 					};
@@ -1117,12 +1117,12 @@
 			}
 			return io;
 		}
-		
+
 		function _update_mesh_io(io, mesh, new_object) {
 			if (!io) {
 				io = {};
 			}
-			
+
 			if (!io.geometry) {
 				io.geometry = {};
 			}
@@ -1167,67 +1167,67 @@
 				}
 			}
 			if (io.scale) {
-				if (io.scale.x !== undefined) { 
-					mesh.scale.x = io.scale.x; 
+				if (io.scale.x !== undefined) {
+					mesh.scale.x = io.scale.x;
 				}
-				else if (new_object) { 
-					mesh.scale.x = 1; 
+				else if (new_object) {
+					mesh.scale.x = 1;
 				}
-				if (io.scale.y !== undefined) { 
-					mesh.scale.y = io.scale.y; 
+				if (io.scale.y !== undefined) {
+					mesh.scale.y = io.scale.y;
 				}
-				else if (new_object) { 
-					mesh.scale.y = 1; 
+				else if (new_object) {
+					mesh.scale.y = 1;
 				}
-				if (io.scale.z !== undefined) { 
-					mesh.scale.z = io.scale.z; 
+				if (io.scale.z !== undefined) {
+					mesh.scale.z = io.scale.z;
 				}
-				else if (new_object) { 
-					mesh.scale.z = 1; 
+				else if (new_object) {
+					mesh.scale.z = 1;
 				}
 				delete io.scale;
 				render = true;
 			}
 			if (io.rotation) {
-				if (io.rotation.x !== undefined) { 
-					mesh.rotation.x = THREE.Math.degToRad(io.rotation.x); 
+				if (io.rotation.x !== undefined) {
+					mesh.rotation.x = THREE.Math.degToRad(io.rotation.x);
 				}
-				else if (new_object) { 
-					mesh.rotation.x = 0; 
+				else if (new_object) {
+					mesh.rotation.x = 0;
 				}
-				if (io.rotation.y !== undefined) { 
-					mesh.rotation.y = THREE.Math.degToRad(io.rotation.y); 
+				if (io.rotation.y !== undefined) {
+					mesh.rotation.y = THREE.Math.degToRad(io.rotation.y);
 				}
-				else if (new_object) { 
-					mesh.rotation.y = 0; 
+				else if (new_object) {
+					mesh.rotation.y = 0;
 				}
-				if (io.rotation.z !== undefined) { 
-					mesh.rotation.z = THREE.Math.degToRad(io.rotation.z); 
+				if (io.rotation.z !== undefined) {
+					mesh.rotation.z = THREE.Math.degToRad(io.rotation.z);
 				}
-				else if (new_object) { 
-					mesh.rotation.z = 0; 
+				else if (new_object) {
+					mesh.rotation.z = 0;
 				}
 				delete io.rotation;
 				render = true;
 			}
 			if (io.position) {
-				if (io.position.x !== undefined) { 
-					mesh.position.x = io.position.x; 
+				if (io.position.x !== undefined) {
+					mesh.position.x = io.position.x;
 				}
-				else if (new_object) { 
-					mesh.position.x = 0; 
+				else if (new_object) {
+					mesh.position.x = 0;
 				}
-				if (io.position.y !== undefined) { 
-					mesh.position.y = io.position.y; 
+				if (io.position.y !== undefined) {
+					mesh.position.y = io.position.y;
 				}
-				else if (new_object) { 
-					mesh.position.y = 0; 
+				else if (new_object) {
+					mesh.position.y = 0;
 				}
-				if (io.position.z !== undefined) { 
-					mesh.position.z = io.position.z; 
+				if (io.position.z !== undefined) {
+					mesh.position.z = io.position.z;
 				}
-				else if (new_object) { 
-					mesh.position.z = 0; 
+				else if (new_object) {
+					mesh.position.z = 0;
 				}
 				delete io.position;
 				render = true;
@@ -1311,13 +1311,13 @@
 			delete io.geometry;
 			return mesh;
 		}
-		
+
 		var tween_queue = [],
 			last_time,
 			dt;
-		
+
 		function _tween(io) {
-			if (!io.mesh || !io.end_state) { 
+			if (!io.mesh || !io.end_state) {
 				return;
 			}
 
@@ -1325,14 +1325,14 @@
 				console.log('already animating this mesh - sorry!')
 				return;
 			}
-			
+
 			io = _extend({
 				duration: 1, // seconds
 				delay: 0,
 				persist: 1,
 				repeat: 0
 			}, io);
-			
+
 			var start_state = _get_mesh_state(io.mesh);
 			var steps_total = this_awe.settings.view('fps') * io.duration;
 			var steps = [];
@@ -1347,7 +1347,7 @@
 				}
 				catch(e) { /* TODO */ };
 			}
-			
+
 			var get_step_data = function(increment) {
 				var transform = {};
 				if (io.end_state.rotation && typeof(io.end_state.rotation) == 'object') {
@@ -1394,7 +1394,7 @@
 					transform: transform
 				};
 			}
-			
+
 			for (var k=0; k<steps_total; k++) {
 				var increment = get_increment({
 					step: k,
@@ -1427,7 +1427,7 @@
 				tween_queue[io.mesh.id] = tween_data;
 			}
 		}
-		
+
 		function _finish_tween(mesh_id) {
 			var data = tween_queue[mesh_id].data;
       var mesh = tween_queue[mesh_id].mesh;
@@ -1465,10 +1465,10 @@
 
     function _play_sound(io) {
       if (io.source == undefined) {
-        throw 'source required'; 
+        throw 'source required';
       }
       if (io.buffer == undefined) {
-        throw 'buffer required'; 
+        throw 'buffer required';
       }
       try {
         io.source.buffer = io.buffer;
@@ -1496,7 +1496,7 @@
         up.normalize();
         this_awe.util.audio_context.listener.setOrientation(vec.x, vec.y, vec.z, up.x, up.y, up.z);
         m.n14 = mx;
-        m.n24 = my; 
+        m.n24 = my;
         m.n34 = mz;
       }
     }
@@ -1519,9 +1519,9 @@
 						}
 					}
 				}
-				
+
 				var now = (new Date()).getTime(),
-					dt = now - (last_time || now); 
+					dt = now - (last_time || now);
 				last_time = now;
 				if (tween_queue.length) {
 					for (var i in tween_queue) {
@@ -1532,7 +1532,7 @@
 							transform = new _transform(),
 							steps_total = transform_data.steps.length,
 							step;
-							
+
 						if (transform_data.current_step === undefined) {
 							transform_data.current_step = 0;
 							// start callback
@@ -1605,14 +1605,14 @@
 					}
 				}
 
-				this_awe.render(); 
+				this_awe.render();
 
 				requestAnimationFrame(function() {
 					_tick();
 					var event = new CustomEvent('tick');
 					window.dispatchEvent(event);
 				});
-			} 
+			}
 			catch(e) {
 				this_awe.error_handler(e);
 			}
