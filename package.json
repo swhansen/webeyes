@@ -2,7 +2,8 @@
   "name": "weg2rt",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha qa/user.js"
+    "test": "mocha qa/user.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "version": "0.0.1",
   "engines": {
@@ -11,11 +12,12 @@
   "description": "Experimental WebRTC Augmented Collaboration System",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "*",
+    "bower": "^1.4.1",
     "easyrtc": "1.0.x",
     "express": "^4.x.x",
-    "body-parser": "*",
-    "jade": "~1.0.2",
     "express-handlebars": "^1.1.0",
+    "jade": "~1.0.2",
     "socket.io": "0.9.x"
   },
   "devDependencies": {

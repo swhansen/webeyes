@@ -16,6 +16,8 @@ app.use('/css', express.static(__dirname + '/easyrtc/css'));
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/img', express.static(__dirname + '/public/img'));
 app.use('/javascript', express.static(__dirname + '/public/javascripts'));
+app.use('/bower', express.static(__dirname + '/bower_components'));
+
 
 //app.use('/bower', express.static(__dirname + '/bower_components'));
 
@@ -142,6 +144,10 @@ app.get('/video', function (req, res) {
 //   res.send("Please try later.");
 // }
 //);
+
+app.get('/about', function (req, res) {
+   res.sendFile(__dirname + '/views/about.handlebars');
+});
 
 
 

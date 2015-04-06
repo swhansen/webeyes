@@ -291,15 +291,15 @@ function toggleFade() {
 
   if (fadeSwitch == true) {
     if (fade == true) {
-      fade = true;
+      //fade == true;
       fadeTimer = setInterval(drawCanvaslineArray, 75);
     } else {
-      fade == false;
+      fade = false;
       clearInterval(fadeTimer);
     }
   }
   if (fadeSwitch == false) {
-    fade == false;
+    //fade == false;
     clearInterval(fadeTimer);
   }
 }
