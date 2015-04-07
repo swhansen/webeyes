@@ -696,7 +696,12 @@ function appInit() {
     handleWindowResize(); //initial call of the top-down layout manager
 
     easyrtc.setRoomOccupantListener(callEverybodyElse);
-    easyrtc.easyApp("roomDemo", "box0", ["box1", "box2", "box3"], loginSuccess);
+    easyrtc.easyApp("roomDemo", "box0", ["box1", "box2", "box3"],
+      function(myId) {
+        console.log("Success - uid is:" + myId);
+      }
+    );
+
     easyrtc.setPeerListener(messageListener);
     easyrtc.setDisconnectListener(function() {
         easyrtc.showError("LOST-CONNECTION", "Lost connection to signaling server");

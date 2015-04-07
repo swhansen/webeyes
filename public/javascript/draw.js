@@ -44,8 +44,8 @@ function initDraw() {
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 
-  box0Height = document.getElementById("box0").offsetHeight;
-  box0Width = document.getElementById("box0").offsetWidth;
+  var box0Height = document.getElementById("box0").offsetHeight;
+  var box0Width = document.getElementById("box0").offsetWidth;
 
   document.getElementById("canvaspane").style.visibility = "visible";
   document.getElementById("canvaspane").offsetHeight = box0Height;

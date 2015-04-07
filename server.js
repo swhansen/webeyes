@@ -1,8 +1,8 @@
 var bodyParser = require('body-parser');
 var express    = require('express');
 var app        = express();
-var io         = require("socket.io");
-var easyrtc    = require("easyrtc");
+var io         = require('socket.io');
+var easyrtc    = require('easyrtc');
 var clients    = [];
 var linecolors = ["rgba(255, 0, 0, 1)", "rgba(255, 0, 225, 1)", "rgba(255, 115, 0, 1)", "rgba(0, 0, 225, 1)"];
 
@@ -17,7 +17,6 @@ app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/img', express.static(__dirname + '/public/img'));
 app.use('/javascript', express.static(__dirname + '/public/javascripts'));
 app.use('/bower', express.static(__dirname + '/bower_components'));
-
 
 //app.use('/bower', express.static(__dirname + '/bower_components'));
 
@@ -128,14 +127,13 @@ app.post('/logout', function (req, res) {
 });
 
 //Initiate a video call
-app.get('/video', function (req, res) {
+app.get("/video", function (req, res) {
   if (loggedIn === true) {
-    res.sendfile(__dirname + '/views/multiparty.html');
+    res.sendfile(__dirname + "/views/multiparty.html");
   } else {
     res.send("Please try later.");
   }
 });
-
 
 //app.get('/geo', function (req, res) {
 // if (loggedIn === true) {
@@ -146,16 +144,14 @@ app.get('/video', function (req, res) {
 //);
 
 app.get('/about', function (req, res) {
-   res.sendFile(__dirname + '/views/about.handlebars');
+   res.sendFile(__dirname + "/views/about.handlebars");
 });
-
-
 
 // set port to 80 for heroku ???
 var port = process.env.PORT || 8080;
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
 var webServer = app.listen(port);
-//console.log('Listening on port ' + port);
+console.log('Listening on port ' + port);
 
 // Start Socket.io so it attaches itself to Express server
 var socketServer = io.listen(webServer);
@@ -166,7 +162,7 @@ socketServer.sockets.on('connection', function (client) {
   client.on('utility', function (data, session) {
     client.emit('utility', data);
     client.broadcast.emit('utility', data);
-  })
+  });
 
   client.on('drawLine', function (data, session) {
     // build up the colors for  drawing
