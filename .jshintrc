@@ -3,10 +3,13 @@
     "expr": true,
     "loopfunc": true,
     "curly": false,
+    "eqeqeq": true,
     "evil": true,
     "white": true,
     "undef": true,
+    "unused": true,
     "node": true,
+    "mocha": true,
     "predef": [
         "$",
         "FormBot",

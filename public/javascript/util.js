@@ -25,7 +25,7 @@ function initUtil() {
 }
 
 function drawGumby() {
-  ctx.drawImage(img, 600, 100);
+  ctx.drawImage(img, 250, 100);
 }
 
 function clearUtilCanvas() {

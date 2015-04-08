@@ -1,4 +1,3 @@
-
 .transit {
     transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, transform 1s;
     -moz-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -moz-transform 1s;

@@ -4,7 +4,7 @@ var data       = {};
 var points     = [];
 var line       = [];
 var lineArray  = [];
-var s          = 0;
+// var s          = 0;
 var fade       = false;
 var fadeTimer;
 var fadeSwitch = true;
@@ -16,7 +16,7 @@ function baseLineStyle() {
   context.shadowBlur = 2;
 }
 
-tool = new tool_pencil();
+var tool = new tool_pencil();
 
 var Line = function(line, c, client) {
   this.line = line;
@@ -98,7 +98,7 @@ function touchStartHandler(e) {
 function touchMoveHandler(e) {
   e.preventDefault();
   if (tool.started) {
-    touches = e.touches.item(0);
+    var touches = e.touches.item(0);
     var canvasLocation = canvas.getBoundingClientRect();
     data.x = Math.round(touches.clientX - canvasLocation.left);
     data.y = Math.round(touches.clientY - canvasLocation.top);
