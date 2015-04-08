@@ -3,7 +3,8 @@
 
 var utilCanvas = document.getElementById('util-canvas');
 var ctx = utilCanvas.getContext("2d");
-var img = document.getElementById("gumby");
+var d1 = document.getElementById("doc-1");
+var d2 = document.getElementById("doc-2");
 
 function initUtil() {
 
@@ -24,8 +25,12 @@ function initUtil() {
   utilUI();
 }
 
-function drawGumby() {
-  ctx.drawImage(img, 250, 100);
+function drawDoc1() {
+  ctx.drawImage(d1, 250, 100);
+}
+
+function drawDoc2() {
+  ctx.drawImage(d2, 250, 100);
 }
 
 function clearUtilCanvas() {
@@ -104,8 +109,11 @@ socketServer.on('utility', function(data) {
     case "bullseye":
       drawBullsEye();
       break;
-    case "gumby":
-      drawGumby();
+    case "doc-1":
+      drawDoc1();
+      break;
+    case "doc-2":
+      drawDoc2();
       break;
   }
 });

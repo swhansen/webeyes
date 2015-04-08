@@ -8,7 +8,7 @@ var uiStructure = {
     util: {
       mainButton: "#utilButton",
       functions: "#utility-container",
-      buttons: ["#utilTestButton", "#bullseye"],
+      buttons: ["#doc-button-1", "#doc-button-2" ,"#bullseye"],
       desc: "utility layer",
       initState: "none",
       baseZ: "20"
@@ -114,35 +114,47 @@ function drawUI() {
 buildSideMenu('draw');
 }
 
-  //toggle switch to render Gumby
+  //toggle switch to render document
 
   $(function() {
-    $(".gumby-swap").click(function () {
-      if ($(this).attr("class") == "gumby-swap") {
-        //this.src = this.src.replace("img/gumby-on", "img/gumby-off");
-        //drawGumby();
-        emitUtility('gumby');
+    $(".doc-pub-1").click(function () {
+      if ($(this).attr("class") == "doc-pub-1") {
+        emitUtility('doc-1');
       } else {
-        //this.src = this.src.replace("img/gumby-off", "img/gumby-on");
         clearUtilCanvas();
       }
       $(this).toggleClass("on");
     });
   });
+
+$(function() {
+    $(".doc-pub-2").click(function () {
+      if ($(this).attr("class") == "doc-pub-2") {
+        emitUtility('doc-2');
+      } else {
+        clearUtilCanvas();
+      }
+      $(this).toggleClass("on");
+    });
+  });
+
+
+
+
 
   $(function() {
     $(".bullseye-swap").click(function () {
       if ($(this).attr("class") == "bullseye-swap") {
-        //this.src = this.src.replace("img/bullseye", "img/bullseye");
-        //drawBullsEye();
         emitUtility('bullseye');
       } else {
-        //this.src = this.src.replace("img/bullseye", "img/bullseye");
         clearUtilCanvas();
       }
       $(this).toggleClass("on");
     });
   });
+
+
+
 
   $(function () {
     $("#b1")
@@ -200,4 +212,40 @@ alert("Form Submitted Successfully......");
 }
 });
 });
+
+
+//Document select
+
+//ocument).ready(function() {
+//unction() {
+//#doc-list").dialog({
+//oOpen: false
+//
+//#utilTestButton").on("click", function() {
+//#doc-list").selectable("open");
+//
+//
+
+//Validating Form Fields.....
+//#submit").click(function(e) {
+// email = $("#email").val();
+// name = $("#name").val();
+// emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+//(email === '' || name === '') {
+//rt("Please fill all fields...!!!!!!");
+//reventDefault();
+//lse if (!(email).match(emailReg)) {
+//rt("Invalid Email...!!!!!!");
+//reventDefault();
+//lse {
+//rt("Form Submitted Successfully......");
+//
+//
+//
+
+
+
+
+
+
 

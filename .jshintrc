@@ -9,7 +9,14 @@
     "undef": true,
     "unused": true,
     "node": true,
+    "browser": true,
+    "jquery": true,
+    "trailing": true,
     "mocha": true,
+    "globals": {
+        "$": false,
+        "_": false      // underscore or lo-dash
+    },
     "predef": [
         "$",
         "FormBot",
