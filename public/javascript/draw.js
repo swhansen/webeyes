@@ -205,8 +205,7 @@ function drawCanvaslineArray() {
     toggleFade();
   }
   context.clearRect(0, 0, canvas.width, canvas.height);
-  for (var i = 0; i < lineArray.length; i++) {
-    var points = lineArray[i].line;
+  for (var i = 0; i < lineArray.length; i++) {var points = lineArray[i].line;
     points.slice(10, points.length);
     // draw the points for a line
     for (var j = 0; j < points.length; j++) {

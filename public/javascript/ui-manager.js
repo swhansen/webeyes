@@ -16,13 +16,13 @@ var uiStructure = {
     draw: {
       mainButton: "#drawButton",
       functions: "#draw-ui-container",
-      buttons: ["#snailButton", "#b1"],
+      buttons: ["#fadeButton", "#b1"],
       desc: "drawing layer",
       initState: "none",
       baseZ: "20"
     },
     p1: {
-      mainButton: "#div1",
+      mainButton: "#invite-via-email",
       functions: "#draw-ui-container",
       buttons: [],
       desc: "tmp",
@@ -138,10 +138,6 @@ $(function() {
     });
   });
 
-
-
-
-
   $(function() {
     $(".bullseye-swap").click(function () {
       if ($(this).attr("class") == "bullseye-swap") {
@@ -153,8 +149,7 @@ $(function() {
     });
   });
 
-
-
+// --------------------------
 
   $(function () {
     $("#b1")
@@ -183,7 +178,6 @@ $(function() {
     });
   });
 
-
 // Email Invite Form
 
 $(document).ready(function() {
@@ -191,7 +185,7 @@ $(function() {
 $("#invite-dialog").dialog({
 autoOpen: false
 });
-$("#div1").on("click", function() {
+$("#invite-via-email").on("click", function() {
 $("#invite-dialog").dialog("open");
 });
 });
@@ -212,40 +206,3 @@ alert("Form Submitted Successfully......");
 }
 });
 });
-
-
-//Document select
-
-//ocument).ready(function() {
-//unction() {
-//#doc-list").dialog({
-//oOpen: false
-//
-//#utilTestButton").on("click", function() {
-//#doc-list").selectable("open");
-//
-//
-
-//Validating Form Fields.....
-//#submit").click(function(e) {
-// email = $("#email").val();
-// name = $("#name").val();
-// emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-//(email === '' || name === '') {
-//rt("Please fill all fields...!!!!!!");
-//reventDefault();
-//lse if (!(email).match(emailReg)) {
-//rt("Invalid Email...!!!!!!");
-//reventDefault();
-//lse {
-//rt("Form Submitted Successfully......");
-//
-//
-//
-
-
-
-
-
-
-
