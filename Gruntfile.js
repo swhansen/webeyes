@@ -9,7 +9,6 @@ module.exports = function (grunt) {
     });
     // configure plugins
     grunt.initConfig({
-        
         cafemocha: {
             all: {
                 src: 'qa/entry-test.js',
@@ -22,7 +21,7 @@ module.exports = function (grunt) {
             dev: {
                 site: 'localhost',
                 options: {
-                    initialPort: 8080
+                    initialPort: 5000
                 }
             }
         }

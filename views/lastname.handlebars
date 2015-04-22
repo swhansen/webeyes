@@ -1,0 +1,22 @@
+<table>
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#if lastName}}
+            <tr>
+                <td>{{firstName}}</td>
+                <td>{{lastName}}</td>
+                <td>{{email}}</td>
+            </tr>
+    {{else}}
+        <tr>
+            <td colspan="4" class="text-center">No data to display.</td>
+        </tr>
+    {{/if}}
+    </tbody>
+</table>

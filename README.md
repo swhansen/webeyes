@@ -1,7 +1,7 @@
 # Web Eyes Got to Real Time (WEG2RT) #
 
-* Prototype for initial version of an Collaborative Augmented Information Sharing System
-* Version: 0.1
+* Prototype for initial version of a Collaborative Augmented Information Sharing System
+* Version: 0.3.2
 
 ## Technologies
 
@@ -10,12 +10,16 @@
 * Handlebars - semantic templating (http://handlebarsjs.com/)
 * webrtc.io - javascript (RTC) -  (https://github.com/webRTC/webRTC.io)
 * socket.io
-* EasyRTC
+* WebRTC
 * buildAR
+* WebGL
 * Jasmine - TDD framework
 * HTML5 Canvas
-* jQuery and jQuery-UI
-* underscore
+* jQuery, jQuery-UI
+* lo-dash - functional infrastructure
+* mongodb and mongoose
+* Bower
+* Browserify
 
 ## Repository:
 
@@ -25,13 +29,14 @@
 
 [Heroku Dev Center](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)
 
+[Mongo](https://www.mongolab.com) deployed using mongolab
+
 ## Testing
 
 Grunt is used to tie the testing togather
 
 * Mocha - Test Framework
 * Chai - Assertion Library
-* jshint - syntax
 * zombie
 
 ## Protocol, Best Practices, Style
@@ -42,7 +47,10 @@ programming in style.
 * [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
 * [Style](http://github.com/thoughtbot/guides/blob/master/style)
-* [Javascript Style Google](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+* [Javascript Style jQuery](https://contribute.jquery.org/style-guide/js/)
+* Javascript style is checked with [jscs](http://jscs.info/) using the [jquery](https://contribute.jquery.org/style-guide/js/) syle syntax
+* [jshint](http://jshint.com/about/)
+* git [precommit-hook](https://www.npmjs.com/package/precommit-hook) is used.
 
 ### Contribution guidelines ###
 
