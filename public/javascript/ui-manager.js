@@ -20,7 +20,7 @@ var uiStructure = {
     draw: {
       mainButton: "#drawButton",
       functions: "#draw-ui-container",
-      buttons: [ "#fadeButton", "#b1" ],
+      buttons: [ "#fadeButton"],
       desc: "drawing layer",
       initState: "none",
       baseZ: "20"
@@ -155,15 +155,15 @@ $( function() {
 
 // --------------------------
 
-  $( function() {
-    $( "#b1" )
-      .button( {
-        label: "Test Button"
-      } )
-      .click( function( event ) {
-        alert( "clicked button" );
-      } );
-  } );
+// $( function() {
+//   $( "#b1" )
+//     .button( {
+//       label: "Test Button"
+//     } )
+//     .click( function( event ) {
+//       alert( "clicked button" );
+//     } );
+// } );
 
   // toggle line drawing fade
 
