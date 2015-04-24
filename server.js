@@ -13,6 +13,26 @@ var mongoUriString =
   process.env.MONGOHQ_URL ||
   "mongodb://localhost/heroku_app31783365";
 
+//var sendgrid_username   = process.env.SENDGRID_USERNAME;
+//var sendgrid_password   = process.env.SENDGRID_PASSWORD;
+//var to                  = process.env.TO;
+//
+//var sendgrid   = require('sendgrid')(sendgrid_username, sendgrid_password);
+//
+//var sendgrid  = require('sendgrid')(api_user, api_key);
+//
+//var email     = new sendgrid.Email({
+//  to:       'sw_hansen@obliquevision.org',
+//  from:     'sw_hansen@obliquevision.org',
+//  subject:  'WEG2RT Invite',
+//  text:     'weg2rt.heroku.com'
+//});
+//
+//sendgrid.send(email, function(err, json) {
+//  if (err) { return console.error(err); }
+//  console.log(json);
+//});
+
 app.use( cors() );
 
 app.use( "/js", express.static( __dirname + "/easyrtc/js" ) );
@@ -63,7 +83,7 @@ var userSchema = {
   email: String
 };
 
-var User = mongoose.model( "users", userSchema);
+var Users = mongoose.model( "users", userSchema);
 
 // test for tests....
 app.use( function( req, res, next ) {
@@ -119,6 +139,7 @@ app.post( "/", function( req, res ) {
       res.send( "Incorrect password." );
     }
   }
+  console.log( "Posted Data foo from login:", req.body.foo );
 } );
 
 //Serve a static logout page
@@ -163,8 +184,8 @@ app.get( "/video", function( req, res ) {
 } );
 
 app.get( "/users", function( req, res ) {
-  var query = User.find({}).limit(10)
-  query.exec(function (err, docs) {
+  var query = Users.find({}).limit(10)
+  query.exec( function (err, docs) {
         if (err) {
             throw Error;
         }
@@ -175,7 +196,7 @@ app.get( "/users", function( req, res ) {
 app.get( "/users/:lastName", function( req, res ) {
 
         if (req.params.lastName) {
-        User.findOne({ lastName: req.params.lastName }, function (err, docs) {
+        Users.findOne({ lastName: req.params.lastName }, function (err, docs) {
             if (err) {
                 throw Error;
             }

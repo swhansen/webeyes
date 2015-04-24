@@ -20,7 +20,7 @@ var uiStructure = {
     draw: {
       mainButton: "#drawButton",
       functions: "#draw-ui-container",
-      buttons: [ "#fadeButton"],
+      buttons: [ "#fadeButton", "#b1" ],
       desc: "drawing layer",
       initState: "none",
       baseZ: "20"
@@ -155,15 +155,15 @@ $( function() {
 
 // --------------------------
 
-// $( function() {
-//   $( "#b1" )
-//     .button( {
-//       label: "Test Button"
-//     } )
-//     .click( function( event ) {
-//       alert( "clicked button" );
-//     } );
-// } );
+ $( function() {
+   $( "#b1" )
+     .button( {
+       label: "Test Button"
+     } )
+     .click( function( event ) {
+       alert( "clicked button" );
+     } );
+ } );
 
   // toggle line drawing fade
 
@@ -182,31 +182,30 @@ $( function() {
     } );
   } );
 
-// Email Invite Form
+// email invite dialog
 
-$( document ).ready( function() {
 $( function() {
-$( "#invite-dialog" ).dialog( {
-autoOpen: false
-} );
-$( "#invite-via-email" ).on( "click", function() {
-$( "#invite-dialog" ).dialog( "open" );
-} );
-} );
+    $( "#invite-dialog" ).dialog( {
+        autoOpen: false
+    } );
+    $( "#invite-via-email" ).click( function() {
+        $( "#invite-dialog" ).dialog( "open" );
+        console.log( "Clicked email invite" );
+      } ) ;
 
 // Validating Form Fields.....
-$( "#submit" ).click( function( e ) {
-var email = $( "#email" ).val();
-var name = $( "#name" ).val();
-var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  $( "#submit" ).click( function( e ) {
+  var email = $( "#email" ).val();
+  var name = $( "#name" ).val();
+  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 if ( email === "" || name === "" ) {
-alert( "Please fill all fields...!!!!!!" );
-e.preventDefault();
+  alert( "Please fill all fields...!!!!!!" );
+  e.preventDefault();
 } else if ( !( email ).match( emailReg ) ) {
-alert( "Invalid Email...!!!!!!" );
-e.preventDefault();
+  alert( "Invalid Email...!!!!!!" );
+  e.preventDefault();
 } else {
-alert( "Form Submitted Successfully......" );
+  alert( "Form Submitted Successfully......" );
 }
-} );
+} ) ;
 } );

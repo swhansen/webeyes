@@ -6,7 +6,7 @@
 ## Technologies
 
 * node.js
-* express - node  application framework (http://expressjs.com/)
+* express - node application framework (http://expressjs.com/)
 * Handlebars - semantic templating (http://handlebarsjs.com/)
 * webrtc.io - javascript (RTC) -  (https://github.com/webRTC/webRTC.io)
 * socket.io

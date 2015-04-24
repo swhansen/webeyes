@@ -16,6 +16,11 @@
             var pw = {
                 "pw": $("input").val()
             };
+
+            var foo = {
+                "foo": "foo"
+            };
+
             $.post("/", pw, function(response, status) {
                 console.log("PW:" + JSON.stringify(pw.pw) + "\nstatus:" + status);
                 if (response == "logged in") {
@@ -25,6 +30,11 @@
                 }
                 console.log(JSON.stringify(response));
             });
+            $.post("/", foo, function(response, status) {
+                console.log("foo in entry.handlebars:" , foo);
+            });
+
+
         });
     });
     </script>
