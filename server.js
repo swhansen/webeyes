@@ -13,11 +13,13 @@ var mongoUriString =
   process.env.MONGOHQ_URL ||
   "mongodb://localhost/heroku_app31783365";
 
-//var sendgrid_username   = process.env.SENDGRID_USERNAME;
-//var sendgrid_password   = process.env.SENDGRID_PASSWORD;
+var sendgridUsername   = process.env.SENDGRID_USERNAME || "app31783365@heroku.com";
+var sendgridPassword   = process.env.SENDGRID_PASSWORD || "v9tw2ddf";
+
 //var to                  = process.env.TO;
 //
-//var sendgrid   = require('sendgrid')(sendgrid_username, sendgrid_password);
+var sendgrid = require( "sendgrid" )( sendgridUsername, sendgridPassword );
+
 //
 //var sendgrid  = require('sendgrid')(api_user, api_key);
 //
@@ -83,7 +85,7 @@ var userSchema = {
   email: String
 };
 
-var Users = mongoose.model( "users", userSchema);
+var Users = mongoose.model( "users", userSchema );
 
 // test for tests....
 app.use( function( req, res, next ) {
@@ -139,7 +141,31 @@ app.post( "/", function( req, res ) {
       res.send( "Incorrect password." );
     }
   }
-  console.log( "Posted Data foo from login:", req.body.foo );
+
+// Session invite
+
+var fromAddress = "no-reply@weg2rt.com";
+var toAddress = req.body.email;
+var subject = "WEG2RT Session Invite";
+var inviteDate = new Date();
+var mailInviteDate = inviteDate.toString();
+var mailTextBody = req.body.name + "has invited you to a WEG2RT Session. Join at weg2rt.heroku.com" + req.body.msg;
+var mailHtmlBody = "<table style=\"border: solid 1px #000; background-color: #666; font-family: verdana, tahoma, sans-serif; color: #fff;\"><tr> <td><h2>" + req.body.name + " has invited you to a WEG2RT Session</h2>" + req.body.msg + "<p>Please join the session using Chrome, Firefox or Opera at: </p><h3><a href=\"https://weg2rt.herokuapp.com\" target=\"_blank\">WEG2RT</a></h3>" + mailInviteDate + "</td></tr></table>";
+
+try {
+    sendgrid.send( {
+        to:         toAddress,
+        from:       fromAddress,
+        subject:    subject,
+        text:       mailTextBody,
+        html:       mailHtmlBody
+    }, function( err, json ) {
+        if ( err ) { return console.error( err ); }
+        console.log( json );
+    } );
+} catch ( e ) {
+    console.log( e );
+}
 } );
 
 //Serve a static logout page
@@ -184,24 +210,24 @@ app.get( "/video", function( req, res ) {
 } );
 
 app.get( "/users", function( req, res ) {
-  var query = Users.find({}).limit(10)
-  query.exec( function (err, docs) {
-        if (err) {
+  var query = Users.find( {} ).limit( 10 );
+  query.exec( function( err, docs ) {
+        if ( err ) {
             throw Error;
         }
-        res.render('users', {users: docs});
-    });
+        res.render( "users", { users: docs } );
+    } );
 } );
 
 app.get( "/users/:lastName", function( req, res ) {
 
-        if (req.params.lastName) {
-        Users.findOne({ lastName: req.params.lastName }, function (err, docs) {
-            if (err) {
+        if ( req.params.lastName ) {
+        Users.findOne( { lastName: req.params.lastName }, function( err, docs ) {
+            if ( err ) {
                 throw Error;
             }
-            res.render('lastname', docs);
-        });
+            res.render( "lastname", docs );
+        } );
     }
 } );
 

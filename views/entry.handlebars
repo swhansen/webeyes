@@ -1,40 +1,31 @@
 <div class = "centerFlex">
 <p id="login-message">Start a New WEG2RT Session</p>
     <form id ="pwform" action="">
-        Password
+        <label>Password</label>
         <input type="password" name="password" value="password"/>
-        Room Name
+        <label>Room Name</label>
         <input type="text" name="room-name" value="room-name"/>
-        <input type="submit" value="Go Collaborate" id="entry-submit" />
+        <input type="submit" id="entry-submit" value="Go Collaborate"  />
     </form>
  </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $("#pwform").submit(function() {
-            console.log("password sumbitted");
+    $( document ).ready( function() {
+        $( "#pwform" ).submit( function() {
+            console.log( "password sumbitted" );
             var pw = {
-                "pw": $("input").val()
+                "pw": $( "input" ).val()
             };
 
-            var foo = {
-                "foo": "foo"
-            };
-
-            $.post("/", pw, function(response, status) {
-                console.log("PW:" + JSON.stringify(pw.pw) + "\nstatus:" + status);
-                if (response == "logged in") {
+            $.post( "/", pw, function( response, status ) {
+                console.log( "PW:" + JSON.stringify( pw.pw ) + "\nstatus:" + status );
+                if ( response == "logged in" ) {
                     location.reload();
                 } else {
-                    $("body").text(response);
+                    $( "body" ).text( response );
                 }
-                console.log(JSON.stringify(response));
+                console.log( JSON.stringify( response ) );
             });
-            $.post("/", foo, function(response, status) {
-                console.log("foo in entry.handlebars:" , foo);
-            });
-
-
-        });
-    });
-    </script>
+        } );
+    } );
+        </script>

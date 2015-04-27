@@ -194,18 +194,28 @@ $( function() {
       } ) ;
 
 // Validating Form Fields.....
-  $( "#submit" ).click( function( e ) {
-  var email = $( "#email" ).val();
-  var name = $( "#name" ).val();
-  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-if ( email === "" || name === "" ) {
-  alert( "Please fill all fields...!!!!!!" );
-  e.preventDefault();
-} else if ( !( email ).match( emailReg ) ) {
-  alert( "Invalid Email...!!!!!!" );
-  e.preventDefault();
-} else {
-  alert( "Form Submitted Successfully......" );
-}
-} ) ;
+    $( "#submit" ).click( function( e ) {
+      var email = $( "#email" ).val();
+      var name = $( "#name" ).val();
+      var msg = $( "#msg" ).val();
+      var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ( email === "" || name === "" ) {
+      alert( "Please fill all fields...!!!!!!" );
+      e.preventDefault();
+    } else if ( !( email ).match( emailReg ) ) {
+      alert( "Invalid Email...!!!!!!" );
+      e.preventDefault();
+    } else {
+      //alert( "Form Submitted Successfully......" );
+
+//submit the form data
+
+     var inviteData = { "name": name, "email": email, "msg": msg };
+     $.post( "/", inviteData, function( response, status ) {
+               console.log( "Mail in ui-manager.js:", inviteData );
+            } );
+
+     $( "#invite-dialog" ).dialog( "close" );
+    }
+  } ) ;
 } );
