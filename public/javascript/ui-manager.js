@@ -27,7 +27,6 @@ var uiStructure = {
     },
     p1: {
       mainButton: "#invite-via-email",
-      functions: "#draw-ui-container",
       buttons: [],
       desc: "tmp",
       initState: "none",
@@ -206,7 +205,6 @@ $( function() {
       alert( "Invalid Email...!!!!!!" );
       e.preventDefault();
     } else {
-      //alert( "Form Submitted Successfully......" );
 
 //submit the form data
 

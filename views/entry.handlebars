@@ -4,9 +4,17 @@
         <label>Password</label>
         <input type="password" name="password" value="password"/>
         <label>Room Name</label>
-        <input type="text" name="room-name" value="room-name"/>
+        <input type="text" name="room-name" value="room-name"/><br><br>
+
+        <div id="entryformbutton">
         <input type="submit" id="entry-submit" value="Go Collaborate"  />
+        </div>
     </form>
+ </div>
+ <div class= "about">
+ <p>
+ <a href="/about">What is this all about?</a>
+ </p>
  </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
@@ -25,7 +33,7 @@
                     $( "body" ).text( response );
                 }
                 console.log( JSON.stringify( response ) );
-            });
+            } );
         } );
     } );
         </script>

@@ -6,7 +6,10 @@ var rtc    = require( "easyrtc" );
 var mongoose   = require( "mongoose" );
 var cors       = require( "cors" );
 var clients    = [];
-var linecolors = [ "rgba(255, 0, 0, 1)", "rgba(255, 0, 225, 1)", "rgba(255, 115, 0, 1)", "rgba(0, 0, 225, 1)" ];
+var linecolors = [ "rgba(255, 0, 0, 1)",
+                   "rgba(255, 0, 225, 1)",
+                   "rgba(255, 115, 0, 1)",
+                    "rgba(0, 0, 225, 1)" ];
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
@@ -16,24 +19,7 @@ var mongoUriString =
 var sendgridUsername   = process.env.SENDGRID_USERNAME || "app31783365@heroku.com";
 var sendgridPassword   = process.env.SENDGRID_PASSWORD || "v9tw2ddf";
 
-//var to                  = process.env.TO;
-//
 var sendgrid = require( "sendgrid" )( sendgridUsername, sendgridPassword );
-
-//
-//var sendgrid  = require('sendgrid')(api_user, api_key);
-//
-//var email     = new sendgrid.Email({
-//  to:       'sw_hansen@obliquevision.org',
-//  from:     'sw_hansen@obliquevision.org',
-//  subject:  'WEG2RT Invite',
-//  text:     'weg2rt.heroku.com'
-//});
-//
-//sendgrid.send(email, function(err, json) {
-//  if (err) { return console.error(err); }
-//  console.log(json);
-//});
 
 app.use( cors() );
 
@@ -240,7 +226,7 @@ app.get( "/users/:lastName", function( req, res ) {
 //);
 
 app.get( "/about", function( req, res ) {
-   res.sendFile( __dirname + "/views/about.handlebars" );
+   res.render( "about" );
 } );
 
 // set port to 80 for heroku ???

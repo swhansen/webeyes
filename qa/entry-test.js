@@ -26,7 +26,7 @@ suite('Entry-Page Tests', function () {
 
     describe("when logging in", function () {
         var page = 'http://localhost:5000/';
-        it("should initiate a session page", function (done) {
+        it("should accept a valid password", function (done) {
             browser.visit(page).then(function () {
                 browser.fill("password", "weg2rt");
                 return browser.pressButton("#entry-submit");
@@ -38,3 +38,7 @@ suite('Entry-Page Tests', function () {
         });
     });
 });
+
+
+
+////"it should reject an invalid password"
