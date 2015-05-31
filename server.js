@@ -2,9 +2,11 @@ var bodyParser = require( "body-parser" );
 var express    = require( "express" );
 var app        = express();
 var io         = require( "socket.io" );
-var rtc    = require( "easyrtc" );
+var rtc        = require( "easyrtc" );
 var mongoose   = require( "mongoose" );
 var cors       = require( "cors" );
+var http      = require( 'http' );
+
 var clients    = [];
 var linecolors = [ "rgba(255, 0, 0, 1)",
                    "rgba(255, 0, 225, 1)",
@@ -24,18 +26,16 @@ var sendgrid = require( "sendgrid" )( sendgridUsername, sendgridPassword );
 app.use( cors() );
 
 app.use( "/js", express.static( __dirname + "/easyrtc/js" ) );
-
-app.use( express.static( __dirname + "/public" ) );
-
 app.use( "/images", express.static( __dirname + "/easyrtc/images" ) );
 app.use( "/css", express.static( __dirname + "/easyrtc/css" ) );
 
-app.use( "/css", express.static( __dirname + "/public/css" ) );
-app.use( "/img", express.static( __dirname + "/public/img" ) );
-app.use( "/javascript", express.static( __dirname + "/public/javascripts" ) );
-app.use( "/bower", express.static( __dirname + "/bower_components" ) );
+app.use( express.static( __dirname + "/public" ) );
 
-//app.use("/bower", express.static(__dirname + "/bower_components"));
+//app.use( "/css", express.static( __dirname + "/public/css" ) );
+//app.use( "/img", express.static( __dirname + "/public/img" ) );
+//app.use( "/javascript", express.static( __dirname + "/public/javascripts" ) );
+
+app.use( "/bower", express.static( __dirname + "/bower_components" ) );
 
 // Needed to parse form data(changed for express 4.x)
 app.use( bodyParser.urlencoded( {
@@ -51,12 +51,13 @@ var handlebars = require( "express-handlebars" )
     defaultLayout: "main"
   } );
 
-app.engine( "handlebars", handlebars.engine );
-app.set( "view engine", "handlebars" );
+app.engine( "hbs", handlebars.engine );
+app.set( "view engine", "hbs" );
 
 //
 // mongoose
 //
+
 mongoose.connect( mongoUriString, function( err, res ) {
   if ( err ) {
   console.log( "ERROR coinnecting to:" + mongoUriString + ". "  + err );
@@ -128,7 +129,7 @@ app.post( "/", function( req, res ) {
     }
   }
 
-// Session invite
+// Session invite using SendGrid
 
 var fromAddress = "no-reply@weg2rt.com";
 var toAddress = req.body.email;
@@ -195,6 +196,10 @@ app.get( "/video", function( req, res ) {
   }
 } );
 
+//
+// Experiment with the user DB on Mongo
+//
+
 app.get( "/users", function( req, res ) {
   var query = Users.find( {} ).limit( 10 );
   query.exec( function( err, docs ) {
@@ -217,6 +222,42 @@ app.get( "/users/:lastName", function( req, res ) {
     }
 } );
 
+//
+// Experiment with the obliquevision spatial data server (COSAAR)
+//
+// Centroid of house
+
+var cosaarQueryParms = {
+  lon: -71.609117,
+  lat: 42.622,
+  radius: 1000
+}
+
+var cosaarQueryString = '&lon=' + cosaarQueryParms.lon + '&radius=' + cosaarQueryParms.radius + '&lat=' + cosaarQueryParms.lat
+
+var cosaarOptions = {
+  host: 'obliquevision.org',
+  path: '/cosaar/web/porpoise.php?layerName=context1&userId=400785_berlinwall' + cosaarQueryString
+};
+
+app.get( "/cosaar", function( req, res ) {
+
+cb = function( response ) {
+  var str = '';
+  response.on( 'data', function( chunk ) {
+    str += chunk;
+  } );
+  response.on( 'end', function() {
+    var arObjectsCore = JSON.parse( str );
+
+   // var cosaarImg = JSON.stringify(arObjectsCore.hotspots[1].imageURL)
+
+  res.render( 'cosaar', arObjectsCore );
+  } );
+}
+http.request( cosaarOptions, cb ).end();
+ } );
+
 //app.get("/geo", function (req, res) {
 // if (loggedIn === true) {
 //   res.sendfile(__dirname + "/views/geo-ar.html");
@@ -229,7 +270,6 @@ app.get( "/about", function( req, res ) {
    res.render( "about" );
 } );
 
-// set port to 80 for heroku ???
 var port = process.env.PORT || 8080;
 
 // var webServer = app.listen(process.env.port || 8080); //for running localhost port
@@ -259,3 +299,4 @@ socketServer.sockets.on( "connection", function( client ) {
     client.broadcast.emit( "drawLine", data );
   } );
 } );
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> WEG2RT Room</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+        <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
+        <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower/jquery-ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="bower/lodash/lodash.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+        <script type="text/javascript" src="javascript/socket.js"></script>
+        <script type="text/javascript" src="javascript/multiparty.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
+        <link rel="stylesheet" type="text/css" href="css/room.css" />
+        <link rel="stylesheet" type="text/css" href="bower/jquery-ui/themes/smoothness/jquery-ui.min.css" />
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+    </head>
+    <body onload="appInit()">
+        <!--<div id="fullpage"  class="boxCommon" style="background-image:url(images/irongrip.png)"> -->
+
+        <div id="fullpage"  class="boxCommon" style="background-color: #607D8B">
+
+            <p id="geo-data"></p>
+
+            <video id="box0" class="transit boxCommon thumbCommon easyRTCMirror" muted="muted" volume="0" ></video>
+            <video id="box1" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
+            <video id="box2" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
+            <video id="box3" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
+
+            <div id="textentryBox" onsubmit="sendText()" style="display:none" >
+                <input type="text" id="textentryField"  class="transit boxcommon" /><br>
+                <button id="textentrySubmit" style="float:right;margin-right:1em" onclick="sendText()">Send</button>
+                <button id="textentryCancel" style="float:left;margin-left:1em" onclick="cancelText()">Cancel</button>
+            </div>
+            <img id="killButton" class="transit boxCommon" onclick="killActiveBox()" src="images/button_close.png" style="display:none;z-index:3" alt="close button" />
+            <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png" style="display:none;z-index:3" alt="mute button" />
+            <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png" style="z-index:3;display:none" alt="text button" />
+        </div>
+
+        <div id="canvaspane"  class="canvasStyle" style="visibility:hidden">
+            <canvas id="canvas0" ></canvas>
+        </div>
+
+        <div id="utilcanvaspane"  class="canvasStyle" style="visibility:hidden">
+            <canvas id="util-canvas" ></canvas>
+        </div>
+
+        <div id="layer-menu-button" class="ui-zindex">
+        <img src="img/menu48.png" height="50" width="50" alt="menubutton" />
+        </div>
+
+        <!--<select id="select-video"> <option>Choose a Camera</option> </select> -->
+
+        <div id="main-ui-container" class="ui-zindex">
+            <img id="invite-via-email" src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
+            <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png"   height="55" width="55" style="z-index:3;display:none" alt="text button" />
+            <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png"  height="55" width="55" style="display:none;z-index:3" alt="mute button" />
+           <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
+            <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
+            <img id="utilButton"  onclick="initUtil()" src="img/util.png" height="64" width="64" style=" display:none" alt="utility button" /><br>
+        </div>
+
+        <div id="draw-ui-container" class="ui-zindex">
+            <img id="fadeButton" class="fade-swap" src="img/erase-on.png" height="64" width="64" style="display:none" alt="Fade button" /><br>
+            <img id="b1"  src="img/br_status_pass.png" height="64" width="64" style="display:none" alt="b1 button" /><br>
+        </div>
+
+        <div id="utility-container" class="ui-zindex">
+            <img id="doc-button-1" class="doc-pub-1" src="img/document-b.png" height="64" width="64" style="display:none" alt="util button" /><br>
+
+            <img id="doc-button-2" class="doc-pub-2" src="img/document-y.png" height="64" width="64" style="display:none" alt="util button" /><br>
+
+            <img id="bullseye"  class="bullseye-swap" src="img/bullseye.png" height="64" width="64" style="display:none" alt="bullseyebutton" /><br>
+        </div>
+
+        <div id="invite-dialog" title="WEG2RT Invite">
+            <form action="" method="post">
+            <label>Your Name:</label>
+            <input id="name" name="name" type="text">
+            <label>Invite email:</label>
+            <input id="email" name="email" type="text">
+            <label>Note:</label>
+            <input id="msg" name="mesage" type="text">
+            <input id="submit" type="button" value="Invite Collaborator">
+            </form>
+        </div>
+
+       <img id="doc-1" src="img/3D.png" alt="test-document" width="220" height="277" style="visibility:hidden">
+       <img id="doc-2" src="img/G-1.png" alt="test-document" width="220" height="277" style="visibility:hidden">
+
+         <script type="text/javascript"  src="javascript/draw.js" ></script>
+         <script type="text/javascript"  src="javascript/util.js" ></script>
+         <script type="text/javascript"  src="javascript/ui-manager.js" ></script>
+         <script type="text/javascript"  src="javascript/video-select.js" ></script>
+
+    </body>
+</html>

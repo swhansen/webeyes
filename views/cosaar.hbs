@@ -1,0 +1,35 @@
+<h2> Returns from the COSAAR Spatial AR Database </h2>
+<table>
+    <thead>
+    <tr>
+        <th>Title<th>
+        <th>lat</th>
+        <th>lon</th>
+        <th>distance</th>
+        <th>imageURL</th>
+        <th>Link</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#if hotspots}}
+        {{#each hotspots}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{lat}}</td>
+                <td>{{lon}}</td>
+                <td>{{distance}}</td>
+                <td><img src = {{imageURL}} /></td>
+                <td><a href= "{{imageURL}}"> Image Link</a></td>
+            </tr>
+        {{/each}}
+    {{else}}
+        <tr>
+            <td colspan="4" class="text-center">No data to display.</td>
+        </tr>
+    {{/if}}
+    </tbody>
+</table>
+
+
+
+
