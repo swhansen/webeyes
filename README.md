@@ -46,9 +46,9 @@ programming in style.
 
 * [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
-* [Style](http://github.com/thoughtbot/guides/blob/master/style)
-* [Javascript Style jQuery](https://contribute.jquery.org/style-guide/js/)
-* Javascript style is checked with [jscs](http://jscs.info/) using the [jquery](https://contribute.jquery.org/style-guide/js/) syle syntax
+* [Thoughtbot Style](http://github.com/thoughtbot/guides/blob/master/style)
+* [Airbnb Style Guide](https://github.com/airbnb/javascript)
+* Javascript style is checked with [jscs](http://jscs.info/) using the [airbnb](https://github.com/airbnb/javascript/blob/master/linters/SublimeLinter/SublimeLinter.sublime-settings) syle syntax
 * [jshint](http://jshint.com/about/)
 * git [precommit-hook](https://www.npmjs.com/package/precommit-hook) is used.
 
