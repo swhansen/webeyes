@@ -145,7 +145,8 @@ var mailTextBody = req.body.name +
   'has invited you to a WEG2RT Session. Join at weg2rt.heroku.com' +
   req.body.msg;
 
-var mailHtmlBody = tableStyle + req.body.name + ' has invited you to a WEG2RT Session</h2>' +
+var mailHtmlBody = tableStyle + req.body.name +
+ ' has invited you to a WEG2RT Session</h2>' +
   req.body.msg + pleaseJoin + mailInviteDate + '</td></tr></table>';
 
 try {
@@ -222,7 +223,8 @@ app.get( '/users', function( req, res ) {
 app.get( '/users/:lastName', function( req, res ) {
 
         if ( req.params.lastName ) {
-        Users.findOne( { lastName: req.params.lastName }, function( err, docs ) {
+        Users.findOne( { lastName: req.params.lastName },
+         function( err, docs ) {
             if ( err ) {
                 throw Error;
             }
@@ -247,7 +249,8 @@ var cosaarQueryString = '&lon=' + cosaarQueryParms.lon + '&radius=' +
 
 var cosaarOptions = {
   host: 'obliquevision.org',
-  path: '/cosaar/web/porpoise.php?layerName=context1&userId=400785_berlinwall' + cosaarQueryString
+  path: '/cosaar/web/porpoise.php?layerName=context1&userId=400785_berlinwall' +
+   cosaarQueryString
 };
 
 app.get( '/cosaar', function( req, res ) {
@@ -268,26 +271,20 @@ cb = function( response ) {
 http.request( cosaarOptions, cb ).end();
  } );
 
-//app.get('/geo', function (req, res) {
-// if (loggedIn === true) {
-//   res.sendfile(__dirname + '/views/geo-ar.html');
-// } else {
-//   res.send('Please try later.');
-// }
-//);
-
 app.get( '/about', function( req, res ) {
    res.render( 'about' );
 } );
 
 var port = process.env.PORT || 8080;
 
-// var webServer = app.listen(process.env.port || 8080); //for running localhost port
+// var webServer = app.listen(process.env.port || 8080);
 var webServer = app.listen( port );
 console.log( 'Listening on port ' + port );
 
 // Start Socket.io so it attaches itself to Express server
+/*jshint -W079 */
 var socketServer = io.listen( webServer );
+/*jshint +W079 */
 
 // Collabortive  drawing stuff
 socketServer.sockets.on( 'connection', function( client ) {
