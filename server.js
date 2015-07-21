@@ -60,7 +60,7 @@ app.set( 'view engine', 'hbs' );
 
 mongoose.connect( mongoUriString, function( err, res ) {
   if ( err ) {
-  console.log( 'ERROR coinnecting to:' + mongoUriString + '. '  + err );
+  console.log( 'ERROR connecting to:' + mongoUriString + '. '  + err );
   } else {
   console.log ( 'Succeeded connecting to: ' + mongoUriString );
   }
@@ -103,7 +103,7 @@ app.use( function( req, res, next ) {
 app.get( '/', function( req, res ) {
   console.log( 'Login attempt' );
   if ( loggedIn === true ) {
-    res.sendFile( __dirname + '/views/multiparty.html' );
+    res.sendFile( __dirname + '/views/static-multiparty.html' );
   } else {
     res.render( 'entry', {
       pageTestScript: '/qa/tests-entry.js'
@@ -178,7 +178,7 @@ app.get( '/logout', function( req, res ) {
 
 //Check the password to prevent unauthoried logouts
 app.post( '/logout', function( req, res ) {
-  console.log( 'Posted data:' + JSON.stringify( req.body ) );
+  //console.log( 'Posted data:' + JSON.stringify( req.body ) );
   if ( req.body.pw === password ) {
     if ( loggedIn === true ) {
       loggedIn = false;
@@ -200,7 +200,7 @@ app.post( '/logout', function( req, res ) {
 //Initiate a video call
 app.get( '/video', function( req, res ) {
   if ( loggedIn === true ) {
-    res.sendfile( __dirname + '/views/multiparty.html' );
+    res.sendfile( __dirname + '/views/static-multiparty.html' );
   } else {
     res.send( 'Please try later.' );
   }
@@ -292,6 +292,12 @@ socketServer.sockets.on( 'connection', function( client ) {
   client.on( 'utility', function( data, session ) {
     client.emit( 'utility', data );
     client.broadcast.emit( 'utility', data );
+  } );
+
+
+  client.on( 'video', function( data, session ) {
+    client.emit( 'video', data );
+    client.broadcast.emit( 'video', data );
   } );
 
   client.on( 'drawLine', function( data, session ) {

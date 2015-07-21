@@ -5,7 +5,7 @@
 
 //  mainButton: button in main menu
 //  functions: container for the layer function button list (re-name??)
-//  buttons: buitton list in the layer menu
+//  buttons: button list in the layer menu
 //
 var uiStructure = {
   structure: {
@@ -22,6 +22,13 @@ var uiStructure = {
       functions: '#draw-ui-container',
       buttons: [ '#fadeButton', '#b1' ],
       desc: 'drawing layer',
+      initState: 'none',
+      baseZ: '20'
+    },
+    video: {
+      mainButton: '#videoButton',
+      buttons: [ ],
+      desc: 'toggle video broadcast',
       initState: 'none',
       baseZ: '20'
     },
@@ -50,6 +57,10 @@ var uiStructure = {
     }
   }
 };
+
+
+var videoData = {};
+var thisBox;
 
 // Experiment with sensor data
 
@@ -175,11 +186,50 @@ $( function() {
       } else {
         this.src = this.src.replace( 'img/erase-off', 'img/erase-on' );
         fadeSwitch = true;
-        toggleFade();
+        toggleFade();util
       }
       $( this ).toggleClass( 'on' );
     } );
   } );
+
+// Video muting
+
+$( function() {
+  $( '.video-swap' ).click( function() {
+    thisBox =1;
+    if ( $( this ).attr( 'class' ) === 'video-swap' ) {
+      this.src = this.src.replace( 'img/video-on', 'img/video-off' );
+        document.getElementById(getIdOfBox(thisBox)).style.visibility = "hidden";
+        document.getElementById('avatar1').style.visibility = "visible";
+       // console.log('thisBox in ui-manager:', thisBox);
+        videoData.state = "hidden";
+        videoData.box = thisBox;
+        emitVideo( videoData );
+      } else {
+        this.src = this.src.replace( 'img/video-off', 'img/video-on' );
+        document.getElementById(getIdOfBox(thisBox)).style.visibility = "visible";
+        document.getElementById('avatar1').style.visibility = "hidden";
+         videoData.state = "visible";
+         videoData.box = 1;
+         emitVideo( videoData );
+      }
+      $( this ).toggleClass( 'on' );
+    } );
+  } );
+
+function emitVideo(videoData) {
+  var sessionId = socketServer.sessionid;
+  socketServer.emit('video', videoData, sessionId);
+}
+
+socketServer.on('video', function(data) {
+  document.getElementById(getIdOfBox(data.box)).style.visibility = data.state;
+  if (data.state === 'visible' ) {
+    document.getElementById('avatar1').style.visibility = "hidden";
+  } else {
+    document.getElementById('avatar1').style.visibility = "visible";
+  }
+});
 
 // email invite dialog
 

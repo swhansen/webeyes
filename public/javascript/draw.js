@@ -1,5 +1,5 @@
-var canvas     = document.getElementById( "canvas0" );
-var context    = canvas.getContext( "2d" );
+var canvas     = document.getElementById( 'canvas0' );
+var context    = canvas.getContext( '2d' );
 var data       = {};
 var points     = [];
 var line       = [];
@@ -10,8 +10,8 @@ var fadeSwitch = true;
 
 function baseLineStyle() {
   context.lineWidth = 2;
-  context.lineJoin = "round";
-  context.lineCap = "round";
+  context.lineJoin = 'round';
+  context.lineCap = 'round';
   context.shadowBlur = 2;
 }
 
@@ -28,27 +28,27 @@ function initDraw() {
   line.length = 0;
   lineArray.length = 0;
 
-  canvas.addEventListener( "mousedown", evCanvas, false );
-  canvas.addEventListener( "mousemove", evCanvas, false );
-  canvas.addEventListener( "mouseup", evCanvas, false );
+  canvas.addEventListener( 'mousedown', evCanvas, false );
+  canvas.addEventListener( 'mousemove', evCanvas, false );
+  canvas.addEventListener( 'mouseup', evCanvas, false );
 
-  canvas.addEventListener( "touchstart", touchStartHandler, false );
-  canvas.addEventListener( "touchmove", touchMoveHandler, false );
-  canvas.addEventListener( "touchend", touchEndHandler, false );
+  canvas.addEventListener( 'touchstart', touchStartHandler, false );
+  canvas.addEventListener( 'touchmove', touchMoveHandler, false );
+  canvas.addEventListener( 'touchend', touchEndHandler, false );
 
-  document.getElementById( "canvaspane" ).className = "canvascenter";
+  document.getElementById( 'canvaspane' ).className = 'canvascenter';
 
-  canvas.style.width = "100%";
-  canvas.style.height = "100%";
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 
-  var box0Height = document.getElementById( "box0" ).offsetHeight;
-  var box0Width = document.getElementById( "box0" ).offsetWidth;
+  var box0Height = document.getElementById( 'box0' ).offsetHeight;
+  var box0Width = document.getElementById( 'box0' ).offsetWidth;
 
-  document.getElementById( "canvaspane" ).style.visibility = "visible";
-  document.getElementById( "canvaspane" ).offsetHeight = box0Height;
-  document.getElementById( "canvaspane" ).offsetWidth = box0Width;
+  document.getElementById( 'canvaspane' ).style.visibility = 'visible';
+  document.getElementById( 'canvaspane' ).offsetHeight = box0Height;
+  document.getElementById( 'canvaspane' ).offsetWidth = box0Width;
 
   baseLineStyle();
 
@@ -58,14 +58,15 @@ function initDraw() {
 
   // list the z-factors
 
-  $( "*" ).filter( function() {
-    return $( this ).css( "z-index" ) >= 10;
+  $( '*' ).filter( function() {
+    return $( this ).css( 'z-index' ) >= 10;
   } ).each( function() {
-    console.log( "z-index:", $( this ), "is:", $( this ).css( "z-index" ) );
+    console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
   } );
 }
 
 // The general-purpose event handler for mouse events.
+
 
 function evCanvas( ev ) {
 
@@ -84,8 +85,8 @@ function evCanvas( ev ) {
   var func = tool[ev.type];
   if ( func ) {
 
-    //console.log("at func:", ev._x, ev._y);
-    //console.log("at func:", func);
+    //console.log('at func:', ev._x, ev._y);
+    //console.log('at func:', func);
     func( ev );
   }
 }
@@ -95,8 +96,8 @@ function evCanvas( ev ) {
 function touchStartHandler( e ) {
   e.preventDefault();
     tool.started = true;
-    data.pointerState = "pointerDown";
-    console.log( "touchstart:", data );
+    data.pointerState = 'pointerDown';
+    console.log( 'touchstart:', data );
     emitDraw( data );
   }
 
@@ -107,7 +108,7 @@ function touchMoveHandler( e ) {
     var canvasLocation = canvas.getBoundingClientRect();
     data.x = Math.round( touches.clientX - canvasLocation.left );
     data.y = Math.round( touches.clientY - canvasLocation.top );
-    data.pointerState = "pointerMove";
+    data.pointerState = 'pointerMove';
     emitDraw( data );
   }
 }
@@ -115,15 +116,15 @@ function touchMoveHandler( e ) {
   function touchEndHandler( e ) {
     e.preventDefault();
     if ( tool.started ) {
-      data.pointerState = "pointerUp";
+      data.pointerState = 'pointerUp';
 
-     // console.log("touchend:", data)
+     // console.log('touchend:', data)
       emitDraw( data );
       tool.started = false;
     }
   }
 
-// grab the mouse state and "emit"  to the server
+// grab the mouse state and 'emit' to the server
 
 function toolPencil() {
   var tool = this;
@@ -134,7 +135,7 @@ function toolPencil() {
     //context.beginPath();
     // context.moveTo(ev._x, ev._y);
     tool.started = true;
-    data.pointerState = "pointerDown";
+    data.pointerState = 'pointerDown';
     emitDraw( data );
   };
 
@@ -142,7 +143,7 @@ function toolPencil() {
     if ( tool.started ) {
       data.x = Math.round( ev._x );
       data.y = Math.round( ev._y );
-      data.pointerState = "pointerMove";
+      data.pointerState = 'pointerMove';
       emitDraw( data );
     }
   };
@@ -151,7 +152,7 @@ function toolPencil() {
     if ( tool.started ) {
 
       //  tool.mousemove(ev);
-      data.pointerState = "pointerUp";
+      data.pointerState = 'pointerUp';
       emitDraw( data );
       tool.started = false;
     }
@@ -165,13 +166,13 @@ function toolPencil() {
 function receiveLineFromClient( data ) {
 
   switch ( data.pointerState ) {
-    case "pointerDown":
+    case 'pointerDown':
       context.beginPath();
       context.moveTo( data.x, data.y );
       context.beginPath();
       points.length = 0;
       break;
-    case "pointerMove":
+    case 'pointerMove':
       context.strokeStyle = data.color;
       context.shadowColor = data.color;
       context.lineTo( data.x, data.y );
@@ -191,7 +192,7 @@ function receiveLineFromClient( data ) {
         color: data.color
       } );
       break;
-    case "pointerUp":
+    case 'pointerUp':
       context.lineTo( data.x, data.y );
       context.stroke();
 
@@ -209,8 +210,8 @@ function receiveLineFromClient( data ) {
 
 function drawCanvaslineArray() {
 
-  if ( fade === false ) {
-    fade = true;
+  if ( data === false ) {
+    data = true;
     toggleFade();
   }
   context.clearRect( 0, 0, canvas.width, canvas.height );
@@ -227,14 +228,14 @@ function drawCanvaslineArray() {
       }
       context.lineTo( lineArray[i].line[j].x, lineArray[i].line[j].y );
 
-      //console.log("point:",  j, points[j].x, points[j].y);
+      //console.log('point:',  j, points[j].x, points[j].y);
       baseLineStyle();
       context.stroke();
     }
 
     if ( fadeSwitch === true ) {
 
-      // create the fade "comet tail, dripping water, etc."
+      // create the fade 'comet tail, dripping water, etc.'
 
       //  var tail = [];
       //  tail = lineArray[i].line.slice(0, 5);
@@ -248,7 +249,7 @@ function drawCanvaslineArray() {
 
       //  for (var k = 0; k < l; k++) {
       //
-      // console.log("tail", tail);
+      // console.log('tail', tail);
       //
       //for (var p = 0; p < tail.length; p++) {
       //
@@ -266,7 +267,7 @@ function drawCanvaslineArray() {
       //      //
       //      //tail[p].color = 'rgba(' + r + ', ' + g + ', ' + b +' , ' + alpha + ' )';
       //
-      //      //a = (bar) + ")";
+      //      //a = (bar) + ')';
       //      //tail[p].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
 
       //      //context.strokeStyle = tail[p].color;
@@ -275,7 +276,7 @@ function drawCanvaslineArray() {
       //      //  context.moveTo(tail[p].x, tail[p].y);
       //      //}
       //      //context.lineTo(tail[p].x, tail[p].y);
-      //      //console.log("point:",  j, points[j].x, points[j].y);
+      //      //console.log('point:',  j, points[j].x, points[j].y);
       //      baseLineStyle();
       //      // context.shadowColor = lineArray[i].color;
       //
@@ -374,9 +375,9 @@ function toggleFade() {
 
 function emitDraw( data ) {
   var sessionId = socketServer.sessionid;
-  socketServer.emit( "drawLine", data, sessionId );
+  socketServer.emit( 'drawLine', data, sessionId );
 }
 
-socketServer.on( "drawLine", function( data ) {
+socketServer.on( 'drawLine', function( data ) {
   receiveLineFromClient( data );
 } );

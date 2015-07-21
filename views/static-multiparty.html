@@ -11,7 +11,7 @@
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
         <script type="text/javascript" src="javascript/socket.js"></script>
-        <script type="text/javascript" src="javascript/multiparty.js"></script>
+        <script type="text/javascript" src="javascript/static-multiparty.js"></script>
 
         <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
         <link rel="stylesheet" type="text/css" href="css/room.css" />
@@ -32,14 +32,19 @@
             <video id="box2" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
             <video id="box3" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
 
+            <img id="avatar1" class="a1" style="visibility:hidden" src="img/profile-1.png"</img>
+
+
+
+
             <div id="textentryBox" onsubmit="sendText()" style="display:none" >
                 <input type="text" id="textentryField"  class="transit boxcommon" /><br>
                 <button id="textentrySubmit" style="float:right;margin-right:1em" onclick="sendText()">Send</button>
                 <button id="textentryCancel" style="float:left;margin-left:1em" onclick="cancelText()">Cancel</button>
             </div>
             <img id="killButton" class="transit boxCommon" onclick="killActiveBox()" src="images/button_close.png" style="display:none;z-index:3" alt="close button" />
-            <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png" style="display:none;z-index:3" alt="mute button" />
-            <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png" style="z-index:3;display:none" alt="text button" />
+
+
         </div>
 
         <div id="canvaspane"  class="canvasStyle" style="visibility:hidden">
@@ -57,12 +62,13 @@
         <!--<select id="select-video"> <option>Choose a Camera</option> </select> -->
 
         <div id="main-ui-container" class="ui-zindex">
+            <img id="muteButton" onclick ="muteActiveBox()" src="img/button_mute.png" height="64" width="64" style="display:none" alt="mute button" /><br>
             <img id="invite-via-email" src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
-            <img id="textEntryButton" class="transit boxCommon" onclick ="showTextEntry()" src="images/textEntry.png"   height="55" width="55" style="z-index:3;display:none" alt="text button" />
-            <img id="muteButton" class="transit boxCommon" onclick ="muteActiveBox()" src="images/button_mute.png"  height="55" width="55" style="display:none;z-index:3" alt="mute button" />
+            <img id="textEntryButton" onclick ="showTextEntry()" src="img/textEntry.png" height="64" width="64" style="display:none" alt="text button" /><br>
            <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
             <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
             <img id="utilButton"  onclick="initUtil()" src="img/util.png" height="64" width="64" style=" display:none" alt="utility button" /><br>
+            <img id="videoButton" class='video-swap' src="img/video-on.png" height="64" width="64" style=" display:none" alt="video button" /><br>
         </div>
 
         <div id="draw-ui-container" class="ui-zindex">
@@ -92,6 +98,8 @@
 
        <img id="doc-1" src="img/3D.png" alt="test-document" width="220" height="277" style="visibility:hidden">
        <img id="doc-2" src="img/G-1.png" alt="test-document" width="220" height="277" style="visibility:hidden">
+
+
 
          <script type="text/javascript"  src="javascript/draw.js" ></script>
          <script type="text/javascript"  src="javascript/util.js" ></script>
