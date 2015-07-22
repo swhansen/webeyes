@@ -471,7 +471,7 @@ function updateMuteImage(toggle) {
             isMuted = !isMuted;
             videoObject.muted = isMuted;
         }
-        muteButton.src = isMuted ? "images/button_unmute.png" : "images/button_mute.png";
+        muteButton.src = isMuted ? "img/button_unmute.png" : "img/button_mute.png";
     } else {
         muteButton.style.display = "none";
     }
@@ -720,7 +720,6 @@ function appInit() {
           rtcid: easyrtcid,
           boxno: slot
         });
-
 
 // Thumbs for all connections other than initiator
 //  -- change to == 1 for normal mode

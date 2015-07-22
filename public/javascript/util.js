@@ -58,43 +58,6 @@ function drawBullsEye() {
   ctx.lineTo(500, 400 + innerRadius);
   ctx.stroke();
 }
-
-// Still from video
-
-//navigator.getMedia = ( navigator.getUserMedia ||
-//                         navigator.webkitGetUserMedia ||
-//                         navigator.mozGetUserMedia ||
-//                         navigator.msGetUserMedia);
-//
-//navigator.getMedia(
-//    {
-//      video: true,
-//      audio: false
-//    },
-//    function(stream) {
-//      if (navigator.mozGetUserMedia) {
-//        video.mozSrcObject = stream;
-//      } else {
-//        var vendorURL = window.URL || window.webkitURL;
-//        video.src = vendorURL.createObjectURL(stream);
-//      }
-//      video.play();
-//    },
-//    function(err) {
-//      console.log("An error occured! " + err);
-//    }
-//  );
-//
-//function takepicture() {
-//    canvas.width = width;
-//    canvas.height = height;
-//    canvas.getContext('2d').drawImage(box0, 0, 0, width, height);
-//    var data = canvas.toDataURL('image/png');
-//    photo.setAttribute('src', data);
-//  }
-
-
-
 //
 //  Emit the experimental utility functions
 //

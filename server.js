@@ -186,7 +186,7 @@ app.post( '/logout', function( req, res ) {
       console.log( 'logged out' );
 
       //Consider killing all active sessions here
-      rtc.setOption( 'apiEnable', 'false' );
+      easyrtc.setOption( 'apiEnable', 'false' );
     } else {
       res.send( 'You were already logged out' );
       console.log( 'Attempt to logout when not logged in' );
