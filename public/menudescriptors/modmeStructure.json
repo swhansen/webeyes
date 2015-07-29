@@ -1,0 +1,71 @@
+{
+    "structure": {
+        "util": {
+            "mainButton": "#utilButton",
+            "sideBar": "#utility-container",
+            "buttons": [
+                "#doc-button-1",
+                "#doc-button-2",
+                "#bullseye"
+            ],
+            "desc": "utility layer",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "draw": {
+            "mainButton": "#drawButton",
+            "sideBar": "#draw-ui-container",
+            "buttons": [
+                "#fadeButton",
+                "#b1"
+            ],
+            "desc": "drawing layer",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "video": {
+            "mainButton": "#videoButton",
+            "buttons": [],
+            "desc": "toggle video broadcast",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "emailInvite": {
+            "mainButton": "#inviteViaEmail",
+            "buttons": [],
+            "desc": "tmp",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "text": {
+            "mainButton": "#textEntryButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "IM Text",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "p3": {
+            "mainButton": "#muteButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "Mute Audio",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "codeInput": {
+            "mainButton": "#codeDialogButton",
+            "buttons": [],
+            "desc": "special code input",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "modme": {
+            "mainButton": "#modmeButton",
+            "buttons": [],
+            "desc": "moderator",
+            "initState": "none",
+            "baseZ": "20"
+        }
+    }
+  }

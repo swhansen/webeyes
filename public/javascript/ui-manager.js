@@ -15,70 +15,12 @@
 var uiStructure = {};
 var mainCollapsed = true;
 
-var coreStructure = {
-    "structure": {
-        "util": {
-            "mainButton": "#utilButton",
-            "sideBar": "#utility-container",
-            "buttons": [
-                "#doc-button-1",
-                "#doc-button-2",
-                "#bullseye"
-            ],
-            "desc": "utility layer",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "draw": {
-            "mainButton": "#drawButton",
-            "sideBar": "#draw-ui-container",
-            "buttons": [
-                "#fadeButton",
-                "#b1"
-            ],
-            "desc": "drawing layer",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "video": {
-            "mainButton": "#videoButton",
-            "buttons": [],
-            "desc": "toggle video broadcast",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "emailInvite": {
-            "mainButton": "#inviteViaEmail",
-            "buttons": [],
-            "desc": "tmp",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "text": {
-            "mainButton": "#textEntryButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "IM Text",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "p3": {
-            "mainButton": "#muteButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "Mute Audio",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "codeInput": {
-            "mainButton": "#codeDialogButton",
-            "buttons": [],
-            "desc": "special code input",
-            "initState": "none",
-            "baseZ": "20"
-        }
-    }
-}
+$.getJSON( '../menudescriptors/coreStructure.json', function( data ){
+  uiStructure = data;
+  console.log(data);
+} );
+
+
 
 var modMeStructure = {
     "structure": {
@@ -227,7 +169,7 @@ var modMeStructure = {
 var videoData = {};
 var thisBox;
 
-uiStructure = coreStructure;
+//uiStructure = coreStructure;
 
 // Experiment with sensor data
 
@@ -279,21 +221,14 @@ $( document ).ready( function() {
   } );
 } );
 
-//
-//   Utility layer UI
-//
+
 function utilUI() {
 buildSideMenu( 'util' );
 }
 
-//
-//   Drawing  Layer UI
-//
 function drawUI() {
 buildSideMenu( 'draw' );
 }
-
-  //toggle switch to render document
 
   $( function() {
     $( '.doc-pub-1' ).click( function() {
