@@ -1,66 +1,233 @@
 //
 //  Declare the high level UI Structure
+//    - Must be valid JSON
 //    - Main function buttons (left menu)
 //    - Function detail buttons (right menu)
 
 //  mainButton: button in main menu
-//  functions: container for the layer function button list (re-name??)
+//  sideBar: container for the layer function button list (re-name??)
 //  buttons: button list in the layer menu
 //
-var uiStructure = {
-  structure: {
-    util: {
-      mainButton: '#utilButton',
-      functions: '#utility-container',
-      buttons: [ '#doc-button-1', '#doc-button-2', '#bullseye' ],
-      desc: 'utility layer',
-      initState: 'none',
-      baseZ: '20'
-    },
-    draw: {
-      mainButton: '#drawButton',
-      functions: '#draw-ui-container',
-      buttons: [ '#fadeButton', '#b1' ],
-      desc: 'drawing layer',
-      initState: 'none',
-      baseZ: '20'
-    },
-    video: {
-      mainButton: '#videoButton',
-      buttons: [ ],
-      desc: 'toggle video broadcast',
-      initState: 'none',
-      baseZ: '20'
-    },
-    p1: {
-      mainButton: '#invite-via-email',
-      buttons: [],
-      desc: 'tmp',
-      initState: 'none',
-      baseZ: '20'
-    },
-    p2: {
-      mainButton: '#textEntryButton',
-      functions: '',
-      buttons: [],
-      desc: 'tmp',
-      initState: 'none',
-      baseZ: '20'
-    },
-    p3: {
-      mainButton: '#muteButton',
-      functions: '',
-      buttons: [],
-      desc: 'tmp',
-      initState: 'none',
-      baseZ: '20'
+//  note: originally concieved of as only for layer mgmt
+//    - e.g., one R menu for evert layer type.....should rethink.
+//
+
+var uiStructure = {};
+var mainCollapsed = true;
+
+var coreStructure = {
+    "structure": {
+        "util": {
+            "mainButton": "#utilButton",
+            "sideBar": "#utility-container",
+            "buttons": [
+                "#doc-button-1",
+                "#doc-button-2",
+                "#bullseye"
+            ],
+            "desc": "utility layer",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "draw": {
+            "mainButton": "#drawButton",
+            "sideBar": "#draw-ui-container",
+            "buttons": [
+                "#fadeButton",
+                "#b1"
+            ],
+            "desc": "drawing layer",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "video": {
+            "mainButton": "#videoButton",
+            "buttons": [],
+            "desc": "toggle video broadcast",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "emailInvite": {
+            "mainButton": "#inviteViaEmail",
+            "buttons": [],
+            "desc": "tmp",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "text": {
+            "mainButton": "#textEntryButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "IM Text",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "p3": {
+            "mainButton": "#muteButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "Mute Audio",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "codeInput": {
+            "mainButton": "#codeDialogButton",
+            "buttons": [],
+            "desc": "special code input",
+            "initState": "none",
+            "baseZ": "20"
+        }
+    }
+}
+
+var modMeStructure = {
+    "structure": {
+        "util": {
+            "mainButton": "#utilButton",
+            "sideBar": "#utility-container",
+            "buttons": [
+                "#doc-button-1",
+                "#doc-button-2",
+                "#bullseye"
+            ],
+            "desc": "utility layer",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "draw": {
+            "mainButton": "#drawButton",
+            "sideBar": "#draw-ui-container",
+            "buttons": [
+                "#fadeButton",
+                "#b1"
+            ],
+            "desc": "drawing layer",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "video": {
+            "mainButton": "#videoButton",
+            "buttons": [],
+            "desc": "toggle video broadcast",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "emailInvite": {
+            "mainButton": "#inviteViaEmail",
+            "buttons": [],
+            "desc": "tmp",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "text": {
+            "mainButton": "#textEntryButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "IM Text",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "p3": {
+            "mainButton": "#muteButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "Mute Audio",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "codeInput": {
+            "mainButton": "#codeDialogButton",
+            "buttons": [],
+            "desc": "special code input",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "modme": {
+            "mainButton": "#modmeButton",
+            "buttons": [],
+            "desc": "moderator",
+            "initState": "none",
+            "baseZ": "20"
+        }
     }
   }
-};
 
+  var devMeStructure = {
+    "structure": {
+        "util": {
+            "mainButton": "#utilButton",
+            "sideBar": "#utility-container",
+            "buttons": [
+                "#doc-button-1",
+                "#doc-button-2",
+                "#bullseye"
+            ],
+            "desc": "utility layer",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "draw": {
+            "mainButton": "#drawButton",
+            "sideBar": "#draw-ui-container",
+            "buttons": [
+                "#fadeButton",
+                "#b1"
+            ],
+            "desc": "drawing layer",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "video": {
+            "mainButton": "#videoButton",
+            "buttons": [],
+            "desc": "toggle video broadcast",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "emailInvite": {
+            "mainButton": "#inviteViaEmail",
+            "buttons": [],
+            "desc": "tmp",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "text": {
+            "mainButton": "#textEntryButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "IM Text",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "p3": {
+            "mainButton": "#muteButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "Mute Audio",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "codeInput": {
+            "mainButton": "#codeDialogButton",
+            "buttons": [],
+            "desc": "special code input",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "devme": {
+            "mainButton": "#devmeButton",
+            "buttons": [],
+            "desc": "developer",
+            "initState": "none",
+            "baseZ": "20"
+        }
+    }
+  }
 
 var videoData = {};
 var thisBox;
+
+uiStructure = coreStructure;
 
 // Experiment with sensor data
 
@@ -78,12 +245,12 @@ function buildSideMenu( layer ) {
   // collapse main menu
 
   _.each( uiStructure.structure, function( fcn ) {
-    $( fcn.functions ).fadeOut( 5 );
+    $( fcn.sideBar ).fadeOut( 5 );
   } );
 
   $( '#layer-menu-button' ).trigger( 'click' );
 
-  $( uiStructure.structure[layer].functions ).fadeIn( 5 );
+  $( uiStructure.structure[layer].sideBar ).fadeIn( 5 );
 
   _.each( uiStructure.structure[layer].buttons, function( button ) {
     $( button ).fadeIn( 2000 );
@@ -92,19 +259,17 @@ function buildSideMenu( layer ) {
 
 // the main menue collapse-expand
 
-var collapsed = true;
-
 $( document ).ready( function() {
   var t = 1000;
   $( '#layer-menu-button' ).click( function() {
     var button;
-    if ( collapsed === true ) {
-      collapsed = false;
+    if ( mainCollapsed === true ) {
+      mainCollapsed = false;
       for ( button in uiStructure.structure ) {
         $( uiStructure.structure[button].mainButton ).fadeIn( t );
       }
     } else {
-      collapsed = true;
+      mainCollapsed = true;
       t = 1000;
       for ( button in uiStructure.structure ) {
         t = 1000;
@@ -196,19 +361,20 @@ $( function() {
 
 $( function() {
   $( '.video-swap' ).click( function() {
-    thisBox =1;
+    thisBox = 1;
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
       this.src = this.src.replace( 'img/video-on', 'img/video-off' );
-        document.getElementById(getIdOfBox(thisBox)).style.visibility = "hidden";
-        document.getElementById('avatar1').style.visibility = "visible";
+        document.getElementById( getIdOfBox( thisBox ) ).style.visibility = "hidden";
+        document.getElementById( 'avatar1' ).style.visibility = "visible";
+
        // console.log('thisBox in ui-manager:', thisBox);
         videoData.state = "hidden";
         videoData.box = thisBox;
         emitVideo( videoData );
       } else {
         this.src = this.src.replace( 'img/video-off', 'img/video-on' );
-        document.getElementById(getIdOfBox(thisBox)).style.visibility = "visible";
-        document.getElementById('avatar1').style.visibility = "hidden";
+        document.getElementById( getIdOfBox( thisBox ) ).style.visibility = "visible";
+        document.getElementById( 'avatar1' ).style.visibility = "hidden";
          videoData.state = "visible";
          videoData.box = 1;
          emitVideo( videoData );
@@ -217,19 +383,67 @@ $( function() {
     } );
   } );
 
-function emitVideo(videoData) {
+function emitVideo( videoData ) {
   var sessionId = socketServer.sessionid;
-  socketServer.emit('video', videoData, sessionId);
+  socketServer.emit( 'video', videoData, sessionId );
 }
 
-socketServer.on('video', function(data) {
-  document.getElementById(getIdOfBox(data.box)).style.visibility = data.state;
-  if (data.state === 'visible' ) {
-    document.getElementById('avatar1').style.visibility = "hidden";
+socketServer.on( 'video', function( data ) {
+  document.getElementById( getIdOfBox( data.box ) ).style.visibility = data.state;
+  if ( data.state === 'visible' ) {
+    document.getElementById( 'avatar1' ).style.visibility = "hidden";
   } else {
-    document.getElementById('avatar1').style.visibility = "visible";
+    document.getElementById( 'avatar1' ).style.visibility = "visible";
   }
-});
+} );
+
+// code input dialog
+
+$( function() {
+    $( '#codeDialogModal' ).dialog( {
+        autoOpen: false
+    } );
+    $( '#codeDialogButton' ).click( function() {
+        $( '#codeDialogModal' ).dialog( 'open' );
+        console.log( 'Clicked code dialog' );
+      } );
+
+$( '#submit-code' ).click( function( e ) {
+      var bCode  = $( '#button-code' ).val();
+    if ( bCode === '' ) {
+      alert( 'Please enter a code' );
+      e.preventDefault();
+    } else if ( !( _.includes( [ 'devme', 'modme' ], bCode ) ) ) {
+      alert( 'Please enter a valid code' );
+      e.preventDefault();
+    } else {
+
+switch ( bCode ) {
+  case 'modme':
+        uiStructure = modMeStructure;
+        $( '#codeDialogModal' ).dialog( 'close' );
+        for ( button in uiStructure.structure ) {
+        t = 1000;
+        $( uiStructure.structure[button].mainButton ).fadeOut( t );
+        }
+        document.getElementById( 'devmeButton' ).style.visibility = "hidden";
+        document.getElementById( 'modmeButton' ).style.visibility = "visible";
+        var mainCollapsed = true;
+        break;
+ case 'devme':
+       uiStructure = devMeStructure;
+       $( '#codeDialogModal' ).dialog( 'close' );
+       for ( button in uiStructure.structure ) {
+       t = 1000;
+       $( uiStructure.structure[button].mainButton ).fadeOut( t );
+       }
+       document.getElementById( 'modmeButton' ).style.visibility = "hidden";
+       document.getElementById( 'devmeButton' ).style.visibility = "visible";
+       var mainCollapsed = true;
+    }
+    };
+  } );
+} );
 
 // email invite dialog
 
@@ -237,7 +451,7 @@ $( function() {
     $( '#invite-dialog' ).dialog( {
         autoOpen: false
     } );
-    $( '#invite-via-email' ).click( function() {
+    $( '#inviteViaEmail' ).click( function() {
         $( '#invite-dialog' ).dialog( 'open' );
         console.log( 'Clicked email invite' );
       } ) ;

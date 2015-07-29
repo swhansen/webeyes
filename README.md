@@ -63,7 +63,7 @@ programming in style.
 Steve Hansen - sw_hansen@obliquevision.org
 
 
-##Instructions on local setup for demo (node.js must be installed)
+##Instructions on local setup for demo (node.js v0.10.29 or greater must be installed)
 
 Run in your terminal
 
@@ -83,13 +83,12 @@ npm install
 node server.js
 ```
 
-visit [localhost:8080/login](http://localhost:8080/login)
+visit [localhost:5000](http://localhost:5000) in Chrome, Firefox or Opera
 
 enter the password (email me)
 
 click allow to see your camera
 
-in a new tab go to [localhost:8080](http://localhost:8080)
 
 click allow to see your camera and the connection will be made between your two open windows.
 

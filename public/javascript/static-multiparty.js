@@ -3,8 +3,8 @@ var aspectRatio = 4 / 3; // standard definition video aspect ratio
 var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS + 1;
 var layout;
-var thisBox;
 var connectList = [];
+var homeId;
 
 easyrtc.dontAddCloseButtons( false );
 
@@ -242,6 +242,7 @@ function reshape4of4(parentw, parenth) {
 
 var boxUsed = [true, false, false, false];
 var connectCount = 0;
+var homeBox;
 
 
 function setSharedVideoSize(parentw, parenth) {
@@ -397,8 +398,6 @@ function handleWindowResize() {
     fullpage.style.width = window.innerWidth + "px";
     fullpage.style.height = window.innerHeight + "px";
     connectCount = easyrtc.getConnectionCount();
-
-    //console.log("connect Count:", connectCount);
 
     function applyReshape(obj, parentw, parenth) {
         var myReshape = obj.reshapeMe(parentw, parenth);
@@ -680,6 +679,8 @@ function messageListener(easyrtcid, msgType, content) {
 
 function appInit() {
 
+
+
     //easyrtc.setAutoInitUserMedia(false);
     //initVideoSelect();
 
@@ -702,9 +703,13 @@ function appInit() {
     handleWindowResize(); //initial call of the top-down layout manager
 
     easyrtc.setRoomOccupantListener(callEverybodyElse);
+
+    easyrtc.setUsername("Mo");
+
     easyrtc.easyApp("roomDemo", "box0", ["box1", "box2", "box3"],
       function(myId) {
         console.log("Success - uid is:" + myId);
+
       }
     );
 
@@ -712,20 +717,23 @@ function appInit() {
     easyrtc.setDisconnectListener(function() {
         easyrtc.showError("LOST-CONNECTION", "Lost connection to signaling server");
     });
+
     easyrtc.setOnCall(function(easyrtcid, slot) {
         console.log("a call with " + easyrtcid + "established");
         boxUsed[slot + 1] = true;
-        console.log('This box is:', slot);
-        connectList.push({
-          rtcid: easyrtcid,
-          boxno: slot
-        });
+       console.log('This box is:', slot);
+       homeBox = slot + 1;
+       console.log("homeBox:", homeBox);
+       connectList.push({
+         rtcid: easyrtcid,
+         boxno: homeBox
+      });
 
 // Thumbs for all connections other than initiator
 //  -- change to == 1 for normal mode
 
         if (activeBox == 0 && easyrtc.getConnectionCount() >= 1) {
-            collapseToThumb();
+            expandThumb(0);
             document.getElementById('textEntryButton').style.display = 'block';
         }
 

@@ -59,8 +59,11 @@
         <!--<select id="select-video"> <option>Choose a Camera</option> </select> -->
 
         <div id="main-ui-container" class="ui-zindex">
+            <img id="modmeButton" src="img/modme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
+            <img id="devmeButton" src="img/devme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
+            <img id="codeDialogButton" src="img/code-input.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="muteButton" onclick ="muteActiveBox()" src="img/button_mute.png" height="64" width="64" style="display:none" alt="mute button" /><br>
-            <img id="invite-via-email" src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
+            <img id="inviteViaEmail" src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
             <img id="textEntryButton" onclick ="showTextEntry()" src="img/textEntry.png" height="64" width="64" style="display:none" alt="text button" /><br>
            <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
             <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
@@ -90,6 +93,14 @@
             <label>Note:</label>
             <input id="msg" name="mesage" type="text">
             <input id="submit" type="button" value="Invite Collaborator">
+            </form>
+        </div>
+
+        <div id="codeDialogModal" title="Button Code">
+            <form action="" method="post">
+            <label>Enter Your Button Code</label>
+            <input id="button-code" name="button-code" type="text">
+            <input id="submit-code" type="button" value="Enter">
             </form>
         </div>
 

@@ -1,0 +1,50 @@
+{
+  "structure": {
+    "util": {
+      "mainButton": "#utilButton",
+      "functions": "#utility-container",
+      "buttons": [ "#doc-button-1", "#doc-button-2", "#bullseye" ],
+      "desc": "utility layer",
+      "initState": "none",
+      "baseZ": "20"
+    },
+    "draw": {
+      "mainButton": "#drawButton",
+      "functions": "#draw-ui-container",
+      "buttons": [ "#fadeButton", "#b1" ],
+      "desc": "drawing layer",
+      "initState": "none",
+      "baseZ": "20"
+    },
+    "video": {
+      "mainButton": "#videoButton",
+      "buttons": [ ],
+      "desc": "toggle video broadcast",
+      "initState": "none",
+      "baseZ": "20"
+    },
+    "email-invite": {
+      "mainButton": "#invite-via-email",
+      "buttons": [],
+      "desc": "tmp",
+      "initState": "none",
+      "baseZ": "20"
+    },
+    "p2": {
+      "mainButton": "#textEntryButton",
+      "functions": "",
+      "buttons": [],
+      "desc": "IM Text",
+      "initState": "none",
+      "baseZ": "20"
+    },
+    "p3": {
+      "mainButton": "#muteButton",
+      "functions": "",
+      "buttons": [],
+      "desc": "Mute Audio",
+      "initState": "none",
+      "baseZ": "20"
+    }
+  }
+}
