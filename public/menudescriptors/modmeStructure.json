@@ -2,7 +2,7 @@
     "structure": {
         "util": {
             "mainButton": "#utilButton",
-            "sideBar": "#utility-container",
+            "sideBar": "#utility-ui-container",
             "buttons": [
                 "#doc-button-1",
                 "#doc-button-2",
@@ -62,8 +62,11 @@
         },
         "modme": {
             "mainButton": "#modmeButton",
-            "buttons": [],
-            "desc": "moderator",
+            "sideBar": "#mod-ui-container",
+            "buttons": [
+                "#focus-participant"
+            ],
+            "desc": "moderator code functions",
             "initState": "none",
             "baseZ": "20"
         }

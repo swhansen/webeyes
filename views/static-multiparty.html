@@ -8,6 +8,7 @@
         <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="bower/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="bower/lodash/lodash.min.js"></script>
+        <script type="text/javascript" src="bower/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
         <script type="text/javascript" src="javascript/socket.js"></script>
@@ -16,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
         <link rel="stylesheet" type="text/css" href="css/room.css" />
         <link rel="stylesheet" type="text/css" href="bower/jquery-ui/themes/smoothness/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="bower/sweetalert/dist/sweetalert.css" />
 
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
@@ -59,7 +61,7 @@
         <!--<select id="select-video"> <option>Choose a Camera</option> </select> -->
 
         <div id="main-ui-container" class="ui-zindex">
-            <img id="modmeButton" src="img/modme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
+            <img id="modmeButton" onclick ="initModme()" src="img/modme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="devmeButton" src="img/devme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="codeDialogButton" src="img/code-input.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="muteButton" onclick ="muteActiveBox()" src="img/button_mute.png" height="64" width="64" style="display:none" alt="mute button" /><br>
@@ -76,11 +78,13 @@
             <img id="b1"  src="img/br_status_pass.png" height="64" width="64" style="display:none" alt="b1 button" /><br>
         </div>
 
-        <div id="utility-container" class="ui-zindex">
+        <div id="mod-ui-container" class="ui-zindex">
+            <img id="focus-participant"  src="img/focus_moderator.png" height="64" width="64" style="display:none" alt="test button" /><br>
+        </div>
+
+        <div id="utility-ui-container" class="ui-zindex">
             <img id="doc-button-1" class="doc-pub-1" src="img/document-b.png" height="64" width="64" style="display:none" alt="util button" /><br>
-
             <img id="doc-button-2" class="doc-pub-2" src="img/document-y.png" height="64" width="64" style="display:none" alt="util button" /><br>
-
             <img id="bullseye"  class="bullseye-swap" src="img/bullseye.png" height="64" width="64" style="display:none" alt="bullseyebutton" /><br>
         </div>
 
@@ -111,6 +115,7 @@
 
          <script type="text/javascript"  src="javascript/draw.js" ></script>
          <script type="text/javascript"  src="javascript/util.js" ></script>
+         <script type="text/javascript"  src="javascript/modme.js" ></script>
          <script type="text/javascript"  src="javascript/ui-manager.js" ></script>
          <script type="text/javascript"  src="javascript/video-select.js" ></script>
 

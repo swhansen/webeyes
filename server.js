@@ -300,6 +300,11 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'video', data );
   } );
 
+client.on( 'focus', function( data, session ) {
+   // client.emit( 'focus', data );
+    client.broadcast.emit( 'focus', data );
+  } );
+
   client.on( 'drawLine', function( data, session ) {
 
     // build up the colors for  drawing

@@ -2,7 +2,7 @@
     "structure": {
         "util": {
             "mainButton": "#utilButton",
-            "sideBar": "#utility-container",
+            "sideBar": "#utility-ui-container",
             "buttons": [
                 "#doc-button-1",
                 "#doc-button-2",

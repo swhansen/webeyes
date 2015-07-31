@@ -89,7 +89,14 @@ width: 1000px;
   right: 10px;
 }
 
-#utility-container {
+#utility-ui-container {
+  z-index=30;
+  position: fixed;
+  top: 250px;
+  right: 10px;
+}
+
+#mod-ui-container {
   z-index=30;
   position: fixed;
   top: 250px;

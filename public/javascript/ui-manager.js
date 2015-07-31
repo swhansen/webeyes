@@ -8,163 +8,13 @@
 //  sideBar: container for the layer function button list (re-name??)
 //  buttons: button list in the layer menu
 //
-//  note: originally concieved of as only for layer mgmt
-//    - e.g., one R menu for evert layer type.....should rethink.
-//
 
 var uiStructure = {};
 var mainCollapsed = true;
 
-$.getJSON( '../menudescriptors/coreStructure.json', function( data ){
+$.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
   uiStructure = data;
-  console.log(data);
 } );
-
-
-
-var modMeStructure = {
-    "structure": {
-        "util": {
-            "mainButton": "#utilButton",
-            "sideBar": "#utility-container",
-            "buttons": [
-                "#doc-button-1",
-                "#doc-button-2",
-                "#bullseye"
-            ],
-            "desc": "utility layer",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "draw": {
-            "mainButton": "#drawButton",
-            "sideBar": "#draw-ui-container",
-            "buttons": [
-                "#fadeButton",
-                "#b1"
-            ],
-            "desc": "drawing layer",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "video": {
-            "mainButton": "#videoButton",
-            "buttons": [],
-            "desc": "toggle video broadcast",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "emailInvite": {
-            "mainButton": "#inviteViaEmail",
-            "buttons": [],
-            "desc": "tmp",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "text": {
-            "mainButton": "#textEntryButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "IM Text",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "p3": {
-            "mainButton": "#muteButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "Mute Audio",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "codeInput": {
-            "mainButton": "#codeDialogButton",
-            "buttons": [],
-            "desc": "special code input",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "modme": {
-            "mainButton": "#modmeButton",
-            "buttons": [],
-            "desc": "moderator",
-            "initState": "none",
-            "baseZ": "20"
-        }
-    }
-  }
-
-  var devMeStructure = {
-    "structure": {
-        "util": {
-            "mainButton": "#utilButton",
-            "sideBar": "#utility-container",
-            "buttons": [
-                "#doc-button-1",
-                "#doc-button-2",
-                "#bullseye"
-            ],
-            "desc": "utility layer",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "draw": {
-            "mainButton": "#drawButton",
-            "sideBar": "#draw-ui-container",
-            "buttons": [
-                "#fadeButton",
-                "#b1"
-            ],
-            "desc": "drawing layer",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "video": {
-            "mainButton": "#videoButton",
-            "buttons": [],
-            "desc": "toggle video broadcast",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "emailInvite": {
-            "mainButton": "#inviteViaEmail",
-            "buttons": [],
-            "desc": "tmp",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "text": {
-            "mainButton": "#textEntryButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "IM Text",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "p3": {
-            "mainButton": "#muteButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "Mute Audio",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "codeInput": {
-            "mainButton": "#codeDialogButton",
-            "buttons": [],
-            "desc": "special code input",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "devme": {
-            "mainButton": "#devmeButton",
-            "buttons": [],
-            "desc": "developer",
-            "initState": "none",
-            "baseZ": "20"
-        }
-    }
-  }
 
 var videoData = {};
 var thisBox;
@@ -221,7 +71,6 @@ $( document ).ready( function() {
   } );
 } );
 
-
 function utilUI() {
 buildSideMenu( 'util' );
 }
@@ -229,6 +78,59 @@ buildSideMenu( 'util' );
 function drawUI() {
 buildSideMenu( 'draw' );
 }
+
+function modmeUI() {
+buildSideMenu( 'modme' );
+}
+
+// Moderators focus
+// - involed when modme code is in play
+//
+
+$( function() {
+  $( '#focus-participant' ).click( function() {
+    swal({
+      title: 'Click a Participant',
+      text: "They become the session focus",
+      type: "info",
+      showCancelButton: false,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "OK",
+        } );
+
+    $(".boxCommon").bind('click', function(e) {
+    if( e.target.id.substr(0, 1) === 'b' ) {
+     // { console.log('The box is:', e.target.id);
+        var theBox =  e.target.id;
+        focusVideo( theBox );
+        return;
+      }
+    else {
+        console.log("you clicked the page");
+      }
+    } );
+
+  //   $('.boxCommon').click(function(){
+  //    var clickedID = this.id.substr(0, 4 );
+  //  //  var foo = clickedID.substr( 0,4 );
+  //    console.log(clickedID);
+  //    alert(clickedID);
+  //} );
+    } );
+  } );
+
+function focusVideo( boxNo ) {
+  var sessionId = socketServer.sessionid;
+  socketServer.emit( 'focus', boxNo, sessionId );
+}
+
+socketServer.on( 'focus', function( boxNo ) {
+  console.log('recieved boxno:', boxNo);
+   //expandThumb(boxNo);
+   b = document.getElementById( boxNo );
+   b.click;
+  }
+ );
 
   $( function() {
     $( '.doc-pub-1' ).click( function() {
@@ -340,7 +242,6 @@ $( function() {
     } );
     $( '#codeDialogButton' ).click( function() {
         $( '#codeDialogModal' ).dialog( 'open' );
-        console.log( 'Clicked code dialog' );
       } );
 
 $( '#submit-code' ).click( function( e ) {
@@ -352,30 +253,34 @@ $( '#submit-code' ).click( function( e ) {
       alert( 'Please enter a valid code' );
       e.preventDefault();
     } else {
-
-switch ( bCode ) {
-  case 'modme':
-        uiStructure = modMeStructure;
-        $( '#codeDialogModal' ).dialog( 'close' );
-        for ( button in uiStructure.structure ) {
-        t = 1000;
-        $( uiStructure.structure[button].mainButton ).fadeOut( t );
-        }
-        document.getElementById( 'devmeButton' ).style.visibility = "hidden";
-        document.getElementById( 'modmeButton' ).style.visibility = "visible";
-        var mainCollapsed = true;
+      switch ( bCode )
+      {
+        case 'modme':
+         $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
+            uiStructure = data;
+          } );
+          $( '#codeDialogModal' ).dialog( 'close' );
+          for ( button in uiStructure.structure ) {
+            t = 1000;
+            $( uiStructure.structure[button].mainButton ).fadeOut( t );
+          }
+          document.getElementById( 'devmeButton' ).style.visibility = "hidden";
+          document.getElementById( 'modmeButton' ).style.visibility = "visible";
+          var mainCollapsed = true;
         break;
- case 'devme':
-       uiStructure = devMeStructure;
-       $( '#codeDialogModal' ).dialog( 'close' );
-       for ( button in uiStructure.structure ) {
-       t = 1000;
-       $( uiStructure.structure[button].mainButton ).fadeOut( t );
-       }
-       document.getElementById( 'modmeButton' ).style.visibility = "hidden";
-       document.getElementById( 'devmeButton' ).style.visibility = "visible";
-       var mainCollapsed = true;
-    }
+        case 'devme':
+          $.getJSON( '../menudescriptors/devmeStructure.json', function( data ) {
+            uiStructure = data;
+          } );
+          $( '#codeDialogModal' ).dialog( 'close' );
+          for ( button in uiStructure.structure ) {
+            t = 1000;
+            $( uiStructure.structure[button].mainButton ).fadeOut( t );
+          }
+          document.getElementById( 'modmeButton' ).style.visibility = "hidden";
+          document.getElementById( 'devmeButton' ).style.visibility = "visible";
+          var mainCollapsed = true;
+      }
     };
   } );
 } );
