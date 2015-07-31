@@ -100,7 +100,7 @@ $( function() {
 
     $(".boxCommon").bind('click', function(e) {
     if( e.target.id.substr(0, 1) === 'b' ) {
-     // { console.log('The box is:', e.target.id);
+      console.log('The box is:', e.target.id);
         var theBox =  e.target.id;
         focusVideo( theBox );
         return;
@@ -128,6 +128,7 @@ socketServer.on( 'focus', function( boxNo ) {
   console.log('recieved boxno:', boxNo);
    //expandThumb(boxNo);
    b = document.getElementById( boxNo );
+   console.log('clicking on:', boxNo);
    b.click;
   }
  );
