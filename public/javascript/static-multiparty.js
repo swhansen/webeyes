@@ -284,9 +284,7 @@ function setSharedVideoSize(parentw, parenth) {
 }
 
 var reshapeThumbs = [
-
     function(parentw, parenth) {
-      console.log("reShapeThumbs:", parentw, parenth, connectCount, activeBox);
 
         if (activeBox > 0) {
             return setThumbSize(0.20, 0.01, 0.01, parentw, parenth);
@@ -773,9 +771,7 @@ function appInit() {
     easyrtc.setOnCall(function(easyrtcid, slot) {
         console.log("a call with " + easyrtcid + "established");
         boxUsed[slot + 1] = true;
-       console.log('This box is:', slot);
        homeBox = slot + 1;
-       console.log("homeBox:", homeBox);
        connectList.push({
          rtcid: easyrtcid,
          boxno: homeBox

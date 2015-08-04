@@ -154,8 +154,6 @@ $( function() {
       this.src = this.src.replace( 'img/video-on', 'img/video-off' );
         document.getElementById( getIdOfBox( thisBox ) ).style.visibility = "hidden";
         document.getElementById( 'avatar1' ).style.visibility = "visible";
-
-       // console.log('thisBox in ui-manager:', thisBox);
         videoData.state = "hidden";
         videoData.box = thisBox;
         emitVideo( videoData );
@@ -193,7 +191,6 @@ $( function() {
     } );
     $( '#inviteViaEmail' ).click( function() {
         $( '#invite-dialog' ).dialog( 'open' );
-        console.log( 'Clicked email invite' );
       } ) ;
 
 // Validating Form Fields.....

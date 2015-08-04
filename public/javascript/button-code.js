@@ -46,7 +46,6 @@ $( '#codeDialogModal' ).dialog( {
 
 function usebcode( bcode )
 {
-  console.log('at usebcode with:', bcode);
   switch ( bcode )
   {
    case 'modme':
@@ -77,13 +76,7 @@ function usebcode( bcode )
     var mainCollapsed = true;
 } };
 
-//function focusVideo( boxNo ) {
-//  var sessionId = socketServer.sessionid;
-//  socketServer.emit( 'focus', boxNo, sessionId );
-//}
-
 socketServer.on( 'focus', function( boxNo ) {
-  console.log('recieved boxno:', boxNo);
    focusUser( boxNo );
    //b = document.getElementById( boxNo );
    //b.click();
