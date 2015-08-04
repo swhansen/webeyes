@@ -5,6 +5,7 @@ var numVideoOBJS = maxCALLERS + 1;
 var layout;
 var connectList = [];
 var homeId;
+var modmeState = false;
 
 easyrtc.dontAddCloseButtons( false );
 
@@ -285,6 +286,7 @@ function setSharedVideoSize(parentw, parenth) {
 var reshapeThumbs = [
 
     function(parentw, parenth) {
+      console.log("reShapeThumbs:", parentw, parenth, connectCount, activeBox);
 
         if (activeBox > 0) {
             return setThumbSize(0.20, 0.01, 0.01, parentw, parenth);
@@ -476,25 +478,63 @@ function updateMuteImage(toggle) {
     }
 }
 
+//
+// Specific for focusing the user through the "code" system
+//  -called throut broadcast receipt of socket.server
 
-function expandThumb(whichBox) {
+function focusUser( whichBox ) {
+  console.log("expandThumb: whichBox=", whichBox, activeBox);
     var lastActiveBox = activeBox;
     if (activeBox >= 0) {
         collapseToThumbHelper();
     }
-    if (lastActiveBox != whichBox) {
-        var id = getIdOfBox(whichBox);
-        activeBox = whichBox;
-        setReshaper(id, reshapeToFullSize);
-        document.getElementById(id).style.zIndex = 1;
-        if (whichBox > 0) {
-            document.getElementById('muteButton').style.display = "block";
-            updateMuteImage();
-            document.getElementById('killButton').style.display = "block";
-        }
-    }
+
+   //if (lastActiveBox != whichBox) {
+
+       var id = getIdOfBox(whichBox);
+       activeBox = whichBox;
+       setReshaper(id, reshapeToFullSize);
+       document.getElementById(id).style.zIndex = 1;
+       if (whichBox > 0) {
+           document.getElementById('muteButton').style.display = "block";
+           updateMuteImage();
+           document.getElementById('killButton').style.display = "block";
+       }
+   //}
     updateMuteImage(false);
     handleWindowResize();
+}
+
+function expandThumb(whichBox) {
+  console.log("expandThumb: whichBox=", whichBox, activeBox);
+    var lastActiveBox = activeBox;
+    if (activeBox >= 0) {
+        collapseToThumbHelper();
+    }
+
+// Changed to only reconfigute windows to thumbs and main center - swh  8/3/15
+
+   //if (lastActiveBox != whichBox) {
+//
+       var id = getIdOfBox(whichBox);
+       activeBox = whichBox;
+       setReshaper(id, reshapeToFullSize);
+       document.getElementById(id).style.zIndex = 1;
+       if (whichBox > 0) {
+           document.getElementById('muteButton').style.display = "block";
+           updateMuteImage();
+           document.getElementById('killButton').style.display = "block";
+       }
+   //}
+    updateMuteImage(false);
+    handleWindowResize();
+    if (modmeState === true) {
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'focus', whichBox, sessionId );
+      var usr = whichBox  + 1;
+      var modMessage = "The Moderator has focused User-" + usr;
+      sendModeratorText(modMessage);
+    }
 }
 
 function prepVideoBox(whichBox) {
@@ -506,11 +546,11 @@ function prepVideoBox(whichBox) {
 
 }
 
-function prepCanvasBox(whichCanvas) {
+function prepCanvasBox( whichCanvas ) {
     var id = getIdOfCanvas(whichCanvas);
     setReshaper(id, reshapeThumbs[whichCanvas]);
     document.getElementById(id).onclick = function() {
-     expandThumb(whichCanvas);
+     expandThumb( whichCanvas );
 };
 }
 
@@ -591,6 +631,18 @@ function sendText(e) {
     }
     return false;
 }
+
+function sendModeratorText(moderatorMessage) {
+  //var moderatorMessage = "The moderator has focused a new user";
+  for (var i = 0; i < maxCALLERS; i++) {
+      var easyrtcid = easyrtc.getIthCaller(i);
+      if (easyrtcid && easyrtcid != "") {
+          easyrtc.sendPeerMessage(easyrtcid, "im", moderatorMessage);
+      }
+  }
+    return false;
+}
+
 
 
 function showTextEntry() {

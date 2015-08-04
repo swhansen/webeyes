@@ -12,14 +12,14 @@
 var uiStructure = {};
 var mainCollapsed = true;
 
+// initialize the core menu
+
 $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
   uiStructure = data;
 } );
 
 var videoData = {};
 var thisBox;
-
-//uiStructure = coreStructure;
 
 // Experiment with sensor data
 
@@ -82,56 +82,6 @@ buildSideMenu( 'draw' );
 function modmeUI() {
 buildSideMenu( 'modme' );
 }
-
-// Moderators focus
-// - involed when modme code is in play
-//
-
-$( function() {
-  $( '#focus-participant' ).click( function() {
-    swal({
-      title: 'Click a Participant',
-      text: "They become the session focus",
-      type: "info",
-      showCancelButton: false,
-      confirmButtonColor: "#DD6B55",
-      confirmButtonText: "OK",
-        } );
-
-    $(".boxCommon").bind('click', function(e) {
-    if( e.target.id.substr(0, 1) === 'b' ) {
-      console.log('The box is:', e.target.id);
-        var theBox =  e.target.id;
-        focusVideo( theBox );
-        return;
-      }
-    else {
-        console.log("you clicked the page");
-      }
-    } );
-
-  //   $('.boxCommon').click(function(){
-  //    var clickedID = this.id.substr(0, 4 );
-  //  //  var foo = clickedID.substr( 0,4 );
-  //    console.log(clickedID);
-  //    alert(clickedID);
-  //} );
-    } );
-  } );
-
-function focusVideo( boxNo ) {
-  var sessionId = socketServer.sessionid;
-  socketServer.emit( 'focus', boxNo, sessionId );
-}
-
-socketServer.on( 'focus', function( boxNo ) {
-  console.log('recieved boxno:', boxNo);
-   //expandThumb(boxNo);
-   b = document.getElementById( boxNo );
-   console.log('clicking on:', boxNo);
-   b.click;
-  }
- );
 
   $( function() {
     $( '.doc-pub-1' ).click( function() {
@@ -233,57 +183,6 @@ socketServer.on( 'video', function( data ) {
   } else {
     document.getElementById( 'avatar1' ).style.visibility = "visible";
   }
-} );
-
-// code input dialog
-
-$( function() {
-    $( '#codeDialogModal' ).dialog( {
-        autoOpen: false
-    } );
-    $( '#codeDialogButton' ).click( function() {
-        $( '#codeDialogModal' ).dialog( 'open' );
-      } );
-
-$( '#submit-code' ).click( function( e ) {
-      var bCode  = $( '#button-code' ).val();
-    if ( bCode === '' ) {
-      alert( 'Please enter a code' );
-      e.preventDefault();
-    } else if ( !( _.includes( [ 'devme', 'modme' ], bCode ) ) ) {
-      alert( 'Please enter a valid code' );
-      e.preventDefault();
-    } else {
-      switch ( bCode )
-      {
-        case 'modme':
-         $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
-            uiStructure = data;
-          } );
-          $( '#codeDialogModal' ).dialog( 'close' );
-          for ( button in uiStructure.structure ) {
-            t = 1000;
-            $( uiStructure.structure[button].mainButton ).fadeOut( t );
-          }
-          document.getElementById( 'devmeButton' ).style.visibility = "hidden";
-          document.getElementById( 'modmeButton' ).style.visibility = "visible";
-          var mainCollapsed = true;
-        break;
-        case 'devme':
-          $.getJSON( '../menudescriptors/devmeStructure.json', function( data ) {
-            uiStructure = data;
-          } );
-          $( '#codeDialogModal' ).dialog( 'close' );
-          for ( button in uiStructure.structure ) {
-            t = 1000;
-            $( uiStructure.structure[button].mainButton ).fadeOut( t );
-          }
-          document.getElementById( 'modmeButton' ).style.visibility = "hidden";
-          document.getElementById( 'devmeButton' ).style.visibility = "visible";
-          var mainCollapsed = true;
-      }
-    };
-  } );
 } );
 
 // email invite dialog
