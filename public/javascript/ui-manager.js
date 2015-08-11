@@ -33,7 +33,7 @@ navigator.geolocation.watchPosition( function( position ) {
 function buildSideMenu( layer ) {
 
   // remove existing side menu(s)
-  // expand right element div and buttons for layer specific menu
+  // expand right element div and buttons for function specific menu
   // collapse main menu
 
   _.each( uiStructure.structure, function( fcn ) {

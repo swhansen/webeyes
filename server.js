@@ -294,7 +294,6 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'utility', data );
   } );
 
-
   client.on( 'video', function( data, session ) {
     client.emit( 'video', data );
     client.broadcast.emit( 'video', data );

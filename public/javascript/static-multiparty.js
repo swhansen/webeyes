@@ -4,8 +4,9 @@ var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS + 1;
 var layout;
 var connectList = [];
-var homeId;
 var modmeState = false;
+
+var homeId;
 
 easyrtc.dontAddCloseButtons( false );
 
@@ -243,8 +244,6 @@ function reshape4of4(parentw, parenth) {
 
 var boxUsed = [true, false, false, false];
 var connectCount = 0;
-var homeBox;
-
 
 function setSharedVideoSize(parentw, parenth) {
     layout = ((parentw / aspectRatio) < parenth) ? 'p' : 'l';
@@ -477,11 +476,22 @@ function updateMuteImage(toggle) {
 }
 
 //
-// Specific for focusing the user through the "code" system
-//  -called throut broadcast receipt of socket.server
+// Focus the selected user through the "code" system
+//  - called through broadcast receipt of socket.server 'focus'
+//  - maps eastrtcid to DOM element for EACH client
+//  - note: each client maintains it's own mapping
+//    of easyrtcid to DOM element in connectList
 
-function focusUser( whichBox ) {
-  console.log("expandThumb: whichBox=", whichBox, activeBox);
+function focusUser( rtcid ) {
+
+  var b = _(connectList)
+    .filter( function(connectList) { return connectList.rtcid == rtcid; } )
+    .pluck( 'boxno' )
+    .value();
+   console.log('at focusUser with:', rtcid, 'and box is', b);
+
+    whichBox = b;
+
     var lastActiveBox = activeBox;
     if (activeBox >= 0) {
         collapseToThumbHelper();
@@ -504,7 +514,8 @@ function focusUser( whichBox ) {
 }
 
 function expandThumb(whichBox) {
-  console.log("expandThumb: whichBox=", whichBox, activeBox);
+  console.log("at expandThumb: whichBox=", whichBox, "local easyRtcID", easyrtc.myEasyrtcid);
+ // console.log("expandThumb - local easyRtcID", easyrtc.myEasyrtcid);
     var lastActiveBox = activeBox;
     if (activeBox >= 0) {
         collapseToThumbHelper();
@@ -526,9 +537,19 @@ function expandThumb(whichBox) {
    //}
     updateMuteImage(false);
     handleWindowResize();
+
     if (modmeState === true) {
+      //var boxString = 'box' + whichBox;
+      var rtcid = _(connectList)
+      .filter( function(connectList) { return connectList.boxno == whichBox; } )
+      .pluck( 'rtcid' )
+      .value();
+
+      console.log('Expand Thumb-Sending - modme rtcid:', rtcid, ' for boxno:', whichBox);
+
       var sessionId = socketServer.sessionid;
-      socketServer.emit( 'focus', whichBox, sessionId );
+      socketServer.emit( 'focus', rtcid, sessionId );
+
       var usr = whichBox  + 1;
       var modMessage = "The Moderator has focused User-" + usr;
       sendModeratorText(modMessage);
@@ -541,7 +562,6 @@ function prepVideoBox(whichBox) {
     document.getElementById(id).onclick = function() {
        expandThumb(whichBox);
    };
-
 }
 
 function prepCanvasBox( whichCanvas ) {
@@ -594,7 +614,9 @@ function callEverybodyElse(roomName, otherPeople) {
                 establishConnection(position - 1);
             }
         }
+
         easyrtc.call(list[position], callSuccess, callFailure);
+        console.log("RoomOccList:", easyrtcid, list);
 
     }
     if (list.length > 0) {
@@ -640,8 +662,6 @@ function sendModeratorText(moderatorMessage) {
   }
     return false;
 }
-
-
 
 function showTextEntry() {
     document.getElementById('textentryField').value = "";
@@ -729,8 +749,6 @@ function messageListener(easyrtcid, msgType, content) {
 
 function appInit() {
 
-
-
     //easyrtc.setAutoInitUserMedia(false);
     //initVideoSelect();
 
@@ -752,42 +770,62 @@ function appInit() {
     window.onresize = handleWindowResize;
     handleWindowResize(); //initial call of the top-down layout manager
 
-    easyrtc.setRoomOccupantListener(callEverybodyElse);
 
-    easyrtc.setUsername("Mo");
+    easyrtc.setRoomOccupantListener(callEverybodyElse);
 
     easyrtc.easyApp("roomDemo", "box0", ["box1", "box2", "box3"],
       function(myId) {
         console.log("Success - uid is:" + myId);
 
+// First time through for all connections
+
+        if ( boxUsed[0] = true && easyrtc.getConnectionCount() == 0 ) {
+          connectList.push({
+            rtcid: myId,
+            boxno: "0"
+          })
+        }
+
+       // if ( easyrtc.getConnectionCount() == 1 ) {
+       //          connectList.push({
+       //            rtcid: myId,
+       //            boxno: "box1"
+       //          })
+       //        }
       }
     );
 
     easyrtc.setPeerListener(messageListener);
+
     easyrtc.setDisconnectListener(function() {
         easyrtc.showError("LOST-CONNECTION", "Lost connection to signaling server");
     });
 
     easyrtc.setOnCall(function(easyrtcid, slot) {
         console.log("a call with " + easyrtcid + "established");
+      //  console.log("Occupant IDs:", easyrtc.getRoomOccupantsAsArray('default'))
         boxUsed[slot + 1] = true;
-       homeBox = slot + 1;
-       connectList.push({
-         rtcid: easyrtcid,
-         boxno: homeBox
-      });
+        var theSlot = slot + 1;
+        var theBox =  theSlot;
+        console.log('OnCall - theBox:', theBox);
+
+       connectList.push( {
+        rtcid: easyrtcid,
+        boxno: theBox
+     } );
+
+       console.log("onCall - ConnectList:", connectList);
 
 // Thumbs for all connections other than initiator
 //  -- change to == 1 for normal mode
 
-        if (activeBox == 0 && easyrtc.getConnectionCount() >= 1) {
+        if (activeBox == 0 && easyrtc.getConnectionCount() == 1) {
             expandThumb(0);
             document.getElementById('textEntryButton').style.display = 'block';
         }
-
-        document.getElementById(getIdOfBox(slot + 1)).style.visibility = "hidden";
+        document.getElementById(getIdOfBox(slot + 1)).style.visibility = "visible";
         expandThumb(0);
-    });
+    } );
 
     easyrtc.setOnHangup(function(easyrtcid, slot) {
         boxUsed[slot + 1] = false;

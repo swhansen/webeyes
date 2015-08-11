@@ -1,4 +1,11 @@
 
+//
+//   Functions for execution of the "button-code"
+// Button codes are user to invoke functions that are restricted
+//  - invoked through the + main menu button
+//  - pulls in a specific menudescriptor JSON file
+//
+
 function initModme() {
 
 $( function() {
@@ -44,6 +51,11 @@ $( '#codeDialogModal' ).dialog( {
   } );
 } );
 
+//  button code logic
+//   - check for legal codes
+//   - pull in the jsomn menu descriptor for the code
+//   - do the menu stuff
+
 function usebcode( bcode )
 {
   switch ( bcode )
@@ -53,7 +65,6 @@ function usebcode( bcode )
    $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
       uiStructure = data;
     } );
-    //$( '#codeDialogModal' ).dialog( 'close' );
     for ( button in uiStructure.structure ) {
       t = 1000;
       $( uiStructure.structure[button].mainButton ).fadeOut( t );
@@ -66,7 +77,6 @@ function usebcode( bcode )
     $.getJSON( '../menudescriptors/devmeStructure.json', function( data ) {
       uiStructure = data;
     } );
-    //$( '#codeDialogModal' ).dialog( 'close' );
     for ( button in uiStructure.structure ) {
       t = 1000;
       $( uiStructure.structure[button].mainButton ).fadeOut( t );
@@ -76,8 +86,19 @@ function usebcode( bcode )
     var mainCollapsed = true;
 } };
 
-socketServer.on( 'focus', function( boxNo ) {
-   focusUser( boxNo );
+// recieving unique rtcID
+
+socketServer.on( 'focus', function( id ) {
+  console.log('at button-code - socketServer Recieved rtcID:', id);
+
+// var b = _(connectList)
+//     .filter( function(connectList) { return connectList.rtcid == id; } )
+//     .pluck( 'boxno' )
+//     .value();
+
+    console.log('at button-code - focusUser called with:', id);
+
+   focusUser( id );
    //b = document.getElementById( boxNo );
    //b.click();
   }
