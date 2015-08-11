@@ -509,6 +509,11 @@ function focusUser( rtcid ) {
            document.getElementById('killButton').style.display = "block";
        }
    //}
+   expandThumb(whichBox);
+      var usr = whichBox  + 1;
+      var modMessage = "The Moderator has focused User-" + usr;
+      sendModeratorText(modMessage);
+
     updateMuteImage(false);
     handleWindowResize();
 }
@@ -550,9 +555,9 @@ function expandThumb(whichBox) {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'focus', rtcid, sessionId );
 
-      var usr = whichBox  + 1;
-      var modMessage = "The Moderator has focused User-" + usr;
-      sendModeratorText(modMessage);
+     // var usr = whichBox  + 1;
+     // var modMessage = "The Moderator has focused User-" + usr;
+     // sendModeratorText(modMessage);
     }
 }
 
