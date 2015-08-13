@@ -484,37 +484,34 @@ function updateMuteImage(toggle) {
 
 function focusUser( rtcid ) {
 
-  var b = _(connectList)
-    .filter( function(connectList) { return connectList.rtcid == rtcid; } )
+  var b = _( connectList )
+    .filter( function( connectList ) { return connectList.rtcid == rtcid; } )
     .pluck( 'boxno' )
     .value();
-   console.log('at focusUser with:', rtcid, 'and box is', b);
+   console.log( 'at focusUser with:', rtcid, 'and box is', b );
 
     whichBox = b;
 
     var lastActiveBox = activeBox;
-    if (activeBox >= 0) {
+    if ( activeBox >= 0 ) {
         collapseToThumbHelper();
     }
 
    //if (lastActiveBox != whichBox) {
 
-       var id = getIdOfBox(whichBox);
+       var id = getIdOfBox( whichBox );
        activeBox = whichBox;
-       setReshaper(id, reshapeToFullSize);
-       document.getElementById(id).style.zIndex = 1;
+       setReshaper( id, reshapeToFullSize );
+       document.getElementById( id ).style.zIndex = 1;
        if (whichBox > 0) {
-           document.getElementById('muteButton').style.display = "block";
+           document.getElementById( 'muteButton' ).style.display = "block";
            updateMuteImage();
-           document.getElementById('killButton').style.display = "block";
+           document.getElementById( 'killButton' ).style.display = "block";
        }
    //}
-   expandThumb(whichBox);
-      //var usr = whichBox  + 1;
-     // var modMessage = "The Moderator has focused User-" + usr;
-     // sendModeratorText(modMessage);
+    expandThumb( whichBox );
 
-    updateMuteImage(false);
+    updateMuteImage( false );
     handleWindowResize();
 }
 
@@ -545,15 +542,15 @@ function expandThumb(whichBox) {
 
     if (modmeState === true) {
       //var boxString = 'box' + whichBox;
-      var rtcid = _(connectList)
+      var rtcidToExpand = _(connectList)
       .filter( function(connectList) { return connectList.boxno == whichBox; } )
       .pluck( 'rtcid' )
       .value();
 
-      console.log('Expand Thumb-Sending - modme rtcid:', rtcid, ' for boxno:', whichBox);
+      console.log('Expand Thumb-Sending - modme rtcidToExpand:', rtcidToExpand, ' for boxno:', whichBox);
 
       var sessionId = socketServer.sessionid;
-      socketServer.emit( 'focus', rtcid, sessionId );
+      socketServer.emit( 'focus', rtcidToExpand, sessionId );
 
       var usr = whichBox  + 1;
       var modMessage = "The Moderator has focused User-" + usr;
@@ -658,7 +655,6 @@ function sendText(e) {
 }
 
 function sendModeratorText(moderatorMessage) {
-  //var moderatorMessage = "The moderator has focused a new user";
   for (var i = 0; i < maxCALLERS; i++) {
       var easyrtcid = easyrtc.getIthCaller(i);
       if (easyrtcid && easyrtcid != "") {
@@ -674,7 +670,6 @@ function showTextEntry() {
     document.getElementById('textEntryButton').style.display = "none";
     document.getElementById('textentryField').focus();
 }
-
 
 function showMessage(startX, startY, content) {
     var fullPage = document.getElementById('fullpage');
@@ -775,7 +770,6 @@ function appInit() {
     window.onresize = handleWindowResize;
     handleWindowResize(); //initial call of the top-down layout manager
 
-
     easyrtc.setRoomOccupantListener(callEverybodyElse);
 
     easyrtc.easyApp("roomDemo", "box0", ["box1", "box2", "box3"],
@@ -790,13 +784,6 @@ function appInit() {
             boxno: "0"
           })
         }
-
-       // if ( easyrtc.getConnectionCount() == 1 ) {
-       //          connectList.push({
-       //            rtcid: myId,
-       //            boxno: "box1"
-       //          })
-       //        }
       }
     );
 
@@ -812,7 +799,7 @@ function appInit() {
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
         var theBox =  theSlot;
-        console.log('OnCall - theBox:', theBox);
+        console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox );
 
        connectList.push( {
         rtcid: easyrtcid,

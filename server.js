@@ -294,9 +294,9 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'utility', data );
   } );
 
-  client.on( 'video', function( data, session ) {
-    client.emit( 'video', data );
-    client.broadcast.emit( 'video', data );
+  client.on( 'videoMute', function( data, session ) {
+   // client.emit( 'videoMute', data );
+    client.broadcast.emit( 'videoMute', data );
   } );
 
   client.on( 'focus', function( data, session ) {

@@ -5,6 +5,10 @@ var utilCanvas = document.getElementById('util-canvas');
 var ctx = utilCanvas.getContext("2d");
 var d1 = document.getElementById("doc-1");
 var d2 = document.getElementById("doc-2");
+var d3 = document.getElementById("material");
+
+var box0Width;
+var box0Height;
 
 function initUtil() {
 
@@ -15,8 +19,8 @@ function initUtil() {
   utilCanvas.width = utilCanvas.offsetWidth;
   utilCanvas.height = utilCanvas.offsetHeight;
 
-  var box0Height = document.getElementById("box0").offsetHeight;
-  var box0Width = document.getElementById("box0").offsetWidth;
+  box0Height = document.getElementById("box0").offsetHeight;
+  box0Width = document.getElementById("box0").offsetWidth;
 
   document.getElementById("utilcanvaspane").style.visibility = "visible";
   document.getElementById("utilcanvaspane").offsetHeight = box0Height;
@@ -31,6 +35,10 @@ function drawDoc1() {
 
 function drawDoc2() {
   ctx.drawImage(d2, 250, 100);
+}
+
+function drawArch() {
+  ctx.drawImage(d3, 0, 0 , box0Width, box0Height);
 }
 
 function clearUtilCanvas() {
@@ -77,6 +85,9 @@ socketServer.on('utility', function(data) {
       break;
     case "doc-2":
       drawDoc2();
+      break;
+    case "arch":
+      drawArch();
       break;
   }
 });

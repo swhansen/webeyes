@@ -6,7 +6,8 @@
             "buttons": [
                 "#doc-button-1",
                 "#doc-button-2",
-                "#bullseye"
+                "#bullseye",
+                "#arch"
             ],
             "desc": "utility layer",
             "initState": "none",

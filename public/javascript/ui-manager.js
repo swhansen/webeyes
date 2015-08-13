@@ -18,7 +18,7 @@ $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
   uiStructure = data;
 } );
 
-var videoData = {};
+var videoMuteData = {};
 var thisBox;
 
 // Experiment with sensor data
@@ -105,6 +105,17 @@ $( function() {
     } );
   } );
 
+$( function() {
+    $( '.arch-swap' ).click( function() {
+      if ( $( this ).attr( 'class' ) === 'arch-swap' ) {
+        emitUtility( 'arch' );
+      } else {
+        clearUtilCanvas();
+      }
+      $( this ).toggleClass( 'on' );
+    } );
+  } );
+
   $( function() {
     $( '.bullseye-swap' ).click( function() {
       if ( $( this ).attr( 'class' ) === 'bullseye-swap' ) {
@@ -145,41 +156,80 @@ $( function() {
     } );
   } );
 
-// Video muting
+//
+//  Video muting
+//  - "hide" the video element and replcae with image
+//  - Toggled by main menu button
+//  - based on the unique rtcid if the "owner"
+//
 
 $( function() {
   $( '.video-swap' ).click( function() {
-    thisBox = 1;
+
+    var rtcidToMute = easyrtc.myEasyrtcid;
+    var boxToMute = _( connectList )
+    .filter( function( connectList ) { return connectList.rtcid == rtcidToMute; } )
+    .pluck( 'boxno' )
+    .value();
+
+      videoMuteData.rtcid = rtcidToMute;
+
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
       this.src = this.src.replace( 'img/video-on', 'img/video-off' );
-        document.getElementById( getIdOfBox( thisBox ) ).style.visibility = "hidden";
-        document.getElementById( 'avatar1' ).style.visibility = "visible";
-        videoData.state = "hidden";
-        videoData.box = thisBox;
-        emitVideo( videoData );
+        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = "hidden";
+
+       var foo = document.getElementById( getIdOfBox( boxToMute ) ).style;
+       var bar = document.getElementById( 'avatar1' );
+        bar.src  = "img/user-default.png"
+        bar.style.width = foo.width;
+        bar.style.height = foo.height;
+        bar.style.left = foo.left;
+        bar.style.top = foo.top;
+
+        bar.style.visibility = "visible";
+        videoMuteData.state = "hidden";
+
+        emitVideoMute( videoMuteData );
       } else {
         this.src = this.src.replace( 'img/video-off', 'img/video-on' );
-        document.getElementById( getIdOfBox( thisBox ) ).style.visibility = "visible";
+        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = "visible";
         document.getElementById( 'avatar1' ).style.visibility = "hidden";
-         videoData.state = "visible";
-         videoData.box = 1;
-         emitVideo( videoData );
+        videoMuteData.state = "visible";
+        emitVideoMute( videoMuteData );
       }
       $( this ).toggleClass( 'on' );
     } );
   } );
 
-function emitVideo( videoData ) {
+function emitVideoMute( videoMuteData ) {
   var sessionId = socketServer.sessionid;
-  socketServer.emit( 'video', videoData, sessionId );
+  socketServer.emit( 'videoMute', videoMuteData, sessionId );
 }
 
-socketServer.on( 'video', function( data ) {
-  document.getElementById( getIdOfBox( data.box ) ).style.visibility = data.state;
+socketServer.on( 'videoMute', function( videoMuteData ) {
+
+ var boxToMute = _(connectList)
+  .filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
+  .pluck('boxno')
+  .value();
+
+//  Toggle the video box
+
+  document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = videoMuteData.state;
+
+//  ...and now the avatar
+
   if ( data.state === 'visible' ) {
     document.getElementById( 'avatar1' ).style.visibility = "hidden";
   } else {
-    document.getElementById( 'avatar1' ).style.visibility = "visible";
+        var foo = document.getElementById( getIdOfBox( boxToMute ) ).style;
+        var bar = document.getElementById( 'avatar1' );
+        bar.src  = "img/user-default.png"
+        bar.style.width = foo.width;
+        bar.style.height = foo.height;
+        bar.style.left = foo.left;
+        bar.style.top = foo.top;
+        bar.style.visibility = "visible";
   }
 } );
 

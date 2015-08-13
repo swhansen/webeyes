@@ -1,0 +1,14 @@
+"side-structure": {
+        "util": {
+            "sideBar": "#utility-ui-container",
+            "buttons": [
+                "#doc-button-1",
+                "#doc-button-2",
+                "#bullseye",
+                "#arch"
+            ],
+            "desc": "utility sidebar",
+            "initState": "none",
+            "baseZ": "20"
+        }
+    }
