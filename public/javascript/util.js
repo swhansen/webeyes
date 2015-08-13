@@ -30,15 +30,15 @@ function initUtil() {
 }
 
 function drawDoc1() {
-  ctx.drawImage(d1, 250, 100);
+  ctx.drawImage(d1, 0, 0, utilCanvas.width, utilCanvas.height);
 }
 
 function drawDoc2() {
-  ctx.drawImage(d2, 250, 100);
+  ctx.drawImage(d2, 0, 0, utilCanvas.width, utilCanvas.height);
 }
 
 function drawArch() {
-  ctx.drawImage(d3, 0, 0 , box0Width, box0Height);
+  ctx.drawImage(d3, 0, 0 , utilCanvas.width, utilCanvas.height);
 }
 
 function clearUtilCanvas() {
