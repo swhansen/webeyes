@@ -150,7 +150,7 @@ $( function() {
       } else {
         this.src = this.src.replace( 'img/erase-off', 'img/erase-on' );
         fadeSwitch = true;
-        toggleFade();util
+        toggleFade();
       }
       $( this ).toggleClass( 'on' );
     } );
