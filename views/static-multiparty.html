@@ -29,12 +29,17 @@
 
             <p id="geo-data"></p>
 
+            <div id="message"> Message Bar Test Panel</div>
+
             <video id="box0" class="transit boxCommon thumbCommon easyRTCMirror" muted="muted" volume="0" ></video>
             <video id="box1" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
             <video id="box2" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
             <video id="box3" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
 
-            <img id="avatar1" class="a1" style="visibility:hidden" src="img/user-default.png"</img>
+            <img id="avatar0" class="a1" style="visibility:hidden" src="img/avatar0.png"</img>
+            <img id="avatar1" class="a1" style="visibility:hidden" src="img/avatar1.png"</img>
+            <img id="avatar2" class="a1" style="visibility:hidden" src="img/avatar2.png"</img>
+            <img id="avatar3" class="a1" style="visibility:hidden" src="img/avatar3.png"</img>
 
             <div id="textentryBox" onsubmit="sendText()" style="display:none" >
                 <input type="text" id="textentryField"  class="transit boxcommon" /><br>
@@ -65,8 +70,8 @@
             <img id="inviteViaEmail" src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
             <img id="textEntryButton" onclick ="showTextEntry()" src="img/textEntry.png" height="64" width="64" style="display:none" alt="text button" /><br>
            <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
-            <img id="drawButton"  onclick ="initDraw()" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
-            <img id="utilButton"  onclick="initUtil()" src="img/util.png" height="64" width="64" style=" display:none" alt="utility button" /><br>
+            <img id="drawButton"  onclick ="drawUI()" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
+            <img id="utilButton"  onclick="utilUI()" src="img/util.png" height="64" width="64" style=" display:none" alt="utility button" /><br>
             <img id="videoButton" class='video-swap' src="img/video-on.png" height="64" width="64" style=" display:none" alt="video button" /><br>
         </div>
 
@@ -77,6 +82,7 @@
 
         <div id="mod-ui-container" class="ui-zindex">
             <img id="focus-participant" title="tooltip" src="img/focus_moderator.png" height="64" width="64" style="display:none" alt="test button" /><br>
+            <img id="mod-reset" title="tooltip" src="img/mod-reset.png" height="64" width="64" style="display:none" alt="test button" /><br>
         </div>
 
         <div id="utility-ui-container" class="ui-zindex">

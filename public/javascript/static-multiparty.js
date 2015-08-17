@@ -781,7 +781,8 @@ function appInit() {
         if ( boxUsed[0] = true && easyrtc.getConnectionCount() == 0 ) {
           connectList.push({
             rtcid: myId,
-            boxno: "0"
+            boxno: 0,
+            avatar: "avatar0"
           })
         }
       }
@@ -799,11 +800,13 @@ function appInit() {
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
         var theBox =  theSlot;
-        console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox );
+        var av = 'avatar' + theSlot;
+        console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,"avatar:", av );
 
        connectList.push( {
         rtcid: easyrtcid,
-        boxno: theBox
+        boxno: theBox,
+        avatar: av
      } );
 
        console.log("onCall - ConnectList:", connectList);
@@ -836,5 +839,8 @@ function appInit() {
             handleWindowResize();
         }, 20);
     });
+
+initDraw();
+initUtil();
 
 }

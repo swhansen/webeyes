@@ -25,8 +25,6 @@ function initUtil() {
   document.getElementById("utilcanvaspane").style.visibility = "visible";
   document.getElementById("utilcanvaspane").offsetHeight = box0Height;
   document.getElementById("utilcanvaspane").offsetWidth = box0Width;
-
-  utilUI();
 }
 
 function drawDoc1() {
@@ -66,12 +64,10 @@ function drawBullsEye() {
   ctx.lineTo(500, 400 + innerRadius);
   ctx.stroke();
 }
-//
-//  Emit the experimental utility functions
-//
+
 function emitUtility(data) {
   var sessionId = socketServer.sessionid;
-  console.log("emitUtility:", data);
+ // console.log("emitUtility:", data);
   socketServer.emit('utility', data, sessionId);
 }
 
@@ -88,6 +84,10 @@ socketServer.on('utility', function(data) {
       break;
     case "arch":
       drawArch();
+      break;
+      case "reset":
+      clearUtilCanvas();
+      clearDrawCanvas();
       break;
   }
 });

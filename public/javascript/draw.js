@@ -52,21 +52,20 @@ function initDraw() {
 
   baseLineStyle();
 
-  drawUI();
-
- // Test UI widget for the draw canvas
-
   // list the z-factors
 
-  $( '*' ).filter( function() {
-    return $( this ).css( 'z-index' ) >= 10;
-  } ).each( function() {
-    console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
-  } );
+ //$( '*' ).filter( function() {
+ //  return $( this ).css( 'z-index' ) >= 10;
+ //} ).each( function() {
+ //  console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+ //} );
+}
+
+function clearDrawCanvas() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 // The general-purpose event handler for mouse events.
-
 
 function evCanvas( ev ) {
 

@@ -30,6 +30,8 @@ navigator.geolocation.watchPosition( function( position ) {
                       position.coords.longitude.toFixed( 5 );
 } );
 
+
+
 function buildSideMenu( layer ) {
 
   // remove existing side menu(s)
@@ -83,48 +85,74 @@ function modmeUI() {
 buildSideMenu( 'modme' );
 }
 
+//
+//  Utility menu buttons
+//   - Push only per workflow change (swh - 8-15-15)
+//
+
   $( function() {
     $( '.doc-pub-1' ).click( function() {
-      if ( $( this ).attr( 'class' ) === 'doc-pub-1' ) {
-        emitUtility( 'doc-1' );
-      } else {
-        clearUtilCanvas();
-      }
-      $( this ).toggleClass( 'on' );
-    } );
+      emitUtility( 'doc-1' );
+     } );
   } );
+ //    if ( $( this ).attr( 'class' ) === 'doc-pub-1' ) {
+ //      emitUtility( 'doc-1' );
+ //    } else {
+ //      clearUtilCanvas();
+ //    }
+ //    $( this ).toggleClass( 'on' );
+ //  } );
+ //} );
 
 $( function() {
     $( '.doc-pub-2' ).click( function() {
-      if ( $( this ).attr( 'class' ) === 'doc-pub-2' ) {
-        emitUtility( 'doc-2' );
-      } else {
-        clearUtilCanvas();
-      }
-      $( this ).toggleClass( 'on' );
+      emitUtility( 'doc-2' );
     } );
   } );
+//    if ( $( this ).attr( 'class' ) === 'doc-pub-2' ) {
+//      emitUtility( 'doc-2' );
+//    } else {
+//      clearUtilCanvas();
+//    }
+//    $( this ).toggleClass( 'on' );
+//  } );
+//} );
 
 $( function() {
     $( '.arch-swap' ).click( function() {
-      if ( $( this ).attr( 'class' ) === 'arch-swap' ) {
-        emitUtility( 'arch' );
-      } else {
-        clearUtilCanvas();
-      }
-      $( this ).toggleClass( 'on' );
+      emitUtility( 'arch' );
     } );
   } );
+//      if ( $( this ).attr( 'class' ) === 'arch-swap' ) {
+//        emitUtility( 'arch' );
+//      } else {
+//        clearUtilCanvas();
+//      }
+//      $( this ).toggleClass( 'on' );
+//    } );
+//  } );
 
   $( function() {
     $( '.bullseye-swap' ).click( function() {
-      if ( $( this ).attr( 'class' ) === 'bullseye-swap' ) {
-        emitUtility( 'bullseye' );
-      } else {
-        clearUtilCanvas();
-      }
-      $( this ).toggleClass( 'on' );
+      emitUtility( 'bullseye' );
     } );
+  } );
+ //     if ( $( this ).attr( 'class' ) === 'bullseye-swap' ) {
+ //       emitUtility( 'bullseye' );
+ //     } else {
+ //       clearUtilCanvas();
+ //     }
+ //     $( this ).toggleClass( 'on' );
+ //   } );
+ // } );
+
+$( function() {
+    $( '#mod-reset' ).click( function() {
+        emitUtility( 'reset' );
+        clearUtilCanvas();
+        clearDrawCanvas();
+      }
+    );
   } );
 
 // --------------------------
@@ -167,34 +195,48 @@ $( function() {
   $( '.video-swap' ).click( function() {
 
     var rtcidToMute = easyrtc.myEasyrtcid;
+    videoMuteData.rtcid = rtcidToMute;
+
     var boxToMute = _( connectList )
     .filter( function( connectList ) { return connectList.rtcid == rtcidToMute; } )
     .pluck( 'boxno' )
     .value();
 
-      videoMuteData.rtcid = rtcidToMute;
+    var theAvatar = _( connectList )
+    .filter( function( connectList ) { return connectList.rtcid == rtcidToMute; } )
+    .pluck( 'avatar' )
+    .value();
+
+    console.log('clicking Video-ute:', rtcidToMute, boxToMute, theAvatar)
+
+    var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
 
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
       this.src = this.src.replace( 'img/video-on', 'img/video-off' );
         document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = "hidden";
 
-       var foo = document.getElementById( getIdOfBox( boxToMute ) ).style;
-       var bar = document.getElementById( 'avatar1' );
-        bar.src  = "img/user-default.png"
-        bar.style.width = foo.width;
-        bar.style.height = foo.height;
-        bar.style.left = foo.left;
-        bar.style.top = foo.top;
+        //avatarForBox = "avatar" + boxToMute;
 
-        bar.style.visibility = "visible";
+        var avatar = document.getElementById( theAvatar );
+
+        avatar.src  = "img/" + theAvatar + ".png";
+        avatar.style.width = videoBoxToMute.style.width;
+        avatar.style.height = videoBoxToMute.style.height;
+        avatar.style.left = videoBoxToMute.style.left;
+        avatar.style.top = videoBoxToMute.style.top;
+
+        avatar.style.visibility = "visible";
         videoMuteData.state = "hidden";
+        videoMuteData.avatar = theAvatar;
 
         emitVideoMute( videoMuteData );
       } else {
+
         this.src = this.src.replace( 'img/video-off', 'img/video-on' );
         document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = "visible";
-        document.getElementById( 'avatar1' ).style.visibility = "hidden";
+        document.getElementById( theAvatar ).style.visibility = "hidden";
         videoMuteData.state = "visible";
+
         emitVideoMute( videoMuteData );
       }
       $( this ).toggleClass( 'on' );
@@ -203,6 +245,7 @@ $( function() {
 
 function emitVideoMute( videoMuteData ) {
   var sessionId = socketServer.sessionid;
+  console.log('sending videoMuteData:', videoMuteData);
   socketServer.emit( 'videoMute', videoMuteData, sessionId );
 }
 
@@ -213,23 +256,38 @@ socketServer.on( 'videoMute', function( videoMuteData ) {
   .pluck('boxno')
   .value();
 
+  var avatarForBox = videoMuteData.avatar;
+ //= _(connectList)
+ //.filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
+ //.pluck('avatar')
+ //.value();
+
+  //var theAvatar = _(connectList)
+  //.filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
+  //.pluck('avatar')
+  //.value();
+
 //  Toggle the video box
+
+console.log('socketserver recieve videoMuteData:', videoMuteData, 'boxToMute:', boxToMute, 'avatar:', avatarForBox);
 
   document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = videoMuteData.state;
 
 //  ...and now the avatar
 
   if ( data.state === 'visible' ) {
-    document.getElementById( 'avatar1' ).style.visibility = "hidden";
+    document.getElementById( avatarForBox ).style.visibility = "hidden";
   } else {
-        var foo = document.getElementById( getIdOfBox( boxToMute ) ).style;
-        var bar = document.getElementById( 'avatar1' );
-        bar.src  = "img/user-default.png"
-        bar.style.width = foo.width;
-        bar.style.height = foo.height;
-        bar.style.left = foo.left;
-        bar.style.top = foo.top;
-        bar.style.visibility = "visible";
+        var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
+
+        var avatar = document.getElementById( avatarForBox );
+
+        avatar.src  = "img/" + avatarForBox + ".png";
+        avatar.style.width = videoBoxToMute.style.width;
+        avatar.style.height = videoBoxToMute.style.height;
+        avatar.style.left = videoBoxToMute.style.left;
+        avatar.style.top = videoBoxToMute.style.top;
+        avatar.style.visibility = "visible";
   }
 } );
 

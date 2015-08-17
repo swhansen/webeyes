@@ -65,7 +65,8 @@
             "mainButton": "#modmeButton",
             "sideBar": "#mod-ui-container",
             "buttons": [
-                "#focus-participant"
+                "#focus-participant",
+                "#mod-reset"
             ],
             "desc": "moderator code functions",
             "initState": "none",
