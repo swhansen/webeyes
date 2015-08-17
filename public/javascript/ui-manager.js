@@ -30,7 +30,9 @@ navigator.geolocation.watchPosition( function( position ) {
                       position.coords.longitude.toFixed( 5 );
 } );
 
-
+function messageBar (message) {
+  message.innnerHTML = message;
+};
 
 function buildSideMenu( layer ) {
 

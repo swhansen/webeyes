@@ -654,11 +654,11 @@ function sendText(e) {
     return false;
 }
 
-function sendModeratorText(moderatorMessage) {
-  for (var i = 0; i < maxCALLERS; i++) {
-      var easyrtcid = easyrtc.getIthCaller(i);
-      if (easyrtcid && easyrtcid != "") {
-          easyrtc.sendPeerMessage(easyrtcid, "im", moderatorMessage);
+function sendModeratorText( moderatorMessage ) {
+  for ( var i = 0; i < maxCALLERS; i++ ) {
+      var easyrtcid = easyrtc.getIthCaller( i );
+      if ( easyrtcid && easyrtcid != "" ) {
+          easyrtc.sendPeerMessage( easyrtcid, "im", moderatorMessage );
       }
   }
     return false;
