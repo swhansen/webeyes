@@ -10,6 +10,28 @@ var homeId;
 
 easyrtc.dontAddCloseButtons( false );
 
+//
+// Experimental Footer status Bar
+//
+
+function messageBar( msg ) {
+  $( '#messageFooter' ).html( msg );
+};
+
+function emitMessage( data ) {
+  var sessionId = socketServer.sessionid;
+ // console.log("emitUtility:", data);
+  socketServer.emit( 'message', data, sessionId );
+}
+
+socketServer.on( 'message', function( data ) {
+      messageBar( data );
+      } );
+
+//
+//
+//
+
 function getIdOfBox( boxNum ) {
     return "box" + boxNum;
 }
@@ -554,7 +576,9 @@ function expandThumb(whichBox) {
 
       var usr = whichBox  + 1;
       var modMessage = "The Moderator has focused User-" + usr;
-      sendModeratorText(modMessage);
+      //sendModeratorText(modMessage);
+      emitMessage( modMessage );
+      messageBar( modMessage );
     }
 }
 
@@ -800,7 +824,7 @@ function appInit() {
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
         var theBox =  theSlot;
-        var av = 'avatar' + theSlot;
+        var av = 'avatar0';
         console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,"avatar:", av );
 
        connectList.push( {

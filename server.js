@@ -304,6 +304,16 @@ socketServer.sockets.on( 'connection', function( client ) {
    client.broadcast.emit( 'focus', data );
   } );
 
+  client.on( 'message', function( data, session ) {
+    //client.emit( 'focus', data );
+   client.broadcast.emit( 'message', data );
+  } );
+
+  client.on( 'geo', function( data, session ) {
+    client.emit( 'geo', data );
+   //client.broadcast.emit( 'geo', data );
+  } );
+
   client.on( 'drawLine', function( data, session ) {
 
     // build up the colors for  drawing

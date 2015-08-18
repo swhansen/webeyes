@@ -21,18 +21,33 @@ $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
 var videoMuteData = {};
 var thisBox;
 
+var geoData = {};
+
 // Experiment with sensor data
 
 var geoData = document.querySelector( '#geo-data' );
-
 navigator.geolocation.watchPosition( function( position ) {
-  geoData.innerHTML = position.coords.latitude.toFixed( 5 ) + '<br />' +
-                      position.coords.longitude.toFixed( 5 );
+  geoData.lat = position.coords.latitude.toFixed( 5 );
+  geoData.lon = position.coords.longitude.toFixed( 5 )
+
+//  geoData.innerHTML = position.coords.latitude.toFixed( 5 ) + '<br />' +
+//                      position.coords.longitude.toFixed( 5 );
+  emitGeo(geoData);
+//
+// Test for altitude....
+//
 } );
 
-function messageBar (message) {
-  message.innnerHTML = message;
-};
+function emitGeo(data) {
+  var sessionId = socketServer.sessionid;
+ // console.log("emitUtility:", data);
+  socketServer.emit('geo', data, sessionId);
+}
+
+socketServer.on('geo', function(data) {
+  geoData.innerHTML = data.lat + '<br />' +
+                      data.lon;
+} );
 
 function buildSideMenu( layer ) {
 

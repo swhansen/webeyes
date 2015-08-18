@@ -12,7 +12,7 @@
     z-index: 100;
 }
 
-#message {
+#messageFooter {
   position:fixed;
     bottom:0;
     left:50%;
@@ -68,8 +68,10 @@ width: 1000px;
 #geo-data {
   z-index: 60;
   position: fixed;
-  top: 50px;
-  right: 10px;
+  background-color: gray;
+  top: 20px;
+  right: 250px;
+  padding: 10px;
 }
 
 #select-video {
@@ -172,8 +174,7 @@ width: 1000px;
 }
 
 #canvas0 {
-    box-shadow: 5px 5px 5px red;
-  }
+}
 
 #box0 { z-index:2;
     box-shadow: 10px 10px 10px #000000;
