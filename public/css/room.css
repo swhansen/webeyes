@@ -213,14 +213,22 @@ body {
 
 #killButton {
     opacity:0.7;
+    position:absolute; !important;
+    bottom:10px; !important;
+    right:10px; !important;
+    z-index: 100;
 }
 
-#killButton:hover {
+#killButton:hover {s
     opacity:1.0;
+
 }
 
 #muteButton {
     opacity:0.7;
+    position:absolute; !important;
+    bottom:75px; !important;
+    right:10px; !important;
 }
 
 #muteButton:hover {

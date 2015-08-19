@@ -11,7 +11,7 @@ var homeId;
 easyrtc.dontAddCloseButtons( false );
 
 //
-// Experimental Footer status Bar
+// Experimental Footer status and message Bar
 //
 
 function messageBar( msg ) {
@@ -27,10 +27,6 @@ function emitMessage( data ) {
 socketServer.on( 'message', function( data ) {
       messageBar( data );
       } );
-
-//
-//
-//
 
 function getIdOfBox( boxNum ) {
     return "box" + boxNum;
@@ -562,14 +558,14 @@ function expandThumb(whichBox) {
     updateMuteImage(false);
     handleWindowResize();
 
-    if (modmeState === true) {
+    if (modmeState === true && modSwitch === true) {
       //var boxString = 'box' + whichBox;
       var rtcidToExpand = _(connectList)
       .filter( function(connectList) { return connectList.boxno == whichBox; } )
       .pluck( 'rtcid' )
       .value();
 
-      console.log('Expand Thumb-Sending - modme rtcidToExpand:', rtcidToExpand, ' for boxno:', whichBox);
+  //    console.log('Expand Thumb-Sending - modme rtcidToExpand:', rtcidToExpand, ' for boxno:', whichBox);
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'focus', rtcidToExpand, sessionId );
@@ -642,7 +638,7 @@ function callEverybodyElse(roomName, otherPeople) {
         }
 
         easyrtc.call(list[position], callSuccess, callFailure);
-        console.log("RoomOccList:", easyrtcid, list);
+        //console.log("RoomOccList:", easyrtcid, list);
 
     }
     if (list.length > 0) {
@@ -798,7 +794,7 @@ function appInit() {
 
     easyrtc.easyApp("roomDemo", "box0", ["box1", "box2", "box3"],
       function(myId) {
-        console.log("Success - uid is:" + myId);
+        //console.log("Success - uid is:" + myId);
 
 // First time through for all connections
 
@@ -819,13 +815,13 @@ function appInit() {
     });
 
     easyrtc.setOnCall(function(easyrtcid, slot) {
-        console.log("a call with " + easyrtcid + "established");
+        //console.log("a call with " + easyrtcid + "established");
       //  console.log("Occupant IDs:", easyrtc.getRoomOccupantsAsArray('default'))
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
         var theBox =  theSlot;
         var av = 'avatar0';
-        console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,"avatar:", av );
+        //console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,"avatar:", av );
 
        connectList.push( {
         rtcid: easyrtcid,
@@ -833,7 +829,7 @@ function appInit() {
         avatar: av
      } );
 
-       console.log("onCall - ConnectList:", connectList);
+       //console.log("onCall - ConnectList:", connectList);
 
 // Thumbs for all connections other than initiator
 //  -- change to == 1 for normal mode
@@ -848,7 +844,7 @@ function appInit() {
 
     easyrtc.setOnHangup(function(easyrtcid, slot) {
         boxUsed[slot + 1] = false;
-        console.log("hanging up on " + easyrtcid);
+        //console.log("hanging up on " + easyrtcid);
         if (activeBox > 0 && slot + 1 == activeBox) {
             collapseToThumb();
         }

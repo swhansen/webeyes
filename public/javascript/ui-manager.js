@@ -11,6 +11,7 @@
 
 var uiStructure = {};
 var mainCollapsed = true;
+var modSwitch = false;
 
 // initialize the core menu
 
@@ -44,7 +45,7 @@ function emitGeo(data) {
   socketServer.emit('geo', data, sessionId);
 }
 
-socketServer.on('geo', function(data) {
+socketServer.on('geo', function( data ) {
   geoData.innerHTML = data.lat + '<br />' +
                       data.lon;
 } );
@@ -101,6 +102,24 @@ buildSideMenu( 'draw' );
 function modmeUI() {
 buildSideMenu( 'modme' );
 }
+
+//
+// Moderator Toggle
+//
+
+$( function() {
+    $( '.moderator-swap' ).click( function() {
+      if ( $( this ).attr( 'class' ) === 'moderator-swap' ) {
+        this.src = this.src.replace( 'img/focus-moderator-off.png', 'img/focus-moderator.png' );
+        modSwitch = true;
+      } else {
+        this.src = this.src.replace( 'img/focus-moderator.png', 'img/focus-moderator-off.png' );
+        modSwitch = false;
+      }
+      $( this ).toggleClass( 'on' );
+    } );
+  } );
+
 
 //
 //  Utility menu buttons
@@ -192,13 +211,16 @@ $( function() {
         this.src = this.src.replace( 'img/erase-on', 'img/erase-off' );
         fadeSwitch = false;
         toggleFade();
+         console.log('at button fadeSwitch:', fadeSwitch);
       } else {
         this.src = this.src.replace( 'img/erase-off', 'img/erase-on' );
         fadeSwitch = true;
         toggleFade();
+         console.log('at button fadeSwitch:', fadeSwitch);
       }
       $( this ).toggleClass( 'on' );
     } );
+
   } );
 
 //
@@ -224,7 +246,7 @@ $( function() {
     .pluck( 'avatar' )
     .value();
 
-    console.log('clicking Video-ute:', rtcidToMute, boxToMute, theAvatar)
+    //console.log('clicking Video-ute:', rtcidToMute, boxToMute, theAvatar)
 
     var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
 
@@ -262,7 +284,7 @@ $( function() {
 
 function emitVideoMute( videoMuteData ) {
   var sessionId = socketServer.sessionid;
-  console.log('sending videoMuteData:', videoMuteData);
+  //console.log('sending videoMuteData:', videoMuteData);
   socketServer.emit( 'videoMute', videoMuteData, sessionId );
 }
 
@@ -286,7 +308,7 @@ socketServer.on( 'videoMute', function( videoMuteData ) {
 
 //  Toggle the video box
 
-console.log('socketserver recieve videoMuteData:', videoMuteData, 'boxToMute:', boxToMute, 'avatar:', avatarForBox);
+//console.log('socketserver recieve videoMuteData:', videoMuteData, 'boxToMute:', boxToMute, 'avatar:', avatarForBox);
 
   document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = videoMuteData.state;
 
@@ -336,7 +358,7 @@ $( function() {
 
      var inviteData = { 'name': name, 'email': email, 'msg': msg };
      $.post( '/', inviteData, function( response, status ) {
-               console.log( 'Mail in ui-manager.js:', inviteData );
+               //console.log( 'Mail in ui-manager.js:', inviteData );
             } );
 
      $( '#invite-dialog' ).dialog( 'close' );

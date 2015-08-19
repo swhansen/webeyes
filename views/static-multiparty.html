@@ -27,7 +27,7 @@
 
         <div id="fullpage"  class="boxCommon" style="background-color: #607D8B">
 
-            <p id="geo-data"></p>
+            <p id="geo-data">Initial State</p>
 
             <div id="messageFooter"> Message Panel</div>
 
@@ -46,9 +46,11 @@
                 <button id="textentrySubmit" style="float:right;margin-right:1em" onclick="sendText()">Send</button>
                 <button id="textentryCancel" style="float:left;margin-left:1em" onclick="cancelText()">Cancel</button>
             </div>
-            <img id="killButton" class="transit boxCommon" onclick="killActiveBox()" src="images/button_close.png" style="display:none;z-index:3" alt="close button" />
-
         </div>
+
+        <img id="killButton" class="transit boxCommon" onclick="killActiveBox()" src="images/button_close.png" style="display:none;z-index:3" alt="close button" />
+
+        <img id="muteButton" onclick ="muteActiveBox()" src="img/button_mute.png" height="64" width="64" style="display:none" alt="mute button" /><br>
 
         <div id="canvaspane"  class="canvasStyle" style="visibility:hidden">
             <canvas id="canvas0" ></canvas>
@@ -66,7 +68,6 @@
             <img id="modmeButton" onclick ="initModme()" src="img/modme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="devmeButton" src="img/devme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="codeDialogButton" src="img/code-input.png" height="64" width="64" style=" display:none" alt="code button" /><br>
-            <img id="muteButton" onclick ="muteActiveBox()" src="img/button_mute.png" height="64" width="64" style="display:none" alt="mute button" /><br>
             <img id="inviteViaEmail" src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
             <img id="textEntryButton" onclick ="showTextEntry()" src="img/textEntry.png" height="64" width="64" style="display:none" alt="text button" /><br>
            <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
@@ -81,8 +82,8 @@
         </div>
 
         <div id="mod-ui-container" class="ui-zindex">
-            <img id="focus-participant" title="tooltip" src="img/focus_moderator.png" height="64" width="64" style="display:none" alt="test button" /><br>
-            <img id="mod-reset" title="tooltip" src="img/mod-reset.png" height="64" width="64" style="display:none" alt="test button" /><br>
+            <img id="focus-participant" class="moderator-swap" title="tooltip" src="img/focus-moderator-off.png" height="64" width="64" style="display:none" alt="mod button" /><br>
+            <img id="mod-reset" title="tooltip" src="img/mod-reset.png" height="64" width="64" style="display:none" alt="mod reset" /><br>
         </div>
 
         <div id="utility-ui-container" class="ui-zindex">

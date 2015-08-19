@@ -41,7 +41,7 @@ $( '#codeDialogModal' ).dialog( {
             return false;
             }
          else if ( !( _.includes( [ 'devme', 'modme' ], inputValue ) ) ) {
-          console.log('bcode is', inputValue);
+          //console.log('bcode is', inputValue);
            swal.showInputError( 'Please enter a valid code' );
            return false;
       } else {
@@ -89,14 +89,14 @@ function usebcode( bcode )
 // recieving unique rtcID
 
 socketServer.on( 'focus', function( id ) {
-  console.log('at button-code - socketServer Recieved rtcID:', id);
+  //console.log('at button-code - socketServer Recieved rtcID:', id);
 
 // var b = _(connectList)
 //     .filter( function(connectList) { return connectList.rtcid == id; } )
 //     .pluck( 'boxno' )
 //     .value();
 
-    console.log('at button-code - focusUser called with:', id);
+    //console.log('at button-code - focusUser called with:', id);
 
    focusUser( id );
    //b = document.getElementById( boxNo );
