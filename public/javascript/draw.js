@@ -51,7 +51,12 @@ function initDraw() {
   document.getElementById( 'canvaspane' ).offsetWidth = box0Width;
 
   baseLineStyle();
+
   //drawUI()
+
+  // Turn off pointer events to the canvas
+
+  canvas.style.pointerEvents = "none";
 
   // list the z-factors
 
@@ -63,7 +68,7 @@ function initDraw() {
 }
 
 function clearDrawCanvas() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.clearRect( 0, 0, canvas.width, canvas.height );
 }
 
 // The general-purpose event handler for mouse events.
@@ -91,13 +96,14 @@ function evCanvas( ev ) {
   }
 }
 
-// Handlers fot touch events
+// Handlers for touch events, 'emit' to the server
 
 function touchStartHandler( e ) {
   e.preventDefault();
     tool.started = true;
     data.pointerState = 'pointerDown';
-    console.log( 'touchstart:', data );
+
+   // console.log( 'touchstart:', data );
     emitDraw( data );
   }
 
@@ -124,7 +130,7 @@ function touchMoveHandler( e ) {
     }
   }
 
-// grab the mouse state and 'emit' to the server
+//handlers for mouse events, 'emit' to the server
 
 function toolPencil() {
   var tool = this;
@@ -132,7 +138,6 @@ function toolPencil() {
 
   this.mousedown = function() {
 
-    //context.beginPath();
     // context.moveTo(ev._x, ev._y);
     tool.started = true;
     data.pointerState = 'pointerDown';
@@ -180,6 +185,7 @@ function receiveLineFromClient( data ) {
       context.stroke();
 
       // build the array of points coming in from the channel
+
       points.push( {
         x: data.x,
         y: data.y,
@@ -201,7 +207,10 @@ function receiveLineFromClient( data ) {
       lineArray.push( new Line( line, data.color, data.client ) );
       line = [];
       context.beginPath();
-      drawCanvaslineArray();
+      fade = true;
+
+      //drawCanvaslineArray();
+      toggleFade();
       break;
   }
 }
@@ -210,13 +219,12 @@ function receiveLineFromClient( data ) {
 
 function drawCanvaslineArray() {
 
-  if ( data === false ) {
-    data = true;
-    toggleFade();
-  }
   context.clearRect( 0, 0, canvas.width, canvas.height );
-  for ( var i = 0; i < lineArray.length; i++ ) {var points = lineArray[i].line;
-    points.slice( 10, points.length );
+
+// each line
+
+  for ( var i = 0; i < lineArray.length; i++ ) {
+    var points = lineArray[i].line;
 
     // draw the points for a line
     for ( var j = 0; j < points.length; j++ ) {
@@ -233,59 +241,10 @@ function drawCanvaslineArray() {
       context.stroke();
     }
 
+// fade logic
+
     if ( fadeSwitch === true ) {
-
-      console.log('at fadeSwitch:', fadeSwitch);
-
-      // create the fade 'comet tail, dripping water, etc.'
-
-      //  var tail = [];
-      //  tail = lineArray[i].line.slice(0, 5);
-
-      //  tail.reverse;
-
-      lineArray[i].line.shift( 10 );
-
-      //
-      //  var l = lineArray[i].line.length;
-
-      //  for (var k = 0; k < l; k++) {
-      //
-      // console.log('tail', tail);
-      //
-      //for (var p = 0; p < tail.length; p++) {
-      //
-      //      //foo = getColorValues(tail[p].color);
-      //      //
-      //      //console.log(foo);
-      //      //
-      //      //var r = f//oo.red;
-      //      //var g = f//oo.green;
-      //      //var b = f//oo.blue;
-      //      //var alpha// = foo.alpha;
-      //      //
-      //      //bar = foo.blue - 10;
-      //      //// baz = foo.red - 10;
-      //      //
-      //      //tail[p].color = 'rgba(' + r + ', ' + g + ', ' + b +' , ' + alpha + ' )';
-      //
-      //      //a = (bar) + ')';
-      //      //tail[p].color = lineArray[i].color.replace(/[\d\.]+\)$/g, a);
-
-      //      //context.strokeStyle = tail[p].color;
-      //      //if (p === 0) {
-      //      //  context.beginPath();
-      //      //  context.moveTo(tail[p].x, tail[p].y);
-      //      //}
-      //      //context.lineTo(tail[p].x, tail[p].y);
-      //      //console.log('point:',  j, points[j].x, points[j].y);
-      //      baseLineStyle();
-      //      // context.shadowColor = lineArray[i].color;
-      //
-      context.stroke();
-
-      //    }
-      //  }
+       lineArray[i].line.shift();
     }
 
     // cleanup
@@ -294,8 +253,9 @@ function drawCanvaslineArray() {
       lineArray.splice( i );
     }
 
-    // if the lineArray is empty turn off the fadder
+    // if the lineArray is empty turn off the fadder and clear array
     if ( lineArray.length === 0 ) {
+      lineArray = [];
       fade = false;
       toggleFade();
     }
@@ -306,23 +266,14 @@ function drawCanvaslineArray() {
 
 function toggleFade() {
 
-  if ( fadeSwitch === true ) {
-    if ( fade === true ) {
-
-      //fade == true;
-      console.log('at toggleFade - fadeSwitch:', fadeSwitch, 'fade:', fade  );
-      fadeTimer = setInterval( drawCanvaslineArray, 100 );
-    } else {
-      fade = false;
+  if ( fadeSwitch === true && fade === true  ) {
+      fadeTimer = setInterval( function() { drawCanvaslineArray() }, 100 );
+    }
+  if ( fade === false || fadeSwitch === false) {
       clearInterval( fadeTimer );
     }
   }
-  if ( fadeSwitch === false ) {
 
-    //fade == false;
-    clearInterval( fadeTimer );
-  }
-}
 
 function emitDraw( data ) {
   var sessionId = socketServer.sessionid;

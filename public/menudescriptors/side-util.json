@@ -1,4 +1,4 @@
-"side-structure": {
+{"side-structure": {
         "util": {
             "sideBar": "#utility-ui-container",
             "buttons": [
@@ -7,8 +7,10 @@
                 "#bullseye",
                 "#arch"
             ],
-            "desc": "utility sidebar",
+            "renderElement": "utilcanvaspane",
+            "desc": "utility rendering infrastructure",
             "initState": "none",
             "baseZ": "20"
         }
     }
+}

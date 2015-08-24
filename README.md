@@ -1,7 +1,7 @@
 # Web Eyes Got to Real Time (WEG2RT) #
 
 * Prototype for initial version of a Collaborative Augmented Information Sharing System
-* Version: 0.3.2
+* Version: 0.4.0
 
 ## Technologies
 

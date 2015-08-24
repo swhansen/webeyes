@@ -27,12 +27,11 @@ var geoData = {};
 // Experiment with sensor data
 
 var geoData = document.querySelector( '#geo-data' );
-navigator.geolocation.watchPosition( function( position ) {
+  navigator.geolocation.watchPosition( function( position ) {
   geoData.lat = position.coords.latitude.toFixed( 5 );
   geoData.lon = position.coords.longitude.toFixed( 5 )
 
-//  geoData.innerHTML = position.coords.latitude.toFixed( 5 ) + '<br />' +
-//                      position.coords.longitude.toFixed( 5 );
+
   emitGeo(geoData);
 //
 // Test for altitude....
@@ -91,16 +90,24 @@ $( document ).ready( function() {
   } );
 } );
 
+//  Utility to make a dom element(e.g., video canvas, etc) mouse sensitive
+
+function setDomMouseEvent( domId, mode ) {
+  document.getElementById( domId ).style.pointerEvents = mode;
+}
+
 function utilUI() {
 buildSideMenu( 'util' );
 }
 
 function drawUI() {
-buildSideMenu( 'draw' );
+  buildSideMenu( 'draw' );
+  setDomMouseEvent('canvas0', 'auto');
 }
 
 function modmeUI() {
 buildSideMenu( 'modme' );
+setDomMouseEvent('canvas0', 'none');
 }
 
 //
@@ -112,14 +119,15 @@ $( function() {
       if ( $( this ).attr( 'class' ) === 'moderator-swap' ) {
         this.src = this.src.replace( 'img/focus-moderator-off.png', 'img/focus-moderator.png' );
         modSwitch = true;
+        setDomMouseEvent('canvas0', 'none');
       } else {
         this.src = this.src.replace( 'img/focus-moderator.png', 'img/focus-moderator-off.png' );
         modSwitch = false;
+        setDomMouseEvent('canvas0', 'auto');
       }
       $( this ).toggleClass( 'on' );
     } );
   } );
-
 
 //
 //  Utility menu buttons
@@ -246,15 +254,11 @@ $( function() {
     .pluck( 'avatar' )
     .value();
 
-    //console.log('clicking Video-ute:', rtcidToMute, boxToMute, theAvatar)
-
     var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
 
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
       this.src = this.src.replace( 'img/video-on', 'img/video-off' );
         document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = "hidden";
-
-        //avatarForBox = "avatar" + boxToMute;
 
         var avatar = document.getElementById( theAvatar );
 
@@ -263,7 +267,6 @@ $( function() {
         avatar.style.height = videoBoxToMute.style.height;
         avatar.style.left = videoBoxToMute.style.left;
         avatar.style.top = videoBoxToMute.style.top;
-
         avatar.style.visibility = "visible";
         videoMuteData.state = "hidden";
         videoMuteData.avatar = theAvatar;
@@ -296,15 +299,15 @@ socketServer.on( 'videoMute', function( videoMuteData ) {
   .value();
 
   var avatarForBox = videoMuteData.avatar;
- //= _(connectList)
- //.filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
- //.pluck('avatar')
- //.value();
-
-  //var theAvatar = _(connectList)
+  //= _(connectList)
   //.filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
   //.pluck('avatar')
   //.value();
+
+   //var theAvatar = _(connectList)
+   //.filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
+   //.pluck('avatar')
+   //.value();
 
 //  Toggle the video box
 
@@ -318,9 +321,7 @@ socketServer.on( 'videoMute', function( videoMuteData ) {
     document.getElementById( avatarForBox ).style.visibility = "hidden";
   } else {
         var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
-
         var avatar = document.getElementById( avatarForBox );
-
         avatar.src  = "img/" + avatarForBox + ".png";
         avatar.style.width = videoBoxToMute.style.width;
         avatar.style.height = videoBoxToMute.style.height;
@@ -360,7 +361,6 @@ $( function() {
      $.post( '/', inviteData, function( response, status ) {
                //console.log( 'Mail in ui-manager.js:', inviteData );
             } );
-
      $( '#invite-dialog' ).dialog( 'close' );
     }
   } ) ;

@@ -9,6 +9,9 @@
                 "#bullseye",
                 "#arch"
             ],
+
+            "renderElement": "utilcanvaspane",
+
             "desc": "utility layer",
             "initState": "none",
             "baseZ": "20"
@@ -20,6 +23,9 @@
                 "#fadeButton",
                 "#b1"
             ],
+
+            "renderElement": "canvaspane",
+
             "desc": "drawing layer",
             "initState": "none",
             "baseZ": "20"
@@ -43,14 +49,6 @@
             "sideBar": "",
             "buttons": [],
             "desc": "IM Text",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "p3": {
-            "mainButton": "#muteButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "Mute Audio",
             "initState": "none",
             "baseZ": "20"
         },

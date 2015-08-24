@@ -46,14 +46,6 @@
             "initState": "none",
             "baseZ": "20"
         },
-        "p3": {
-            "mainButton": "#muteButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "Mute Audio",
-            "initState": "none",
-            "baseZ": "20"
-        },
         "codeInput": {
             "mainButton": "#codeDialogButton",
             "buttons": [],

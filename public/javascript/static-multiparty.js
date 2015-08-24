@@ -10,12 +10,11 @@ var homeId;
 
 easyrtc.dontAddCloseButtons( false );
 
-//
-// Experimental Footer status and message Bar
-//
+// Footer Messages
 
 function messageBar( msg ) {
-  $( '#messageFooter' ).html( msg );
+  $( '#messageFooter' ).html( msg ).fadeIn(500);
+  $( '#messageFooter' ).html( msg ).fadeOut(4000);
 };
 
 function emitMessage( data ) {
@@ -656,6 +655,7 @@ function loginSuccess() {
 function cancelText() {
     document.getElementById('textentryBox').style.display = "none";
     document.getElementById('textEntryButton').style.display = "block";
+    $( '#layer-menu-button' ).click();
 }
 
 
@@ -663,6 +663,7 @@ function sendText(e) {
     document.getElementById('textentryBox').style.display = "none";
     document.getElementById('textEntryButton').style.display = "block";
     var stringToSend = document.getElementById('textentryField').value;
+    $( '#layer-menu-button' ).click();
     if (stringToSend && stringToSend != "") {
         for (var i = 0; i < maxCALLERS; i++) {
             var easyrtcid = easyrtc.getIthCaller(i);
@@ -862,5 +863,6 @@ function appInit() {
 
 initDraw();
 initUtil();
+messageBar('User Session Initialized');
 
 }

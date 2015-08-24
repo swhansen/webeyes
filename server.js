@@ -286,7 +286,8 @@ console.log( 'Listening on port ' + port );
 var socketServer = io.listen( webServer );
 /*jshint +W079 */
 
-// Collabortive  drawing stuff
+// "Bus" Communication
+
 socketServer.sockets.on( 'connection', function( client ) {
 
   client.on( 'utility', function( data, session ) {

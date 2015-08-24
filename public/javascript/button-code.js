@@ -16,6 +16,7 @@ $( function() {
   } );
 
 modmeUI();
+setDomMouseEvent('canvas0', 'none');
 };
 
 // UI code input dialog
