@@ -4,9 +4,9 @@ var data       = {};
 var points     = [];
 var line       = [];
 var lineArray  = [];
-var fade       = false;
+var fade       = false;   // is there is something to fade
 var fadeTimer;
-var fadeSwitch = true;
+var fadeSwitch = true;    // UI element for erase lines on and off
 
 function baseLineStyle() {
   context.lineWidth = 2;
@@ -184,7 +184,7 @@ function receiveLineFromClient( data ) {
       baseLineStyle();
       context.stroke();
 
-      // build the array of points coming in from the channel
+  // build the array of points coming in from the channel
 
       points.push( {
         x: data.x,
@@ -221,12 +221,9 @@ function drawCanvaslineArray() {
 
   context.clearRect( 0, 0, canvas.width, canvas.height );
 
-// each line
-
   for ( var i = 0; i < lineArray.length; i++ ) {
     var points = lineArray[i].line;
 
-    // draw the points for a line
     for ( var j = 0; j < points.length; j++ ) {
       context.strokeStyle = lineArray[i].line[j].color;
       context.shadowColor = lineArray[i].line[j].shadowColor;
@@ -236,7 +233,6 @@ function drawCanvaslineArray() {
       }
       context.lineTo( lineArray[i].line[j].x, lineArray[i].line[j].y );
 
-      //console.log('point:',  j, points[j].x, points[j].y);
       baseLineStyle();
       context.stroke();
     }
@@ -247,13 +243,14 @@ function drawCanvaslineArray() {
        lineArray[i].line.shift();
     }
 
-    // cleanup
+// cleanup
 
-    if ( lineArray[i].line.length === 0 ) {
-      lineArray.splice( i );
-    }
+ //   if ( lineArray[i].line.length === 0 ) {
+ //     lineArray.splice( i );
+ //  }
 
-    // if the lineArray is empty turn off the fadder and clear array
+// if lineArray is empty turn off the fadder and clear array
+
     if ( lineArray.length === 0 ) {
       lineArray = [];
       fade = false;
