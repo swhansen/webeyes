@@ -13,6 +13,8 @@ var uiStructure = {};
 var mainCollapsed = true;
 var modSwitch = false;
 
+//initAr();
+
 // initialize the core menu
 
 $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
@@ -29,22 +31,18 @@ var geoData = {};
 var geoData = document.querySelector( '#geo-data' );
   navigator.geolocation.watchPosition( function( position ) {
   geoData.lat = position.coords.latitude.toFixed( 5 );
-  geoData.lon = position.coords.longitude.toFixed( 5 )
+  geoData.lon = position.coords.longitude.toFixed( 5 );
 
+  emitGeo( geoData );
 
-  emitGeo(geoData);
-//
-// Test for altitude....
-//
 } );
 
-function emitGeo(data) {
+function emitGeo( data ) {
   var sessionId = socketServer.sessionid;
- // console.log("emitUtility:", data);
-  socketServer.emit('geo', data, sessionId);
+  socketServer.emit( 'geo', data, sessionId );
 }
 
-socketServer.on('geo', function( data ) {
+socketServer.on( 'geo', function( data ) {
   geoData.innerHTML = data.lat + '<br />' +
                       data.lon;
 } );
@@ -91,6 +89,8 @@ $( document ).ready( function() {
 } );
 
 //  Utility to make a dom element(e.g., video canvas, etc) mouse sensitive
+//  - auto, none
+//  - all other events are SVG realted
 
 function setDomMouseEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
@@ -107,6 +107,11 @@ function drawUI() {
 
 function modmeUI() {
 buildSideMenu( 'modme' );
+setDomMouseEvent('canvas0', 'none');
+}
+
+function augmeUI() {
+buildSideMenu( 'augme' );
 setDomMouseEvent('canvas0', 'none');
 }
 
@@ -233,9 +238,10 @@ $( function() {
 
 //
 //  Video muting
-//  - "hide" the video element and replcae with image
+//  - "hide" the video element and replace with image
 //  - Toggled by main menu button
 //  - based on the unique rtcid if the "owner"
+//   - send mute message to other clients
 //
 
 $( function() {
@@ -245,12 +251,12 @@ $( function() {
     videoMuteData.rtcid = rtcidToMute;
 
     var boxToMute = _( connectList )
-    .filter( function( connectList ) { return connectList.rtcid == rtcidToMute; } )
+    .filter( function( connectList ) { return connectList.rtcid === rtcidToMute; } )
     .pluck( 'boxno' )
     .value();
 
-    var theAvatar = _( connectList )
-    .filter( function( connectList ) { return connectList.rtcid == rtcidToMute; } )
+    var theAvatar = _( connectList ).filter( function( connectList )
+    { return connectList.rtcid === rtcidToMute; } )
     .pluck( 'avatar' )
     .value();
 
@@ -258,26 +264,26 @@ $( function() {
 
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
       this.src = this.src.replace( 'img/video-on', 'img/video-off' );
-        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = "hidden";
+        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'hidden';
 
         var avatar = document.getElementById( theAvatar );
 
-        avatar.src  = "img/" + theAvatar + ".png";
+        avatar.src  = 'img/' + theAvatar + '.png';
         avatar.style.width = videoBoxToMute.style.width;
         avatar.style.height = videoBoxToMute.style.height;
         avatar.style.left = videoBoxToMute.style.left;
         avatar.style.top = videoBoxToMute.style.top;
-        avatar.style.visibility = "visible";
-        videoMuteData.state = "hidden";
+        avatar.style.visibility = 'visible';
+        videoMuteData.state = 'hidden';
         videoMuteData.avatar = theAvatar;
 
         emitVideoMute( videoMuteData );
       } else {
 
         this.src = this.src.replace( 'img/video-off', 'img/video-on' );
-        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = "visible";
-        document.getElementById( theAvatar ).style.visibility = "hidden";
-        videoMuteData.state = "visible";
+        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'visible';
+        document.getElementById( theAvatar ).style.visibility = 'hidden';
+        videoMuteData.state = 'visible';
 
         emitVideoMute( videoMuteData );
       }
@@ -294,7 +300,7 @@ function emitVideoMute( videoMuteData ) {
 socketServer.on( 'videoMute', function( videoMuteData ) {
 
  var boxToMute = _(connectList)
-  .filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
+  .filter(function(connectList) { return connectList.rtcid === videoMuteData.rtcid; })
   .pluck('boxno')
   .value();
 
@@ -318,16 +324,16 @@ socketServer.on( 'videoMute', function( videoMuteData ) {
 //  ...and now the avatar
 
   if ( data.state === 'visible' ) {
-    document.getElementById( avatarForBox ).style.visibility = "hidden";
+    document.getElementById( avatarForBox ).style.visibility = 'hidden';
   } else {
         var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
         var avatar = document.getElementById( avatarForBox );
-        avatar.src  = "img/" + avatarForBox + ".png";
+        avatar.src  = 'img/' + avatarForBox + '.png';
         avatar.style.width = videoBoxToMute.style.width;
         avatar.style.height = videoBoxToMute.style.height;
         avatar.style.left = videoBoxToMute.style.left;
         avatar.style.top = videoBoxToMute.style.top;
-        avatar.style.visibility = "visible";
+        avatar.style.visibility = 'visible';
   }
 } );
 

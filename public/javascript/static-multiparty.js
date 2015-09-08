@@ -15,7 +15,7 @@ easyrtc.dontAddCloseButtons( false );
 function messageBar( msg ) {
   $( '#messageFooter' ).html( msg ).fadeIn(500);
   $( '#messageFooter' ).html( msg ).fadeOut(4000);
-};
+}
 
 function emitMessage( data ) {
   var sessionId = socketServer.sessionid;
@@ -28,11 +28,11 @@ socketServer.on( 'message', function( data ) {
       } );
 
 function getIdOfBox( boxNum ) {
-    return "box" + boxNum;
+    return 'box' + boxNum;
 }
 
 function getIdOfCanvas( canvasNum ) {
-    return "canvas" + canvasNum;
+    return 'canvas' + canvasNum;
 }
 
 function reshapeFull( parentw, parenth ) {
@@ -146,7 +146,7 @@ function reshape1of2(parentw, parenth) {
             top: (parenth - sharedVideoHeight) / 2,
             width: sharedVideoWidth,
             height: sharedVideoHeight
-        }
+        };
     }
 }
 
@@ -164,7 +164,7 @@ function reshape2of2(parentw, parenth) {
             top: (parenth - sharedVideoHeight) / 2,
             width: sharedVideoWidth,
             height: sharedVideoHeight
-        }
+        };
     }
 }
 
@@ -182,12 +182,12 @@ function reshape1of3(parentw, parenth) {
             top: (parenth - sharedVideoHeight * 2) / 3,
             width: sharedVideoWidth,
             height: sharedVideoHeight
-        }
+        };
     }
 }
 
 function reshape2of3(parentw, parenth) {
-    if (layout == 'p') {
+    if (layout === 'p') {
         return {
             left: (parentw - sharedVideoWidth) / 2,
             top: (parenth - sharedVideoHeight * 3) / 4 * 2 + sharedVideoHeight,
@@ -200,7 +200,7 @@ function reshape2of3(parentw, parenth) {
             top: (parenth - sharedVideoHeight * 2) / 3,
             width: sharedVideoWidth,
             height: sharedVideoHeight
-        }
+        };
     }
 }
 
@@ -218,7 +218,7 @@ function reshape3of3(parentw, parenth) {
             top: (parenth - sharedVideoHeight * 2) / 3 * 2 + sharedVideoHeight,
             width: sharedVideoWidth,
             height: sharedVideoHeight
-        }
+        };
     }
 }
 
@@ -229,7 +229,7 @@ function reshape1of4(parentw, parenth) {
         top: (parenth - sharedVideoHeight * 2) / 3,
         width: sharedVideoWidth,
         height: sharedVideoHeight
-    }
+    };
 }
 
 function reshape2of4(parentw, parenth) {
@@ -238,7 +238,7 @@ function reshape2of4(parentw, parenth) {
         top: (parenth - sharedVideoHeight * 2) / 3,
         width: sharedVideoWidth,
         height: sharedVideoHeight
-    }
+    };
 }
 
 function reshape3of4(parentw, parenth) {
@@ -247,7 +247,7 @@ function reshape3of4(parentw, parenth) {
         top: (parenth - sharedVideoHeight * 2) / 3 * 2 + sharedVideoHeight,
         width: sharedVideoWidth,
         height: sharedVideoHeight
-    }
+    };
 }
 
 function reshape4of4(parentw, parenth) {
@@ -256,7 +256,7 @@ function reshape4of4(parentw, parenth) {
         top: (parenth - sharedVideoHeight * 2) / 3 * 2 + sharedVideoHeight,
         width: sharedVideoWidth,
         height: sharedVideoHeight
-    }
+    };
 }
 
 var boxUsed = [true, false, false, false];
@@ -305,7 +305,7 @@ var reshapeThumbs = [
         if (activeBox > 0) {
             return setThumbSize(0.20, 0.01, 0.01, parentw, parenth);
         } else {
-            setSharedVideoSize(parentw, parenth)
+            setSharedVideoSize(parentw, parenth);
             switch (connectCount) {
                 case 0:
                     return reshapeToFullSize(parentw, parenth);
@@ -345,6 +345,7 @@ var reshapeThumbs = [
                     } else {
                         return reshape3of3(parentw, parenth);
                     }
+                    break;
                 case 3:
                     return reshape3of4(parentw, parenth);
             }
@@ -371,9 +372,9 @@ function killButtonReshaper(parentw, parenth) {
     var imagew = 128;
     var imageh = 128;
     if (parentw < parenth) {
-        return setThumbSizeButton(0.1, -.51, -0.01, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton(0.1, -0.51, -0.01, parentw, parenth, imagew, imageh);
     } else {
-        return setThumbSizeButton(0.1, -.01, -.51, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton(0.1, -0.01, -0.51, parentw, parenth, imagew, imageh);
     }
 }
 
@@ -382,9 +383,9 @@ function muteButtonReshaper(parentw, parenth) {
     var imagew = 32;
     var imageh = 32;
     if (parentw < parenth) {
-        return setThumbSizeButton(0.10, -.51, 0.01, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton(0.10, -0.51, 0.01, parentw, parenth, imagew, imageh);
     } else {
-        return setThumbSizeButton(0.10, 0.01, -.51, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton(0.10, 0.01, -0.51, parentw, parenth, imagew, imageh);
     }
 }
 
@@ -392,9 +393,9 @@ function drawButtonReshaper(parentw, parenth) {
     var imagew = 32;
     var imageh = 32;
     if (parentw < parenth) {
-        return setThumbSizeButton(0.10, -.51, 0.01, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton(0.10, -0.51, 0.01, parentw, parenth, imagew, imageh);
     } else {
-        return setThumbSizeButton(0.10, 0.01, -.51, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton(0.10, 0.01, -0.51, parentw, parenth, imagew, imageh);
     }
 }
 
@@ -402,40 +403,40 @@ function reshapeTextEntryButton(parentw, parenth) {
     var imagew = 32;
     var imageh = 32;
     if (parentw < parenth) {
-        return setThumbSizeButton(0.10, .51, 0.01, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton(0.10, 0.51, 0.01, parentw, parenth, imagew, imageh);
     } else {
-        return setThumbSizeButton(0.10, 0.01, .51, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton(0.10, 0.01, 0.51, parentw, parenth, imagew, imageh);
     }
 }
 
 
 function handleWindowResize() {
     var fullpage = document.getElementById('fullpage');
-    fullpage.style.width = window.innerWidth + "px";
-    fullpage.style.height = window.innerHeight + "px";
+    fullpage.style.width = window.innerWidth + 'px';
+    fullpage.style.height = window.innerHeight + 'px';
     connectCount = easyrtc.getConnectionCount();
 
     function applyReshape(obj, parentw, parenth) {
         var myReshape = obj.reshapeMe(parentw, parenth);
 
         if (typeof myReshape.left !== 'undefined') {
-            obj.style.left = Math.round(myReshape.left) + "px";
+            obj.style.left = Math.round(myReshape.left) + 'px';
         }
         if (typeof myReshape.top !== 'undefined') {
-            obj.style.top = Math.round(myReshape.top) + "px";
+            obj.style.top = Math.round(myReshape.top) + 'px';
         }
         if (typeof myReshape.width !== 'undefined') {
-            obj.style.width = Math.round(myReshape.width) + "px";
+            obj.style.width = Math.round(myReshape.width) + 'px';
         }
         if (typeof myReshape.height !== 'undefined') {
-            obj.style.height = Math.round(myReshape.height) + "px";
+            obj.style.height = Math.round(myReshape.height) + 'px';
         }
 
         var n = obj.childNodes.length;
-        //console.log("n:", n);
+        //console.log('n:', n);
         for (var i = 0; i < n; i++) {
             var childNode = obj.childNodes[i];
-            //console.log("childnode:", childNode);
+            //console.log('childnode:', childNode);
             if (childNode.reshapeMe) {
                 applyReshape(childNode, myReshape.width, myReshape.height);
             }
@@ -449,10 +450,10 @@ function handleWindowResize() {
 function setReshaper(elementId, reshapeFn) {
     var element = document.getElementById(elementId);
     if (!element) {
-        alert("Attempt to apply to reshapeFn to non-existent element " + elementId);
+        alert('Attempt to apply to reshapeFn to non-existent element ' + elementId);
     }
     if (!reshapeFn) {
-        alert("Attempt to apply misnamed reshapeFn to element " + elementId);
+        alert('Attempt to apply misnamed reshapeFn to element ' + elementId);
     }
     element.reshapeMe = reshapeFn;
 }
@@ -462,8 +463,8 @@ function collapseToThumbHelper() {
         var id = getIdOfBox(activeBox);
         document.getElementById(id).style.zIndex = 2;
         setReshaper(id, reshapeThumbs[activeBox]);
-        document.getElementById('muteButton').style.display = "none";
-        document.getElementById('killButton').style.display = "none";
+        document.getElementById('muteButton').style.display = 'none';
+        document.getElementById('killButton').style.display = 'none';
         activeBox = -1;
     }
 }
@@ -479,21 +480,21 @@ function collapseToThumb() {
 function updateMuteImage(toggle) {
     var muteButton = document.getElementById('muteButton');
     if (activeBox > 0) { // no kill button for self video
-        muteButton.style.display = "block";
+        muteButton.style.display = 'block';
         var videoObject = document.getElementById(getIdOfBox(activeBox));
         var isMuted = videoObject.muted ? true : false;
         if (toggle) {
             isMuted = !isMuted;
             videoObject.muted = isMuted;
         }
-        muteButton.src = isMuted ? "img/button_unmute.png" : "img/button_mute.png";
+        muteButton.src = isMuted ? 'img/button_unmute.png' : 'img/button_mute.png';
     } else {
-        muteButton.style.display = "none";
+        muteButton.style.display = 'none';
     }
 }
 
 //
-// Focus the selected user through the "code" system
+// Focus the selected user through the 'code' system
 //  - called through broadcast receipt of socket.server 'focus'
 //  - maps eastrtcid to DOM element for EACH client
 //  - note: each client maintains it's own mapping
@@ -521,9 +522,9 @@ function focusUser( rtcid ) {
        setReshaper( id, reshapeToFullSize );
        document.getElementById( id ).style.zIndex = 1;
        if (whichBox > 0) {
-           document.getElementById( 'muteButton' ).style.display = "block";
+           document.getElementById( 'muteButton' ).style.display = 'block';
            updateMuteImage();
-           document.getElementById( 'killButton' ).style.display = "block";
+           document.getElementById( 'killButton' ).style.display = 'block';
        }
    //}
     expandThumb( whichBox );
@@ -533,8 +534,8 @@ function focusUser( rtcid ) {
 }
 
 function expandThumb(whichBox) {
-  console.log("at expandThumb: whichBox=", whichBox, "local easyRtcID", easyrtc.myEasyrtcid);
- // console.log("expandThumb - local easyRtcID", easyrtc.myEasyrtcid);
+  console.log('at expandThumb: whichBox=', whichBox, 'local easyRtcID', easyrtc.myEasyrtcid);
+ // console.log('expandThumb - local easyRtcID', easyrtc.myEasyrtcid);
     var lastActiveBox = activeBox;
     if (activeBox >= 0) {
         collapseToThumbHelper();
@@ -549,9 +550,9 @@ function expandThumb(whichBox) {
        setReshaper(id, reshapeToFullSize);
        document.getElementById(id).style.zIndex = 1;
        if (whichBox > 0) {
-           document.getElementById('muteButton').style.display = "block";
+           document.getElementById('muteButton').style.display = 'block';
            updateMuteImage();
-           document.getElementById('killButton').style.display = "block";
+           document.getElementById('killButton').style.display = 'block';
        }
    //}
     updateMuteImage(false);
@@ -570,7 +571,7 @@ function expandThumb(whichBox) {
       socketServer.emit( 'focus', rtcidToExpand, sessionId );
 
       var usr = whichBox  + 1;
-      var modMessage = "The Moderator has focused User-" + usr;
+      var modMessage = 'The Moderator has focused User-' + usr;
       //sendModeratorText(modMessage);
       emitMessage( modMessage );
       messageBar( modMessage );
@@ -630,14 +631,14 @@ function callEverybodyElse(roomName, otherPeople) {
         }
 
         function callFailure() {
-            easyrtc.showError("CALL-REJECTED", "Rejected by other party");
+            easyrtc.showError('CALL-REJECTED', 'Rejected by other party');
             if (connectCount < maxCALLERS && position > 0) {
                 establishConnection(position - 1);
             }
         }
 
         easyrtc.call(list[position], callSuccess, callFailure);
-        //console.log("RoomOccList:", easyrtcid, list);
+        //console.log('RoomOccList:', easyrtcid, list);
 
     }
     if (list.length > 0) {
@@ -647,28 +648,28 @@ function callEverybodyElse(roomName, otherPeople) {
 
 
 function loginSuccess() {
-    //    console.log("Successfully connected");
+    //    console.log('Successfully connected');
     expandThumb(0); // expand the mirror image initially.
 }
 
 
 function cancelText() {
-    document.getElementById('textentryBox').style.display = "none";
-    document.getElementById('textEntryButton').style.display = "block";
+    document.getElementById('textentryBox').style.display = 'none';
+    document.getElementById('textEntryButton').style.display = 'block';
     $( '#layer-menu-button' ).click();
 }
 
 
 function sendText(e) {
-    document.getElementById('textentryBox').style.display = "none";
-    document.getElementById('textEntryButton').style.display = "block";
+    document.getElementById('textentryBox').style.display = 'none';
+    document.getElementById('textEntryButton').style.display = 'block';
     var stringToSend = document.getElementById('textentryField').value;
     $( '#layer-menu-button' ).click();
-    if (stringToSend && stringToSend != "") {
+    if (stringToSend && stringToSend != '') {
         for (var i = 0; i < maxCALLERS; i++) {
             var easyrtcid = easyrtc.getIthCaller(i);
-            if (easyrtcid && easyrtcid != "") {
-                easyrtc.sendPeerMessage(easyrtcid, "im", stringToSend);
+            if (easyrtcid && easyrtcid != '') {
+                easyrtc.sendPeerMessage(easyrtcid, 'im', stringToSend);
             }
         }
     }
@@ -678,17 +679,17 @@ function sendText(e) {
 function sendModeratorText( moderatorMessage ) {
   for ( var i = 0; i < maxCALLERS; i++ ) {
       var easyrtcid = easyrtc.getIthCaller( i );
-      if ( easyrtcid && easyrtcid != "" ) {
-          easyrtc.sendPeerMessage( easyrtcid, "im", moderatorMessage );
+      if ( easyrtcid && easyrtcid != '' ) {
+          easyrtc.sendPeerMessage( easyrtcid, 'im', moderatorMessage );
       }
   }
     return false;
 }
 
 function showTextEntry() {
-    document.getElementById('textentryField').value = "";
-    document.getElementById('textentryBox').style.display = "block";
-    document.getElementById('textEntryButton').style.display = "none";
+    document.getElementById('textentryField').value = '';
+    document.getElementById('textentryBox').style.display = 'block';
+    document.getElementById('textEntryButton').style.display = 'none';
     document.getElementById('textentryField').focus();
 }
 
@@ -696,26 +697,26 @@ function showMessage(startX, startY, content) {
     var fullPage = document.getElementById('fullpage');
     var fullW = parseInt(fullPage.offsetWidth);
     var fullH = parseInt(fullPage.offsetHeight);
-    var centerEndX = .2 * startX + .8 * fullW / 2;
-    var centerEndY = .2 * startY + .8 * fullH / 2;
+    var centerEndX = 0.2 * startX + 0.8 * fullW / 2;
+    var centerEndY = 0.2 * startY + 0.8 * fullH / 2;
 
 
-    var cloudObject = document.createElement("img");
-    cloudObject.src = "images/cloud.png";
-    cloudObject.style.width = "1px";
-    cloudObject.style.height = "1px";
-    cloudObject.style.left = startX + "px";
-    cloudObject.style.top = startY + "px";
+    var cloudObject = document.createElement('img');
+    cloudObject.src = 'images/cloud.png';
+    cloudObject.style.width = '1px';
+    cloudObject.style.height = '1px';
+    cloudObject.style.left = startX + 'px';
+    cloudObject.style.top = startY + 'px';
     fullPage.appendChild(cloudObject);
 
     cloudObject.onload = function() {
-        cloudObject.style.left = startX + "px";
-        cloudObject.style.top = startY + "px";
-        cloudObject.style.width = "4px";
-        cloudObject.style.height = "4px";
+        cloudObject.style.left = startX + 'px';
+        cloudObject.style.top = startY + 'px';
+        cloudObject.style.width = '4px';
+        cloudObject.style.height = '4px';
         cloudObject.style.opacity = 0.7;
         cloudObject.style.zIndex = 5;
-        cloudObject.className = "transit boxCommon";
+        cloudObject.className = 'transit boxCommon';
         var textObject;
 
         function removeCloud() {
@@ -725,19 +726,19 @@ function showMessage(startX, startY, content) {
             }
         }
         setTimeout(function() {
-            cloudObject.style.left = centerEndX - fullW / 4 + "px";
-            cloudObject.style.top = centerEndY - fullH / 4 + "px";
-            cloudObject.style.width = (fullW / 2) + "px";
-            cloudObject.style.height = (fullH / 2) + "px";
+            cloudObject.style.left = centerEndX - fullW / 4 + 'px';
+            cloudObject.style.top = centerEndY - fullH / 4 + 'px';
+            cloudObject.style.width = (fullW / 2) + 'px';
+            cloudObject.style.height = (fullH / 2) + 'px';
         }, 10);
         setTimeout(function() {
             textObject = document.createElement('div');
-            textObject.className = "boxCommon";
-            textObject.style.left = Math.floor(centerEndX - fullW / 8) + "px";
-            textObject.style.top = Math.floor(centerEndY) + "px";
-            textObject.style.fontSize = "36pt";
-            textObject.style.width = (fullW * .4) + "px";
-            textObject.style.height = (fullH * .4) + "px";
+            textObject.className = 'boxCommon';
+            textObject.style.left = Math.floor(centerEndX - fullW / 8) + 'px';
+            textObject.style.top = Math.floor(centerEndY) + 'px';
+            textObject.style.fontSize = '36pt';
+            textObject.style.width = (fullW * 0.4) + 'px';
+            textObject.style.height = (fullH * 0.4) + 'px';
             textObject.style.zIndex = 6;
             textObject.appendChild(document.createTextNode(content));
             fullPage.appendChild(textObject);
@@ -745,21 +746,21 @@ function showMessage(startX, startY, content) {
             cloudObject.onclick = removeCloud;
         }, 1000);
         setTimeout(function() {
-            cloudObject.style.left = startX + "px";
-            cloudObject.style.top = startY + "px";
-            cloudObject.style.width = "4px";
-            cloudObject.style.height = "4px";
+            cloudObject.style.left = startX + 'px';
+            cloudObject.style.top = startY + 'px';
+            cloudObject.style.width = '4px';
+            cloudObject.style.height = '4px';
             fullPage.removeChild(textObject);
         }, 9000);
         setTimeout(function() {
             fullPage.removeChild(cloudObject);
         }, 10000);
-    }
+    };
 }
 
 function messageListener(easyrtcid, msgType, content) {
     for (var i = 0; i < maxCALLERS; i++) {
-        if (easyrtc.getIthCaller(i) == easyrtcid) {
+        if (easyrtc.getIthCaller(i) === easyrtcid) {
             var startArea = document.getElementById(getIdOfBox(i + 1));
             var startX = parseInt(startArea.offsetLeft) + parseInt(startArea.offsetWidth) / 2;
             var startY = parseInt(startArea.offsetTop) + parseInt(startArea.offsetHeight) / 2;
@@ -793,18 +794,18 @@ function appInit() {
 
     easyrtc.setRoomOccupantListener(callEverybodyElse);
 
-    easyrtc.easyApp("roomDemo", "box0", ["box1", "box2", "box3"],
+    easyrtc.easyApp('roomDemo', 'box0', ['box1', 'box2', 'box3'],
       function(myId) {
-        //console.log("Success - uid is:" + myId);
+        //console.log('Success - uid is:' + myId);
 
 // First time through for all connections
 
-        if ( boxUsed[0] = true && easyrtc.getConnectionCount() == 0 ) {
+        if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
           connectList.push({
             rtcid: myId,
             boxno: 0,
-            avatar: "avatar0"
-          })
+            avatar: 'avatar0'
+          });
         }
       }
     );
@@ -812,17 +813,17 @@ function appInit() {
     easyrtc.setPeerListener(messageListener);
 
     easyrtc.setDisconnectListener(function() {
-        easyrtc.showError("LOST-CONNECTION", "Lost connection to signaling server");
+        easyrtc.showError('LOST-CONNECTION', 'Lost connection to signaling server');
     });
 
     easyrtc.setOnCall(function(easyrtcid, slot) {
-        //console.log("a call with " + easyrtcid + "established");
-      //  console.log("Occupant IDs:", easyrtc.getRoomOccupantsAsArray('default'))
+        //console.log('a call with ' + easyrtcid + 'established');
+      //  console.log('Occupant IDs:', easyrtc.getRoomOccupantsAsArray('default'))
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
         var theBox =  theSlot;
         var av = 'avatar0';
-        //console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,"avatar:", av );
+        //console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,'avatar:', av );
 
        connectList.push( {
         rtcid: easyrtcid,
@@ -830,7 +831,7 @@ function appInit() {
         avatar: av
      } );
 
-       //console.log("onCall - ConnectList:", connectList);
+       //console.log('onCall - ConnectList:', connectList);
 
 // Thumbs for all connections other than initiator
 //  -- change to == 1 for normal mode
@@ -839,18 +840,18 @@ function appInit() {
             expandThumb(0);
             document.getElementById('textEntryButton').style.display = 'block';
         }
-        document.getElementById(getIdOfBox(slot + 1)).style.visibility = "visible";
+        document.getElementById(getIdOfBox(slot + 1)).style.visibility = 'visible';
         expandThumb(0);
     } );
 
     easyrtc.setOnHangup(function(easyrtcid, slot) {
         boxUsed[slot + 1] = false;
-        //console.log("hanging up on " + easyrtcid);
+        //console.log('hanging up on ' + easyrtcid);
         if (activeBox > 0 && slot + 1 == activeBox) {
             collapseToThumb();
         }
         setTimeout(function() {
-            document.getElementById(getIdOfBox(slot + 1)).style.visibility = "hidden";
+            document.getElementById(getIdOfBox(slot + 1)).style.visibility = 'hidden';
 
             if (easyrtc.getConnectionCount() == 0) { // no more connections
                 expandThumb(0);

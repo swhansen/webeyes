@@ -9,6 +9,7 @@
         <script type="text/javascript" src="bower/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="bower/lodash/lodash.min.js"></script>
         <script type="text/javascript" src="bower/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript" src="bower/threejs/build/three.min.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
         <script type="text/javascript" src="javascript/socket.js"></script>
@@ -60,6 +61,10 @@
             <canvas id="util-canvas" ></canvas>
         </div>
 
+        <div id="arcanvaspane"  class="canvasStyle" style="visibility:hidden">
+            <canvas id="ar-canvas" ></canvas>
+        </div>
+
         <div id="layer-menu-button" class="ui-zindex">
         <img src="img/menu48.png" height="50" width="50" alt="menubutton" />
         </div>
@@ -67,6 +72,7 @@
         <div id="main-ui-container" class="ui-zindex">
             <img id="modmeButton" onclick ="initModme()" src="img/modme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="devmeButton" src="img/devme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
+            <img id="augmeButton" onclick="augmeUI()" src="img/augme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="codeDialogButton" src="img/code-input.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="inviteViaEmail" src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
             <img id="textEntryButton" onclick ="showTextEntry()" src="img/textEntry.png" height="64" width="64" style="display:none" alt="text button" /><br>
@@ -84,6 +90,11 @@
         <div id="mod-ui-container" class="ui-zindex">
             <img id="focus-participant" class="moderator-swap" title="tooltip" src="img/focus-moderator-off.png" height="64" width="64" style="display:none" alt="mod button" /><br>
             <img id="mod-reset" title="tooltip" src="img/mod-reset.png" height="64" width="64" style="display:none" alt="mod reset" /><br>
+        </div>
+
+        <div id="aug-ui-container" class="ui-zindex">
+            <img id="aug1" onclick ="initAr()" src="img/augA1.png" height="64" width="64" style="display:none" alt="aug1" /><br>
+            <img id="aug2"  src="img/augA2.png" height="64" width="64" style="display:none" alt="aug2" /><br>
         </div>
 
         <div id="utility-ui-container" class="ui-zindex">
@@ -118,10 +129,12 @@
        <img id="material" src="img/conceptual-architecture-v4.png" alt="test-document" width="220" height="277" style="visibility:hidden">
 
          <script type="text/javascript"  src="javascript/draw.js" ></script>
+         <script type="text/javascript"  src="javascript/ar.js" ></script>
          <script type="text/javascript"  src="javascript/util.js" ></script>
          <script type="text/javascript"  src="javascript/button-code.js" ></script>
          <script type="text/javascript"  src="javascript/ui-manager.js" ></script>
          <script type="text/javascript"  src="javascript/video-select.js" ></script>
+
 
     </body>
 </html>

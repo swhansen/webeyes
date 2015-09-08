@@ -81,23 +81,6 @@ app.use( function( req, res, next ) {
   next();
 } );
 
-////Test home page
-//app.get('/', function   (req, res) {
-//  if (loggedIn === true) {
-//    res.render('index', {
-//      title: 'available',
-//      message: 'WEG2RT is ready to go'
-//    });
-//    console.log('homepage -logged in');
-//  } else {
-//    res.render('index', {
-//      title: 'not',
-//      message: 'WEG2RT does not have anyone logged in'
-//    });
-//    console.log('homepage -not logged in');
-//  }
-//});
-
 //  Main entry point
 
 app.get( '/', function( req, res ) {

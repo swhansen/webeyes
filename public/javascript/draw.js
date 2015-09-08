@@ -56,7 +56,7 @@ function initDraw() {
 
   // Turn off pointer events to the canvas
 
-  canvas.style.pointerEvents = "none";
+  canvas.style.pointerEvents = 'none';
 
   // list the z-factors
 

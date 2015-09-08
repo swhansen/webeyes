@@ -41,7 +41,7 @@ $( '#codeDialogModal' ).dialog( {
             swal.showInputError("Please Enter Code!");
             return false;
             }
-         else if ( !( _.includes( [ 'devme', 'modme' ], inputValue ) ) ) {
+         else if ( !( _.includes( [ 'devme', 'modme', 'augme' ], inputValue ) ) ) {
           //console.log('bcode is', inputValue);
            swal.showInputError( 'Please enter a valid code' );
            return false;
@@ -72,6 +72,20 @@ function usebcode( bcode )
     }
     document.getElementById( 'devmeButton' ).style.visibility = "hidden";
     document.getElementById( 'modmeButton' ).style.visibility = "visible";
+    var mainCollapsed = true;
+    break;
+    case 'augme':
+
+   $.getJSON( '../menudescriptors/augmeStructure.json', function( data ) {
+      uiStructure = data;
+    } );
+    for ( button in uiStructure.structure ) {
+      t = 1000;
+      $( uiStructure.structure[button].mainButton ).fadeOut( t );
+    }
+    document.getElementById( 'devmeButton' ).style.visibility = "hidden";
+    document.getElementById( 'modmeButton' ).style.visibility = "hidden";
+    document.getElementById( 'augmeButton' ).style.visibility = "visible";
     var mainCollapsed = true;
     break;
    case 'devme':
