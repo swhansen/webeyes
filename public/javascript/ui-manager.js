@@ -13,8 +13,6 @@ var uiStructure = {};
 var mainCollapsed = true;
 var modSwitch = false;
 
-//initAr();
-
 // initialize the core menu
 
 $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
@@ -102,6 +100,7 @@ buildSideMenu( 'util' );
 
 function drawUI() {
   buildSideMenu( 'draw' );
+  setDomMouseEvent('arcanvaspane', 'none');
   setDomMouseEvent('canvas0', 'auto');
 }
 
@@ -112,7 +111,7 @@ setDomMouseEvent('canvas0', 'none');
 
 function augmeUI() {
 buildSideMenu( 'augme' );
-setDomMouseEvent('canvas0', 'none');
+setDomMouseEvent('canvas0', 'auto');
 }
 
 //

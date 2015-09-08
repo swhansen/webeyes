@@ -92,6 +92,10 @@ width: 1000px;
   z-index: 12;
 }
 
+#arcanvaspane {
+  z-index: 12;
+}
+
 #toolbar {
   z-index: 20;
 }

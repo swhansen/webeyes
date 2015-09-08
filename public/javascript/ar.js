@@ -1,9 +1,55 @@
 var arCanvas     = document.getElementById( 'ar-canvas' );
 var arPane     = document.getElementById( 'arcanvaspane' );
-//var arcontext    = arCanvas.getContext( '2d' );
+
+function orientationAr() {
+  document.getElementById('cube').style.visibility = 'visible';
+
+  if (!window.DeviceOrientationEvent) {
+            console.log("no device orientstion");
+         } else {
 
 
-function initAr() {
+            window.addEventListener('deviceorientation', function(event) {
+               document.getElementById('cube').style.webkitTransform =
+               document.getElementById('cube').style.transform =
+                       'rotateX(' + event.beta + 'deg) ' +
+                       'rotateY(' + event.gamma + 'deg) ' +
+                       'rotateZ(' + event.alpha + 'deg)';
+
+        //       document.getElementById('beta').innerHTML = Math.round(event.beta);
+        //       document.getElementById('gamma').innerHTML = Math.round(event.gamma);
+        //       document.getElementById('alpha').innerHTML = Math.round(event.alpha);
+        //       document.getElementById('is-absolute').innerHTML = event.absolute ? "true" : "false";
+            });
+         }
+
+         //if (!window.DeviceMotionEvent) {
+         //   document.getElementById('dm-unsupported').classList.remove('hidden');
+         //} else {
+         //  // document.getElementById('dm-info').classList.remove('hidden');
+//
+         //   window.addEventListener('devicemotion', function(event) {
+         //      document.getElementById('acceleration-x').innerHTML = Math.round(event.acceleration.x);
+         //      document.getElementById('acceleration-y').innerHTML = Math.round(event.acceleration.y);
+         //      document.getElementById('acceleration-z').innerHTML = Math.round(event.acceleration.z);
+//
+         //      document.getElementById('acceleration-including-gravity-x').innerHTML =
+         //              Math.round(event.accelerationIncludingGravity.x);
+         //      document.getElementById('acceleration-including-gravity-y').innerHTML =
+         //              Math.round(event.accelerationIncludingGravity.y);
+         //      document.getElementById('acceleration-including-gravity-z').innerHTML =
+         //              Math.round(event.accelerationIncludingGravity.z);
+//
+         //      document.getElementById('rotation-rate-beta').innerHTML = Math.round(event.rotationRate.beta);
+         //      document.getElementById('rotation-rate-gamma').innerHTML = Math.round(event.rotationRate.gamma);
+         //      document.getElementById('rotation-rate-alpha').innerHTML = Math.round(event.rotationRate.alpha);
+//
+         //      document.getElementById('interval').innerHTML = event.interval;
+         //   });
+         //}
+       }
+
+function geometryAr() {
 
   document.getElementById("arcanvaspane").className = "canvascenter";
 
@@ -18,8 +64,8 @@ function initAr() {
   document.getElementById( 'arcanvaspane' ).style.visibility = 'visible';
   document.getElementById( 'arcanvaspane' ).offsetHeight = box0Height;
   document.getElementById( 'arcanvaspane' ).offsetWidth = box0Width;
-  document.getElementById( 'arcanvaspane' ).zIndex = 500;
-  document.getElementById( 'ar-canvas' ).zIndex = 500;
+ // document.getElementById( 'arcanvaspane' ).zIndex = 500;
+ // document.getElementById( 'ar-canvas' ).zIndex = 500;
 
   var container, camera, scene, renderer, mesh,
 
@@ -30,23 +76,6 @@ function initAr() {
 
     CANVAS_WIDTH = 200,
     CANVAS_HEIGHT = 200;
-
-// info
-//nfo = document.createElement( 'div' );
-//nfo.style.position = 'absolute';
-//nfo.style.top = '30px';
-//nfo.style.width = '100%';
-//nfo.style.textAlign = 'center';
-//nfo.style.color = '#f00';
-//nfo.style.backgroundColor = 'transparent';
-//nfo.style.zIndex = '99';
-//nfo.style.fontFamily = 'Monospace';
-//nfo.innerHTML = 'INTERSECT Count: ' + count;
-//nfo.style.userSelect = "none";
-//nfo.style.webkitUserSelect = "none";
-//nfo.style.MozUserSelect = "none";
-//ocument.body.appendChild( info );
-
 
 // set the renderer to the AR canvas
 
@@ -78,14 +107,6 @@ spotLight.position.set(10, 20, 20);
 spotLight.castShadow = true;
 scene.add(spotLight);
 
-//var cubeGeometry = new THREE.CubeGeometry(200, 200, 200);
-//var cubeMaterial = new THREE.MeshLambertMaterial({
-//  color: "red"
-//});
-//var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-//cube.castShadow = true;
-//scene.add(cube);
-
 var hex  = 0xff0000;
 var bbox = new THREE.BoundingBoxHelper( mesh, hex );
 bbox.update();
@@ -97,32 +118,6 @@ objects.push( mesh );
 // find intersections
 var vector = new THREE.Vector3();
 var raycaster = new THREE.Raycaster();
-
-// mouse listener
-//document.addEventListener( 'mousedown', function( event ) {
-//
-//    // For the following method to work correctly, set the canvas position *static*; margin > 0 and padding > 0 are OK
-//    mouse.x = ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.width ) * 2 - 1;
-//    mouse.y = - ( ( event.clientY - renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1;
-//
-//    // For this alternate method, set the canvas position *fixed*; set top > 0, set left > 0; padding must be 0; margin > 0 is OK
-//    //mouse.x = ( ( event.clientX - container.offsetLeft ) / container.clientWidth ) * 2 - 1;
-//    //mouse.y = - ( ( event.clientY - container.offsetTop ) / container.clientHeight ) * 2 + 1;
-//
-//    vector.set( mouse.x, mouse.y, 0.5 );
-//    vector.unproject( camera );
-//
-//    raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
-//
-//    intersects = raycaster.intersectObjects( objects );
-//
-//    if ( intersects.length > 0 ) {
-//
-//        info.innerHTML = 'INTERSECT Count: ' + ++count;
-//
-//    }
-//
-//}, false );
 
 function render() {
     mesh.rotation.y += 0.01;
