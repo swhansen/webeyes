@@ -76,7 +76,7 @@ function usebcode( bcode )
     break;
     case 'augme':
 
-   $.getJSON( '../menudescriptors/augmeStructure.json', function( data ) {
+   $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
     } );
     for ( button in uiStructure.structure ) {
