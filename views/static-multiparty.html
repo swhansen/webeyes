@@ -21,67 +21,6 @@
         <link rel="stylesheet" type="text/css" href="bower/sweetalert/dist/sweetalert.css" />
 
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-<style> .cube
-         {
-            width: 150px;
-            height: 150px;
-            position: relative;
-            margin: 30px auto;
-            -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-            z-index: 99;
-            visibility: hidden;
-         }
-
-         .face
-         {
-            width: 150px;
-            height: 150px;
-            position: absolute;
-            font-size: 80px;
-            text-align: center;
-            line-height: 150px;
-            background-color: #999999;
-            box-shadow: inset 0 0 20px #333333;
-            opacity: 0.6;
-         }
-
-         .cube .one
-         {
-            -webkit-transform: translateZ(75px);
-            transform: translateZ(75px);
-         }
-
-         .cube .two
-         {
-            -webkit-transform: rotateY(90deg) translateZ(75px);
-            transform: rotateY(90deg) translateZ(75px);
-         }
-
-         .cube .three
-         {
-            -webkit-transform: rotateY(180deg) translateZ(75px);
-            transform: rotateY(180deg) translateZ(75px);
-         }
-
-         .cube .four
-         {
-            -webkit-transform: rotateY(-90deg) translateZ(75px);
-            transform: rotateY(-90deg) translateZ(75px);
-         }
-
-         .cube .five
-         {
-            -webkit-transform: rotateX(90deg) translateZ(75px);
-            transform: rotateX(90deg) translateZ(75px);
-         }
-
-         .cube .six
-         {
-            -webkit-transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
-            transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
-         }
-</style>
 
     </head>
     <body onload="appInit()">
@@ -90,15 +29,6 @@
         <div id="fullpage"  class="boxCommon" style="background-color: #607D8B">
 
             <p id="geo-data">Initial State</p>
-
-            <div id="cube" class="cube">
-            <div class="face one">1</div>
-            <div class="face two">2</div>
-            <div class="face three">3</div>
-            <div class="face four">4</div>
-            <div class="face five">5</div>
-            <div class="face six">6</div>
-         </div>
 
             <div id="messageFooter"> Message Panel</div>
 
@@ -131,9 +61,19 @@
             <canvas id="util-canvas" ></canvas>
         </div>
 
-        <div id="arcanvaspane"  class="canvasStyle" style="visibility:hidden">
-            <canvas id="ar-canvas" ></canvas>
+        <div id="arcanvaspane" class="canvascenter" style="visibility:hidden">
+
+         <canvas id="ar-canvas" ></canvas>
         </div>
+
+        <div id="cube" class="cube">
+                <div class="face one">1</div>
+                <div class="face two">2</div>
+                <div class="face three">3</div>
+                <div class="face four">4</div>
+                <div class="face five">5</div>
+                <div class="face six">6</div>
+            </div>
 
         <div id="layer-menu-button" class="ui-zindex">
         <img src="img/menu48.png" height="50" width="50" alt="menubutton" />
