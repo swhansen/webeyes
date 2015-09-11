@@ -97,11 +97,24 @@ sphere.add(pivotPoint);
 //cube
 
 var geometry = new THREE.BoxGeometry( .3, .5, .7 );
+var geometry1 = new THREE.BoxGeometry( .4, .7, .3 );
+
 var material = new THREE.MeshLambertMaterial( { color: 'red' } );
+var material1 = new THREE.MeshLambertMaterial( { color: 'rgb(255, 153, 0)' } );
 var cube = new THREE.Mesh( geometry, material );
 cube.castShadow = true;
 cube.position.set(2.5, 1.0, 1.0);
 pivotPoint.add( cube );
+
+var cube1 = new THREE.Mesh( geometry1, material1 );
+cube1.position.set(-2.0, 8.0, 5.0);
+scene.add(cube1);
+
+var geometry2 = new THREE.SphereGeometry( .4, .6, 88 );
+var material2 = new THREE.MeshBasicMaterial( {color: 'blue' } );
+var sphere1 = new THREE.Mesh( geometry2, material2 );
+sphere1.position.set(-7.0, 2.0, 2.0);
+ scene.add( sphere1 );
 
 //  light
 
