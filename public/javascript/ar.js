@@ -23,17 +23,26 @@ function geometryAr() {
 
   document.getElementById("arcanvaspane").className = "canvascenter";
 
-  arCanvas.style.width = '100%';
-  arCanvas.style.height = '100%';
-  arCanvas.width = arCanvas.offsetWidth;
-  arCanvas.height = arCanvas.offsetHeight;
+  //arCanvas.style.width = '100%';
+  //arCanvas.style.height = '100%';
+  //arCanvas.width = arCanvas.offsetWidth;
+  //arCanvas.height = arCanvas.offsetHeight;
 
   var box0Height = document.getElementById( 'box0' ).offsetHeight;
   var box0Width = document.getElementById( 'box0' ).offsetWidth;
 
-  document.getElementById( 'arcanvaspane' ).style.visibility = 'visible';
-  document.getElementById( 'arcanvaspane' ).offsetHeight = box0Height;
-  document.getElementById( 'arcanvaspane' ).offsetWidth = box0Width;
+  //document.getElementById( 'arcanvaspane' ).style.visibility = 'visible';
+  //document.getElementById( 'arcanvaspane' ).offsetHeight = box0Height;
+  //document.getElementById( 'arcanvaspane' ).offsetWidth = box0Width;
+
+
+var viewBox = document.getElementById( 'box0' );
+
+  arcanvaspane.style.width = viewBox.style.width;
+  arcanvaspane.style.height = viewBox.style.height;
+  arcanvaspane.style.left = viewBox.style.left;
+  arcanvaspane.style.top = viewBox.style.top;
+  arcanvaspane.style.visibility = 'visible';
 
   var container, camera, scene, renderer, mesh,
     CANVAS_WIDTH = 300,
@@ -70,7 +79,7 @@ var sphere = new THREE.Mesh( new THREE.SphereGeometry(
     rings),
   sphereMaterial);
 
-sphere.position.set(-1., 1.0, .2);
+sphere.position.set(0.0, 0.0, 0.0);
 //sphere.position.x = -2.0;
 sphere.position.y = 1.0;
 //sphere.position.z = .2;
@@ -111,15 +120,39 @@ camera.position.x = 4;
 
     scene.add(light);
 
+//  drive the virtual camera with the orientation sensors
 
-function render() {
-  // control the rotation rate
+controls = new THREE.DeviceOrientationControls( camera );
 
-  var fps = 20;
+//function render() {
+//  // control the rotation rate
+//
+//  var fps = 20;
+//
+//  setTimeout(function() {
+//
+//  requestAnimationFrame( render );
+//
+//  pivotPoint.rotation.x += .1;
+//  pivotPoint.rotation.y += .1;
+//
+//  cube.rotation.x += 0.1;
+//  cube.rotation.y += 0.1;
+//
+//  renderer.render( scene, camera );
+//}, 1000 / fps);
+//
+//};
+//
+//render();
 
-  setTimeout(function() {
 
-  requestAnimationFrame( render );
+//renderer = new THREE.WebGLRenderer( { alpha: true } );
+
+
+function animate() {
+
+  controls.update();
 
   pivotPoint.rotation.x += .1;
   pivotPoint.rotation.y += .1;
@@ -127,11 +160,12 @@ function render() {
   cube.rotation.x += 0.1;
   cube.rotation.y += 0.1;
 
-  renderer.render( scene, camera );
-}, 1000 / fps);
+  renderer.render(scene, camera);
 
-};
+  requestAnimationFrame( animate );
 
-render();
+}
+
+animate();
 
 }
