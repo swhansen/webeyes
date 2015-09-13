@@ -70,55 +70,112 @@ var radius = .3,
       color: 'blue'
     });
 
-// create a new mesh with
-// sphere geometry - we will cover
-// the sphereMaterial next!
 var sphere = new THREE.Mesh( new THREE.SphereGeometry(
     radius,
     segments,
     rings),
   sphereMaterial);
 
-sphere.position.set(0.0, 0.0, 0.0);
-//sphere.position.x = -2.0;
-sphere.position.y = 1.0;
-//sphere.position.z = .2;
+sphere.position.set(0.0, 2.0, 0.0);
 scene.add(sphere);
-
 
 pivotPoint = new THREE.Object3D();
 pivotPoint.rotation.x = 0.4;
 sphere.add(pivotPoint);
 
-
 // add the sphere to the scene
 //scene.add(sphere);
 
-//cube
 
-var geometry = new THREE.BoxGeometry( .3, .5, .7 );
-var geometry1 = new THREE.BoxGeometry( .4, .7, .3 );
+var cubeGeometry = new THREE.BoxGeometry( .3, .5, .7 );
+var sphereGeometry1 = new THREE.SphereGeometry( .5, 16, 16 );
 
 var material = new THREE.MeshLambertMaterial( { color: 'red' } );
-var material1 = new THREE.MeshLambertMaterial( { color: 'rgb(255, 153, 0)' } );
-var cube = new THREE.Mesh( geometry, material );
+var material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
+var material2 = new THREE.MeshPhongMaterial( {color: 'blue' } );
+var sphereMaterial1 = new THREE.MeshLambertMaterial(
+    {
+      color: 'yellow'
+    });
+
+var sphereMaterial2 = new THREE.MeshLambertMaterial(
+    {
+      color: 0x0066FF
+    });
+
+var orbitSphereMaterial = new THREE.MeshLambertMaterial(
+    {
+      color: 0xB24700
+    });
+
+
+var cube = new THREE.Mesh( cubeGeometry, material );
 cube.castShadow = true;
 cube.position.set(2.5, 1.0, 1.0);
 pivotPoint.add( cube );
 
-var cube1 = new THREE.Mesh( geometry1, material1 );
-cube1.position.set(-2.0, 8.0, 5.0);
+var orbitCube = new THREE.Mesh( cubeGeometry, material );
+orbitCube.castShadow = true;
+orbitCube.position.set(2.5, 1.0, 1.0);
+scene.add(orbitCube);
+
+var knotGeometry = new THREE.TorusKnotGeometry( .2, .15, 100, 16 );
+var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
+var orbitKnot = new THREE.Mesh( knotGeometry, knotMaterial );
+orbitKnot.position.set(3.5, 1.0, 1.0);
+scene.add(orbitKnot);
+
+
+var cube1 = new THREE.Mesh( cubeGeometry, material );
+var cube2 = new THREE.Mesh( cubeGeometry, material1 );
+var cube3 = new THREE.Mesh( cubeGeometry, material2 );
+var sphere1 = new THREE.Mesh( sphereGeometry1, sphereMaterial );
+var sphere2 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
+var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
+
+
+cube1.position.set(4.0, 5.0, 0.0);
+cube2.position.set(7.0, 3.0, 0.8);
+cube3.position.set(9.0, 3.0, 0.95);
+sphere1.position.set(2.0, 5.0, 0.9);
+sphere2.position.set(-2.0, 5.0, 0.0);
+
+
 scene.add(cube1);
+scene.add(cube2);
+scene.add(cube3);
+scene.add( sphere1 );
+scene.add( sphere2 );
 
-var geometry2 = new THREE.SphereGeometry( .4, .6, 88 );
-var material2 = new THREE.MeshBasicMaterial( {color: 'blue' } );
-var sphere1 = new THREE.Mesh( geometry2, material2 );
-sphere1.position.set(-7.0, 2.0, 2.0);
- scene.add( sphere1 );
+// orbiting sphere
 
-//  light
+var orbitSphere = new THREE.Mesh( new THREE.SphereGeometry(
+    radius,
+    segments,
+    rings),
+  orbitSphereMaterial);
 
-camera.position.x = 4;
+orbitSphere.position.set(5.0, 1.0, .5);
+scene.add(orbitSphere);
+
+var orbitSphereFocus = new THREE.Mesh( new THREE.SphereGeometry(
+    radius,
+    segments,
+    rings),
+  orbitSphereMaterial);
+scene.add(orbitSphereFocus);
+
+
+var orbitSpherePivotPoint = new THREE.Object3D();
+orbitSpherePivotPoint.position.set(4.0, 3.0, 0.0);
+orbitSpherePivotPoint.rotation.x = 0.7;
+orbitSphereFocus.add( orbitSpherePivotPoint );
+orbitSpherePivotPoint.add(orbitKnot);
+
+
+//  canera and light
+
+  camera.position.x = 4;
   camera.position.y = 4;
   camera.position.z = 4;
   camera.lookAt(scene.position);
@@ -135,7 +192,7 @@ camera.position.x = 4;
 
 //  drive the virtual camera with the orientation sensors
 
-controls = new THREE.DeviceOrientationControls( camera );
+arCameraControls = new THREE.DeviceOrientationControls( camera );
 
 //function render() {
 //  // control the rotation rate
@@ -159,19 +216,27 @@ controls = new THREE.DeviceOrientationControls( camera );
 //
 //render();
 
-
-//renderer = new THREE.WebGLRenderer( { alpha: true } );
-
-
 function animate() {
 
-  controls.update();
+  arCameraControls.update();
 
-  pivotPoint.rotation.x += .1;
-  pivotPoint.rotation.y += .1;
+  pivotPoint.rotation.x += .05;
+  pivotPoint.rotation.y += .05;
 
-  cube.rotation.x += 0.1;
-  cube.rotation.y += 0.1;
+  cube.rotation.x += 0.05;
+  cube.rotation.y += 0.05;
+
+  orbitKnot.rotation.x += 0.05;
+  orbitKnot.rotation.y += 0.05;
+
+  orbitSpherePivotPoint.rotation.y += 0.01;
+  //orbitSpherePivotPoint.rotation.x += 0.02;
+
+  cube1.rotation.x += 0.05;
+  cube1.rotation.y += 0.05;
+
+  cube2.rotation.x += 0.05;
+  cube2.rotation.y += 0.05;
 
   renderer.render(scene, camera);
 

@@ -111,6 +111,7 @@ setDomMouseEvent('canvas0', 'none');
 
 function augmeUI() {
 buildSideMenu( 'augme' );
+geometryAr();
 setDomMouseEvent('canvas0', 'auto');
 }
 
