@@ -22,28 +22,28 @@ $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
 var videoMuteData = {};
 var thisBox;
 
-var geoData = {};
-
-// Experiment with sensor data
-
-var geoData = document.querySelector( '#geo-data' );
-  navigator.geolocation.watchPosition( function( position ) {
-  geoData.lat = position.coords.latitude.toFixed( 5 );
-  geoData.lon = position.coords.longitude.toFixed( 5 );
-
-  emitGeo( geoData );
-
-} );
-
-function emitGeo( data ) {
-  var sessionId = socketServer.sessionid;
-  socketServer.emit( 'geo', data, sessionId );
-}
-
-socketServer.on( 'geo', function( data ) {
-  geoData.innerHTML = data.lat + '<br />' +
-                      data.lon;
-} );
+//var arData = {};
+//
+//// Experiment with sensor data
+//
+//var arData = document.querySelector( '#geo-data' );
+//  navigator.geolocation.watchPosition( function( position ) {
+//  geoData.lat = position.coords.latitude.toFixed( 5 );
+//  geoData.lon = position.coords.longitude.toFixed( 5 );
+//
+//  emitArOrientation( arData );
+//
+//} );
+//
+//function emitArOrientation( data ) {
+//  var sessionId = socketServer.sessionid;
+//  socketServer.emit( 'arOrientation', data, sessionId );
+//}
+//
+//socketServer.on( 'geo', function( data ) {
+//  geoData.innerHTML = data.lat + '<br />' +
+//                      data.lon;
+//} );
 
 function buildSideMenu( layer ) {
 
@@ -107,12 +107,33 @@ function drawUI() {
 function modmeUI() {
 buildSideMenu( 'modme' );
 setDomMouseEvent('canvas0', 'none');
+setDomMouseEvent('arcanvaspane', 'none');
 }
 
 function augmeUI() {
 buildSideMenu( 'augme' );
-geometryAr();
-setDomMouseEvent('canvas0', 'auto');
+//coreAr();
+setDomMouseEvent('canvas0', 'none');
+}
+
+function shareAr() {
+
+  userContext.participantState = 'focus';
+  userContext.modMeState = true;
+
+// make the AR initiator the focus
+
+  var sessionId = socketServer.sessionid;
+      socketServer.emit( 'focus', userContext.rtcId, sessionId );
+
+
+//  -  tell everyone to inialize the AR stuff
+
+//  focusUser( userContext.rtcId );
+//  emitUtility( arClientInit );
+
+  coreAr();
+  messageBar( 'A users has become the focus in AR mode' );
 }
 
 //

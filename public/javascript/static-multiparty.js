@@ -6,15 +6,23 @@ var layout;
 var connectList = [];
 var modmeState = false;
 
-var homeId;
+//  container for the context of the user
+
+var userContext = {
+  rtcId: '',
+  modMeState: 'false',
+  participantState: 'peer',     // focus, peer
+  uiState: '',                  // "layer UI"
+  mode: ''
+};
 
 easyrtc.dontAddCloseButtons( false );
 
 // Footer Messages
 
 function messageBar( msg ) {
-  $( '#messageFooter' ).html( msg ).fadeIn(500);
-  $( '#messageFooter' ).html( msg ).fadeOut(4000);
+  $( '#messageFooter' ).html( msg ).fadeIn( 500 );
+  $( '#messageFooter' ).html( msg ).fadeOut( 4000 );
 }
 
 function emitMessage( data ) {
@@ -506,6 +514,7 @@ function focusUser( rtcid ) {
     .filter( function( connectList ) { return connectList.rtcid == rtcid; } )
     .pluck( 'boxno' )
     .value();
+
    console.log( 'at focusUser with:', rtcid, 'and box is', b );
 
     whichBox = b;
@@ -514,8 +523,6 @@ function focusUser( rtcid ) {
     if ( activeBox >= 0 ) {
         collapseToThumbHelper();
     }
-
-   //if (lastActiveBox != whichBox) {
 
        var id = getIdOfBox( whichBox );
        activeBox = whichBox;
@@ -526,7 +533,7 @@ function focusUser( rtcid ) {
            updateMuteImage();
            document.getElementById( 'killButton' ).style.display = 'block';
        }
-   //}
+
     expandThumb( whichBox );
 
     updateMuteImage( false );
@@ -558,8 +565,8 @@ function expandThumb(whichBox) {
     updateMuteImage(false);
     handleWindowResize();
 
-    if (modmeState === true && modSwitch === true) {
-      //var boxString = 'box' + whichBox;
+    if (userContext.modMeState === true && modSwitch === true) {
+      console.log("modMeState:", userContext.modMeState);
       var rtcidToExpand = _(connectList)
       .filter( function(connectList) { return connectList.boxno == whichBox; } )
       .pluck( 'rtcid' )
@@ -796,7 +803,8 @@ function appInit() {
 
     easyrtc.easyApp('roomDemo', 'box0', ['box1', 'box2', 'box3'],
       function(myId) {
-        //console.log('Success - uid is:' + myId);
+
+        userContext.rtcId = myId;
 
 // First time through for all connections
 

@@ -274,7 +274,7 @@ var socketServer = io.listen( webServer );
 socketServer.sockets.on( 'connection', function( client ) {
 
   client.on( 'utility', function( data, session ) {
-    client.emit( 'utility', data );
+    //client.emit( 'utility', data );
     client.broadcast.emit( 'utility', data );
   } );
 
@@ -293,9 +293,8 @@ socketServer.sockets.on( 'connection', function( client ) {
    client.broadcast.emit( 'message', data );
   } );
 
-  client.on( 'geo', function( data, session ) {
-    client.emit( 'geo', data );
-   //client.broadcast.emit( 'geo', data );
+  client.on( 'arOrientation', function( data, session ) {
+    client.emit( 'arOrientation', data );
   } );
 
   client.on( 'drawLine', function( data, session ) {

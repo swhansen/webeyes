@@ -89,6 +89,11 @@ socketServer.on('utility', function(data) {
       clearUtilCanvas();
       clearDrawCanvas();
       break;
+    case "arClientInit":
+      if (userContext.participantState === 'peer') {
+        coreAr();
+      }
+      break;
   }
 });
 

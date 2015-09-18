@@ -57,10 +57,10 @@
             "mainButton": "#augmeButton",
             "sideBar": "#aug-ui-container",
             "buttons": [
-                "#aug1",
-                "#aug2"
+                "#aug2",
+                "#shareaug"
             ],
-            "desc": "moderator code functions",
+            "desc": "AR code functions",
             "initState": "none",
             "baseZ": "20"
         }

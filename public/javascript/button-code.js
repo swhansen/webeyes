@@ -54,7 +54,7 @@ $( '#codeDialogModal' ).dialog( {
 
 //  button code logic
 //   - check for legal codes
-//   - pull in the jsomn menu descriptor for the code
+//   - pull in the json menu descriptor for the code
 //   - do the menu stuff
 
 function usebcode( bcode )
@@ -62,7 +62,8 @@ function usebcode( bcode )
   switch ( bcode )
   {
    case 'modme':
-   modmeState = true;
+  // modmeState = true;
+   userContext.modMeState = true;
    $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
       uiStructure = data;
     } );
@@ -74,14 +75,13 @@ function usebcode( bcode )
     document.getElementById( 'modmeButton' ).style.visibility = "visible";
     var mainCollapsed = true;
     break;
-    case 'augme':
 
+    case 'augme':
    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
     } );
     for ( button in uiStructure.structure ) {
-      t = 1000;
-      $( uiStructure.structure[button].mainButton ).fadeOut( t );
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
     document.getElementById( 'devmeButton' ).style.visibility = "hidden";
     document.getElementById( 'modmeButton' ).style.visibility = "hidden";
@@ -93,8 +93,7 @@ function usebcode( bcode )
       uiStructure = data;
     } );
     for ( button in uiStructure.structure ) {
-      t = 1000;
-      $( uiStructure.structure[button].mainButton ).fadeOut( t );
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
     document.getElementById( 'modmeButton' ).style.visibility = "hidden";
     document.getElementById( 'devmeButton' ).style.visibility = "visible";
@@ -105,16 +104,6 @@ function usebcode( bcode )
 
 socketServer.on( 'focus', function( id ) {
   //console.log('at button-code - socketServer Recieved rtcID:', id);
-
-// var b = _(connectList)
-//     .filter( function(connectList) { return connectList.rtcid == id; } )
-//     .pluck( 'boxno' )
-//     .value();
-
-    //console.log('at button-code - focusUser called with:', id);
-
    focusUser( id );
-   //b = document.getElementById( boxNo );
-   //b.click();
   }
  );

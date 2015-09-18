@@ -1,4 +1,5 @@
 var canvas     = document.getElementById( 'canvas0' );
+var canvasPane = document.getElementById( 'canvaspane' );
 var context    = canvas.getContext( '2d' );
 var data       = {};
 var points     = [];
@@ -25,6 +26,17 @@ var Line = function( line, c, client ) {
 
 function initDraw() {
 
+  document.getElementById( 'canvaspane' ).className = 'canvascenter';
+
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  canvasPane.style.visibility = 'visible';
+  canvasPane.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
+  canvasPane.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
+
   line.length = 0;
   lineArray.length = 0;
 
@@ -36,23 +48,7 @@ function initDraw() {
   canvas.addEventListener( 'touchmove', touchMoveHandler, false );
   canvas.addEventListener( 'touchend', touchEndHandler, false );
 
-  document.getElementById( 'canvaspane' ).className = 'canvascenter';
-
-  canvas.style.width = '100%';
-  canvas.style.height = '100%';
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-
-  var box0Height = document.getElementById( 'box0' ).offsetHeight;
-  var box0Width = document.getElementById( 'box0' ).offsetWidth;
-
-  document.getElementById( 'canvaspane' ).style.visibility = 'visible';
-  document.getElementById( 'canvaspane' ).offsetHeight = box0Height;
-  document.getElementById( 'canvaspane' ).offsetWidth = box0Width;
-
   baseLineStyle();
-
-  //drawUI()
 
   // Turn off pointer events to the canvas
 
