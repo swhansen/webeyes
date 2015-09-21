@@ -90,7 +90,9 @@ socketServer.on('utility', function(data) {
       clearDrawCanvas();
       break;
     case "arClientInit":
+    console.log('at utility socket recieve:', data);
       if (userContext.participantState === 'peer') {
+        orientationAr();
         coreAr();
       }
       break;

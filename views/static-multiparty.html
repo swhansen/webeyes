@@ -12,12 +12,14 @@
         <script type="text/javascript" src="bower/threejs/build/three.min.js"></script>
         <script type="text/javascript" src="bower/threejs/examples/js/controls/DeviceOrientationControls.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="javascript/material-click.js"></script>
 
         <script type="text/javascript" src="javascript/socket.js"></script>
         <script type="text/javascript" src="javascript/static-multiparty.js"></script>
 
         <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
         <link rel="stylesheet" type="text/css" href="css/room.css" />
+        <link rel="stylesheet" type="text/css" href="css/material-click.css" />
         <link rel="stylesheet" type="text/css" href="bower/jquery-ui/themes/smoothness/jquery-ui.min.css" />
         <link rel="stylesheet" type="text/css" href="bower/sweetalert/dist/sweetalert.css" />
 
@@ -25,9 +27,8 @@
 
     </head>
     <body onload="appInit()">
-        <!--<div id="fullpage"  class="boxCommon" style="background-image:url(images/irongrip.png)"> -->
 
-        <div id="fullpage"  class="boxCommon" style="background-color: #607D8B">
+        <div id="fullpage" class="boxCommon" style="background-color: #78909C">
 
             <div id="messageFooter"> Message Panel</div>
 
@@ -79,15 +80,15 @@
         </div>
 
         <div id="main-ui-container" class="ui-zindex">
-            <img id="modmeButton" onclick ="initModme()" src="img/modme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
+            <img id="modmeButton" onclick ="initModme()" class="ripple-effect" src="img/modme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="devmeButton" src="img/devme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
             <img id="augmeButton" onclick="augmeUI()" src="img/augme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
-            <img id="codeDialogButton" src="img/code-input.png" height="64" width="64" style=" display:none" alt="code button" /><br>
-            <img id="inviteViaEmail" src="img/email-invite.png" height="64" width="64" style=" display:none" alt="WC button" /><br>
+            <img id="codeDialogButton" class="ripple-effect" src="img/code-input.png" height="64" width="64" style=" display:none" alt="code button" /><br>
+            <img id="inviteViaEmail" src="img/email-invite.png" class="ripple-effect" height="64" width="64" style=" display:none" alt="WC button" /><br>
             <img id="textEntryButton" onclick ="showTextEntry()" src="img/textEntry.png" height="64" width="64" style="display:none" alt="text button" /><br>
            <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
-            <img id="drawButton"  onclick ="drawUI()" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
-            <img id="utilButton"  onclick="utilUI()" src="img/util.png" height="64" width="64" style=" display:none" alt="utility button" /><br>
+            <img id="drawButton"  onclick ="drawUI()" class="ripple-effect" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
+            <img id="utilButton"  onclick="utilUI()" class="ripple-effect" src="img/util.png" height="64" width="64" style=" display:none" alt="utility button" /><br>
             <img id="videoButton" class='video-swap' src="img/video-on.png" height="64" width="64" style=" display:none" alt="video button" /><br>
         </div>
 
@@ -97,13 +98,13 @@
         </div>
 
         <div id="mod-ui-container" class="ui-zindex">
-            <img id="focus-participant" class="moderator-swap" title="tooltip" src="img/focus-moderator-off.png" height="64" width="64" style="display:none" alt="mod button" /><br>
-            <img id="mod-reset" title="tooltip" src="img/mod-reset.png" height="64" width="64" style="display:none" alt="mod reset" /><br>
+            <img id="focus-participant" class="ripple-effect" title="tooltip" src="img/focus-moderator-off.png" height="64" width="64" style="display:none" alt="mod button" /><br>
+            <img id="mod-reset" title="tooltip" class="ripple-effect" src="img/mod-reset.png" height="64" width="64" style="display:none" alt="mod reset" /><br>
         </div>
 
         <div id="aug-ui-container" class="ui-zindex">
             <img id="aug2" onclick ="orientationAr()" src="img/augA1.png" height="64" width="64" style="display:none" alt="aug2" /><br>
-            <img id="shareaug" onclick ="shareAr()" src="img/focus-moderator.png" height="64" width="64" style="display:none" alt="shareaug" /><br>
+            <img id="shareaug" class="ripple-effect" onclick ="shareAr()" src="img/ar-share.png" height="64" width="64" style="display:none" alt="shareaug" /><br>
         </div>
 
         <div id="utility-ui-container" class="ui-zindex">

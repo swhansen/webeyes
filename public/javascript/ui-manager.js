@@ -126,14 +126,14 @@ function shareAr() {
   var sessionId = socketServer.sessionid;
       socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
+// Tell everyone to initialize AR
 
-//  -  tell everyone to inialize the AR stuff
+var sessionId = socketServer.sessionid;
+      socketServer.emit( 'utility', 'arClientInit', sessionId );
 
-//  focusUser( userContext.rtcId );
-//  emitUtility( arClientInit );
+  var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode'
+  messageBar( msgString );
 
-  coreAr();
-  messageBar( 'A users has become the focus in AR mode' );
 }
 
 //
