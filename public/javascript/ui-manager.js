@@ -110,30 +110,46 @@ setDomMouseEvent('canvas0', 'none');
 setDomMouseEvent('arcanvaspane', 'none');
 }
 
+
+
 function augmeUI() {
-buildSideMenu( 'augme' );
-//coreAr();
-setDomMouseEvent('canvas0', 'none');
+
+if( !userContext.arCapable ) {
+    console.log( 'augmeUI - This device is not AR capable' );
+    messageBar( 'This device is not AR capable..no AR for U' );
+  }
+  else {
+    buildSideMenu( 'augme' );
+    userContext.participantState = 'focus';
+    loadArModel();
+    setDomMouseEvent('canvas0', 'none');
+  }
 }
 
+
+
 function shareAr() {
+  if( !userContext.arCapable ) {
+    console.log( 'shareAR - This device is not AR capable' );
+    messageBar( 'This device is not AR capable' );
+  return;
+}
+  else {
+    userContext.participantState = 'focus';
+    userContext.modMeState = true;
 
-  userContext.participantState = 'focus';
-  userContext.modMeState = true;
+    var sessionId = socketServer.sessionid;
+        socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-// make the AR initiator the focus
+  // Tell everyone to initialize AR
 
   var sessionId = socketServer.sessionid;
-      socketServer.emit( 'focus', userContext.rtcId, sessionId );
+        socketServer.emit( 'utility', 'arClientInit', sessionId );
 
-// Tell everyone to initialize AR
+    var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode'
+    messageBar( msgString );
 
-var sessionId = socketServer.sessionid;
-      socketServer.emit( 'utility', 'arClientInit', sessionId );
-
-  var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode'
-  messageBar( msgString );
-
+    }
 }
 
 //

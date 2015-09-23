@@ -1,5 +1,7 @@
 var activeBox = -1; // nothing selected
-var aspectRatio = 4 / 3; // standard definition video aspect ratio
+var aspectRatio = 4 / 3;
+
+ // standard definition video aspect ratio
 var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS + 1;
 var layout;
@@ -11,12 +13,32 @@ var modmeState = false;
 var userContext = {
   rtcId: '',
   modMeState: 'false',
-  participantState: 'peer',     // focus, peer
-  uiState: '',                  // "layer UI"
-  mode: ''
+  participantState: 'peer',
+  uiState: '',
+  mode: '',
+  arCapable: false,
+  orientation: false,
+  motion: false,
+  geolocation: false
 };
 
 easyrtc.dontAddCloseButtons( false );
+
+if ( navigator.geolocation ) {
+    userContext.geoLocation = false;
+  }
+
+if ( window.DeviceMotionEvent ) {
+  userContext.motion = false;
+}
+
+if ( window.DeviceOrientationEvent ) {
+    userContext.orientation = false;
+    }
+
+if (userContext.orientation === true && userContext.motion === true) {
+  userContext.arCapable = true;
+}
 
 // Footer Messages
 
@@ -27,6 +49,7 @@ function messageBar( msg ) {
 
 function emitMessage( data ) {
   var sessionId = socketServer.sessionid;
+
  // console.log("emitUtility:", data);
   socketServer.emit( 'message', data, sessionId );
 }
@@ -61,7 +84,7 @@ function reshapeTextEntryBox( parentw, parenth ) {
     };
 }
 
-function reshapeTextEntryField(parentw, parenth) {
+function reshapeTextEntryField( parentw, parenth ) {
     return {
         width: parentw - 40
     };
@@ -69,19 +92,19 @@ function reshapeTextEntryField(parentw, parenth) {
 
 var margin = 20;
 
-function reshapeToFullSize(parentw, parenth) {
+function reshapeToFullSize( parentw, parenth ) {
     var left, top, width, height;
     var margin = 20;
 
-    if (parentw < parenth * aspectRatio) {
+    if ( parentw < parenth * aspectRatio ) {
         width = parentw - margin;
         height = width / aspectRatio;
     } else {
         height = parenth - margin;
         width = height * aspectRatio;
     }
-    left = (parentw - width) / 2;
-    top = (parenth - height) / 2;
+    left = ( parentw - width ) / 2;
+    top = ( parenth - height ) / 2;
     return {
         left: left,
         top: top,
@@ -95,10 +118,10 @@ function reshapeToFullSize(parentw, parenth) {
 // that distance from the right edge of the parent.
 // Similar for percentTop.
 //
-function setThumbSizeAspect(percentSize, percentLeft, percentTop, parentw, parenth, aspect) {
+function setThumbSizeAspect( percentSize, percentLeft, percentTop, parentw, parenth, aspect ) {
 
     var width, height;
-    if (parentw < parenth * aspectRatio) {
+    if ( parentw < parenth * aspectRatio ) {
         width = parentw * percentSize;
         height = width / aspect;
     } else {
@@ -106,19 +129,19 @@ function setThumbSizeAspect(percentSize, percentLeft, percentTop, parentw, paren
         width = height * aspect;
     }
     var left;
-    if (percentLeft < 0) {
+    if ( percentLeft < 0 ) {
         left = parentw - width;
     } else {
         left = 0;
     }
-    left += Math.floor(percentLeft * parentw);
+    left += Math.floor( percentLeft * parentw );
     var top = 0;
-    if (percentTop < 0) {
+    if ( percentTop < 0 ) {
         top = parenth - height;
     } else {
         top = 0;
     }
-    top += Math.floor(percentTop * parenth);
+    top += Math.floor( percentTop * parenth );
     return {
         left: left,
         top: top,
@@ -127,352 +150,347 @@ function setThumbSizeAspect(percentSize, percentLeft, percentTop, parentw, paren
     };
 }
 
-
-function setThumbSize(percentSize, percentLeft, percentTop, parentw, parenth) {
-    return setThumbSizeAspect(percentSize, percentLeft, percentTop, parentw, parenth, aspectRatio);
+function setThumbSize( percentSize, percentLeft, percentTop, parentw, parenth ) {
+    return setThumbSizeAspect( percentSize, percentLeft, percentTop, parentw, parenth, aspectRatio );
 }
 
-function setThumbSizeButton(percentSize, percentLeft, percentTop, parentw, parenth, imagew, imageh) {
-    return setThumbSizeAspect(percentSize, percentLeft, percentTop, parentw, parenth, imagew / imageh);
+function setThumbSizeButton( percentSize, percentLeft, percentTop, parentw, parenth, imagew, imageh ) {
+    return setThumbSizeAspect( percentSize, percentLeft, percentTop, parentw, parenth, imagew / imageh );
 }
-
 
 var sharedVideoWidth = 1;
 var sharedVideoHeight = 1;
 
-function reshape1of2(parentw, parenth) {
-    if (layout == 'p') {
+function reshape1of2( parentw, parenth ) {
+    if ( layout == 'p' ) {
         return {
-            left: (parentw - sharedVideoWidth) / 2,
-            top: (parenth - sharedVideoHeight * 2) / 3,
+            left: ( parentw - sharedVideoWidth ) / 2,
+            top: ( parenth - sharedVideoHeight * 2 ) / 3,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     } else {
         return {
-            left: (parentw - sharedVideoWidth * 2) / 3,
-            top: (parenth - sharedVideoHeight) / 2,
+            left: ( parentw - sharedVideoWidth * 2 ) / 3,
+            top: ( parenth - sharedVideoHeight ) / 2,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     }
 }
 
-function reshape2of2(parentw, parenth) {
-    if (layout == 'p') {
+function reshape2of2( parentw, parenth ) {
+    if ( layout == 'p' ) {
         return {
-            left: (parentw - sharedVideoWidth) / 2,
-            top: (parenth - sharedVideoHeight * 2) / 3 * 2 + sharedVideoHeight,
+            left: ( parentw - sharedVideoWidth ) / 2,
+            top: ( parenth - sharedVideoHeight * 2 ) / 3 * 2 + sharedVideoHeight,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     } else {
         return {
-            left: (parentw - sharedVideoWidth * 2) / 3 * 2 + sharedVideoWidth,
-            top: (parenth - sharedVideoHeight) / 2,
+            left: ( parentw - sharedVideoWidth * 2 ) / 3 * 2 + sharedVideoWidth,
+            top: ( parenth - sharedVideoHeight ) / 2,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     }
 }
 
-function reshape1of3(parentw, parenth) {
-    if (layout == 'p') {
+function reshape1of3( parentw, parenth ) {
+    if ( layout == 'p' ) {
         return {
-            left: (parentw - sharedVideoWidth) / 2,
-            top: (parenth - sharedVideoHeight * 3) / 4,
+            left: ( parentw - sharedVideoWidth ) / 2,
+            top: ( parenth - sharedVideoHeight * 3 ) / 4,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     } else {
         return {
-            left: (parentw - sharedVideoWidth * 2) / 3,
-            top: (parenth - sharedVideoHeight * 2) / 3,
+            left: ( parentw - sharedVideoWidth * 2 ) / 3,
+            top: ( parenth - sharedVideoHeight * 2 ) / 3,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     }
 }
 
-function reshape2of3(parentw, parenth) {
-    if (layout === 'p') {
+function reshape2of3( parentw, parenth ) {
+    if ( layout === 'p' ) {
         return {
-            left: (parentw - sharedVideoWidth) / 2,
-            top: (parenth - sharedVideoHeight * 3) / 4 * 2 + sharedVideoHeight,
+            left: ( parentw - sharedVideoWidth ) / 2,
+            top: ( parenth - sharedVideoHeight * 3 ) / 4 * 2 + sharedVideoHeight,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     } else {
         return {
-            left: (parentw - sharedVideoWidth * 2) / 3 * 2 + sharedVideoWidth,
-            top: (parenth - sharedVideoHeight * 2) / 3,
+            left: ( parentw - sharedVideoWidth * 2 ) / 3 * 2 + sharedVideoWidth,
+            top: ( parenth - sharedVideoHeight * 2 ) / 3,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     }
 }
 
-function reshape3of3(parentw, parenth) {
-    if (layout == 'p') {
+function reshape3of3( parentw, parenth ) {
+    if ( layout == 'p' ) {
         return {
-            left: (parentw - sharedVideoWidth) / 2,
-            top: (parenth - sharedVideoHeight * 3) / 4 * 3 + sharedVideoHeight * 2,
+            left: ( parentw - sharedVideoWidth ) / 2,
+            top: ( parenth - sharedVideoHeight * 3 ) / 4 * 3 + sharedVideoHeight * 2,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     } else {
         return {
-            left: (parentw - sharedVideoWidth * 2) / 3 * 1.5 + sharedVideoWidth / 2,
-            top: (parenth - sharedVideoHeight * 2) / 3 * 2 + sharedVideoHeight,
+            left: ( parentw - sharedVideoWidth * 2 ) / 3 * 1.5 + sharedVideoWidth / 2,
+            top: ( parenth - sharedVideoHeight * 2 ) / 3 * 2 + sharedVideoHeight,
             width: sharedVideoWidth,
             height: sharedVideoHeight
         };
     }
 }
 
-
-function reshape1of4(parentw, parenth) {
+function reshape1of4( parentw, parenth ) {
     return {
-        left: (parentw - sharedVideoWidth * 2) / 3,
-        top: (parenth - sharedVideoHeight * 2) / 3,
+        left: ( parentw - sharedVideoWidth * 2 ) / 3,
+        top: ( parenth - sharedVideoHeight * 2 ) / 3,
         width: sharedVideoWidth,
         height: sharedVideoHeight
     };
 }
 
-function reshape2of4(parentw, parenth) {
+function reshape2of4( parentw, parenth ) {
     return {
-        left: (parentw - sharedVideoWidth * 2) / 3 * 2 + sharedVideoWidth,
-        top: (parenth - sharedVideoHeight * 2) / 3,
+        left: ( parentw - sharedVideoWidth * 2 ) / 3 * 2 + sharedVideoWidth,
+        top: ( parenth - sharedVideoHeight * 2 ) / 3,
         width: sharedVideoWidth,
         height: sharedVideoHeight
     };
 }
 
-function reshape3of4(parentw, parenth) {
+function reshape3of4( parentw, parenth ) {
     return {
-        left: (parentw - sharedVideoWidth * 2) / 3,
-        top: (parenth - sharedVideoHeight * 2) / 3 * 2 + sharedVideoHeight,
+        left: ( parentw - sharedVideoWidth * 2 ) / 3,
+        top: ( parenth - sharedVideoHeight * 2 ) / 3 * 2 + sharedVideoHeight,
         width: sharedVideoWidth,
         height: sharedVideoHeight
     };
 }
 
-function reshape4of4(parentw, parenth) {
+function reshape4of4( parentw, parenth ) {
     return {
-        left: (parentw - sharedVideoWidth * 2) / 3 * 2 + sharedVideoWidth,
-        top: (parenth - sharedVideoHeight * 2) / 3 * 2 + sharedVideoHeight,
+        left: ( parentw - sharedVideoWidth * 2 ) / 3 * 2 + sharedVideoWidth,
+        top: ( parenth - sharedVideoHeight * 2 ) / 3 * 2 + sharedVideoHeight,
         width: sharedVideoWidth,
         height: sharedVideoHeight
     };
 }
 
-var boxUsed = [true, false, false, false];
+var boxUsed = [ true, false, false, false ];
 var connectCount = 0;
 
-function setSharedVideoSize(parentw, parenth) {
-    layout = ((parentw / aspectRatio) < parenth) ? 'p' : 'l';
+function setSharedVideoSize( parentw, parenth ) {
+    layout = ( ( parentw / aspectRatio ) < parenth ) ? 'p' : 'l';
     var w, h;
 
-    function sizeBy(fullsize, numVideos) {
-        return (fullsize - margin * (numVideos + 1)) / numVideos;
+    function sizeBy( fullsize, numVideos ) {
+        return ( fullsize - margin * ( numVideos + 1 ) ) / numVideos;
     }
 
-    switch (layout + (connectCount + 1)) {
+    switch ( layout + ( connectCount + 1 ) ) {
         case 'p1':
         case 'l1':
-            w = sizeBy(parentw, 1);
-            h = sizeBy(parenth, 1);
+            w = sizeBy( parentw, 1 );
+            h = sizeBy( parenth, 1 );
             break;
         case 'l2':
-            w = sizeBy(parentw, 2);
-            h = sizeBy(parenth, 1);
+            w = sizeBy( parentw, 2 );
+            h = sizeBy( parenth, 1 );
             break;
         case 'p2':
-            w = sizeBy(parentw, 1);
-            h = sizeBy(parenth, 2);
+            w = sizeBy( parentw, 1 );
+            h = sizeBy( parenth, 2 );
             break;
         case 'p4':
         case 'l4':
         case 'l3':
-            w = sizeBy(parentw, 2);
-            h = sizeBy(parenth, 2);
+            w = sizeBy( parentw, 2 );
+            h = sizeBy( parenth, 2 );
             break;
         case 'p3':
-            w = sizeBy(parentw, 1);
-            h = sizeBy(parenth, 3);
+            w = sizeBy( parentw, 1 );
+            h = sizeBy( parenth, 3 );
             break;
     }
-    sharedVideoWidth = Math.min(w, h * aspectRatio);
-    sharedVideoHeight = Math.min(h, w / aspectRatio);
+    sharedVideoWidth = Math.min( w, h * aspectRatio );
+    sharedVideoHeight = Math.min( h, w / aspectRatio );
 }
 
 var reshapeThumbs = [
-    function(parentw, parenth) {
+    function( parentw, parenth ) {
 
-        if (activeBox > 0) {
-            return setThumbSize(0.20, 0.01, 0.01, parentw, parenth);
+        if ( activeBox > 0 ) {
+            return setThumbSize( 0.20, 0.01, 0.01, parentw, parenth );
         } else {
-            setSharedVideoSize(parentw, parenth);
-            switch (connectCount) {
+            setSharedVideoSize( parentw, parenth );
+            switch ( connectCount ) {
                 case 0:
-                    return reshapeToFullSize(parentw, parenth);
+                    return reshapeToFullSize( parentw, parenth );
                 case 1:
-                    return reshape1of2(parentw, parenth);
+                    return reshape1of2( parentw, parenth );
                 case 2:
-                    return reshape1of3(parentw, parenth);
+                    return reshape1of3( parentw, parenth );
                 case 3:
-                    return reshape1of4(parentw, parenth);
+                    return reshape1of4( parentw, parenth );
             }
         }
     },
-    function(parentw, parenth) {
-        if (activeBox >= 0 || !boxUsed[1]) {
-            return setThumbSize(0.20, 0.01, -0.01, parentw, parenth);
+    function( parentw, parenth ) {
+        if ( activeBox >= 0 || !boxUsed[1] ) {
+            return setThumbSize( 0.20, 0.01, -0.01, parentw, parenth );
         } else {
-            switch (connectCount) {
+            switch ( connectCount ) {
                 case 1:
-                    return reshape2of2(parentw, parenth);
+                    return reshape2of2( parentw, parenth );
                 case 2:
-                    return reshape2of3(parentw, parenth);
+                    return reshape2of3( parentw, parenth );
                 case 3:
-                    return reshape2of4(parentw, parenth);
+                    return reshape2of4( parentw, parenth );
             }
         }
     },
-    function(parentw, parenth) {
-        if (activeBox >= 0 || !boxUsed[2]) {
-            return setThumbSize(0.20, -0.01, 0.01, parentw, parenth);
+    function( parentw, parenth ) {
+        if ( activeBox >= 0 || !boxUsed[2] ) {
+            return setThumbSize( 0.20, -0.01, 0.01, parentw, parenth );
         } else {
-            switch (connectCount) {
+            switch ( connectCount ) {
                 case 1:
-                    return reshape2of2(parentw, parenth);
+                    return reshape2of2( parentw, parenth );
                 case 2:
-                    if (!boxUsed[1]) {
-                        return reshape2of3(parentw, parenth);
+                    if ( !boxUsed[1] ) {
+                        return reshape2of3( parentw, parenth );
                     } else {
-                        return reshape3of3(parentw, parenth);
+                        return reshape3of3( parentw, parenth );
                     }
                     break;
                 case 3:
-                    return reshape3of4(parentw, parenth);
+                    return reshape3of4( parentw, parenth );
             }
         }
     },
-    function(parentw, parenth) {
-        if (activeBox >= 0 || !boxUsed[3]) {
-            return setThumbSize(0.20, -0.01, -0.01, parentw, parenth);
+    function( parentw, parenth ) {
+        if ( activeBox >= 0 || !boxUsed[3] ) {
+            return setThumbSize( 0.20, -0.01, -0.01, parentw, parenth );
         } else {
-            switch (connectCount) {
+            switch ( connectCount ) {
                 case 1:
-                    return reshape2of2(parentw, parenth);
+                    return reshape2of2( parentw, parenth );
                 case 2:
-                    return reshape3of3(parentw, parenth);
+                    return reshape3of3( parentw, parenth );
                 case 3:
-                    return reshape4of4(parentw, parenth);
+                    return reshape4of4( parentw, parenth );
             }
         }
     },
 ];
 
-
-function killButtonReshaper(parentw, parenth) {
+function killButtonReshaper( parentw, parenth ) {
     var imagew = 128;
     var imageh = 128;
-    if (parentw < parenth) {
-        return setThumbSizeButton(0.1, -0.51, -0.01, parentw, parenth, imagew, imageh);
+    if ( parentw < parenth ) {
+        return setThumbSizeButton( 0.1, -0.51, -0.01, parentw, parenth, imagew, imageh );
     } else {
-        return setThumbSizeButton(0.1, -0.01, -0.51, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton( 0.1, -0.01, -0.51, parentw, parenth, imagew, imageh );
     }
 }
 
-
-function muteButtonReshaper(parentw, parenth) {
+function muteButtonReshaper( parentw, parenth ) {
     var imagew = 32;
     var imageh = 32;
-    if (parentw < parenth) {
-        return setThumbSizeButton(0.10, -0.51, 0.01, parentw, parenth, imagew, imageh);
+    if ( parentw < parenth ) {
+        return setThumbSizeButton( 0.10, -0.51, 0.01, parentw, parenth, imagew, imageh );
     } else {
-        return setThumbSizeButton(0.10, 0.01, -0.51, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton( 0.10, 0.01, -0.51, parentw, parenth, imagew, imageh );
     }
 }
 
-function drawButtonReshaper(parentw, parenth) {
+function drawButtonReshaper( parentw, parenth ) {
     var imagew = 32;
     var imageh = 32;
-    if (parentw < parenth) {
-        return setThumbSizeButton(0.10, -0.51, 0.01, parentw, parenth, imagew, imageh);
+    if ( parentw < parenth ) {
+        return setThumbSizeButton( 0.10, -0.51, 0.01, parentw, parenth, imagew, imageh );
     } else {
-        return setThumbSizeButton(0.10, 0.01, -0.51, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton( 0.10, 0.01, -0.51, parentw, parenth, imagew, imageh );
     }
 }
 
-function reshapeTextEntryButton(parentw, parenth) {
+function reshapeTextEntryButton( parentw, parenth ) {
     var imagew = 32;
     var imageh = 32;
-    if (parentw < parenth) {
-        return setThumbSizeButton(0.10, 0.51, 0.01, parentw, parenth, imagew, imageh);
+    if ( parentw < parenth ) {
+        return setThumbSizeButton( 0.10, 0.51, 0.01, parentw, parenth, imagew, imageh );
     } else {
-        return setThumbSizeButton(0.10, 0.01, 0.51, parentw, parenth, imagew, imageh);
+        return setThumbSizeButton( 0.10, 0.01, 0.51, parentw, parenth, imagew, imageh );
     }
 }
-
 
 function handleWindowResize() {
-    var fullpage = document.getElementById('fullpage');
+    var fullpage = document.getElementById( 'fullpage' );
     fullpage.style.width = window.innerWidth + 'px';
     fullpage.style.height = window.innerHeight + 'px';
     connectCount = easyrtc.getConnectionCount();
 
-    function applyReshape(obj, parentw, parenth) {
-        var myReshape = obj.reshapeMe(parentw, parenth);
+    function applyReshape( obj, parentw, parenth ) {
+        var myReshape = obj.reshapeMe( parentw, parenth );
 
-        if (typeof myReshape.left !== 'undefined') {
-            obj.style.left = Math.round(myReshape.left) + 'px';
+        if ( typeof myReshape.left !== 'undefined' ) {
+            obj.style.left = Math.round( myReshape.left ) + 'px';
         }
-        if (typeof myReshape.top !== 'undefined') {
-            obj.style.top = Math.round(myReshape.top) + 'px';
+        if ( typeof myReshape.top !== 'undefined' ) {
+            obj.style.top = Math.round( myReshape.top ) + 'px';
         }
-        if (typeof myReshape.width !== 'undefined') {
-            obj.style.width = Math.round(myReshape.width) + 'px';
+        if ( typeof myReshape.width !== 'undefined' ) {
+            obj.style.width = Math.round( myReshape.width ) + 'px';
         }
-        if (typeof myReshape.height !== 'undefined') {
-            obj.style.height = Math.round(myReshape.height) + 'px';
+        if ( typeof myReshape.height !== 'undefined' ) {
+            obj.style.height = Math.round( myReshape.height ) + 'px';
         }
 
         var n = obj.childNodes.length;
+
         //console.log('n:', n);
-        for (var i = 0; i < n; i++) {
+        for ( var i = 0; i < n; i++ ) {
             var childNode = obj.childNodes[i];
+
             //console.log('childnode:', childNode);
-            if (childNode.reshapeMe) {
-                applyReshape(childNode, myReshape.width, myReshape.height);
+            if ( childNode.reshapeMe ) {
+                applyReshape( childNode, myReshape.width, myReshape.height );
             }
         }
     }
 
-    applyReshape(fullpage, window.innerWidth, window.innerHeight);
+    applyReshape( fullpage, window.innerWidth, window.innerHeight );
 }
 
-
-function setReshaper(elementId, reshapeFn) {
-    var element = document.getElementById(elementId);
-    if (!element) {
-        alert('Attempt to apply to reshapeFn to non-existent element ' + elementId);
+function setReshaper( elementId, reshapeFn ) {
+    var element = document.getElementById( elementId );
+    if ( !element ) {
+        alert( 'Attempt to apply to reshapeFn to non-existent element ' + elementId );
     }
-    if (!reshapeFn) {
-        alert('Attempt to apply misnamed reshapeFn to element ' + elementId);
+    if ( !reshapeFn ) {
+        alert( 'Attempt to apply misnamed reshapeFn to element ' + elementId );
     }
     element.reshapeMe = reshapeFn;
 }
 
 function collapseToThumbHelper() {
-    if (activeBox >= 0) {
-        var id = getIdOfBox(activeBox);
-        document.getElementById(id).style.zIndex = 2;
-        setReshaper(id, reshapeThumbs[activeBox]);
-        document.getElementById('muteButton').style.display = 'none';
-        document.getElementById('killButton').style.display = 'none';
+    if ( activeBox >= 0 ) {
+        var id = getIdOfBox( activeBox );
+        document.getElementById( id ).style.zIndex = 2;
+        setReshaper( id, reshapeThumbs[activeBox] );
+        document.getElementById( 'muteButton' ).style.display = 'none';
+        document.getElementById( 'killButton' ).style.display = 'none';
         activeBox = -1;
     }
 }
@@ -480,18 +498,20 @@ function collapseToThumbHelper() {
 function collapseToThumb() {
     collapseToThumbHelper();
     activeBox = -1;
-    updateMuteImage(false);
+    updateMuteImage( false );
     handleWindowResize();
 
 }
 
-function updateMuteImage(toggle) {
-    var muteButton = document.getElementById('muteButton');
-    if (activeBox > 0) { // no kill button for self video
+function updateMuteImage( toggle ) {
+    var muteButton = document.getElementById( 'muteButton' );
+    if ( activeBox > 0 ) {
+
+ // no kill button for self video
         muteButton.style.display = 'block';
-        var videoObject = document.getElementById(getIdOfBox(activeBox));
+        var videoObject = document.getElementById( getIdOfBox( activeBox ) );
         var isMuted = videoObject.muted ? true : false;
-        if (toggle) {
+        if ( toggle ) {
             isMuted = !isMuted;
             videoObject.muted = isMuted;
         }
@@ -528,7 +548,7 @@ function focusUser( rtcid ) {
        activeBox = whichBox;
        setReshaper( id, reshapeToFullSize );
        document.getElementById( id ).style.zIndex = 1;
-       if (whichBox > 0) {
+       if ( whichBox > 0 ) {
            document.getElementById( 'muteButton' ).style.display = 'block';
            updateMuteImage();
            document.getElementById( 'killButton' ).style.display = 'block';
@@ -540,11 +560,12 @@ function focusUser( rtcid ) {
     handleWindowResize();
 }
 
-function expandThumb(whichBox) {
-  console.log('at expandThumb: whichBox=', whichBox, 'local easyRtcID', easyrtc.myEasyrtcid);
+function expandThumb( whichBox ) {
+  console.log( 'at expandThumb: whichBox=', whichBox, 'local easyRtcID', easyrtc.myEasyrtcid );
+
  // console.log('expandThumb - local easyRtcID', easyrtc.myEasyrtcid);
     var lastActiveBox = activeBox;
-    if (activeBox >= 0) {
+    if ( activeBox >= 0 ) {
         collapseToThumbHelper();
     }
 
@@ -552,23 +573,24 @@ function expandThumb(whichBox) {
 
    //if (lastActiveBox != whichBox) {
 //
-       var id = getIdOfBox(whichBox);
+       var id = getIdOfBox( whichBox );
        activeBox = whichBox;
-       setReshaper(id, reshapeToFullSize);
-       document.getElementById(id).style.zIndex = 1;
-       if (whichBox > 0) {
-           document.getElementById('muteButton').style.display = 'block';
+       setReshaper( id, reshapeToFullSize );
+       document.getElementById( id ).style.zIndex = 1;
+       if ( whichBox > 0 ) {
+           document.getElementById( 'muteButton' ).style.display = 'block';
            updateMuteImage();
-           document.getElementById('killButton').style.display = 'block';
+           document.getElementById( 'killButton' ).style.display = 'block';
        }
+
    //}
-    updateMuteImage(false);
+    updateMuteImage( false );
     handleWindowResize();
 
-    if (userContext.modMeState === true && modSwitch === true) {
-      console.log("modMeState:", userContext.modMeState);
-      var rtcidToExpand = _(connectList)
-      .filter( function(connectList) { return connectList.boxno == whichBox; } )
+    if ( userContext.modMeState === true && modSwitch === true ) {
+      console.log( "modMeState:", userContext.modMeState );
+      var rtcidToExpand = _( connectList )
+      .filter( function( connectList ) { return connectList.boxno == whichBox; } )
       .pluck( 'rtcid' )
       .value();
 
@@ -579,104 +601,109 @@ function expandThumb(whichBox) {
 
       var usr = whichBox  + 1;
       var modMessage = 'The Moderator has focused User-' + usr;
+
       //sendModeratorText(modMessage);
       emitMessage( modMessage );
       messageBar( modMessage );
     }
 }
 
-function prepVideoBox(whichBox) {
-    var id = getIdOfBox(whichBox);
-    setReshaper(id, reshapeThumbs[whichBox]);
-    document.getElementById(id).onclick = function() {
-       expandThumb(whichBox);
+function prepVideoBox( whichBox ) {
+    var id = getIdOfBox( whichBox );
+    setReshaper( id, reshapeThumbs[whichBox] );
+    document.getElementById( id ).onclick = function() {
+       expandThumb( whichBox );
    };
 }
 
 function prepCanvasBox( whichCanvas ) {
-    var id = getIdOfCanvas(whichCanvas);
-    setReshaper(id, reshapeThumbs[whichCanvas]);
-    document.getElementById(id).onclick = function() {
+    var id = getIdOfCanvas( whichCanvas );
+    setReshaper( id, reshapeThumbs[whichCanvas] );
+    document.getElementById( id ).onclick = function() {
      expandThumb( whichCanvas );
 };
 }
 
 function killActiveBox() {
-    if (activeBox > 0) {
-        var easyrtcid = easyrtc.getIthCaller(activeBox - 1);
+    if ( activeBox > 0 ) {
+        var easyrtcid = easyrtc.getIthCaller( activeBox - 1 );
         collapseToThumb();
-        setTimeout(function() {
-            easyrtc.hangup(easyrtcid);
-        }, 400);
+        setTimeout( function() {
+            easyrtc.hangup( easyrtcid );
+        }, 400 );
     }
 }
 
 function muteActiveBox() {
-    updateMuteImage(true);
+    updateMuteImage( true );
 }
 
-function callEverybodyElse(roomName, otherPeople) {
+function callEverybodyElse( roomName, otherPeople ) {
 
-    easyrtc.setRoomOccupantListener(null); // so we're only called once.
+    easyrtc.setRoomOccupantListener( null );
+
+ // so we're only called once.
 
     var list = [];
     var connectCount = 0;
 
-    for (var easyrtcid in otherPeople) {
-        list.push(easyrtcid);
+    for ( var easyrtcid in otherPeople ) {
+        list.push( easyrtcid );
     }
+
     //
     // Connect in reverse order. Latter arriving people are more likely to have
     // empty slots.
     //
-    function establishConnection(position) {
+    function establishConnection( position ) {
         function callSuccess() {
             connectCount++;
-            if (connectCount < maxCALLERS && position > 0) {
-                establishConnection(position - 1);
+            if ( connectCount < maxCALLERS && position > 0 ) {
+                establishConnection( position - 1 );
             }
         }
 
         function callFailure() {
-            easyrtc.showError('CALL-REJECTED', 'Rejected by other party');
-            if (connectCount < maxCALLERS && position > 0) {
-                establishConnection(position - 1);
+            easyrtc.showError( 'CALL-REJECTED', 'Rejected by other party' );
+            if ( connectCount < maxCALLERS && position > 0 ) {
+                establishConnection( position - 1 );
             }
         }
 
-        easyrtc.call(list[position], callSuccess, callFailure);
+        easyrtc.call( list[position], callSuccess, callFailure );
+
         //console.log('RoomOccList:', easyrtcid, list);
 
     }
-    if (list.length > 0) {
-        establishConnection(list.length - 1);
+    if ( list.length > 0 ) {
+        establishConnection( list.length - 1 );
     }
 }
 
-
 function loginSuccess() {
-    //    console.log('Successfully connected');
-    expandThumb(0); // expand the mirror image initially.
-}
 
+    //    console.log('Successfully connected');
+    expandThumb( 0 );
+
+ // expand the mirror image initially.
+}
 
 function cancelText() {
-    document.getElementById('textentryBox').style.display = 'none';
-    document.getElementById('textEntryButton').style.display = 'block';
+    document.getElementById( 'textentryBox' ).style.display = 'none';
+    document.getElementById( 'textEntryButton' ).style.display = 'block';
     $( '#layer-menu-button' ).click();
 }
 
-
-function sendText(e) {
-    document.getElementById('textentryBox').style.display = 'none';
-    document.getElementById('textEntryButton').style.display = 'block';
-    var stringToSend = document.getElementById('textentryField').value;
+function sendText( e ) {
+    document.getElementById( 'textentryBox' ).style.display = 'none';
+    document.getElementById( 'textEntryButton' ).style.display = 'block';
+    var stringToSend = document.getElementById( 'textentryField' ).value;
     $( '#layer-menu-button' ).click();
-    if (stringToSend && stringToSend != '') {
-        for (var i = 0; i < maxCALLERS; i++) {
-            var easyrtcid = easyrtc.getIthCaller(i);
-            if (easyrtcid && easyrtcid != '') {
-                easyrtc.sendPeerMessage(easyrtcid, 'im', stringToSend);
+    if ( stringToSend && stringToSend != '' ) {
+        for ( var i = 0; i < maxCALLERS; i++ ) {
+            var easyrtcid = easyrtc.getIthCaller( i );
+            if ( easyrtcid && easyrtcid != '' ) {
+                easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
             }
         }
     }
@@ -694,27 +721,26 @@ function sendModeratorText( moderatorMessage ) {
 }
 
 function showTextEntry() {
-    document.getElementById('textentryField').value = '';
-    document.getElementById('textentryBox').style.display = 'block';
-    document.getElementById('textEntryButton').style.display = 'none';
-    document.getElementById('textentryField').focus();
+    document.getElementById( 'textentryField' ).value = '';
+    document.getElementById( 'textentryBox' ).style.display = 'block';
+    document.getElementById( 'textEntryButton' ).style.display = 'none';
+    document.getElementById( 'textentryField' ).focus();
 }
 
-function showMessage(startX, startY, content) {
-    var fullPage = document.getElementById('fullpage');
-    var fullW = parseInt(fullPage.offsetWidth);
-    var fullH = parseInt(fullPage.offsetHeight);
+function showMessage( startX, startY, content ) {
+    var fullPage = document.getElementById( 'fullpage' );
+    var fullW = parseInt( fullPage.offsetWidth );
+    var fullH = parseInt( fullPage.offsetHeight );
     var centerEndX = 0.2 * startX + 0.8 * fullW / 2;
     var centerEndY = 0.2 * startY + 0.8 * fullH / 2;
 
-
-    var cloudObject = document.createElement('img');
+    var cloudObject = document.createElement( 'img' );
     cloudObject.src = 'images/cloud.png';
     cloudObject.style.width = '1px';
     cloudObject.style.height = '1px';
     cloudObject.style.left = startX + 'px';
     cloudObject.style.top = startY + 'px';
-    fullPage.appendChild(cloudObject);
+    fullPage.appendChild( cloudObject );
 
     cloudObject.onload = function() {
         cloudObject.style.left = startX + 'px';
@@ -727,51 +753,51 @@ function showMessage(startX, startY, content) {
         var textObject;
 
         function removeCloud() {
-            if (textObject) {
-                fullPage.removeChild(textObject);
-                fullPage.removeChild(cloudObject);
+            if ( textObject ) {
+                fullPage.removeChild( textObject );
+                fullPage.removeChild( cloudObject );
             }
         }
-        setTimeout(function() {
+        setTimeout( function() {
             cloudObject.style.left = centerEndX - fullW / 4 + 'px';
             cloudObject.style.top = centerEndY - fullH / 4 + 'px';
-            cloudObject.style.width = (fullW / 2) + 'px';
-            cloudObject.style.height = (fullH / 2) + 'px';
-        }, 10);
-        setTimeout(function() {
-            textObject = document.createElement('div');
+            cloudObject.style.width = ( fullW / 2 ) + 'px';
+            cloudObject.style.height = ( fullH / 2 ) + 'px';
+        }, 10 );
+        setTimeout( function() {
+            textObject = document.createElement( 'div' );
             textObject.className = 'boxCommon';
-            textObject.style.left = Math.floor(centerEndX - fullW / 8) + 'px';
-            textObject.style.top = Math.floor(centerEndY) + 'px';
+            textObject.style.left = Math.floor( centerEndX - fullW / 8 ) + 'px';
+            textObject.style.top = Math.floor( centerEndY ) + 'px';
             textObject.style.fontSize = '36pt';
-            textObject.style.width = (fullW * 0.4) + 'px';
-            textObject.style.height = (fullH * 0.4) + 'px';
+            textObject.style.width = ( fullW * 0.4 ) + 'px';
+            textObject.style.height = ( fullH * 0.4 ) + 'px';
             textObject.style.zIndex = 6;
-            textObject.appendChild(document.createTextNode(content));
-            fullPage.appendChild(textObject);
+            textObject.appendChild( document.createTextNode( content ) );
+            fullPage.appendChild( textObject );
             textObject.onclick = removeCloud;
             cloudObject.onclick = removeCloud;
-        }, 1000);
-        setTimeout(function() {
+        }, 1000 );
+        setTimeout( function() {
             cloudObject.style.left = startX + 'px';
             cloudObject.style.top = startY + 'px';
             cloudObject.style.width = '4px';
             cloudObject.style.height = '4px';
-            fullPage.removeChild(textObject);
-        }, 9000);
-        setTimeout(function() {
-            fullPage.removeChild(cloudObject);
-        }, 10000);
+            fullPage.removeChild( textObject );
+        }, 9000 );
+        setTimeout( function() {
+            fullPage.removeChild( cloudObject );
+        }, 10000 );
     };
 }
 
-function messageListener(easyrtcid, msgType, content) {
-    for (var i = 0; i < maxCALLERS; i++) {
-        if (easyrtc.getIthCaller(i) === easyrtcid) {
-            var startArea = document.getElementById(getIdOfBox(i + 1));
-            var startX = parseInt(startArea.offsetLeft) + parseInt(startArea.offsetWidth) / 2;
-            var startY = parseInt(startArea.offsetTop) + parseInt(startArea.offsetHeight) / 2;
-            showMessage(startX, startY, content);
+function messageListener( easyrtcid, msgType, content ) {
+    for ( var i = 0; i < maxCALLERS; i++ ) {
+        if ( easyrtc.getIthCaller( i ) === easyrtcid ) {
+            var startArea = document.getElementById( getIdOfBox( i + 1 ) );
+            var startX = parseInt( startArea.offsetLeft ) + parseInt( startArea.offsetWidth ) / 2;
+            var startY = parseInt( startArea.offsetTop ) + parseInt( startArea.offsetHeight ) / 2;
+            showMessage( startX, startY, content );
         }
     }
 }
@@ -782,55 +808,60 @@ function appInit() {
     //initVideoSelect();
 
     // Prep for the top-down layout manager
-    setReshaper('fullpage', reshapeFull);
-    for (var i = 0; i < numVideoOBJS; i++) {
-        prepVideoBox(i);
+    setReshaper( 'fullpage', reshapeFull );
+    for ( var i = 0; i < numVideoOBJS; i++ ) {
+        prepVideoBox( i );
     }
 
-    setReshaper('killButton', killButtonReshaper);
-    setReshaper('muteButton', muteButtonReshaper);
+    setReshaper( 'killButton', killButtonReshaper );
+    setReshaper( 'muteButton', muteButtonReshaper );
+
     //setReshaper('drawButton', drawButtonReshaper);
 
-    setReshaper('textentryBox', reshapeTextEntryBox);
-    setReshaper('textentryField', reshapeTextEntryField);
-    setReshaper('textEntryButton', reshapeTextEntryButton);
+    setReshaper( 'textentryBox', reshapeTextEntryBox );
+    setReshaper( 'textentryField', reshapeTextEntryField );
+    setReshaper( 'textEntryButton', reshapeTextEntryButton );
 
-    updateMuteImage(false);
+    updateMuteImage( false );
     window.onresize = handleWindowResize;
-    handleWindowResize(); //initial call of the top-down layout manager
+    handleWindowResize();
 
-    easyrtc.setRoomOccupantListener(callEverybodyElse);
+ //initial call of the top-down layout manager
 
-    easyrtc.easyApp('roomDemo', 'box0', ['box1', 'box2', 'box3'],
-      function(myId) {
+    easyrtc.setRoomOccupantListener( callEverybodyElse );
+
+    easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
+      function( myId ) {
 
         userContext.rtcId = myId;
 
 // First time through for all connections
 
         if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
-          connectList.push({
+          connectList.push( {
             rtcid: myId,
             boxno: 0,
             avatar: 'avatar0'
-          });
+          } );
         }
       }
     );
 
-    easyrtc.setPeerListener(messageListener);
+    easyrtc.setPeerListener( messageListener );
 
-    easyrtc.setDisconnectListener(function() {
-        easyrtc.showError('LOST-CONNECTION', 'Lost connection to signaling server');
-    });
+    easyrtc.setDisconnectListener( function() {
+        easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
+    } );
 
-    easyrtc.setOnCall(function(easyrtcid, slot) {
+    easyrtc.setOnCall( function( easyrtcid, slot ) {
+
         //console.log('a call with ' + easyrtcid + 'established');
       //  console.log('Occupant IDs:', easyrtc.getRoomOccupantsAsArray('default'))
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
         var theBox =  theSlot;
         var av = 'avatar0';
+
         //console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,'avatar:', av );
 
        connectList.push( {
@@ -844,34 +875,37 @@ function appInit() {
 // Thumbs for all connections other than initiator
 //  -- change to == 1 for normal mode
 
-        if (activeBox == 0 && easyrtc.getConnectionCount() == 1) {
-            expandThumb(0);
-            document.getElementById('textEntryButton').style.display = 'block';
+        if ( activeBox == 0 && easyrtc.getConnectionCount() == 1 ) {
+            expandThumb( 0 );
+            document.getElementById( 'textEntryButton' ).style.display = 'block';
         }
-        document.getElementById(getIdOfBox(slot + 1)).style.visibility = 'visible';
-        expandThumb(0);
+        document.getElementById( getIdOfBox( slot + 1 ) ).style.visibility = 'visible';
+        expandThumb( 0 );
     } );
 
-    easyrtc.setOnHangup(function(easyrtcid, slot) {
+    easyrtc.setOnHangup( function( easyrtcid, slot ) {
         boxUsed[slot + 1] = false;
+
         //console.log('hanging up on ' + easyrtcid);
-        if (activeBox > 0 && slot + 1 == activeBox) {
+        if ( activeBox > 0 && slot + 1 == activeBox ) {
             collapseToThumb();
         }
-        setTimeout(function() {
-            document.getElementById(getIdOfBox(slot + 1)).style.visibility = 'hidden';
+        setTimeout( function() {
+            document.getElementById( getIdOfBox( slot + 1 ) ).style.visibility = 'hidden';
 
-            if (easyrtc.getConnectionCount() == 0) { // no more connections
-                expandThumb(0);
-                document.getElementById('textEntryButton').style.display = 'none';
-                document.getElementById('textentryBox').style.display = 'none';
+            if ( easyrtc.getConnectionCount() == 0 ) {
+
+ // no more connections
+                expandThumb( 0 );
+                document.getElementById( 'textEntryButton' ).style.display = 'none';
+                document.getElementById( 'textentryBox' ).style.display = 'none';
             }
             handleWindowResize();
-        }, 20);
-    });
+        }, 20 );
+    } );
 
 initDraw();
 initUtil();
-messageBar('User Session Initialized');
+messageBar( 'User Session Initialized' );
 
 }

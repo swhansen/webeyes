@@ -93,7 +93,7 @@ socketServer.on('utility', function(data) {
     console.log('at utility socket recieve:', data);
       if (userContext.participantState === 'peer') {
         orientationAr();
-        coreAr();
+        loadArModel();
       }
       break;
   }

@@ -1,3 +1,7 @@
+
+arData = {};
+
+
 function orientationAr() {
 
   document.getElementById( 'cube' ).style.visibility = 'visible';
@@ -14,26 +18,42 @@ function orientationAr() {
                    'rotateZ(' + event.alpha + 'deg)';
         } );
      }
-       }
+   }
 
-//function emitArOrientation( data ) {
-//  var sessionId = socketServer.sessionid;
-//  socketServer.emit( 'arOrientation', data, sessionId );
-//}
+
+function emitArOrientation( data ) {
+  var sessionId = socketServer.sessionid;
+  socketServer.emit( 'arOrientation', data, sessionId );
+}
+
 //
-//socketServer.on( 'arOrientation', function( data ) {
-//  if ( userContext.participantState) === 'peer' {
+socketServer.on( 'arOrientation', function( data ) {
+  if ( userContext.participantState) === 'peer' {
+
+    console.log( 'peer position:', data)
 //    arOrientClient( data );
-//}
-//} );
-//
-//function arOrientClient(data) {
-//
-////  orient the camera view
-//
-//  }
+  }
+} );
 
-function coreAr() {
+
+function peerArScene( position ) {
+
+    //arOrientPeer(position);
+  }
+
+
+function loadArModel() {
+
+if (userContext.participantState = 'focus' ) {
+  if ( userContext.arCapable === true ) {
+    window.addEventListener( 'deviceorientation', function( event ) {
+    arData.alpha = event.alpha
+    arData.beta = event.beta
+    arData.gamma = event.gamma
+    emitArOrientation( arData );
+    } )
+  }
+}
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );
@@ -169,15 +189,10 @@ scene.add( sphere3 );
   //camera.position.x = 4;
   //camera.position.y = 4;
   //camera.position.z = 4;
-  camera.lookAt( scene.position );
 
-//var lightSpot = new THREE.SpotLight();
-//   light.position.set( 40, 100, 50 );
-//   light.castShadow = true;
-//   light.shadowMapEnabled = true;
-//   light.shadowCameraNear = 20;
-//   light.shadowCameraFar = 100;
-//   scene.add( lightSpot );
+sensorDrivenCamera.lookAt( scene.position );
+
+// dataDrivenCamera( scene.position );
 
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
@@ -186,7 +201,8 @@ scene.add( light );
 
 arCameraControls = new THREE.DeviceOrientationControls( camera );
 
-function animate() {
+
+function connectSensors() {
 
   arCameraControls.update();
 
@@ -209,12 +225,17 @@ function animate() {
  //cube2.rotation.x += 0.05;
  //cube2.rotation.y += 0.05;
 
-  renderer.render( scene, camera );
+  renderer.render( scene, sensorDrivenCamera );
 
-  requestAnimationFrame( animate );
+  requestAnimationFrame( connectSensors );
 
 }
 
-animate();
+if(userContext.participantState === 'focus') {
+    connectSensors();
+    }
+else {
+  // connect to socket sensor feed
+};
 
 }
