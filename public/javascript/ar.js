@@ -26,10 +26,7 @@ function emitArOrientation( data ) {
 }
 
 socketServer.on( 'arOrientation', function( data ) {
- // if ( userContext.participantState === 'peer' ) {
-
     console.log( 'AR data from focus:', data);
-  //}
 } );
 
 function peerArScene( position ) {
@@ -37,19 +34,18 @@ function peerArScene( position ) {
     //arOrientPeer(position);
   }
 
-function loadArModel() {
-
-//if (userContext.participantState = 'focus' ) {
-//  if ( userContext.arCapable === true ) {
+  function pushArData() {
     window.addEventListener( 'deviceorientation', function( event ) {
     arData.alpha = event.alpha
     arData.beta = event.beta
     arData.gamma = event.gamma
     emitArOrientation( arData );
+    } )
+  }
 
- //   } )
-//  }
-} )
+function loadArModel() {
+
+  pushArData();
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );
@@ -197,7 +193,6 @@ scene.add( light );
 
 arCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
-
 function connectSensors() {
 
   arCameraControls.update();
@@ -227,11 +222,6 @@ function connectSensors() {
 
 }
 
-if(userContext.arCapable === true) {
     connectSensors();
-    }
-else {
-  // connect to socket sensor feed
-};
 
 }
