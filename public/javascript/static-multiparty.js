@@ -24,21 +24,7 @@ var userContext = {
 
 easyrtc.dontAddCloseButtons( false );
 
-if ( navigator.geolocation ) {
-    userContext.geoLocation = false;
-  }
 
-if ( window.DeviceMotionEvent ) {
-  userContext.motion = false;
-}
-
-if ( window.DeviceOrientationEvent ) {
-    userContext.orientation = false;
-    }
-
-if (userContext.orientation === true && userContext.motion === true) {
-  userContext.arCapable = true;
-}
 
 // Footer Messages
 
@@ -804,8 +790,19 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
-    //easyrtc.setAutoInitUserMedia(false);
-    //initVideoSelect();
+  if ( navigator.geolocation ) {
+    userContext.geoLocation = false;
+    }
+  if ( window.DeviceMotionEvent ) {
+  userContext.motion = false;
+    }
+  if ( window.DeviceOrientationEvent ) {
+    userContext.orientation = false;
+    }
+  if (userContext.orientation === true && userContext.motion === true) {
+    userContext.arCapable = true;
+    messageBar( 'Device is AR Capable' );
+    }
 
     // Prep for the top-down layout manager
     setReshaper( 'fullpage', reshapeFull );
