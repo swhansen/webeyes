@@ -120,7 +120,7 @@ function augmeUI() {
  // }
  // else {
     buildSideMenu( 'augme' );
-   // userContext.participantState = 'focus';
+   //userContext.participantState = 'focus';
     loadArModel();
     setDomMouseEvent('canvas0', 'none');
   //}
@@ -132,6 +132,8 @@ function shareAr() {
 
     userContext.participantState = 'focus';
     userContext.modMeState = true;
+
+// Focus the AR initiator
 
     var sessionId = socketServer.sessionid;
         socketServer.emit( 'focus', userContext.rtcId, sessionId );

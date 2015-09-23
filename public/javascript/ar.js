@@ -221,7 +221,8 @@ function connectSensors() {
   requestAnimationFrame( connectSensors );
 
 }
-
+if(userContext.participantState == 'focus') {
     connectSensors();
+  }
 
 }
