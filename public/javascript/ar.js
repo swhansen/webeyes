@@ -20,27 +20,23 @@ function orientationAr() {
      }
    }
 
-
 function emitArOrientation( data ) {
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'arOrientation', data, sessionId );
 }
 
-//
 socketServer.on( 'arOrientation', function( data ) {
-  if ( userContext.participantState) === 'peer' {
+  if ( userContext.participantState === 'peer' ) {
 
-    console.log( 'peer position:', data)
+    console.log( 'peer position:', data);
 //    arOrientClient( data );
   }
 } );
-
 
 function peerArScene( position ) {
 
     //arOrientPeer(position);
   }
-
 
 function loadArModel() {
 
@@ -69,13 +65,13 @@ if (userContext.participantState = 'focus' ) {
   arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
-  var container, camera, scene, renderer, mesh,
+  var container, sensorDrivenCamera, scene, renderer, mesh,
     CANVAS_WIDTH = 300,
     CANVAS_HEIGHT = 300;
 
 scene = new THREE.Scene();
 
-camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
 // set the renderer to the AR canvas
 
@@ -199,7 +195,7 @@ scene.add( light );
 
 //  drive the virtual camera with the orientation sensors
 
-arCameraControls = new THREE.DeviceOrientationControls( camera );
+arCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
 
 function connectSensors() {
