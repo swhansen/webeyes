@@ -120,7 +120,7 @@ function augmeUI() {
  // }
  // else {
     buildSideMenu( 'augme' );
-    userContext.participantState = 'focus';
+   // userContext.participantState = 'focus';
     loadArModel();
     setDomMouseEvent('canvas0', 'none');
   //}
