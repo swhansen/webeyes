@@ -91,10 +91,10 @@ socketServer.on('utility', function(data) {
       break;
     case "arClientInit":
     console.log('at utility socket recieve:', data);
-      if (userContext.participantState === 'peer') {
+      //if (userContext.participantState === 'peer') {
         orientationAr();
-        loadArModel();
-      }
+        loadArModel( 'peer' );
+     // }
       break;
   }
 });

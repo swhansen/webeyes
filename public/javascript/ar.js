@@ -20,32 +20,27 @@ function orientationAr() {
      }
    }
 
-function emitArOrientation( data ) {
-  var sessionId = socketServer.sessionid;
-  socketServer.emit( 'arOrientation', data, sessionId );
-}
-
 socketServer.on( 'arOrientation', function( data ) {
-    console.log( 'AR data from focus:', data);
+  comnsole.log( data );
 } );
 
-function peerArScene( position ) {
 
-    //arOrientPeer(position);
-  }
+function emitArOrientationData() {
+  window.addEventListener( 'deviceorientation', function( event ) {
+  arData.alpha = event.alpha
+  arData.beta = event.beta
+  arData.gamma = event.gamma
 
-  function pushArData() {
-    window.addEventListener( 'deviceorientation', function( event ) {
-    arData.alpha = event.alpha
-    arData.beta = event.beta
-    arData.gamma = event.gamma
-    emitArOrientation( arData );
-    } )
-  }
+  var sessionId = socketServer.sessionid;
+  socketServer.emit( 'arOrientation', arData, sessionId );
+  } )
+}
 
-function loadArModel() {
 
-  pushArData();
+  // Load the ar Models
+  // participants can be focus or peer
+
+function loadArModel( participantType ) {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );
@@ -193,6 +188,11 @@ scene.add( light );
 
 arCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
+arConnectionController ( userContext.participantState );
+
+
+
+
 function connectSensors() {
 
   arCameraControls.update();
@@ -219,10 +219,18 @@ function connectSensors() {
   renderer.render( scene, sensorDrivenCamera );
 
   requestAnimationFrame( connectSensors );
-
 }
-if(userContext.participantState == 'focus') {
-    connectSensors();
+
+
+function arConnectionController( participantType ) {
+  if( participantType === 'focus') {
+      console.log( 'at call to connectSensors with', participantType );
+      connectSensors();
+    }
+    else if ( participantType === 'peer' ) {
+      console.log( 'at call to connectSensors with', participantType );
+      connectSensors();
+    }
   }
 
 }

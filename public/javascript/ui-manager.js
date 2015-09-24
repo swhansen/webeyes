@@ -110,8 +110,6 @@ setDomMouseEvent('canvas0', 'none');
 setDomMouseEvent('arcanvaspane', 'none');
 }
 
-
-
 function augmeUI() {
 
 //if( !userContext.arCapable ) {
@@ -120,20 +118,18 @@ function augmeUI() {
  // }
  // else {
     buildSideMenu( 'augme' );
-   //userContext.participantState = 'focus';
-    loadArModel();
+    userContext.participantState = 'focus';
+    loadArModel( userContext.participantState );
     setDomMouseEvent('canvas0', 'none');
   //}
 }
 
-
-
 function shareAr() {
 
-    userContext.participantState = 'focus';
+    userContext.participantState = 'peer';
     userContext.modMeState = true;
 
-// Focus the AR initiator
+// Focus the AR initiator (modme)
 
     var sessionId = socketServer.sessionid;
         socketServer.emit( 'focus', userContext.rtcId, sessionId );
@@ -145,6 +141,8 @@ function shareAr() {
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode'
     messageBar( msgString );
+
+    emitArOrientationData();
 }
 
 //
