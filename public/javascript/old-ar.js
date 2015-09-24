@@ -104,12 +104,31 @@ sphereMaterial2 = new THREE.MeshLambertMaterial( { color: 0x0066FF } );
 orbitSphereMaterial = new THREE.MeshLambertMaterial( { color: 0xB24700 } );
 //
 var cube = new THREE.Mesh( cubeGeometry, material );
+//cube.castShadow = true;
+
+//pivotPoint.add( cube );
+
+//var orbitCube = new THREE.Mesh( cubeGeometry, material );
+//orbitCube.castShadow = true;
+//orbitCube.position.set( 2.5, 1.0, 1.0 );
+//scene.add( orbitCube );
+
+//var knotGeometry = new THREE.TorusKnotGeometry( .2, .15, 100, 16 );
+//var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
+//var orbitKnot = new THREE.Mesh( knotGeometry, knotMaterial );
+//orbitKnot.position.set( 3.5, 1.0, 1.0 );
+//scene.add( orbitKnot );
+
 var cube1 = new THREE.Mesh( cubeGeometry, material );
 var cube2 = new THREE.Mesh( cubeGeometry, material1 );
 var cube3 = new THREE.Mesh( cubeGeometry, material2 );
 var sphere1 = new THREE.Mesh( sphereGeometry1, sphereMaterial );
 var sphere2 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
 var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
+
+//cube1.position.set( 1.0, 1.0, 1.0 ); //red
+//cube2.position.set( 3.0, 1.0, 1.0 ); //green
+//cube3.position.set( 5.0, 1.0, 1.0 ); //blue
 
 cube1.position.set( 0.1, 1.0, -2.0 ); //red
 cube2.position.set( 0.2, 0.5,  -4.0 ); //green
@@ -125,6 +144,36 @@ scene.add( cube3 );
 scene.add( sphere1 );
 scene.add( sphere2 );
 scene.add( sphere3 );
+//
+//// orbiting sphere
+//
+//var orbitSphere = new THREE.Mesh( new THREE.SphereGeometry(
+//    radius,
+//    segments,
+//    rings ),
+//  orbitSphereMaterial );
+////
+//orbitSphere.position.set( 5.0, 1.0, .5 );
+//scene.add( orbitSphere );
+
+//var orbitSphereFocus = new THREE.Mesh( new THREE.SphereGeometry(
+//    radius,
+//    segments,
+//    rings ),
+//  orbitSphereMaterial );
+//scene.add( orbitSphereFocus );
+////
+//var orbitSpherePivotPoint = new THREE.Object3D();
+//orbitSpherePivotPoint.position.set( 4.0, 3.0, 0.0 );
+//orbitSpherePivotPoint.rotation.x = 0.7;
+//orbitSphereFocus.add( orbitSpherePivotPoint );
+//orbitSpherePivotPoint.add( orbitKnot );
+
+//  canera and light
+
+  //camera.position.x = 4;
+  //camera.position.y = 4;
+  //camera.position.z = 4;
 
 sensorDrivenCamera.lookAt( scene.position );
 
@@ -144,11 +193,29 @@ function connectLocalSensors() {
 
   arCameraControls.update();
 
+ //pivotPoint.rotation.x += .05;
+ //pivotPoint.rotation.y += .05;
+//
+ //cube.rotation.x += 0.05;
+ //cube.rotation.y += 0.05;
+//
+ //orbitKnot.rotation.x += 0.05;
+ //orbitKnot.rotation.y += 0.05;
+//
+ //orbitSpherePivotPoint.rotation.y += 0.01;
+//
+ //////orbitSpherePivotPoint.rotation.x += 0.02;
+//
+ //cube1.rotation.x += 0.05;
+ //cube1.rotation.y += 0.05;
+
+ //cube2.rotation.x += 0.05;
+ //cube2.rotation.y += 0.05;
+
   renderer.render( scene, sensorDrivenCamera );
 
   requestAnimationFrame( connectLocalSensors );
 }
-
 
 function connectBroadcastSensors(data) {
 
