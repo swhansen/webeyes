@@ -21,7 +21,7 @@ function orientationAr() {
    }
 
 socketServer.on( 'arOrientation', function( data ) {
-  comnsole.log( data );
+  console.log( data );
 } );
 
 

@@ -142,6 +142,8 @@ function shareAr() {
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode'
     messageBar( msgString );
 
+    // Start the orientation data feed
+
     emitArOrientationData();
 }
 
