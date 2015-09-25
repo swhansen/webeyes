@@ -137,9 +137,15 @@ function connectLocalSensors() {
 }
 
 
-function connectBroadcastSensors(data) {
+function connectBroadcastSensors() {
 
-  console.log( 'at connectBroadcastSensors:', data);
+//  console.log( 'at connectBroadcastSensors:', data);
+
+  renderer.render( scene, broadcastDrivenCamera );
+
+broadcastCameraControls.update;
+
+requestAnimationFrame( connectBroadcastSensors );
 
 }
 
@@ -152,18 +158,15 @@ function arConnectionController( participantType ) {
 
       //  drive the virtual camera with the orientation sensors
 
-
       connectLocalSensors();
     }
     else if ( participantType === 'peer' ) {
       console.log( 'at call to connectBroadcastSensors with', participantType );
 
-broadcastDrivenCamera.lookAt(scene.position);
+    broadcastDrivenCamera.lookAt(scene.position);
 
-renderer.render( scene, broadcastDrivenCamera );
 
-broadcastCameraControls.update;
-
+    connectBroadcastSensors();
 
 
 
