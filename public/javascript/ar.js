@@ -162,6 +162,10 @@ broadcastDrivenCamera.lookAt(scene.position);
 
 renderer.render( scene, broadcastDrivenCamera );
 
+broadcastCameraControls.update;
+
+
+
 
 
      //socketServer.on( 'arOrientation', function( arBroadcastData ) {
