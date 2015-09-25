@@ -121,6 +121,9 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
 arCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+
+broadcastCameraControls = new THREE.BroadcastOrientationControls( sensorDrivenCamera );
+
 arConnectionController( userContext.participantState );
 
 
@@ -155,23 +158,30 @@ function arConnectionController( participantType ) {
     else if ( participantType === 'peer' ) {
       console.log( 'at call to connectBroadcastSensors with', participantType );
 
-      socketServer.on( 'arOrientation', function( arBroadcastData ) {
-      //  console.log( arBroadcastData );
+broadcastDrivenCamera.lookAt(scene.position);
 
-        broadcastDrivenCamera.rotation.order = 'XYZ';
+renderer.render( scene, broadcastDrivenCamera );
 
-        broadcastDrivenCamera.rotation.x = arBroadcastData.beta;
-        broadcastDrivenCamera.rotation.y = arBroadcastData.gamma;
-        broadcastDrivenCamera.rotation.z = arBroadcastData.alpha;
 
-        broadcastDrivenCamera.lookAt( scene.position );
 
-        renderer.render( scene, broadcastDrivenCamera );
+     //socketServer.on( 'arOrientation', function( arBroadcastData ) {
+     ////  console.log( arBroadcastData );
 
-      } );
+     //  broadcastDrivenCamera.rotation.order = 'XYZ';
+
+     //  broadcastDrivenCamera.rotation.x = arBroadcastData.beta;
+     //  broadcastDrivenCamera.rotation.y = arBroadcastData.gamma;
+     //  broadcastDrivenCamera.rotation.z = arBroadcastData.alpha;
+
+     //  broadcastDrivenCamera.lookAt( scene.position );
+
+     //  renderer.render( scene, broadcastDrivenCamera );
+
+     //} );
 
       //connectlocalSensors( arBroadcastData );
     }
+
   }
 
 }

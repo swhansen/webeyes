@@ -62,7 +62,7 @@ THREE.BroadcastOrientationControls = function ( object ) {
     window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
       onDeviceOrientationChangeEvent;
-      console.log( 'broadcastOrientationContorls:', arBroadcastData )
+      console.log( 'broadcastOrientationContorls:', arBroadcastData );
 })
     scope.enabled = true;
 
