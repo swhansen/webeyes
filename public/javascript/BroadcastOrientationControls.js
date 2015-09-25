@@ -5,7 +5,7 @@
  * W3C Device Orientation control (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
  */
 
-THREE.DeviceOrientationControls = function ( object ) {
+THREE.BroadcastOrientationControls = function ( object ) {
 
   var scope = this;
 
@@ -60,9 +60,11 @@ THREE.DeviceOrientationControls = function ( object ) {
     onScreenOrientationChangeEvent(); // run once on load
 
     window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
-    window.addEventListener( 'deviceorientation', onDeviceOrientationChangeEvent, false );
-
+    socketServer.on( 'arOrientation', function( arBroadcastData ) {
+      onDeviceOrientationChangeEvent;
+})
     scope.enabled = true;
+
 
   };
 
