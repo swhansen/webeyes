@@ -49,7 +49,7 @@ THREE.BroadcastOrientationControls = function ( object ) {
 
       quaternion.multiply( q1 );                                      // camera looks out the back of the device, not the top
 
-      quaternion.multiply( q0.setFromAxisAngle( zee, - orient ) );    // adjust for screen orientation
+    //  quaternion.multiply( q0.setFromAxisAngle( zee, - orient ) );    // adjust for screen orientation
 
     }
 
@@ -62,6 +62,7 @@ THREE.BroadcastOrientationControls = function ( object ) {
     window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
       onDeviceOrientationChangeEvent;
+      console.log( 'broadcastOrientationContorls:', arBroadcastData )
 })
     scope.enabled = true;
 
@@ -81,12 +82,12 @@ THREE.BroadcastOrientationControls = function ( object ) {
 
     if ( scope.enabled === false ) return;
 
-    var alpha  = scope.deviceOrientation.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
-    var beta   = scope.deviceOrientation.beta  ? THREE.Math.degToRad( scope.deviceOrientation.beta  ) : 0; // X'
-    var gamma  = scope.deviceOrientation.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
-    var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
+    var alpha = scope.arBroadcastData.alpha ? THREE.Math.degToRad( scope.arBroadcastData.alpha ) : 0; // Z
+    var beta  = scope.arBroadcastData.beta  ? THREE.Math.degToRad( scope.arBroadcastData.beta  ) : 0; // X'
+    var gamma = scope.arBroadcastData.gamma ? THREE.Math.degToRad( scope.arBroadcastData.gamma ) : 0; // Y''
+    //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
-    setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma, orient );
+    setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma);
 
   };
 
