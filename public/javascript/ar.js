@@ -156,7 +156,7 @@ function arConnectionController( participantType ) {
     else if ( participantType === 'peer' ) {
       console.log( 'at call to connectBroadcastSensors with', participantType );
 
-sensorCameraControls = new THREE.BroadcastOrientationControls( broadcastDrivenCamera );
+
 
 
       //socketServer.on( 'arOrientation', function( arBroadcastData ) {
@@ -171,6 +171,10 @@ sensorCameraControls = new THREE.BroadcastOrientationControls( broadcastDrivenCa
       //  console.log( 'rotation.y:', broadcastDrivenCamera.rotation.y)
 //
         broadcastDrivenCamera.lookAt( scene.position );
+
+        broadcastCameraControls = new THREE.BroadcastOrientationControls( broadcastDrivenCamera );
+
+        broadcastCameraControls.update;
 //
         renderer.render( scene, broadcastDrivenCamera );
 //
