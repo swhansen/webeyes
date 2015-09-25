@@ -20,9 +20,6 @@ function orientationAr() {
      }
    }
 
-
-
-
 function emitArOrientationData() {
   window.addEventListener( 'deviceorientation', function( event ) {
   arData.alpha = event.alpha
@@ -54,13 +51,14 @@ function loadArModel( participantType ) {
   arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
-  var container, sensorDrivenCamera, scene, renderer, mesh,
+  var container, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer, mesh,
     CANVAS_WIDTH = 300,
     CANVAS_HEIGHT = 300;
 
 scene = new THREE.Scene();
 
 sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
 // set the renderer to the AR canvas
 
@@ -86,13 +84,6 @@ var sphere = new THREE.Mesh( new THREE.SphereGeometry(
 sphere.position.set( 0.5, 0.0, 0.0 );
 scene.add( sphere );
 
-//pivotPoint = new THREE.Object3D();
-//pivotPoint.rotation.x = 0.4;
-//sphere.add( pivotPoint );
-//
-//// add the sphere to the scene
-////scene.add(sphere);
-//
 var cubeGeometry = new THREE.BoxGeometry( -0.5, -0.5, -0.5 );
 var sphereGeometry1 = new THREE.SphereGeometry( .5, 16, 16 );
 //
@@ -126,16 +117,9 @@ scene.add( sphere1 );
 scene.add( sphere2 );
 scene.add( sphere3 );
 
-sensorDrivenCamera.lookAt( scene.position );
-
-// dataDrivenCamera( scene.position );
-
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
-//  drive the virtual camera with the orientation sensors
-
-arCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
 arConnectionController ( userContext.participantState );
 
@@ -160,6 +144,12 @@ function connectBroadcastSensors(data) {
 function arConnectionController( participantType ) {
   if( participantType === 'focus') {
       console.log( 'at call to connectLocalSensors with', participantType );
+
+      sensorDrivenCamera.lookAt( scene.position );
+
+      //  drive the virtual camera with the orientation sensors
+
+      arCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
       connectLocalSensors();
     }
     else if ( participantType === 'peer' ) {
@@ -167,6 +157,17 @@ function arConnectionController( participantType ) {
 
       socketServer.on( 'arOrientation', function( arBroadcastData ) {
         console.log( arBroadcastData );
+
+        broadcastDrivenCamera.rotation.order = 'XYZ';
+
+        broadcastDrivenCamera.rotation.x = arBroadcastData.beta * Math.PI / 180;
+        broadcastDrivenCamera.rotation.y = arBroadcastData.gamma * Math.PI / 180;
+        broadcastDrivenCamera.rotation.z = arBroadcastData.alpha * Math.PI / 180;
+
+        broadcastDrivenCamera.lookAt( scene.position );
+
+        renderer.render( scene, broadcastDrivenCamera );
+
       } );
 
       //connectlocalSensors( arBroadcastData );
