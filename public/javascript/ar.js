@@ -150,13 +150,14 @@ function arConnectionController( participantType ) {
       //  drive the virtual camera with the orientation sensors
 
       arCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+
       connectLocalSensors();
     }
     else if ( participantType === 'peer' ) {
-    //  console.log( 'at call to connectBroadcastSensors with', participantType );
+      console.log( 'at call to connectBroadcastSensors with', participantType );
 
       socketServer.on( 'arOrientation', function( arBroadcastData ) {
-        console.log( arBroadcastData );
+      //  console.log( arBroadcastData );
 
         broadcastDrivenCamera.rotation.order = 'XYZ';
 
@@ -165,6 +166,8 @@ function arConnectionController( participantType ) {
         broadcastDrivenCamera.rotation.z = arBroadcastData.alpha;
 
         console.log( 'rotation.y:', broadcastDrivenCamera.rotation.y)
+
+        broadcastDrivenCamera.update();
 
         broadcastDrivenCamera.lookAt( scene.position );
 
