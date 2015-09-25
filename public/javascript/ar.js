@@ -153,16 +153,18 @@ function arConnectionController( participantType ) {
       connectLocalSensors();
     }
     else if ( participantType === 'peer' ) {
-      console.log( 'at call to connectBroadcastSensors with', participantType );
+    //  console.log( 'at call to connectBroadcastSensors with', participantType );
 
       socketServer.on( 'arOrientation', function( arBroadcastData ) {
         console.log( arBroadcastData );
 
         broadcastDrivenCamera.rotation.order = 'XYZ';
 
-        broadcastDrivenCamera.rotation.x = arBroadcastData.beta * Math.PI / 180;
-        broadcastDrivenCamera.rotation.y = arBroadcastData.gamma * Math.PI / 180;
-        broadcastDrivenCamera.rotation.z = arBroadcastData.alpha * Math.PI / 180;
+        broadcastDrivenCamera.rotation.x = arBroadcastData.beta;
+        broadcastDrivenCamera.rotation.y = arBroadcastData.gamma;
+        broadcastDrivenCamera.rotation.z = arBroadcastData.alpha;
+
+        console.log( 'rotation.y:', broadcastDrivenCamera.rotation.y)
 
         broadcastDrivenCamera.lookAt( scene.position );
 

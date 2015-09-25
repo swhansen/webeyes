@@ -5,7 +5,7 @@
  * W3C Device Orientation control (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
  */
 
-WEBEYES.BroadcastOrientationControls = function ( object ) {
+THREE.DeviceOrientationControls = function ( object ) {
 
   var scope = this;
 
@@ -57,15 +57,10 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
   this.connect = function() {
 
-    //onScreenOrientationChangeEvent(); // run once on load
+    onScreenOrientationChangeEvent(); // run once on load
 
-    //window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
-    //window.addEventListener( 'deviceorientation', onDeviceOrientationChangeEvent, false );
-
-    socketServer.on( 'arOrientation', function( arBroadcastData ) {
-        console.log( arBroadcastData );
-        onDeviceOrientationChangeEvent;
-      } );
+    window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
+    window.addEventListener( 'deviceorientation', onDeviceOrientationChangeEvent, false );
 
     scope.enabled = true;
 
@@ -84,10 +79,10 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
     if ( scope.enabled === false ) return;
 
-    var alpha  = arBroadcastData.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
-    var beta   = arBroadcastData.beta  ? THREE.Math.degToRad( scope.deviceOrientation.beta  ) : 0; // X'
-    var gamma  = arBroadcastData.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
-    //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
+    var alpha  = scope.deviceOrientation.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
+    var beta   = scope.deviceOrientation.beta  ? THREE.Math.degToRad( scope.deviceOrientation.beta  ) : 0; // X'
+    var gamma  = scope.deviceOrientation.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
+    var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
     setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma, orient );
 
