@@ -31,7 +31,6 @@ function emitArOrientationData() {
   } )
 }
 
-
   // Load the ar Models
   // participants can be focus or peer
 
@@ -139,13 +138,11 @@ function connectLocalSensors() {
 
 function connectBroadcastSensors() {
 
-//  console.log( 'at connectBroadcastSensors:', data);
-
   renderer.render( scene, broadcastDrivenCamera );
 
-broadcastCameraControls.update;
+  broadcastCameraControls.update;
 
-requestAnimationFrame( connectBroadcastSensors );
+  requestAnimationFrame( connectBroadcastSensors );
 
 }
 
@@ -163,12 +160,18 @@ function arConnectionController( participantType ) {
     else if ( participantType === 'peer' ) {
       console.log( 'at call to connectBroadcastSensors with', participantType );
 
-    broadcastDrivenCamera.lookAt(scene.position);
+     // broadcastDrivenCamera.lookAt(scene.position);
 
 
-    connectBroadcastSensors();
+      //broadcastDrivenCamera.eulerOrder ='ZXY';
 
+      broadcastDrivenCamera.rotation.x = arBroadcastData.alpha;
+      broadcastDrivenCamera.rotation.y = arBroadcastData.beta;
+      broadcastDrivenCamera.rotation.z = arBroadcastData.gamma;
 
+     // connectBroadcastSensors();
+
+     renderer.render( scene, broadcastDrivenCamera );
 
 
      //socketServer.on( 'arOrientation', function( arBroadcastData ) {

@@ -66,7 +66,6 @@ THREE.BroadcastOrientationControls = function ( object ) {
 })
     scope.enabled = true;
 
-
   };
 
   this.disconnect = function() {
