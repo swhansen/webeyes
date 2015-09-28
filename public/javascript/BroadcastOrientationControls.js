@@ -41,7 +41,7 @@ THREE.BroadcastOrientationControls = function ( object ) {
 
     var q1 = new THREE.Quaternion( - Math.sqrt( 0.5 ), 0, 0, Math.sqrt( 0.5 ) ); // - PI/2 around the x-axis
 
-    return function ( quaternion, alpha, beta, gamma, orient ) {
+    return function ( quaternion, alpha, beta, gamma ) {
 
       euler.set( beta, alpha, - gamma, 'YXZ' );                       // 'ZXY' for the device, but 'YXZ' for us
 
@@ -59,9 +59,9 @@ THREE.BroadcastOrientationControls = function ( object ) {
 
     onScreenOrientationChangeEvent(); // run once on load
 
-    window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
+    //window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
-      onDeviceOrientationChangeEvent;
+      scope.deviceOrientation = arBroadcastData;
       console.log( 'broadcastOrientationContorls:', arBroadcastData );
 })
     scope.enabled = true;
@@ -81,12 +81,12 @@ THREE.BroadcastOrientationControls = function ( object ) {
 
     if ( scope.enabled === false ) return;
 
-    var alpha = scope.arBroadcastData.alpha ? THREE.Math.degToRad( scope.arBroadcastData.alpha ) : 0; // Z
-    var beta  = scope.arBroadcastData.beta  ? THREE.Math.degToRad( scope.arBroadcastData.beta  ) : 0; // X'
-    var gamma = scope.arBroadcastData.gamma ? THREE.Math.degToRad( scope.arBroadcastData.gamma ) : 0; // Y''
+    var alpha = scope.deviceOrientation.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
+    var beta  = scope.deviceOrientation.beta  ? THREE.Math.degToRad( scope.deviceOrientation.beta  ) : 0; // X'
+    var gamma = scope.deviceOrientation.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
     //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
-    setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma);
+    setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma );
 
   };
 

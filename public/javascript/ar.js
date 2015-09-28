@@ -119,28 +119,28 @@ scene.add( sphere3 );
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
-arCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
-broadcastCameraControls = new THREE.BroadcastOrientationControls( sensorDrivenCamera );
+broadcastCameraControls = new THREE.BroadcastOrientationControls( broadcastDrivenCamera );
 
 arConnectionController( userContext.participantState );
 
 
-function connectLocalSensors() {
+function connectDeviceSensors() {
 
-  arCameraControls.update();
+  sensorCameraControls.update();
 
   renderer.render( scene, sensorDrivenCamera );
 
-  requestAnimationFrame( connectLocalSensors );
+  requestAnimationFrame( connectDeviceSensors );
 }
 
 
 function connectBroadcastSensors() {
 
-  renderer.render( scene, broadcastDrivenCamera );
-
   broadcastCameraControls.update;
+
+  renderer.render( scene, broadcastDrivenCamera );
 
   requestAnimationFrame( connectBroadcastSensors );
 
@@ -149,29 +149,24 @@ function connectBroadcastSensors() {
 
 function arConnectionController( participantType ) {
   if( participantType === 'focus') {
-      console.log( 'at call to connectLocalSensors with', participantType );
+      console.log( 'at call to connectDeviceSensors with', participantType );
 
       sensorDrivenCamera.lookAt( scene.position );
 
       //  drive the virtual camera with the orientation sensors
 
-      connectLocalSensors();
+      connectDeviceSensors();
     }
     else if ( participantType === 'peer' ) {
       console.log( 'at call to connectBroadcastSensors with', participantType );
 
-     // broadcastDrivenCamera.lookAt(scene.position);
+      broadcastDrivenCamera.lookAt(scene.position);
+
+      connectBroadcastSensors();
 
 
-      //broadcastDrivenCamera.eulerOrder ='ZXY';
 
-      broadcastDrivenCamera.rotation.x = arBroadcastData.alpha;
-      broadcastDrivenCamera.rotation.y = arBroadcastData.beta;
-      broadcastDrivenCamera.rotation.z = arBroadcastData.gamma;
-
-     // connectBroadcastSensors();
-
-     renderer.render( scene, broadcastDrivenCamera );
+     //renderer.render( scene, broadcastDrivenCamera );
 
 
      //socketServer.on( 'arOrientation', function( arBroadcastData ) {
@@ -189,7 +184,7 @@ function arConnectionController( participantType ) {
 
      //} );
 
-      //connectlocalSensors( arBroadcastData );
+      //connectDeviceSensors( arBroadcastData );
     }
 
   }
