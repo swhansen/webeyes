@@ -144,7 +144,7 @@ function connectBroadcastSensors() {
 
   requestAnimationFrame( connectBroadcastSensors );
 
-  console.log(broadcastCameraControls);
+  //console.log(broadcastCameraControls);
 
 }
 
