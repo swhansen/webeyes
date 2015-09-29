@@ -7,6 +7,8 @@
 
 THREE.BroadcastOrientationControls = function ( object ) {
 
+  var deviceVector = new THREE.Vector3(0, 0, -1);
+
   var scope = this;
 
   this.object = object;
@@ -62,7 +64,7 @@ THREE.BroadcastOrientationControls = function ( object ) {
     //window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
       scope.deviceOrientation = arBroadcastData;
-      console.log( 'broadcastOrientationContorls:', arBroadcastData );
+      //console.log( 'broadcastOrientationContorls:', arBroadcastData );
 })
     scope.enabled = true;
 
@@ -87,6 +89,12 @@ THREE.BroadcastOrientationControls = function ( object ) {
     //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
     setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma );
+
+// experiment with a look vector
+
+    deviceVector.applyEuler(object.rotation, object.eulerOrder);
+
+    console.log( 'vector from BroadcastOrientationControls:', deviceVector );
 
   };
 

@@ -144,6 +144,8 @@ function connectBroadcastSensors() {
 
   requestAnimationFrame( connectBroadcastSensors );
 
+  console.log(broadcastCameraControls);
+
 }
 
 
@@ -160,11 +162,9 @@ function arConnectionController( participantType ) {
     else if ( participantType === 'peer' ) {
       console.log( 'at call to connectBroadcastSensors with', participantType );
 
-      broadcastDrivenCamera.lookAt(scene.position);
+      //broadcastDrivenCamera.lookAt(scene.position);
 
       connectBroadcastSensors();
-
-
 
      //renderer.render( scene, broadcastDrivenCamera );
 
