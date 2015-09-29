@@ -94,7 +94,7 @@ THREE.BroadcastOrientationControls = function ( object ) {
 
     deviceVector.applyEuler(object.rotation, object.eulerOrder);
 
-    console.log( 'vector from BroadcastOrientationControls:', deviceVector );
+    //console.log( 'vector from BroadcastOrientationControls:', deviceVector );
 
   };
 

@@ -138,7 +138,7 @@ function connectDeviceSensors() {
 
 function connectBroadcastSensors() {
 
-  broadcastCameraControls.update;
+  broadcastCameraControls.update();
 
   renderer.render( scene, broadcastDrivenCamera );
 
