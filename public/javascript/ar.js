@@ -138,6 +138,7 @@ broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDri
 
 arConnectionController( userContext.participantState );
 
+
 function connectDeviceSensors() {
 
   sensorCameraControls.update();
@@ -166,7 +167,6 @@ function connectBroadcastSensors() {
   renderer.render( scene, broadcastDrivenCamera );
 
   requestAnimationFrame( connectBroadcastSensors );
-
 }
 
 function arConnectionController( participantType ) {
@@ -179,8 +179,6 @@ function arConnectionController( participantType ) {
     }
     else if ( participantType === 'peer' ) {
       console.log( 'at call to connectBroadcastSensors with', participantType );
-
-      //broadcastDrivenCamera.lookAt(scene.position);
 
       connectBroadcastSensors();
     }

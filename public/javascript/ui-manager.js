@@ -77,28 +77,27 @@ buildSideMenu( 'util' );
 
 function drawUI() {
   buildSideMenu( 'draw' );
+  userContext.uiState = 'draw';
   setDomMouseEvent('arcanvaspane', 'none');
   setDomMouseEvent('canvas0', 'auto');
+  setDomMouseEvent('arcanvaspane', 'none');
 }
 
 function modmeUI() {
-buildSideMenu( 'modme' );
-setDomMouseEvent('canvas0', 'none');
-setDomMouseEvent('arcanvaspane', 'none');
+  buildSideMenu( 'modme' );
+  userContext.modMeState = true;
+  setDomMouseEvent('canvas0', 'none');
+  setDomMouseEvent('arcanvaspane', 'none');
 }
 
 function augmeUI() {
-
-//if( !userContext.arCapable ) {
-//    console.log( 'augmeUI - This device is not AR capable' );
-//    messageBar( 'This device is not AR capable..no AR for U' );
- // }
- // else {
-    buildSideMenu( 'augme' );
-    userContext.participantState = 'focus';
-    loadAr( userContext.participantState );
-    setDomMouseEvent('canvas0', 'none');
-  //}
+  buildSideMenu( 'augme' );
+  userContext.participantState = 'focus';
+  userContext.modMeState = true;
+  userContext.uiState = 'ar';
+  loadAr( userContext.participantState );
+  setDomMouseEvent('canvas0', 'none');
+  setDomMouseEvent('arcanvaspane', 'auto');
 }
 
 function shareAr() {
