@@ -81,7 +81,7 @@ var sphere = new THREE.Mesh( new THREE.SphereGeometry(
 sphere.position.set( 0.5, 0.0, 0.0 );
 scene.add( sphere );
 
-var cubeGeometry = new THREE.BoxGeometry( -0.5, -0.5, -0.5 );
+var cubeGeometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
 var sphereGeometry1 = new THREE.SphereGeometry( 0.5, 16, 16 );
 //
 material = new THREE.MeshLambertMaterial( { color: 'red' } );
