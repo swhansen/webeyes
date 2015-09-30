@@ -103,8 +103,9 @@ cube1.position.set( 0.1, 1.0, -2.0 ); //red
 cube2.position.set( 0.2, 0.5,  -4.0 ); //green
 cube3.position.set( 0.3, 0.0, -6.0 ); //blue
 
-cube2.name = 'cube-green';
+cube3.rotateY = 10.00;
 
+cube2.name = 'cube-green';
 
 sphere1.position.set( -2.0, 1.0, 1.0 ); //blue
 sphere2.position.set( -4.0, 1.0, 1.0 ); //yellow
@@ -117,6 +118,14 @@ scene.add( sphere1 );
 scene.add( sphere2 );
 scene.add( sphere3 );
 
+
+var knotGeometry = new THREE.TorusKnotGeometry( .2, .15, 100, 16 );
+var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
+var knot = new THREE.Mesh( knotGeometry, knotMaterial );
+knot.position.set( 3.5, 1.0, 1.0 );
+scene.add( knot );
+
+
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
@@ -126,7 +135,7 @@ scene.add( light );
 
 sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
-broadcastCameraControls = new THREE.BroadcastOrientationControls( broadcastDrivenCamera );
+broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
 arConnectionController( userContext.participantState );
 
@@ -151,6 +160,9 @@ function connectBroadcastSensors() {
   cube2.rotation.x += 0.05;
   cube2.rotation.y += 0.05;
   cube2.rotation.z += 0.05;
+
+  knot.rotation.y += 0.05;
+  knot.rotation.z += 0.05;
 
   renderer.render( scene, broadcastDrivenCamera );
 

@@ -1,9 +1,9 @@
 /**
  *
  * Utility to "neck" a camera based on broadcast
- * orientation data from a device over socket.io
+ * orientation data(alpha, beta, gamma) from a peer device over socket.io
  *
- *
+ *    --swh 9/27/15
  *
  * Based on
  * @author richt / http://richt.me
@@ -12,7 +12,9 @@
  * W3C Device Orientation control (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
  */
 
-THREE.BroadcastOrientationControls = function ( object ) {
+var WEBEYES = {};
+
+WEBEYES.BroadcastOrientationControls = function ( object ) {
 
   var scope = this;
 
@@ -66,7 +68,6 @@ THREE.BroadcastOrientationControls = function ( object ) {
 
     onScreenOrientationChangeEvent(); // run once on load
 
-    //window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
       scope.deviceOrientation = arBroadcastData;
       //console.log( 'broadcastOrientationContorls:', arBroadcastData );
