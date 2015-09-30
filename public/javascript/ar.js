@@ -125,13 +125,12 @@ var knot = new THREE.Mesh( knotGeometry, knotMaterial );
 knot.position.set( 3.5, 1.0, 1.0 );
 scene.add( knot );
 
-
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
-// Attach the camersa to the device orientation
+// Attach the camera to the device orientation
 //  - sensors for a mobile initiator
-//  - broadcast fot all peers
+//  - broadcast for all peers
 
 sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
@@ -139,14 +138,15 @@ broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDri
 
 arConnectionController( userContext.participantState );
 
-
 function connectDeviceSensors() {
 
   sensorCameraControls.update();
 
   cube2.rotation.x += 0.05;
   cube2.rotation.y += 0.05;
-  cube2.rotation.z += 0.05;
+
+  knot.rotation.y += 0.05;
+  knot.rotation.z += 0.05;
 
   renderer.render( scene, sensorDrivenCamera );
 
@@ -159,7 +159,6 @@ function connectBroadcastSensors() {
 
   cube2.rotation.x += 0.05;
   cube2.rotation.y += 0.05;
-  cube2.rotation.z += 0.05;
 
   knot.rotation.y += 0.05;
   knot.rotation.z += 0.05;
@@ -185,7 +184,5 @@ function arConnectionController( participantType ) {
 
       connectBroadcastSensors();
     }
-
   }
-
 }
