@@ -129,6 +129,10 @@ function connectDeviceSensors() {
 
   sensorCameraControls.update();
 
+  cube2.rotation.x += 0.05;
+  cube2.rotation.y += 0.05;
+  cube2.rotation.z += 0.05;
+
   renderer.render( scene, sensorDrivenCamera );
 
   requestAnimationFrame( connectDeviceSensors );
@@ -137,6 +141,10 @@ function connectDeviceSensors() {
 function connectBroadcastSensors() {
 
   broadcastCameraControls.update();
+
+  cube2.rotation.x += 0.05;
+  cube2.rotation.y += 0.05;
+  cube2.rotation.z += 0.05;
 
   renderer.render( scene, broadcastDrivenCamera );
 
