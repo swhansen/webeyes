@@ -22,29 +22,6 @@ $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
 var videoMuteData = {};
 var thisBox;
 
-//var arData = {};
-//
-//// Experiment with sensor data
-//
-//var arData = document.querySelector( '#geo-data' );
-//  navigator.geolocation.watchPosition( function( position ) {
-//  geoData.lat = position.coords.latitude.toFixed( 5 );
-//  geoData.lon = position.coords.longitude.toFixed( 5 );
-//
-//  emitArOrientation( arData );
-//
-//} );
-//
-//function emitArOrientation( data ) {
-//  var sessionId = socketServer.sessionid;
-//  socketServer.emit( 'arOrientation', data, sessionId );
-//}
-//
-//socketServer.on( 'geo', function( data ) {
-//  geoData.innerHTML = data.lat + '<br />' +
-//                      data.lon;
-//} );
-
 function buildSideMenu( layer ) {
 
   // remove existing side menu(s)

@@ -90,7 +90,7 @@ material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
 sphereMaterial1 = new THREE.MeshLambertMaterial( { color: 'yellow' } );
 sphereMaterial2 = new THREE.MeshLambertMaterial( { color: 0x0066FF } );
 orbitSphereMaterial = new THREE.MeshLambertMaterial( { color: 0xB24700 } );
-//
+
 var cube = new THREE.Mesh( cubeGeometry, material );
 var cube1 = new THREE.Mesh( cubeGeometry, material );
 var cube2 = new THREE.Mesh( cubeGeometry, material1 );
@@ -102,6 +102,9 @@ var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
 cube1.position.set( 0.1, 1.0, -2.0 ); //red
 cube2.position.set( 0.2, 0.5,  -4.0 ); //green
 cube3.position.set( 0.3, 0.0, -6.0 ); //blue
+
+cube2.name = 'cube-green';
+
 
 sphere1.position.set( -2.0, 1.0, 1.0 ); //blue
 sphere2.position.set( -4.0, 1.0, 1.0 ); //yellow
@@ -117,6 +120,9 @@ scene.add( sphere3 );
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
+// Attach the camersa to the device orientation
+//  - sensors for a mobile initiator
+//  - broadcast fot all peers
 
 sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
@@ -150,8 +156,6 @@ function connectBroadcastSensors() {
 
   requestAnimationFrame( connectBroadcastSensors );
 
-  //console.log(broadcastCameraControls);
-
 }
 
 function arConnectionController( participantType ) {
@@ -159,8 +163,6 @@ function arConnectionController( participantType ) {
       console.log( 'at call to connectDeviceSensors with', participantType );
 
       sensorDrivenCamera.lookAt( scene.position );
-
-      //  drive the virtual camera with the orientation sensors
 
       connectDeviceSensors();
     }
@@ -170,7 +172,6 @@ function arConnectionController( participantType ) {
       //broadcastDrivenCamera.lookAt(scene.position);
 
       connectBroadcastSensors();
-
     }
 
   }
