@@ -8,11 +8,9 @@
 * node.js
 * express - node application framework (http://expressjs.com/)
 * Handlebars - semantic templating (http://handlebarsjs.com/)
-* webrtc.io - javascript (RTC) -  (https://github.com/webRTC/webRTC.io)
 * socket.io
 * WebRTC
-* buildAR
-* WebGL
+* WebGL - three.js
 * Jasmine - TDD framework
 * HTML5 Canvas
 * jQuery, jQuery-UI

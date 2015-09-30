@@ -6,7 +6,7 @@ function orientationAr() {
   document.getElementById( 'cube' ).style.zIndex = '99';
 
   if ( !window.DeviceOrientationEvent ) {
-            console.log( "no device orientation" );
+            console.log( 'no device orientation' );
      } else {
         window.addEventListener( 'deviceorientation', function( event ) {
            document.getElementById( 'cube' ).style.webkitTransform =
@@ -48,9 +48,10 @@ function loadAr( participantType ) {
   arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
-  var container, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer, mesh,
-    CANVAS_WIDTH = 300,
-    CANVAS_HEIGHT = 300;
+  var CANVAS_WIDTH = 300,
+      CANVAS_HEIGHT = 300;
+
+var container, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
 
 scene = new THREE.Scene();
 
@@ -118,8 +119,7 @@ scene.add( sphere1 );
 scene.add( sphere2 );
 scene.add( sphere3 );
 
-
-var knotGeometry = new THREE.TorusKnotGeometry( .2, .15, 100, 16 );
+var knotGeometry = new THREE.TorusKnotGeometry( 0.2, 0.15, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 var knot = new THREE.Mesh( knotGeometry, knotMaterial );
 knot.position.set( 3.5, 1.0, 1.0 );

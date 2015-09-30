@@ -24,8 +24,6 @@ var userContext = {
 
 easyrtc.dontAddCloseButtons( false );
 
-
-
 // Footer Messages
 
 function messageBar( msg ) {
