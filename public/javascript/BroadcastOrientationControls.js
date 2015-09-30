@@ -1,4 +1,11 @@
 /**
+ *
+ * Utility to "neck" a camera based on broadcast
+ * orientation data from a device over socket.io
+ *
+ *
+ *
+ * Based on
  * @author richt / http://richt.me
  * @author WestLangley / http://github.com/WestLangley
  *
@@ -6,8 +13,6 @@
  */
 
 THREE.BroadcastOrientationControls = function ( object ) {
-
-  var deviceVector = new THREE.Vector3(0, 0, -1);
 
   var scope = this;
 
@@ -89,12 +94,6 @@ THREE.BroadcastOrientationControls = function ( object ) {
     //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
     setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma );
-
-// experiment with a look vector
-
-    deviceVector.applyEuler(object.rotation, object.eulerOrder);
-
-    //console.log( 'vector from BroadcastOrientationControls:', deviceVector );
 
   };
 

@@ -1,6 +1,4 @@
-
 arData = {};
-
 
 function orientationAr() {
 
@@ -22,24 +20,24 @@ function orientationAr() {
 
 function emitArOrientationData() {
   window.addEventListener( 'deviceorientation', function( event ) {
-  arData.alpha = event.alpha
-  arData.beta = event.beta
-  arData.gamma = event.gamma
+  arData.alpha = event.alpha;
+  arData.beta = event.beta;
+  arData.gamma = event.gamma;
 
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'arOrientation', arData, sessionId );
-  } )
+  } );
 }
 
   // Load the ar Models
   // participants can be focus or peer
 
-function loadArModel( participantType ) {
+function loadAr( participantType ) {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );
 
-  document.getElementById( "arcanvaspane" ).className = "canvascenter";
+  document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
   ar0.style.width = '100%';
   ar0.style.height = '100%';
@@ -68,7 +66,7 @@ renderer.setClearColor( 0x000000, 0 );
 
 //sphere
 
-var radius = .3,
+var radius = 0.3,
     segments = 16,
     rings = 16;
 
@@ -84,7 +82,7 @@ sphere.position.set( 0.5, 0.0, 0.0 );
 scene.add( sphere );
 
 var cubeGeometry = new THREE.BoxGeometry( -0.5, -0.5, -0.5 );
-var sphereGeometry1 = new THREE.SphereGeometry( .5, 16, 16 );
+var sphereGeometry1 = new THREE.SphereGeometry( 0.5, 16, 16 );
 //
 material = new THREE.MeshLambertMaterial( { color: 'red' } );
 material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
@@ -119,6 +117,7 @@ scene.add( sphere3 );
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
+
 sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
 broadcastCameraControls = new THREE.BroadcastOrientationControls( broadcastDrivenCamera );
@@ -135,7 +134,6 @@ function connectDeviceSensors() {
   requestAnimationFrame( connectDeviceSensors );
 }
 
-
 function connectBroadcastSensors() {
 
   broadcastCameraControls.update();
@@ -148,9 +146,8 @@ function connectBroadcastSensors() {
 
 }
 
-
 function arConnectionController( participantType ) {
-  if( participantType === 'focus') {
+  if( participantType === 'focus' ) {
       console.log( 'at call to connectDeviceSensors with', participantType );
 
       sensorDrivenCamera.lookAt( scene.position );
@@ -166,25 +163,6 @@ function arConnectionController( participantType ) {
 
       connectBroadcastSensors();
 
-     //renderer.render( scene, broadcastDrivenCamera );
-
-
-     //socketServer.on( 'arOrientation', function( arBroadcastData ) {
-     ////  console.log( arBroadcastData );
-
-     //  broadcastDrivenCamera.rotation.order = 'XYZ';
-
-     //  broadcastDrivenCamera.rotation.x = arBroadcastData.beta;
-     //  broadcastDrivenCamera.rotation.y = arBroadcastData.gamma;
-     //  broadcastDrivenCamera.rotation.z = arBroadcastData.alpha;
-
-     //  broadcastDrivenCamera.lookAt( scene.position );
-
-     //  renderer.render( scene, broadcastDrivenCamera );
-
-     //} );
-
-      //connectDeviceSensors( arBroadcastData );
     }
 
   }

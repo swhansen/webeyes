@@ -38,7 +38,7 @@ function emitArOrientationData() {
   // Load the ar Models
   // participants can be focus or peer
 
-function loadArModel( participantType ) {
+function loadAr( participantType ) {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );

@@ -294,7 +294,6 @@ socketServer.sockets.on( 'connection', function( client ) {
   } );
 
   client.on( 'arOrientation', function( data, session ) {
-    console.log('AR Data: ', data);
     client.broadcast.emit( 'arOrientation', data );
   } );
 
