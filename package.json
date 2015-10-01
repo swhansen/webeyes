@@ -2,7 +2,6 @@
   "name": "weg2rt",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha -u tdd -R spec qa/entry-test.js",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "version": "0.0.1",
