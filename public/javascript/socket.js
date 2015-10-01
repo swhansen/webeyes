@@ -1,5 +1,5 @@
 // Connect to the nodeJs Server
-socketServer = io.connect( "/" );
+socketServer = io.connect( '/' );
 
 // (1): Send a ping event with
 // some data to the server

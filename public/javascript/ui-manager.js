@@ -41,7 +41,7 @@ function buildSideMenu( layer ) {
   } );
 }
 
-// the main menue collapse-expand
+// the main menu collapse-expand
 
 $( document ).ready( function() {
   var t = 1000;
@@ -112,10 +112,10 @@ function shareAr() {
 
   // Tell everyone to initialize AR
 
-  var sessionId = socketServer.sessionid;
+  //var sessionId = socketServer.sessionid;
         socketServer.emit( 'utility', 'arClientInit', sessionId );
 
-    var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode'
+    var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
     messageBar( msgString );
 
     // Start the orientation data feed
@@ -150,6 +150,7 @@ $( function() {
   $( function() {
     $( '.doc-pub-1' ).click( function() {
       emitUtility( 'doc-1' );
+      drawDoc1();
      } );
   } );
  //    if ( $( this ).attr( 'class' ) === 'doc-pub-1' ) {
@@ -164,6 +165,7 @@ $( function() {
 $( function() {
     $( '.doc-pub-2' ).click( function() {
       emitUtility( 'doc-2' );
+      drawDoc1();
     } );
   } );
 //    if ( $( this ).attr( 'class' ) === 'doc-pub-2' ) {
@@ -178,6 +180,7 @@ $( function() {
 $( function() {
     $( '.arch-swap' ).click( function() {
       emitUtility( 'arch' );
+      drawArch();
     } );
   } );
 //      if ( $( this ).attr( 'class' ) === 'arch-swap' ) {
@@ -192,6 +195,7 @@ $( function() {
   $( function() {
     $( '.bullseye-swap' ).click( function() {
       emitUtility( 'bullseye' );
+      drawBullsEye();
     } );
   } );
  //     if ( $( this ).attr( 'class' ) === 'bullseye-swap' ) {
@@ -252,6 +256,12 @@ $( function() {
 //   - send mute message to other clients
 //
 
+function emitVideoMute( videoMuteData ) {
+  var sessionId = socketServer.sessionid;
+  //console.log('sending videoMuteData:', videoMuteData);
+  socketServer.emit( 'videoMute', videoMuteData, sessionId );
+}
+
 $( function() {
   $( '.video-swap' ).click( function() {
 
@@ -299,11 +309,6 @@ $( function() {
     } );
   } );
 
-function emitVideoMute( videoMuteData ) {
-  var sessionId = socketServer.sessionid;
-  //console.log('sending videoMuteData:', videoMuteData);
-  socketServer.emit( 'videoMute', videoMuteData, sessionId );
-}
 
 socketServer.on( 'videoMute', function( videoMuteData ) {
 

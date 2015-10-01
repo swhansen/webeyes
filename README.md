@@ -21,7 +21,7 @@
 
 ## Repository:
 
-    https://bitbucket.org/sw_hansen/weg2rt
+    https://github.com/swhansen/webeyes
 
 ## Deploy:
 
@@ -36,6 +36,12 @@ Grunt is used to tie the testing togather
 * Mocha - Test Framework
 * Chai - Assertion Library
 * zombie
+
+## Continuous Deployment
+
+* CodeShip is used as the CI pipeline
+* Build pushes to Github-origin trigger CodeShip
+* Successful builds are pushed to Heroku
 
 ## Protocol, Best Practices, Style
 

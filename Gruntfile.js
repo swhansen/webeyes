@@ -9,28 +9,26 @@ module.exports = function (grunt) {
     });
     // configure plugins
     grunt.initConfig({
-        cafemocha: {
-            all: {
-                src: 'qa/entry-test.js',
-                options: {
-                    ui: 'tdd'
-                },
-            }
-        },
-        'link-checker': {
-            dev: {
-                site: 'localhost',
-                options: {
-                    initialPort: 5000
-                }
-            }
-        }
+       //cafemocha: {
+       //    all: {
+       //        src: 'qa/entry-test.js',
+       //        options: {
+       //            ui: 'tdd'
+       //        },
+       //    }
+       //},
+       //'link-checker': {
+       //    dev: {
+       //        site: 'localhost',
+       //        options: {
+       //            initialPort: 5000
+       //        }
+       //    }
+       //}
         //jshint: {
-        //        app: ['meadowlark.js', 'public/js/**/*.js',
-        //                'lib/**/*.js'],
-        //        qa: ['Gruntfile.js', 'public/qa/**/*.js', 'qa/**/*.js'],
+        //        files: [ 'public/javascript/*.js']
         //},
     });
     // register tasks
-    grunt.registerTask('default', ['cafemocha', 'link-checker']);
+    grunt.registerTask('default');
 };

@@ -19,7 +19,7 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
   var scope = this;
 
   this.object = object;
-  this.object.rotation.reorder( "YXZ" );
+  this.object.rotation.reorder( 'YXZ' );
 
   this.enabled = true;
 
@@ -60,7 +60,7 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
     //  quaternion.multiply( q0.setFromAxisAngle( zee, - orient ) );    // adjust for screen orientation
 
-    }
+    };
 
   }();
 
@@ -71,7 +71,7 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
       scope.deviceOrientation = arBroadcastData;
       //console.log( 'broadcastOrientationContorls:', arBroadcastData );
-})
+});
     scope.enabled = true;
 
   };

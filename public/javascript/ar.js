@@ -100,16 +100,23 @@ var sphere1 = new THREE.Mesh( sphereGeometry1, sphereMaterial );
 var sphere2 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
 var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
 
-cube1.position.set( 0.1, 1.0, -2.0 ); //red
-cube2.position.set( 0.2, 0.5,  -4.0 ); //green
-cube3.position.set( 0.3, 0.0, -6.0 ); //blue
+cube1.position.set( 0.0, 1.0, -2.0 ); //red
+cube2.position.set( 0.0, 0.5,  -4.0 ); //green
+cube3.position.set( 0.0, 0.0, -6.0 ); //blue
+
+// z - away from vertical screen forward( negative forward)
+// y - up from vertical screen
+// x - R(positive)  from screen
+
+//red cube blue ball same y
+
 
 cube3.rotateY = 10.00;
 
 cube2.name = 'cube-green';
 
 sphere1.position.set( -2.0, 1.0, 1.0 ); //blue
-sphere2.position.set( -4.0, 1.0, 1.0 ); //yellow
+sphere2.position.set( -3.0, 1.0, 1.0 ); //yellow
 sphere3.position.set( -6.0, 1.0, 1.0 ); //blue
 
 scene.add( cube1 );
@@ -127,6 +134,25 @@ scene.add( knot );
 
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
+
+//
+//   based on participantType(focus or peer)
+//   use device sensors or broadcast feed
+
+function arConnectionController( participantType ) {
+  if( participantType === 'focus' ) {
+      console.log( 'at call to connectDeviceSensors with', participantType );
+
+      sensorDrivenCamera.lookAt( scene.position );
+
+      connectDeviceSensors();
+    }
+    else if ( participantType === 'peer' ) {
+      console.log( 'at call to connectBroadcastSensors with', participantType );
+
+      connectBroadcastSensors();
+    }
+  }
 
 // Attach the camera to the device orientation
 //  - sensors for a mobile initiator
@@ -169,18 +195,5 @@ function connectBroadcastSensors() {
   requestAnimationFrame( connectBroadcastSensors );
 }
 
-function arConnectionController( participantType ) {
-  if( participantType === 'focus' ) {
-      console.log( 'at call to connectDeviceSensors with', participantType );
 
-      sensorDrivenCamera.lookAt( scene.position );
-
-      connectDeviceSensors();
-    }
-    else if ( participantType === 'peer' ) {
-      console.log( 'at call to connectBroadcastSensors with', participantType );
-
-      connectBroadcastSensors();
-    }
-  }
 }
