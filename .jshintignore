@@ -3,4 +3,5 @@ easyrtc
 bower_components/*
 qa/*
 data/*
+public/javascript/material-click.js
 

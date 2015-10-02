@@ -71,7 +71,7 @@ $( '#codeDialogModal' ).dialog( {
  $( '#codeDialogButton' ).click( function() {
   swal({
     title: 'Button Code',
-    text: 'Input your Super Secret Button Code',
+    text: 'Input your Super Secret UI Mode Code',
     type: 'input',
     showCancelButton: true,
     closeOnCancel: true,
@@ -81,18 +81,18 @@ $( '#codeDialogModal' ).dialog( {
       },
         function(inputValue){
           if (inputValue === false) return false;
-            if (inputValue === '') {
-            swal.showInputError('Please Enter Code!');
-            return false;
+
+          if (inputValue === '') {
+              swal.showInputError('Please Enter Code!');
+              return false;
             }
-         else if ( !( _.includes( [ 'devme', 'modme', 'augme' ], inputValue ) ) ) {
-          //console.log('bcode is', inputValue);
-           swal.showInputError( 'Please enter a valid code' );
-           return false;
-      } else {
-         usebcode( inputValue );
+           else if ( !( _.includes( [ 'devme', 'modme', 'augme' ], inputValue.toLowerCase() ) ) ) {
+              swal.showInputError( 'Please enter a valid code' );
+              return false;
+          }
+         usebcode( inputValue.toLowerCase() );
          swal.close();
-      }
+
   } );
 } );
 

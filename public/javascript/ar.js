@@ -84,7 +84,7 @@ scene.add( sphere );
 
 var cubeGeometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
 var sphereGeometry1 = new THREE.SphereGeometry( 0.5, 16, 16 );
-//
+
 material = new THREE.MeshLambertMaterial( { color: 'red' } );
 material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
 material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
@@ -100,9 +100,11 @@ var sphere1 = new THREE.Mesh( sphereGeometry1, sphereMaterial );
 var sphere2 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
 var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
 
-cube1.position.set( 0.0, 1.0, -2.0 ); //red
-cube2.position.set( 0.0, 0.5,  -4.0 ); //green
-cube3.position.set( 0.0, 0.0, -6.0 ); //blue
+// red, green, blue
+
+cube1.position.set( 0.0, 1.0, -2.0 );
+cube2.position.set( 0.0, 0.5,  -4.0 );
+cube3.position.set( 0.0, 0.0, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
 // y - up from vertical screen
@@ -110,14 +112,13 @@ cube3.position.set( 0.0, 0.0, -6.0 ); //blue
 
 //red cube blue ball same y
 
-
 cube3.rotateY = 10.00;
 
 cube2.name = 'cube-green';
 
-sphere1.position.set( -2.0, 1.0, 1.0 ); //blue
-sphere2.position.set( -3.0, 1.0, 1.0 ); //yellow
-sphere3.position.set( -6.0, 1.0, 1.0 ); //blue
+sphere1.position.set( -2.0, 1.0, 1.0 );
+sphere2.position.set( -3.0, 1.0, 1.0 );
+sphere3.position.set( -6.0, 1.0, 1.0 );
 
 scene.add( cube1 );
 scene.add( cube2 );
@@ -140,14 +141,13 @@ scene.add( light );
 //   use device sensors or broadcast feed
 
 function arConnectionController( participantType ) {
-  if( participantType === 'focus' ) {
+  if ( participantType === 'focus' ) {
       console.log( 'at call to connectDeviceSensors with', participantType );
 
       sensorDrivenCamera.lookAt( scene.position );
 
       connectDeviceSensors();
-    }
-    else if ( participantType === 'peer' ) {
+    } else if ( participantType === 'peer' ) {
       console.log( 'at call to connectBroadcastSensors with', participantType );
 
       connectBroadcastSensors();
@@ -163,7 +163,6 @@ sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera )
 broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
 arConnectionController( userContext.participantState );
-
 
 function connectDeviceSensors() {
 
@@ -193,7 +192,5 @@ function connectBroadcastSensors() {
   renderer.render( scene, broadcastDrivenCamera );
 
   requestAnimationFrame( connectBroadcastSensors );
-}
-
-
+  }
 }

@@ -1,14 +1,19 @@
-module.exports = function (grunt) {
+module.exports = function( grunt ) {
     [
-        'grunt-cafe-mocha',
-        'grunt-contrib-jshint',
-        'grunt-exec',
-        'grunt-link-checker',
-    ].forEach(function(task) {
-        grunt.loadNpmTasks(task);
-    });
-    // configure plugins
-    grunt.initConfig({
+
+        //'grunt-cafe-mocha',
+
+        'grunt-contrib-jshint'
+
+       // 'grunt-exec',
+       // 'grunt-link-checker',
+
+    ].forEach( function( task ) {
+        grunt.loadNpmTasks( task );
+    } );
+
+    grunt.initConfig( {
+
        //cafemocha: {
        //    all: {
        //        src: 'qa/entry-test.js',
@@ -25,10 +30,15 @@ module.exports = function (grunt) {
        //        }
        //    }
        //}
-        //jshint: {
-        //        files: [ 'public/javascript/*.js']
-        //},
-    });
-    // register tasks
-    grunt.registerTask('default');
+
+        jshint: {
+                files: [ 'public/javascript/*.js' ],
+                options: {
+                  globals: {
+                    jQuery: true
+                  }
+                }
+        }
+    } );
+    grunt.registerTask( 'default', [ 'jshint' ] );
 };

@@ -376,7 +376,7 @@ var reshapeThumbs = [
                     return reshape4of4( parentw, parenth );
             }
         }
-    },
+    }
 ];
 
 function killButtonReshaper( parentw, parenth ) {
@@ -683,10 +683,10 @@ function sendText( e ) {
     document.getElementById( 'textEntryButton' ).style.display = 'block';
     var stringToSend = document.getElementById( 'textentryField' ).value;
     $( '#layer-menu-button' ).click();
-    if ( stringToSend && stringToSend != '' ) {
+    if ( stringToSend && stringToSend !== '' ) {
         for ( var i = 0; i < maxCALLERS; i++ ) {
             var easyrtcid = easyrtc.getIthCaller( i );
-            if ( easyrtcid && easyrtcid != '' ) {
+            if ( easyrtcid && easyrtcid !== '' ) {
                 easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
             }
         }
@@ -697,7 +697,7 @@ function sendText( e ) {
 function sendModeratorText( moderatorMessage ) {
   for ( var i = 0; i < maxCALLERS; i++ ) {
       var easyrtcid = easyrtc.getIthCaller( i );
-      if ( easyrtcid && easyrtcid != '' ) {
+      if ( easyrtcid && easyrtcid !== '' ) {
           easyrtc.sendPeerMessage( easyrtcid, 'im', moderatorMessage );
       }
   }
@@ -870,7 +870,7 @@ function appInit() {
 // Thumbs for all connections other than initiator
 //  -- change to == 1 for normal mode
 
-        if ( activeBox == 0 && easyrtc.getConnectionCount() == 1 ) {
+        if ( activeBox === 0 && easyrtc.getConnectionCount() === 1 ) {
             expandThumb( 0 );
             document.getElementById( 'textEntryButton' ).style.display = 'block';
         }
@@ -888,7 +888,7 @@ function appInit() {
         setTimeout( function() {
             document.getElementById( getIdOfBox( slot + 1 ) ).style.visibility = 'hidden';
 
-            if ( easyrtc.getConnectionCount() == 0 ) {
+            if ( easyrtc.getConnectionCount() === 0 ) {
 
  // no more connections
                 expandThumb( 0 );
