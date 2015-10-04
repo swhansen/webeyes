@@ -8,7 +8,11 @@ var layout;
 var connectList = [];
 var modmeState = false;
 
-//  container for the context of the user
+/*jshint -W020 */
+socketServer = io.connect( '/' );
+/*jshint +W020 */
+
+// Container for User Context
 
 var userContext = {
   rtcId: '',
@@ -31,10 +35,10 @@ function messageBar( msg ) {
   $( '#messageFooter' ).html( msg ).fadeOut( 4000 );
 }
 
+// socket.io communication
+
 function emitMessage( data ) {
   var sessionId = socketServer.sessionid;
-
- // console.log("emitUtility:", data);
   socketServer.emit( 'message', data, sessionId );
 }
 
@@ -97,11 +101,10 @@ function reshapeToFullSize( parentw, parenth ) {
     };
 }
 
-//
 // a negative percentLeft is interpreted as setting the right edge of the object
 // that distance from the right edge of the parent.
 // Similar for percentTop.
-//
+
 function setThumbSizeAspect( percentSize, percentLeft, percentTop, parentw, parenth, aspect ) {
 
     var width, height;

@@ -76,6 +76,9 @@ function toggleFade() {
     }
   }
 
+// collect the points FROM the server and build the canvas lineArray
+//   - draw the initial line in real-time to provide the live drawing effect
+
 function receiveLineFromClient( data ) {
 
   switch ( data.pointerState ) {
@@ -119,6 +122,9 @@ function receiveLineFromClient( data ) {
       break;
   }
 }
+
+// socket.io communication
+
 function emitDraw( data ) {
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'drawLine', data, sessionId );
@@ -216,9 +222,6 @@ function touchMoveHandler( e ) {
       tool.started = false;
     }
   }
-
-// collect the points FROM the server and build the canvas lineArray
-//   - draw the initial line in real-time to provide the live drawing effect
 
 function initDraw() {
 

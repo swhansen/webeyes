@@ -3,6 +3,8 @@
 * Prototype for initial version of a Collaborative Augmented Information Sharing System
 * Version: 0.4.0
 
+[ ![Codeship Status for swhansen/webeyes](https://codeship.com/projects/15dd0970-49e7-0133-1e8a-02da4d06d74f/status?branch=master)](https://codeship.com/projects/105765)
+
 ## Technologies
 
 * node.js
