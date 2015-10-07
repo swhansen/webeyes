@@ -22,6 +22,40 @@ $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
 var videoMuteData = {};
 var thisBox;
 
+function setDomMouseEvent( domId, mode ) {
+  document.getElementById( domId ).style.pointerEvents = mode;
+}
+
+//
+// Sticky menus
+//
+
+$( function() {
+$( '#sticky-draw' ).click( function() {
+
+    _.each( uiStructure.structure, function( fcn ) {
+    $( fcn.sideBar ).fadeOut( 5 );
+  } );
+
+  $( uiStructure.structure.draw.sideBar ).fadeIn( 5 );
+
+  setDomMouseEvent( 'canvas0', 'auto' );
+  setDomMouseEvent( 'arcanvaspane', 'none' );
+ } );
+  } );
+
+$( function() {
+$( '#sticky-ar' ).click( function() {
+
+  _.each( uiStructure.structure, function( fcn ) {
+    $( fcn.sideBar ).fadeOut( 5 );
+  } );
+
+  setDomMouseEvent( 'canvas0', 'none' );
+  setDomMouseEvent( 'arcanvaspane', 'auto' );
+ } );
+  } );
+
 function buildSideMenu( layer ) {
 
   // remove existing side menu(s)
@@ -67,10 +101,6 @@ $( document ).ready( function() {
 //  - auto, none
 //  - all other events are SVG realted
 
-function setDomMouseEvent( domId, mode ) {
-  document.getElementById( domId ).style.pointerEvents = mode;
-}
-
 function utilUI() {
 buildSideMenu( 'util' );
 }
@@ -78,16 +108,16 @@ buildSideMenu( 'util' );
 function drawUI() {
   buildSideMenu( 'draw' );
   userContext.uiState = 'draw';
-  setDomMouseEvent('arcanvaspane', 'none');
-  setDomMouseEvent('canvas0', 'auto');
-  setDomMouseEvent('arcanvaspane', 'none');
+  setDomMouseEvent( 'arcanvaspane', 'none' );
+  setDomMouseEvent( 'canvas0', 'auto' );
+  setDomMouseEvent( 'arcanvaspane', 'none' );
 }
 
 function modmeUI() {
   buildSideMenu( 'modme' );
   userContext.modMeState = true;
-  setDomMouseEvent('canvas0', 'none');
-  setDomMouseEvent('arcanvaspane', 'none');
+  setDomMouseEvent( 'canvas0', 'none' );
+  setDomMouseEvent( 'arcanvaspane', 'none' );
 }
 
 function augmeUI() {
@@ -96,8 +126,8 @@ function augmeUI() {
   userContext.modMeState = true;
   userContext.uiState = 'ar';
   loadAr( userContext.participantState );
-  setDomMouseEvent('canvas0', 'none');
-  setDomMouseEvent('arcanvaspane', 'auto');
+  setDomMouseEvent( 'canvas0', 'none' );
+  setDomMouseEvent( 'arcanvaspane', 'auto' );
 }
 
 function shareAr() {
@@ -132,11 +162,11 @@ $( function() {
       if ( $( this ).attr( 'class' ) === 'moderator-swap' ) {
         this.src = this.src.replace( 'img/focus-moderator-off.png', 'img/focus-moderator.png' );
         modSwitch = true;
-        setDomMouseEvent('canvas0', 'none');
+        setDomMouseEvent( 'canvas0', 'none' );
       } else {
         this.src = this.src.replace( 'img/focus-moderator.png', 'img/focus-moderator-off.png' );
         modSwitch = false;
-        setDomMouseEvent('canvas0', 'auto');
+        setDomMouseEvent( 'canvas0', 'auto' );
       }
       $( this ).toggleClass( 'on' );
     } );
@@ -153,6 +183,7 @@ $( function() {
       drawDoc1();
      } );
   } );
+
  //    if ( $( this ).attr( 'class' ) === 'doc-pub-1' ) {
  //      emitUtility( 'doc-1' );
  //    } else {
@@ -168,6 +199,7 @@ $( function() {
       drawDoc1();
     } );
   } );
+
 //    if ( $( this ).attr( 'class' ) === 'doc-pub-2' ) {
 //      emitUtility( 'doc-2' );
 //    } else {
@@ -183,6 +215,7 @@ $( function() {
       drawArch();
     } );
   } );
+
 //      if ( $( this ).attr( 'class' ) === 'arch-swap' ) {
 //        emitUtility( 'arch' );
 //      } else {
@@ -198,6 +231,7 @@ $( function() {
       drawBullsEye();
     } );
   } );
+
  //     if ( $( this ).attr( 'class' ) === 'bullseye-swap' ) {
  //       emitUtility( 'bullseye' );
  //     } else {
@@ -236,12 +270,10 @@ $( function() {
         this.src = this.src.replace( 'img/erase-on', 'img/erase-off' );
         fadeSwitch = false;
         toggleFade();
-         console.log('at button fadeSwitch:', fadeSwitch);
       } else {
         this.src = this.src.replace( 'img/erase-off', 'img/erase-on' );
         fadeSwitch = true;
         toggleFade();
-         console.log('at button fadeSwitch:', fadeSwitch);
       }
       $( this ).toggleClass( 'on' );
     } );
@@ -258,7 +290,6 @@ $( function() {
 
 function emitVideoMute( videoMuteData ) {
   var sessionId = socketServer.sessionid;
-  //console.log('sending videoMuteData:', videoMuteData);
   socketServer.emit( 'videoMute', videoMuteData, sessionId );
 }
 
@@ -269,13 +300,13 @@ $( function() {
     videoMuteData.rtcid = rtcidToMute;
 
     var boxToMute = _( connectList )
-    .filter( function( connectList ) { return connectList.rtcid === rtcidToMute; } )
+    .filter ( function( connectList ) { return connectList.rtcid === rtcidToMute; } )
     .pluck( 'boxno' )
     .value();
 
-    var theAvatar = _( connectList ).filter( function( connectList )
-    { return connectList.rtcid === rtcidToMute; } )
-    .pluck( 'avatar' )
+    var theAvatar = _( connectList )
+    .filter ( function( connectList ) { return connectList.rtcid === rtcidToMute; } )
+    .pluck ( 'avatar' )
     .value();
 
     var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
@@ -309,15 +340,15 @@ $( function() {
     } );
   } );
 
-
 socketServer.on( 'videoMute', function( videoMuteData ) {
 
- var boxToMute = _(connectList)
-  .filter(function(connectList) { return connectList.rtcid === videoMuteData.rtcid; })
-  .pluck('boxno')
+ var boxToMute = _( connectList )
+  .filter( function( connectList ) { return connectList.rtcid === videoMuteData.rtcid; } )
+  .pluck( 'boxno' )
   .value();
 
   var avatarForBox = videoMuteData.avatar;
+
   //= _(connectList)
   //.filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
   //.pluck('avatar')
@@ -329,8 +360,6 @@ socketServer.on( 'videoMute', function( videoMuteData ) {
    //.value();
 
 //  Toggle the video box
-
-//console.log('socketserver recieve videoMuteData:', videoMuteData, 'boxToMute:', boxToMute, 'avatar:', avatarForBox);
 
   document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = videoMuteData.state;
 
@@ -378,7 +407,6 @@ $( function() {
 
      var inviteData = { 'name': name, 'email': email, 'msg': msg };
      $.post( '/', inviteData, function( response, status ) {
-               //console.log( 'Mail in ui-manager.js:', inviteData );
             } );
      $( '#invite-dialog' ).dialog( 'close' );
     }

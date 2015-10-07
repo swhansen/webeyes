@@ -23,7 +23,7 @@
 
 ## Repository:
 
-    https://github.com/swhansen/webeyes
+    https://github.com/swhansen/webeyes.git
 
 ## Deploy:
 
@@ -74,7 +74,7 @@ Steve Hansen - sw_hansen@obliquevision.org
 Run in your terminal
 
 ```bash
-git clone https://sw_hansen@bitbucket.org/sw_hansen/weg2rt.git
+git clone https://github.com/swhansen/webeyes.git
 ```
 
 ```bash
@@ -91,12 +91,7 @@ node server.js
 
 visit [localhost:5000](http://localhost:5000) in Chrome, Firefox or Opera
 
-enter the password (email me)
 
-click allow to see your camera
-
-
-click allow to see your camera and the connection will be made between your two open windows.
 
 
 

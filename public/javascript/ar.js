@@ -1,4 +1,6 @@
-arData = {};
+arDeviceOrientation = {};
+
+arObjectArray = [];
 
 function orientationAr() {
 
@@ -20,12 +22,12 @@ function orientationAr() {
 
 function emitArOrientationData() {
   window.addEventListener( 'deviceorientation', function( event ) {
-  arData.alpha = event.alpha;
-  arData.beta = event.beta;
-  arData.gamma = event.gamma;
+  arDeviceOrientation.alpha = event.alpha;
+  arDeviceOrientation.beta = event.beta;
+  arDeviceOrientation.gamma = event.gamma;
 
   var sessionId = socketServer.sessionid;
-  socketServer.emit( 'arOrientation', arData, sessionId );
+  socketServer.emit( 'arOrientation', arDeviceOrientation, sessionId );
   } );
 }
 
@@ -48,8 +50,8 @@ function loadAr( participantType ) {
   arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
-  var CANVAS_WIDTH = 300,
-      CANVAS_HEIGHT = 300;
+var CANVAS_WIDTH = ar0.innerWidth,
+    CANVAS_HEIGHT = ar0.innerHeight;
 
 var container, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
 
@@ -64,6 +66,31 @@ renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 renderer.setSize( box0Width, box0Width );
 
 renderer.setClearColor( 0x000000, 0 );
+
+//
+// Selecting an object
+//
+
+var projector = new THREE.Projector();
+
+ar0.addEventListener('mousedown', function(event) {
+  var vector = new THREE.Vector3(
+     ar0.devicePixelRatio * (event.pageX - this.offsetLeft) / this.width * 2 - 1,
+    -ar0.devicePixelRatio * (event.pageY - this.offsetTop) / this.height * 2 + 1,
+    0
+    );
+  projector.unprojectVector(vector, camera);
+
+  var raycaster = new THREE.Raycaster(
+    camera.position,
+    vector.sub(camera.position).normalize()
+  );
+  var intersects = raycaster.intersectObjects(OBJECTS);
+  if (intersects.length) {
+    // intersects[0] describes the clicked object
+  }
+}, false);
+
 
 //sphere
 
@@ -142,15 +169,10 @@ scene.add( light );
 
 function arConnectionController( participantType ) {
   if ( participantType === 'focus' ) {
-      console.log( 'at call to connectDeviceSensors with', participantType );
-
       sensorDrivenCamera.lookAt( scene.position );
-
-      connectDeviceSensors();
+      connectToDeviceSensors();
     } else if ( participantType === 'peer' ) {
-      console.log( 'at call to connectBroadcastSensors with', participantType );
-
-      connectBroadcastSensors();
+      connectToBroadcastSensors();
     }
   }
 
@@ -162,9 +184,12 @@ sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera )
 
 broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
+arObjectArray.push( cube2 );
+console.log( 'arObjectArray:', arObjectArray );
+
 arConnectionController( userContext.participantState );
 
-function connectDeviceSensors() {
+function connectToDeviceSensors() {
 
   sensorCameraControls.update();
 
@@ -177,9 +202,10 @@ function connectDeviceSensors() {
   renderer.render( scene, sensorDrivenCamera );
 
   requestAnimationFrame( connectDeviceSensors );
+
 }
 
-function connectBroadcastSensors() {
+function connectToBroadcastSensors() {
 
   broadcastCameraControls.update();
 

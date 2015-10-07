@@ -9,6 +9,9 @@
                 "#bullseye",
                 "#arch"
             ],
+
+            "renderElement": "utilcanvaspane",
+
             "desc": "utility layer",
             "initState": "none",
             "baseZ": "20"
@@ -20,6 +23,9 @@
                 "#fadeButton",
                 "#b1"
             ],
+
+            "renderElement": "canvaspane",
+
             "desc": "drawing layer",
             "initState": "none",
             "baseZ": "20"
@@ -60,6 +66,7 @@
                 "#aug2",
                 "#shareaug"
             ],
+            "renderElement": "arcanvaspane",
             "desc": "AR code functions",
             "initState": "none",
             "baseZ": "20"

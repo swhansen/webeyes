@@ -6,6 +6,7 @@ var rtc        = require( 'easyrtc' );
 var mongoose   = require( 'mongoose' );
 var cors       = require( 'cors' );
 var http      = require( 'http' );
+var bson      = require ( 'bson' );
 
 var clients    = [];
 var linecolors = [ 'rgba(255, 0, 0, 1)',

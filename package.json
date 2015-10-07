@@ -2,38 +2,41 @@
   "name": "weg2rt",
   "scripts": {
     "start": "node server.js",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower install",
+    "lint": "jshint .",
+    "validate": "npm ls"
   },
   "version": "0.0.1",
   "engines": {
-    "node": "0.10.x"
+    "node": "4.0.x"
   },
   "description": "Experimental WebRTC Augmented Collaboration System",
   "main": "server.js",
   "dependencies": {
     "body-parser": "*",
     "bower": "^1.4.1",
-    "cors": "2.5.x",
+    "cors": "2.7.x",
     "easyrtc": "1.0.x",
     "express": "^4.x.x",
-    "express-handlebars": "^1.1.0",
+    "express-handlebars": "2.0.x",
     "mongoose": "*",
-    "sendgrid": "^1.6.1",
-    "socket.io": "0.9.x"
+    "sendgrid": "1.9.x",
+    "socket.io": "0.9.x",
+    "bson": "*"
   },
   "devDependencies": {
     "assert": "^1.1.2",
-    "chai": "^1.10.0",
+    "chai": "3.3.x",
     "grunt": "latest",
     "grunt-cafe-mocha": "^0.1.13",
-    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-jshint": "^0.11.3",
     "grunt-exec": "^0.4.6",
-    "grunt-link-checker": "0.0.6",
+    "grunt-link-checker": "^0.1.0",
     "js-yaml": "*",
     "mocha": "*",
-    "zombie": "^2.2.1",
     "nodemon": "*",
-    "precommit-hook": "*"
+    "precommit-hook": "*",
+    "zombie": "4.1.x"
   },
   "repository": {
     "type": "git",
@@ -41,7 +44,9 @@
   },
   "keywords": [
     "WEG2RT",
-    "WebRTC"
+    "WebRTC",
+    "WEBEYES",
+    "AR"
   ],
   "author": "Steve Hansen",
   "contributors": {
@@ -51,5 +56,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://bitbucket.org/sw_hansen/weg2rt/issues"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }

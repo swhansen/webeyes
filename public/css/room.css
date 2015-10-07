@@ -120,7 +120,7 @@ width: 1000px;
 
 #draw-ui-container {
   position: fixed;
-  top: 150px;
+  top: 250px;
   right: 10px;
 }
 
@@ -143,6 +143,17 @@ width: 1000px;
   position: fixed;
   top: 250px;
   right: 10px;
+}
+
+#sticky-ui-container {
+  z-index=30;
+  position: fixed;
+  top: 550px;
+  right: 10px;
+  background-color: gray;
+  border-radius: 25px;
+    border: 2px solid gray;
+    padding: 4px;
 }
 
 .toolbarCenter {

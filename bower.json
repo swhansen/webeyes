@@ -1,7 +1,7 @@
 {
   "name": "weg2rt",
   "version": "0.0.1",
-  "description": "Contextual Collaboration",
+  "description": "Contextual AR Collaboration",
   "main": "server.js",
   "keywords": [
     "webrtc"
