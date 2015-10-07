@@ -58,18 +58,6 @@
             "desc": "special code input",
             "initState": "none",
             "baseZ": "20"
-        },
-    "augme": {
-            "mainButton": "#augmeButton",
-            "sideBar": "#aug-ui-container",
-            "buttons": [
-                "#aug2",
-                "#shareaug"
-            ],
-            "renderElement": "arcanvaspane",
-            "desc": "AR code functions",
-            "initState": "none",
-            "baseZ": "20"
         }
     }
   }

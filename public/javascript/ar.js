@@ -91,7 +91,6 @@ renderer.setClearColor( 0x000000, 0 );
 //  }
 //}, false);
 
-
 //sphere
 
 var radius = 0.3,
@@ -201,7 +200,7 @@ function connectToDeviceSensors() {
 
   renderer.render( scene, sensorDrivenCamera );
 
-  requestAnimationFrame( connectDeviceSensors );
+  requestAnimationFrame( connectToDeviceSensors );
 
 }
 
