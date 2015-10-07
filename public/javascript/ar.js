@@ -38,6 +38,7 @@ function loadAr( participantState ) {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );
+  var mouseVector;
 
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
@@ -71,9 +72,25 @@ renderer.setClearColor( 0x000000, 0 );
 // Selecting an object
 //
 
-//var projector = new THREE.Projector();
-//
-//ar0.addEventListener('mousedown', function(event) {
+projector = new THREE.Projector();
+mouseVector = new THREE.Vector3();
+
+function arTouchObject( e ) {
+
+  container = document.getElementById( 'ar0' );
+  var containerWidth = container.clientWidth;
+  var containerHeight = container.clientHeight;
+
+  mouseVector.x = 2 * ( e.clientX / containerWidth ) - 1;
+  mouseVector.y = 1 - 2 * ( e.clientY / containerHeight );
+
+  var raycaster = projector.pickingRay( mouseVector.clone(), SensorDrivenCamera ),
+      intersects = raycaster.intersectObjects( knot );
+
+    //  knot.material.color.setRGB( cube.grayness, cube.grayness, cube.grayness );
+
+      alert( 'Got the Object' );
+
 //  var vector = new THREE.Vector3(
 //     ar0.devicePixelRatio * (event.pageX - this.offsetLeft) / this.width * 2 - 1,
 //    -ar0.devicePixelRatio * (event.pageY - this.offsetTop) / this.height * 2 + 1,
@@ -92,6 +109,9 @@ renderer.setClearColor( 0x000000, 0 );
 //}, false);
 
 //sphere
+}
+
+ar0.addEventListener( 'touchstart', arTouchObject, false );
 
 var radius = 0.3,
     segments = 16,
