@@ -71,25 +71,25 @@ renderer.setClearColor( 0x000000, 0 );
 // Selecting an object
 //
 
-var projector = new THREE.Projector();
-
-ar0.addEventListener('mousedown', function(event) {
-  var vector = new THREE.Vector3(
-     ar0.devicePixelRatio * (event.pageX - this.offsetLeft) / this.width * 2 - 1,
-    -ar0.devicePixelRatio * (event.pageY - this.offsetTop) / this.height * 2 + 1,
-    0
-    );
-  projector.unprojectVector(vector, camera);
-
-  var raycaster = new THREE.Raycaster(
-    camera.position,
-    vector.sub(camera.position).normalize()
-  );
-  var intersects = raycaster.intersectObjects(OBJECTS);
-  if (intersects.length) {
-    // intersects[0] describes the clicked object
-  }
-}, false);
+//var projector = new THREE.Projector();
+//
+//ar0.addEventListener('mousedown', function(event) {
+//  var vector = new THREE.Vector3(
+//     ar0.devicePixelRatio * (event.pageX - this.offsetLeft) / this.width * 2 - 1,
+//    -ar0.devicePixelRatio * (event.pageY - this.offsetTop) / this.height * 2 + 1,
+//    0
+//    );
+//  projector.unprojectVector(vector, camera);
+//
+//  var raycaster = new THREE.Raycaster(
+//    camera.position,
+//    vector.sub(camera.position).normalize()
+//  );
+//  var intersects = raycaster.intersectObjects(OBJECTS);
+//  if (intersects.length) {
+//    // intersects[0] describes the clicked object
+//  }
+//}, false);
 
 
 //sphere
@@ -217,6 +217,6 @@ function connectToBroadcastSensors() {
 
   renderer.render( scene, broadcastDrivenCamera );
 
-  requestAnimationFrame( connectBroadcastSensors );
+  requestAnimationFrame( connectToBroadcastSensors );
   }
 }
