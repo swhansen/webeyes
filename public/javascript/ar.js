@@ -32,9 +32,9 @@ function emitArOrientationData() {
 }
 
   // Load the ar Models
-  // participants can be focus or peer
+  //  - participantState can be focus or peer
 
-function loadAr( participantType ) {
+function loadAr( participantState ) {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );
@@ -163,21 +163,18 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
 //
-//   based on participantType(focus or peer)
+//   based on participantState(focus or peer)
 //   use device sensors or broadcast feed
 
-function arConnectionController( participantType ) {
-  if ( participantType === 'focus' ) {
+function arConnectionController( participantState ) {
+console.log( 'arConnectionController:', participantState );
+  if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
-    } else if ( participantType === 'peer' ) {
+    } else if ( participantState === 'peer' ) {
       connectToBroadcastSensors();
     }
   }
-
-// Attach the camera to the device orientation
-//  - sensors for a mobile initiator
-//  - broadcast for all peers
 
 sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
@@ -186,9 +183,11 @@ broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDri
 arObjectArray.push( cube2 );
 console.log( 'arObjectArray:', arObjectArray );
 
-arConnectionController( userContext.participantState );
+arConnectionController( participantState );
 
 function connectToDeviceSensors() {
+
+  console.log( 'at connectToDeviceSensors' );
 
   sensorCameraControls.update();
 
@@ -205,6 +204,8 @@ function connectToDeviceSensors() {
 }
 
 function connectToBroadcastSensors() {
+
+  console.log( 'at connectBroadcastSensors' );
 
   broadcastCameraControls.update();
 
