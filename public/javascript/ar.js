@@ -50,8 +50,8 @@ function loadAr( participantState ) {
   arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
-var CANVAS_WIDTH = ar0.innerWidth,
-    CANVAS_HEIGHT = ar0.innerHeight;
+var CANVAS_WIDTH = 300,
+    CANVAS_HEIGHT = 300;
 
 var container, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
 
@@ -205,7 +205,7 @@ function connectToDeviceSensors() {
 
 function connectToBroadcastSensors() {
 
-  console.log( 'at connectBroadcastSensors' );
+  console.log( 'at connectToBroadcastSensors' );
 
   broadcastCameraControls.update();
 
