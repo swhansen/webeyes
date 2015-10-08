@@ -34,12 +34,17 @@ $( function() {
 $( '#sticky-draw' ).click( function() {
 
     _.each( uiStructure.structure, function( fcn ) {
-    $( fcn.sideBar ).fadeOut( 5 );
+    $( fcn.sideBar ).fadeOut( 2 );
   } );
 
-buildSideMenu( 'draw' );
+drawUI();
+ // buildSideMenu( 'draw' );
 
- // $( uiStructure.structure.draw.sideBar ).fadeIn( 5 );
+//$( '#drawButton' ).trigger( 'click' );
+
+//$( uiStructure.structure['draw'].sideBar ).fadeIn( 5 );
+
+  //$( uiStructure.structure.draw.sideBar ).fadeIn( 5 );
 
   setDomMouseEvent( 'canvas0', 'auto' );
   setDomMouseEvent( 'arcanvaspane', 'none' );
@@ -50,19 +55,16 @@ $( function() {
   $( '#sticky-ar' ).click( function() {
 
     _.each( uiStructure.structure, function( fcn ) {
-     $( fcn.sideBar ).fadeOut( 5 );
+     $( fcn.sideBar ).fadeOut( 2 );
    } );
 
-  if ( userContext.peer ) {
-
-     _.each( uiStructure.structure, function( fcn ) {
-       $( fcn.sideBar ).fadeOut( 5 );
-     } );
+  if ( userContext.peer === 'focus' ) {
+      buildSideMenu( 'augme' );
     }
 
-  setDomMouseEvent( 'canvas0', 'none' );
-  setDomMouseEvent( 'arcanvaspane', 'auto' );
- } );
+    setDomMouseEvent( 'canvas0', 'none' );
+    setDomMouseEvent( 'arcanvaspane', 'auto' );
+    } );
   } );
 
 function buildSideMenu( layer ) {
@@ -72,7 +74,7 @@ function buildSideMenu( layer ) {
   // collapse main menu
 
   _.each( uiStructure.structure, function( fcn ) {
-    $( fcn.sideBar ).fadeOut( 5 );
+    $( fcn.sideBar ).fadeOut( 2 );
   } );
 
   $( '#layer-menu-button' ).trigger( 'click' );
@@ -88,7 +90,7 @@ function buildSideMenu( layer ) {
 
 $( document ).ready( function() {
   var t = 1000;
-  $( '#layer-menu-button' ).hover( function() {
+  $( '#layer-menu-button' ).click( function() {
     var button;
     if ( mainCollapsed === true ) {
       mainCollapsed = false;

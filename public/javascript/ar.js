@@ -84,21 +84,20 @@ function setupEvents() {
             scale * -renderer.devicePixelRatio * ( event.pageY - this.offsetTop ) / this.height * 2 + 1,
               0.5
           );
-          projector.unprojectVector( vector, camera );
+          projector.unprojectVector( vector, sensorDrivenCamera );
 
           var raycaster = new THREE.Raycaster(
             camera.position,
-            vector.sub( camera.position ).normalize()
+            vector.sub( sensorDrivenCamera.position ).normalize()
           );
-          var intersects = raycaster.intersectObject( mesh );
+          var intersects = raycaster.intersectObject( knot );
           if ( intersects.length ) {
             var p = document.createElement( 'p' );
             p.textContent = new Date() + ' - Distance to click: ' + intersects[0].distance;
             log.insertBefore( p, log.firstChild );
           }
-        }, false);
+        }, false );
       }
-
 
 var radius = 0.3,
     segments = 16,
