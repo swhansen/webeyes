@@ -11,16 +11,26 @@
         <script type="text/javascript" src="bower/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript" src="bower/threejs/build/three.min.js"></script>
         <script type="text/javascript" src="bower/threejs/examples/js/controls/DeviceOrientationControls.js"></script>
+        <script type="text/javascript" src="bower/threejs/examples/js/renderers/Projector.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+        <script type="text/javascript" src="bower/materialize/dist/js/materialize.min.js"></script>
+
         <script type="text/javascript" src="javascript/material-click.js"></script>
 
         <script type="text/javascript" src="javascript/static-multiparty.js"></script>
 
         <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
         <link rel="stylesheet" type="text/css" href="css/room.css" />
+
+
         <link rel="stylesheet" type="text/css" href="css/material-click.css" />
+
+
         <link rel="stylesheet" type="text/css" href="bower/jquery-ui/themes/smoothness/jquery-ui.min.css" />
         <link rel="stylesheet" type="text/css" href="bower/sweetalert/dist/sweetalert.css" />
+
+        <link rel="stylesheet" type="text/css" href="bower/materialize/dist/css/materialize.min.css" />
 
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
@@ -85,7 +95,7 @@
             <img id="inviteViaEmail" src="img/email-invite.png" class="ripple-effect" height="64" width="64" style=" display:none" alt="WC button" /><br>
             <img id="textEntryButton" onclick ="showTextEntry()" src="img/textEntry.png" height="64" width="64" style="display:none" alt="text button" /><br>
            <!-- <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-   index:3; display:none" alt="text button"/><br> -->
-            <img id="drawButton"  onclick ="drawUI()" class="ripple-effect" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
+            <img id="drawButton"  onclick ="drawUI()" class="wave-effect" src="img/pencil.png" height="64" width="64" style=" display:none" alt="pencil button" /><br>
             <img id="utilButton"  onclick="utilUI()" class="ripple-effect" src="img/util.png" height="64" width="64" style=" display:none" alt="utility button" /><br>
             <img id="videoButton" class='video-swap' src="img/video-on.png" height="64" width="64" style=" display:none" alt="video button" /><br>
         </div>

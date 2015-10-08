@@ -30,31 +30,40 @@ function setDomMouseEvent( domId, mode ) {
 // Sticky menus
 //
 
-//$( function() {
-//$( '#sticky-draw' ).click( function() {
-//
-//    _.each( uiStructure.structure, function( fcn ) {
-//    $( fcn.sideBar ).fadeOut( 5 );
-//  } );
-//
-//  $( uiStructure.structure.draw.sideBar ).fadeIn( 5 );
-//
-//  setDomMouseEvent( 'canvas0', 'auto' );
-//  setDomMouseEvent( 'arcanvaspane', 'none' );
-// } );
-//  } );
-//
-//$( function() {
-//$( '#sticky-ar' ).click( function() {
-//
-//  _.each( uiStructure.structure, function( fcn ) {
-//    $( fcn.sideBar ).fadeOut( 5 );
-//  } );
-//
-//  setDomMouseEvent( 'canvas0', 'none' );
-//  setDomMouseEvent( 'arcanvaspane', 'auto' );
-// } );
-//  } );
+$( function() {
+$( '#sticky-draw' ).click( function() {
+
+    _.each( uiStructure.structure, function( fcn ) {
+    $( fcn.sideBar ).fadeOut( 5 );
+  } );
+
+buildSideMenu( 'draw' );
+
+ // $( uiStructure.structure.draw.sideBar ).fadeIn( 5 );
+
+  setDomMouseEvent( 'canvas0', 'auto' );
+  setDomMouseEvent( 'arcanvaspane', 'none' );
+ } );
+  } );
+
+$( function() {
+  $( '#sticky-ar' ).click( function() {
+
+    _.each( uiStructure.structure, function( fcn ) {
+     $( fcn.sideBar ).fadeOut( 5 );
+   } );
+
+  if ( userContext.peer ) {
+
+     _.each( uiStructure.structure, function( fcn ) {
+       $( fcn.sideBar ).fadeOut( 5 );
+     } );
+    }
+
+  setDomMouseEvent( 'canvas0', 'none' );
+  setDomMouseEvent( 'arcanvaspane', 'auto' );
+ } );
+  } );
 
 function buildSideMenu( layer ) {
 
@@ -79,7 +88,7 @@ function buildSideMenu( layer ) {
 
 $( document ).ready( function() {
   var t = 1000;
-  $( '#layer-menu-button' ).click( function() {
+  $( '#layer-menu-button' ).hover( function() {
     var button;
     if ( mainCollapsed === true ) {
       mainCollapsed = false;
@@ -88,9 +97,8 @@ $( document ).ready( function() {
       }
     } else {
       mainCollapsed = true;
-      t = 1000;
       for ( button in uiStructure.structure ) {
-        t = 1000;
+        t = 3000;
         $( uiStructure.structure[button].mainButton ).fadeOut( t );
       }
     }

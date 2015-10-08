@@ -54,7 +54,7 @@ function loadAr( participantState ) {
 var CANVAS_WIDTH = 300,
     CANVAS_HEIGHT = 300;
 
-var container, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
+var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
 
 scene = new THREE.Scene();
 
@@ -72,46 +72,33 @@ renderer.setClearColor( 0x000000, 0 );
 // Selecting an object
 //
 
-projector = new THREE.Projector();
-mouseVector = new THREE.Vector3();
+var projector = new THREE.Projector();
+var vector = new THREE.Vector3();
 
-function arTouchObject( e ) {
+function setupEvents() {
+        renderer.domElement.addEventListener( 'mousedown', function( event ) {
+          event.preventDefault();
 
-  container = document.getElementById( 'ar0' );
-  var containerWidth = container.clientWidth;
-  var containerHeight = container.clientHeight;
+          var vector = new THREE.Vector3(
+            scale *  renderer.devicePixelRatio * ( event.pageX - this.offsetLeft ) / this.width * 2 - 1,
+            scale * -renderer.devicePixelRatio * ( event.pageY - this.offsetTop ) / this.height * 2 + 1,
+              0.5
+          );
+          projector.unprojectVector( vector, camera );
 
-  mouseVector.x = 2 * ( e.clientX / containerWidth ) - 1;
-  mouseVector.y = 1 - 2 * ( e.clientY / containerHeight );
+          var raycaster = new THREE.Raycaster(
+            camera.position,
+            vector.sub( camera.position ).normalize()
+          );
+          var intersects = raycaster.intersectObject( mesh );
+          if ( intersects.length ) {
+            var p = document.createElement( 'p' );
+            p.textContent = new Date() + ' - Distance to click: ' + intersects[0].distance;
+            log.insertBefore( p, log.firstChild );
+          }
+        }, false);
+      }
 
-  var raycaster = projector.pickingRay( mouseVector.clone(), SensorDrivenCamera ),
-      intersects = raycaster.intersectObjects( knot );
-
-    //  knot.material.color.setRGB( cube.grayness, cube.grayness, cube.grayness );
-
-      alert( 'Got the Object' );
-
-//  var vector = new THREE.Vector3(
-//     ar0.devicePixelRatio * (event.pageX - this.offsetLeft) / this.width * 2 - 1,
-//    -ar0.devicePixelRatio * (event.pageY - this.offsetTop) / this.height * 2 + 1,
-//    0
-//    );
-//  projector.unprojectVector(vector, camera);
-//
-//  var raycaster = new THREE.Raycaster(
-//    camera.position,
-//    vector.sub(camera.position).normalize()
-//  );
-//  var intersects = raycaster.intersectObjects(OBJECTS);
-//  if (intersects.length) {
-//    // intersects[0] describes the clicked object
-//  }
-//}, false);
-
-//sphere
-}
-
-ar0.addEventListener( 'touchstart', arTouchObject, false );
 
 var radius = 0.3,
     segments = 16,

@@ -120,28 +120,28 @@ width: 1000px;
 
 #draw-ui-container {
   position: fixed;
-  top: 250px;
+  top: 220px;
   right: 10px;
 }
 
 #utility-ui-container {
   z-index=30;
   position: fixed;
-  top: 250px;
+  top: 220px;
   right: 10px;
 }
 
 #mod-ui-container {
   z-index=30;
   position: fixed;
-  top: 250px;
+  top: 220px;
   right: 10px;
 }
 
 #aug-ui-container {
   z-index=30;
   position: fixed;
-  top: 250px;
+  top: 220px;
   right: 10px;
 }
 
