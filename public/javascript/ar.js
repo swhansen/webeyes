@@ -1,5 +1,4 @@
 arDeviceOrientation = {};
-
 arObjectArray = [];
 
 function orientationAr() {
@@ -20,7 +19,11 @@ function orientationAr() {
      }
    }
 
+//
+// ---------------------------------------------------------------------
+//
 function emitArOrientationData() {
+
   window.addEventListener( 'deviceorientation', function( event ) {
   arDeviceOrientation.alpha = event.alpha;
   arDeviceOrientation.beta = event.beta;
@@ -31,10 +34,23 @@ function emitArOrientationData() {
   } );
 }
 
-  // Load the ar Models
-  //  - participantState can be focus or peer
+//
+// ------------------------------------------------------------------------
+//
 
 function loadAr( participantState ) {
+
+  // Load the ar Models
+  //  - participant state can be focus or peer
+
+  function setUp() {
+
+      setUpArLayer();
+
+     // setupEvents();
+  }
+
+function setUpArLayer() {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );
@@ -67,37 +83,6 @@ renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 renderer.setSize( box0Width, box0Width );
 
 renderer.setClearColor( 0x000000, 0 );
-
-//
-// Selecting an object
-//
-
-var projector = new THREE.Projector();
-var vector = new THREE.Vector3();
-
-function setupEvents() {
-        renderer.domElement.addEventListener( 'mousedown', function( event ) {
-          event.preventDefault();
-
-          var vector = new THREE.Vector3(
-            scale *  renderer.devicePixelRatio * ( event.pageX - this.offsetLeft ) / this.width * 2 - 1,
-            scale * -renderer.devicePixelRatio * ( event.pageY - this.offsetTop ) / this.height * 2 + 1,
-              0.5
-          );
-          projector.unprojectVector( vector, sensorDrivenCamera );
-
-          var raycaster = new THREE.Raycaster(
-            camera.position,
-            vector.sub( sensorDrivenCamera.position ).normalize()
-          );
-          var intersects = raycaster.intersectObject( knot );
-          if ( intersects.length ) {
-            var p = document.createElement( 'p' );
-            p.textContent = new Date() + ' - Distance to click: ' + intersects[0].distance;
-            log.insertBefore( p, log.firstChild );
-          }
-        }, false );
-      }
 
 var radius = 0.3,
     segments = 16,
@@ -182,6 +167,10 @@ console.log( 'arConnectionController:', participantState );
     }
   }
 
+// Attach the cameras to the device orientation
+//  - sensors for a mobile initiator
+//  - broadcast for all peers
+
 sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
 broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
@@ -225,4 +214,55 @@ function connectToBroadcastSensors() {
 
   requestAnimationFrame( connectToBroadcastSensors );
   }
+
+//
+//
+//
+//
+//
+
+sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+
+broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+
+arObjectArray.push( cube2 );
+
+//console.log( 'arObjectArray:', arObjectArray );
+
+arConnectionController( participantState );
+
+}
+
+function setupEvents() {
+
+//
+// Selecting an object
+//
+
+var projector = new THREE.Projector();
+var vector = new THREE.Vector3();
+  renderer.domElement.addEventListener( 'mousedown', function( event ) {
+    event.preventDefault();
+
+    var vector = new THREE.Vector3(
+      scale *  renderer.devicePixelRatio * ( event.pageX - this.offsetLeft ) / this.width * 2 - 1,
+      scale * -renderer.devicePixelRatio * ( event.pageY - this.offsetTop ) / this.height * 2 + 1,
+        0.5
+    );
+    projector.unprojectVector( vector, sensorDrivenCamera );
+
+    var raycaster = new THREE.Raycaster(
+      camera.position,
+      vector.sub( sensorDrivenCamera.position ).normalize()
+    );
+    var intersects = raycaster.intersectObject( knot );
+    if ( intersects.length ) {
+      var p = document.createElement( 'p' );
+      p.textContent = new Date() + ' - Distance to click: ' + intersects[0].distance;
+      log.insertBefore( p, log.firstChild );
+    }
+  }, false );
+}
+
+setUp();
 }
