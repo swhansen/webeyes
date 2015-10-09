@@ -40,12 +40,11 @@ function emitArOrientationData() {
 
 function loadAr( participantState ) {
 
-  // Load the ar Models
-  //  - participant state can be focus or peer
+  var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
 
-      setUpArLayer( participantState );
+    setUpArLayer( participantState );
 
-     // setupEvents();
+     setupArEvents();
    }
 
 function setUpArLayer( participantState ) {
@@ -67,8 +66,6 @@ function setUpArLayer( participantState ) {
 
 var CANVAS_WIDTH = 300,
     CANVAS_HEIGHT = 300;
-
-var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
 
 scene = new THREE.Scene();
 
@@ -225,7 +222,7 @@ arConnectionController( participantState );
 
 }
 
-function setupEvents() {
+function setupArEvents() {
 
 //
 // Selecting an object
@@ -241,12 +238,16 @@ var vector = new THREE.Vector3();
       scale * -renderer.devicePixelRatio * ( event.pageY - this.offsetTop ) / this.height * 2 + 1,
         0.5
     );
+
+    console.log( 'vector in setupArEvents:', vector );
+
     projector.unprojectVector( vector, sensorDrivenCamera );
 
     var raycaster = new THREE.Raycaster(
       camera.position,
       vector.sub( sensorDrivenCamera.position ).normalize()
     );
+
     var intersects = raycaster.intersectObject( knot );
     if ( intersects.length ) {
       var p = document.createElement( 'p' );
