@@ -43,12 +43,12 @@ function loadAr( participantState ) {
   // Load the ar Models
   //  - participant state can be focus or peer
 
-      setUpArLayer();
+      setUpArLayer( participantState );
 
      // setupEvents();
    }
 
-function setUpArLayer() {
+function setUpArLayer( participantState ) {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );

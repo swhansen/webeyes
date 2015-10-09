@@ -38,6 +38,7 @@ $( '#sticky-draw' ).click( function() {
   } );
 
 drawUI();
+
  // buildSideMenu( 'draw' );
 
 //$( '#drawButton' ).trigger( 'click' );
