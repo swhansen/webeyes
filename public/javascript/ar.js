@@ -43,12 +43,10 @@ function loadAr( participantState ) {
   // Load the ar Models
   //  - participant state can be focus or peer
 
-  function setUp() {
-
       setUpArLayer();
 
      // setupEvents();
-  }
+   }
 
 function setUpArLayer() {
 
@@ -158,7 +156,6 @@ scene.add( light );
 //   use device sensors or broadcast feed
 
 function arConnectionController( participantState ) {
-console.log( 'arConnectionController:', participantState );
   if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
@@ -195,7 +192,6 @@ function connectToDeviceSensors() {
   renderer.render( scene, sensorDrivenCamera );
 
   requestAnimationFrame( connectToDeviceSensors );
-
 }
 
 function connectToBroadcastSensors() {
@@ -215,17 +211,13 @@ function connectToBroadcastSensors() {
   requestAnimationFrame( connectToBroadcastSensors );
   }
 
-//
-//
-//
-//
-//
+//  wire upp the camera to the deviceSensor or broadcastSensors
 
 sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
 broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-arObjectArray.push( cube2 );
+//arObjectArray.push( cube2 );
 
 //console.log( 'arObjectArray:', arObjectArray );
 
@@ -264,5 +256,3 @@ var vector = new THREE.Vector3();
   }, false );
 }
 
-setUp();
-}
