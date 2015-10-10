@@ -41,6 +41,7 @@ function emitArOrientationData() {
 function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
+  var knot;
   var log;
   var scale = 1;
 
@@ -143,7 +144,7 @@ scene.add( sphere3 );
 
 var knotGeometry = new THREE.TorusKnotGeometry( 0.2, 0.15, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
-var knot = new THREE.Mesh( knotGeometry, knotMaterial );
+knot = new THREE.Mesh( knotGeometry, knotMaterial );
 knot.position.set( 3.5, 1.0, 1.0 );
 scene.add( knot );
 
@@ -255,6 +256,7 @@ function setupArEvents() {
       var p = document.createElement( 'p' );
       p.textContent = new Date() + ' - Distance to click: ' + intersects[0].distance;
       log.insertBefore( p, log.firstChild );
+      alert( 'got the knot' );
     }
   }, false );
 }
