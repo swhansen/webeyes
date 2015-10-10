@@ -41,6 +41,8 @@ function emitArOrientationData() {
 function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
+  var log;
+  var scale = 1;
 
     setUpArLayer( participantState );
 
@@ -83,7 +85,7 @@ var radius = 0.3,
     segments = 16,
     rings = 16;
 
-  var sphereMaterial = new THREE.MeshLambertMaterial( { color: 'blue' } );
+var sphereMaterial = new THREE.MeshLambertMaterial( { color: 'blue' } );
 
 var sphere = new THREE.Mesh( new THREE.SphereGeometry(
     radius,
@@ -228,14 +230,14 @@ function setupArEvents() {
 // Selecting an object
 //
 
-var projector = new THREE.Projector();
-var vector = new THREE.Vector3();
+  var projector = new THREE.Projector();
+
   renderer.domElement.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
     var vector = new THREE.Vector3(
-      scale *  renderer.devicePixelRatio * ( event.pageX - this.offsetLeft ) / this.width * 2 - 1,
-      scale * -renderer.devicePixelRatio * ( event.pageY - this.offsetTop ) / this.height * 2 + 1,
+      1.0 *  renderer.devicePixelRatio * ( event.pageX - this.offsetLeft ) / this.width * 2 - 1,
+      1.0 * -renderer.devicePixelRatio * ( event.pageY - this.offsetTop ) / this.height * 2 + 1,
         0.5
     );
 
@@ -244,7 +246,7 @@ var vector = new THREE.Vector3();
     projector.unprojectVector( vector, sensorDrivenCamera );
 
     var raycaster = new THREE.Raycaster(
-      camera.position,
+      sensorDrivenCamera.position,
       vector.sub( sensorDrivenCamera.position ).normalize()
     );
 
