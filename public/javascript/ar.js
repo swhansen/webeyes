@@ -252,25 +252,25 @@ function setupArEvents() {
     var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1,
                             0.5 );
-
+    projector.unprojectVector( vector, sensorDrivenCamera );
     console.log( 'vector in setupArEvents:', vector );
 
     console.log( 'click:', event.clientX, event.clientY );
 
-    projector.unprojectVector( vector, sensorDrivenCamera );
+
     vector.sub( sensorDrivenCamera.position );
     vector.normalize();
 
     var raycaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
 
-    drawRayLine( rayCaster );
+   // drawRayLine( rayCaster );
 
-    var intersects = raycaster.intersectObjects( scene.children );
+    var intersects = raycaster.intersectObjects( knot );
 
         // Change color if hit block
 
-    for ( var i = 0; i < intersects.length; i++ ) {
-      intersects[ i ].object.material.color.set( 0xff0000 );
+    if ( intersects.length ) {
+      knot.material.color.set( 0xff0000 );
       alert( 'got it' );
         }
 
