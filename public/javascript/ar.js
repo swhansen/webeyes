@@ -243,14 +243,19 @@ function setupArEvents() {
   renderer.domElement.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
+    console.log( 'offSet:', offsetX, offsetY );
+    console.log( 'viewW-H:', viewWidth, viewHeight );
+
     var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1,
                             0.5 );
 
+    console.log( 'click:', event.clientX, event.clientY );
+
     projector.unprojectVector( vector, sensorDrivenCamera );
     console.log( 'vector in setupArEvents:', vector );
 
-    var raycaster = projector.pickingRay( vector.clone(), camera );
+    var raycaster = projector.pickingRay( vector.clone(), sensorDrivenCamera );
     var intersects = raycaster.intersectObject( knot );
 
         // Change color if hit block
