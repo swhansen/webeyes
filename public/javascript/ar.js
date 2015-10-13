@@ -231,10 +231,12 @@ function setupArEvents() {
 // Selecting an object
 //
 
-var ar0 = document.getElementById( 'ar-canvas' );
-var rect = ar0.getBoundingClientRect();
-    offsetX = rect.left;
-    offsetY = rect.top;
+  var ar0 = document.getElementById( 'ar-canvas' );
+  var rect = ar0.getBoundingClientRect();
+  offsetX = rect.left;
+  offsetY = rect.top;
+  var viewWidth = ar0.innerWidth;
+  var viewHeight = ar0.innerHeight;
 
   var projector = new THREE.Projector();
 
