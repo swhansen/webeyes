@@ -231,33 +231,45 @@ function setupArEvents() {
 // Selecting an object
 //
 
+var rect = ar0.getBoundingClientRect();
+    offsetX = rect.left;
+    offsetY = rect.top;
   var projector = new THREE.Projector();
 
   renderer.domElement.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
-    var vector = new THREE.Vector3(
-      1.0 *  renderer.devicePixelRatio * ( event.pageX - this.offsetLeft ) / this.width * 2 - 1,
-      1.0 * -renderer.devicePixelRatio * ( event.pageY - this.offsetTop ) / this.height * 2 + 1,
-        0.5
-    );
-
-    console.log( 'vector in setupArEvents:', vector );
+    var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+                            -( event.clientY - offsetY ) / viewHeight * 2 + 1,
+                            0.5 );
 
     projector.unprojectVector( vector, sensorDrivenCamera );
+    console.log( 'vector in setupArEvents:', vector );
 
-    var raycaster = new THREE.Raycaster(
-      sensorDrivenCamera.position,
-      vector.sub( sensorDrivenCamera.position ).normalize()
-    );
-
+    var raycaster = projector.pickingRay( vector.clone(), camera );
     var intersects = raycaster.intersectObject( knot );
-    if ( intersects.length ) {
-      var p = document.createElement( 'p' );
-      p.textContent = new Date() + ' - Distance to click: ' + intersects[0].distance;
-      log.insertBefore( p, log.firstChild );
-      alert( 'got the knot' );
-    }
+
+        // Change color if hit block
+
+    if ( intersects.length > 0 ) {
+            intersects[ 0 ].knot.material.color.setHex( Math.random() * 0xffffff );
+        }
+        alert( 'got the knot' );
+
+   //projector.unprojectVector( vector, sensorDrivenCamera );
+
+   //var raycaster = new THREE.Raycaster(
+   //  sensorDrivenCamera.position,
+   //  vector.sub( sensorDrivenCamera.position ).normalize()
+   //);
+
+   //var intersects = raycaster.intersectObject( knot );
+   //if ( intersects.length ) {
+   //  var p = document.createElement( 'p' );
+   //  p.textContent = new Date() + ' - Distance to click: ' + intersects[0].distance;
+   //  log.insertBefore( p, log.firstChild );
+   //  alert( 'got the knot' );
+   //}
   }, false );
 }
 
