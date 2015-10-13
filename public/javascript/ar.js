@@ -47,7 +47,7 @@ function loadAr( participantState ) {
 
     setUpArLayer( participantState );
 
-     setupArEvents();
+    setupArEvents();
    }
 
 function setUpArLayer( participantState ) {
@@ -231,12 +231,15 @@ function setupArEvents() {
 // Selecting an object
 //
 
+// the AR layer Window
+
   var ar0 = document.getElementById( 'ar-canvas' );
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
   offsetY = rect.top;
+
   var viewWidth = ar0.innerWidth;
-  var viewHeight = ar0.innerHeight;
+  var viewHeight = aro.innerHeight;
 
   var projector = new THREE.Projector();
 
@@ -250,19 +253,25 @@ function setupArEvents() {
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1,
                             0.5 );
 
+    console.log( 'vector in setupArEvents:', vector );
+
     console.log( 'click:', event.clientX, event.clientY );
 
     projector.unprojectVector( vector, sensorDrivenCamera );
-    console.log( 'vector in setupArEvents:', vector );
+    vector.sub( sensorDrivenCamera.position );
+    vector.normalize();
 
-    var raycaster = projector.pickingRay( vector.clone(), sensorDrivenCamera );
-    var intersects = raycaster.intersectObject( knot );
+    var raycaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
+
+    drawRayLine( rayCaster );
+
+    var intersects = raycaster.intersectObjects( scene.children );
 
         // Change color if hit block
 
-    if ( intersects.length > 0 ) {
-            knot.material.color.setHex( Math.random() * 0xffffff );
-            alert( 'got the knot' );
+    for ( var i = 0; i < intersects.length; i++ ) {
+      intersects[ i ].object.material.color.set( 0xff0000 );
+      alert( 'got it' );
         }
 
    //projector.unprojectVector( vector, sensorDrivenCamera );
