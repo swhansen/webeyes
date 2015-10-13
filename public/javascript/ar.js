@@ -239,11 +239,11 @@ function setupArEvents() {
   offsetY = rect.top;
 
   var viewWidth = ar0.innerWidth;
-  var viewHeight = aro.innerHeight;
+  var viewHeight = ar0.innerHeight;
 
   var projector = new THREE.Projector();
 
-  renderer.domElement.addEventListener( 'mousedown', function( event ) {
+  ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
     console.log( 'offSet:', offsetX, offsetY );
@@ -256,7 +256,6 @@ function setupArEvents() {
     console.log( 'vector in setupArEvents:', vector );
 
     console.log( 'click:', event.clientX, event.clientY );
-
 
     vector.sub( sensorDrivenCamera.position );
     vector.normalize();
