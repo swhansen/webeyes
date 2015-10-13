@@ -231,9 +231,11 @@ function setupArEvents() {
 // Selecting an object
 //
 
+var ar0 = document.getElementById( 'ar-canvas' );
 var rect = ar0.getBoundingClientRect();
     offsetX = rect.left;
     offsetY = rect.top;
+
   var projector = new THREE.Projector();
 
   renderer.domElement.addEventListener( 'mousedown', function( event ) {
@@ -252,9 +254,9 @@ var rect = ar0.getBoundingClientRect();
         // Change color if hit block
 
     if ( intersects.length > 0 ) {
-            intersects[ 0 ].knot.material.color.setHex( Math.random() * 0xffffff );
+            knot.material.color.setHex( Math.random() * 0xffffff );
+            alert( 'got the knot' );
         }
-        alert( 'got the knot' );
 
    //projector.unprojectVector( vector, sensorDrivenCamera );
 
