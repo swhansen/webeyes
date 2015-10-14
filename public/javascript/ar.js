@@ -256,7 +256,7 @@ function setupArEvents() {
 
     projector.unprojectVector( vector, sensorDrivenCamera );
 
-    function drawRayLine(rayCaster) {
+    function drawRayLine( rayCaster ) {
     var scale = viewWidth * 2;
     var rayDir = new THREE.Vector3( rayCaster.ray.direction.x * scale,rayCaster.ray.direction.y * scale,rayCaster.ray.direction.z * scale );
     var rayVector = new THREE.Vector3( camera.position.x + rayDir.x, camera.position.y + rayDir.y, camera.position.z + rayDir.z );
@@ -269,11 +269,11 @@ function setupArEvents() {
     vector.sub( sensorDrivenCamera.position );
     vector.normalize();
 
-    var raycaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
+    var rayCaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
 
     drawRayLine( rayCaster );
 
-    var intersects = raycaster.intersectObjects( arObjectArray );
+    var intersects = rayCaster.intersectObjects( arObjectArray );
 
         // Change color if hit
 
