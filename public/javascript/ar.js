@@ -256,6 +256,17 @@ function setupArEvents() {
 
     projector.unprojectVector( vector, sensorDrivenCamera );
 
+    function drawParticleLine(pointA,pointB) {
+    var factor = 50;
+    for( var i = 0; i < factor; i++ )
+    {
+        var x = getFactorPos( pointB.x - pointA.x, factor, i );
+        var y = getFactorPos( pointB.y - pointA.y, factor, i );
+        var z = getFactorPos( pointB.z - pointA.z, factor, i );
+        addNewParticle( new THREE.Vector3( pointA.x+x,pointA.y+y,pointA.z+z ), Math.max(2, viewWidth / 500 ) );
+    }
+}
+
     function drawRayLine( rayCaster ) {
     var scale = viewWidth * 2;
     var rayDir = new THREE.Vector3( rayCaster.ray.direction.x * scale,rayCaster.ray.direction.y * scale,rayCaster.ray.direction.z * scale );
