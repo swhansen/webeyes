@@ -229,7 +229,7 @@ arConnectionController( participantState );
 function setupArInteractionEvents() {
 
 //
-// Selecting an object
+// Selecting an AR object
 //
 
   var ar0 = document.getElementById( 'ar-canvas' );
@@ -268,6 +268,8 @@ function setupArInteractionEvents() {
 
     if ( intersects.length ) {
       knot.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+
+      knot.position.x += 0.5;
 
       console.log( 'intersects:', intersects[0] );
 
