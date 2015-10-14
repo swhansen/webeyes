@@ -151,11 +151,15 @@ scene.add( knot );
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
-//
-//   based on participantState(focus or peer)
-//   use device sensors or broadcast feed
+arObjectArray.push( cube2 );
+arObjectArray.push( knot );
 
 function arConnectionController( participantState ) {
+
+//   Based on participantState(focus or peer)
+//    focus - device sensors
+//    peer - broadcast feed sensors
+
   if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
@@ -172,9 +176,6 @@ sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera )
 
 broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-arObjectArray.push( cube2 );
-arObjectArray.push( knot );
-
 arConnectionController( participantState );
 
 function animateArObjects() {
@@ -188,8 +189,6 @@ function animateArObjects() {
 
 function connectToDeviceSensors() {
 
-  console.log( 'at connectToDeviceSensors' );
-
   sensorCameraControls.update();
 
   animateArObjects();
@@ -200,8 +199,6 @@ function connectToDeviceSensors() {
 }
 
 function connectToBroadcastSensors() {
-
-  console.log( 'at connectToBroadcastSensors' );
 
   broadcastCameraControls.update();
 
@@ -225,7 +222,7 @@ arConnectionController( participantState );
 function setupArInteractionEvents() {
 
 //
-// Selecting an AR object
+// Select an AR object and do something cool
 //
 
   var ar0 = document.getElementById( 'ar-canvas' );
@@ -253,11 +250,12 @@ function setupArInteractionEvents() {
 
     var intersects = rayCaster.intersectObjects( arObjectArray );
 
-        // Change color if hit
-
     if ( intersects.length ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
+
+// Code for sharing AR object state change
+
         }
 
   }, false );
