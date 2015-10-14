@@ -173,9 +173,17 @@ broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDri
 
 arObjectArray.push( cube2 );
 arObjectArray.push( knot );
-arObjectArray.push( sphere2 );
 
 arConnectionController( participantState );
+
+function animateArObjects() {
+
+  cube2.rotation.x += 0.05;
+  cube2.rotation.y += 0.05;
+
+  knot.rotation.y += 0.05;
+  knot.rotation.z += 0.05;
+}
 
 function connectToDeviceSensors() {
 
@@ -183,11 +191,7 @@ function connectToDeviceSensors() {
 
   sensorCameraControls.update();
 
-  cube2.rotation.x += 0.05;
-  cube2.rotation.y += 0.05;
-
-  knot.rotation.y += 0.05;
-  knot.rotation.z += 0.05;
+  animateArObjects();
 
   renderer.render( scene, sensorDrivenCamera );
 
@@ -200,11 +204,7 @@ function connectToBroadcastSensors() {
 
   broadcastCameraControls.update();
 
-  cube2.rotation.x += 0.05;
-  cube2.rotation.y += 0.05;
-
-  knot.rotation.y += 0.05;
-  knot.rotation.z += 0.05;
+  animateArObjects();
 
   renderer.render( scene, broadcastDrivenCamera );
 
