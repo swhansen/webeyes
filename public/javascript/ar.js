@@ -256,6 +256,10 @@ function setupArEvents() {
 
     projector.unprojectVector( vector, sensorDrivenCamera );
 
+    function getFactorPos( val, factor, step ) {
+    return step / factor * val;
+}
+
     function drawParticleLine(pointA,pointB) {
     var factor = 50;
     for( var i = 0; i < factor; i++ )
