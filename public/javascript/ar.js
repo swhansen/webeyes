@@ -173,7 +173,8 @@ broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDri
 
 arObjectArray.push( cube2 );
 arObjectArray.push( knot );
-console.log( 'arObjectArray:', arObjectArray );
+
+//console.log( 'arObjectArray:', arObjectArray );
 
 arConnectionController( participantState );
 
@@ -216,9 +217,6 @@ function connectToBroadcastSensors() {
 sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
 broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
-
-//arObjectArray.push( cube2 );
-arObjectArray.push( knot );
 
 //console.log( 'arObjectArray:', arObjectArray );
 
@@ -267,12 +265,9 @@ function setupArInteractionEvents() {
         // Change color if hit
 
     if ( intersects.length ) {
-      knot.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-
-      knot.position.x += 0.5;
-
       console.log( 'intersects:', intersects[0] );
-
+      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+      intersects[0].object.position.x += 0.5;
         }
 
    //projector.unprojectVector( vector, sensorDrivenCamera );
