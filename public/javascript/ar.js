@@ -274,8 +274,11 @@ function setupArEvents() {
         // Change color if hit block
 
     if ( intersects.length ) {
-      intersects[0].material.color.set( 0xff0000 );
-      alert( 'got it' );
+      intersects[0].material.color.setHex( 0xac142a );
+
+      console.log( 'intersects:', intersects[0] );
+
+      //alert( 'got it' );
         }
 
    //projector.unprojectVector( vector, sensorDrivenCamera );
