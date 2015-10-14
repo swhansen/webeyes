@@ -274,7 +274,7 @@ function setupArEvents() {
         // Change color if hit block
 
     if ( intersects.length ) {
-      intersects[0].material.color.setHex( 0xac142a );
+      knot.material.color.setHex( 0xac142a );
 
       console.log( 'intersects:', intersects[0] );
 
