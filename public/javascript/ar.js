@@ -42,12 +42,10 @@ function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
-  var log;
-  var scale = 1;
 
     setUpArLayer( participantState );
 
-    setupArEvents();
+    setupArInteractionEvents();
    }
 
 function setUpArLayer( participantState ) {
@@ -228,7 +226,7 @@ arConnectionController( participantState );
 
 }
 
-function setupArEvents() {
+function setupArInteractionEvents() {
 
 //
 // Selecting an object
@@ -256,28 +254,6 @@ function setupArEvents() {
 
     projector.unprojectVector( vector, sensorDrivenCamera );
 
-    function getFactorPos( val, factor, step ) {
-    return step / factor * val;
-}
-
-    function drawParticleLine(pointA,pointB) {
-    var factor = 50;
-    for( var i = 0; i < factor; i++ )
-    {
-        var x = getFactorPos( pointB.x - pointA.x, factor, i );
-        var y = getFactorPos( pointB.y - pointA.y, factor, i );
-        var z = getFactorPos( pointB.z - pointA.z, factor, i );
-        addNewParticle( new THREE.Vector3( pointA.x+x,pointA.y+y,pointA.z+z ), Math.max(2, viewWidth / 500 ) );
-    }
-}
-
-    function drawRayLine( rayCaster ) {
-    var scale = viewWidth * 2;
-    var rayDir = new THREE.Vector3( rayCaster.ray.direction.x * scale,rayCaster.ray.direction.y * scale,rayCaster.ray.direction.z * scale );
-    var rayVector = new THREE.Vector3( sensorDrivenCamera.position.x + rayDir.x, sensorDrivenCamera.position.y + rayDir.y, sensorDrivenCamera.position.z + rayDir.z );
-    drawParticleLine( sensorDrivenCamera.position, rayVector );
-  }
-
    // console.log( 'vector in setupArEvents:', vector );
    // console.log( 'click:', event.clientX, event.clientY );
 
@@ -293,7 +269,7 @@ function setupArEvents() {
         // Change color if hit
 
     if ( intersects.length ) {
-      knot.material.color.setHex( 0xac142a );
+      knot.material.color.setRGB( Math.random(), Math.random(), Math.random() );
 
       console.log( 'intersects:', intersects[0] );
 
