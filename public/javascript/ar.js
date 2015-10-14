@@ -262,8 +262,6 @@ function setupArInteractionEvents() {
 
     var rayCaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
 
-    drawRayLine( rayCaster );
-
     var intersects = rayCaster.intersectObjects( arObjectArray );
 
         // Change color if hit
