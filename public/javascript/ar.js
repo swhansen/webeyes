@@ -58,6 +58,7 @@ function setUpArLayer( participantState ) {
 
   ar0.style.width = '100%';
   ar0.style.height = '100%';
+
   ar0.width = ar0.offsetWidth;
   ar0.height = ar0.offsetHeight;
 
@@ -240,9 +241,8 @@ function setupArInteractionEvents() {
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
-    var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            -( event.clientY - offsetY ) / viewHeight * 2 + 1,
-                            0.5 );
+  var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
     projector.unprojectVector( vector, sensorDrivenCamera );
 
@@ -257,7 +257,7 @@ function setupArInteractionEvents() {
 
     if ( intersects.length ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-      intersects[0].object.position.x += 0.7;
+      intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
         }
 
   }, false );
