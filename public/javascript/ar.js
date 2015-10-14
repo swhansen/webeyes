@@ -173,8 +173,7 @@ broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDri
 
 arObjectArray.push( cube2 );
 arObjectArray.push( knot );
-
-//console.log( 'arObjectArray:', arObjectArray );
+arObjectArray.push( sphere2 );
 
 arConnectionController( participantState );
 
@@ -212,13 +211,11 @@ function connectToBroadcastSensors() {
   requestAnimationFrame( connectToBroadcastSensors );
   }
 
-//  wire upp the camera to the deviceSensor or broadcastSensors
+//  wire up the camera to the deviceSensor or broadcastSensors
 
-sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+//sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
-broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
-
-//console.log( 'arObjectArray:', arObjectArray );
+//broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
 arConnectionController( participantState );
 
@@ -243,17 +240,11 @@ function setupArInteractionEvents() {
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
-   // console.log( 'offSet:', offsetX, offsetY );
-   // console.log( 'viewW-H:', viewWidth, viewHeight );
-
     var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1,
                             0.5 );
 
     projector.unprojectVector( vector, sensorDrivenCamera );
-
-   // console.log( 'vector in setupArEvents:', vector );
-   // console.log( 'click:', event.clientX, event.clientY );
 
     vector.sub( sensorDrivenCamera.position );
     vector.normalize();
@@ -265,25 +256,10 @@ function setupArInteractionEvents() {
         // Change color if hit
 
     if ( intersects.length ) {
-      console.log( 'intersects:', intersects[0] );
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-      intersects[0].object.position.x += 0.5;
+      intersects[0].object.position.x += 0.7;
         }
 
-   //projector.unprojectVector( vector, sensorDrivenCamera );
-
-   //var raycaster = new THREE.Raycaster(
-   //  sensorDrivenCamera.position,
-   //  vector.sub( sensorDrivenCamera.position ).normalize()
-   //);
-
-   //var intersects = raycaster.intersectObject( knot );
-   //if ( intersects.length ) {
-   //  var p = document.createElement( 'p' );
-   //  p.textContent = new Date() + ' - Distance to click: ' + intersects[0].distance;
-   //  log.insertBefore( p, log.firstChild );
-   //  alert( 'got the knot' );
-   //}
   }, false );
 }
 
