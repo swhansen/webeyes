@@ -173,6 +173,7 @@ sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera )
 broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
 arObjectArray.push( cube2 );
+arObjectArray.push( knot );
 console.log( 'arObjectArray:', arObjectArray );
 
 arConnectionController( participantState );
@@ -263,9 +264,11 @@ function setupArEvents() {
 
     var raycaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
 
-    drawRayLine( rayCaster );
+    //drawRayLine( rayCaster );
 
     var intersects = raycaster.intersectObjects( knot );
+
+    console.log( 'intersects:', intersects );
 
         // Change color if hit block
 
