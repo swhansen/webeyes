@@ -146,6 +146,7 @@ var knotGeometry = new THREE.TorusKnotGeometry( 0.2, 0.15, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
 knot.position.set( 3.5, 1.0, 1.0 );
+knot.name = ( 'knot' );
 scene.add( knot );
 
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
@@ -233,8 +234,6 @@ function setupArEvents() {
 // Selecting an object
 //
 
-// the AR layer Window
-
   var ar0 = document.getElementById( 'ar-canvas' );
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
@@ -248,37 +247,41 @@ function setupArEvents() {
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
-    console.log( 'offSet:', offsetX, offsetY );
-    console.log( 'viewW-H:', viewWidth, viewHeight );
+   // console.log( 'offSet:', offsetX, offsetY );
+   // console.log( 'viewW-H:', viewWidth, viewHeight );
 
     var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1,
                             0.5 );
+
     projector.unprojectVector( vector, sensorDrivenCamera );
 
-    console.log( 'vector in setupArEvents:', vector );
+    function drawRayLine(rayCaster) {
+    var scale = viewWidth * 2;
+    var rayDir = new THREE.Vector3( rayCaster.ray.direction.x * scale,rayCaster.ray.direction.y * scale,rayCaster.ray.direction.z * scale );
+    var rayVector = new THREE.Vector3( camera.position.x + rayDir.x, camera.position.y + rayDir.y, camera.position.z + rayDir.z );
+    drawParticleLine( camera.position, rayVector );
+  }
 
-    console.log( 'click:', event.clientX, event.clientY );
+   // console.log( 'vector in setupArEvents:', vector );
+   // console.log( 'click:', event.clientX, event.clientY );
 
     vector.sub( sensorDrivenCamera.position );
     vector.normalize();
 
     var raycaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
 
-    //drawRayLine( rayCaster );
+    drawRayLine( rayCaster );
 
     var intersects = raycaster.intersectObjects( arObjectArray );
 
-    console.log( 'intersects:', intersects );
-
-        // Change color if hit block
+        // Change color if hit
 
     if ( intersects.length ) {
       knot.material.color.setHex( 0xac142a );
 
       console.log( 'intersects:', intersects[0] );
 
-      //alert( 'got it' );
         }
 
    //projector.unprojectVector( vector, sensorDrivenCamera );
