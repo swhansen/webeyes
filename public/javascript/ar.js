@@ -259,8 +259,8 @@ function setupArEvents() {
     function drawRayLine( rayCaster ) {
     var scale = viewWidth * 2;
     var rayDir = new THREE.Vector3( rayCaster.ray.direction.x * scale,rayCaster.ray.direction.y * scale,rayCaster.ray.direction.z * scale );
-    var rayVector = new THREE.Vector3( camera.position.x + rayDir.x, camera.position.y + rayDir.y, camera.position.z + rayDir.z );
-    drawParticleLine( camera.position, rayVector );
+    var rayVector = new THREE.Vector3( sensorDrivenCamera.position.x + rayDir.x, sensorDrivenCamera.position.y + rayDir.y, sensorDrivenCamera.position.z + rayDir.z );
+    drawParticleLine( sensorDrivenCamera.position, rayVector );
   }
 
    // console.log( 'vector in setupArEvents:', vector );
