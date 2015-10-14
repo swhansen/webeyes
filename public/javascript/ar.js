@@ -238,8 +238,8 @@ function setupArEvents() {
   offsetX = rect.left;
   offsetY = rect.top;
 
-  var viewWidth = ar0.innerWidth;
-  var viewHeight = ar0.innerHeight;
+  var viewWidth = ar0.width;
+  var viewHeight = ar0.height;
 
   var projector = new THREE.Projector();
 
@@ -253,6 +253,7 @@ function setupArEvents() {
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1,
                             0.5 );
     projector.unprojectVector( vector, sensorDrivenCamera );
+
     console.log( 'vector in setupArEvents:', vector );
 
     console.log( 'click:', event.clientX, event.clientY );
@@ -262,7 +263,7 @@ function setupArEvents() {
 
     var raycaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
 
-   // drawRayLine( rayCaster );
+    drawRayLine( rayCaster );
 
     var intersects = raycaster.intersectObjects( knot );
 
