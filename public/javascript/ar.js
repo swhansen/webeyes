@@ -141,7 +141,7 @@ scene.add( sphere1 );
 scene.add( sphere2 );
 scene.add( sphere3 );
 
-var knotGeometry = new THREE.TorusKnotGeometry( 0.2, 0.15, 100, 16 );
+var knotGeometry = new THREE.TorusKnotGeometry( 0.15, 0.1, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
 knot.position.set( 3.5, 1.0, 1.0 );
@@ -179,11 +179,11 @@ arConnectionController( participantState );
 
 function animateArObjects() {
 
-  cube2.rotation.x += 0.05;
-  cube2.rotation.y += 0.05;
+  cube2.rotation.x += 0.03;
+  cube2.rotation.y += 0.03;
 
-  knot.rotation.y += 0.05;
-  knot.rotation.z += 0.05;
+  knot.rotation.y += 0.03;
+  knot.rotation.z += 0.03;
 }
 
 function connectToDeviceSensors() {
