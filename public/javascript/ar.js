@@ -52,7 +52,7 @@ function loadAr( participantState ) {
 
    function receiveArObjectFromClient( data ) {
 
-        console.log( 'peer got arObjectData:', data );
+       // console.log( 'peer got arObjectData:', data );
 
         var arObject = scene.getObjectByName( data.name );
         arObject.position.x = data.position.x;
@@ -180,11 +180,14 @@ function arConnectionController( participantState ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
     } else if ( participantState === 'peer' ) {
+
       connectToBroadcastSensors();
 
       socketServer.on( 'arObjectShare', function( data ) {
-       console.log( 'at socketServer.on:', data );
-      receiveArObjectFromClient( data );
+
+       // console.log( 'at socketServer.on:', data );
+
+        receiveArObjectFromClient( data );
       } );
     }
   }
@@ -289,7 +292,7 @@ function setupArInteractionEvents() {
       arShareData.position = intersects[0].object.position;
       arShareData.color = intersects[0].object.material.color;
 
-      console.log( 'emit arShareData:', arShareData );
+     // console.log( 'emit arShareData:', arShareData );
 
       emitArObject( arShareData );
     }
