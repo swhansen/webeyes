@@ -54,7 +54,7 @@ function loadAr( participantState ) {
    receiveArObjectFromClient( data );
       } );
 
-   function receiveLineFromClient( data ) {
+   function receiveArObjectFromClient( data ) {
 
     if ( userContext.state === 'peer' ) {
         var arObject = scene.getObjectByName( data.name );
