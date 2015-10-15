@@ -298,6 +298,10 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'arOrientation', data );
   } );
 
+  client.on( 'arObjectShare', function( data, session ) {
+    client.broadcast.emit( 'arObjectShare ', data );
+  } );
+
   client.on( 'drawLine', function( data, session ) {
 
     // build up the colors for  drawing

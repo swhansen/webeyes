@@ -1,5 +1,6 @@
-arDeviceOrientation = {};
-arObjectArray = [];
+var arDeviceOrientation = {};
+var arObjectArray = [];
+var arShareData = {};
 
 function orientationAr() {
 
@@ -43,10 +44,32 @@ function loadAr( participantState ) {
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
 
+  function emitArObject( data ) {
+   var sessionId = socketServer.sessionid;
+   socketServer.emit( 'arObjectShare', data, sessionId );
+    }
+
     setUpArLayer( participantState );
 
     setupArInteractionEvents();
+
    }
+
+   socketServer.on( 'arObjectShare', function( data ) {
+   receiveArObjectFromClient( data );
+      } );
+
+   function reteiveObjectFromClient( data ) {
+
+    if ( userContext.state === 'peer' ) {
+        var arObject = scene.getObjectByName( data.name );
+        arObject.x = data.position.x;
+        arObject.y = data.position.y;
+        arObject.z = data.position.z;
+        arObject.position = data.object.position;
+        arObject.color = data.color;
+        }
+    }
 
 function setUpArLayer( participantState ) {
 
@@ -97,7 +120,7 @@ sphere.position.set( 0.5, 0.0, 0.0 );
 scene.add( sphere );
 
 var cubeGeometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
-var sphereGeometry1 = new THREE.SphereGeometry( 0.5, 16, 16 );
+var sphereGeometry1 = new THREE.SphereGeometry( 0.25, 16, 16 );
 
 material = new THREE.MeshLambertMaterial( { color: 'red' } );
 material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
@@ -126,9 +149,7 @@ cube3.position.set( 0.0, 0.0, -6.0 );
 
 //red cube blue ball same y
 
-cube3.rotateY = 10.00;
-
-cube2.name = 'cube-green';
+cube3.rotateZ = 10.00;
 
 sphere1.position.set( -2.0, 1.0, 1.0 );
 sphere2.position.set( -3.0, 1.0, 1.0 );
@@ -140,6 +161,8 @@ scene.add( cube3 );
 scene.add( sphere1 );
 scene.add( sphere2 );
 scene.add( sphere3 );
+
+cube2.name = ( 'cube2' );
 
 var knotGeometry = new THREE.TorusKnotGeometry( 0.15, 0.1, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
@@ -254,10 +277,20 @@ function setupArInteractionEvents() {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
 
-// Code for sharing AR object state change
+//  AR object data for sharing
 
-        }
+      arShareData.name = intersects[0].object.name;
+      arShareData.x = intersects[0].object.position.x;
+      arShareData.y = intersects[0].object.position.y;
+      arShareData.z = intersects[0].object.position.z;
+      arShareData.position = intersects[0].object.position;
+      arShareData.color = intersects[0].object.color;
+
+      console.log( 'arShareData:', arShareData );
+
+      emitArObject( arShareData );
+    }
 
   }, false );
-}
 
+}

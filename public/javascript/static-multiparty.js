@@ -508,7 +508,6 @@ function updateMuteImage( toggle ) {
     }
 }
 
-//
 // Focus the selected user through the 'code' system
 //  - called through broadcast receipt of socket.server 'focus'
 //  - maps eastrtcid to DOM element for EACH client
