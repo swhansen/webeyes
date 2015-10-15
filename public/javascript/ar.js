@@ -56,7 +56,7 @@ function loadAr( participantState ) {
 
    function receiveArObjectFromClient( data ) {
 
-    if ( userContext.state === 'peer' ) {
+    if ( userContext.participantState === 'peer' ) {
         var arObject = scene.getObjectByName( data.name );
         arObject.x = data.position.x;
         arObject.y = data.position.y;
