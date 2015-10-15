@@ -299,7 +299,8 @@ socketServer.sockets.on( 'connection', function( client ) {
   } );
 
   client.on( 'arObjectShare', function( data, session ) {
-    client.broadcast.emit( 'arObjectShare ', data );
+    client.emit( 'arObjectShare ', data );
+    client.broadcast.emit( 'arObjectShare', data );
   } );
 
   client.on( 'drawLine', function( data, session ) {

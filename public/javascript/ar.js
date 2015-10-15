@@ -48,11 +48,6 @@ function loadAr( participantState ) {
 
     setupArInteractionEvents();
 
-    socketServer.on( 'arObjectShare', function( data ) {
-    console.log( 'at socketServer.on:', data );
-      receiveArObjectFromClient( data );
-      } );
-
    }
 
    function receiveArObjectFromClient( data ) {
@@ -186,6 +181,11 @@ function arConnectionController( participantState ) {
       connectToDeviceSensors();
     } else if ( participantState === 'peer' ) {
       connectToBroadcastSensors();
+
+      socketServer.on( 'arObjectShare', function( data ) {
+       console.log( 'at socketServer.on:', data );
+      receiveArObjectFromClient( data );
+      } );
     }
   }
 
