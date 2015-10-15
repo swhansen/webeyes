@@ -44,11 +44,6 @@ function loadAr( participantState ) {
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
 
-  function emitArObject( data ) {
-   var sessionId = socketServer.sessionid;
-   socketServer.emit( 'arObjectShare', data, sessionId );
-    }
-
     setUpArLayer( participantState );
 
     setupArInteractionEvents();
@@ -66,8 +61,12 @@ function loadAr( participantState ) {
         arObject.x = data.position.x;
         arObject.y = data.position.y;
         arObject.z = data.position.z;
-        arObject.position = data.object.position;
+
+        //arObject.position = data.position;
+
         arObject.color = data.color;
+
+        console.log( 'peer got arObjectData:', data );
         }
     }
 
@@ -243,6 +242,11 @@ arConnectionController( participantState );
 }
 
 function setupArInteractionEvents() {
+
+  function emitArObject( data ) {
+   var sessionId = socketServer.sessionid;
+   socketServer.emit( 'arObjectShare', data, sessionId );
+    }
 
 //
 // Select an AR object and do something cool
