@@ -20,9 +20,6 @@ function orientationAr() {
      }
    }
 
-//
-// ---------------------------------------------------------------------
-//
 function emitArOrientationData() {
 
   window.addEventListener( 'deviceorientation', function( event ) {
@@ -36,7 +33,7 @@ function emitArOrientationData() {
 }
 
 //
-// ------------------------------------------------------------------------
+// ----------  Main Loader  --------------------------
 //
 
 function loadAr( participantState ) {
@@ -50,19 +47,19 @@ function loadAr( participantState ) {
 
    }
 
-   function receiveArObjectFromClient( data ) {
+  function receiveArObjectFromClient( data ) {
 
-       // console.log( 'peer got arObjectData:', data );
+      // console.log( 'peer got arObjectData:', data );
 
-        var arObject = scene.getObjectByName( data.name );
-        arObject.position.x = data.position.x;
-        arObject.position.y = data.position.y;
-        arObject.position.z = data.position.z;
+       var arObject = scene.getObjectByName( data.name );
+       arObject.position.x = data.position.x;
+       arObject.position.y = data.position.y;
+       arObject.position.z = data.position.z;
 
-        //arObject.position = data.position;
+       //arObject.position = data.position;
 
-        arObject.material.color = data.color;
-    }
+       arObject.material.color = data.color;
+   }
 
 function setUpArLayer( participantState ) {
 
@@ -179,20 +176,16 @@ function arConnectionController( participantState ) {
   if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
+
     } else if ( participantState === 'peer' ) {
-
       connectToBroadcastSensors();
-
       socketServer.on( 'arObjectShare', function( data ) {
-
-       // console.log( 'at socketServer.on:', data );
-
-        receiveArObjectFromClient( data );
+           receiveArObjectFromClient( data );
       } );
     }
   }
 
-// Attach the cameras to the device orientation
+// Attach the cameras to orientation provider
 //  - sensors for a mobile initiator
 //  - broadcast for all peers
 
@@ -233,12 +226,6 @@ function connectToBroadcastSensors() {
   requestAnimationFrame( connectToBroadcastSensors );
   }
 
-//  wire up the camera to the deviceSensor or broadcastSensors
-
-//sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
-
-//broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
-
 arConnectionController( participantState );
 
 }
@@ -248,7 +235,7 @@ function setupArInteractionEvents() {
   function emitArObject( data ) {
    var sessionId = socketServer.sessionid;
    socketServer.emit( 'arObjectShare', data, sessionId );
-    }
+  }
 
 //
 // Select an AR object and do something cool
@@ -267,17 +254,37 @@ function setupArInteractionEvents() {
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
+var raycaster, intersects;
+
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
+  if ( userContext.participantState === 'focus' ) {
 
     projector.unprojectVector( vector, sensorDrivenCamera );
 
     vector.sub( sensorDrivenCamera.position );
     vector.normalize();
 
-    var rayCaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
+     rayCaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
 
-    var intersects = rayCaster.intersectObjects( arObjectArray );
+     intersects = rayCaster.intersectObjects( arObjectArray );
+
+    } else if ( userContext.participantState === 'peer' ) {
+
+    vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
+    projector.unprojectVector( vector, broadcastDrivenCamera );
+
+    vector.sub( broadcastDrivenCamera.position );
+    vector.normalize();
+
+     rayCaster = new THREE.Raycaster( broadcastDrivenCamera.position, vector );
+
+     intersects = rayCaster.intersectObjects( arObjectArray );
+
+    }
 
     if ( intersects.length ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
@@ -291,8 +298,6 @@ function setupArInteractionEvents() {
       arShareData.z = intersects[0].object.position.z;
       arShareData.position = intersects[0].object.position;
       arShareData.color = intersects[0].object.material.color;
-
-     // console.log( 'emit arShareData:', arShareData );
 
       emitArObject( arShareData );
     }
