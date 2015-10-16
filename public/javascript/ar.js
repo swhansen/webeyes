@@ -237,7 +237,7 @@ function setupArInteractionEvents( participantState ) {
    socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
-  var cameraDriver, intersects;
+  var cameraDriver;
 
 //
 // Select an AR object and do something cool
@@ -272,7 +272,7 @@ function setupArInteractionEvents( participantState ) {
 
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
 
-    intersects = rayCaster.intersectObjects( arObjectArray );
+    var intersects = rayCaster.intersectObjects( arObjectArray );
 
     console.log( 'intersects:', intersects );
 
