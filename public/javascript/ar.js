@@ -240,9 +240,9 @@ function setupArInteractionEvents( participantState ) {
   var cameraDriver;
 
 if ( participantState === 'focus' ) {
-  cameraDriver = 'sensorDrivenCamera';
+  cameraDriver = sensorDrivenCamera;
 } else {
-  cameraDriver = 'broadcastDrivenCamera';
+  cameraDriver = broadcastDrivenCamera;
 }
 
 //
