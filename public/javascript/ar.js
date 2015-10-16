@@ -237,7 +237,7 @@ function setupArInteractionEvents( participantState ) {
    socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
-  var cameraDriver;
+  var cameraDriver, intersects;
 
 if ( participantState === 'focus' ) {
   cameraDriver = sensorDrivenCamera;
@@ -272,7 +272,9 @@ if ( participantState === 'focus' ) {
 
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
 
-    var intersects = rayCaster.intersectObjects( arObjectArray );
+    intersects = rayCaster.intersectObjects( arObjectArray );
+
+    console.log( 'intersects:', intersects );
 
     if ( intersects.length ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
