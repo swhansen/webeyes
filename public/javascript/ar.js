@@ -176,6 +176,9 @@ function arConnectionController( participantState ) {
   if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
+      socketServer.on( 'arObjectShare', function( data ) {
+           receiveArObjectFromClient( data );
+      } );
 
     } else if ( participantState === 'peer' ) {
       connectToBroadcastSensors();
