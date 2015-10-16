@@ -43,7 +43,7 @@ function loadAr( participantState ) {
 
     setUpArLayer( participantState );
 
-    setupArInteractionEvents();
+    setupArInteractionEvents( participantState );
 
    }
 
@@ -230,12 +230,20 @@ arConnectionController( participantState );
 
 }
 
-function setupArInteractionEvents() {
+function setupArInteractionEvents( participantState ) {
 
   function emitArObject( data ) {
    var sessionId = socketServer.sessionid;
    socketServer.emit( 'arObjectShare', data, sessionId );
   }
+
+  var cameraDriver;
+
+if ( participantState === 'focus' ) {
+  cameraDriver = 'sensorDrivenCamera';
+} else {
+  cameraDriver = 'broadcastDrivenCamera';
+}
 
 //
 // Select an AR object and do something cool
@@ -254,37 +262,17 @@ function setupArInteractionEvents() {
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
-var raycaster, intersects;
-
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
-  if ( userContext.participantState === 'focus' ) {
+    projector.unprojectVector( vector, cameraDriver );
 
-    projector.unprojectVector( vector, sensorDrivenCamera );
-
-    vector.sub( sensorDrivenCamera.position );
+    vector.sub( cameraDriver.position );
     vector.normalize();
 
-     rayCaster = new THREE.Raycaster( sensorDrivenCamera.position, vector );
+    var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
 
-     intersects = rayCaster.intersectObjects( arObjectArray );
-
-    } else if ( userContext.participantState === 'peer' ) {
-
-    vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-
-    projector.unprojectVector( vector, broadcastDrivenCamera );
-
-    vector.sub( broadcastDrivenCamera.position );
-    vector.normalize();
-
-     rayCaster = new THREE.Raycaster( broadcastDrivenCamera.position, vector );
-
-     intersects = rayCaster.intersectObjects( arObjectArray );
-
-    }
+    var intersects = rayCaster.intersectObjects( arObjectArray );
 
     if ( intersects.length ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
