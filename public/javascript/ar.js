@@ -181,6 +181,7 @@ function arConnectionController( participantState ) {
       } );
 
     } else if ( participantState === 'peer' ) {
+      broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObjectFromClient( data );
@@ -256,14 +257,15 @@ function setupArInteractionEvents( participantState ) {
 
   var projector = new THREE.Projector();
 
+    if ( participantState === 'focus' ) {
+      cameraDriver = sensorDrivenCamera;
+    } else if ( participantState === 'peer' ) {
+      cameraDriver = broadcastDrivenCamera;
+    }
+
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
-    if ( participantState === 'focus' ) {
-      cameraDriver = sensorDrivenCamera;
-    } else {
-      cameraDriver = broadcastDrivenCamera;
-    }
 
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
@@ -283,6 +285,13 @@ function setupArInteractionEvents( participantState ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
 
+
+      for( var i = 0; i < intersects.length; i++ ) {
+        var intersection = intersects[ i ],
+        obj = intersection.object;
+        console.log("Intersected object", obj);
+  }
+
 //  AR object data for sharing
 
       arShareData.name = intersects[0].object.name;
@@ -291,6 +300,8 @@ function setupArInteractionEvents( participantState ) {
       arShareData.z = intersects[0].object.position.z;
       arShareData.position = intersects[0].object.position;
       arShareData.color = intersects[0].object.material.color;
+
+      console.log( 'arShareData:', arShareData );
 
       emitArObject( arShareData );
     }
