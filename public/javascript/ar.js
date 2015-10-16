@@ -239,12 +239,6 @@ function setupArInteractionEvents( participantState ) {
 
   var cameraDriver, intersects;
 
-if ( participantState === 'focus' ) {
-  cameraDriver = sensorDrivenCamera;
-} else {
-  cameraDriver = broadcastDrivenCamera;
-}
-
 //
 // Select an AR object and do something cool
 //
@@ -261,6 +255,12 @@ if ( participantState === 'focus' ) {
 
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
+
+    if ( participantState === 'focus' ) {
+      cameraDriver = sensorDrivenCamera;
+    } else {
+      cameraDriver = broadcastDrivenCamera;
+    }
 
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
