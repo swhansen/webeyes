@@ -282,15 +282,18 @@ function setupArInteractionEvents( participantState ) {
     console.log( 'intersects:', intersects );
 
     if ( intersects.length ) {
-      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-      intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
-
-
       for( var i = 0; i < intersects.length; i++ ) {
-        var intersection = intersects[ i ],
-        obj = intersection.object;
-        console.log("Intersected object", obj);
-  }
+
+
+      intersects[i].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+      intersects[i].object.position.x += Math.round( Math.random() ) * 2 - 1;
+
+
+     //for( var i = 0; i < intersects.length; i++ ) {
+     //  var intersection = intersects[ i ],
+     //  obj = intersection.object;
+     //  console.log("Intersected object", obj);
+     //  }
 
 //  AR object data for sharing
 
@@ -302,6 +305,7 @@ function setupArInteractionEvents( participantState ) {
       arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
+    }
 
       emitArObject( arShareData );
     }
