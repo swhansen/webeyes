@@ -166,11 +166,11 @@ scene.add( light );
 var axes = new THREE.AxisHelper( 20 );
   scene.add( axes );
 
-  var planeGeometry = new THREE.PlaneGeometry( 4, 4, 1, 1 );
-  var planeMaterial = new THREE.MeshBasicMaterial( { color: 0xcccccc } );
+  var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
+  var planeMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
-  plane.rotation.y = -4.0 * Math.PI;
+  plane.rotation.x = -4.0 * Math.PI;
   plane.position.x = 0.0;
   plane.position.y = 0.5;
   plane.position.z = -6.5;
