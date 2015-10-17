@@ -266,7 +266,6 @@ function setupArInteractionEvents( participantState ) {
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
 
-
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
@@ -281,19 +280,15 @@ function setupArInteractionEvents( participantState ) {
 
     console.log( 'intersects:', intersects );
 
-    if ( intersects.length ) {
-      for( var i = 0; i < intersects.length; i++ ) {
+    if ( intersects.length > 0 ) {
+      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+      intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
 
-
-      intersects[i].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-      intersects[i].object.position.x += Math.round( Math.random() ) * 2 - 1;
-
-
-     //for( var i = 0; i < intersects.length; i++ ) {
-     //  var intersection = intersects[ i ],
-     //  obj = intersection.object;
-     //  console.log("Intersected object", obj);
-     //  }
+      //for( var i = 0; i < intersects.length; i++ ) {
+      //  var intersection = intersects[ i ],
+      //  obj = intersection.object;
+      //  console.log("Intersected object", obj);
+      //  }
 
 //  AR object data for sharing
 
@@ -305,7 +300,6 @@ function setupArInteractionEvents( participantState ) {
       arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
-    }
 
       emitArObject( arShareData );
     }
