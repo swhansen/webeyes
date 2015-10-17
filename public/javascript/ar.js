@@ -170,7 +170,7 @@ var axes = new THREE.AxisHelper( 20 );
   var planeMaterial = new THREE.MeshBasicMaterial( { color: 0xcccccc } );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
-  plane.rotation.z = -0.5 * Math.PI;
+  plane.rotation.y = -4.0 * Math.PI;
   plane.position.x = 0.0;
   plane.position.y = 0.5;
   plane.position.z = -6.5;
