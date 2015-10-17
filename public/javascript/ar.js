@@ -1,6 +1,5 @@
 var arDeviceOrientation = {};
 var arObjectArray = [];
-var arShareData = {};
 
 function orientationAr() {
 
@@ -51,7 +50,7 @@ function loadAr( participantState ) {
 
       // console.log( 'peer got arObjectData:', data );
 
-       var arObject = scene.getObjectByName( data.name );
+   var arObject = scene.getObjectByName( data.name );
        arObject.position.x = data.position.x;
        arObject.position.y = data.position.y;
        arObject.position.z = data.position.z;
@@ -164,6 +163,25 @@ scene.add( knot );
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
+var axes = new THREE.AxisHelper(20);
+  scene.add(axes);
+
+  var planeGeometry = new THREE.PlaneGeometry(60, 20, 1, 1);
+  var planeMaterial = new THREE.MeshBasicMaterial({color: 0xcccccc});
+  var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+  plane.rotation.x = -0.5 * Math.PI;
+  plane.position.x = 15
+  plane.position.y = 0
+  plane.position.z = 0
+
+  scene.add(plane);
+
+
+
+
+
+
 arObjectArray.push( cube2 );
 arObjectArray.push( knot );
 
@@ -228,7 +246,7 @@ function connectToBroadcastSensors() {
   renderer.render( scene, broadcastDrivenCamera );
 
   requestAnimationFrame( connectToBroadcastSensors );
-  }
+}
 
 arConnectionController( participantState );
 
@@ -242,6 +260,7 @@ function setupArInteractionEvents( participantState ) {
   }
 
   var cameraDriver;
+  var arShareData = {};
 
 //
 // Select an AR object and do something cool
@@ -283,12 +302,6 @@ function setupArInteractionEvents( participantState ) {
     if ( intersects.length > 0 ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
-
-      //for( var i = 0; i < intersects.length; i++ ) {
-      //  var intersection = intersects[ i ],
-      //  obj = intersection.object;
-      //  console.log("Intersected object", obj);
-      //  }
 
 //  AR object data for sharing
 
