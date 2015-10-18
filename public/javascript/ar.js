@@ -168,10 +168,7 @@ scene.add( light );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
   plane.rotation.x = -0.5 * Math.PI;
-  plane.position.x = 1.0;
-  plane.position.y = -0.1;
-  plane.position.z = -2.5;
-
+  plane.position.set( 1.0, -0.1, -3.5 );
   scene.add( plane );
 
 arObjectArray.push( cube2 );
@@ -217,8 +214,8 @@ function animateArObjects() {
   knot.rotation.y += 0.03;
   knot.rotation.z += 0.03;
 
-  sphere3.position.x = 2 + ( 20 * ( Math.cos( 0.2 ) ) );
-  sphere3.position.y = 1 + ( 2 * Math.abs( Math.sin( 0.2 ) ) ) ;
+  sphere3.position.x = 1.0 + ( 20 * ( Math.cos( 0.2 ) ) );
+  sphere3.position.y = -0.1 + ( 2 * Math.abs( Math.sin( 0.2 ) ) ) ;
 }
 
 function connectToDeviceSensors() {
