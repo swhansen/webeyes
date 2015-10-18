@@ -164,13 +164,13 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
   var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
-  var planeMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
+  var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x0066FF } );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
-  plane.rotation.x = Math.PI / 2;
+  plane.rotation.x = -0.5 * Math.PI;
   plane.position.x = 1.0;
-  plane.position.y = -0.5;
-  plane.position.z = -3.5;
+  plane.position.y = -0.1;
+  plane.position.z = -2.5;
 
   scene.add( plane );
 
