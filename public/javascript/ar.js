@@ -130,7 +130,7 @@ var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
 
 cube1.position.set( 0.0, 1.0, -2.0 );
 cube2.position.set( 0.0, 0.5,  -4.0 );
-cube3.position.set( 1.0, -0.5, -6.0 );
+cube3.position.set( 1.0, -0.1, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
 // y - up from vertical screen
@@ -142,7 +142,7 @@ cube3.rotateZ = 10.00;
 
 sphere1.position.set( -2.0, 1.0, 1.0 );
 sphere2.position.set( -3.0, 1.0, 1.0 );
-sphere3.position.set( 2.0, 1.0, 1.0 );
+sphere3.position.set( 1.0, -0.2, -3.0 );
 
 scene.add( cube1 );
 scene.add( cube2 );
@@ -168,7 +168,7 @@ scene.add( light );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
   plane.rotation.x = -0.5 * Math.PI;
-  plane.position.set( 1.0, -0.1, -3.5 );
+  plane.position.set( 1.0, -0.2, -4.5 );
   scene.add( plane );
 
 arObjectArray.push( cube2 );
