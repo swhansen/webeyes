@@ -111,7 +111,7 @@ sphere.position.set( 0.5, 0.0, 0.0 );
 scene.add( sphere );
 
 var cubeGeometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
-var sphereGeometry1 = new THREE.SphereGeometry( 0.25, 16, 16 );
+var sphereGeometry1 = new THREE.SphereGeometry( 0.2, 16, 16 );
 
 material = new THREE.MeshLambertMaterial( { color: 'red' } );
 material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
@@ -218,7 +218,7 @@ function animateArObjects() {
 
   step += 0.02;
   //sphere3.position.x = 1.2 + ( 20 * ( Math.cos( step ) ) );
-  sphere3.position.y = -0.2 + ( 10 * Math.abs( Math.sin( step ) ) ) ;
+  sphere3.position.y = -0.1 + ( 5 * Math.abs( Math.sin( step ) ) ) ;
 }
 
 function connectToDeviceSensors() {
