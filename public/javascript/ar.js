@@ -170,7 +170,7 @@ scene.add( light );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
   plane.rotation.x = -0.5 * Math.PI;
-  plane.position.set( 1.0, -0.1, -5.5 );
+  plane.position.set( 1.0, -0.2, -5.5 );
   scene.add( plane );
 
 arObjectArray.push( cube2 );
@@ -218,7 +218,7 @@ function animateArObjects() {
 
   step += 0.02;
   //sphere3.position.x = 1.2 + ( 20 * ( Math.cos( step ) ) );
-  sphere3.position.y = -0.1 + ( 5 * Math.abs( Math.sin( step ) ) ) ;
+  sphere3.position.y = -0.1 + ( 2 * Math.abs( Math.sin( step ) ) ) ;
 }
 
 function connectToDeviceSensors() {
