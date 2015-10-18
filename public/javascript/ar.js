@@ -132,7 +132,7 @@ var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
 
 cube1.position.set( 0.0, 1.0, -2.0 );
 cube2.position.set( 0.0, 0.5,  -4.0 );
-cube3.position.set( 1.0, -0.1, -6.0 );
+cube3.position.set( 1.0, -0.2, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
 // y - up from vertical screen
@@ -217,8 +217,8 @@ function animateArObjects() {
   knot.rotation.z += 0.03;
 
   step += 0.02;
-  //sphere3.position.x = 1.2 + ( 20 * ( Math.cos( step ) ) );
-  sphere3.position.y = -0.1 + ( 2 * Math.abs( Math.sin( step ) ) ) ;
+  sphere3.position.x = 1.2 + ( 1.0 * ( Math.cos( step ) ) );
+  sphere3.position.y = -0.1 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
 }
 
 function connectToDeviceSensors() {
