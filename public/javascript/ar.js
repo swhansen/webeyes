@@ -62,6 +62,8 @@ function loadAr( participantState ) {
 
 function setUpArLayer( participantState ) {
 
+  var step = 0;
+
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'ar-canvas' );
   var mouseVector;
