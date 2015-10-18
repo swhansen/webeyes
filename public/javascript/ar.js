@@ -217,8 +217,8 @@ function animateArObjects() {
   knot.rotation.y += 0.03;
   knot.rotation.z += 0.03;
 
-  sphere3.position.x = 2 + ( 10 * (Math.cos(step)));
-  sphere3.position.y = 2 + ( 10 * Math.abs(Math.sin(0.02)));
+  sphere3.position.x = 2 + ( 10 * (Math.cos(0.02) ) );
+  sphere3.position.y = 2 + ( 10 * Math.abs(Math.sin(0.02) )) ;
 }
 
 function connectToDeviceSensors() {
