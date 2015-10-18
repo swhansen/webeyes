@@ -170,7 +170,7 @@ scene.add( light );
   plane.rotation.x = Math.PI / 2;
   plane.position.x = 0.0;
   plane.position.y = -0.5;
-  plane.position.z = -4.5;
+  plane.position.z = -2.5;
 
   scene.add( plane );
 
@@ -217,8 +217,8 @@ function animateArObjects() {
   knot.rotation.y += 0.03;
   knot.rotation.z += 0.03;
 
-  sphere3.position.x = 2 + ( 20 * (Math.cos(0.02) ) );
-  sphere3.position.y = 2 + ( 2 * Math.abs(Math.sin(0.02) )) ;
+  sphere3.position.x = 2 + ( 20 * ( Math.cos( 0.2 ) ) );
+  sphere3.position.y = 2 + ( 2 * Math.abs( Math.sin( 0.2 ) ) ) ;
 }
 
 function connectToDeviceSensors() {
