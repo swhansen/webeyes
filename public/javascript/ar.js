@@ -217,7 +217,7 @@ var step;
 
   step += 0.02;
   //sphere3.position.x = 1.2 + ( 20 * ( Math.cos( 0.2 ) ) );
-  sphere3.position.y = -0.2 + ( 10 * Math.abs( Math.sin( step ) ) ) ;
+  sphere3.position.y = -0.2 + ( 1 * Math.abs( Math.sin( step ) ) ) ;
 }
 
 function connectToDeviceSensors() {
