@@ -170,7 +170,7 @@ scene.add( light );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
   plane.rotation.x = -0.5 * Math.PI;
-  plane.position.set( 1.2, -0.2, -5.5 );
+  plane.position.set( 1.4, -0.3, -5.5 );
   scene.add( plane );
 
 arObjectArray.push( cube2 );
