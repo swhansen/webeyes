@@ -142,7 +142,7 @@ cube3.rotateZ = 10.00;
 
 sphere1.position.set( -2.0, 1.0, 1.0 );
 sphere2.position.set( -3.0, 1.0, 1.0 );
-sphere3.position.set( 1.0, -0.2, -3.0 );
+sphere3.position.set( 1.2, -0.2, -3.0 );
 
 scene.add( cube1 );
 scene.add( cube2 );
@@ -163,8 +163,8 @@ scene.add( knot );
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
-  var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
-  var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x0066FF } );
+  var planeGeometry = new THREE.PlaneGeometry( 4, 2, 1, 1 );
+  var planeMaterial = new THREE.MeshLambertMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
   plane.rotation.x = -0.5 * Math.PI;
@@ -214,8 +214,8 @@ function animateArObjects() {
   knot.rotation.y += 0.03;
   knot.rotation.z += 0.03;
 
-  sphere3.position.x = 1.0 + ( 20 * ( Math.cos( 0.2 ) ) );
-  sphere3.position.y = -0.1 + ( 2 * Math.abs( Math.sin( 0.2 ) ) ) ;
+  //sphere3.position.x = 1.0 + ( 20 * ( Math.cos( 0.2 ) ) );
+  //sphere3.position.y = -0.1 + ( 2 * Math.abs( Math.sin( 0.2 ) ) ) ;
 }
 
 function connectToDeviceSensors() {
