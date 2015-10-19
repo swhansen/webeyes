@@ -231,7 +231,7 @@ function animateArObjects() {
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
 
   if ( animateCube === true ) {
-    cube3.position.z = -6.0 + ( -12.0 * Math.abs( Math.sin( step ) ) );
+    cube3.position.z = -6.0 + ( -25.0 * Math.abs( Math.sin( step ) ) );
   }
 
 }
