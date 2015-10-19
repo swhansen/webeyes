@@ -136,7 +136,7 @@ var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
 
 cube1.position.set( 0.0, 1.0, -2.0 );
 cube2.position.set( 0.0, 0.5,  -4.0 );
-cube3.position.set( 1.0, -0.15, -6.0 );
+cube3.position.set( 1.0, -0.1, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
 // y - up from vertical screen
@@ -232,7 +232,7 @@ function animateArObjects() {
 
   if ( animateCube === true ) {
 
-    cube3.position.z = -6.0 + ( -8.0 * Math.abs( Math.sin( step ) ) );
+    cube3.position.z = -6.0 + ( -15.0 * Math.abs( Math.sin( step ) ) );
   }
 
 }
