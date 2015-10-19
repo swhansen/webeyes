@@ -114,6 +114,7 @@ sphere.position.set( 0.5, 0.0, 0.0 );
 scene.add( sphere );
 
 var cubeGeometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
+var cube3Geometry = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
 var sphereGeometry1 = new THREE.SphereGeometry( 0.15, 16, 16 );
 
 material = new THREE.MeshLambertMaterial( { color: 'red' } );
@@ -126,7 +127,7 @@ orbitSphereMaterial = new THREE.MeshLambertMaterial( { color: 0xB24700 } );
 var cube = new THREE.Mesh( cubeGeometry, material );
 var cube1 = new THREE.Mesh( cubeGeometry, material );
 var cube2 = new THREE.Mesh( cubeGeometry, material1 );
-var cube3 = new THREE.Mesh( cubeGeometry, material2 );
+var cube3 = new THREE.Mesh( cube3Geometry, material2 );
 var sphere1 = new THREE.Mesh( sphereGeometry1, sphereMaterial );
 var sphere2 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
 var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
@@ -230,7 +231,7 @@ function animateArObjects() {
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
 
   if ( animateCube === true ) {
-    cube3.position.z = -6.0 + ( -5.0 * Math.abs( Math.sin( step ) ) );
+    cube3.position.z = -6.0 + ( -8.0 * Math.abs( Math.sin( step ) ) );
   }
 
 }
