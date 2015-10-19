@@ -144,7 +144,7 @@ cube3.rotateZ = 10.00;
 
 sphere1.position.set( -2.0, 1.0, 1.0 );
 sphere2.position.set( -3.0, 1.0, 1.0 );
-sphere3.position.set( 1.2, -0.2, -3.0 );
+sphere3.position.set( 1.2, -0.2, -4.0 );
 
 scene.add( cube1 );
 scene.add( cube2 );
@@ -166,12 +166,15 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
   var planeGeometry = new THREE.PlaneGeometry( 4, 2, 1, 1 );
-  var planeMaterial = new THREE.MeshLambertMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
+  var planeMaterial = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
   plane.rotation.x = -0.5 * Math.PI;
   plane.position.set( 1.5, -0.35, -5.5 );
   scene.add( plane );
+
+  var axisHelper = new THREE.AxisHelper( 5 );
+  scene.add( axisHelper );
 
 arObjectArray.push( cube2 );
 arObjectArray.push( knot );
