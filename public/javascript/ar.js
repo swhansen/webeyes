@@ -1,5 +1,6 @@
 var arDeviceOrientation = {};
 var arObjectArray = [];
+var animateCube;
 
 function orientationAr() {
 
@@ -39,7 +40,7 @@ function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
-  var animateCube;
+
 
     setUpArLayer( participantState );
 
