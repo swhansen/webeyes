@@ -130,13 +130,13 @@ var cube2 = new THREE.Mesh( cubeGeometry, material1 );
 var cube3 = new THREE.Mesh( cube3Geometry, material2 );
 var sphere1 = new THREE.Mesh( sphereGeometry1, sphereMaterial );
 var sphere2 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
-var sphere3 = new THREE.Mesh( sphereGeometry1, sphereMaterial2 );
+var sphere3 = new THREE.Mesh( sphereGeometry1, material );
 
 // red, green, blue
 
 cube1.position.set( 0.0, 1.0, -2.0 );
 cube2.position.set( 0.0, 0.5,  -4.0 );
-cube3.position.set( 1.0, -0.05, -6.0 );
+cube3.position.set( 1.0, 0.0, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
 // y - up from vertical screen
@@ -171,7 +171,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
   var planeGeometry = new THREE.PlaneGeometry( 4, 2, 1, 1 );
-  var planeMaterial = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
+  var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
   plane.rotation.x = -0.5 * Math.PI;
@@ -231,7 +231,7 @@ function animateArObjects() {
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
 
   if ( animateCube === true ) {
-    cube3.position.z = -6.0 + ( -15.0 * Math.abs( Math.sin( step ) ) );
+    cube3.position.z = -6.0 + ( -12.0 * Math.abs( Math.sin( step ) ) );
   }
 
 }
