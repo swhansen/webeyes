@@ -39,6 +39,7 @@ function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
+  var animateCube;
 
     setUpArLayer( participantState );
 
@@ -153,13 +154,14 @@ scene.add( sphere1 );
 scene.add( sphere2 );
 scene.add( sphere3 );
 
-cube2.name = ( 'cube2' );
+cube2.name = 'cube2';
+cube3.name = 'cube3';
 
 var knotGeometry = new THREE.TorusKnotGeometry( 0.15, 0.1, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
 knot.position.set( 3.5, 1.0, 1.0 );
-knot.name = ( 'knot' );
+knot.name = 'knot';
 scene.add( knot );
 
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
@@ -224,7 +226,9 @@ function animateArObjects() {
   sphere3.position.x = 1.2 + ( 0.8 * ( Math.cos( step ) ) );
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
 
-  cube3.position.z = -6.0 + ( 5.0 * Math.abs( Math.sin( step ) ) );
+  if ( animateCube === true ) {
+    cube3.position.z = -6.0 + ( -5.0 * Math.abs( Math.sin( step ) ) );
+  }
 
 }
 
@@ -298,6 +302,12 @@ function setupArInteractionEvents( participantState ) {
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
 
     var intersects = rayCaster.intersectObjects( arObjectArray );
+
+    if ( intersects[0].name === 'cube3' ) {
+
+      animateCube = true;
+
+    }
 
     console.log( 'intersects:', intersects );
 
