@@ -182,6 +182,7 @@ scene.add( light );
   scene.add( axisHelper );
 
 arObjectArray.push( cube2 );
+arObjectArray.push( cube3 );
 arObjectArray.push( knot );
 
 function arConnectionController( participantState ) {
@@ -309,7 +310,7 @@ function setupArInteractionEvents( participantState ) {
 
    // selectedArObject = scene.getObjectByName( intersects[0].object.name );
 
-    if ( intersects[0].object.name == 'cube3' ) {
+    if ( intersects[0].object.name === 'cube3' ) {
 
       animateCube = true;
 
