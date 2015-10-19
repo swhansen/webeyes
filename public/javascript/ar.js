@@ -308,7 +308,7 @@ function setupArInteractionEvents( participantState ) {
 
    // console.log( 'Selected Object:', intersects[0].object.name );
 
-    selectedArObject = scene.getObjectByName( data.name );
+    selectedArObject = scene.getObjectByName( intersects[0].object.name );
 
     if ( selectedArObject.name === 'cube3' ) {
 
