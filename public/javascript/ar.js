@@ -43,7 +43,6 @@ function loadAr( participantState ) {
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
 
-
     setUpArLayer( participantState );
 
     setupArInteractionEvents( participantState );
@@ -306,11 +305,11 @@ function setupArInteractionEvents( participantState ) {
 
     intersects = rayCaster.intersectObjects( arObjectArray );
 
-   // console.log( 'Selected Object:', intersects[0].object.name );
+    console.log( 'Selected Object:', intersects[0].object.name );
 
-    selectedArObject = scene.getObjectByName( intersects[0].object.name );
+   // selectedArObject = scene.getObjectByName( intersects[0].object.name );
 
-    if ( selectedArObject.name === 'cube3' ) {
+    if ( intersects[0].object.name == 'cube3' ) {
 
       animateCube = true;
 
