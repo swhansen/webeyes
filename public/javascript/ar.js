@@ -46,9 +46,9 @@ function loadAr( participantState ) {
 
    }
 
-  function receiveArObjectFromClient( data ) {
+  function receiveArObject( data ) {
 
-      // console.log( 'peer got arObjectData:', data );
+      console.log( 'receiveArObject got arObjectData:', data );
 
    var arObject = scene.getObjectByName( data.name );
        arObject.position.x = data.position.x;
@@ -173,7 +173,8 @@ scene.add( light );
   plane.position.set( 1.5, -0.35, -5.5 );
   scene.add( plane );
 
-  var axisHelper = new THREE.AxisHelper( 5 );
+  var axisHelper = new THREE.AxisHelper( 10 );
+  axisHelper.position.set( 1.5, -0.35, -5.5 );
   scene.add( axisHelper );
 
 arObjectArray.push( cube2 );
@@ -189,14 +190,14 @@ function arConnectionController( participantState ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObjectFromClient( data );
+           receiveArObject( data );
       } );
 
     } else if ( participantState === 'peer' ) {
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObjectFromClient( data );
+           receiveArObject( data );
       } );
     }
   }
@@ -222,6 +223,9 @@ function animateArObjects() {
   step += 0.02;
   sphere3.position.x = 1.2 + ( 0.8 * ( Math.cos( step ) ) );
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
+
+  cube3.position.z = -6.0 + ( 1.0 * Math.abs( Math.sin( step ) ) );
+
 }
 
 function connectToDeviceSensors() {
