@@ -186,13 +186,16 @@ arObjectArray.push( cube2 );
 arObjectArray.push( cube3 );
 arObjectArray.push( knot );
 
-var position = { x : 1, y: -0.35, z: -5.5 };
-var target = { x : 2, y: .5, z: -5.5 };
+
+var position = { x: 1, y: -0.35, z: -5.5 };
+var target = { x: 2, y: 0.5, z: -5.5 };
 var tween = new TWEEN.Tween(position).to(target, 2000);
+tween.easing(TWEEN.Easing.Elastic.InOut)
 
 tween.onUpdate(function(){
     knot.position.x = position.x;
     knot.position.y = position.y;
+    knot.position.z = position.z;
 });
 
 tween.start();
