@@ -186,6 +186,20 @@ arObjectArray.push( cube2 );
 arObjectArray.push( cube3 );
 arObjectArray.push( knot );
 
+var position = { x : 1, y: -0.35, z: -5.5 };
+var target = { x : 2, y: .5, z: -5.5 };
+var tween = new TWEEN.Tween(position).to(target, 2000);
+
+tween.onUpdate(function(){
+    knot.position.x = position.x;
+    knot.position.y = position.y;
+});
+
+tween.start();
+
+
+
+
 function arConnectionController( participantState ) {
 
 //   Based on participantState(focus or peer)
@@ -232,9 +246,8 @@ function animateArObjects() {
 
   if ( animateCube === true ) {
     cube3.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
-    cube3.position.y = -0.2 + ( 2.0 * Math.abs( Math.sin( step ) ) ) ;
   }
-
+tween.update();
 }
 
 function connectToDeviceSensors() {
@@ -246,6 +259,7 @@ function connectToDeviceSensors() {
   renderer.render( scene, sensorDrivenCamera );
 
   requestAnimationFrame( connectToDeviceSensors );
+
 }
 
 function connectToBroadcastSensors() {
