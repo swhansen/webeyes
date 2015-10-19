@@ -58,7 +58,7 @@ function loadAr( participantState ) {
        arObject.position.y = data.position.y;
        arObject.position.z = data.position.z;
 
-       //arObject.position = data.position;
+       arObject.name = data.name;
 
        arObject.material.color = data.color;
    }
@@ -231,6 +231,7 @@ function animateArObjects() {
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
 
   if ( animateCube === true ) {
+
     cube3.position.z = -6.0 + ( -8.0 * Math.abs( Math.sin( step ) ) );
   }
 
@@ -314,6 +315,8 @@ function setupArInteractionEvents( participantState ) {
     if ( intersects[0].object.name === 'cube3' ) {
 
       animateCube = true;
+
+      return;
 
     }
 
