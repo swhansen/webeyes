@@ -2,6 +2,7 @@ var arDeviceOrientation = {};
 var arObjectArray = [];
 var animateCube;
 var intersects;
+var selectedArObject;
 
 function orientationAr() {
 
@@ -305,7 +306,11 @@ function setupArInteractionEvents( participantState ) {
 
     intersects = rayCaster.intersectObjects( arObjectArray );
 
-    if ( intersects[0].object.name === 'cube3' ) {
+   // console.log( 'Selected Object:', intersects[0].object.name );
+
+    selectedArObject = scene.getObjectByName( data.name );
+
+    if ( selectedArObject.name === 'cube3' ) {
 
       animateCube = true;
 
