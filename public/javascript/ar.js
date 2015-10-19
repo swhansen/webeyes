@@ -303,7 +303,7 @@ function setupArInteractionEvents( participantState ) {
 
     var intersects = rayCaster.intersectObjects( arObjectArray );
 
-    if ( intersects[0].name === 'cube3' ) {
+    if ( intersects[0].object.name === 'cube3' ) {
 
       animateCube = true;
 
