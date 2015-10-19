@@ -1,6 +1,7 @@
 var arDeviceOrientation = {};
 var arObjectArray = [];
 var animateCube;
+var intersects;
 
 function orientationAr() {
 
@@ -302,7 +303,7 @@ function setupArInteractionEvents( participantState ) {
 
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
 
-    var intersects = rayCaster.intersectObjects( arObjectArray );
+    intersects = rayCaster.intersectObjects( arObjectArray );
 
     if ( intersects[0].object.name === 'cube3' ) {
 
