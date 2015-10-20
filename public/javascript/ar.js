@@ -50,15 +50,14 @@ function loadAr( participantState ) {
 
   function receiveArObject( data ) {
 
+    // grab the socket.i0 packet for an AR state change
+
       console.log( 'receiveArObject got arObjectData:', data );
 
    var arObject = scene.getObjectByName( data.name );
        arObject.position.x = data.position.x;
        arObject.position.y = data.position.y;
        arObject.position.z = data.position.z;
-
-       arObject.name = data.name;
-
        arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
    }
 
@@ -230,6 +229,10 @@ function animateArObjects() {
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
 
   if ( animateCube === true ) {
+    if ( cube3.position.z === -6.0 ) {
+      animateCube = false;
+    }
+
     cube3.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
   }
 }
@@ -311,9 +314,7 @@ function setupArInteractionEvents( participantState ) {
    // selectedArObject = scene.getObjectByName( intersects[0].object.name );
 
     if ( intersects[0].object.name === 'cube3' ) {
-
       animateCube = true;
-
       return;
 
     }
