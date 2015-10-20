@@ -335,6 +335,7 @@ function setupArInteractionEvents( participantState ) {
       arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
+      intersects = [];
 
       emitArObject( arShareData );
     }
