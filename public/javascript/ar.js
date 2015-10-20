@@ -156,7 +156,7 @@ sphere1.position.set( -2.0, 1.0, 1.0 );
 sphere2.position.set( -3.0, 1.0, 1.0 );
 sphere3.position.set( 1.2, -0.2, -4.0 );
 
-scene.add( cube1 );
+//scene.add( cube1 );
 scene.add( cube2 );
 scene.add( cube3 );
 scene.add( sphere1 );
@@ -169,7 +169,7 @@ cube3.name = 'cube3';
 var knotGeometry = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
-knot.position.set( 0.5, 0.15, -5.0 );
+knot.position.set( 0.5, 0.2, -5.0 );
 knot.name = 'knot';
 scene.add( knot );
 
