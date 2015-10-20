@@ -137,7 +137,7 @@ var sphere3 = new THREE.Mesh( sphereGeometry1, material );
 
 cube1.position.set( 0.0, 1.0, -2.0 );
 cube2.position.set( 0.0, 0.5,  -4.0 );
-cube3.position.set( 0.9, 0.0, -6.0 );
+cube3.position.set( -1.0, 0.0, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
 // y - up from vertical screen
@@ -164,7 +164,7 @@ cube3.name = 'cube3';
 var knotGeometry = new THREE.TorusKnotGeometry( 0.15, 0.1, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
-knot.position.set( 3.5, 1.0, 1.0 );
+knot.position.set( 0.5, 0.0, -6.0 );
 knot.name = 'knot';
 scene.add( knot );
 
@@ -223,8 +223,8 @@ function animateArObjects() {
 
 var dt = clock.getDelta();
 
-  cube2.rotation.x += 0.03;
-  cube2.rotation.y += 0.03;
+ // cube2.rotation.x += 0.03;
+ // cube2.rotation.y += 0.03;
 
   knot.rotation.y += 0.03;
   knot.rotation.z += 0.03;
@@ -234,8 +234,7 @@ var dt = clock.getDelta();
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) );
 
   if ( animateCube === true ) {
-    cube3.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
-    cube3.position.y = 0.0 + ( 1.0 * Math.abs( Math.sin( step ) ) );
+    knot.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
   }
 }
 
@@ -315,7 +314,7 @@ function setupArInteractionEvents( participantState ) {
 
    // selectedArObject = scene.getObjectByName( intersects[0].object.name );
 
-    if ( intersects[0].object.name === 'cube3' ) {
+    if ( intersects[0].object.name === 'knot' ) {
       animateCube = !animateCube;
       return;
 
