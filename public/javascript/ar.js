@@ -136,8 +136,8 @@ var sphere3 = new THREE.Mesh( sphereGeometry1, material );
 // red, green, blue
 
 cube1.position.set( 0.0, 1.0, -2.0 );
-cube2.position.set( 0.0, 0.25,  -4.0 );
-cube3.position.set( -1.0, 0.0, -6.0 );
+cube2.position.set( 0.0, 0.0,  -4.0 );
+cube3.position.set( -2.0, 0.0, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
 // y - up from vertical screen
@@ -161,7 +161,7 @@ scene.add( sphere3 );
 cube2.name = 'cube2';
 cube3.name = 'cube3';
 
-var knotGeometry = new THREE.TorusKnotGeometry( 0.2, 0.1, 100, 16 );
+var knotGeometry = new THREE.TorusKnotGeometry( 0.3, 0.1, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
 knot.position.set( 0.5, 0.0, -6.0 );
@@ -230,8 +230,8 @@ var dt = clock.getDelta();
   knot.rotation.z += 0.03;
 
   step += dt * 0.5;
-  sphere3.position.x =  1.2 + ( 0.8 * ( Math.cos( step ) ) ) ;
-  sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) );
+  sphere3.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
+  sphere3.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
   if ( animateCube === true ) {
     knot.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
