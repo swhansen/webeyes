@@ -59,7 +59,7 @@ function loadAr( participantState ) {
 
        arObject.name = data.name;
 
-       arObject.material.color = data.color;
+       arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
    }
 
 function setUpArLayer( participantState ) {
@@ -318,7 +318,7 @@ function setupArInteractionEvents( participantState ) {
 
     }
 
-    console.log( 'intersects:', intersects );
+    console.log( 'intersects:', intersects[0] );
 
     if ( intersects.length > 0 ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
