@@ -101,77 +101,49 @@ broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_H
 
 renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 renderer.setSize( box0Width, box0Width );
-
 renderer.setClearColor( 0x000000, 0 );
 
-var radius = 0.3,
-    segments = 16,
-    rings = 16;
-
-var sphereMaterial = new THREE.MeshLambertMaterial( { color: 'blue' } );
-
-var sphere = new THREE.Mesh( new THREE.SphereGeometry(
-    radius,
-    segments,
-    rings ),
-  sphereMaterial );
-
-sphere.position.set( 0.5, 0.0, 0.0 );
-scene.add( sphere );
-
-var cubeGeometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
+var cube2Geometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
 var cube3Geometry = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
-var sphereGeometry1 = new THREE.SphereGeometry( 0.15, 16, 16 );
+var sphere3Geometry = new THREE.SphereGeometry( 0.15, 16, 16 );
 
-material = new THREE.MeshLambertMaterial( { color: 'red' } );
-material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
-material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
-sphereMaterial1 = new THREE.MeshLambertMaterial( { color: 'yellow' } );
-sphereMaterial2 = new THREE.MeshLambertMaterial( { color: 0x0066FF } );
-orbitSphereMaterial = new THREE.MeshLambertMaterial( { color: 0xB24700 } );
+var material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
+var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
+var sphere1Material = new THREE.MeshLambertMaterial( { color: 'yellow' } );
 
-var cube = new THREE.Mesh( cubeGeometry, material );
-var cube1 = new THREE.Mesh( cubeGeometry, material );
-var cube2 = new THREE.Mesh( cubeGeometry, material1 );
-var cube3 = new THREE.Mesh( cube3Geometry, material2 );
-var sphere1 = new THREE.Mesh( sphereGeometry1, sphereMaterial );
-var sphere2 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
-var sphere3 = new THREE.Mesh( sphereGeometry1, material );
-
-// red, green, blue
-
-cube1.position.set( 0.0, 1.0, -2.0 );
-cube2.position.set( 0.0, 0.0,  -4.0 );
-cube3.position.set( -2.0, 0.0, -6.0 );
-
-// z - away from vertical screen forward( negative forward)
-// y - up from vertical screen
-// x - R(positive)  from screen
-
-//red cube blue ball same y
-
-cube3.rotateZ = 10.00;
-
-sphere1.position.set( -2.0, 1.0, 1.0 );
-sphere2.position.set( -3.0, 1.0, 1.0 );
-sphere3.position.set( 1.2, -0.2, -4.0 );
-
-//scene.add( cube1 );
-scene.add( cube2 );
-scene.add( cube3 );
-scene.add( sphere1 );
-scene.add( sphere2 );
-scene.add( sphere3 );
-
-cube2.name = 'cube2';
-cube3.name = 'cube3';
+//sphereMaterial2 = new THREE.MeshLambertMaterial( { color: 0x0066FF } );
 
 var knotGeometry = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
-knot = new THREE.Mesh( knotGeometry, knotMaterial );
-knot.position.set( 0.5, 0.22, -5.0 );
-knot.name = 'knot';
+
+var cube2 = new THREE.Mesh( cube2Geometry, material1 );
+var cube3 = new THREE.Mesh( cube3Geometry, material2 );
+var sphere3 = new THREE.Mesh( sphere3Geometry, material1 );
+var knot = new THREE.Mesh( knotGeometry, knotMaterial );
+
+cube2.position.set( 0.0, 0.0,  -4.0 );
+cube3.position.set( -2.0, 0.0, -6.0 );
+
+//sphere1.position.set( -2.0, 1.0, 1.0 );
+//sphere2.position.set( -3.0, 1.0, 1.0 );
+
+sphere3.position.set( 1.2, -0.2, -4.0 );
+
+cube3.rotateZ = 10.00;
+
+scene.add( cube2 );
+scene.add( cube3 );
+scene.add( sphere3 );
 scene.add( knot );
+
+//scene.add( sphere1 );
+//scene.add( sphere2 );
+
+cube2.name = 'cube2';
+cube3.name = 'cube3';
+knot.name = 'knot';
+
+knot.position.set( 0.5, 0.22, -5.0 );
 
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
