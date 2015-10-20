@@ -42,7 +42,7 @@ function loadAr( participantState ) {
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
   var clock = new THREE.clock();
-  clock.start();
+  clock.start;
 
     setUpArLayer( participantState );
 
