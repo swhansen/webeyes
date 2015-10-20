@@ -137,7 +137,7 @@ var sphere3 = new THREE.Mesh( sphereGeometry1, material );
 
 cube1.position.set( 0.0, 1.0, -2.0 );
 cube2.position.set( 0.0, 0.5,  -4.0 );
-cube3.position.set( 1.0, 0.0, -6.0 );
+cube3.position.set( 0.9, 0.0, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
 // y - up from vertical screen
@@ -233,12 +233,13 @@ var dt = clock.getDelta();
   sphere3.position.x =  1.2 + ( 0.8 * ( Math.cos( step ) ) ) ;
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) );
 
-  if ( animateCube === true ) {
-    cube3.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
-
-    if ( cube3.position.z === -6.0 ) {
+if ( cube3.position.z >= -5.95 ) {
       animateCube = false;
     }
+
+  if ( animateCube === true ) {
+    cube3.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
+    cube3.position.y = 0.0 + ( 1.0 * Math.abs( Math.sin( step ) ) );
   }
 }
 
