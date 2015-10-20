@@ -1,6 +1,6 @@
 var arDeviceOrientation = {};
 var arObjectArray = [];
-var animateCube;
+var animateCube = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 
@@ -233,10 +233,6 @@ var dt = clock.getDelta();
   sphere3.position.x =  1.2 + ( 0.8 * ( Math.cos( step ) ) ) ;
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) );
 
-if ( cube3.position.z >= -5.95 ) {
-      animateCube = false;
-    }
-
   if ( animateCube === true ) {
     cube3.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
     cube3.position.y = 0.0 + ( 1.0 * Math.abs( Math.sin( step ) ) );
@@ -320,7 +316,7 @@ function setupArInteractionEvents( participantState ) {
    // selectedArObject = scene.getObjectByName( intersects[0].object.name );
 
     if ( intersects[0].object.name === 'cube3' ) {
-      animateCube = true;
+      animateCube = !animateCube;
       return;
 
     }
