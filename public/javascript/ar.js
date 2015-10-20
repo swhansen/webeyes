@@ -330,7 +330,7 @@ function setupArInteractionEvents( participantState ) {
     if ( intersects.length > 0 ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
-      intersects[0].object.rotation.y += Math.PI / 180.0 * 45.0;
+     // intersects[0].object.rotation.y += Math.PI / 180.0 * 45.0;
 
 //  AR object data for sharing
 
