@@ -2,6 +2,7 @@ var arDeviceOrientation = {};
 var arObjectArray = [];
 var animateCube;
 var selectedArObject;
+var clock = new THREE.Clock();
 
 function orientationAr() {
 
@@ -41,7 +42,7 @@ function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
-  var clock = new THREE.Clock();
+
   clock.start;
 
     setUpArLayer( participantState );
