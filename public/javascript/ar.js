@@ -1,7 +1,6 @@
 var arDeviceOrientation = {};
 var arObjectArray = [];
 var animateCube;
-var intersects;
 var selectedArObject;
 
 function orientationAr() {
@@ -305,7 +304,7 @@ function setupArInteractionEvents( participantState ) {
 
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
 
-    intersects = rayCaster.intersectObjects( arObjectArray );
+    var intersects = rayCaster.intersectObjects( arObjectArray );
 
     console.log( 'Selected Object:', intersects[0].object.name );
 
@@ -335,7 +334,6 @@ function setupArInteractionEvents( participantState ) {
       arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
-      intersects = [];
 
       emitArObject( arShareData );
     }
