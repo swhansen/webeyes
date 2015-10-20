@@ -41,6 +41,8 @@ function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
+  var clock = new THREE.clock();
+  clock.start();
 
     setUpArLayer( participantState );
 
@@ -218,22 +220,24 @@ arConnectionController( participantState );
 
 function animateArObjects() {
 
+var dt = clock.getDelta();
+
   cube2.rotation.x += 0.03;
   cube2.rotation.y += 0.03;
 
   knot.rotation.y += 0.03;
   knot.rotation.z += 0.03;
 
-  step += 0.02;
-  sphere3.position.x = 1.2 + ( 0.8 * ( Math.cos( step ) ) );
-  sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ;
+  step += 0.01;
+  sphere3.position.x = ( 1.2 + ( 0.8 * ( Math.cos( step ) ) ) ) * dt;
+  sphere3.position.y = ( -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) ) ) * dt ;
 
   if ( animateCube === true ) {
-    if ( ( Math.abs( Math.sin( step ) ) ) === 0.0 ) {
+    cube3.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
+
+    if ( cube3.position.z === -6.0 ) {
       animateCube = false;
     }
-
-    cube3.position.z = -6.0 + ( -35.0 * Math.abs( Math.sin( step ) ) );
   }
 }
 
