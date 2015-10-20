@@ -103,20 +103,20 @@ renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 renderer.setSize( box0Width, box0Width );
 renderer.setClearColor( 0x000000, 0 );
 
-var cube1Geometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
-var cube2Geometry = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
-var sphereGeometry = new THREE.SphereGeometry( 0.15, 16, 16 );
-var knotGeometry = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
+var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
+var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
+var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
+var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 
-var material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
+var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
 var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
 var material3 = new THREE.MeshLambertMaterial( { color: 'yellow' } );
-var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
+var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 
-var cube1 = new THREE.Mesh( cube1Geometry, material1 );
-var cube2 = new THREE.Mesh( cube2Geometry, material2 );
-var sphere = new THREE.Mesh( sphereGeometry, material3 );
-var knot = new THREE.Mesh( knotGeometry, knotMaterial );
+var cube1 = new THREE.Mesh( geometryCube1, material1 );
+var cube2 = new THREE.Mesh( geometryCube2, material2 );
+var sphere = new THREE.Mesh( geometrySphere, material3 );
+var knot = new THREE.Mesh( geometryKnot, materialKnot );
 
 cube1.position.set( 0.0, 0.0,  -4.0 );
 cube2.position.set( -2.0, 0.0, -6.0 );
