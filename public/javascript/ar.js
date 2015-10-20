@@ -169,7 +169,7 @@ cube3.name = 'cube3';
 var knotGeometry = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
-knot.position.set( 0.5, 0.2, -5.0 );
+knot.position.set( 0.5, 0.22, -5.0 );
 knot.name = 'knot';
 scene.add( knot );
 
@@ -239,7 +239,7 @@ var dt = clock.getDelta();
   sphere3.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
   if ( animateCube === true ) {
-    knot.position.z = -5.0 + ( -40.0 * Math.abs( Math.sin( step ) ) );
+    knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
   }
 }
 
@@ -330,6 +330,7 @@ function setupArInteractionEvents( participantState ) {
     if ( intersects.length > 0 ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
+
      // intersects[0].object.rotation.y += Math.PI / 180.0 * 45.0;
 
 //  AR object data for sharing
@@ -338,12 +339,15 @@ function setupArInteractionEvents( participantState ) {
       arShareData.x = intersects[0].object.position.x;
       arShareData.y = intersects[0].object.position.y;
       arShareData.z = intersects[0].object.position.z;
+
       //arShareData.rx = intersects[0].object.rotation.x;
       //arShareData.ry = intersects[0].object.rotation.y;
       //arShareData.rz = intersects[0].object.rotation.z;
 
       arShareData.position = intersects[0].object.position;
+
      // arShareData.rotation = intersects[0].object.rotation;
+
       arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
