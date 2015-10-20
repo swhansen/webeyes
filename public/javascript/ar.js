@@ -221,7 +221,7 @@ arConnectionController( participantState );
 
 function animateArObjects() {
 
-var dt = clock.getDelta() * 100;
+var dt = clock.getDelta();
 
   cube2.rotation.x += 0.03;
   cube2.rotation.y += 0.03;
