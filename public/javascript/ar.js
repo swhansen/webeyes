@@ -103,47 +103,36 @@ renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 renderer.setSize( box0Width, box0Width );
 renderer.setClearColor( 0x000000, 0 );
 
-var cube2Geometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
-var cube3Geometry = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
-var sphere3Geometry = new THREE.SphereGeometry( 0.15, 16, 16 );
+var cube1Geometry = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
+var cube2Geometry = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
+var sphereGeometry = new THREE.SphereGeometry( 0.15, 16, 16 );
+var knotGeometry = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 
 var material1 = new THREE.MeshLambertMaterial( { color: 0x008000 } );
 var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
-var sphere1Material = new THREE.MeshLambertMaterial( { color: 'yellow' } );
-
-//sphereMaterial2 = new THREE.MeshLambertMaterial( { color: 0x0066FF } );
-
-var knotGeometry = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
+var material3 = new THREE.MeshLambertMaterial( { color: 'yellow' } );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 
-var cube2 = new THREE.Mesh( cube2Geometry, material1 );
-var cube3 = new THREE.Mesh( cube3Geometry, material2 );
-var sphere3 = new THREE.Mesh( sphere3Geometry, material1 );
+var cube1 = new THREE.Mesh( cube1Geometry, material1 );
+var cube2 = new THREE.Mesh( cube2Geometry, material2 );
+var sphere = new THREE.Mesh( sphereGeometry, material3 );
 var knot = new THREE.Mesh( knotGeometry, knotMaterial );
 
-cube2.position.set( 0.0, 0.0,  -4.0 );
-cube3.position.set( -2.0, 0.0, -6.0 );
+cube1.position.set( 0.0, 0.0,  -4.0 );
+cube2.position.set( -2.0, 0.0, -6.0 );
+sphere.position.set( 1.2, -0.2, -4.0 );
+knot.position.set( 0.5, 0.22, -5.0 );
 
-//sphere1.position.set( -2.0, 1.0, 1.0 );
-//sphere2.position.set( -3.0, 1.0, 1.0 );
+cube2.rotateZ = 10.00;
 
-sphere3.position.set( 1.2, -0.2, -4.0 );
-
-cube3.rotateZ = 10.00;
-
+scene.add( cube1 );
 scene.add( cube2 );
-scene.add( cube3 );
-scene.add( sphere3 );
+scene.add( sphere );
 scene.add( knot );
 
-//scene.add( sphere1 );
-//scene.add( sphere2 );
-
+cube1.name = 'cube1';
 cube2.name = 'cube2';
-cube3.name = 'cube3';
 knot.name = 'knot';
-
-knot.position.set( 0.5, 0.22, -5.0 );
 
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
@@ -160,9 +149,9 @@ knot.position.set( 0.5, 0.22, -5.0 );
   axisHelper.position.set( 1.5, -0.35, -5.5 );
   scene.add( axisHelper );
 
-arObjectArray.push( cube2 );
-arObjectArray.push( cube3 );
-arObjectArray.push( knot );
+  arObjectArray.push( cube1 );
+  arObjectArray.push( cube2 );
+  arObjectArray.push( knot );
 
 function arConnectionController( participantState ) {
 
@@ -200,15 +189,15 @@ function animateArObjects() {
 
 var dt = clock.getDelta();
 
- // cube2.rotation.x += 0.03;
- // cube2.rotation.y += 0.03;
+ // cube1.rotation.x += 0.03;
+ // cube1.rotation.y += 0.03;
 
   knot.rotation.y += 0.03;
   knot.rotation.z += 0.03;
 
   step += dt * 0.5;
-  sphere3.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
-  sphere3.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
+  sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
+  sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
   if ( animateCube === true ) {
     knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
