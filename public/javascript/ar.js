@@ -62,9 +62,9 @@ function loadAr( participantState ) {
        arObject.position.y = data.position.y;
        arObject.position.z = data.position.z;
 
-       arObject.rotation.x = data.rotation.x;
-       arObject.rotation.y = data.rotation.y;
-       arObject.rotation.z = data.rotation.z;
+      // arObject.rotation.x = data.rotation.x;
+      //arObject.rotation.y = data.rotation.y;
+      // arObject.rotation.z = data.rotation.z;
 
        arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
    }
@@ -335,15 +335,15 @@ function setupArInteractionEvents( participantState ) {
 //  AR object data for sharing
 
       arShareData.name = intersects[0].object.name;
-      //arShareData.x = intersects[0].object.position.x;
-      //arShareData.y = intersects[0].object.position.y;
-      //arShareData.z = intersects[0].object.position.z;
+      arShareData.x = intersects[0].object.position.x;
+      arShareData.y = intersects[0].object.position.y;
+      arShareData.z = intersects[0].object.position.z;
       //arShareData.rx = intersects[0].object.rotation.x;
       //arShareData.ry = intersects[0].object.rotation.y;
       //arShareData.rz = intersects[0].object.rotation.z;
 
       arShareData.position = intersects[0].object.position;
-      arShareData.rotation = intersects[0].object.rotation;
+     // arShareData.rotation = intersects[0].object.rotation;
       arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
