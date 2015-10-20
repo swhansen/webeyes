@@ -110,7 +110,7 @@ var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 
 var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
 var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
-var material3 = new THREE.MeshLambertMaterial( { color: 'yellow' } );
+var material3 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
 var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 
 var cube1 = new THREE.Mesh( geometryCube1, material1 );
