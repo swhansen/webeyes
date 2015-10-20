@@ -136,7 +136,7 @@ var sphere3 = new THREE.Mesh( sphereGeometry1, material );
 // red, green, blue
 
 cube1.position.set( 0.0, 1.0, -2.0 );
-cube2.position.set( 0.0, 0.5,  -4.0 );
+cube2.position.set( 0.0, 0.25,  -4.0 );
 cube3.position.set( -1.0, 0.0, -6.0 );
 
 // z - away from vertical screen forward( negative forward)
@@ -161,7 +161,7 @@ scene.add( sphere3 );
 cube2.name = 'cube2';
 cube3.name = 'cube3';
 
-var knotGeometry = new THREE.TorusKnotGeometry( 0.15, 0.1, 100, 16 );
+var knotGeometry = new THREE.TorusKnotGeometry( 0.2, 0.1, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
 knot.position.set( 0.5, 0.0, -6.0 );
@@ -171,7 +171,7 @@ scene.add( knot );
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 scene.add( light );
 
-  var planeGeometry = new THREE.PlaneGeometry( 4, 2, 1, 1 );
+  var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
   var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
