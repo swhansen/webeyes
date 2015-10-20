@@ -229,7 +229,7 @@ var dt = clock.getDelta();
   knot.rotation.y += 0.03;
   knot.rotation.z += 0.03;
 
-  step += dt;
+  step += dt * 0.5;
   sphere3.position.x =  1.2 + ( 0.8 * ( Math.cos( step ) ) ) ;
   sphere3.position.y = -0.2 + ( 1.0 * Math.abs( Math.sin( step ) ) );
 
