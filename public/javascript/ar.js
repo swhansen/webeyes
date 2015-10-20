@@ -169,12 +169,12 @@ cube3.name = 'cube3';
 var knotGeometry = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 var knotMaterial = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 knot = new THREE.Mesh( knotGeometry, knotMaterial );
-knot.position.set( 0.5, 0.1, -5.0 );
+knot.position.set( 0.5, 0.15, -5.0 );
 knot.name = 'knot';
 scene.add( knot );
 
-var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-scene.add( light );
+  var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+  scene.add( light );
 
   var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
   var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
