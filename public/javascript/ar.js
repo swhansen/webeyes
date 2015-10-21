@@ -1,6 +1,6 @@
 var arDeviceOrientation = {};
 var arObjectArray = [];
-var animateCube = false;
+var animateZ = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 
@@ -97,8 +97,6 @@ scene = new THREE.Scene();
 sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-// set the renderer to the AR canvas
-
 renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 renderer.setSize( box0Width, box0Width );
 renderer.setClearColor( 0x000000, 0 );
@@ -187,7 +185,7 @@ arConnectionController( participantState );
 
 function animateArObjects() {
 
-var dt = clock.getDelta();
+  var dt = clock.getDelta();
 
  // cube1.rotation.x += 0.03;
  // cube1.rotation.y += 0.03;
@@ -199,7 +197,7 @@ var dt = clock.getDelta();
   sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
   sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
-  if ( animateCube === true ) {
+  if ( animateZ === true ) {
     knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
   }
 }
@@ -281,7 +279,7 @@ function setupArInteractionEvents( participantState ) {
    // selectedArObject = scene.getObjectByName( intersects[0].object.name );
 
     if ( intersects[0].object.name === 'knot' ) {
-      animateCube = !animateCube;
+      animateZ = !animateZ;
       return;
 
     }
@@ -301,13 +299,7 @@ function setupArInteractionEvents( participantState ) {
       arShareData.y = intersects[0].object.position.y;
       arShareData.z = intersects[0].object.position.z;
 
-      //arShareData.rx = intersects[0].object.rotation.x;
-      //arShareData.ry = intersects[0].object.rotation.y;
-      //arShareData.rz = intersects[0].object.rotation.z;
-
       arShareData.position = intersects[0].object.position;
-
-     // arShareData.rotation = intersects[0].object.rotation;
 
       arShareData.color = intersects[0].object.material.color;
 
