@@ -44,27 +44,20 @@ function loadAr( participantState ) {
   var knot;
 
   clock.start;
-
-    setUpArLayer( participantState );
-
-    setupArInteractionEvents( participantState );
-
+  setUpArLayer( participantState );
+  setupArInteractionEvents( participantState );
    }
 
   function receiveArObject( data ) {
-
-    // grab the socket.i0 packet for an AR state change
-
-      console.log( 'receiveArObject got arObjectData:', data );
 
    var arObject = scene.getObjectByName( data.name );
        arObject.position.x = data.position.x;
        arObject.position.y = data.position.y;
        arObject.position.z = data.position.z;
 
-      // arObject.rotation.x = data.rotation.x;
-      //arObject.rotation.y = data.rotation.y;
-      // arObject.rotation.z = data.rotation.z;
+      // arObject.rotation.x = data.rotation._x;
+      // arObject.rotation.y = data.rotation._y;
+      // arObject.rotation.z = data.rotation._z;
 
        arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
    }
@@ -203,25 +196,16 @@ function animateArObjects() {
 }
 
 function connectToDeviceSensors() {
-
   sensorCameraControls.update();
-
   animateArObjects();
-
   renderer.render( scene, sensorDrivenCamera );
-
   requestAnimationFrame( connectToDeviceSensors );
-
 }
 
 function connectToBroadcastSensors() {
-
   broadcastCameraControls.update();
-
   animateArObjects();
-
   renderer.render( scene, broadcastDrivenCamera );
-
   requestAnimationFrame( connectToBroadcastSensors );
 }
 
