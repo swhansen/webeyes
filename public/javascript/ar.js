@@ -50,14 +50,16 @@ function loadAr( participantState ) {
 
   function receiveArObject( data ) {
 
+    console.log( 'recieve AR data:', data);
+
    var arObject = scene.getObjectByName( data.name );
        arObject.position.x = data.position.x;
        arObject.position.y = data.position.y;
        arObject.position.z = data.position.z;
 
-      // arObject.rotation.x = data.rotation._x;
-      // arObject.rotation.y = data.rotation._y;
-      // arObject.rotation.z = data.rotation._z;
+       arObject.rotation.x = data.rotation.x;
+       arObject.rotation.y = data.rotation.y;
+       arObject.rotation.z = data.rotation.z;
 
        arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
    }
@@ -82,48 +84,48 @@ function setUpArLayer( participantState ) {
   arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
-var CANVAS_WIDTH = 300,
-    CANVAS_HEIGHT = 300;
+  var CANVAS_WIDTH = 300,
+      CANVAS_HEIGHT = 300;
 
-scene = new THREE.Scene();
+  scene = new THREE.Scene();
 
-sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
-renderer.setSize( box0Width, box0Width );
-renderer.setClearColor( 0x000000, 0 );
+  renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
+  renderer.setSize( box0Width, box0Width );
+  renderer.setClearColor( 0x000000, 0 );
 
-var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
-var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
-var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
-var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
+  var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
+  var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
+  var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
+  var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 
-var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
-var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
-var material3 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
+  var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
+  var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
+  var material3 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+  var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 
-var cube1 = new THREE.Mesh( geometryCube1, material1 );
-var cube2 = new THREE.Mesh( geometryCube2, material2 );
-var sphere = new THREE.Mesh( geometrySphere, material3 );
-var knot = new THREE.Mesh( geometryKnot, materialKnot );
+  var cube1 = new THREE.Mesh( geometryCube1, material1 );
+  var cube2 = new THREE.Mesh( geometryCube2, material2 );
+  var sphere = new THREE.Mesh( geometrySphere, material3 );
+  var knot = new THREE.Mesh( geometryKnot, materialKnot );
 
-cube1.position.set( 0.0, 0.0,  -4.0 );
-cube2.position.set( -2.0, 0.0, -6.0 );
-sphere.position.set( 1.2, -0.2, -4.0 );
-knot.position.set( 0.5, 0.22, -5.0 );
+  cube1.position.set( 0.0, 0.0,  -4.0 );
+  cube2.position.set( -2.0, 0.0, -6.0 );
+  sphere.position.set( 1.2, -0.2, -4.0 );
+  knot.position.set( 0.5, 0.22, -5.0 );
 
-cube2.rotateZ = 10.00;
+  cube2.rotateZ = 10.00;
 
-scene.add( cube1 );
-scene.add( cube2 );
-scene.add( sphere );
-scene.add( knot );
+  scene.add( cube1 );
+  scene.add( cube2 );
+  scene.add( sphere );
+  scene.add( knot );
 
-cube1.name = 'cube1';
-cube2.name = 'cube2';
-knot.name = 'knot';
+  cube1.name = 'cube1';
+  cube2.name = 'cube2';
+  knot.name = 'knot';
 
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
@@ -170,48 +172,48 @@ function arConnectionController( participantState ) {
 //  - sensors for a mobile initiator
 //  - broadcast for all peers
 
-sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+  sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
-broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+  broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-arConnectionController( participantState );
+  arConnectionController( participantState );
 
-function animateArObjects() {
+  function animateArObjects() {
 
-  var dt = clock.getDelta();
+    var dt = clock.getDelta();
 
- // cube1.rotation.x += 0.03;
- // cube1.rotation.y += 0.03;
+   // cube1.rotation.x += 0.03;
+    // cube1.rotation.y += 0.03;
 
-  knot.rotation.y += 0.03;
-  knot.rotation.z += 0.03;
+    knot.rotation.y += 0.03;
+    knot.rotation.z += 0.03;
 
-  step += dt * 0.5;
-  sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
-  sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
+    step += dt * 0.5;
+    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
+    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
-  if ( animateZ === true ) {
-    knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
+    if ( animateZ === true ) {
+      knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
+    }
   }
-}
 
-function connectToDeviceSensors() {
-  sensorCameraControls.update();
-  animateArObjects();
-  renderer.render( scene, sensorDrivenCamera );
-  requestAnimationFrame( connectToDeviceSensors );
-}
+  function connectToDeviceSensors() {
+    sensorCameraControls.update();
+    animateArObjects();
+    renderer.render( scene, sensorDrivenCamera );
+    requestAnimationFrame( connectToDeviceSensors );
+  }
 
-function connectToBroadcastSensors() {
-  broadcastCameraControls.update();
-  animateArObjects();
-  renderer.render( scene, broadcastDrivenCamera );
-  requestAnimationFrame( connectToBroadcastSensors );
-}
+  function connectToBroadcastSensors() {
+    broadcastCameraControls.update();
+    animateArObjects();
+    renderer.render( scene, broadcastDrivenCamera );
+    requestAnimationFrame( connectToBroadcastSensors );
+  }
 
-arConnectionController( participantState );
+    arConnectionController( participantState );
 
-}
+  }
 
 function setupArInteractionEvents( participantState ) {
 
@@ -260,15 +262,12 @@ function setupArInteractionEvents( participantState ) {
 
     console.log( 'Selected Object:', intersects[0].object.name );
 
-   // selectedArObject = scene.getObjectByName( intersects[0].object.name );
+// do things with the selected object
 
     if ( intersects[0].object.name === 'knot' ) {
       animateZ = !animateZ;
       return;
-
     }
-
-    console.log( 'intersects:', intersects[0] );
 
     if ( intersects.length > 0 ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
@@ -284,6 +283,7 @@ function setupArInteractionEvents( participantState ) {
       arShareData.z = intersects[0].object.position.z;
 
       arShareData.position = intersects[0].object.position;
+      arShareData.position = intersects[0].object.rotation;
 
       arShareData.color = intersects[0].object.material.color;
 
