@@ -50,16 +50,16 @@ function loadAr( participantState ) {
 
   function receiveArObject( data ) {
 
-    console.log( 'recieve AR data:', data);
+    console.log( 'recieve AR data:', data );
 
    var arObject = scene.getObjectByName( data.name );
        arObject.position.x = data.position.x;
        arObject.position.y = data.position.y;
        arObject.position.z = data.position.z;
 
-       arObject.rotation.x = data.rotation.x;
-       arObject.rotation.y = data.rotation.y;
-       arObject.rotation.z = data.rotation.z;
+    //   arObject.rotation.x = data.rotation.x;
+    //   arObject.rotation.y = data.rotation.y;
+    //   arObject.rotation.z = data.rotation.z;
 
        arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
    }
@@ -283,7 +283,7 @@ function setupArInteractionEvents( participantState ) {
       arShareData.z = intersects[0].object.position.z;
 
       arShareData.position = intersects[0].object.position;
-      arShareData.position = intersects[0].object.rotation;
+      //arShareData.position = intersects[0].object.rotation;
 
       arShareData.color = intersects[0].object.material.color;
 
