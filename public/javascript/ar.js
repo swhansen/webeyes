@@ -283,7 +283,8 @@ function setupArInteractionEvents( participantState ) {
       arShareData.z = intersects[0].object.position.z;
 
       arShareData.position = intersects[0].object.position;
-      //arShareData.position = intersects[0].object.rotation;
+
+      arShareData.rotation = intersects[0].object.rotation;
 
       arShareData.color = intersects[0].object.material.color;
 
