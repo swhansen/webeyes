@@ -245,9 +245,9 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-$( '#ar-canvas' ).on( 'taphold', function() {
-  addArObject();
-} );
+//$( '#ar-canvas' ).on( 'taphold', function() {
+//  addArObject();
+//} );
 
 function addArObject() {
     var materialSphere1 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
