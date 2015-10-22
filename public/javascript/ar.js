@@ -250,10 +250,6 @@ $( '#ar-canvas' ).longpress( function() {
 } );
 
 function addArObject() {
-
-   //var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-  //                        -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
@@ -272,9 +268,6 @@ function addArObject() {
     projector.unprojectVector( vector, cameraDriver );
     vector.sub( cameraDriver.position );
     vector.normalize();
-
-    console.log( 'vector.normalize:', vector );
-    console.log( 'raycaster:', raycaster );
 
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
