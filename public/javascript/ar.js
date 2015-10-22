@@ -251,25 +251,19 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-$( '#ar-canvas' ).longclick( 500, function() {
+$( '#ar-canvas' ).click( 500, function() {
   addArObject();
 } );
 
-  //ar0.addEventListener( 'click', function( event ) {
-    $( '#ar-canvas' ).click( 500, function( event ) {
-  //ar0.addEventListener( 'click', function( event ) {
+  ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();
 
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-
     projector.unprojectVector( vector, cameraDriver );
-
     vector.sub( cameraDriver.position );
     vector.normalize();
-
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
-
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
     console.log( 'Selected Object:', intersects[0].object.name );
