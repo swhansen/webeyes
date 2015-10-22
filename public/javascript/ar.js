@@ -251,9 +251,9 @@ function setupArInteractionEvents( participantState ) {
 
 $( '#ar-canvas' ).longpress( function( event ) {
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, -4.0 );
+                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
-    v1.unprojectVector( cameraDriver );
+    v1.unproject( cameraDriver );
 
 console.log( 'projector.unprojectVector:', projector );
 
@@ -263,9 +263,9 @@ console.log( 'projector.unprojectVector:', projector );
 //console.log( 'vector.normalize:', v1.normalize() );
 //console.log( v1.normalize.x, v1.normalize..y, v1.normalize.z );
 
-var distance = - cameraDriver.position.z / dir.z;
+var distance = -cameraDriver.position.z / dir.z;
 
-console.log( 'distance:', distance);
+console.log( 'distance:', distance );
 
 var pos = cameraDriver.position.clone().ass( v1.multiplyScalar( distance ) );
 
