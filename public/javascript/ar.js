@@ -251,9 +251,13 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-$( '#ar-canvas' ).click( 500, function() {
-  addArObject();
-} );
+$( 'ar-canvas' ).mouseup( function() {
+  clearTimeout( pressTimer );
+  return false;
+} ).mousedown( function() {
+  pressTimer = window.setTimeout( function() { addArObject(); },1000 );
+  return false;
+});
 
   ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();
