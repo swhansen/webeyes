@@ -197,6 +197,12 @@ function arConnectionController( participantState ) {
     }
   }
 
+  function addArObject() {
+    var sphere1 = new THREE.Mesh( geometrySphere, material3 );
+    sphere.position.set( -1.0, -0.2, -4.0 );
+    scene.add( sphere1 );
+  }
+
   function connectToDeviceSensors() {
     sensorCameraControls.update();
     animateArObjects();
@@ -244,6 +250,10 @@ function setupArInteractionEvents( participantState ) {
     } else if ( participantState === 'peer' ) {
       cameraDriver = broadcastDrivenCamera;
     }
+
+$( '#ar-canvas' ).longclick( 500, function() {
+  addArObject();
+} );
 
   ar0.addEventListener( 'mousedown', function( event ) {
     event.preventDefault();
