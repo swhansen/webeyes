@@ -96,7 +96,7 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-  var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5 );
+  var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
   var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
   var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
@@ -142,9 +142,11 @@ function setUpArLayer( participantState ) {
   axisHelper.position.set( 1.5, -0.35, -5.5 );
   scene.add( axisHelper );
 
-  arObjectArray.push( cube1 );
-  arObjectArray.push( cube2 );
-  arObjectArray.push( knot );
+// add to the selection array
+
+  arSelectObjectArray.push( cube1 );
+  arSelectObjectArray.push( cube2 );
+  arSelectObjectArray.push( knot );
 
 function arConnectionController( participantState ) {
 
@@ -182,18 +184,14 @@ function arConnectionController( participantState ) {
 
     var dt = clock.getDelta();
 
-   // cube1.rotation.x += 0.03;
-    // cube1.rotation.y += 0.03;
-
-    knot.rotation.y += 0.03;
-    knot.rotation.z += 0.03;
-
     step += dt * 0.5;
     sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
     sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
     if ( animateZ === true ) {
-      knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
+        knot.rotation.y += 0.03;
+        knot.rotation.z += 0.03;
+        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
   }
 
@@ -258,7 +256,7 @@ function setupArInteractionEvents( participantState ) {
 
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
 
-    var intersects = rayCaster.intersectObjects( arObjectArray );
+    var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
     console.log( 'Selected Object:', intersects[0].object.name );
 
