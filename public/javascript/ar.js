@@ -1,7 +1,7 @@
 var arDeviceOrientation = {};
-var arObjectArray = [];
+var arSelectObjectArray = [];
 var animateZ = false;
-var arSelectArObject;
+var selectedArObject;
 var clock = new THREE.Clock();
 
 function orientationAr() {
