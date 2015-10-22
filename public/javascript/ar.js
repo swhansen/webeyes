@@ -245,7 +245,7 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-$( '#ar-canvas' ).dblclick function() {
+$( '#ar-canvas' ).dblclick( function() {
   addArObject();
 } );
 
