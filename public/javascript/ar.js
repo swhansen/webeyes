@@ -245,16 +245,7 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-$( '#ar-canvas' ).mouseup( function() {
-  clearTimeout( pressTimer );
-  return false;
-} ).mousedown( function() {
-  pressTimer = window.setTimeout( function() {
-    console.log( 'long click' );
-    addArObject();
-  } ,1000 );
-  return false;
-} );
+ar0.addEventListener( 'dblclick' , addArObject() );
 
 function addArObject() {
     var sphere1 = new THREE.Mesh( geometrySphere, material3 );
