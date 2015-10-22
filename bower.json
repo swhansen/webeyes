@@ -26,7 +26,7 @@
     "lodash": "~3.6.0",
     "sweetalert": "~1.1.0",
     "threejs": "*",
-    "tweenjs": "~16.3.1",
+    "tweenjs": "~16.3.1"
   },
   "moduleType": [
     "amd",
