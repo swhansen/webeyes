@@ -250,12 +250,12 @@ $( '#ar-canvas' ).longpress( function() {
 } );
 
 function addArObject() {
-    var materialdod1 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-    var geometrydod1 = new THREE.DodecahedronGeometry( 0.3 );
-    var dod1 = new THREE.Mesh( geometrydod1, materialdod1 );
-    dod1.position.set( -2.0, -0.2, -4.0 );
-    scene.add( dod1 );
-    arSelectObjectArray.push( dod1 );
+    var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+    var geometrtTotus1 = new THREE.TorusGeometry( 0.3, 0.3, 100, 16 );
+    var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
+    torus1.position.set( -2.0, -0.2, -4.0 );
+    scene.add( torus1 );
+    arSelectObjectArray.push( torus1 );
   }
 
   ar0.addEventListener( 'click', function( event ) {
