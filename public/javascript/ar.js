@@ -197,12 +197,6 @@ function arConnectionController( participantState ) {
     }
   }
 
-  function addArObject() {
-    var sphere1 = new THREE.Mesh( geometrySphere, material3 );
-    sphere.position.set( -1.0, -0.2, -4.0 );
-    scene.add( sphere1 );
-  }
-
   function connectToDeviceSensors() {
     sensorCameraControls.update();
     animateArObjects();
@@ -255,9 +249,17 @@ $( 'ar-canvas' ).mouseup( function() {
   clearTimeout( pressTimer );
   return false;
 } ).mousedown( function() {
-  pressTimer = window.setTimeout( function() { addArObject(); },1000 );
+  pressTimer = window.setTimeout( function() {
+    addArObject();
+  },1000 );
   return false;
-});
+} );
+
+function addArObject() {
+    var sphere1 = new THREE.Mesh( geometrySphere, material3 );
+    sphere.position.set( -1.0, -0.2, -4.0 );
+    scene.add( sphere1 );
+  }
 
   ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();
