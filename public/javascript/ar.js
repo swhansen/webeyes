@@ -246,16 +246,16 @@ function setupArInteractionEvents( participantState ) {
     }
 
 $( '#ar-canvas' ).longpress( function() {
-  alert( ' you just long pressed' );
   addArObject();
 } );
 
 function addArObject() {
     var materialSphere1 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-    var geometrySphere1 = new THREE.SphereGeometry( 0.15, 16, 16 );
+    var geometrySphere1 = new THREE.SphereGeometry( 0.3, 16, 16 );
     var sphere1 = new THREE.Mesh( geometrySphere1, materialSphere1 );
-    sphere1.position.set( -1.0, -0.2, -4.0 );
+    sphere1.position.set( -2.0, -0.2, -4.0 );
     scene.add( sphere1 );
+    arSelectObjectArray.push( sphere1 );
   }
 
   ar0.addEventListener( 'click', function( event ) {
