@@ -253,16 +253,20 @@ $( '#ar-canvas' ).longpress( function( event ) {
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, -4.0 );
 
-    projector.unprojectVector( v1, cameraDriver );
+    v1.unprojectVector( cameraDriver );
 
 console.log( 'projector.unprojectVector:', projector );
 
-    v1.sub( cameraDriver.position );
-    v1.normalize();
+   var dir = v1.sub( cameraDriver.position ).normalize();
+   // v1.normalize();
 
-console.log( 'vector.normalize:', v1.normalize() );
+//console.log( 'vector.normalize:', v1.normalize() );
 //console.log( v1.normalize.x, v1.normalize..y, v1.normalize.z );
-var distance = -cameraDriver.position.x / v1.z;
+
+var distance = - cameraDriver.position.z / dir.z;
+
+console.log( 'distance:', distance);
+
 var pos = cameraDriver.position.clone().ass( v1.multiplyScalar( distance ) );
 
 console.log( 'pos:', pos );
