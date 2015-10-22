@@ -261,7 +261,12 @@ console.log( 'projector.unprojectVector:', projector );
     v1.normalize();
 
 console.log( 'vector.normalize:', v1.normalize() );
-console.log( v1.x, v1.y, v1.z );
+//console.log( v1.normalize.x, v1.normalize..y, v1.normalize.z );
+var distance = -cameraDriver.position.x / v1.z;
+var pos = cameraDriver.position.clone().ass( v1.multiplyScalar( distance ) );
+
+console.log( 'pos:', pos );
+
 
   addArObject();
 
