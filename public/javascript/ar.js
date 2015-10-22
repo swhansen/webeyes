@@ -245,13 +245,14 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-$( 'ar-canvas' ).mouseup( function() {
+$( '#ar-canvas' ).mouseup( function() {
   clearTimeout( pressTimer );
   return false;
 } ).mousedown( function() {
   pressTimer = window.setTimeout( function() {
+    console.log( 'long click' );
     addArObject();
-  },1000 );
+  } ,1000 );
   return false;
 } );
 
