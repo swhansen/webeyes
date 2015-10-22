@@ -245,7 +245,9 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-ar0.addEventListener( 'ondblclick' , addArObject() );
+ar0.addEventListener( 'ondblclick' , function() {
+  addArObject();
+} );
 
 function addArObject() {
     var materialSphere1 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
