@@ -250,11 +250,17 @@ $( '#ar-canvas' ).longpress( function() {
 } );
 
 function addArObject() {
+
+   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
+
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-    var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.3, 100, 16 );
+    var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    torus1.position.set( -2.0, -0.2, -4.0 );
+    torus1.position.set( -2.5, -0.2, -4.0 );
     scene.add( torus1 );
+    torus1.name = 'torus1';
     arSelectObjectArray.push( torus1 );
   }
 
@@ -264,15 +270,14 @@ function addArObject() {
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
-console.log( 'vector from click:', vector );
-
     projector.unprojectVector( vector, cameraDriver );
     vector.sub( cameraDriver.position );
     vector.normalize();
+
+    console.log( 'vector.normalize:', vector);
+
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
-
-    console.log( 'Selected Object:', intersects[0].object.name );
 
 // do things with the selected object
 
