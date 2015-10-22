@@ -251,8 +251,8 @@ $( '#ar-canvas' ).longpress( function() {
 
 function addArObject() {
 
-   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+   //var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+  //                        -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
