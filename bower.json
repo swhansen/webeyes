@@ -27,7 +27,6 @@
     "sweetalert": "~1.1.0",
     "threejs": "*",
     "tweenjs": "~16.3.1",
-    "jquery-mobile": "~1.4.5"
   },
   "moduleType": [
     "amd",
