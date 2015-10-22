@@ -251,7 +251,7 @@ $( '#ar-canvas' ).longpress( function() {
 
 function addArObject() {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-    var geometryTotus1 = new THREE.TorusGeometry( 0.3, 0.3, 100, 16 );
+    var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.3, 100, 16 );
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
     torus1.position.set( -2.0, -0.2, -4.0 );
     scene.add( torus1 );
