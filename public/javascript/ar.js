@@ -245,8 +245,27 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-$( '#ar-canvas' ).longpress( function() {
+//
+// Place an object
+//
+
+$( '#ar-canvas' ).longpress( function( event ) {
+  var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, -4.0 );
+
+    projector.unprojectVector( v1, cameraDriver );
+
+console.log( 'projector.unprojectVector:', projector );
+
+    v1.sub( cameraDriver.position );
+    v1.normalize();
+
+console.log( 'vector.normalize:', v1.normalize() );
+console.log( v1.x, v1.y, v1.z );
+
   addArObject();
+
+
 } );
 
 function addArObject() {
@@ -267,17 +286,14 @@ function addArObject() {
 
     projector.unprojectVector( vector, cameraDriver );
 
-console.log( 'projector.unprojectVector:', projector);
+console.log( 'projector.unprojectVector:', projector );
 
     vector.sub( cameraDriver.position );
     vector.normalize();
 
-console.log( 'vector.normalize:', vector );
+console.log( 'vector.normalize:', vector.normalize() );
 
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
-
-console.log( 'raycaster:, rayCaster' );
-
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
 // do things with the selected object
