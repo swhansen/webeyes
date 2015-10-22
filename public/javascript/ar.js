@@ -248,7 +248,9 @@ function setupArInteractionEvents( participantState ) {
 ar0.addEventListener( 'dblclick' , addArObject() );
 
 function addArObject() {
-    var sphere1 = new THREE.Mesh( geometrySphere, material3 );
+    var materialSphere1 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+    var geometrySphere1 = new THREE.SphereGeometry( 0.15, 16, 16 );
+    var sphere1 = new THREE.Mesh( geometrySphere1, materialSphere1 );
     sphere.position.set( -1.0, -0.2, -4.0 );
     scene.add( sphere1 );
   }
