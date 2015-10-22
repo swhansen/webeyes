@@ -255,7 +255,7 @@ $( '#ar-canvas' ).longclick( 500, function() {
   addArObject();
 } );
 
-  ar0.addEventListener( 'mousedown', function( event ) {
+  ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();
 
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
