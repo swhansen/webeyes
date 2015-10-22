@@ -266,10 +266,18 @@ function addArObject() {
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
     projector.unprojectVector( vector, cameraDriver );
+
+console.log( 'projector.unprojectVector:', projector);
+
     vector.sub( cameraDriver.position );
     vector.normalize();
 
+console.log( 'vector.normalize:', vector );
+
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
+
+console.log( 'raycaster:, rayCaster' );
+
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
 // do things with the selected object
