@@ -188,6 +188,8 @@ function arConnectionController( participantState ) {
     sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
     sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
+    knot.position.y = -0.22 + ( 0.9 * Math.abs( Math.sin( step ) ) );
+
     if ( animateZ === true ) {
         knot.rotation.y += 0.03;
         knot.rotation.z += 0.03;
