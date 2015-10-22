@@ -251,7 +251,7 @@ $( '#ar-canvas' ).longpress( function() {
 
 function addArObject() {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-    var geometrtTotus1 = new THREE.TorusGeometry( 0.3, 0.3, 100, 16 );
+    var geometryTotus1 = new THREE.TorusGeometry( 0.3, 0.3, 100, 16 );
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
     torus1.position.set( -2.0, -0.2, -4.0 );
     scene.add( torus1 );
@@ -263,6 +263,9 @@ function addArObject() {
 
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
+console.log( 'vector from click:', vector );
+
     projector.unprojectVector( vector, cameraDriver );
     vector.sub( cameraDriver.position );
     vector.normalize();
