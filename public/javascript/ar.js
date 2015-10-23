@@ -266,7 +266,7 @@ console.log( 'projector.unprojectVector:', projector );
 
 console.log( 'dir:', dir );
 
-var distance = -cameraDriver.position.z / dir.z;
+var distance = ( -4.0 - cameraDriver.position.z ) / dir.z;
 
 console.log( 'distance:', distance );
 
