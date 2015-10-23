@@ -256,6 +256,8 @@ $( '#ar-canvas' ).longpress( function( event ) {
   var dir = v1.sub( cameraDriver.position ).normalize();
   var distance =  -cameraDriver.position.z  / dir.z;
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
+  console.log( 'dist:', distance );
+  console.log( 'pos:', pos );
   addArObject( pos.x, pos.y, pos.z );
 } );
 
@@ -276,6 +278,7 @@ function addArObject( x, y, z ) {
 
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
     projector.unprojectVector( vector, cameraDriver );
     vector.sub( cameraDriver.position );
     vector.normalize();
