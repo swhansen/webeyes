@@ -246,38 +246,17 @@ function setupArInteractionEvents( participantState ) {
     }
 
 //
-// Place an object
+// Place an object with a long click
 //
 
 $( '#ar-canvas' ).longpress( function( event ) {
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-
-
-
-    v1.unproject( cameraDriver );
-
-  //  projector.unproject( v1, cameraDriver );
-
-console.log( 'projector.unprojectVector:', projector );
-
-   var dir = v1.sub( cameraDriver.position ).normalize();
-   // v1.normalize();
-
-console.log( 'dir:', dir );
-
-var distance = ( -4.0 - cameraDriver.position.z ) / dir.z;
-
-console.log( 'distance:', distance );
-
-var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
-
-console.log( 'pos:', pos );
-
-
+  v1.unproject( cameraDriver );
+  var dir = v1.sub( cameraDriver.position ).normalize();
+  var distance = ( -4.0 - cameraDriver.position.z ) / dir.z;
+  var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
   addArObject( pos.x, pos.y, pos.z );
-
-
 } );
 
 function addArObject( x, y, z ) {
@@ -290,27 +269,16 @@ function addArObject( x, y, z ) {
     arSelectObjectArray.push( torus1 );
   }
 
-
-
-
-
-
+// Select an object
 
   ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();
 
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-
     projector.unprojectVector( vector, cameraDriver );
-
-console.log( 'projector.unprojectVector:', projector );
-
     vector.sub( cameraDriver.position );
     vector.normalize();
-
-console.log( 'vector.normalize:', vector.normalize() );
-
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
