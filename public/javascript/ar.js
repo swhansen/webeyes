@@ -254,7 +254,7 @@ $( '#ar-canvas' ).longpress( function( event ) {
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
   v1.unproject( cameraDriver );
   var dir = v1.sub( cameraDriver.position ).normalize();
-  var distance = ( -4.0 - cameraDriver.position.z ) / dir.z;
+  var distance =  -cameraDriver.position.z  / dir.z;
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
   addArObject( pos.x, pos.y, pos.z );
 } );
