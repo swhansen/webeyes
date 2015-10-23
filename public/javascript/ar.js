@@ -188,6 +188,8 @@ function arConnectionController( participantState ) {
     sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
     sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
+    torus1.x += 0.03;
+
     knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
 
     if ( animateZ === true ) {
@@ -256,8 +258,8 @@ $( '#ar-canvas' ).longpress( function( event ) {
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
   v1.unproject( cameraDriver );
   var dir = v1.sub( cameraDriver.position ).normalize();
-  var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
-
+  //var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
+  var dist = 1.0;
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
 
   console.log(sensorCameraControls);
