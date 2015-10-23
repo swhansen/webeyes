@@ -257,6 +257,7 @@ $( '#ar-canvas' ).longpress( function( event ) {
   var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
   console.log( 'distance:', distance );
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
+  console.log( 'v1:', v1.unproject );
   console.log( 'pos:', pos );
   addArObject( pos.x, pos.y, pos.z );
 } );
