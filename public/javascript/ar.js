@@ -275,16 +275,16 @@ var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
 console.log( 'pos:', pos );
 
 
-  addArObject();
+  addArObject( pos.x, pos.y, pos.z );
 
 
 } );
 
-function addArObject() {
+function addArObject( x, y, z ) {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    torus1.position.set( -2.5, -0.2, -4.0 );
+    torus1.position.set( x, y, z );
     scene.add( torus1 );
     torus1.name = 'torus1';
     arSelectObjectArray.push( torus1 );
