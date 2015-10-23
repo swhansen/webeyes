@@ -250,6 +250,8 @@ function setupArInteractionEvents( participantState ) {
 //
 
 $( '#ar-canvas' ).longpress( function( event ) {
+
+  cameraDriver.rotation.order = 'ZXY';
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
   v1.unproject( cameraDriver );
