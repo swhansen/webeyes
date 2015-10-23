@@ -253,21 +253,24 @@ $( '#ar-canvas' ).longpress( function( event ) {
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
+
+
     v1.unproject( cameraDriver );
+
+  //  projector.unproject( v1, cameraDriver );
 
 console.log( 'projector.unprojectVector:', projector );
 
    var dir = v1.sub( cameraDriver.position ).normalize();
    // v1.normalize();
 
-//console.log( 'vector.normalize:', v1.normalize() );
-//console.log( v1.normalize.x, v1.normalize..y, v1.normalize.z );
+console.log( 'dir:', dir );
 
 var distance = -cameraDriver.position.z / dir.z;
 
 console.log( 'distance:', distance );
 
-var pos = cameraDriver.position.clone().ass( v1.multiplyScalar( distance ) );
+var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
 
 console.log( 'pos:', pos );
 
@@ -286,6 +289,12 @@ function addArObject() {
     torus1.name = 'torus1';
     arSelectObjectArray.push( torus1 );
   }
+
+
+
+
+
+
 
   ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();
