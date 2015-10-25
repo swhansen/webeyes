@@ -1,20 +1,11 @@
 /**
- *
- * Utility to "neck" a camera based on broadcast
- * orientation data(alpha, beta, gamma) from a peer device over socket.io
- *
- *    --swh 9/27/15
- *
- * Based on
  * @author richt / http://richt.me
  * @author WestLangley / http://github.com/WestLangley
  *
  * W3C Device Orientation control (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
  */
 
-var WEBEYES = {};
-
-WEBEYES.BroadcastOrientationControls = function ( object ) {
+WEBEYES.DeviceOrientationControls = function( object ) {
 
   var scope = this;
 
@@ -26,13 +17,13 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
   this.deviceOrientation = {};
   this.screenOrientation = 0;
 
-  var onDeviceOrientationChangeEvent = function ( event ) {
+  var onDeviceOrientationChangeEvent = function( event ) {
 
     scope.deviceOrientation = event;
 
   };
 
-  var onScreenOrientationChangeEvent = function () {
+  var onScreenOrientationChangeEvent = function() {
 
     scope.screenOrientation = window.orientation || 0;
 
@@ -50,7 +41,7 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
     var q1 = new THREE.Quaternion( - Math.sqrt( 0.5 ), 0, 0, Math.sqrt( 0.5 ) ); // - PI/2 around the x-axis
 
-    return function ( quaternion, alpha, beta, gamma ) {
+    return function ( quaternion, alpha, beta, gamma, orient ) {
 
       euler.set( beta, alpha, - gamma, 'YXZ' );                       // 'ZXY' for the device, but 'YXZ' for us
 
@@ -58,7 +49,7 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
       quaternion.multiply( q1 );                                      // camera looks out the back of the device, not the top
 
-    //  quaternion.multiply( q0.setFromAxisAngle( zee, - orient ) );    // adjust for screen orientation
+      quaternion.multiply( q0.setFromAxisAngle( zee, - orient ) );    // adjust for screen orientation
 
     };
 
@@ -68,9 +59,9 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
     onScreenOrientationChangeEvent(); // run once on load
 
-    socketServer.on( 'arOrientation', function( arBroadcastData ) {
-      scope.deviceOrientation = arBroadcastData;
-});
+    window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
+    window.addEventListener( 'deviceorientation', onDeviceOrientationChangeEvent, false );
+
     scope.enabled = true;
 
   };
@@ -88,12 +79,12 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
     if ( scope.enabled === false ) return;
 
-    var alpha = scope.deviceOrientation.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
-    var beta  = scope.deviceOrientation.beta  ? THREE.Math.degToRad( scope.deviceOrientation.beta  ) : 0; // X'
-    var gamma = scope.deviceOrientation.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
-    //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
+    var alpha  = scope.deviceOrientation.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
+    var beta   = scope.deviceOrientation.beta  ? THREE.Math.degToRad( scope.deviceOrientation.beta  ) : 0; // X'
+    var gamma  = scope.deviceOrientation.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
+    var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
-    setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma );
+    setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma, orient );
 
   };
 

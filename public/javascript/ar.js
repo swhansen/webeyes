@@ -43,7 +43,7 @@ function loadAr( participantState ) {
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
 
-  clock.start;
+  clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
    }
@@ -251,7 +251,6 @@ function setupArInteractionEvents( participantState ) {
 
 $( '#ar-canvas' ).longpress( function( event ) {
 
-  cameraDriver.rotation.order = 'ZXY';
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
   v1.unproject( cameraDriver );
@@ -259,13 +258,12 @@ $( '#ar-canvas' ).longpress( function( event ) {
   var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
 
-  console.log(sensorCameraControls);
+  console.log( sensorCameraControls );
   console.log( 'distance:', distance );
   console.log( 'dir:', dir );
   console.log( 'pos:', pos );
 
   addArObject( pos.x, pos.y, pos.z );
-  return;
 } );
 
 function addArObject( x, y, z ) {
