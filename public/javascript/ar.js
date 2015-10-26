@@ -111,6 +111,21 @@ function setUpArLayer( participantState ) {
   var sphere = new THREE.Mesh( geometrySphere, material3 );
   var knot = new THREE.Mesh( geometryKnot, materialKnot );
 
+  sphereN = new THREE.Mesh( geometrySphere, material3 );
+  sphereS = new THREE.Mesh( geometrySphere, material3 );
+  sphereE = new THREE.Mesh( geometrySphere, material3 );
+  sphereW = new THREE.Mesh( geometrySphere, material3 );
+
+  sphereN.position.set( 0.0, 0.0, 4.0 );
+  sphereS.position.set( 0.0, 0.0, -4.0 );
+  sphereE.position.set( 2.0, 0.0, 0.0 );
+  sphereW.position.set( -2.0, 0.0, 0.0 );
+
+  scene.add( sphereN );
+  scene.add( sphereS );
+  scene.add( sphereE );
+  scene.add( sphereW );
+
   cube1.position.set( 0.0, 0.0,  -4.0 );
   cube2.position.set( -2.0, 0.0, -6.0 );
   sphere.position.set( 1.2, -0.2, -4.0 );
