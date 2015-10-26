@@ -52,7 +52,7 @@ function loadAr( participantState ) {
 
     console.log( 'recieve AR data:', data );
 
-    if ( data.operation === 'move' ) {
+    if ( data.operation === 'moveObject' ) {
        var arObject = scene.getObjectByName( data.name );
            arObject.position.x = data.position.x;
            arObject.position.y = data.position.y;
@@ -65,16 +65,15 @@ function loadAr( participantState ) {
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
        }
 
-    if ( data.operation === 'newobject' ) {
+    if ( data.operation === 'newObject' ) {
 
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-    var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-    var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    torus1.position.set( data.x, data.y, data.z );
-    scene.add( torus1 );
-    torus1.name = 'torus1';
-    arSelectObjectArray.push( torus1 );
-
+      var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+      var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
+      torus1.position.set( data.x, data.y, data.z );
+      torus1.name = 'torus1';
+      scene.add( torus1 );
+      arSelectObjectArray.push( torus1 );
     }
   }
 
@@ -90,7 +89,6 @@ function setUpArLayer( participantState ) {
 
   ar0.style.width = '100%';
   ar0.style.height = '100%';
-
   ar0.width = ar0.offsetWidth;
   ar0.height = ar0.offsetHeight;
 
@@ -293,13 +291,14 @@ $( '#ar-canvas' ).longpress( function( event ) {
   console.log( 'dir:', dir );
   console.log( 'pos:', pos );
 
-      arShareData.operation = 'newobject';
+      arShareData.operation = 'newObject';
       arShareData.x = pos.x;
       arShareData.y = pos.y;
       arShareData.z = pos.z;
 
-      addArObject( pos.x, pos.y, pos.z );
+// add the object locally and tell everyone else
 
+      addArObject( pos.x, pos.y, pos.z );
       emitArObject( arShareData );
 
   return;
@@ -344,7 +343,7 @@ function addArObject( x, y, z ) {
 
 //  AR object data for sharing
 
-      arShareData.operation = 'move';
+      arShareData.operation = 'moveObject';
       arShareData.name = intersects[0].object.name;
       arShareData.x = intersects[0].object.position.x;
       arShareData.y = intersects[0].object.position.y;

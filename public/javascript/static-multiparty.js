@@ -508,9 +508,9 @@ function updateMuteImage( toggle ) {
     }
 }
 
-// Focus the selected user through the 'code' system
+// Focus the selected user through the 'code' system (modme)
 //  - called through broadcast receipt of socket.server 'focus'
-//  - maps eastrtcid to DOM element for EACH client
+//  - maps easyrtcid to DOM element for EACH client
 //  - note: each client maintains it's own mapping
 //    of easyrtcid to DOM element in connectList
 

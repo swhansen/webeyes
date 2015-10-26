@@ -294,12 +294,15 @@ socketServer.sockets.on( 'connection', function( client ) {
    client.broadcast.emit( 'message', data );
   } );
 
+// the orientation of the device
+//  used to broadcast to peers from the focus
+
   client.on( 'arOrientation', function( data, session ) {
     client.broadcast.emit( 'arOrientation', data );
   } );
 
   client.on( 'arObjectShare', function( data, session ) {
-    client.emit( 'arObjectShare ', data );
+    //client.emit( 'arObjectShare ', data );
     client.broadcast.emit( 'arObjectShare', data );
   } );
 
