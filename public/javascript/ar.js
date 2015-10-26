@@ -52,17 +52,25 @@ function loadAr( participantState ) {
 
     console.log( 'recieve AR data:', data );
 
-   var arObject = scene.getObjectByName( data.name );
-       arObject.position.x = data.position.x;
-       arObject.position.y = data.position.y;
-       arObject.position.z = data.position.z;
+    if (data.operation === 'move') {
+       var arObject = scene.getObjectByName( data.name );
+           arObject.position.x = data.position.x;
+           arObject.position.y = data.position.y;
+           arObject.position.z = data.position.z;
 
-    //   arObject.rotation.x = data.rotation.x;
-    //   arObject.rotation.y = data.rotation.y;
-    //   arObject.rotation.z = data.rotation.z;
+        //   arObject.rotation.x = data.rotation.x;
+        //   arObject.rotation.y = data.rotation.y;
+        //   arObject.rotation.z = data.rotation.z;
 
-       arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-   }
+           arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+       }
+
+    if (data.operation === 'newobject') {
+
+      addArObject( data.position.x, data.position.y, data.position.z );
+
+    }
+  }
 
 function setUpArLayer( participantState ) {
 
@@ -279,7 +287,15 @@ $( '#ar-canvas' ).longpress( function( event ) {
   console.log( 'dir:', dir );
   console.log( 'pos:', pos );
 
-  addArObject( pos.x, pos.y, pos.z );
+      arShareData.operation = 'newobject';
+      arShareData.position.x = pos.x;
+      arShareData.position.y = pos.y;
+      arShareData.position.z = pos.z;
+
+      addArObject( pos.x, pos.y, pos.z );
+      emitArObject( arShareData );
+
+  return;
 } );
 
 function addArObject( x, y, z ) {
@@ -321,6 +337,7 @@ function addArObject( x, y, z ) {
 
 //  AR object data for sharing
 
+      arShareData.operation = 'move';
       arShareData.name = intersects[0].object.name;
       arShareData.x = intersects[0].object.position.x;
       arShareData.y = intersects[0].object.position.y;
