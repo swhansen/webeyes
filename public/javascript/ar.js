@@ -48,7 +48,35 @@ function loadAr( participantState ) {
   setupArInteractionEvents( participantState );
    }
 
+  function receiveArObject( data ) {
 
+    console.log( 'recieve AR data:', data );
+
+    if ( data.operation === 'move' ) {
+       var arObject = scene.getObjectByName( data.name );
+           arObject.position.x = data.position.x;
+           arObject.position.y = data.position.y;
+           arObject.position.z = data.position.z;
+
+        //   arObject.rotation.x = data.rotation.x;
+        //   arObject.rotation.y = data.rotation.y;
+        //   arObject.rotation.z = data.rotation.z;
+
+           arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+       }
+
+    if ( data.operation === 'newobject' ) {
+
+      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+    var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+    var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
+    torus1.position.set( data.x, data.y, data.z );
+    scene.add( torus1 );
+    torus1.name = 'torus1';
+    arSelectObjectArray.push( torus1 );
+
+    }
+  }
 
 function setUpArLayer( participantState ) {
 
@@ -218,31 +246,6 @@ function arConnectionController( participantState ) {
   }
 
 function setupArInteractionEvents( participantState ) {
-
-
-  function receiveArObject( data ) {
-
-    console.log( 'recieve AR data:', data );
-
-    if ( data.operation === 'move' ) {
-       var arObject = scene.getObjectByName( data.name );
-           arObject.position.x = data.position.x;
-           arObject.position.y = data.position.y;
-           arObject.position.z = data.position.z;
-
-        //   arObject.rotation.x = data.rotation.x;
-        //   arObject.rotation.y = data.rotation.y;
-        //   arObject.rotation.z = data.rotation.z;
-
-           arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-       }
-
-    if ( data.operation === 'newobject' ) {
-
-      addArObject( data.x, data.y, data.z );
-
-    }
-  }
 
   function emitArObject( data ) {
    var sessionId = socketServer.sessionid;
