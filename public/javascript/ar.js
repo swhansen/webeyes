@@ -104,6 +104,7 @@ function setUpArLayer( participantState ) {
   var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
   var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
   var material3 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+  var materialO = new THREE.MeshLambertMaterial( { color: 'red' } );
   var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 
   var cube1 = new THREE.Mesh( geometryCube1, material1 );
@@ -111,15 +112,15 @@ function setUpArLayer( participantState ) {
   var sphere = new THREE.Mesh( geometrySphere, material3 );
   var knot = new THREE.Mesh( geometryKnot, materialKnot );
 
-  sphereN = new THREE.Mesh( geometrySphere, material3 );
-  sphereS = new THREE.Mesh( geometrySphere, material3 );
-  sphereE = new THREE.Mesh( geometrySphere, material3 );
-  sphereW = new THREE.Mesh( geometrySphere, material3 );
+  sphereN = new THREE.Mesh( geometrySphere, materialO );
+  sphereS = new THREE.Mesh( geometrySphere, materialO );
+  sphereE = new THREE.Mesh( geometrySphere, materialO );
+  sphereW = new THREE.Mesh( geometrySphere, materialO );
 
-  sphereN.position.set( 0.0, 0.0, 4.0 );
-  sphereS.position.set( 0.0, 0.0, -4.0 );
-  sphereE.position.set( 2.0, 0.0, 0.0 );
-  sphereW.position.set( -2.0, 0.0, 0.0 );
+  sphereN.position.set( 0.0, 0.0, 6.0 );
+  sphereS.position.set( 0.0, 0.0, -6.0 );
+  sphereE.position.set( 6.0, 0.0, 0.0 );
+  sphereW.position.set( -6.0, 0.0, 0.0 );
 
   scene.add( sphereN );
   scene.add( sphereS );
