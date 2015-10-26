@@ -253,10 +253,6 @@ function setupArInteractionEvents( participantState ) {
   var cameraDriver;
   var arShareData = {};
 
-//
-// Select an AR object and do something cool
-//
-
   var ar0 = document.getElementById( 'ar-canvas' );
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
@@ -344,13 +340,18 @@ function addArObject( x, y, z ) {
 //  AR object data for sharing
 
       arShareData.operation = 'moveObject';
-      arShareData.name = intersects[0].object.name;
-      arShareData.x = intersects[0].object.position.x;
-      arShareData.y = intersects[0].object.position.y;
-      arShareData.z = intersects[0].object.position.z;
-      arShareData.position = intersects[0].object.position;
-      arShareData.rotation = intersects[0].object.rotation;
-      arShareData.color = intersects[0].object.material.color;
+
+     // arShareData.name = intersects[0].object.name;
+
+      arShareData = intersects[0].object;
+
+    //arShareData.x = intersects[0].object.position.x;
+     //arShareData.y = intersects[0].object.position.y;
+     //arShareData.z = intersects[0].object.position.z;
+     //arShareData.position = intersects[0].object.position;
+     //arShareData.rotation = intersects[0].object.rotation;
+     //arShareData.color = intersects[0].object.material.color;
+
       console.log( 'arShareData:', arShareData );
 
       emitArObject( arShareData );
