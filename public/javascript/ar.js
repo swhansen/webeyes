@@ -48,29 +48,7 @@ function loadAr( participantState ) {
   setupArInteractionEvents( participantState );
    }
 
-  function receiveArObject( data ) {
 
-    console.log( 'recieve AR data:', data );
-
-    if ( data.operation === 'move' ) {
-       var arObject = scene.getObjectByName( data.name );
-           arObject.position.x = data.position.x;
-           arObject.position.y = data.position.y;
-           arObject.position.z = data.position.z;
-
-        //   arObject.rotation.x = data.rotation.x;
-        //   arObject.rotation.y = data.rotation.y;
-        //   arObject.rotation.z = data.rotation.z;
-
-           arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-       }
-
-    if ( data.operation === 'newobject' ) {
-
-      addArObject( data.x, data.y, data.z );
-
-    }
-  }
 
 function setUpArLayer( participantState ) {
 
@@ -241,6 +219,31 @@ function arConnectionController( participantState ) {
 
 function setupArInteractionEvents( participantState ) {
 
+
+  function receiveArObject( data ) {
+
+    console.log( 'recieve AR data:', data );
+
+    if ( data.operation === 'move' ) {
+       var arObject = scene.getObjectByName( data.name );
+           arObject.position.x = data.position.x;
+           arObject.position.y = data.position.y;
+           arObject.position.z = data.position.z;
+
+        //   arObject.rotation.x = data.rotation.x;
+        //   arObject.rotation.y = data.rotation.y;
+        //   arObject.rotation.z = data.rotation.z;
+
+           arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+       }
+
+    if ( data.operation === 'newobject' ) {
+
+      addArObject( data.x, data.y, data.z );
+
+    }
+  }
+
   function emitArObject( data ) {
    var sessionId = socketServer.sessionid;
    socketServer.emit( 'arObjectShare', data, sessionId );
@@ -343,13 +346,9 @@ function addArObject( x, y, z ) {
       arShareData.x = intersects[0].object.position.x;
       arShareData.y = intersects[0].object.position.y;
       arShareData.z = intersects[0].object.position.z;
-
       arShareData.position = intersects[0].object.position;
-
       arShareData.rotation = intersects[0].object.rotation;
-
       arShareData.color = intersects[0].object.material.color;
-
       console.log( 'arShareData:', arShareData );
 
       emitArObject( arShareData );
