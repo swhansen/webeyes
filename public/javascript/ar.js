@@ -52,7 +52,7 @@ function loadAr( participantState ) {
 
     console.log( 'recieve AR data:', data );
 
-    if (data.operation === 'move') {
+    if ( data.operation === 'move' ) {
        var arObject = scene.getObjectByName( data.name );
            arObject.position.x = data.position.x;
            arObject.position.y = data.position.y;
@@ -65,9 +65,9 @@ function loadAr( participantState ) {
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
        }
 
-    if (data.operation === 'newobject') {
+    if ( data.operation === 'newobject' ) {
 
-      addArObject( data.position.x, data.position.y, data.position.z );
+      addArObject( data.x, data.y, data.z );
 
     }
   }
@@ -288,11 +288,12 @@ $( '#ar-canvas' ).longpress( function( event ) {
   console.log( 'pos:', pos );
 
       arShareData.operation = 'newobject';
-      arShareData.position.x = pos.x;
-      arShareData.position.y = pos.y;
-      arShareData.position.z = pos.z;
+      arShareData.x = pos.x;
+      arShareData.y = pos.y;
+      arShareData.z = pos.z;
 
       addArObject( pos.x, pos.y, pos.z );
+
       emitArObject( arShareData );
 
   return;
