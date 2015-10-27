@@ -177,7 +177,7 @@ var loader = new THREE.JSONLoader();
     var sheep = new THREE.Mesh(model, material);
     sheep.translateY(-0.5);
     sheep.scale = new THREE.Vector3( 0.6, 0.6, 0.6);
-    sheep.position.set( -2.0, 0.0, 0.0 );
+    sheep.position.set( 2.0, 0.0, 0.0 );
     scene.add(sheep);
   } );
 
