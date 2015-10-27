@@ -170,6 +170,21 @@ function setUpArLayer( participantState ) {
   axisHelper.position.set( 1.5, -0.35, -5.5 );
   scene.add( axisHelper );
 
+
+var loader = new THREE.JSONLoader();
+  loader.load("../armodels/exported/sheep.json",function(model) {
+    var material = new THREE.MeshNormalMaterial();
+
+    var mesh = new THREE.Mesh(model, material);
+    mesh.translateY(-0.5);
+    mesh.scale = new THREE.Vector3(3, 3, 3);
+
+    scene.add(mesh);
+  } );
+
+
+
+
 // add to the selection array
 
   arSelectObjectArray.push( cube1 );
@@ -337,18 +352,14 @@ function addArObject( x, y, z ) {
 
      // intersects[0].object.rotation.y += Math.PI / 180.0 * 45.0;
 
-//  AR object data for sharing
-
       arShareData.operation = 'moveObject';
       arShareData.name = intersects[0].object.name;
-      arShareData = intersects[0].object;
-
-     //arShareData.x = intersects[0].object.position.x;
-     //arShareData.y = intersects[0].object.position.y;
-     //arShareData.z = intersects[0].object.position.z;
-     //arShareData.position = intersects[0].object.position;
-     //arShareData.rotation = intersects[0].object.rotation;
-     //arShareData.color = intersects[0].object.material.color;
+      arShareData.x = intersects[0].object.position.x;
+      arShareData.y = intersects[0].object.position.y;
+      arShareData.z = intersects[0].object.position.z;
+      arShareData.position = intersects[0].object.position;
+      arShareData.rotation = intersects[0].object.rotation;
+      arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
 
