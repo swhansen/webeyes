@@ -1,6 +1,7 @@
 var arDeviceOrientation = {};
 var arSelectObjectArray = [];
 var animateZ = false;
+animateSheep = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 
@@ -239,6 +240,10 @@ function arConnectionController( participantState ) {
         knot.rotation.z += 0.03;
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
+    if ( animateSheep === true ) {
+      sheep.rotation.y += 0.02;
+    }
+
   }
 
   function connectToDeviceSensors() {
@@ -344,6 +349,12 @@ function addArObject( x, y, z ) {
 
     if ( intersects[0].object.name === 'knot' ) {
       animateZ = !animateZ;
+      return;
+    }
+
+    if ( intersects[0].object.name === 'sheep' ) {
+      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+      animateSheep = !animateSheep;
       return;
     }
 
