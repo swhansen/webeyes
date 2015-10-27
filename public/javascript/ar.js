@@ -315,9 +315,9 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
 // add the object locally and tell everyone else
 
-     // addArObject( pos.x, pos.y, pos.z );
+    addArObject( pos.x, pos.y, pos.z );
 
-      emitArObject( arShareData );
+    emitArObject( arShareData );
 
   return;
 } );
