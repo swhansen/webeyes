@@ -172,18 +172,18 @@ function setUpArLayer( participantState ) {
 
 var loader = new THREE.JSONLoader();
   loader.load( '../armodels/sheep.json', function( model ) {
-    var material = new THREE.MeshNormalMaterial();
-    var mesh = new THREE.Mesh( model, material );
+    var material = new THREE.MeshLambertMaterial( { color: 00xFF69B4 } );
+    var sheep = new THREE.Mesh( model, material );
 
     //sheep.translateY(-0.5);
     //sheep.rotateY(0.5);
 
-    mesh.scale.set( 0.1, 0.1, 0.1 );
+    sheep.scale.set( 0.1, 0.1, 0.1 );
 
-    mesh.position.set( -2.0, 0.0, 0.0 );
+    sheep.position.set( -2.0, -0.2, 0.0 );
     mesh.rotation.x = Math.PI / 2;
-    mesh.rotation.z = ( Math.PI / 2 ) * 0.3;
-    scene.add( mesh );
+    sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
+    sheep.add( mesh );
   } );
 
 // add to the selection array
