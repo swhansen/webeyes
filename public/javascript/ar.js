@@ -183,6 +183,7 @@ var loader = new THREE.JSONLoader();
     sheep.rotation.x = Math.PI / 2;
     sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
+    sheep.name = 'sheep';
     scene.add( sheep );
   } );
 
@@ -192,6 +193,7 @@ var loader = new THREE.JSONLoader();
 
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
+  arSelectObjectArray.push( sheep );
 
 function arConnectionController( participantState ) {
 
@@ -294,7 +296,7 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-$( '#ar-canvas' ).longpress( function( event ) {
+$( '#ar-canvas' ).dblclick( function( event ) {
 
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
@@ -316,7 +318,6 @@ $( '#ar-canvas' ).longpress( function( event ) {
 // add the object locally and tell everyone else
 
     addArObject( pos.x, pos.y, pos.z );
-
     emitArObject( arShareData );
 
   return;

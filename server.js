@@ -302,7 +302,7 @@ socketServer.sockets.on( 'connection', function( client ) {
   } );
 
   client.on( 'arObjectShare', function( data, session ) {
-    client.emit( 'arObjectShare ', data );
+   // client.emit( 'arObjectShare ', data );
     client.broadcast.emit( 'arObjectShare', data );
   } );
 
