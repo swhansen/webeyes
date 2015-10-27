@@ -340,12 +340,10 @@ function addArObject( x, y, z ) {
 //  AR object data for sharing
 
       arShareData.operation = 'moveObject';
-
-     // arShareData.name = intersects[0].object.name;
-
+      arShareData.name = intersects[0].object.name;
       arShareData = intersects[0].object;
 
-    //arShareData.x = intersects[0].object.position.x;
+     //arShareData.x = intersects[0].object.position.x;
      //arShareData.y = intersects[0].object.position.y;
      //arShareData.z = intersects[0].object.position.z;
      //arShareData.position = intersects[0].object.position;
