@@ -172,7 +172,8 @@ function setUpArLayer( participantState ) {
 
 var loader = new THREE.JSONLoader();
   loader.load( '../armodels/sheep.json', function( model ) {
-    var material = new THREE.MeshLambertMaterial( { color: 00xFF69B4 } );
+
+    var material = new THREE.MeshLambertMaterial( { color: 0xFF69B4 } );
     var sheep = new THREE.Mesh( model, material );
 
     //sheep.translateY(-0.5);
