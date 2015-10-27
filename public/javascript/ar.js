@@ -180,6 +180,7 @@ var loader = new THREE.JSONLoader();
     mesh.scale.set( 0.1, 0.1, 0.1 );
     mesh.position.set( -2.0, 0.0, 0.0 );
     mesh.rotation.x = Math.PI / 2;
+    mesh.rotation.z = ( Math.PI / 2 ) * 0.3;
     scene.add(mesh);
   } );
 
