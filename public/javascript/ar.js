@@ -165,12 +165,12 @@ function setUpArLayer( participantState ) {
   scene.add( cube2 );
   scene.add( sphere );
   scene.add( knot );
-  scene.add( sheep );
+  //scene.add( sheep );
 
   cube1.name = 'cube1';
   cube2.name = 'cube2';
   knot.name = 'knot';
-  sheep.name = 'sheep';
+  //sheep.name = 'sheep';
 
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
@@ -187,15 +187,13 @@ function setUpArLayer( participantState ) {
   axisHelper.position.set( 1.5, -0.35, -5.5 );
   scene.add( axisHelper );
 
-
-
 // add to the selection array
 
  // arSelectObjectArray.push( cube1 );
 
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
-  arSelectObjectArray.push( sheep );
+ // arSelectObjectArray.push( sheep );
 
 function arConnectionController( participantState ) {
 
@@ -244,9 +242,9 @@ function arConnectionController( participantState ) {
         knot.rotation.z += 0.03;
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
-    if ( animateSheep === true ) {
-      sheep.rotation.y += 0.02;
-    }
+    //if ( animateSheep === true ) {
+    //  sheep.rotation.y += 0.02;
+    //}
 
   }
 
@@ -356,11 +354,11 @@ function addArObject( x, y, z ) {
       return;
     }
 
-    if ( intersects[0].object.name === 'sheep' ) {
-      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-      animateSheep = !animateSheep;
-      return;
-    }
+   //if ( intersects[0].object.name === 'sheep' ) {
+   //  intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+   //  animateSheep = !animateSheep;
+   //  return;
+   //}
 
     if ( intersects.length > 0 ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
