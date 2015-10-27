@@ -146,7 +146,8 @@ function setUpArLayer( participantState ) {
 
   cube2.rotateZ = 10.00;
 
-  scene.add( cube1 );
+  //scene.add( cube1 );
+
   scene.add( cube2 );
   scene.add( sphere );
   scene.add( knot );
@@ -181,7 +182,7 @@ var loader = new THREE.JSONLoader();
 
     sheep.scale.set( 0.1, 0.1, 0.1 );
 
-    sheep.position.set( -2.0, -0.2, 0.0 );
+    sheep.position.set( -2.0, -0.4, 0.0 );
     sheep.rotation.x = Math.PI / 2;
     sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
     scene.add( sheep );
@@ -189,7 +190,8 @@ var loader = new THREE.JSONLoader();
 
 // add to the selection array
 
-  arSelectObjectArray.push( cube1 );
+ // arSelectObjectArray.push( cube1 );
+
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
 
