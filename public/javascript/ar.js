@@ -172,7 +172,7 @@ function setUpArLayer( participantState ) {
 
 
 var loader = new THREE.JSONLoader();
-  loader.load("../armodels/exported/sheep.json",function(model) {
+  loader.load("../armodels/sheep.json",function(model) {
     var material = new THREE.MeshNormalMaterial();
 
     var mesh = new THREE.Mesh(model, material);
