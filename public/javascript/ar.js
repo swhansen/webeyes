@@ -165,7 +165,7 @@ function setUpArLayer( participantState ) {
   scene.add( cube2 );
   scene.add( sphere );
   scene.add( knot );
-  //scene.add( sheep );
+  scene.add( sheep );
 
   cube1.name = 'cube1';
   cube2.name = 'cube2';
@@ -296,7 +296,7 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-$( '#ar-canvas' ).dblclick( function( event ) {
+$( '#ar-canvas' ).longpress( function( event ) {
 
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
