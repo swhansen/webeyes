@@ -182,7 +182,7 @@ var loader = new THREE.JSONLoader();
     sheep.scale.set( 0.1, 0.1, 0.1 );
 
     sheep.position.set( -2.0, -0.2, 0.0 );
-    mesh.rotation.x = Math.PI / 2;
+    sheep.rotation.x = Math.PI / 2;
     sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
     sheep.add( mesh );
   } );
