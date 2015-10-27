@@ -175,7 +175,7 @@ var loader = new THREE.JSONLoader();
   loader.load( "../armodels/sheep.json", function(model) {
     var material = new THREE.MeshNormalMaterial();
     var sheep = new THREE.Mesh(model, material);
-    mesh.translateY(-0.5);
+    sheep.translateY(-0.5);
     sheep.scale = new THREE.Vector3( 3, 3, 3 );
     sheep.position.set( -6.0, 0.0, 0.0 );
     scene.add(sheep);
