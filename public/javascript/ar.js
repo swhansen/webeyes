@@ -172,13 +172,13 @@ function setUpArLayer( participantState ) {
 
 
 var loader = new THREE.JSONLoader();
-  loader.load( "../armodels/sheep.json", function(model) {
+  loader.load( "../armodels/marmelab.json", function(model) {
     var material = new THREE.MeshNormalMaterial();
-    var sheep = new THREE.Mesh(model, material);
+    var mesh = new THREE.Mesh(model, material);
    // sheep.translateY(-0.5);
-    sheep.scale = new THREE.Vector3( 50, 50, 50 );
-    sheep.position.set( -2.0, 0.0, 0.0 );
-    scene.add(sheep);
+    //sheep.scale = new THREE.Vector3( 50, 50, 50 );
+    mesh.position.set( -2.0, 0.0, 0.0 );
+    scene.add(mesh);
   } );
 
 // add to the selection array
