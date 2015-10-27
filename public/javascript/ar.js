@@ -170,19 +170,20 @@ function setUpArLayer( participantState ) {
   axisHelper.position.set( 1.5, -0.35, -5.5 );
   scene.add( axisHelper );
 
-
 var loader = new THREE.JSONLoader();
-  loader.load( "../armodels/jig.json", function(model) {
+  loader.load( '../armodels/sheep.json', function( model ) {
     var material = new THREE.MeshNormalMaterial();
-    var mesh = new THREE.Mesh(model, material);
+    var mesh = new THREE.Mesh( model, material );
+
     //sheep.translateY(-0.5);
     //sheep.rotateY(0.5);
-    //mesh.scale.set( 0.1, 0.1, 0.1 );
-    mesh.scale.set( 1, 1, 1 );
+
+    mesh.scale.set( 0.1, 0.1, 0.1 );
+
     mesh.position.set( -2.0, 0.0, 0.0 );
     mesh.rotation.x = Math.PI / 2;
     mesh.rotation.z = ( Math.PI / 2 ) * 0.3;
-    scene.add(mesh);
+    scene.add( mesh );
   } );
 
 // add to the selection array
