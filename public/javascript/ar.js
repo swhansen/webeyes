@@ -158,6 +158,8 @@ function setUpArLayer( participantState ) {
     sheep.rotation.x = Math.PI / 2;
     sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
+    sheep.name = 'sheep';
+    scene.add( sheep );
   } );
 
   //scene.add( cube1 );
@@ -165,7 +167,6 @@ function setUpArLayer( participantState ) {
   scene.add( cube2 );
   scene.add( sphere );
   scene.add( knot );
-  scene.add( sheep );
 
   cube1.name = 'cube1';
   cube2.name = 'cube2';
