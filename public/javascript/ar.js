@@ -184,7 +184,7 @@ var loader = new THREE.JSONLoader();
     sheep.position.set( -2.0, -0.2, 0.0 );
     sheep.rotation.x = Math.PI / 2;
     sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
-    sheep.add( sheep );
+    scene.add( sheep );
   } );
 
 // add to the selection array
