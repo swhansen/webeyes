@@ -359,6 +359,9 @@ function addArObject( x, y, z ) {
    if ( intersects[0].object.name === 'sheep' ) {
      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      animateSheep = !animateSheep;
+      // if ( !animateSheep ) {
+      //  broadcast to others  intersects[0].object.rotation
+      // }
      return;
     }
 
