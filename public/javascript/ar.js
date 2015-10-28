@@ -4,6 +4,7 @@ var animateZ = false;
 animateSheep = false;
 var selectedArObject;
 var clock = new THREE.Clock();
+var sheep;
 
 function orientationAr() {
 
@@ -150,7 +151,7 @@ function setUpArLayer( participantState ) {
   var loader = new THREE.JSONLoader();
   loader.load( '../armodels/sheep.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
-    var sheep = new THREE.Mesh( model, material );
+    sheep = new THREE.Mesh( model, material );
 
     sheep.scale.set( 0.1, 0.1, 0.1 );
     sheep.position.set( -2.0, -0.4, 0.0 );
