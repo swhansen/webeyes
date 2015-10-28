@@ -245,7 +245,7 @@ function arConnectionController( participantState ) {
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
     if ( animateSheep === true ) {
-      sheep.rotation.y += 0.02;
+      sheep.rotation.x += 0.02;
     }
 
   }
