@@ -148,7 +148,7 @@ function setUpArLayer( participantState ) {
   cube2.rotateZ = 10.00;
 
   var loader = new THREE.JSONLoader();
-  loader.onLoadComplete( '../armodels/sheep.json', function( model ) {
+  loader.load( '../armodels/sheep.json', function( model ) {
     makeSheep( model );
     scene.add( sheep );
   } );
