@@ -149,7 +149,10 @@ function setUpArLayer( participantState ) {
 
   var loader = new THREE.JSONLoader();
   loader.load( '../armodels/sheep.json', function( model ) {
+    makeSheep( model );
+  } );
 
+  function makeSheep( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
     var sheep = new THREE.Mesh( model, material );
 
@@ -160,7 +163,7 @@ function setUpArLayer( participantState ) {
     sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
     sheep.name = 'sheep';
     scene.add( sheep );
-  } );
+}
 
   //scene.add( cube1 );
 
