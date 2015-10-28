@@ -149,7 +149,7 @@ function setUpArLayer( participantState ) {
   cube2.rotateZ = 10.00;
 
   var loader = new THREE.JSONLoader();
-  loader.load( '../armodels/sheep.json', function( model ) {
+  loader.load( '../armodels/sheep2.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
     sheep = new THREE.Mesh( model, material );
 
@@ -245,7 +245,7 @@ function arConnectionController( participantState ) {
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
     if ( animateSheep === true ) {
-      sheep.rotation.z += 0.02;
+      sheep.rotation.z += 0.01;
     }
 
   }
@@ -271,8 +271,8 @@ function arConnectionController( participantState ) {
 function setupArInteractionEvents( participantState ) {
 
   function emitArObject( data ) {
-   var sessionId = socketServer.sessionid;
-   socketServer.emit( 'arObjectShare', data, sessionId );
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
   var cameraDriver;
