@@ -149,11 +149,6 @@ function setUpArLayer( participantState ) {
 
   var loader = new THREE.JSONLoader();
   loader.load( '../armodels/sheep.json', function( model ) {
-    makeSheep( model );
-    scene.add( sheep );
-  } );
-
-  function makeSheep( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
     var sheep = new THREE.Mesh( model, material );
 
@@ -163,7 +158,8 @@ function setUpArLayer( participantState ) {
     sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
     sheep.name = 'sheep';
-}
+    scene.add( sheep );
+  } );
 
   //scene.add( cube1 );
 
@@ -174,7 +170,6 @@ function setUpArLayer( participantState ) {
   cube1.name = 'cube1';
   cube2.name = 'cube2';
   knot.name = 'knot';
-  sheep.name = 'sheep';
 
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
