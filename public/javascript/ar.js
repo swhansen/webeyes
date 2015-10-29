@@ -61,9 +61,9 @@ function loadAr( participantState ) {
            arObject.position.y = data.position.y;
            arObject.position.z = data.position.z;
 
-           arObject.rotation.x = data.rotation.x;
-           arObject.rotation.y = data.rotation.y;
-           arObject.rotation.z = data.rotation.z;
+           arObject.rotation.x = data.rotation._x;
+           arObject.rotation.y = data.rotation._y;
+           arObject.rotation.z = data.rotation._z;
 
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
        }
