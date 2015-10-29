@@ -11,9 +11,9 @@ function orientationAr() {
   document.getElementById( 'cube' ).style.visibility = 'visible';
   document.getElementById( 'cube' ).style.zIndex = '99';
 
-  if ( !window.DeviceOrientationEvent ) {
-            console.log( 'no device orientation' );
-     } else {
+  //if ( !window.DeviceOrientationEvent ) {
+  //          console.log( 'no device orientation' );
+  //   } else {
       if ( userContext.peer === 'focus' ) {
         window.addEventListener( 'deviceorientation', function( event ) {
            document.getElementById( 'cube' ).style.webkitTransform =
@@ -26,7 +26,6 @@ function orientationAr() {
      }
 
      if ( userContext.peer === 'peer' ) {
-
       socketServer.on( 'arObjectShare', function( data ) {
         window.addEventListener( 'deviceorientation', function( event ) {
            document.getElementById( 'cube' ).style.webkitTransform =
@@ -39,8 +38,11 @@ function orientationAr() {
      })
 
 
-  }   };
+  }
 }
+
+//   };
+//}
 
 
 function emitArOrientationData() {
