@@ -1,7 +1,7 @@
 var arDeviceOrientation = {};
 var arSelectObjectArray = [];
 var animateZ = false;
-animateSheep = false;
+var animateSheep = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
@@ -363,13 +363,14 @@ function addArObject( x, y, z ) {
      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      animateSheep = !animateSheep;
      if ( !animateSheep ) {
+        arShareData.rotateState = animateSheep;
         arShareData.operation = 'moveObject';
         arShareData.name = intersects[0].object.name;
         arShareData.x = intersects[0].object.position.x;
         arShareData.y = intersects[0].object.position.y;
         arShareData.z = intersects[0].object.position.z;
         arShareData.position = intersects[0].object.position;
-        arShareData.rotation = intersects[0].object.rotation;
+       // arShareData.rotation = intersects[0].object.rotation;
         arShareData.color = intersects[0].object.material.color;
 
         emitArObject( arShareData );
@@ -390,7 +391,7 @@ function addArObject( x, y, z ) {
       arShareData.y = intersects[0].object.position.y;
       arShareData.z = intersects[0].object.position.z;
       arShareData.position = intersects[0].object.position;
-      arShareData.rotation = intersects[0].object.rotation;
+     // arShareData.rotation = intersects[0].object.rotation;
       arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
