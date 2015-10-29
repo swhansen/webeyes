@@ -55,14 +55,17 @@ function loadAr( participantState ) {
     console.log( 'recieve AR data:', data );
 
     if ( data.operation === 'moveObject' ) {
+      console .log( 'at moveObject recieve:', data );
        var arObject = scene.getObjectByName( data.name );
            arObject.position.x = data.position.x;
            arObject.position.y = data.position.y;
            arObject.position.z = data.position.z;
 
-        //   arObject.rotation.x = data.rotation.x;
-        //   arObject.rotation.y = data.rotation.y;
-        //   arObject.rotation.z = data.rotation.z;
+           //  USE arObject.rotateX = data.rotation._x;
+
+           arObject.rotation.x = data.rotation.x;
+           arObject.rotation.y = data.rotation.y;
+           arObject.rotation.z = data.rotation.z;
 
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
        }
@@ -359,9 +362,19 @@ function addArObject( x, y, z ) {
    if ( intersects[0].object.name === 'sheep' ) {
      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      animateSheep = !animateSheep;
-      // if ( !animateSheep ) {
-      //  broadcast to others  intersects[0].object.rotation
-      // }
+     if ( !animateSheep ) {
+        arShareData.operation = 'moveObject';
+        arShareData.name = intersects[0].object.name;
+        arShareData.x = intersects[0].object.position.x;
+        arShareData.y = intersects[0].object.position.y;
+        arShareData.z = intersects[0].object.position.z;
+        arShareData.position = intersects[0].object.position;
+        arShareData.rotation = intersects[0].object.rotation;
+        arShareData.color = intersects[0].object.material.color;
+
+        emitArObject( arShareData );
+        console.log( 'emit sheep on stop click:', arShareData );
+       }
      return;
     }
 
