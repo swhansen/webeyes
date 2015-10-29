@@ -14,7 +14,7 @@ function orientationAr() {
   //if ( !window.DeviceOrientationEvent ) {
   //          console.log( 'no device orientation' );
   //   } else {
-      if ( userContext.peer === 'focus' ) {
+      if ( userContext.participantState === 'focus' ) {
         window.addEventListener( 'deviceorientation', function( event ) {
            document.getElementById( 'cube' ).style.webkitTransform =
            document.getElementById( 'cube' ).style.transform =
@@ -25,7 +25,7 @@ function orientationAr() {
       );
      }
 
-     if ( userContext.peer === 'peer' ) {
+     if ( userContext.participantState === 'peer' ) {
       socketServer.on( 'arObjectShare', function( data ) {
       //  window.addEventListener( 'deviceorientation', function( event ) {
            document.getElementById( 'cube' ).style.webkitTransform =
