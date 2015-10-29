@@ -307,8 +307,8 @@ body {
 
 .cube
   {
-     width: 150px;
-     height: 150px;
+     width: 100px;
+     height: 100px;
      position: relative;
      margin: 30px auto;
      -webkit-transform-style: preserve-3d;
@@ -319,10 +319,10 @@ body {
 
 .face
 {
-   width: 150px;
-   height: 150px;
+   width: 100px;
+   height: 100px;
    position: absolute;
-   font-size: 80px;
+   font-size: 50px;
    text-align: center;
    line-height: 150px;
    background-color: #999999;
