@@ -14,15 +14,34 @@ function orientationAr() {
   if ( !window.DeviceOrientationEvent ) {
             console.log( 'no device orientation' );
      } else {
+      if ( userContext.peer === 'focus' ) {
         window.addEventListener( 'deviceorientation', function( event ) {
            document.getElementById( 'cube' ).style.webkitTransform =
            document.getElementById( 'cube' ).style.transform =
                    'rotateX(' + event.beta + 'deg) ' +
                    'rotateY(' + event.gamma + 'deg) ' +
                    'rotateZ(' + event.alpha + 'deg)';
-        } );
+        }
+      );
      }
-   }
+
+     if ( userContext.peer === 'peer' ) {
+
+      socketServer.on( 'arObjectShare', function( data ) {
+        window.addEventListener( 'deviceorientation', function( event ) {
+           document.getElementById( 'cube' ).style.webkitTransform =
+           document.getElementById( 'cube' ).style.transform =
+                   'rotateX(' + data.beta + 'deg) ' +
+                   'rotateY(' + data.gamma + 'deg) ' +
+                   'rotateZ(' + data.alpha + 'deg)';
+        }
+      );
+     })
+
+
+  }   };
+}
+
 
 function emitArOrientationData() {
 
@@ -377,7 +396,9 @@ function addArObject( x, y, z ) {
      return;
     }
 
-    if ( intersects.length === 'cube2' ) {
+    //if ( intersects.length > 0 ) {
+
+   if ( intersects[0].object.name === 'cube2' ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
 

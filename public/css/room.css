@@ -307,24 +307,28 @@ body {
 
 .cube
   {
-     width: 150px;
-     height: 150px;
-     position: relative;
-     margin: 30px auto;
+     width: 60px;
+     height: 60px;
+     position:fixed;
+  bottom:0;
+  left:50%;
+  margin-left:-200px; /*negative half the width */
+  vertical-align: middle;
+     margin: 20px auto;
      -webkit-transform-style: preserve-3d;
      transform-style: preserve-3d;
      z-index: 99;
-     visibility: hidden;
+     visibility: visible;
   }
 
 .face
 {
-   width: 150px;
-   height: 150px;
+   width: 60px;
+   height: 60px;
    position: absolute;
-   font-size: 80px;
+   font-size: 35px;
    text-align: center;
-   line-height: 150px;
+   line-height: 60px;
    background-color: #999999;
    box-shadow: inset 0 0 20px #333333;
    opacity: 0.6;
