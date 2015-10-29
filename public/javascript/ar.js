@@ -8,7 +8,61 @@ var sheep;
 
 function orientationAr() {
 
-  document.getElementById( 'cube' ).style.visibility = 'visible';
+//  document.getElementById( 'cube' ).style.visibility = 'visible';
+//  document.getElementById( 'cube' ).style.zIndex = '99';
+//
+//  if ( !window.DeviceOrientationEvent ) {
+//            console.log( 'no device orientation' );
+//     } else {
+//      if ( userContext.peer === 'focus' ) {
+//        window.addEventListener( 'deviceorientation', function( event ) {
+//           document.getElementById( 'cube' ).style.webkitTransform =
+//           document.getElementById( 'cube' ).style.transform =
+//                   'rotateX(' + event.beta + 'deg) ' +
+//                   'rotateY(' + event.gamma + 'deg) ' +
+//                   'rotateZ(' + event.alpha + 'deg)';
+//        }
+//      );
+//     }
+//
+//     if ( userContext.peer === 'peer' ) {
+//
+//      socketServer.on( 'arObjectShare', function( data ) {
+//        window.addEventListener( 'deviceorientation', function( event ) {
+//           document.getElementById( 'cube' ).style.webkitTransform =
+//           document.getElementById( 'cube' ).style.transform =
+//                   'rotateX(' + data.beta + 'deg) ' +
+//                   'rotateY(' + data.gamma + 'deg) ' +
+//                   'rotateZ(' + data.alpha + 'deg)';
+//        }
+//      );
+//     })
+//
+//
+//  }   };
+}
+
+
+function emitArOrientationData() {
+
+  window.addEventListener( 'deviceorientation', function( event ) {
+  arDeviceOrientation.alpha = event.alpha;
+  arDeviceOrientation.beta = event.beta;
+  arDeviceOrientation.gamma = event.gamma;
+
+  var sessionId = socketServer.sessionid;
+  socketServer.emit( 'arOrientation', arDeviceOrientation, sessionId );
+  } );
+}
+
+//
+// ----------  Main Loader  --------------------------
+//
+
+function loadAr( participantState ) {
+
+
+document.getElementById( 'cube' ).style.visibility = 'visible';
   document.getElementById( 'cube' ).style.zIndex = '99';
 
   if ( !window.DeviceOrientationEvent ) {
@@ -40,26 +94,16 @@ function orientationAr() {
 
 
   }   };
-}
 
 
-function emitArOrientationData() {
 
-  window.addEventListener( 'deviceorientation', function( event ) {
-  arDeviceOrientation.alpha = event.alpha;
-  arDeviceOrientation.beta = event.beta;
-  arDeviceOrientation.gamma = event.gamma;
 
-  var sessionId = socketServer.sessionid;
-  socketServer.emit( 'arOrientation', arDeviceOrientation, sessionId );
-  } );
-}
 
-//
-// ----------  Main Loader  --------------------------
-//
 
-function loadAr( participantState ) {
+
+
+
+
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
   var knot;
