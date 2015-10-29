@@ -26,7 +26,7 @@ function orientationAr() {
      }
 
      if ( userContext.participantState === 'peer' ) {
-      socketServer.on( 'arObjectShare', function( data ) {
+      socketServer.on( 'arOrientation', function( data ) {
       //  window.addEventListener( 'deviceorientation', function( event ) {
            document.getElementById( 'cube' ).style.webkitTransform =
            document.getElementById( 'cube' ).style.transform =
