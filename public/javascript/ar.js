@@ -42,7 +42,6 @@ function orientationAr() {
 //   };
 //}
 
-
 function emitArOrientationData() {
 
   window.addEventListener( 'deviceorientation', function( event ) {
