@@ -27,7 +27,7 @@ function orientationAr() {
 
      if ( userContext.peer === 'peer' ) {
       socketServer.on( 'arObjectShare', function( data ) {
-        window.addEventListener( 'deviceorientation', function( event ) {
+      //  window.addEventListener( 'deviceorientation', function( event ) {
            document.getElementById( 'cube' ).style.webkitTransform =
            document.getElementById( 'cube' ).style.transform =
                    'rotateX(' + data.beta + 'deg) ' +
@@ -35,11 +35,9 @@ function orientationAr() {
                    'rotateZ(' + data.alpha + 'deg)';
         }
       );
-     })
-
-
+     }
   }
-}
+
 
 //   };
 //}
