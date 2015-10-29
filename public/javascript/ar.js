@@ -377,7 +377,7 @@ function addArObject( x, y, z ) {
      return;
     }
 
-    if ( intersects.length > 0 ) {
+    if ( intersects.length === 'cube2' ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
 
