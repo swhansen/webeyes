@@ -61,11 +61,9 @@ function loadAr( participantState ) {
            arObject.position.y = data.position.y;
            arObject.position.z = data.position.z;
 
-           //  USE arObject.rotateX = data.rotation._x;
-
-           //arObject.rotateX = data.rotation.x;
-           //arObject.rotateY = data.rotation.y;
-           //arObject.rotateZ = data.rotation.z;
+           arObject.rotateX = data.rotation._x;
+           arObject.rotateY = data.rotation._y;
+           arObject.rotateZ = data.rotation._z;
 
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
        }
@@ -370,8 +368,9 @@ function addArObject( x, y, z ) {
        arShareData.y = intersects[0].object.position.y;
        arShareData.z = intersects[0].object.position.z;
        arShareData.position = intersects[0].object.position;
-      // arShareData.rotation = intersects[0].object.rotation;
-       arShareData.color = intersects[0].object.material.color
+       arShareData.rotation = intersects[0].object.rotation;
+       arShareData.color = intersects[0].object.material.color;
+
        emitArObject( arShareData );
        console.log( 'emit sheep on stop click:', arShareData );
       }
