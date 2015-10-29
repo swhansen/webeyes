@@ -362,20 +362,20 @@ function addArObject( x, y, z ) {
    if ( intersects[0].object.name === 'sheep' ) {
      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      animateSheep = !animateSheep;
-     if ( !animateSheep ) {
-        arShareData.rotateState = animateSheep;
-        arShareData.operation = 'moveObject';
-        arShareData.name = intersects[0].object.name;
-        arShareData.x = intersects[0].object.position.x;
-        arShareData.y = intersects[0].object.position.y;
-        arShareData.z = intersects[0].object.position.z;
-        arShareData.position = intersects[0].object.position;
-       // arShareData.rotation = intersects[0].object.rotation;
-        arShareData.color = intersects[0].object.material.color;
+     //f ( !animateSheep ) {
+     //  arShareData.rotateState = animateSheep;
+     //  arShareData.operation = 'moveObject';
+     //  arShareData.name = intersects[0].object.name;
+     //  arShareData.x = intersects[0].object.position.x;
+     //  arShareData.y = intersects[0].object.position.y;
+     //  arShareData.z = intersects[0].object.position.z;
+     //  arShareData.position = intersects[0].object.position;
+     // // arShareData.rotation = intersects[0].object.rotation;
+     //  arShareData.color = intersects[0].object.material.color;
 
-        emitArObject( arShareData );
-        console.log( 'emit sheep on stop click:', arShareData );
-       }
+     //  emitArObject( arShareData );
+     //  console.log( 'emit sheep on stop click:', arShareData );
+     // }
      return;
     }
 
@@ -391,7 +391,7 @@ function addArObject( x, y, z ) {
       arShareData.y = intersects[0].object.position.y;
       arShareData.z = intersects[0].object.position.z;
       arShareData.position = intersects[0].object.position;
-     // arShareData.rotation = intersects[0].object.rotation;
+      arShareData.rotation = intersects[0].object.rotation;
       arShareData.color = intersects[0].object.material.color;
 
       console.log( 'arShareData:', arShareData );
