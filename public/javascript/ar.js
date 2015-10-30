@@ -6,12 +6,13 @@ var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
 
-function orientationAr() {
+
+function orientationAr( data ) {
 
   emitArOrientationData();
   document.getElementById( 'compassCube' ).style.zIndex = '99';
 
-  if ( compassToggle ) {
+  if ( data ) {
     document.getElementById( 'compassCube' ).style.visibility = 'visible';
     } else {
     document.getElementById( 'compassCube' ).style.visibility = 'hidden';
@@ -54,6 +55,10 @@ function emitArOrientationData() {
   socketServer.emit( 'arOrientation', arDeviceOrientation, sessionId );
   } );
 }
+
+socketServer.on('compassShare', function(data) {
+  orientationAr( data )
+  }
 
 //
 // ----------  Main Loader  --------------------------

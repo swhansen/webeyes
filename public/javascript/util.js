@@ -72,7 +72,7 @@ function emitUtility(data) {
 }
 
 socketServer.on('utility', function(data) {
-  switch (data) {
+  switch ( data ) {
     case 'bullseye':
       drawBullsEye();
       break;
@@ -92,17 +92,17 @@ socketServer.on('utility', function(data) {
     case 'arClientInit':
         loadAr( 'peer' );
       break;
-    case 'compass':
-    orientationAr();
-    if ( userContext.participantState === 'peer') {
-      compassToggle = !compassToggle;
-      if (compassToggle === false) {
-       document.getElementById( 'compassCube' ).style.visibility = 'hidden';
-      } else {
-       document.getElementById( 'compassCube' ).style.visibility = 'visible';
-      }
-    }
-    break;
+  //  case 'compass':
+  //  orientationAr();
+  //  if ( userContext.participantState === 'peer') {
+  //    compassToggle = !compassToggle;
+  //    if (compassToggle === false) {
+  //     document.getElementById( 'compassCube' ).style.visibility = 'hidden';
+  //    } else {
+  //     document.getElementById( 'compassCube' ).style.visibility = 'visible';
+  //    }
+  //  }
+  //  break;
   }
-});
+} );
 

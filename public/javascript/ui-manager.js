@@ -70,9 +70,10 @@ $( function() {
 $( function() {
   $( '#sticky-compass' ).click( function() {
     compassToggle = !compassToggle;
+    var data = compassToggle;
     orientationAr();
     var sessionId = socketServer.sessionid;
-    socketServer.emit( 'utility', 'compass', sessionId );
+    socketServer.emit( 'compassShare', data, sessionId );
   } );
 } );
 
