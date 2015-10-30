@@ -67,6 +67,19 @@ $( function() {
   } );
 } );
 
+$( function() {
+  $( '#sticky-compass' ).click( function() {
+
+    compassToggle = !compassToggle;
+
+var sessionId = socketServer.sessionid;
+ // console.log('emitUtility:', data);
+  socketServer.emit('utility', compass, sessionId);
+  } );
+} );
+
+
+
 function buildSideMenu( layer ) {
 
   // remove existing side menu(s)

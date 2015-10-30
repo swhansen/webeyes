@@ -92,6 +92,9 @@ socketServer.on('utility', function(data) {
     case 'arClientInit':
         loadAr( 'peer' );
       break;
+      case 'compass':
+        compassToggle = !compassToggle;
+      break;
   }
 });
 
