@@ -49,6 +49,8 @@ drawUI();
 
   setDomMouseEvent( 'canvas0', 'auto' );
   setDomMouseEvent( 'arcanvaspane', 'none' );
+
+  messageBar( 'Draw Layer is in Focus' );
  } );
   } );
 
@@ -56,17 +58,14 @@ $( function() {
   $( '#sticky-ar' ).click( function() {
 
     _.each( uiStructure.structure, function( fcn ) {
-     $( fcn.sideBar ).fadeOut( 2 );
-   } );
+       $( fcn.sideBar ).fadeOut( 2 );
+      } );
 
-  if ( userContext.peer === 'focus' ) {
-      buildSideMenu( 'augme' );
-    }
-
-    setDomMouseEvent( 'canvas0', 'none' );
-    setDomMouseEvent( 'arcanvaspane', 'auto' );
-    } );
+     setDomMouseEvent( 'canvas0', 'none' );
+     setDomMouseEvent( 'arcanvaspane', 'auto' );
+     messageBar( 'AR Layer is in Focus' );
   } );
+} );
 
 function buildSideMenu( layer ) {
 
