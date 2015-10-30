@@ -14,10 +14,11 @@ function orientationAr() {
   //if ( !window.DeviceOrientationEvent ) {
   //          console.log( 'no device orientation' );
   //   } else {
+
       if ( userContext.participantState === 'focus' ) {
         window.addEventListener( 'deviceorientation', function( event ) {
-           document.getElementById( 'cube' ).style.webkitTransform =
-           document.getElementById( 'cube' ).style.transform =
+        document.getElementById( 'cube' ).style.webkitTransform =
+        document.getElementById( 'cube' ).style.transform =
                    'rotateX(' + event.beta + 'deg) ' +
                    'rotateY(' + event.gamma + 'deg) ' +
                    'rotateZ(' + event.alpha + 'deg)';
@@ -27,7 +28,9 @@ function orientationAr() {
 
      if ( userContext.participantState === 'peer' ) {
       socketServer.on( 'arOrientation', function( data ) {
+
       //  window.addEventListener( 'deviceorientation', function( event ) {
+
            document.getElementById( 'cube' ).style.webkitTransform =
            document.getElementById( 'cube' ).style.transform =
                    'rotateX(' + data.beta + 'deg) ' +
@@ -37,9 +40,6 @@ function orientationAr() {
       );
      }
   }
-
-//   };
-//}
 
 function emitArOrientationData() {
 
@@ -95,6 +95,10 @@ function loadAr( participantState ) {
       scene.add( torus1 );
       arSelectObjectArray.push( torus1 );
     }
+
+    if ( data.operation === 'animate' ) {
+    }
+
   }
 
 function setUpArLayer( participantState ) {
@@ -355,7 +359,9 @@ function addArObject( x, y, z ) {
 
 // Select an object
 
-  ar0.addEventListener( 'click', function( event ) {
+$( '#ar-canvas' ).click( function( event ) {
+
+ // ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();
 
   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
@@ -377,6 +383,7 @@ function addArObject( x, y, z ) {
    if ( intersects[0].object.name === 'sheep' ) {
      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      animateSheep = !animateSheep;
+
      if ( !animateSheep ) {
        arShareData.rotateState = animateSheep;
        arShareData.operation = 'moveObject';
