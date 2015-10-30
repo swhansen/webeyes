@@ -73,7 +73,7 @@ $( function() {
     var data = compassToggle;
     orientationAr( data );
     var sessionId = socketServer.sessionid;
-    socketServer.emit( 'compassShare', data, sessionId );
+    socketServer.emit( 'toggleCompass', data, sessionId );
   } );
 } );
 

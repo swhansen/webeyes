@@ -56,7 +56,7 @@ function emitArOrientationData() {
   } );
 }
 
-socketServer.on( 'compassShare', function(data) {
+socketServer.on( 'toggleCompass', function(data) {
   orientationAr( data );
   } )
 
