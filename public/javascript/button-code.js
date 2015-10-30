@@ -48,7 +48,7 @@ function usebcode( bcode ) {
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'augmeButton' ).style.visibility = 'visible';
-    document.getElementById( 'compass' ).style.visibility = 'visible';
+    document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
     userContext.participantState = 'focus';
     mainCollapsed = true;
     break;
