@@ -7,6 +7,9 @@ var clock = new THREE.Clock();
 var sheep;
 
 function orientationAr() {
+
+emitArOrientationData();
+
 if ( compassToggle ) {
   document.getElementById( 'compassCube' ).style.visibility = 'visible';
 } else {
@@ -31,7 +34,6 @@ document.getElementById( 'compassCube' ).style.visibility = 'hidden';
   }
   if ( userContext.participantState === 'peer' ) {
     socketServer.on( 'arOrientation', function( data ) {
-    //  window.addEventListener( 'deviceorientation', function( event ) {
          document.getElementById( 'compassCube' ).style.webkitTransform =
          document.getElementById( 'compassCube' ).style.transform =
                  'rotateX(' + data.beta + 'deg) ' +
