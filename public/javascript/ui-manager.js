@@ -75,7 +75,7 @@ $( function() {
 
 var sessionId = socketServer.sessionid;
  // console.log('emitUtility:', data);
-  socketServer.emit('utility', compass, sessionId);
+  socketServer.emit( 'utility', 'compass', sessionId);
   } );
 } );
 
