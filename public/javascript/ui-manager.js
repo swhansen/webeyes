@@ -78,8 +78,6 @@ var sessionId = socketServer.sessionid;
   } );
 } );
 
-
-
 function buildSideMenu( layer ) {
 
   // remove existing side menu(s)
