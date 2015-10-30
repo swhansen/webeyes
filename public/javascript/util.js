@@ -94,6 +94,7 @@ socketServer.on('utility', function(data) {
       break;
       case 'compass':
       console.log( 'util-compass' );
+      orientationAr();
       if ( userContext.participantState === 'peer') {
         compassToggle = !compassToggle;
         if (compassToggle === false) {

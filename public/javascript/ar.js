@@ -12,6 +12,7 @@ if ( compassToggle ) {
 } else {
 document.getElementById( 'compassCube' ).style.visibility = 'hidden';
 }
+
   document.getElementById( 'compassCube' ).style.zIndex = '99';
 
   //if ( !window.DeviceOrientationEvent ) {
