@@ -56,9 +56,9 @@ function emitArOrientationData() {
   } );
 }
 
-socketServer.on('compassShare', function(data) {
-  orientationAr( data )
-  }
+socketServer.on( 'compassShare', function(data) {
+  orientationAr( data );
+  } )
 
 //
 // ----------  Main Loader  --------------------------

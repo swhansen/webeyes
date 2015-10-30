@@ -71,7 +71,7 @@ $( function() {
   $( '#sticky-compass' ).click( function() {
     compassToggle = !compassToggle;
     var data = compassToggle;
-    orientationAr();
+    orientationAr( data );
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'compassShare', data, sessionId );
   } );
