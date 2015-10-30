@@ -8,21 +8,7 @@ var sheep;
 
 function orientationAr() {
 
-  compassToggle = !compassToggle;
-
-  if ( compassToggle ) {
-    setDomMouseEvent( compassTogggle, 'visible' );
-    var sessionId = socketServer.sessionid;
-  socketServer.emit( 'utility', compass, sessionId );
-  }
-
-  if (!compassTogggle ) {
-    setDomMouseEvent( compassTogggle, 'hidden' );
-     var sessionId = socketServer.sessionid;
-  socketServer.emit( 'utility', compass, sessionId );
-  }
-
-  //document.getElementById( 'compassCube' ).style.visibility = 'visible';
+  document.getElementById( 'compassCube' ).style.visibility = 'visible';
   document.getElementById( 'compassCube' ).style.zIndex = '99';
 
   //if ( !window.DeviceOrientationEvent ) {
@@ -373,8 +359,6 @@ function addArObject( x, y, z ) {
   }
 
 // Select an object
-
-
 
   ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();

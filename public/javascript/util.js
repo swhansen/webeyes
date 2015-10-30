@@ -92,9 +92,6 @@ socketServer.on('utility', function(data) {
     case 'arClientInit':
         loadAr( 'peer' );
       break;
-    case 'compass':
-    orientationAr();
-    break;
   }
 });
 
