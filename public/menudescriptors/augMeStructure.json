@@ -63,7 +63,7 @@
             "mainButton": "#augmeButton",
             "sideBar": "#aug-ui-container",
             "buttons": [
-                "#aug2",
+                "#compass",
                 "#shareaug"
             ],
             "renderElement": "arcanvaspane",

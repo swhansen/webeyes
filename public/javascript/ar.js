@@ -8,8 +8,8 @@ var sheep;
 
 function orientationAr() {
 
-  document.getElementById( 'cube' ).style.visibility = 'visible';
-  document.getElementById( 'cube' ).style.zIndex = '99';
+  document.getElementById( 'compassCube' ).style.visibility = 'visible';
+  document.getElementById( 'compassCube' ).style.zIndex = '99';
 
   //if ( !window.DeviceOrientationEvent ) {
   //          console.log( 'no device orientation' );
@@ -17,8 +17,8 @@ function orientationAr() {
 
       if ( userContext.participantState === 'focus' ) {
         window.addEventListener( 'deviceorientation', function( event ) {
-        document.getElementById( 'cube' ).style.webkitTransform =
-        document.getElementById( 'cube' ).style.transform =
+        document.getElementById( 'compassCube' ).style.webkitTransform =
+        document.getElementById( 'compassCube' ).style.transform =
                    'rotateX(' + event.beta + 'deg) ' +
                    'rotateY(' + event.gamma + 'deg) ' +
                    'rotateZ(' + event.alpha + 'deg)';
@@ -31,8 +31,8 @@ function orientationAr() {
 
       //  window.addEventListener( 'deviceorientation', function( event ) {
 
-           document.getElementById( 'cube' ).style.webkitTransform =
-           document.getElementById( 'cube' ).style.transform =
+           document.getElementById( 'compassCube' ).style.webkitTransform =
+           document.getElementById( 'compassCube' ).style.transform =
                    'rotateX(' + data.beta + 'deg) ' +
                    'rotateY(' + data.gamma + 'deg) ' +
                    'rotateZ(' + data.alpha + 'deg)';
