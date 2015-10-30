@@ -8,6 +8,8 @@ var sheep;
 
 function orientationAr() {
 
+  console.log( 'orientationAR:', userContext.participantState );
+
   document.getElementById( 'compassCube' ).style.visibility = 'visible';
   document.getElementById( 'compassCube' ).style.zIndex = '99';
 
