@@ -45,11 +45,11 @@ function usebcode( bcode ) {
     for ( button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
+    userContext.participantState = 'focus';
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'augmeButton' ).style.visibility = 'visible';
     document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
-    userContext.participantState = 'focus';
     mainCollapsed = true;
     break;
 
