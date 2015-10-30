@@ -93,10 +93,12 @@ socketServer.on('utility', function(data) {
         loadAr( 'peer' );
       break;
       case 'compass':
-        if (compassToggle === false) (
-         document.getElementById( 'compassCube' ).style.visibility = 'hidden';)
-          if (compassToggle === true) (
-         document.getElementById( 'compassCube' ).style.visibility = 'visible';)
+        if (compassToggle === false) {
+         document.getElementById( 'compassCube' ).style.visibility = 'hidden';
+        }
+          if (compassToggle === true) {
+         document.getElementById( 'compassCube' ).style.visibility = 'visible';
+        }
       break;
   }
 });
