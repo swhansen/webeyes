@@ -69,13 +69,10 @@ $( function() {
 
 $( function() {
   $( '#sticky-compass' ).click( function() {
-
     compassToggle = !compassToggle;
     orientationAr();
-
-var sessionId = socketServer.sessionid;
- // console.log('emitUtility:', data);
-  socketServer.emit( 'utility', 'compass', sessionId);
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'utility', 'compass', sessionId );
   } );
 } );
 

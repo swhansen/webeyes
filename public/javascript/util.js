@@ -92,19 +92,17 @@ socketServer.on('utility', function(data) {
     case 'arClientInit':
         loadAr( 'peer' );
       break;
-      case 'compass':
-      console.log( 'util-compass' );
-      orientationAr();
-      if ( userContext.participantState === 'peer') {
-        compassToggle = !compassToggle;
-        if (compassToggle === false) {
-         document.getElementById( 'compassCube' ).style.visibility = 'hidden';
-        }
-          if (compassToggle === true) {
-         document.getElementById( 'compassCube' ).style.visibility = 'visible';
-        }
+    case 'compass':
+    orientationAr();
+    if ( userContext.participantState === 'peer') {
+      compassToggle = !compassToggle;
+      if (compassToggle === false) {
+       document.getElementById( 'compassCube' ).style.visibility = 'hidden';
+      } else {
+       document.getElementById( 'compassCube' ).style.visibility = 'visible';
       }
-      break;
+    }
+    break;
   }
 });
 

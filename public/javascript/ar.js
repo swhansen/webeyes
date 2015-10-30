@@ -8,15 +8,14 @@ var sheep;
 
 function orientationAr() {
 
-emitArOrientationData();
-
-if ( compassToggle ) {
-  document.getElementById( 'compassCube' ).style.visibility = 'visible';
-} else {
-document.getElementById( 'compassCube' ).style.visibility = 'hidden';
-}
-
+  emitArOrientationData();
   document.getElementById( 'compassCube' ).style.zIndex = '99';
+
+  if ( compassToggle ) {
+    document.getElementById( 'compassCube' ).style.visibility = 'visible';
+    } else {
+    document.getElementById( 'compassCube' ).style.visibility = 'hidden';
+  }
 
   //if ( !window.DeviceOrientationEvent ) {
   //          console.log( 'no device orientation' );
@@ -72,8 +71,6 @@ function loadAr( participantState ) {
 
   function receiveArObject( data ) {
 
-    console.log( 'recieve AR data:', data );
-
     if ( data.operation === 'moveObject' ) {
       console .log( 'at moveObject recieve:', data );
 
@@ -102,10 +99,6 @@ function loadAr( participantState ) {
       scene.add( torus1 );
       arSelectObjectArray.push( torus1 );
     }
-
-    if ( data.operation === 'animate' ) {
-    }
-
   }
 
 function setUpArLayer( participantState ) {
@@ -401,8 +394,6 @@ function addArObject( x, y, z ) {
        arShareData.color = intersects[0].object.material.color;
 
        emitArObject( arShareData );
-       console.log( 'emit sheep on stop click:', arShareData );
-
      return;
     }
 
