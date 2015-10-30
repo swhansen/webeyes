@@ -99,12 +99,6 @@ $( '#codeDialogModal' ).dialog( {
   } );
 } );
 
-//  button code logic
-//   - check for legal codes
-//   - pull in the json menu descriptor for the code
-//   - do the menu stuff
-
-
 // recieving unique rtcID
 
 socketServer.on( 'focus', function( id ) {
