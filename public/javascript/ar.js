@@ -359,12 +359,12 @@ function addArObject( x, y, z ) {
 
 // Select an object
 
-$( '#ar-canvas' ).click( function( event ) {
 
- // ar0.addEventListener( 'click', function( event ) {
+
+  ar0.addEventListener( 'click', function( event ) {
     event.preventDefault();
 
-  var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+    var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
     projector.unprojectVector( vector, cameraDriver );
