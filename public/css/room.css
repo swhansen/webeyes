@@ -307,14 +307,14 @@ body {
 
 .compassCube
   {
-     width: 60px;
-     height: 60px;
-     position:fixed;
-  bottom:0;
-  left:50%;
-  margin-left:-200px; /*negative half the width */
-  vertical-align: middle;
-     margin: 20px auto;
+    width: 60px;
+    height: 60px;
+    position:fixed;
+    bottom:0;
+    left:50%;
+    margin-left:-200px; /*negative half the width */
+    vertical-align: middle;
+    margin: 20px auto;
      -webkit-transform-style: preserve-3d;
      transform-style: preserve-3d;
      z-index: 99;

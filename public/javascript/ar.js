@@ -8,40 +8,49 @@ var sheep;
 
 function orientationAr() {
 
-  console.log( 'orientationAR:', userContext.participantState );
+  compassToggle = !compassToggle;
 
-  document.getElementById( 'compassCube' ).style.visibility = 'visible';
+  if ( compassToggle ) {
+    setDomMouseEvent( compassTogggle, 'visible' );
+    var sessionId = socketServer.sessionid;
+  socketServer.emit( 'utility', compass, sessionId );
+  }
+
+  if (!compassTogggle ) {
+    setDomMouseEvent( compassTogggle, 'hidden' );
+     var sessionId = socketServer.sessionid;
+  socketServer.emit( 'utility', compass, sessionId );
+  }
+
+  //document.getElementById( 'compassCube' ).style.visibility = 'visible';
   document.getElementById( 'compassCube' ).style.zIndex = '99';
 
   //if ( !window.DeviceOrientationEvent ) {
   //          console.log( 'no device orientation' );
   //   } else {
 
-      if ( userContext.participantState === 'focus' ) {
-        window.addEventListener( 'deviceorientation', function( event ) {
-        document.getElementById( 'compassCube' ).style.webkitTransform =
-        document.getElementById( 'compassCube' ).style.transform =
-                   'rotateX(' + event.beta + 'deg) ' +
-                   'rotateY(' + event.gamma + 'deg) ' +
-                   'rotateZ(' + event.alpha + 'deg)';
-        }
-      );
-     }
-
-     if ( userContext.participantState === 'peer' ) {
-      socketServer.on( 'arOrientation', function( data ) {
-
-      //  window.addEventListener( 'deviceorientation', function( event ) {
-
-           document.getElementById( 'compassCube' ).style.webkitTransform =
-           document.getElementById( 'compassCube' ).style.transform =
-                   'rotateX(' + data.beta + 'deg) ' +
-                   'rotateY(' + data.gamma + 'deg) ' +
-                   'rotateZ(' + data.alpha + 'deg)';
-        }
-      );
-     }
+  if ( userContext.participantState === 'focus' ) {
+      window.addEventListener( 'deviceorientation', function( event ) {
+      document.getElementById( 'compassCube' ).style.webkitTransform =
+      document.getElementById( 'compassCube' ).style.transform =
+                 'rotateX(' + event.beta + 'deg) ' +
+                 'rotateY(' + event.gamma + 'deg) ' +
+                 'rotateZ(' + event.alpha + 'deg)';
+      }
+    );
   }
+  if ( userContext.participantState === 'peer' ) {
+    socketServer.on( 'arOrientation', function( data ) {
+    //  window.addEventListener( 'deviceorientation', function( event ) {
+         document.getElementById( 'compassCube' ).style.webkitTransform =
+         document.getElementById( 'compassCube' ).style.transform =
+                 'rotateX(' + data.beta + 'deg) ' +
+                 'rotateY(' + data.gamma + 'deg) ' +
+                 'rotateZ(' + data.alpha + 'deg)';
+      }
+    );
+  }
+}
 
 function emitArOrientationData() {
 

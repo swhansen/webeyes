@@ -7,6 +7,7 @@ var numVideoOBJS = maxCALLERS + 1;
 var layout;
 var connectList = [];
 var modmeState = false;
+var compassToggle = false;
 
 /*jshint -W020 */
 socketServer = io.connect( '/' );
