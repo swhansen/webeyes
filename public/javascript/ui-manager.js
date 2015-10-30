@@ -71,6 +71,7 @@ $( function() {
   $( '#sticky-compass' ).click( function() {
 
     compassToggle = !compassToggle;
+    orientationAr();
 
 var sessionId = socketServer.sessionid;
  // console.log('emitUtility:', data);

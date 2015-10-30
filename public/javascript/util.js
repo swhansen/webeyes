@@ -93,6 +93,7 @@ socketServer.on('utility', function(data) {
         loadAr( 'peer' );
       break;
       case 'compass':
+      console.log( 'util-compass' );
       if ( userContext.participantState === 'peer') {
         compassToggle = !compassToggle;
         if (compassToggle === false) {

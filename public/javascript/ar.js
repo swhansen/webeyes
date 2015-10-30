@@ -7,8 +7,11 @@ var clock = new THREE.Clock();
 var sheep;
 
 function orientationAr() {
-
+if ( compassToggle ) {
   document.getElementById( 'compassCube' ).style.visibility = 'visible';
+} else {
+document.getElementById( 'compassCube' ).style.visibility = 'hidden';
+}
   document.getElementById( 'compassCube' ).style.zIndex = '99';
 
   //if ( !window.DeviceOrientationEvent ) {
