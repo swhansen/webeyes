@@ -306,9 +306,9 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'arObjectShare', data );
   } );
 
-  client.on( 'compassShare', function( data, session ) {
+  client.on( 'toggleCompass', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
-    client.broadcast.emit( 'compassShare', data );
+    client.broadcast.emit( 'toggleCompass', data );
   } );
 
   client.on( 'drawLine', function( data, session ) {
