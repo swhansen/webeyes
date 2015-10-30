@@ -73,6 +73,9 @@ function loadAr( participantState ) {
 
     if ( data.operation === 'moveObject' ) {
       console .log( 'at moveObject recieve:', data );
+
+      if ( data.name === 'sheep' ) { animateSheep = data.animate; }
+
        var arObject = scene.getObjectByName( data.name );
            arObject.position.x = data.position.x;
            arObject.position.y = data.position.y;
@@ -84,7 +87,6 @@ function loadAr( participantState ) {
 
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
 
-           if ( data.name === 'sheep' && data.animate === true ) { animateSheep = !animateSheep; }
        }
 
     if ( data.operation === 'newObject' ) {
@@ -386,7 +388,6 @@ function addArObject( x, y, z ) {
      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      animateSheep = !animateSheep;
 
-     if ( !animateSheep ) {
        arShareData.animate = animateSheep;
 
        arShareData.operation = 'moveObject';
@@ -400,7 +401,7 @@ function addArObject( x, y, z ) {
 
        emitArObject( arShareData );
        console.log( 'emit sheep on stop click:', arShareData );
-      }
+
      return;
     }
 
