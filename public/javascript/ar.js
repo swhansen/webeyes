@@ -83,6 +83,8 @@ function loadAr( participantState ) {
            arObject.rotation.z = data.rotation._z;
 
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+
+           if ( data.name === 'sheep' && data.animate === true ) { animateSheep = !animateSheep; }
        }
 
     if ( data.operation === 'newObject' ) {
@@ -385,7 +387,8 @@ function addArObject( x, y, z ) {
      animateSheep = !animateSheep;
 
      if ( !animateSheep ) {
-       arShareData.rotateState = animateSheep;
+       arShareData.animate = animateSheep;
+
        arShareData.operation = 'moveObject';
        arShareData.name = intersects[0].object.name;
        arShareData.x = intersects[0].object.position.x;
