@@ -6,7 +6,6 @@ var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
 
-
 function orientationAr( data ) {
 
   emitArOrientationData();
@@ -56,9 +55,9 @@ function emitArOrientationData() {
   } );
 }
 
-socketServer.on( 'toggleCompass', function(data) {
+socketServer.on( 'toggleCompass', function( data ) {
   orientationAr( data );
-  } )
+  } );
 
 //
 // ----------  Main Loader  --------------------------
