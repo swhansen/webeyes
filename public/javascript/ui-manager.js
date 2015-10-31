@@ -141,6 +141,7 @@ function modmeUI() {
 }
 
 function augmeUI() {
+  console.log( 'at augmeUI' );
   buildSideMenu( 'augme' );
   userContext.participantState = 'focus';
   userContext.modMeState = true;
