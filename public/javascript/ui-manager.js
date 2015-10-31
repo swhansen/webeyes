@@ -145,7 +145,9 @@ function augmeUI() {
   userContext.participantState = 'focus';
   userContext.modMeState = true;
   userContext.uiState = 'ar';
+
   loadAr( userContext.participantState );
+
   setDomMouseEvent( 'canvas0', 'none' );
   setDomMouseEvent( 'arcanvaspane', 'auto' );
 }

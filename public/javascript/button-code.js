@@ -48,9 +48,17 @@ function usebcode( bcode ) {
     userContext.participantState = 'focus';
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
-    document.getElementById( 'augmeButton' ).style.visibility = 'visible';
+    document.getElementById( 'arMainButton' ).style.visibility = 'visible';
     document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
     mainCollapsed = true;
+
+//
+//  add
+//
+
+
+
+
     break;
 
    case 'devme':

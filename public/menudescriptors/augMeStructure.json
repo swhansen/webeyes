@@ -60,7 +60,7 @@
             "baseZ": "20"
         },
         "augme": {
-            "mainButton": "#augmeButton",
+            "mainButton": "#arMainButton",
             "sideBar": "#aug-ui-container",
             "buttons": [
                 "#shareaug"
