@@ -149,7 +149,7 @@ function augmeUI() {
 
   loadAr( userContext.participantState );
 
-  document.getElementById( 'sticky-ar' ).style.visibility = 'visible';
+  document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
   setDomMouseEvent( 'canvas0', 'none' );
   setDomMouseEvent( 'arcanvaspane', 'auto' );
@@ -177,7 +177,7 @@ function shareAr() {
 
     emitArOrientationData();
 
-    document.getElementById( 'sticky-ar' ).style.visibility = 'visible';
+    document.getElementById( 'sticky-ar' ).style.display = 'visible';
 }
 
 //
