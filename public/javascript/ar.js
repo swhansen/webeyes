@@ -6,7 +6,6 @@ var animateTorus1 = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
-var torus1;
 
 function orientationAr( data ) {
 
@@ -276,9 +275,6 @@ function arConnectionController( participantState ) {
       sheep.rotation.z += 0.02;
     }
 
-    if ( animateTorus1 === true ) {
-      torus1.rotation.z += 0.02;
-    }
   }
 
   function connectToDeviceSensors() {
@@ -400,31 +396,6 @@ function addArObject( x, y, z ) {
      }
 
        arShareData.animate = animateSheep;
-
-       arShareData.operation = 'moveObject';
-       arShareData.name = intersects[0].object.name;
-       arShareData.x = intersects[0].object.position.x;
-       arShareData.y = intersects[0].object.position.y;
-       arShareData.z = intersects[0].object.position.z;
-       arShareData.position = intersects[0].object.position;
-       arShareData.rotation = intersects[0].object.rotation;
-       arShareData.color = intersects[0].object.material.color;
-
-       emitArObject( arShareData );
-     return;
-    }
-
-if ( intersects[0].object.name === 'torus1' ) {
-
-     animateTorus1 = !animateTorus1;
-
-// only change the color when animation is stopped
-
-     if ( !animateTorus1 ) {
-      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-     }
-
-       arShareData.animate = animateTorus1;
 
        arShareData.operation = 'moveObject';
        arShareData.name = intersects[0].object.name;
