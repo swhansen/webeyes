@@ -274,7 +274,6 @@ function arConnectionController( participantState ) {
     if ( animateSheep === true ) {
       sheep.rotation.z += 0.02;
     }
-
   }
 
   function connectToDeviceSensors() {
