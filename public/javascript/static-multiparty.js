@@ -902,7 +902,7 @@ function appInit() {
         }, 20 );
     } );
 
-initDraw();
+//initDraw();
 initUtil();
 messageBar( 'User Session Initialized' );
 
