@@ -31,7 +31,7 @@ function drawCanvaslineArray() {
 
     for ( var j = 0; j < points.length; j++ ) {
       context.strokeStyle = lineArray[i].line[j].color;
-      context.shadowColor = lineArray[i].line[j].shadowColor;
+   //   context.shadowColor = lineArray[i].line[j].shadowColor;
       if ( j === 0 ) {
         context.beginPath();
         context.moveTo( lineArray[i].line[j].x, lineArray[i].line[j].y );
@@ -159,6 +159,7 @@ function toolPencil() {
     if ( tool.started ) {
 
       //  tool.mousemove(ev);
+
       data.pointerState = 'pointerUp';
       emitDraw( data );
       tool.started = false;
@@ -185,7 +186,6 @@ function evCanvas( ev ) {
 
   var func = tool[ev.type];
   if ( func ) {
-
     func( ev );
   }
 }
