@@ -52,10 +52,27 @@ function usebcode( bcode ) {
     document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
     mainCollapsed = true;
 
-//
-//  add
-//
 
+/// add the modeme functions --- something like this
+
+// Focus the AR initiator (modme)
+//
+//    var sessionId = socketServer.sessionid;
+//        socketServer.emit( 'focus', userContext.rtcId, sessionId );
+//
+//  // Tell everyone to initialize AR
+//
+//  //var sessionId = socketServer.sessionid;
+//        socketServer.emit( 'utility', 'arClientInit', sessionId );
+//
+//    var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
+//    messageBar( msgString );
+//
+//    // Start the orientation data feed
+//
+//    emitArOrientationData();
+//
+//
 
 
 
