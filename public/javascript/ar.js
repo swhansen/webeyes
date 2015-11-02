@@ -276,7 +276,7 @@ function arConnectionController( participantState ) {
     }
 
     if ( animateTorus1 === true ) {
-      sheep.rotation.z += 0.02;
+      torus1.rotation.z += 0.02;
     }
   }
 
