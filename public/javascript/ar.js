@@ -383,8 +383,14 @@ function addArObject( x, y, z ) {
     }
 
    if ( intersects[0].object.name === 'sheep' ) {
-     intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+
      animateSheep = !animateSheep;
+
+// only change the color when animation is stopped
+
+     if ( !animateSheep ) {
+      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+     }
 
        arShareData.animate = animateSheep;
 

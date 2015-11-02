@@ -149,6 +149,8 @@ function augmeUI() {
 
   loadAr( userContext.participantState );
 
+  $( '#sticky-ar' ).style.visibility = 'visible';
+
   setDomMouseEvent( 'canvas0', 'none' );
   setDomMouseEvent( 'arcanvaspane', 'auto' );
 }
@@ -174,6 +176,8 @@ function shareAr() {
     // Start the orientation data feed
 
     emitArOrientationData();
+
+    $( '#sticky-ar' ).style.visibility = 'visible';
 }
 
 //
