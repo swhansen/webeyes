@@ -2,7 +2,7 @@
 //  Declare the high level UI Structure
 //    - Must be valid JSON
 //    - Main function buttons (left menu)
-//    - Function detail buttons (right menu)
+//    - Function detail buttons (right menu)visability
 
 //  mainButton: button in main menu
 //  sideBar: container for the layer function button list (re-name??)
@@ -149,7 +149,7 @@ function augmeUI() {
 
   loadAr( userContext.participantState );
 
-  $( '#sticky-ar' ).style.visibility = 'visible';
+  document.getElementById( 'stick-ar' ).style.visibility = 'visible';
 
   setDomMouseEvent( 'canvas0', 'none' );
   setDomMouseEvent( 'arcanvaspane', 'auto' );
@@ -177,7 +177,7 @@ function shareAr() {
 
     emitArOrientationData();
 
-    $( '#sticky-ar' ).style.visibility = 'visible';
+    document.getElementById( 'stick-ar' ).style.visibility = 'visible';
 }
 
 //
