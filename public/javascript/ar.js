@@ -320,9 +320,7 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
-//
 // Place an object with a long click
-//
 
 $( '#ar-canvas' ).longpress( function( event ) {
 
