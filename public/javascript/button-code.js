@@ -46,6 +46,8 @@ function usebcode( bcode ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
     userContext.participantState = 'focus';
+    userContext.mode = 'ar';
+    userContext.modMeState = true;
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'arMainButton' ).style.visibility = 'visible';

@@ -37,7 +37,8 @@ $( '#sticky-draw' ).click( function() {
     $( fcn.sideBar ).fadeOut( 2 );
   } );
 
-drawUI();
+//drawUI();
+userContext.uiState = 'draw';
 
  // buildSideMenu( 'draw' );
 
@@ -61,6 +62,7 @@ $( function() {
        $( fcn.sideBar ).fadeOut( 2 );
       } );
 
+     userContext.uiState = 'draw';
      setDomMouseEvent( 'canvas0', 'none' );
      setDomMouseEvent( 'arcanvaspane', 'auto' );
      messageBar( 'AR Layer is in Focus' );
