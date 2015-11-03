@@ -2,7 +2,6 @@ var arDeviceOrientation = {};
 var arSelectObjectArray = [];
 var animateZ = false;
 var animateSheep = false;
-var animateTorus1 = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
@@ -274,6 +273,7 @@ function arConnectionController( participantState ) {
     if ( animateSheep === true ) {
       sheep.rotation.z += 0.02;
     }
+
   }
 
   function connectToDeviceSensors() {
