@@ -800,7 +800,7 @@ if ( !MediaStreamTrack.getSources ) {
     console.log( sourceInfos ) ;
 
     var d = _.find(sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-    console.log( 'd:' d );
+    console.log( 'd:', d );
 
 
 
