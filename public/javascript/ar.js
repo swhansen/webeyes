@@ -176,11 +176,11 @@ function setUpArLayer( participantState ) {
   cube2.rotateZ = 10.00;
 
   var loader = new THREE.JSONLoader();
-  loader.load( '../armodels/sheep3.json', function( model ) {
+  loader.load( '../armodels/jig.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
     sheep = new THREE.Mesh( model, material );
 
-    sheep.scale.set( 0.1, 0.1, 0.1 );
+sheep.scale.set( 20.0, 20.0, 20.0 );
     sheep.position.set( -2.0, -0.4, 0.0 );
     sheep.rotation.x = Math.PI / 2;
     sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
@@ -189,6 +189,22 @@ function setUpArLayer( participantState ) {
     scene.add( sheep );
     arSelectObjectArray.push( sheep );
   } );
+
+
+
+
+
+
+
+    //sheep.scale.set( 0.1, 0.1, 0.1 );
+    //sheep.position.set( -2.0, -0.4, 0.0 );
+    //sheep.rotation.x = Math.PI / 2;
+    //sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
+    //sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
+    //sheep.name = 'sheep';
+    //scene.add( sheep );
+    //arSelectObjectArray.push( sheep );
+    //} );
 
   //scene.add( cube1 );
 
