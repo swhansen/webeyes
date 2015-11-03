@@ -177,7 +177,7 @@ function setUpArLayer( participantState ) {
 
   var loader = new THREE.JSONLoader();
   loader.load( '../armodels/sheep3.json', function( model ) {
-    var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+    var material = new THREE.MeshBasicMaterial( { color: 0xFF69B4 } );
     sheep = new THREE.Mesh( model, material );
 
     sheep.scale.set( 0.1, 0.1, 0.1 );
