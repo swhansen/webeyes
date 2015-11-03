@@ -796,10 +796,23 @@ if ( !MediaStreamTrack.getSources ) {
     return;
   }
 
-  MediaStreamTrack.getSources( function gotSources( sourceInfo ) {
-    console.log( sourceInfo ) ;
+  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+    console.log( sourceInfos ) ;
+
+    var d = _.find(sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+    console.log( 'd:' d );
+
+
+
+
     // deal with the devices here
+
 } );
+
+
+
+
+
 
   if ( navigator.geolocation ) {
     userContext.geoLocation = false;
