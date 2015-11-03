@@ -799,10 +799,9 @@ if ( !MediaStreamTrack.getSources ) {
   MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
     console.log( sourceInfos ) ;
 
-    var d = _.find(sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+    var d = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
     console.log( 'd:', d );
-
-
+    console.log( 'id:', d.id );
 
 
     // deal with the devices here
