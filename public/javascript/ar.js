@@ -176,7 +176,7 @@ function setUpArLayer( participantState ) {
   cube2.rotateZ = 10.00;
 
   var loader = new THREE.JSONLoader();
-  loader.load( '../armodels/sheep4.json', function( model ) {
+  loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
     sheep = new THREE.Mesh( model, material );
 
@@ -188,7 +188,7 @@ function setUpArLayer( participantState ) {
     sheep.name = 'sheep';
     scene.add( sheep );
     arSelectObjectArray.push( sheep );
-    } );
+  } );
 
   //scene.add( cube1 );
 
@@ -320,7 +320,9 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
+//
 // Place an object with a long click
+//
 
 $( '#ar-canvas' ).longpress( function( event ) {
 
