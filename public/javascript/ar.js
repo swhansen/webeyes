@@ -5,6 +5,7 @@ var animateSheep = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
+var torus1;
 
 function orientationAr( data ) {
 
