@@ -789,7 +789,16 @@ function messageListener( easyrtcid, msgType, content ) {
     }
 }
 
-function appInit() {
+function appInit()
+
+  if(!MediaStreamTrack.getSources) {
+    console.log("No media stream track enumeration");
+    return;
+  }
+  MediaStreamTrack.getSources(function gotSources(sourceInfo) {
+    console.log(sourceInfo);
+    // deal with the devices here
+});
 
   if ( navigator.geolocation ) {
     userContext.geoLocation = false;
