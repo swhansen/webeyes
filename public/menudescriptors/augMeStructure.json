@@ -59,6 +59,17 @@
             "initState": "none",
             "baseZ": "20"
         },
+        "modme": {
+            "mainButton": "#modmeButton",
+            "sideBar": "#mod-ui-container",
+            "buttons": [
+                "#focus-participant",
+                "#mod-reset"
+            ],
+            "desc": "moderator code functions",
+            "initState": "none",
+            "baseZ": "20"
+        },
         "augme": {
             "mainButton": "#arMainButton",
             "sideBar": "#aug-ui-container",
