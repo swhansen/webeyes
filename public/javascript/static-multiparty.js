@@ -794,7 +794,53 @@ function appInit() {
 
 //  // Begin experimental camera select
 //
+
+function isMobileDevice() {
+    return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
+};
+
+function findBrowserType() {
+  var sBrowser, sUsrAg = navigator.userAgent;
+  if(sUsrAg.indexOf("Chrome") > -1) {
+      sBrowser = "Chrome";
+  } else if (sUsrAg.indexOf("Safari") > -1) {
+      sBrowser = "Apple Safari";
+  } else if (sUsrAg.indexOf("Opera") > -1) {
+      sBrowser = "Opera";
+  } else if (sUsrAg.indexOf("Firefox") > -1) {
+      sBrowser = "Mozilla Firefox";
+  } else if (sUsrAg.indexOf("MSIE") > -1) {
+      sBrowser = "Microsoft Internet Explorer";
+  }
+  return sBrowser;
+}
+
+function chromeMobile() {
+  var mobile = isMobileDevice();
+  var browserType = findBrowserType();
+  if (mobile && browserType === 'Chrome') {
+ return true;
+  } else {
+    return false;
+  }
+}
+
+console.log( 'Chrome and Mobile:', chromeMobile(); );
+
+
+// Set the media soure
+
+//var audioTracks = localMediaStream.getAudioTracks();
+//if (videoTracks[0]) {
+//    videoTracks[0].enabled = false;
+//}
 //
+//document.getElementById("box0").muted = true;
+
+
+
+
+
 //
 //  .getUserMedia = navigator.getUserMedia ||
 //    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -863,7 +909,7 @@ function appInit() {
   if ( window.DeviceOrientationEvent ) {
     userContext.orientation = false;
     }
-  if (userContext.orientation === true && userContext.motion === true) {
+  if ( userContext.orientation === true && userContext.motion === true) {
     userContext.arCapable = true;
     messageBar( 'Device is AR Capable' );
     }
