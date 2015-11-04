@@ -825,7 +825,7 @@ function chromeMobile() {
   }
 }
 
-console.log( 'Chrome and Mobile:', chromeMobile(); );
+console.log( 'Chrome and Mobile:', chromeMobile() );
 
 
 // Set the media soure
