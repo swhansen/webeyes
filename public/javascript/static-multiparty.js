@@ -792,63 +792,67 @@ function messageListener( easyrtcid, msgType, content ) {
 function appInit() {
 
 
-navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-   var videoElement = document.getElementById( 'box0' );
-
-if ( !MediaStreamTrack.getSources ) {
-    console.log( 'No media stream track enumeration' );
-    return;
-  }
-
-  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
-    console.log( sourceInfos ) ;
-
-    var d = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-    console.log( 'd:', d );
-    console.log( 'id:', d.id );
-
-    // deal with the devices here
-
-    easyrtc.getVideoSourceList( function(list) {
-                    var i;
-                    for( i = 0; i < list.length; i++ ) {
-                        console.log("label=" + list[i].label + ", id= " + list[i].id);
-                    }
-               } );
-
-    var constraints = {
-   //audio: {
-   //  optional: [{
-   //    sourceId: audioSource
-   //  }]
-   //},
-    video: {
-      optional: [{
-        sourceId: d.id
-      }]
-    }
-  };
-
-
-
-function successCallback(stream) {
-  window.stream = stream; // make stream available to console
-  videoElement.src = window.URL.createObjectURL(stream);
-  videoElement.play();
-}
-
-function errorCallback(error) {
-  console.log('navigator.getUserMedia error: ', error);
-}
-
- navigator.getUserMedia(constraints, successCallback, errorCallback);
-
-
-} );
-
-
+//  // Begin experimental camera select
+//
+//
+//
+//  .getUserMedia = navigator.getUserMedia ||
+//    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+//
+//   var videoElement = document.getElementById( 'box0' );
+//
+//if ( !MediaStreamTrack.getSources ) {
+//    console.log( 'No media stream track enumeration' );
+//    return;
+//  }
+//
+//  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+//    console.log( sourceInfos ) ;
+//
+//    var d = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+//    console.log( 'd:', d );
+//    console.log( 'id:', d.id );
+//
+//    // deal with the devices here
+//
+//    easyrtc.getVideoSourceList( function(list) {
+//                    var i;
+//                    for( i = 0; i < list.length; i++ ) {
+//                        console.log("label=" + list[i].label + ", id= " + list[i].id);
+//                    }
+//               } );
+//
+//    var constraints = {
+//   //audio: {
+//   //  optional: [{
+//   //    sourceId: audioSource
+//   //  }]
+//   //},
+//    video: {
+//      optional: [{
+//        sourceId: d.id
+//      }]
+//    }
+//  };
+//
+//
+//
+//function successCallback(stream) {
+//  window.stream = stream; // make stream available to console
+//  videoElement.src = window.URL.createObjectURL(stream);
+//  videoElement.play();
+//}
+//
+//function errorCallback(error) {
+//  console.log('navigator.getUserMedia error: ', error);
+//}
+//
+// navigator.getUserMedia(constraints, successCallback, errorCallback);
+//
+//
+//} );
+//
+//  // End experimental camera select
 
   if ( navigator.geolocation ) {
     userContext.geoLocation = false;
