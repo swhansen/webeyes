@@ -791,6 +791,8 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
+   var videoElement document.getElementById( 'box0' );
+
 if ( !MediaStreamTrack.getSources ) {
     console.log( 'No media stream track enumeration' );
     return;
@@ -810,7 +812,31 @@ if ( !MediaStreamTrack.getSources ) {
                     for( i = 0; i < list.length; i++ ) {
                         console.log("label=" + list[i].label + ", id= " + list[i].id);
                     }
-               });
+               } );
+
+    var constraints = {
+   //audio: {
+   //  optional: [{
+   //    sourceId: audioSource
+   //  }]
+   //},
+    video: {
+      optional: [{
+        sourceId: d.id
+      }]
+    }
+  };
+
+
+
+function successCallback(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.src = window.URL.createObjectURL(stream);
+ // videoElement.play();
+}
+
+ navigator.getUserMedia(constraints, successCallback, errorCallback);
+
 
 } );
 
@@ -856,7 +882,7 @@ if ( !MediaStreamTrack.getSources ) {
 
 // attempt to tie forward facing camera to <video
 
-  box0.src = window.URL.createObjectURL(stream);
+ // box0.src = window.URL.createObjectURL(stream);
 
 
 
