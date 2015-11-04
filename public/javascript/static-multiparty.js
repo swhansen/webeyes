@@ -835,6 +835,10 @@ function successCallback(stream) {
  // videoElement.play();
 }
 
+function errorCallback(error) {
+  console.log('navigator.getUserMedia error: ', error);
+}
+
  navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 
