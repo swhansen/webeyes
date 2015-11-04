@@ -806,11 +806,11 @@ if ( !MediaStreamTrack.getSources ) {
     // deal with the devices here
 
     easyrtc.getVideoSourceList( function(list) {
-     *               var i;
-     *               for( i = 0; i < list.length; i++ ) {
-     *                   console.log("label=" + list[i].label + ", id= " + list[i].id);
-     *               }
-     *          });
+                    var i;
+                    for( i = 0; i < list.length; i++ ) {
+                        console.log("label=" + list[i].label + ", id= " + list[i].id);
+                    }
+               });
 
 } );
 
