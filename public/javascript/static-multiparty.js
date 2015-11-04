@@ -889,22 +889,22 @@ function errorCallback(error) {
 
 
 
-   //easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
-   //  function( myId ) {
+    easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
+      function( myId ) {
 
-   //    userContext.rtcId = myId;
+        userContext.rtcId = myId;
 
-   //    // First time through for all connections
+      // First time through for all connections
 
-   //    if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
-   //      connectList.push( {
-   //        rtcid: myId,
-   //        boxno: 0,
-   //        avatar: 'avatar0'
-   //      } );
-   //    }
-   //  }
-   //);
+        if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
+          connectList.push( {
+            rtcid: myId,
+            boxno: 0,
+            avatar: 'avatar0'
+          } );
+        }
+      }
+    );
 
     easyrtc.setPeerListener( messageListener );
 
