@@ -803,6 +803,9 @@ if ( !MediaStreamTrack.getSources ) {
     console.log( 'd:', d );
     console.log( 'id:', d.id );
 
+    index = _.indexOf( _.pluck( sourceInfos, 'environment' ), id );
+    console.log( 'id:', index );
+
 
     // deal with the devices here
 
