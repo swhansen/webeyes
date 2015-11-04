@@ -791,6 +791,10 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
+
+navigator.getUserMedia = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
    var videoElement = document.getElementById( 'box0' );
 
 if ( !MediaStreamTrack.getSources ) {
