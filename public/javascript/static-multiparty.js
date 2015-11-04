@@ -791,7 +791,7 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
-   var videoElement document.getElementById( 'box0' );
+   var videoElement = document.getElementById( 'box0' );
 
 if ( !MediaStreamTrack.getSources ) {
     console.log( 'No media stream track enumeration' );
