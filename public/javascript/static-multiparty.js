@@ -836,7 +836,7 @@ if ( !MediaStreamTrack.getSources ) {
 function successCallback(stream) {
   window.stream = stream; // make stream available to console
   videoElement.src = window.URL.createObjectURL(stream);
- // videoElement.play();
+  videoElement.play();
 }
 
 function errorCallback(error) {
@@ -887,10 +887,6 @@ function errorCallback(error) {
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
-
-// attempt to tie forward facing camera to <video
-
- // box0.src = window.URL.createObjectURL(stream);
 
 
 
