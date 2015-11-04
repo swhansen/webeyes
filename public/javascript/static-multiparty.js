@@ -805,6 +805,13 @@ if ( !MediaStreamTrack.getSources ) {
 
     // deal with the devices here
 
+    easyrtc.getVideoSourceList( function(list) {
+     *               var i;
+     *               for( i = 0; i < list.length; i++ ) {
+     *                   console.log("label=" + list[i].label + ", id= " + list[i].id);
+     *               }
+     *          });
+
 } );
 
 
@@ -845,6 +852,16 @@ if ( !MediaStreamTrack.getSources ) {
  //initial call of the top-down layout manager
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
+
+
+// attempt to tie forward facing camera to <video
+
+  box0.src = window.URL.createObjectURL(stream);
+
+
+
+
+
 
     easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
       function( myId ) {
