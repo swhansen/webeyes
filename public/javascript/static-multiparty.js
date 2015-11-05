@@ -844,11 +844,11 @@ if ( !MediaStreamTrack.getSources ) {
   }
 
   MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
-
     console.log( sourceInfos ) ;
-
     device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
     console.log( 'device:', device );
+    console.log( 'facing:', device.facing );
+    console.log( 'label:', device.label );
     console.log( 'id:', device.id );
   } );
 
@@ -874,7 +874,7 @@ if ( !MediaStreamTrack.getSources ) {
 //   }
 // };
 
-//unction successCallback(stream) {
+// function successCallback(stream) {
 // window.stream = stream; // make stream available to console
 // videoElement.src = window.URL.createObjectURL(stream);
 // videoElement.play();
@@ -932,10 +932,11 @@ if ( !MediaStreamTrack.getSources ) {
       function( myId ) {
 
         userContext.rtcId = myId;
-        var cm = isChromeMobile();
-        if ( cm ) {
-          easyrtc.addStreamToCall( myId, device.id );
-        }
+
+        //var cm = isChromeMobile();
+        //if ( cm ) {
+       //   easyrtc.addStreamToCall( myId, device.id );
+        //}
 
       // First time through for all connections
 
