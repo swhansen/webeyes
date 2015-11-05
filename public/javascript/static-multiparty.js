@@ -932,8 +932,8 @@ if ( !MediaStreamTrack.getSources ) {
       function( myId ) {
 
         userContext.rtcId = myId;
-
-        if ( chromeMobile ) {
+        var cm = isChromeMobile();
+        if ( camera ) {
 
           easyrtc.addStreamToCall( myId, device.id );
         }
