@@ -791,6 +791,7 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
+var device;
 
 //  // Begin experimental camera select
 //
@@ -815,7 +816,7 @@ function findBrowserType() {
   return sBrowser;
 }
 
-function chromeMobile() {
+function isChromeMobile() {
   var mobile = isMobileDevice();
   var browserType = findBrowserType();
   if (mobile && browserType === 'Chrome') {
@@ -824,79 +825,68 @@ function chromeMobile() {
     return false;
   }
 }
+console.log( 'Chrome and Mobile:', isChromeMobile() );
 
-console.log( 'Chrome and Mobile:', chromeMobile() );
+// set the media source
+// from 3318
+//easyrtc.addStreamToCall( easyrtcid, streamname, receipthandler)
+//streamname is the id
+//var stream = getLocalMediaStreamByName(streamName);
+
+ // .getUserMedia = navigator.getUserMedia ||
+ //   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+ //  var videoElement = document.getElementById( 'box0' );
+
+if ( !MediaStreamTrack.getSources ) {
+    console.log( 'No media stream track enumeration' );
+    return;
+  }
+
+  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+
+    console.log( sourceInfos ) ;
+
+    device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+    console.log( 'device:', device );
+    console.log( 'id:', ddevice.id );
+  } );
+
+    // deal with the devices here
+
+//   easyrtc.getVideoSourceList( function(list) {
+//                   var i;
+//                   for( i = 0; i < list.length; i++ ) {
+//                       console.log("label=" + list[i].label + ", id= " + list[i].id);
+//                   }
+//              } );
+
+//   var constraints = {
+//  //audio: {
+//  //  optional: [{
+//  //    sourceId: audioSource
+//  //  }]
+//  //},
+//   video: {
+//     optional: [{
+//       sourceId: d.id
+//     }]
+//   }
+// };
+
+//unction successCallback(stream) {
+// window.stream = stream; // make stream available to console
+// videoElement.src = window.URL.createObjectURL(stream);
+// videoElement.play();
+//
+
+//unction errorCallback(error) {
+// console.log('navigator.getUserMedia error: ', error);
+//
+
+//navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 
-// Set the media soure
-
-//var audioTracks = localMediaStream.getAudioTracks();
-//if (videoTracks[0]) {
-//    videoTracks[0].enabled = false;
-//}
-//
-//document.getElementById("box0").muted = true;
-
-
-
-
-
-//
-//  .getUserMedia = navigator.getUserMedia ||
-//    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-//
-//   var videoElement = document.getElementById( 'box0' );
-//
-//if ( !MediaStreamTrack.getSources ) {
-//    console.log( 'No media stream track enumeration' );
-//    return;
-//  }
-//
-//  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
-//    console.log( sourceInfos ) ;
-//
-//    var d = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-//    console.log( 'd:', d );
-//    console.log( 'id:', d.id );
-//
-//    // deal with the devices here
-//
-//    easyrtc.getVideoSourceList( function(list) {
-//                    var i;
-//                    for( i = 0; i < list.length; i++ ) {
-//                        console.log("label=" + list[i].label + ", id= " + list[i].id);
-//                    }
-//               } );
-//
-//    var constraints = {
-//   //audio: {
-//   //  optional: [{
-//   //    sourceId: audioSource
-//   //  }]
-//   //},
-//    video: {
-//      optional: [{
-//        sourceId: d.id
-//      }]
-//    }
-//  };
-//
-//
-//
-//function successCallback(stream) {
-//  window.stream = stream; // make stream available to console
-//  videoElement.src = window.URL.createObjectURL(stream);
-//  videoElement.play();
-//}
-//
-//function errorCallback(error) {
-//  console.log('navigator.getUserMedia error: ', error);
-//}
-//
-// navigator.getUserMedia(constraints, successCallback, errorCallback);
-//
-//
-//} );
 //
 //  // End experimental camera select
 
@@ -938,11 +928,15 @@ console.log( 'Chrome and Mobile:', chromeMobile() );
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
 
-
     easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
       function( myId ) {
 
         userContext.rtcId = myId;
+
+        if ( chromeMobile ) {
+
+          easyrtc.addStreamToCall( myId, device.         )
+        }
 
       // First time through for all connections
 
