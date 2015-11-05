@@ -849,7 +849,7 @@ if ( !MediaStreamTrack.getSources ) {
 
     device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
     console.log( 'device:', device );
-    console.log( 'id:', ddevice.id );
+    console.log( 'id:', device.id );
   } );
 
     // deal with the devices here
@@ -935,7 +935,7 @@ if ( !MediaStreamTrack.getSources ) {
 
         if ( chromeMobile ) {
 
-          easyrtc.addStreamToCall( myId, device.         )
+          easyrtc.addStreamToCall( myId, device.id );
         }
 
       // First time through for all connections
