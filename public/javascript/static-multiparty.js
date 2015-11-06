@@ -841,7 +841,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 if ( !MediaStreamTrack.getSources ) {
     console.log( 'No media stream track enumeration' );
     return;
-  }
+  } else {
 
   MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
     console.log( sourceInfos ) ;
@@ -851,6 +851,8 @@ if ( !MediaStreamTrack.getSources ) {
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
   } );
+}
+
 
     // deal with the devices here
 
@@ -869,7 +871,7 @@ if ( !MediaStreamTrack.getSources ) {
 //  //},
 //   video: {
 //     optional: [{
-//       sourceId: d.id
+//       sourceId: device.id
 //     }]
 //   }
 // };
@@ -880,11 +882,11 @@ if ( !MediaStreamTrack.getSources ) {
 // videoElement.play();
 //
 
-//unction errorCallback(error) {
+// function errorCallback(error) {
 // console.log('navigator.getUserMedia error: ', error);
 //
 
-//navigator.getUserMedia(constraints, successCallback, errorCallback);
+// navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 
 //
