@@ -27,8 +27,6 @@ var userContext = {
   geolocation: false
 };
 
-var videoDeviceId;
-
 easyrtc.dontAddCloseButtons( false );
 
 // Footer Messages
@@ -854,8 +852,8 @@ if ( !MediaStreamTrack.getSources ) {
     console.log( 'id:', device.id );
   } );
 }
-}
 
+//easyrtc.setVideoSrc( device.id );
 
     // deal with the devices here
 
