@@ -856,8 +856,6 @@ if ( !MediaStreamTrack.getSources ) {
   } );
 }
 
-easyrtc.setVideoSrc( videoDeviceID );
-
     // deal with the devices here
 
 //   easyrtc.getVideoSourceList( function(list) {
