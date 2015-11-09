@@ -5029,15 +5029,15 @@ var Easyrtc = function() {
      * if you are not connected to the room.
      */
     this.getRoomFields = function(roomName) {
+     * after a connection has been made.
+     * @returns {Object} A dictionary containing entries of the form {key:{'fieldName':key, 'fieldValue':value1}}
+     */
+    this.getApplicationFields = function() {
         if (!fields || !fields.rooms || !fields.rooms[roomName])
             return undefined;
         return fields.rooms[roomName];
     };
     /** Get server defined fields associated with the current application. Only valid
-     * after a connection has been made.
-     * @returns {Object} A dictionary containing entries of the form {key:{'fieldName':key, 'fieldValue':value1}}
-     */
-    this.getApplicationFields = function() {
         return fields.application;
     };
     /** Get server defined fields associated with the connection. Only valid
@@ -5391,16 +5391,11 @@ console.log( 'Entering EasyApp');
             }
             if (monitorVideoId !== null) {
 
-easyrtc.buildLocalMediaStream("myComposedStream",
-                  easyrtc.getLocalStream("camera1").getVideoTracks(),
-                  easyrtc.getLocalStream("camera2").getAudioTracks());
-
-
-
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
 
-console.log( 'easyApp-getLocalSraeam:', self.getLocalStream() );
+console.log( 'easyApp-getLocalStream:', self.getLocalStream() );
+console.log( 'easyApp-setVideoObjectSrc:', self.setVideoObjectSrc() );
 
             }
             function connectError(errorCode, errorText) {
