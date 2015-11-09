@@ -5381,6 +5381,8 @@ console.log( 'Entering EasyApp');
             }
             if (monitorVideoId !== null) {
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
+console.log( 'easyApp-getLocalSraeam:', self.getLocalStream() );
+
             }
             function connectError(errorCode, errorText) {
                 if (gotConnectionCallback) {

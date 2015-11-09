@@ -793,7 +793,8 @@ function appInit() {
 
 var device;
 
-//  // Begin experimental camera select
+//
+//   Begin experimental camera select
 //
 
 function isMobileDevice() {
@@ -819,7 +820,7 @@ function findBrowserType() {
 function isChromeMobile() {
   var mobile = isMobileDevice();
   var browserType = findBrowserType();
-  if (mobile && browserType === 'Chrome') {
+  if ( mobile && browserType === 'Chrome' ) {
  return true;
   } else {
     return false;
