@@ -5349,7 +5349,8 @@ console.log( 'Entering EasyApp');
    easyrtc.getVideoSourceList( function(list) {
                    var i;
                    for( i = 0; i < list.length; i++ ) {
-                       console.log("label=" + list[i].label + ", id= " + list[i].id);
+                       console.log("label=" + list[i].label + ", id= " + list[i].id +
+                       ", facing= " + list[i].facing );
                    }
               } );
 

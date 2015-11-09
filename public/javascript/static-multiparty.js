@@ -933,7 +933,10 @@ if ( !MediaStreamTrack.getSources ) {
 
     easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
       function( myId ) {
-console.log( 'media Ids:', easyrtc.getLocalMediaIds() ) ;
+
+console.log( 'mediaIds:', easyrtc.getLocalMediaIds() );
+
+
         userContext.rtcId = myId;
 
         //var cm = isChromeMobile();
