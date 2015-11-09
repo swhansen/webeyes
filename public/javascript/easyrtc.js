@@ -5346,6 +5346,13 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
+   easyrtc.getVideoSourceList( function(list) {
+                   var i;
+                   for( i = 0; i < list.length; i++ ) {
+                       console.log("label=" + list[i].label + ", id= " + list[i].id);
+                   }
+              } );
+
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
         easyAppBody(monitorVideoId, videoIds);
@@ -5381,6 +5388,7 @@ console.log( 'Entering EasyApp');
             }
             if (monitorVideoId !== null) {
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
+
 console.log( 'easyApp-getLocalSraeam:', self.getLocalStream() );
 
             }
