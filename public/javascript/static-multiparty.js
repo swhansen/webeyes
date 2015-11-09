@@ -853,8 +853,6 @@ if ( !MediaStreamTrack.getSources ) {
   } );
 }
 
-console.log( 'media Ids:', easyrtc.getLocalMediaIds()) ;
-
 //easyrtc.setVideoSrc( device.id );
 
     // deal with the devices here
@@ -935,7 +933,7 @@ console.log( 'media Ids:', easyrtc.getLocalMediaIds()) ;
 
     easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
       function( myId ) {
-
+console.log( 'media Ids:', easyrtc.getLocalMediaIds() ) ;
         userContext.rtcId = myId;
 
         //var cm = isChromeMobile();
