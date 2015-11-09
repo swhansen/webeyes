@@ -130,6 +130,7 @@ if (navigator.mozGetUserMedia) {
         webkitMediaStream.prototype.getAudioTracks = function() {
             return this.audioTracks;
         };
+        console.log( ' videoTracks:' this.getVideoTracks() );
     }
 
 // New syntax of getXXXStreams method in M26.
@@ -5355,7 +5356,9 @@ console.log( 'Entering EasyApp');
 
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
+
         easyAppBody(monitorVideoId, videoIds);
+
         self.setGotMedia = function(gotMediaCB) {
             gotMediaCallback = gotMediaCB;
         };
@@ -5387,6 +5390,14 @@ console.log( 'Entering EasyApp');
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
+
+easyrtc.buildLocalMediaStream("myComposedStream",
+                  easyrtc.getLocalStream("camera1").getVideoTracks(),
+                  easyrtc.getLocalStream("camera2").getAudioTracks());
+
+
+
+
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
 
 console.log( 'easyApp-getLocalSraeam:', self.getLocalStream() );
