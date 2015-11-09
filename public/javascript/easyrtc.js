@@ -117,6 +117,7 @@ if (navigator.mozGetUserMedia) {
         } else {
             console.log('Error attaching stream to element.');
         }
+        console.log( 'element.src:', element.src );
     };
     reattachMediaStream = function(to, from) {
         to.src = from.src;
@@ -130,8 +131,6 @@ if (navigator.mozGetUserMedia) {
         webkitMediaStream.prototype.getAudioTracks = function() {
             return this.audioTracks;
         };
-        console.log( 'videoTracks:', this.videoTracks() );
-        console.log( 'audioTracks:', this.audioTracks() );
     }
 
 // New syntax of getXXXStreams method in M26.
