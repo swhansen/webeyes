@@ -853,6 +853,8 @@ if ( !MediaStreamTrack.getSources ) {
   } );
 }
 
+console.log( 'media Ids:', easyrtc.getLocalMediaIds()) ;
+
 //easyrtc.setVideoSrc( device.id );
 
     // deal with the devices here
