@@ -130,7 +130,7 @@ if (navigator.mozGetUserMedia) {
         webkitMediaStream.prototype.getAudioTracks = function() {
             return this.audioTracks;
         };
-        console.log( ' videoTracks:' this.getVideoTracks() );
+        console.log( ' videoTracks:', this.getVideoTracks() );
     }
 
 // New syntax of getXXXStreams method in M26.
