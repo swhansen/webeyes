@@ -5405,7 +5405,7 @@ console.log( ' getLocalVideoSource:', self.getVideoSourceList(); );
 
 var device;
 easyrtc.getVideoSourceList( function(list) {
-  consile.log( 'videoSourceList:' list );
+  console.log( 'videoSourceList:' list );
     //               var i;
     //               for( i = 0; i < list.length; i++ ) {
     //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
