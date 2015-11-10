@@ -846,7 +846,7 @@ if ( !MediaStreamTrack.getSources ) {
   } else {
 
   MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
-    console.log( sourceInfos ) ;
+    console.log( 'static-multi:', sourceInfos ) ;
     device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
     console.log( 'device:', device );
     console.log( 'facing:', device.facing );
