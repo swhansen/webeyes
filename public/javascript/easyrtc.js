@@ -1,7 +1,6 @@
 //
 // the below code is a copy of the standard polyfill adapter.js
 //
-var device;
 console.log( 'Entering easyrtc.js' );
 
 var getUserMedia = null;
@@ -222,6 +221,7 @@ if (!window.createIceServer) {
  */
 
 var Easyrtc = function() {
+  var device;
     var self = this;
     var isFirefox = (webrtcDetectedBrowser === "firefox");
     var autoInitUserMedia = true;
