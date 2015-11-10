@@ -5412,14 +5412,14 @@ easyrtc.getVideoSourceList( function(list) {
 device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
 console.log( 'easyrtc device-id:', device.id );
-return device;
+
+self.setVideoSource( device.id );
 
               } );
 
+console.log( 'device:', device );
 
 
-
-self.setVideoSource( device.id );
 
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
