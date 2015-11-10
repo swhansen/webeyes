@@ -877,13 +877,16 @@ easyrtc.setVideoSrc( device.id );
      }]
    }
  };
+
  function successCallback(stream) {
  window.stream = stream; // make stream available to console
  videoElement.src = window.URL.createObjectURL(stream);
  videoElement.play();
+}
 
  function errorCallback(error) {
  console.log('navigator.getUserMedia error: ', error);
+}
 
  navigator.getUserMedia(constraints, successCallback, errorCallback);
 
