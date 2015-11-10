@@ -5421,6 +5421,24 @@ self.setVideoObjectSrc( device.id );
 
               } );
 
+
+if ( !MediaStreamTrack.getSources ) {
+    console.log( 'No media stream track enumeration' );
+    return;
+  } else {
+
+  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+    console.log( 'static-multi:', sourceInfos ) ;
+    device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+    console.log( 'device:', device );
+    console.log( 'facing:', device.facing );
+    console.log( 'label:', device.label );
+    console.log( 'id:', device.id );
+    return device;
+  } );
+}
+
+
 console.log( 'device:', device );
 
 console.log( 'constraints:', self.getUserMediaConstraints() );
