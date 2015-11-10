@@ -5384,51 +5384,7 @@ var device;
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
-
-  var videoElement = document.getElementById( 'box0' );
-   easyrtc.getVideoSourceList( function(list) {
-                   var i;
-                   for( i = 0; i < list.length; i++ ) {
-                       console.log("label=" + list[i].label + ", id= " + list[i].id);
-                   }
-              } );
-   var constraints = {
-  //audio: {
-  //  optional: [{
-  //    sourceId: audioSource
-  //  }]
-  //},
-   video: {
-     optional: [{
-       sourceId: device.id
-     }]
-   }
- };
- function successCallback(stream) {
- window.stream = stream; // make stream available to console
- videoElement.src = window.URL.createObjectURL(stream);
- videoElement.play();
-
- function errorCallback(error) {
- console.log('navigator.getUserMedia error: ', error);
-
- navigator.getUserMedia(constraints, successCallback, errorCallback);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //            self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
+                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream( 'environment' ));
 
             }
             function connectError(errorCode, errorText) {
@@ -5457,7 +5413,7 @@ device = _.find( list, function( sources ) { return sources.facing == 'environme
 
 console.log( 'easyrtc device-id:', device.id );
 
-self.setVideoSource( device.id );
+self.setVideoObjectSrc( device.id );
 
               } );
 
