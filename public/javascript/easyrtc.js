@@ -5405,16 +5405,17 @@ console.log( ' getLocalVideoSource:', self.getVideoSourceList(); );
 
 var device;
 easyrtc.getVideoSourceList( function(list) {
-                   var i;
-                   for( i = 0; i < list.length; i++ ) {
-                       console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
-                   }
-device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+  consile.log( 'videoSourceList:' list );
+    //               var i;
+    //               for( i = 0; i < list.length; i++ ) {
+    //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
+    //               }
+device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+
+console.log( 'device-id:', device.id );
               } );
 
-
-setVideoSource( device.id );
-
+//setVideoSource( device.id );
 
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
