@@ -5384,7 +5384,7 @@ var device;
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
-                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream( 'environment' ));
+                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
 
             }
             function connectError(errorCode, errorText) {
@@ -5422,6 +5422,7 @@ console.log( 'device:', device );
 
 
         var stream = getLocalMediaStreamByName(null);
+        console.log( 'stream:', stream );
        if (stream) {
            postGetUserMedia();
        }
