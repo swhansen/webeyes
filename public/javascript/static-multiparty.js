@@ -852,6 +852,8 @@ if ( !MediaStreamTrack.getSources ) {
     console.log( 'facing:', device.facing );
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
+
+    return device;
   } );
 }
 
