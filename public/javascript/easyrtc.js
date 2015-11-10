@@ -5413,7 +5413,7 @@ device = _.find( list, function( sources ) { return sources.facing == 'environme
 
 console.log( 'easyrtc device-id:', device.id );
 
-self.setVideoSource( device.id );
+setVideoSource( device.id );
 
               } );
 
