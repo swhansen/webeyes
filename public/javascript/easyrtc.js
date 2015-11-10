@@ -221,7 +221,7 @@ if (!window.createIceServer) {
  */
 
 var Easyrtc = function() {
-  var device;
+
     var self = this;
     var isFirefox = (webrtcDetectedBrowser === "firefox");
     var autoInitUserMedia = true;
@@ -5400,10 +5400,6 @@ console.log( 'Entering EasyApp');
             self.connect(applicationName, nextInitializationStep, connectError);
         }
 
-//console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream() );
-//console.log( 'getLocalVideoSource:', self.getVideoSourceList() );
-
-
 
 easyrtc.getVideoSourceList( function(list) {
   console.log( 'videoSourceList:', list );
@@ -5416,6 +5412,11 @@ device = _.find( list, function( sources ) { return sources.facing == 'environme
 console.log( 'easyrtc device-id:', device.id );
 
               } );
+
+
+var devList = easyrtc.getVideoSourceList();
+var device = _.find( devList, function( sources ) { return sources.facing == 'environment';} );
+
 
 self.setVideoSource( device.id );
 
