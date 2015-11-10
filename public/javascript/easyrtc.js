@@ -5384,6 +5384,9 @@ var device;
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
+
+
+
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
 
             }
@@ -5402,7 +5405,6 @@ var device;
             self.connect(applicationName, nextInitializationStep, connectError);
         }
 
-
 easyrtc.getVideoSourceList( function(list) {
   console.log( 'videoSourceList:', list );
     //               var i;
@@ -5419,6 +5421,7 @@ self.setVideoObjectSrc( device.id );
 
 console.log( 'device:', device );
 
+console.log( 'constraints:', self.getUserMediaConstraints() );
 
 
         var stream = getLocalMediaStreamByName(null);
@@ -5430,7 +5433,11 @@ console.log( 'device:', device );
 
 
             self.initMediaSource(
+
+
                     postGetUserMedia,
+
+
                     function(errorCode, errorText) {
                         if (gotMediaCallback) {
                             gotMediaCallback(false, errorText);

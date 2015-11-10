@@ -791,7 +791,7 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
-  //easyrtc.enableDebug( true );
+  easyrtc.enableDebug( true );
 
 var device;
 
@@ -838,7 +838,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
  // .getUserMedia = navigator.getUserMedia ||
  //   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-   var videoElement = document.getElementById( 'box0' );
+ //  var videoElement = document.getElementById( 'box0' );
 
 if ( !MediaStreamTrack.getSources ) {
     console.log( 'No media stream track enumeration' );
@@ -852,8 +852,6 @@ if ( !MediaStreamTrack.getSources ) {
     console.log( 'facing:', device.facing );
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
-
-    return device;
   } );
 }
 
@@ -861,36 +859,37 @@ if ( !MediaStreamTrack.getSources ) {
 
     // deal with the devices here
 
-   easyrtc.getVideoSourceList( function(list) {
-                   var i;
-                   for( i = 0; i < list.length; i++ ) {
-                       console.log("label=" + list[i].label + ", id= " + list[i].id);
-                   }
-              } );
-   var constraints = {
-  //audio: {
-  //  optional: [{
-  //    sourceId: audioSource
-  //  }]
-  //},
-   video: {
-     optional: [{
-       sourceId: device.id
-     }]
-   }
- };
+//   easyrtc.getVideoSourceList( function(list) {
+//                   var i;
+//                   for( i = 0; i < list.length; i++ ) {
+//                       console.log("label=" + list[i].label + ", id= " + list[i].id);
+//                   }
+//              } );
 
- function successCallback(stream) {
- window.stream = stream; // make stream available to console
- videoElement.src = window.URL.createObjectURL(stream);
- videoElement.play();
-}
+//   var constraints = {
+//  //audio: {
+//  //  optional: [{
+//  //    sourceId: audioSource
+//  //  }]
+//  //},
+//   video: {
+//     optional: [{
+//       sourceId: device.id
+//     }]
+//   }
+// };
 
- function errorCallback(error) {
- console.log('navigator.getUserMedia error: ', error);
-}
+// function successCallback(stream) {
+// window.stream = stream; // make stream available to console
+// videoElement.src = window.URL.createObjectURL(stream);
+// videoElement.play();
+//
 
- navigator.getUserMedia(constraints, successCallback, errorCallback);
+// function errorCallback(error) {
+// console.log('navigator.getUserMedia error: ', error);
+//
+
+// navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 
 //
