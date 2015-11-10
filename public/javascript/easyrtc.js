@@ -5408,16 +5408,8 @@ console.log( 'Entering EasyApp');
             self.connect(applicationName, nextInitializationStep, connectError);
         }
 
-        var stream = getLocalMediaStreamByName(null);
-     //   if (stream) {
-     //       postGetUserMedia();
-     //   }
-     //   else {
-
 console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream() );
-
 console.log( ' getLocalVideoSource:', self.getVideoSourceList() );
-
 easyrtc.getVideoSourceList( function(list) {
                    var i;
                    for( i = 0; i < list.length; i++ ) {
@@ -5425,6 +5417,12 @@ easyrtc.getVideoSourceList( function(list) {
                    }
 
               } );
+
+        var stream = getLocalMediaStreamByName(null);
+       if (stream) {
+           postGetUserMedia();
+       }
+       else {
 
             self.initMediaSource(
                     postGetUserMedia,
