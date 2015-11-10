@@ -1,7 +1,7 @@
 //
 // the below code is a copy of the standard polyfill adapter.js
 //
-var decice;
+var device;
 console.log( 'Entering easyrtc.js' );
 
 var getUserMedia = null;
