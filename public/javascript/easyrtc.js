@@ -5427,7 +5427,7 @@ if ( !MediaStreamTrack.getSources ) {
     return;
   } else {
 
-  devices = MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+  device = MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
     console.log( 'easyApp:', sourceInfos ) ;
     device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
     console.log( 'device:', device );
