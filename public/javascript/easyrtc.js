@@ -5422,11 +5422,12 @@ console.log( 'device:', device );
 
 
         var stream = getLocalMediaStreamByName(null);
-        console.log( 'stream:', stream );
        if (stream) {
            postGetUserMedia();
        }
        else {
+
+
 
             self.initMediaSource(
                     postGetUserMedia,

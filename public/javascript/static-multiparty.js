@@ -838,7 +838,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
  // .getUserMedia = navigator.getUserMedia ||
  //   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
- //  var videoElement = document.getElementById( 'box0' );
+   var videoElement = document.getElementById( 'box0' );
 
 if ( !MediaStreamTrack.getSources ) {
     console.log( 'No media stream track enumeration' );
@@ -855,41 +855,37 @@ if ( !MediaStreamTrack.getSources ) {
   } );
 }
 
-//easyrtc.setVideoSrc( device.id );
+easyrtc.setVideoSrc( device.id );
 
     // deal with the devices here
 
-//   easyrtc.getVideoSourceList( function(list) {
-//                   var i;
-//                   for( i = 0; i < list.length; i++ ) {
-//                       console.log("label=" + list[i].label + ", id= " + list[i].id);
-//                   }
-//              } );
+   easyrtc.getVideoSourceList( function(list) {
+                   var i;
+                   for( i = 0; i < list.length; i++ ) {
+                       console.log("label=" + list[i].label + ", id= " + list[i].id);
+                   }
+              } );
+   var constraints = {
+  //audio: {
+  //  optional: [{
+  //    sourceId: audioSource
+  //  }]
+  //},
+   video: {
+     optional: [{
+       sourceId: device.id
+     }]
+   }
+ };
+ function successCallback(stream) {
+ window.stream = stream; // make stream available to console
+ videoElement.src = window.URL.createObjectURL(stream);
+ videoElement.play();
 
-//   var constraints = {
-//  //audio: {
-//  //  optional: [{
-//  //    sourceId: audioSource
-//  //  }]
-//  //},
-//   video: {
-//     optional: [{
-//       sourceId: device.id
-//     }]
-//   }
-// };
+ function errorCallback(error) {
+ console.log('navigator.getUserMedia error: ', error);
 
-// function successCallback(stream) {
-// window.stream = stream; // make stream available to console
-// videoElement.src = window.URL.createObjectURL(stream);
-// videoElement.play();
-//
-
-// function errorCallback(error) {
-// console.log('navigator.getUserMedia error: ', error);
-//
-
-// navigator.getUserMedia(constraints, successCallback, errorCallback);
+ navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 
 //
