@@ -791,7 +791,7 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
-  easyrtc.enableDebug( true );
+  //easyrtc.enableDebug( true );
 
 var device;
 
@@ -935,8 +935,6 @@ if ( !MediaStreamTrack.getSources ) {
 
     easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
       function( myId ) {
-
-console.log( 'mediaIds:', easyrtc.getLocalMediaIds() );
 
 
         userContext.rtcId = myId;

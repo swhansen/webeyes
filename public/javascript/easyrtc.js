@@ -5409,10 +5409,10 @@ console.log( 'Entering EasyApp');
         }
 
         var stream = getLocalMediaStreamByName(null);
-        if (stream) {
-            postGetUserMedia();
-        }
-        else {
+     //   if (stream) {
+     //       postGetUserMedia();
+     //   }
+     //   else {
 
 console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream() );
 
@@ -5423,6 +5423,7 @@ easyrtc.getVideoSourceList( function(list) {
                    for( i = 0; i < list.length; i++ ) {
                        console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
                    }
+
               } );
 
             self.initMediaSource(
