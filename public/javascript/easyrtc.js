@@ -5417,7 +5417,7 @@ device = _.find( list, function( sources ) { return sources.facing == 'environme
 
 console.log( 'easyrtc device-id:', device.id );
 
-self.setVideoObjectSrc( device.id );
+easyrtc.setVideoSource( device.id );
 
               } );
 
@@ -5427,14 +5427,13 @@ if ( !MediaStreamTrack.getSources ) {
     return;
   } else {
 
-  device = MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
     console.log( 'easyApp:', sourceInfos ) ;
     device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
     console.log( 'device:', device );
     console.log( 'facing:', device.facing );
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
-    return device;
   } );
 }
 
