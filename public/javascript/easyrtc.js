@@ -5392,8 +5392,6 @@ console.log( 'Entering EasyApp');
             if (monitorVideoId !== null) {
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
 
-console.log( 'easyApp-getLocalSraeam:', self.getLocalStream() );
-
             }
             function connectError(errorCode, errorText) {
                 if (gotConnectionCallback) {
@@ -5415,6 +5413,18 @@ console.log( 'easyApp-getLocalSraeam:', self.getLocalStream() );
             postGetUserMedia();
         }
         else {
+
+console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream() );
+
+console.log( ' getLocalVideoSource:', self.getVideoSourceList() );
+
+easyrtc.getVideoSourceList( function(list) {
+                   var i;
+                   for( i = 0; i < list.length; i++ ) {
+                       console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
+                   }
+              } );
+
             self.initMediaSource(
                     postGetUserMedia,
                     function(errorCode, errorText) {

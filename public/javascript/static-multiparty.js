@@ -791,6 +791,8 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
+  easyrtc.enableDebug( true );
+
 var device;
 
 //   Begin experimental camera select
