@@ -5400,8 +5400,8 @@ console.log( 'Entering EasyApp');
             self.connect(applicationName, nextInitializationStep, connectError);
         }
 
-console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream(); );
-console.log( ' getLocalVideoSource:', self.getVideoSourceList(); );
+console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream() );
+console.log( 'getLocalVideoSource:', self.getVideoSourceList() );
 
 var device;
 easyrtc.getVideoSourceList( function(list) {
