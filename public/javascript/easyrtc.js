@@ -222,6 +222,8 @@ if (!window.createIceServer) {
 
 var Easyrtc = function() {
 
+  var device;
+
     var self = this;
     var isFirefox = (webrtcDetectedBrowser === "firefox");
     var autoInitUserMedia = true;
@@ -5346,7 +5348,7 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
-var device;
+
 
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
