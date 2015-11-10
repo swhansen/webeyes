@@ -5346,6 +5346,8 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
+var device;
+
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
 
@@ -5417,7 +5419,7 @@ return device;
 
 
 
-//self.setVideoSource( device.id );
+self.setVideoSource( device.id );
 
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
