@@ -5416,7 +5416,7 @@ console.log( 'easyrtc device-id:', device.id );
 
               } );
 
-easyrtc.setVideoSource( device.id );
+self.setVideoSource( device.id );
 
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
