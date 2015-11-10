@@ -5384,20 +5384,51 @@ var device;
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
-              easyrtc.getVideoSourceList( function(list) {
-  console.log( 'videoSourceList:', list );
-    //               var i;
-    //               for( i = 0; i < list.length; i++ ) {
-    //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
-    //               }
-device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
-console.log( 'easyrtc device-id:', device.id );
-
-self.setVideoSource( device.id );
-
+  var videoElement = document.getElementById( 'box0' );
+   easyrtc.getVideoSourceList( function(list) {
+                   var i;
+                   for( i = 0; i < list.length; i++ ) {
+                       console.log("label=" + list[i].label + ", id= " + list[i].id);
+                   }
               } );
-                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
+   var constraints = {
+  //audio: {
+  //  optional: [{
+  //    sourceId: audioSource
+  //  }]
+  //},
+   video: {
+     optional: [{
+       sourceId: device.id
+     }]
+   }
+ };
+ function successCallback(stream) {
+ window.stream = stream; // make stream available to console
+ videoElement.src = window.URL.createObjectURL(stream);
+ videoElement.play();
+
+ function errorCallback(error) {
+ console.log('navigator.getUserMedia error: ', error);
+
+ navigator.getUserMedia(constraints, successCallback, errorCallback);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //            self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
 
             }
             function connectError(errorCode, errorText) {
