@@ -855,7 +855,7 @@ if ( !MediaStreamTrack.getSources ) {
   } );
 }
 
-easyrtc.setVideoSrc( device.id );
+//easyrtc.setVideoSrc( device.id );
 
     // deal with the devices here
 
