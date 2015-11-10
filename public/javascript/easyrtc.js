@@ -5410,15 +5410,14 @@ easyrtc.getVideoSourceList( function(list) {
 device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
 console.log( 'easyrtc device-id:', device.id );
+return device;
 
               } );
 
 
-var devList = easyrtc.getVideoSourceList();
-var device = _.find( devList, function( sources ) { return sources.facing == 'environment';} );
 
 
-self.setVideoSource( device.id );
+//self.setVideoSource( device.id );
 
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
