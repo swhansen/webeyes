@@ -1,7 +1,7 @@
 //
 // the below code is a copy of the standard polyfill adapter.js
 //
-
+var decice;
 console.log( 'Entering easyrtc.js' );
 
 var getUserMedia = null;
@@ -5403,7 +5403,8 @@ console.log( 'Entering EasyApp');
 //console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream() );
 //console.log( 'getLocalVideoSource:', self.getVideoSourceList() );
 
-var device;
+
+
 easyrtc.getVideoSourceList( function(list) {
   console.log( 'videoSourceList:', list );
     //               var i;
