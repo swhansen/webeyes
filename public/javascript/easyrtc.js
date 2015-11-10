@@ -5384,6 +5384,19 @@ var device;
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
+              easyrtc.getVideoSourceList( function(list) {
+  console.log( 'videoSourceList:', list );
+    //               var i;
+    //               for( i = 0; i < list.length; i++ ) {
+    //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
+    //               }
+device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+
+console.log( 'easyrtc device-id:', device.id );
+
+self.setVideoSource( device.id );
+
+              } );
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
 
             }
@@ -5409,7 +5422,7 @@ easyrtc.getVideoSourceList( function(list) {
     //               for( i = 0; i < list.length; i++ ) {
     //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
     //               }
-device = _.find( list, function( sources ) { return sources.facing == 'user ';} );
+device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
 console.log( 'easyrtc device-id:', device.id );
 
@@ -5426,20 +5439,6 @@ console.log( 'device:', device );
            postGetUserMedia();
        }
        else {
-
-        easyrtc.getVideoSourceList( function(list) {
-  console.log( 'videoSourceList:', list );
-    //               var i;
-    //               for( i = 0; i < list.length; i++ ) {
-    //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
-    //               }
-device = _.find( list, function( sources ) { return sources.facing == 'user';} );
-
-console.log( 'easyrtc device-id:', device.id );
-
-self.setVideoSource( device.id );
-
-              } );
 
             self.initMediaSource(
                     postGetUserMedia,
