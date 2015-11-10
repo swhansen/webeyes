@@ -5346,14 +5346,6 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
-   easyrtc.getVideoSourceList( function(list) {
-                   var i;
-                   for( i = 0; i < list.length; i++ ) {
-                       console.log("label=" + list[i].label + ", id= " + list[i].id +
-                       ", facing= " + list[i].facing );
-                   }
-              } );
-
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
 
@@ -5408,15 +5400,21 @@ console.log( 'Entering EasyApp');
             self.connect(applicationName, nextInitializationStep, connectError);
         }
 
-console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream() );
-console.log( ' getLocalVideoSource:', self.getVideoSourceList() );
+console.log( 'at initMediaSource - easyApp-getLocalSraeam:', self.getLocalStream(); );
+console.log( ' getLocalVideoSource:', self.getVideoSourceList(); );
+
+var device;
 easyrtc.getVideoSourceList( function(list) {
                    var i;
                    for( i = 0; i < list.length; i++ ) {
                        console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
                    }
-
+device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
               } );
+
+
+setVideoSource( device.id );
+
 
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
