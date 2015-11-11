@@ -5348,7 +5348,7 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
-
+var device;
 
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
@@ -5386,7 +5386,6 @@ console.log( 'Entering EasyApp');
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
-
 
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
@@ -5427,7 +5426,10 @@ if ( !MediaStreamTrack.getSources ) {
     return;
   } else {
 
+function get_media_sources() {
+
   MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+
     console.log( 'easyApp:', sourceInfos ) ;
     device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
     console.log( 'device:', device );
@@ -5435,8 +5437,12 @@ if ( !MediaStreamTrack.getSources ) {
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
   } );
+
 }
 
+}
+
+get_media_sources();
 
 console.log( 'easyApp-device:', device );
 
