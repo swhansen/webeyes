@@ -5349,6 +5349,12 @@ var Easyrtc = function() {
 console.log( 'Entering EasyApp');
 var device;
 
+if ( !MediaStreamTrack.getSources ) {
+    console.log( 'No media stream track enumeration' );
+    return;
+  } else {
+
+
 function get_media_sources() {
 
   MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
@@ -5366,7 +5372,7 @@ function get_media_sources() {
 
 }
 
-var foo = get_media_sources();
+var f00 = get_media_sources();
 
 console.log( 'foo:', foo);
 
@@ -5441,10 +5447,7 @@ easyrtc.setVideoSource( device.id );
 
               } );
 
-if ( !MediaStreamTrack.getSources ) {
-    console.log( 'No media stream track enumeration' );
-    return;
-  } else {
+
 
 
 
