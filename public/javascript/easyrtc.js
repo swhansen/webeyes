@@ -5495,7 +5495,7 @@ MediaStreamTrack.getSources(function (media_sources) {
     }
 } );
 console.log( 'theStream:', theStream);
-setVideoObjectSrc( monitorVideoId, theStream.id);
+easyrtc.setVideoObjectSrc( monitorVideoId, theStream.id);
 
             self.initMediaSource(
 
