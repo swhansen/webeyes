@@ -5370,9 +5370,9 @@ function get_media_sources() {
 
     } );
   }
-get_media_sources();
-
 }
+
+get_media_sources();
 
         var gotMediaCallback = null,
                 gotConnectionCallback = null;

@@ -941,6 +941,7 @@ function gotSources( sourceInfos ) {
    easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
+ console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds(); );
 
        userContext.rtcId = myId;
 
