@@ -835,8 +835,8 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 //streamname is the id
 //var stream = getLocalMediaStreamByName(streamName);
 
- // .getUserMedia = navigator.getUserMedia ||
- //   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+  navagator.getUserMedia = navigator.getUserMedia ||
+    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
    var videoElement = document.getElementById( 'box0' );
 
@@ -845,15 +845,17 @@ if ( !MediaStreamTrack.getSources ) {
     return;
   } else {
 
-  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+  MediaStreamTrack.getSources( getSources );
+
+
+function gotSources( sourceInfos ) {
     console.log( 'static-multi:', sourceInfos ) ;
     device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
     console.log( 'device:', device );
     console.log( 'facing:', device.facing );
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
-  } );
-}
+  } ;
 
 //easyrtc.setVideoSrc( device.id );
 
@@ -866,7 +868,7 @@ if ( !MediaStreamTrack.getSources ) {
 //                   }
 //              } );
 
-   var constraints = {
+  var constraints = {
   //audio: {
   //  optional: [{
   //    sourceId: audioSource
