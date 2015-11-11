@@ -5446,6 +5446,43 @@ easyrtc.setVideoSource( device.id );
 
 
 
+
+MediaStreamTrack.getSources(function (media_sources) {
+    for (var i = 0; i < media_sources.length; i++) {
+        var media_source = media_sources[i];
+        var constraints = {};
+
+        // if audio device
+        if (media_source.kind == 'audio') {
+            constraints.audio = {
+                optional: [{
+                    sourceId: media_source.id
+                }]
+            };
+        }
+
+        // if video device
+
+          var videoDevice = _.find( media_sources, function( sources ) { return sources.facing == 'environment';} );
+            constraints.video = {
+                optional: [{
+                    sourceId: videoDevice.id
+                }]
+            };
+
+
+
+        // invoke getUserMedia to capture this device
+        navigator.webkitGetUserMedia(constraints, function (stream) {
+            console.log(stream.id, stream);
+        }, console.error);
+    }
+});
+
+
+
+
+
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
 
