@@ -943,6 +943,16 @@ function gotSources( sourceInfos ) {
 
  console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
 
+
+ easyrtc.buildLocalMediaStream("myComposedStream",
+            easyrtc.getLocalStream("camera1").getVideoTracks(),
+            easyrtc.getLocalStream("camera2").getAudioTracks());
+
+ console.log( 'myComposedStream:', easyrtc.getLocalMediaStreamByName( 'myComposedStream' )  );
+
+
+
+
        userContext.rtcId = myId;
 
 //     // First time through for all connections
