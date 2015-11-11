@@ -794,7 +794,6 @@ function messageListener( easyrtcid, msgType, content ) {
 function appInit() {
 
   easyrtc.enableDebug( true );
-  easyrtc.setAutoInitUserMedia( false );
 
 //   Begin experimental camera select
 //
@@ -868,6 +867,9 @@ function gotSources( sourceInfos ) {
 //                       console.log("label=" + list[i].label + ", id= " + list[i].id);
 //                   }
 //              } );
+
+console.log( 'VSL:', easyrtc.getVideoSourceList() );
+
 
 //
 //    var constraints = {
@@ -943,14 +945,6 @@ function gotSources( sourceInfos ) {
      function( myId ) {
 
  console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
-
-
- easyrtc.buildLocalMediaStream("myComposedStream",
-            easyrtc.getLocalStream("camera1").getVideoTracks(),
-            easyrtc.getLocalStream("camera2").getAudioTracks());
-
- console.log( 'myComposedStream:', easyrtc.getLocalMediaStreamByName( 'myComposedStream' )  );
-
 
 
 
