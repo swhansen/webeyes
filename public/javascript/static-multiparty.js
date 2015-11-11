@@ -870,6 +870,9 @@ function gotSources( sourceInfos ) {
 //                   }
 //              } );
 
+
+function start() {
+
   var constraints = {
   //audio: {
   //  optional: [{
@@ -893,7 +896,11 @@ function gotSources( sourceInfos ) {
  console.log('navigator.getUserMedia error: ', error);
 }
 
+
  navigator.getUserMedia(constraints, successCallback, errorCallback);
+}
+
+start();
 
 
 //
