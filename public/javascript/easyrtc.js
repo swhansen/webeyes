@@ -5347,8 +5347,29 @@ var Easyrtc = function() {
     this.easyApp = function(applicationName, monitorVideoId, videoIds, onReady, onFailure) {
 
 console.log( 'Entering EasyApp');
-
 var device;
+
+function get_media_sources() {
+
+  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
+
+    console.log( 'easyApp:', sourceInfos ) ;
+    device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+    console.log( 'device:', device );
+    console.log( 'facing:', device.facing );
+    console.log( 'label:', device.label );
+    console.log( 'id:', device.id );
+    return device;
+  } );
+
+}
+
+}
+
+var foo = get_media_sources();
+
+console.log( 'foo:', foo);
+
 
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
@@ -5420,31 +5441,14 @@ easyrtc.setVideoSource( device.id );
 
               } );
 
-
 if ( !MediaStreamTrack.getSources ) {
     console.log( 'No media stream track enumeration' );
     return;
   } else {
 
-function get_media_sources() {
 
-  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
 
-    console.log( 'easyApp:', sourceInfos ) ;
-    device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-    console.log( 'device:', device );
-    console.log( 'facing:', device.facing );
-    console.log( 'label:', device.label );
-    console.log( 'id:', device.id );
-  } );
-
-}
-
-}
-
-get_media_sources();
-
-console.log( 'easyApp-device:', device );
+//console.log( 'easyApp-device:', device );
 
 console.log( 'constraints:', self.getUserMediaConstraints() );
 
