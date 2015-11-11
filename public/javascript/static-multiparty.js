@@ -9,6 +9,8 @@ var connectList = [];
 var modmeState = false;
 var compassToggle = false;
 
+var device;
+
 /*jshint -W020 */
 socketServer = io.connect( '/' );
 /*jshint +W020 */
@@ -793,7 +795,7 @@ function appInit() {
 
   easyrtc.enableDebug( true );
 
-var device;
+
 
 //   Begin experimental camera select
 //
