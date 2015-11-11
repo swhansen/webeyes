@@ -5372,7 +5372,7 @@ function get_media_sources() {
 
 }
 
-var f00 = get_media_sources();
+var foo = get_media_sources();
 
 console.log( 'foo:', foo);
 
