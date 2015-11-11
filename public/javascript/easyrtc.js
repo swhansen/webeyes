@@ -5447,6 +5447,23 @@ easyrtc.setVideoSource( device.id );
 
 var theStream;
 
+
+
+
+
+
+
+        var stream = getLocalMediaStreamByName(null);
+       if (stream) {
+
+ //       self.setVideoSource( self.getVideoSourceList( function( list ) {
+ //     _.find( list, function( sources ) { return sources.facing == 'environment';} ).id
+ //     }         ) );
+           postGetUserMedia();
+       }
+       else {
+
+
 MediaStreamTrack.getSources(function (media_sources) {
     for (var i = 0; i < media_sources.length; i++) {
         var media_source = media_sources[i];
@@ -5477,25 +5494,6 @@ MediaStreamTrack.getSources(function (media_sources) {
         }, console.error);
     }
 } );
-
-
-
-
-
-        //var stream = getLocalMediaStreamByName(null);
-       if (theStream) {
-
- //       self.setVideoSource( self.getVideoSourceList( function( list ) {
- //     _.find( list, function( sources ) { return sources.facing == 'environment';} ).id
- //     }         ) );
-           postGetUserMedia();
-       }
-       else {
-
-
-//self.setVideoSource( self.getVideoSourceList( function( list ) {
-//      _.find( list, function( sources ) { return sources.facing == 'environment';} ).id
- //     }         ) );
 
 
             self.initMediaSource(
