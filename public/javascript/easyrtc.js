@@ -5471,7 +5471,7 @@ MediaStreamTrack.getSources(function (media_sources) {
             };
 
         // invoke getUserMedia to capture this device
-        navigator.webkitGetUserMedia(constraints, function (stream) {
+        navigator.getUserMedia(constraints, function (stream) {
             console.log(stream.id, stream);
             theStream = stream;
         }, console.error);
