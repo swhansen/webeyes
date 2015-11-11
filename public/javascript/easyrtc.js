@@ -5365,16 +5365,14 @@ function get_media_sources() {
     console.log( 'facing:', device.facing );
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
-    return device;
+
+    setVideoSource ( device.id );
+
   } );
 
 }
 
 }
-
-var foo = get_media_sources();
-
-console.log( 'foo:', foo);
 
 
         var gotMediaCallback = null,
