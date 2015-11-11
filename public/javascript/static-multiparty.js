@@ -846,7 +846,7 @@ if ( !MediaStreamTrack.getSources ) {
   } else {
 
   MediaStreamTrack.getSources( getSources );
-
+}
 
 function gotSources( sourceInfos ) {
     console.log( 'static-multi:', sourceInfos ) ;
@@ -855,7 +855,7 @@ function gotSources( sourceInfos ) {
     console.log( 'facing:', device.facing );
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
-  } ;
+  };
 
 //easyrtc.setVideoSrc( device.id );
 
