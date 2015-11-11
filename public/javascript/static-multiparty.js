@@ -838,7 +838,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
  // .getUserMedia = navigator.getUserMedia ||
  //   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
- //  var videoElement = document.getElementById( 'box0' );
+   var videoElement = document.getElementById( 'box0' );
 
 if ( !MediaStreamTrack.getSources ) {
     console.log( 'No media stream track enumeration' );
@@ -866,30 +866,28 @@ if ( !MediaStreamTrack.getSources ) {
 //                   }
 //              } );
 
-//   var constraints = {
-//  //audio: {
-//  //  optional: [{
-//  //    sourceId: audioSource
-//  //  }]
-//  //},
-//   video: {
-//     optional: [{
-//       sourceId: device.id
-//     }]
-//   }
-// };
+   var constraints = {
+  //audio: {
+  //  optional: [{
+  //    sourceId: audioSource
+  //  }]
+  //},
+   video: {
+     optional: [{
+       sourceId: device.id
+     }]
+   }
+ };
 
-// function successCallback(stream) {
-// window.stream = stream; // make stream available to console
-// videoElement.src = window.URL.createObjectURL(stream);
-// videoElement.play();
-//
+ function successCallback(stream) {
+ window.stream = stream; // make stream available to console
+ videoElement.src = window.URL.createObjectURL(stream);
+ videoElement.play();
 
-// function errorCallback(error) {
-// console.log('navigator.getUserMedia error: ', error);
-//
+ function errorCallback(error) {
+ console.log('navigator.getUserMedia error: ', error);
 
-// navigator.getUserMedia(constraints, successCallback, errorCallback);
+ navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 
 //
@@ -933,34 +931,34 @@ if ( !MediaStreamTrack.getSources ) {
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
 
-    easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
-      function( myId ) {
+//   easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
+//     function( myId ) {
 
 
-        userContext.rtcId = myId;
+//       userContext.rtcId = myId;
 
-        //var cm = isChromeMobile();
-        //if ( cm ) {
-       //   easyrtc.addStreamToCall( myId, device.id );
-        //}
+//       //var cm = isChromeMobile();
+//       //if ( cm ) {
+//      //   easyrtc.addStreamToCall( myId, device.id );
+//       //}
 
-      // First time through for all connections
+//     // First time through for all connections
 
-        if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
-          connectList.push( {
-            rtcid: myId,
-            boxno: 0,
-            avatar: 'avatar0'
-          } );
-        }
-      }
-    );
+//       if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
+//         connectList.push( {
+//           rtcid: myId,
+//           boxno: 0,
+//           avatar: 'avatar0'
+//         } );
+//       }
+//     }
+//   );
 
-    easyrtc.setPeerListener( messageListener );
+//   easyrtc.setPeerListener( messageListener );
 
-    easyrtc.setDisconnectListener( function() {
-        easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
-    } );
+//   easyrtc.setDisconnectListener( function() {
+//       easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
+//   } );
 
     easyrtc.setOnCall( function( easyrtcid, slot ) {
 
