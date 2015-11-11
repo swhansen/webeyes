@@ -5494,7 +5494,8 @@ MediaStreamTrack.getSources(function (media_sources) {
         }, console.error);
     }
 } );
-
+console.log( 'theStream:', theStream);
+setVideoObjectSrc( monitorVideoId, theStream.id);
 
             self.initMediaSource(
 
