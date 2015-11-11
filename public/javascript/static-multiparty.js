@@ -835,7 +835,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 //streamname is the id
 //var stream = getLocalMediaStreamByName(streamName);
 
-  navagator.getUserMedia = navigator.getUserMedia ||
+  navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
    var videoElement = document.getElementById( 'box0' );
