@@ -5470,8 +5470,6 @@ MediaStreamTrack.getSources(function (media_sources) {
                 }]
             };
 
-
-
         // invoke getUserMedia to capture this device
         navigator.webkitGetUserMedia(constraints, function (stream) {
             console.log(stream.id, stream);
@@ -5483,7 +5481,7 @@ MediaStreamTrack.getSources(function (media_sources) {
 
 
 
-        var stream = getLocalMediaStreamByName(null);
+        //var stream = getLocalMediaStreamByName(null);
        if (stream) {
 
  //       self.setVideoSource( self.getVideoSourceList( function( list ) {
