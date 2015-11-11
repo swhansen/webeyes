@@ -795,8 +795,6 @@ function appInit() {
 
   easyrtc.enableDebug( true );
 
-
-
 //   Begin experimental camera select
 //
 
@@ -940,38 +938,31 @@ function gotSources( sourceInfos ) {
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
 
-//   easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
-//     function( myId ) {
+   easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
+     function( myId ) {
 
 
-//       userContext.rtcId = myId;
-
-//       //var cm = isChromeMobile();
-//       //if ( cm ) {
-//      //   easyrtc.addStreamToCall( myId, device.id );
-//       //}
+       userContext.rtcId = myId;
 
 //     // First time through for all connections
 
-//       if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
-//         connectList.push( {
-//           rtcid: myId,
-//           boxno: 0,
-//           avatar: 'avatar0'
-//         } );
-//       }
-//     }
-//   );
-
-//   easyrtc.setPeerListener( messageListener );
-
-//   easyrtc.setDisconnectListener( function() {
-//       easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
-//   } );
+       if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
+         connectList.push( {
+           rtcid: myId,
+           boxno: 0,
+           avatar: 'avatar0'
+         } );
+       }
+     }
+   );
+   easyrtc.setPeerListener( messageListener );
+   easyrtc.setDisconnectListener( function() {
+       easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
+   } );
 
     easyrtc.setOnCall( function( easyrtcid, slot ) {
 
-        //console.log('a call with ' + easyrtcid + 'established');
+      //console.log('a call with ' + easyrtcid + 'established');
       //  console.log('Occupant IDs:', easyrtc.getRoomOccupantsAsArray('default'))
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
