@@ -5491,11 +5491,11 @@ MediaStreamTrack.getSources(function (media_sources) {
         navigator.getUserMedia(constraints, function (stream) {
             console.log(stream.id, stream);
             theStream = stream;
+easyrtc.setVideoObjectSrc( monitorVideoId, videoDevice.id);
         }, console.error);
     }
 } );
-console.log( 'theStream:', theStream);
-easyrtc.setVideoObjectSrc( monitorVideoId, theStream.id);
+
 
             self.initMediaSource(
 
