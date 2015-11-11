@@ -868,9 +868,6 @@ function gotSources( sourceInfos ) {
 //                   }
 //              } );
 
-console.log( 'VSL:', easyrtc.getVideoSourceList() );
-
-
 //
 //    var constraints = {
 //    //audio: {
