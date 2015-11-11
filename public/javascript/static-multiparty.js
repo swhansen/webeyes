@@ -845,7 +845,7 @@ if ( !MediaStreamTrack.getSources ) {
     return;
   } else {
 
-  MediaStreamTrack.getSources( getSources );
+  MediaStreamTrack.getSources( gotSources );
 }
 
 function gotSources( sourceInfos ) {
