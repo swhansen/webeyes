@@ -5449,20 +5449,17 @@ easyrtc.setVideoSource( device.id );
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
 
-        self.setVideoSource( self.getVideoSourceList( function( list ) {
-      _.find( list, function( sources ) { return sources.facing == 'environment';} ).id
-      }         ) );
+ //       self.setVideoSource( self.getVideoSourceList( function( list ) {
+ //     _.find( list, function( sources ) { return sources.facing == 'environment';} ).id
+ //     }         ) );
            postGetUserMedia();
        }
        else {
 
 
-self.setVideoSource( self.getVideoSourceList( function( list ) {
-      _.find( list, function( sources ) { return sources.facing == 'environment';} ).id
-      }         ) );
-
-
-
+//self.setVideoSource( self.getVideoSourceList( function( list ) {
+//      _.find( list, function( sources ) { return sources.facing == 'environment';} ).id
+ //     }         ) );
 
 
             self.initMediaSource(
