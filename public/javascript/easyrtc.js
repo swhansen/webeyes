@@ -5366,7 +5366,7 @@ function get_media_sources() {
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
 
-    easyrtc.setVideoSource( device.id );
+    easyrtc.setVideoObjectSrc( document.getElementById( 'monitorVideoId' ), device.id );
 
   } );
 
