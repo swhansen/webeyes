@@ -5366,10 +5366,10 @@ function get_media_sources() {
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
 
-  } );
+    easyrtc.setVideoSource( device.id );
 
-}
-
+    } );
+  }
 }
 
 
@@ -5441,15 +5441,8 @@ console.log( 'easyrtc device-id:', device.id );
 
 easyrtc.setVideoSource( device.id );
 
-              } );
+    } );
 
-
-
-
-
-//console.log( 'easyApp-device:', device );
-
-console.log( 'constraints:', self.getUserMediaConstraints() );
 
 
         var stream = getLocalMediaStreamByName(null);
@@ -5458,13 +5451,9 @@ console.log( 'constraints:', self.getUserMediaConstraints() );
        }
        else {
 
-
-
             self.initMediaSource(
 
-
                     postGetUserMedia,
-
 
                     function(errorCode, errorText) {
                         if (gotMediaCallback) {
