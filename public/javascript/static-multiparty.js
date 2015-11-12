@@ -838,24 +838,24 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
   navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-   var videoElement = document.getElementById( 'box0' );
+//    var videoElement = document.getElementById( 'box0' );
+//
+// if ( !MediaStreamTrack.getSources ) {
+//     console.log( 'No media stream track enumeration' );
+//     return;
+//   } else {
+//
+//   MediaStreamTrack.getSources( gotSources );
+// }
 
-if ( !MediaStreamTrack.getSources ) {
-    console.log( 'No media stream track enumeration' );
-    return;
-  } else {
-
-  MediaStreamTrack.getSources( gotSources );
-}
-
-function gotSources( sourceInfos ) {
-    console.log( 'static-multi:', sourceInfos ) ;
-    var device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-    console.log( 'device:', device );
-    console.log( 'facing:', device.facing );
-    console.log( 'label:', device.label );
-    console.log( 'id:', device.id );
-  };
+//function gotSources( sourceInfos ) {
+//    console.log( 'static-multi:', sourceInfos ) ;
+//    device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+//    console.log( 'device:', device );
+//    console.log( 'facing:', device.facing );
+//    console.log( 'label:', device.label );
+//    console.log( 'id:', device.id );
+//  };
 
 //easyrtc.setVideoSrc( device.id );
 
