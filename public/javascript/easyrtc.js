@@ -5372,7 +5372,7 @@ function get_media_sources() {
   }
 }
 
-get_media_sources();
+   // get_media_sources();
 
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
@@ -5382,6 +5382,8 @@ get_media_sources();
         self.setGotMedia = function(gotMediaCB) {
             gotMediaCallback = gotMediaCB;
         };
+
+
         /** Sets an event handler that gets called when a connection to the signaling
          * server has or has not been made. Can only be called after calling easyrtc.easyApp.
          * @param {Function} gotConnectionCB has the signature (gotConnection, errorText)
@@ -5430,71 +5432,81 @@ get_media_sources();
             self.connect(applicationName, nextInitializationStep, connectError);
         }
 
-easyrtc.getVideoSourceList( function(list) {
-  console.log( 'videoSourceList:', list );
-    //               var i;
-    //               for( i = 0; i < list.length; i++ ) {
-    //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
-    //               }
-device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+//  easyrtc.getVideoSourceList( function(list) {
+//    console.log( 'videoSourceList:', list );
+//     //               var i;
+//      //               for( i = 0; i < list.length; i++ ) {
+//      //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
+//      //               }
+//  device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
-console.log( 'easyrtc device-id:', device.id );
+//  console.log( 'easyrtc device-id:', device.id );
 
-easyrtc.setVideoSource( device.id );
+//    easyrtc.setVideoSource( device.id );
 
-    } );
-
-
-var theStream;
+//    } );
 
 
-
-
+//var theStream;
 
 
 
         var stream = getLocalMediaStreamByName(null);
        if (stream) {
-
- //       self.setVideoSource( self.getVideoSourceList( function( list ) {
- //     _.find( list, function( sources ) { return sources.facing == 'environment';} ).id
- //     }         ) );
            postGetUserMedia();
        }
        else {
 
 
-MediaStreamTrack.getSources(function (media_sources) {
-    for (var i = 0; i < media_sources.length; i++) {
-        var media_source = media_sources[i];
-        var constraints = {};
+//    MediaStreamTrack.getSources(function (media_sources) {
+//    for (var i = 0; i < media_sources.length; i++) {
+//        var media_source = media_sources[i];
+//        var constraints = {};
+//
+//        // if audio device
+//        if (media_source.kind == 'audio') {
+//            constraints.audio = {
+//                optional: [{
+//                    sourceId: media_source.id
+//                }]
+//            };
+//        }
+//
+//        // if video device
+//
+//          var videoDevice = _.find( media_sources, function( sources ) { return sources.facing == 'environment';} );
+//            constraints.video = {
+//                optional: [{
+//                    sourceId: videoDevice.id
+//                }]
+//            };
 
-        // if audio device
-        if (media_source.kind == 'audio') {
-            constraints.audio = {
-                optional: [{
-                    sourceId: media_source.id
-                }]
-            };
-        }
 
-        // if video device
 
-          var videoDevice = _.find( media_sources, function( sources ) { return sources.facing == 'environment';} );
-            constraints.video = {
-                optional: [{
-                    sourceId: videoDevice.id
-                }]
-            };
+//  var constraints = {
+//  //audio: {
+//  //  optional: [{
+//  //    sourceId: audioSource
+//  //  }]
+//  //},
+//   video: {
+//     optional: [{
+//       sourceId: device.id
+//     }]
+//   }
+// };
 
-        // invoke getUserMedia to capture this device
-        navigator.getUserMedia(constraints, function (stream) {
-            console.log(stream.id, stream);
-            theStream = stream;
-easyrtc.setVideoObjectSrc( monitorVideoId, stream.id);
-        }, console.error);
-    }
-} );
+
+//  console.log( 'constraints:', constraints );
+//      // invoke getUserMedia to capture this device
+//      navigator.getUserMedia(constraints, function (stream) {
+//          console.log(stream.id, stream);
+//          theStream = stream;
+
+//  easyrtc.setVideoObjectSrc( monitorVideoId, stream.id);
+//      }, console.error);
+//    }
+//  } );
 
 
             self.initMediaSource(
