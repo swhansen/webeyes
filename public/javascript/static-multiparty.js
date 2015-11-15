@@ -840,7 +840,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
   navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-    var videoElement = document.getElementById( 'box0' );
+  var videoElement = document.getElementById( 'box0' );
 //
  if ( !MediaStreamTrack.getSources ) {
      console.log( 'No media stream track enumeration' );
@@ -870,18 +870,22 @@ function gotSources( sourceInfos ) {
 //              } );
 
 
-    var constraints = {
-    //audio: {
-    //  optional: [{
-    //    sourceId: audioSource
-    //  }]
-    //},
-     video: {
-       optional: [{
-         sourceId: device.id
-       }]
-     }
-   };
+//    var constraints = {
+//    //audio: {
+//    //  optional: [{
+//    //    sourceId: audioSource
+//    //  }]
+//    //},
+//     video: {
+//       optional: [{
+//         sourceId: device.id
+//       }]
+//     }
+//   };
+
+var constraints =
+   { audio: true,
+    video: { width: { facingMode: { exact: "environment" } } } }
 
    function successCallback(stream) {
    window.stream = stream; // make stream available to console
