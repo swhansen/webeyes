@@ -885,16 +885,24 @@ function gotSources( sourceInfos ) {
 
 
    function successCallback(stream) {
-   window.stream = stream; // make stream available to console
-   videoElement.src = window.URL.createObjectURL(stream);
-   videoElement.play();
+var url = window.URL || window.webkitURL;
+            videoElement.src = url ? url.createObjectURL(stream) : stream;
+            videoElement.play();
+
+
+
+
+
+   //window.stream = stream; // make stream available to console
+   //videoElement.src = window.URL.createObjectURL(stream);
+   //videoElement.play();
   }
 
    function errorCallback(error) {
    console.log('navigator.getUserMedia error: ', error);
   }
 
-   navigator.getUserMedia(constraints, successCallback, errorCallback);
+   navigator.getUserMedia( constraints, successCallback, errorCallback );
 }
 }
 //
