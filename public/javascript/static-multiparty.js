@@ -883,10 +883,6 @@ function gotSources( sourceInfos ) {
 //     }
 //   };
 
-var constraints =
-   { audio: true,
-    video: { width: { facingMode: { exact: "environment" } } } }
-
    function successCallback(stream) {
    window.stream = stream; // make stream available to console
    videoElement.src = window.URL.createObjectURL(stream);
@@ -897,7 +893,7 @@ var constraints =
    console.log('navigator.getUserMedia error: ', error);
   }
 
-   navigator.getUserMedia(constraints, successCallback, errorCallback);
+   navigator.getUserMedia({ audio: true, video: { width: { facingMode: { exact: "environment" } } } }, successCallback, errorCallback);
 }
 }
 //
