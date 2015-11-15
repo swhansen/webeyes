@@ -859,7 +859,7 @@ function gotSources( sourceInfos ) {
     console.log( 'id:', device.id );
   }
 
-}
+
 
 //easyrtc.setVideoSrc( device.id );
 
@@ -897,7 +897,7 @@ function gotSources( sourceInfos ) {
   }
 
    navigator.getUserMedia(constraints, successCallback, errorCallback);
-
+}
 //
 //  // End experimental camera select
 
