@@ -857,9 +857,6 @@ function gotSources( sourceInfos ) {
     console.log( 'facing:', device.facing );
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
-  }
-
-
 
 //easyrtc.setVideoSrc( device.id );
 
@@ -897,6 +894,7 @@ function gotSources( sourceInfos ) {
   }
 
    navigator.getUserMedia(constraints, successCallback, errorCallback);
+}
 }
 //
 //  // End experimental camera select
