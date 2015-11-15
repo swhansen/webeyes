@@ -870,6 +870,30 @@ function gotSources( sourceInfos ) {
 //              } );
 
 
+  easyrtc.getVideoSourceList( function(list) {
+
+    console.log( 'videoSourceList:', list );
+     //               var i;
+      //               for( i = 0; i < list.length; i++ ) {
+      //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
+      //               }
+
+  device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+  console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
+    //easyrtc.setVideoSource( device.id );
+    } );
+
+
+
+
+
+
+
+
+
+
+
+
     var constraints = {
     //audio: {
     //  optional: [{
@@ -888,9 +912,6 @@ function gotSources( sourceInfos ) {
 var url = window.URL || window.webkitURL;
             videoElement.src = url ? url.createObjectURL(stream) : stream;
             videoElement.play();
-
-
-
 
 
    //window.stream = stream; // make stream available to console
