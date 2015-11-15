@@ -880,7 +880,7 @@ function gotSources( sourceInfos ) {
 
   device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
   console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
-    //easyrtc.setVideoSource( device.id );
+    easyrtc.setVideoSource( device.id );
     } );
 
 
