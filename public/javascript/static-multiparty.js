@@ -870,18 +870,19 @@ function gotSources( sourceInfos ) {
 //              } );
 
 
-//    var constraints = {
-//    //audio: {
-//    //  optional: [{
-//    //    sourceId: audioSource
-//    //  }]
-//    //},
-//     video: {
-//       optional: [{
-//         sourceId: device.id
-//       }]
-//     }
-//   };
+    var constraints = {
+    //audio: {
+    //  optional: [{
+    //    sourceId: audioSource
+    //  }]
+    //},
+     video: {
+       optional: [{
+         sourceId: device.id
+       }]
+     }
+   };
+
 
    function successCallback(stream) {
    window.stream = stream; // make stream available to console
@@ -893,7 +894,7 @@ function gotSources( sourceInfos ) {
    console.log('navigator.getUserMedia error: ', error);
   }
 
-   navigator.getUserMedia({ audio: true, video: { width: { facingMode: { exact: "environment" } } } }, successCallback, errorCallback);
+   navigator.getUserMedia(constraints, successCallback, errorCallback);
 }
 }
 //
