@@ -5347,7 +5347,7 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
-var device{};
+// var device{};
 
 //if ( !MediaStreamTrack.getSources ) {
 //    console.log( 'No media stream track enumeration' );
