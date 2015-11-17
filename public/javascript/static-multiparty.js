@@ -831,77 +831,77 @@ function isChromeMobile() {
 }
 console.log( 'Chrome and Mobile:', isChromeMobile() );
 
-// set the media source
-// from 3318
-//easyrtc.addStreamToCall( easyrtcid, streamname, receipthandler)
-//streamname is the id
-//var stream = getLocalMediaStreamByName(streamName);
-
-  navigator.getUserMedia = navigator.getUserMedia ||
-    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-  var videoElement = document.getElementById( 'box0' );
+//      // set the media source
+//      // from 3318
+//      //easyrtc.addStreamToCall( easyrtcid, streamname, receipthandler)
+//      //streamname is the id
+//      //var stream = getLocalMediaStreamByName(streamName);
 //
- if ( !MediaStreamTrack.getSources ) {
-     console.log( 'No media stream track enumeration' );
-     return;
-   } else {
-
-   MediaStreamTrack.getSources( gotSources );
-// }
-
-function gotSources( sourceInfos ) {
-    console.log( 'static-multi:', sourceInfos ) ;
-    device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-    console.log( 'device:', device );
-    console.log( 'facing:', device.facing );
-    console.log( 'label:', device.label );
-    console.log( 'id:', device.id );
-
+//    navigator.getUserMedia = navigator.getUserMedia ||
+//      navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 //
-//  .....or
+//    var videoElement = document.getElementById( 'box0' );
 //
-
-  easyrtc.getVideoSourceList( function(list) {
-    console.log( 'easyrtc.getVideoSourceList:', list );
-    device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
-    console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
-    easyrtc.setVideoSource( device.id );
-    } );
-
-
-
-    var constraints = {
-    //audio: {
-    //  optional: [{
-    //    sourceId: audioSource
-    //  }]
-    //},
-     video: {
-       optional: [{
-         sourceId: device.id
-       }]
-     }
-   };
-
-   function successCallback(stream) {
-      var url = window.URL || window.webkitURL;
-      videoElement.src = url ? url.createObjectURL(stream) : stream;
-      videoElement.play();
-
-   //window.stream = stream; // make stream available to console
-   //videoElement.src = window.URL.createObjectURL(stream);
-   //videoElement.play();
-  }
-
-   function errorCallback(error) {
-   console.log('navigator.getUserMedia error: ', error);
-  }
-
-   navigator.getUserMedia( constraints, successCallback, errorCallback );
-  }
-}
-
+//   if ( !MediaStreamTrack.getSources ) {
+//       console.log( 'No media stream track enumeration' );
+//       return;
+//     } else {
+//
+//     MediaStreamTrack.getSources( gotSources );
+//  // }
+//
+//  function gotSources( sourceInfos ) {
+//      console.log( 'static-multi:', sourceInfos ) ;
+//      device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+//      console.log( 'device:', device );
+//      console.log( 'facing:', device.facing );
+//      console.log( 'label:', device.label );
+//      console.log( 'id:', device.id );
+//
+//      //
+//      //  .....or
+//      //
+//
+//    easyrtc.getVideoSourceList( function(list) {
+//      console.log( 'easyrtc.getVideoSourceList:', list );
+//      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+//      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
+//      easyrtc.setVideoSource( device.id );
+//      } );
+//
+//
+//
+//      var constraints = {
+//      //audio: {
+//      //  optional: [{
+//      //    sourceId: audioSource
+//      //  }]
+//      //},
+//       video: {
+//         optional: [{
+//           sourceId: device.id
+//         }]
+//       }
+//     };
+//
+//     function successCallback(stream) {
+//        var url = window.URL || window.webkitURL;
+//        videoElement.src = url ? url.createObjectURL(stream) : stream;
+//        videoElement.play();
+//
+//     //window.stream = stream; // make stream available to console
+//     //videoElement.src = window.URL.createObjectURL(stream);
+//     //videoElement.play();
+//    }
+//
+//     function errorCallback(error) {
+//     console.log('navigator.getUserMedia error: ', error);
+//    }
+//
+//     navigator.getUserMedia( constraints, successCallback, errorCallback );
+//    }
+//  }
+//
 //
 //   End experimental camera select
 //
