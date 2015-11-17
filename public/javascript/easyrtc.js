@@ -222,7 +222,6 @@ if (!window.createIceServer) {
 
 var Easyrtc = function() {
 
-  var device;
 
     var self = this;
     var isFirefox = (webrtcDetectedBrowser === "firefox");
@@ -5450,13 +5449,11 @@ function get_media_sources() {
 //var theStream;
 
 
-
-        var stream = getLocalMediaStreamByName(null);
-       if (stream) {
+        var stream = getLocalMediaStreamByName( null );
+       if ( stream ) {
            postGetUserMedia();
        }
        else {
-
 
 //    MediaStreamTrack.getSources(function (media_sources) {
 //    for (var i = 0; i < media_sources.length; i++) {

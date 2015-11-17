@@ -22,6 +22,8 @@ var Line = function( line, c, client ) {
   this.client = client;
 };
 
+//animate();
+
 function drawCanvaslineArray() {
 
   context.clearRect( 0, 0, canvas.width, canvas.height );
@@ -122,6 +124,11 @@ function receiveLineFromClient( data ) {
       break;
   }
 }
+
+//function animate(){
+//        requestAnimationFrame(animate);
+//        drawCanvaslineArray();
+//    }
 
 // socket.io communication
 

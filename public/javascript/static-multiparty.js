@@ -798,7 +798,7 @@ function appInit() {
 //   Begin experimental camera select
 //
 
-var device;
+var device = {};
 
 function isMobileDevice() {
     return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
@@ -858,39 +858,16 @@ function gotSources( sourceInfos ) {
     console.log( 'label:', device.label );
     console.log( 'id:', device.id );
 
-//easyrtc.setVideoSrc( device.id );
-
-    // deal with the devices here
-
-//   easyrtc.getVideoSourceList( function(list) {
-//                   var i;
-//                   for( i = 0; i < list.length; i++ ) {
-//                       console.log("label=" + list[i].label + ", id= " + list[i].id);
-//                   }
-//              } );
-
+//
+//  .....or
+//
 
   easyrtc.getVideoSourceList( function(list) {
-
-    console.log( 'videoSourceList:', list );
-     //               var i;
-      //               for( i = 0; i < list.length; i++ ) {
-      //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
-      //               }
-
-  device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
-  console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
+    console.log( 'easyrtc.getVideoSourceList:', list );
+    device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+    console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
     easyrtc.setVideoSource( device.id );
     } );
-
-
-
-
-
-
-
-
-
 
 
 
@@ -907,12 +884,10 @@ function gotSources( sourceInfos ) {
      }
    };
 
-
    function successCallback(stream) {
-var url = window.URL || window.webkitURL;
-            videoElement.src = url ? url.createObjectURL(stream) : stream;
-            videoElement.play();
-
+      var url = window.URL || window.webkitURL;
+      videoElement.src = url ? url.createObjectURL(stream) : stream;
+      videoElement.play();
 
    //window.stream = stream; // make stream available to console
    //videoElement.src = window.URL.createObjectURL(stream);
@@ -924,10 +899,12 @@ var url = window.URL || window.webkitURL;
   }
 
    navigator.getUserMedia( constraints, successCallback, errorCallback );
+  }
 }
-}
+
 //
-//  // End experimental camera select
+//   End experimental camera select
+//
 
   if ( navigator.geolocation ) {
     userContext.geoLocation = false;
@@ -964,84 +941,84 @@ var url = window.URL || window.webkitURL;
 
  //initial call of the top-down layout manager
 
-//    easyrtc.setRoomOccupantListener( callEverybodyElse );
-//
-//
-//   easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
-//     function( myId ) {
-//
-// console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
-//
-//
-//
-//       userContext.rtcId = myId;
-//
-////     // First time through for all connections
-//
-//       if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
-//         connectList.push( {
-//           rtcid: myId,
-//           boxno: 0,
-//           avatar: 'avatar0'
-//         } );
-//       }
-//     }
-//   );
-//   easyrtc.setPeerListener( messageListener );
-//   easyrtc.setDisconnectListener( function() {
-//       easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
-//   } );
-//
-//    easyrtc.setOnCall( function( easyrtcid, slot ) {
-//
-//      //console.log('a call with ' + easyrtcid + 'established');
-//      //  console.log('Occupant IDs:', easyrtc.getRoomOccupantsAsArray('default'))
-//        boxUsed[slot + 1] = true;
-//        var theSlot = slot + 1;
-//        var theBox =  theSlot;
-//        var av = 'avatar0';
-//
-//        //console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,'avatar:', av );
-//
-//       connectList.push( {
-//        rtcid: easyrtcid,
-//        boxno: theBox,
-//        avatar: av
-//     } );
-//
-//       //console.log('onCall - ConnectList:', connectList);
-//
-//// Thumbs for all connections other than initiator
-////  -- change to == 1 for normal mode
-//
-//        if ( activeBox === 0 && easyrtc.getConnectionCount() === 1 ) {
-//            expandThumb( 0 );
-//            document.getElementById( 'textEntryButton' ).style.display = 'block';
-//        }
-//        document.getElementById( getIdOfBox( slot + 1 ) ).style.visibility = 'visible';
-//        expandThumb( 0 );
-//    } );
-//
-//    easyrtc.setOnHangup( function( easyrtcid, slot ) {
-//        boxUsed[slot + 1] = false;
-//
-//        //console.log('hanging up on ' + easyrtcid);
-//        if ( activeBox > 0 && slot + 1 == activeBox ) {
-//            collapseToThumb();
-//        }
-//        setTimeout( function() {
-//            document.getElementById( getIdOfBox( slot + 1 ) ).style.visibility = 'hidden';
-//
-//            if ( easyrtc.getConnectionCount() === 0 ) {
-//
-// // no more connections
-//                expandThumb( 0 );
-//                document.getElementById( 'textEntryButton' ).style.display = 'none';
-//                document.getElementById( 'textentryBox' ).style.display = 'none';
-//            }
-//            handleWindowResize();
-//        }, 20 );
-//    } );
+    easyrtc.setRoomOccupantListener( callEverybodyElse );
+
+
+   easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
+     function( myId ) {
+
+ console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
+
+
+
+       userContext.rtcId = myId;
+
+//     // First time through for all connections
+
+       if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
+         connectList.push( {
+           rtcid: myId,
+           boxno: 0,
+           avatar: 'avatar0'
+         } );
+       }
+     }
+   );
+   easyrtc.setPeerListener( messageListener );
+   easyrtc.setDisconnectListener( function() {
+       easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
+   } );
+
+    easyrtc.setOnCall( function( easyrtcid, slot ) {
+
+      //console.log('a call with ' + easyrtcid + 'established');
+      //  console.log('Occupant IDs:', easyrtc.getRoomOccupantsAsArray('default'))
+        boxUsed[slot + 1] = true;
+        var theSlot = slot + 1;
+        var theBox =  theSlot;
+        var av = 'avatar0';
+
+        //console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,'avatar:', av );
+
+       connectList.push( {
+        rtcid: easyrtcid,
+        boxno: theBox,
+        avatar: av
+     } );
+
+       //console.log('onCall - ConnectList:', connectList);
+
+// Thumbs for all connections other than initiator
+//  -- change to == 1 for normal mode
+
+        if ( activeBox === 0 && easyrtc.getConnectionCount() === 1 ) {
+            expandThumb( 0 );
+            document.getElementById( 'textEntryButton' ).style.display = 'block';
+        }
+        document.getElementById( getIdOfBox( slot + 1 ) ).style.visibility = 'visible';
+        expandThumb( 0 );
+    } );
+
+    easyrtc.setOnHangup( function( easyrtcid, slot ) {
+        boxUsed[slot + 1] = false;
+
+        //console.log('hanging up on ' + easyrtcid);
+        if ( activeBox > 0 && slot + 1 == activeBox ) {
+            collapseToThumb();
+        }
+        setTimeout( function() {
+            document.getElementById( getIdOfBox( slot + 1 ) ).style.visibility = 'hidden';
+
+            if ( easyrtc.getConnectionCount() === 0 ) {
+
+ // no more connections
+                expandThumb( 0 );
+                document.getElementById( 'textEntryButton' ).style.display = 'none';
+                document.getElementById( 'textentryBox' ).style.display = 'none';
+            }
+            handleWindowResize();
+        }, 20 );
+    } );
 
 initDraw();
 initUtil();
