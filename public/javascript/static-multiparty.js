@@ -947,7 +947,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
    easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
- console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
+    console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
 
 
 

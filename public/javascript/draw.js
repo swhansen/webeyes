@@ -22,7 +22,7 @@ var Line = function( line, c, client ) {
   this.client = client;
 };
 
-//animate();
+animate();
 
 function drawCanvaslineArray() {
 
@@ -125,10 +125,10 @@ function receiveLineFromClient( data ) {
   }
 }
 
-//function animate(){
-//        requestAnimationFrame(animate);
-//        drawCanvaslineArray();
-//    }
+function animate(){
+        requestAnimationFrame(animate);
+        drawCanvaslineArray();
+    }
 
 // socket.io communication
 
