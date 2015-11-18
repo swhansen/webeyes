@@ -4,7 +4,7 @@
 console.log( 'Entering easyrtc.js' );
 
 
-vad device = {};
+var device = {};
 
 var getUserMedia = null;
 var attachMediaStream = null;
