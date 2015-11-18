@@ -5420,10 +5420,10 @@ easyrtc.getVideoSourceList( function(list) {
       device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
       console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
       easyrtc.setVideoSource( device.id );
-      } );
 
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
+      } );
 
             }
             function connectError(errorCode, errorText) {
