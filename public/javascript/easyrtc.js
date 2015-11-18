@@ -5421,8 +5421,7 @@ easyrtc.getVideoSourceList( function(list) {
       console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
       easyrtc.setVideoSource( device.id );
 
-
-                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
+                self.setVideoObjectSrc(document.getElementById(monitorVideoId), device.id);
       } );
 
             }
