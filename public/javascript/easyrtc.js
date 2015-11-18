@@ -3,6 +3,9 @@
 //
 console.log( 'Entering easyrtc.js' );
 
+
+vad device = {};
+
 var getUserMedia = null;
 var attachMediaStream = null;
 var reattachMediaStream = null;
@@ -5347,7 +5350,7 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
-// var device{};
+// var device = {};
 
 //if ( !MediaStreamTrack.getSources ) {
 //    console.log( 'No media stream track enumeration' );
@@ -5379,10 +5382,9 @@ console.log( 'Entering EasyApp');
 
         easyAppBody(monitorVideoId, videoIds);
 
-        self.setGotMedia = function(gotMediaCB) {
+        self.setGotMedia = function( gotMediaCB ) {
             gotMediaCallback = gotMediaCB;
         };
-
 
         /** Sets an event handler that gets called when a connection to the signaling
          * server has or has not been made. Can only be called after calling easyrtc.easyApp.
@@ -5397,7 +5399,7 @@ console.log( 'Entering EasyApp');
          *        }
          *    });
          */
-        self.setGotConnection = function(gotConnectionCB) {
+        self.setGotConnection = function( gotConnectionCB ) {
             gotConnectionCallback = gotConnectionCB;
         };
         var nextInitializationStep;
@@ -5412,6 +5414,13 @@ console.log( 'Entering EasyApp');
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
+
+easyrtc.getVideoSourceList( function(list) {
+      console.log( 'easyrtc.getVideoSourceList:', list );
+      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
+      easyrtc.setVideoSource( device.id );
+      } );
 
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
