@@ -5517,7 +5517,6 @@ easyrtc.getVideoSourceList( function(list) {
 console.log( 'before initMediaSource:', device.id );
 
             self.initMediaSource(
-console.log( 'at initMediaSource:', device.id );
                     postGetUserMedia,
 
                     function(errorCode, errorText) {
