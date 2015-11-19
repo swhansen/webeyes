@@ -3,9 +3,6 @@
 //
 console.log( 'Entering easyrtc.js' );
 
-
-var device = {};
-
 var getUserMedia = null;
 var attachMediaStream = null;
 var reattachMediaStream = null;
@@ -5350,7 +5347,7 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
-// var device = {};
+ var device = {};
 
 //if ( !MediaStreamTrack.getSources ) {
 //    console.log( 'No media stream track enumeration' );
@@ -5416,7 +5413,7 @@ console.log( 'Entering EasyApp');
             if (monitorVideoId !== null) {
 
 
-                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
+                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
 
             }
             function connectError(errorCode, errorText) {
@@ -5517,7 +5514,16 @@ easyrtc.getVideoSourceList( function(list) {
 console.log( 'before initMediaSource:', device.id );
 
             self.initMediaSource(
+
+
+
+
                     postGetUserMedia,
+
+
+
+
+
 
                     function(errorCode, errorText) {
                         if (gotMediaCallback) {
@@ -5529,8 +5535,9 @@ console.log( 'before initMediaSource:', device.id );
                         else {
                             self.showError(self.errCodes.MEDIA_ERR, errorText);
                         }
-                    },
-                    null // default stream
+                    }
+
+
                     );
         }
     };
