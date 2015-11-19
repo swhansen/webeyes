@@ -5535,7 +5535,12 @@ console.log( 'before initMediaSource:', device.id );
                         else {
                             self.showError(self.errCodes.MEDIA_ERR, errorText);
                         }
-                    }
+                    },
+
+
+
+                    null // default stream
+
 
 
                     );
