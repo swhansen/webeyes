@@ -5415,14 +5415,8 @@ console.log( 'Entering EasyApp');
             }
             if (monitorVideoId !== null) {
 
-easyrtc.getVideoSourceList( function(list) {
-      console.log( 'easyrtc.getVideoSourceList:', list );
-      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
-      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
-      easyrtc.setVideoSource( device.id );
 
-                self.setVideoObjectSrc(document.getElementById(monitorVideoId), device.id);
-      } );
+                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
 
             }
             function connectError(errorCode, errorText) {
@@ -5514,9 +5508,16 @@ easyrtc.getVideoSourceList( function(list) {
 //    }
 //  } );
 
+easyrtc.getVideoSourceList( function(list) {
+      console.log( 'easyrtc.getVideoSourceList:', list );
+      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
+      easyrtc.setVideoSource( device.id );
+      } );
+console.log( 'before initMediaSource:', device.id );
 
             self.initMediaSource(
-
+console.log( 'at initMediaSource:', device.id );
                     postGetUserMedia,
 
                     function(errorCode, errorText) {
