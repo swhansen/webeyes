@@ -9,7 +9,6 @@ var connectList = [];
 var modmeState = false;
 var compassToggle = false;
 
-var device;
 
 /*jshint -W020 */
 socketServer = io.connect( '/' );

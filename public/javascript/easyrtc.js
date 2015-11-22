@@ -5372,8 +5372,6 @@ console.log( 'Entering EasyApp');
 //  }
 //}
 
-
-
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
 
@@ -5412,10 +5410,13 @@ console.log( 'Entering EasyApp');
             }
             if (monitorVideoId !== null) {
 
+              console.log( 'setting videoObjectSrc in postGetUserMedia', monitorVideoId );
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
 
             }
+
+
             function connectError(errorCode, errorText) {
                 if (gotConnectionCallback) {
                     gotConnectionCallback(false, errorText);
@@ -5446,11 +5447,11 @@ console.log( 'Entering EasyApp');
 //    } );
 
 
-//var theStream;
-
 
         var stream = getLocalMediaStreamByName( null );
        if ( stream ) {
+
+        console.log( 'at if(stream):', straem);
            postGetUserMedia();
        }
        else {
@@ -5511,18 +5512,11 @@ easyrtc.getVideoSourceList( function(list) {
       console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
       easyrtc.setVideoSource( device.id );
       } );
-console.log( 'before initMediaSource:', device.id );
+console.log( 'if (stream) else, before initMediaSource:', device.id );
 
             self.initMediaSource(
 
-
-
-
                     postGetUserMedia,
-
-
-
-
 
 
                     function(errorCode, errorText) {
