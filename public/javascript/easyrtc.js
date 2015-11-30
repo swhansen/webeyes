@@ -5410,7 +5410,7 @@ console.log( 'Entering EasyApp');
             }
             if (monitorVideoId !== null) {
 
-              console.log( 'setting videoObjectSrc in postGetUserMedia', monitorVideoId );
+              console.log( 'setting videoObjectSrc in postGetUserMedia', self.getLocalStream() );
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
 
@@ -5512,7 +5512,7 @@ easyrtc.getVideoSourceList( function(list) {
       console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
       easyrtc.setVideoSource( device.id );
       } );
-console.log( 'if (stream) else, before initMediaSource:', device.id );
+console.log( 'if (stream) else, before initMediaSource:', self.getLocalStream() );
 
             self.initMediaSource(
 
