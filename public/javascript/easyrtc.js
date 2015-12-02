@@ -5415,9 +5415,21 @@ console.log( 'Entering EasyApp');
               console.log( 'postGetUserMedia-getLocalStream:', self.getLocalStreamAsUrl() );
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
+  easyrtc.getVideoSourceList( function(list) {
+    console.log( 'videoSourceList:', list );
+            //       var i;
+            //        for( i = 0; i < list.length; i++ ) {
+            //            console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
+            //       }
+  device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+
+  console.log( 'easyrtc device-id:', device.id );
+
+    easyrtc.setVideoSource( device.id );
+
+    } );
 
             }
-
 
             function connectError(errorCode, errorText) {
                 if (gotConnectionCallback) {
