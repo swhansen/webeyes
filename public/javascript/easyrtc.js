@@ -5361,7 +5361,7 @@ easyrtc.getVideoSourceList( function(list) {
 
     } );
 
-consile.log(' at entry to easyApp-device:', device);
+console.log(' at entry to easyApp-device:', device);
 
 //if ( !MediaStreamTrack.getSources ) {
 //    console.log( 'No media stream track enumeration' );
