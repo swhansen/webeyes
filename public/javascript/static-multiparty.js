@@ -956,9 +956,9 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 
 
 
-//if ( findBrowserType() === 'Opera' && isMobileDevice() ) {
-//    easyrtc.enableAudio(false);
-//}
+if ( findBrowserType() === 'Opera' && isMobileDevice() ) {
+    easyrtc.enableAudio(false);
+}
 
 
        userContext.rtcId = myId;
