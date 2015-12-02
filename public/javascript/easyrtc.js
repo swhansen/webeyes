@@ -5355,13 +5355,13 @@ easyrtc.getVideoSourceList( function(list) {
             //       }
   device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
-  console.log( 'easyrtc device-id:', device.id );
+  //console.log( 'easyrtc device-id:', device.id );
 
    // self.setVideoSource( device.id );
 
     } );
 
-console.log(' at entry to easyApp-device:', device);
+//console.log(' at entry to easyApp-device:', device);
 
 //if ( !MediaStreamTrack.getSources ) {
 //    console.log( 'No media stream track enumeration' );
