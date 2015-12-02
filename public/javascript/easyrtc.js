@@ -2,7 +2,7 @@
 // the below code is a copy of the standard polyfill adapter.js
 //
 console.log( 'Entering easyrtc.js' );
-
+var device = {};
 var getUserMedia = null;
 var attachMediaStream = null;
 var reattachMediaStream = null;
@@ -5347,7 +5347,7 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
- var device = {};
+
 
 //if ( !MediaStreamTrack.getSources ) {
 //    console.log( 'No media stream track enumeration' );
@@ -5415,8 +5415,10 @@ console.log( 'Entering EasyApp');
               console.log( 'postGetUserMedia-getLocalStream:', self.getLocalStreamAsUrl() );
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
+
+
   easyrtc.getVideoSourceList( function(list) {
-    console.log( 'videoSourceList:', list );
+    console.log( 'postGetUserMedia-videoSourceList:', list );
             //       var i;
             //        for( i = 0; i < list.length; i++ ) {
             //            console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
@@ -5529,6 +5531,7 @@ easyrtc.getVideoSourceList( function(list) {
 //console.log( 'getLocalStream:', easyrtc.getLocalStreamAsUrl() );
 //console.log( 'if (stream) else, before initMediaSource:', easyrtc.getLocalStream() );
 console.log( 'at initMediaSource');
+ easyrtc.setVideoSource( device.id );
             self.initMediaSource(
 
                     postGetUserMedia,
