@@ -5527,7 +5527,7 @@ easyrtc.getVideoSourceList( function(list) {
 easyrtc.getVideoSourceList( function(list) {
       console.log( 'easyrtc.getVideoSourceList:', list );
       device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
-      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
+   //   console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
       easyrtc.setVideoSource( device.id );
       } );
 //console.log( 'getLocalStream:', easyrtc.getLocalStreamAsUrl() );

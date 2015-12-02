@@ -956,10 +956,9 @@ easyrtc.setAutoInitUserMedia(false);
 
 
 
-if ( findBrowserType() === 'Opera' && isMobileDevice() ) {
-
-    easyrtc.enableAudio(false);
-}
+//if ( findBrowserType() === 'Opera' && isMobileDevice() ) {
+//    easyrtc.enableAudio(false);
+//}
 
 
 
