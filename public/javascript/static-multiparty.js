@@ -961,10 +961,6 @@ easyrtc.setAutoInitUserMedia(false);
 //}
 
 
-
-
-
-
        userContext.rtcId = myId;
 
 //     // First time through for all connections

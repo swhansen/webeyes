@@ -2,7 +2,7 @@
 // the below code is a copy of the standard polyfill adapter.js
 //
 console.log( 'Entering easyrtc.js' );
-var device = {};
+
 var getUserMedia = null;
 var attachMediaStream = null;
 var reattachMediaStream = null;
@@ -5347,19 +5347,7 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
-easyrtc.getVideoSourceList( function(list) {
-    console.log( 'postGetUserMedia-videoSourceList:', list );
-            //       var i;
-            //        for( i = 0; i < list.length; i++ ) {
-            //            console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
-            //       }
-  device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
-  //console.log( 'easyrtc device-id:', device.id );
-
-   // self.setVideoSource( device.id );
-
-    } );
 
 //console.log(' at entry to easyApp-device:', device);
 
@@ -5430,9 +5418,6 @@ easyrtc.getVideoSourceList( function(list) {
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
 
-
-
-
             }
 
             function connectError(errorCode, errorText) {
@@ -5463,8 +5448,6 @@ easyrtc.getVideoSourceList( function(list) {
 //    easyrtc.setVideoSource( device.id );
 
 //    } );
-
-
 
         var stream = getLocalMediaStreamByName( null );
        if ( stream ) {
@@ -5524,16 +5507,7 @@ easyrtc.getVideoSourceList( function(list) {
 //    }
 //  } );
 
-easyrtc.getVideoSourceList( function(list) {
-      console.log( 'easyrtc.getVideoSourceList:', list );
-      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
-   //   console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
- //     easyrtc.setVideoSource( device.id );
-      } );
-//console.log( 'getLocalStream:', easyrtc.getLocalStreamAsUrl() );
-//console.log( 'if (stream) else, before initMediaSource:', easyrtc.getLocalStream() );
-console.log( 'at initMediaSource');
- easyrtc.setVideoSource( device.id );
+
             self.initMediaSource(
 
                     postGetUserMedia,
@@ -5558,7 +5532,6 @@ console.log( 'at initMediaSource');
 
 
                     );
-        }
     };
     /**
      *
