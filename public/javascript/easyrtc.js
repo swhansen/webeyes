@@ -5453,7 +5453,7 @@ console.log( 'Entering EasyApp');
         var stream = getLocalMediaStreamByName( null );
        if ( stream ) {
 
-        console.log( 'at if(stream):', straem);
+        console.log( 'at if(stream) call postGetUserMedia:', stream);
            postGetUserMedia();
        }
        else {
@@ -5514,9 +5514,9 @@ easyrtc.getVideoSourceList( function(list) {
       console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
       easyrtc.setVideoSource( device.id );
       } );
-console.log( 'getLocalStream:', easyrtc.getLocalStreamAsUrl() );
-console.log( 'if (stream) else, before initMediaSource:', easyrtc.getLocalStream() );
-
+//console.log( 'getLocalStream:', easyrtc.getLocalStreamAsUrl() );
+//console.log( 'if (stream) else, before initMediaSource:', easyrtc.getLocalStream() );
+console.log( 'at initMediaSource');
             self.initMediaSource(
 
                     postGetUserMedia,
