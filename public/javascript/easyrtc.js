@@ -5405,7 +5405,7 @@ console.log( 'Entering EasyApp');
             onReady(self.myEasyrtcid);
         };
         function postGetUserMedia() {
-          console.log( 'at postGetUserMedia gotMediaCallback:' gotMediaCallback );
+          console.log( 'at postGetUserMedia gotMediaCallback:', gotMediaCallback );
             if (gotMediaCallback) {
                 gotMediaCallback(true, null);
             }
