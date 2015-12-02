@@ -5412,7 +5412,7 @@ console.log( 'Entering EasyApp');
             if (monitorVideoId !== null) {
 
               console.log( 'setting videoObjectSrc in postGetUserMedia', self.getLocalStream() );
-              console.log( 'postGetUserMedia-getLocalStream:', getLocalStreamAsUrl() );
+              console.log( 'postGetUserMedia-getLocalStream:', self.getLocalStreamAsUrl() );
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
 
