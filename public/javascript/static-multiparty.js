@@ -25,7 +25,9 @@ var userContext = {
   arCapable: false,
   orientation: false,
   motion: false,
-  geolocation: false
+  geolocation: false,
+  mobile: '',
+  browserType: ''
 };
 
 easyrtc.dontAddCloseButtons( false );
@@ -801,7 +803,7 @@ var device = {};
 
 function isMobileDevice() {
     return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
-};
+}
 
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
@@ -822,6 +824,7 @@ function findBrowserType() {
 function isChromeMobile() {
   var mobile = isMobileDevice();
   var browserType = findBrowserType();
+  userContext.browserType = browserType;
   if (mobile && browserType === 'Chrome') {
  return true;
   } else {
@@ -916,6 +919,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
     }
   if ( userContext.orientation === true && userContext.motion === true) {
     userContext.arCapable = true;
+    userContext.mobile =  true;
     messageBar( 'Device is AR Capable' );
     }
 

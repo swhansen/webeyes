@@ -5405,12 +5405,14 @@ console.log( 'Entering EasyApp');
             onReady(self.myEasyrtcid);
         };
         function postGetUserMedia() {
+          console.log( 'at postGetUserMedia gotMediaCallback:' gotMediaCallback );
             if (gotMediaCallback) {
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
 
               console.log( 'setting videoObjectSrc in postGetUserMedia', self.getLocalStream() );
+              console.log( 'postGetUserMedia-getLocalStream:', getLocalStreamAsUrl() );
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
 
@@ -5512,6 +5514,7 @@ easyrtc.getVideoSourceList( function(list) {
       console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
       easyrtc.setVideoSource( device.id );
       } );
+console.log( 'getLocalStream:', getLocalStreamAsUrl() );
 console.log( 'if (stream) else, before initMediaSource:', self.getLocalStream() );
 
             self.initMediaSource(
