@@ -953,6 +953,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
     console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
 
 easyrtc.setAutoInitUserMedia(false);
+easyrtc.enableAudio(false);
 
        userContext.rtcId = myId;
 
