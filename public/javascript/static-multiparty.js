@@ -909,13 +909,13 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 //
 
   if ( navigator.geolocation ) {
-    userContext.geoLocation = false;
+    userContext.geoLocation = true;
     }
   if ( window.DeviceMotionEvent ) {
-  userContext.motion = false;
+  userContext.motion = true;
     }
   if ( window.DeviceOrientationEvent ) {
-    userContext.orientation = false;
+    userContext.orientation = true;
     }
   if ( userContext.orientation === true && userContext.motion === true) {
     userContext.arCapable = true;
@@ -952,7 +952,7 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 
     console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
 
-
+easyrtc.setAutoInitUserMedia(false);
 
        userContext.rtcId = myId;
 

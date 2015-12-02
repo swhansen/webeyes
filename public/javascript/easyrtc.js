@@ -5347,7 +5347,21 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
+easyrtc.getVideoSourceList( function(list) {
+    console.log( 'postGetUserMedia-videoSourceList:', list );
+            //       var i;
+            //        for( i = 0; i < list.length; i++ ) {
+            //            console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
+            //       }
+  device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
+  console.log( 'easyrtc device-id:', device.id );
+
+   // self.setVideoSource( device.id );
+
+    } );
+
+consile.log(' at entry to easyApp-device:', device);
 
 //if ( !MediaStreamTrack.getSources ) {
 //    console.log( 'No media stream track enumeration' );
@@ -5417,19 +5431,7 @@ console.log( 'Entering EasyApp');
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
 
 
-  easyrtc.getVideoSourceList( function(list) {
-    console.log( 'postGetUserMedia-videoSourceList:', list );
-            //       var i;
-            //        for( i = 0; i < list.length; i++ ) {
-            //            console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
-            //       }
-  device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 
-  console.log( 'easyrtc device-id:', device.id );
-
-    easyrtc.setVideoSource( device.id );
-
-    } );
 
             }
 
