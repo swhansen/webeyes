@@ -25,7 +25,7 @@ var userContext = {
   arCapable: false,
   orientation: false,
   motion: false,
-  geolocation: false,
+  geoLocation: false,
   mobile: '',
   browserType: ''
 };
@@ -952,15 +952,6 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 
     console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
 
-
-
-
-
-if ( findBrowserType() === 'Opera' && isMobileDevice() ) {
-    easyrtc.enableAudio(false);
-}
-
-
        userContext.rtcId = myId;
 
 //     // First time through for all connections
@@ -974,6 +965,7 @@ if ( findBrowserType() === 'Opera' && isMobileDevice() ) {
        }
      }
    );
+
    easyrtc.setPeerListener( messageListener );
    easyrtc.setDisconnectListener( function() {
        easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );

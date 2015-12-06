@@ -5481,7 +5481,6 @@ console.log( 'Entering EasyApp');
 //            };
 
 
-
 //  var constraints = {
 //  //audio: {
 //  //  optional: [{
@@ -5507,12 +5506,8 @@ console.log( 'Entering EasyApp');
 //    }
 //  } );
 
-
             self.initMediaSource(
-
                     postGetUserMedia,
-
-
                     function(errorCode, errorText) {
                         if (gotMediaCallback) {
                             gotMediaCallback(false, errorText);
@@ -5525,11 +5520,7 @@ console.log( 'Entering EasyApp');
                         }
                     },
 
-
-
                     null // default stream
-
-
 
                     );
         }
