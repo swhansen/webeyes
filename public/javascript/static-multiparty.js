@@ -805,8 +805,7 @@ function isMobileDevice() {
     return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
 }
 
-if ( isMobileDevice() ) {
-  userContext.mobile = true;
+
 };
 
 function findBrowserType() {
@@ -825,11 +824,30 @@ function findBrowserType() {
   return sBrowser;
 }
 
-function setBrowserType() {
+function setBrowserDetails() {
   userContext.browserType = findBrowserType();
+
+  if ( isMobileDevice() ) {
+  userContext.mobile = true;
+
+  if ( navigator.geolocation ) {
+    userContext.geoLocation = true;
+    }
+  if ( window.DeviceMotionEvent ) {
+  userContext.motion = true;
+    }
+  if ( window.DeviceOrientationEvent ) {
+    userContext.orientation = true;
+    }
+  if ( userContext.orientation === true && userContext.motion === true) {
+    userContext.arCapable = true;
+    userContext.mobile =  true;
+    messageBar( 'Device is AR Capable' );
+    }
+
 }
 
-setBrowserType();
+setBrowserDetails();
 
 function isChromeMobile() {
   var mobile = isMobileDevice();
@@ -919,20 +937,20 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 //   End experimental camera select
 //
 
-  if ( navigator.geolocation ) {
-    userContext.geoLocation = true;
-    }
-  if ( window.DeviceMotionEvent ) {
-  userContext.motion = true;
-    }
-  if ( window.DeviceOrientationEvent ) {
-    userContext.orientation = true;
-    }
-  if ( userContext.orientation === true && userContext.motion === true) {
-    userContext.arCapable = true;
-    userContext.mobile =  true;
-    messageBar( 'Device is AR Capable' );
-    }
+ //if ( navigator.geolocation ) {
+ //  userContext.geoLocation = true;
+ //  }
+ //if ( window.DeviceMotionEvent ) {
+ //userContext.motion = true;
+ //  }
+ //if ( window.DeviceOrientationEvent ) {
+ //  userContext.orientation = true;
+ //  }
+ //if ( userContext.orientation === true && userContext.motion === true) {
+ //  userContext.arCapable = true;
+ //  userContext.mobile =  true;
+ //  messageBar( 'Device is AR Capable' );
+ //  }
 
     // Prep for the top-down layout manager
     setReshaper( 'fullpage', reshapeFull );
