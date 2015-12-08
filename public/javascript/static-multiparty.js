@@ -806,8 +806,6 @@ function isMobileDevice() {
 }
 
 
-};
-
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
   if(sUsrAg.indexOf("Chrome") > -1) {
