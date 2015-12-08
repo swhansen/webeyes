@@ -805,9 +805,9 @@ function isMobileDevice() {
     return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
 }
 
-if (isMobileDevice() {
+if ( isMobileDevice() ) {
   userContext.mobile = true;
-})
+};
 
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
