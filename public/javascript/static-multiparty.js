@@ -829,16 +829,20 @@ function setBrowserDetails() {
 
   if ( isMobileDevice() ) {
   userContext.mobile = true;
+  }
 
   if ( navigator.geolocation ) {
     userContext.geoLocation = true;
     }
+
   if ( window.DeviceMotionEvent ) {
   userContext.motion = true;
     }
+
   if ( window.DeviceOrientationEvent ) {
     userContext.orientation = true;
     }
+
   if ( userContext.orientation === true && userContext.motion === true) {
     userContext.arCapable = true;
     userContext.mobile =  true;
