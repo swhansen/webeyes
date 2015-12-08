@@ -22,7 +22,6 @@ var userContext = {
   uiState: '',
   mode: '',
   arCapable: false,
-  orientation: false,
   motion: false,
   geoLocation: false,
   mobile: false,
@@ -854,13 +853,13 @@ function setBrowserDetails() {
     userContext.geoLocation = true;
     }
 
-  if ( typeof window.DeviceMotionEvent === 'undefined' ) {
+  if ( typeof window.DeviceMotionEvent != 'undefined' ) {
     console.log( 'DeviceMotionEvent:', window.deviceMotionEvent  )
     userContext.motion = true;
     }
 
-  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    console.log( 'Mobile Check' );
+    if ( userContext.geolocation && userContext.motion && userContext.mobile ) {
+      userContext.arCapable = true;
     }
 
  // if ( window.DeviceOrientationEvent ) {
