@@ -980,8 +980,9 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
 
  if ( userContext.mobile ) {
   easyrtc.enableAudio( false );
+}
 
-if ( userContext.mobile && userContext.browserType === 'Chrome') {
+if ( userContext.mobile && userContext.browserType === 'Chrome' ) {
 
   easyrtc.getVideoSourceList( function(list) {
       console.log( 'easyrtc.getVideoSourceList:', list );
