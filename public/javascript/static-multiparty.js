@@ -978,20 +978,9 @@ console.log( 'Chrome and Mobile:', isChromeMobile() );
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
 
- if ( userContext.mobile ) {
-  easyrtc.enableAudio( false );
-}
-
-if ( userContext.mobile && userContext.browserType === 'Chrome' ) {
-
-  easyrtc.getVideoSourceList( function(list) {
-      console.log( 'easyrtc.getVideoSourceList:', list );
-      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
-      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
-      easyrtc.setVideoSource( device.id );
-      } );
-
-}
+ //if ( userContext.mobile) {
+ // easyrtc.enableAudio( false );
+ // }
 
 
 
