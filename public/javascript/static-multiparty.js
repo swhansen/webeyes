@@ -846,31 +846,32 @@ function setBrowserDetails() {
 
   if ( isMobile.any() ) {
     console.log( 'Mobile' );
-  userContext.mobile = true;
+    userContext.mobile = true;
   }
 
   if ( navigator.geolocation ) {
+    console.log( 'Geolocation' );
     userContext.geoLocation = true;
     }
 
-  if ( window.DeviceMotionEvent ) {
-    console.log( 'Device Orientation Event:', window.deviceMotionEvent  )
-  userContext.motion = true;
+  if ( typof window.DeviceMotionEvent != undefined  ) {
+    console.log( 'DeviceMotionEvent:', window.deviceMotionEvent  )
+    userContext.motion = true;
     }
 
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- console.log( 'Mobile Check' );
-}
-
-  if ( window.DeviceOrientationEvent ) {
-    userContext.orientation = true;
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    console.log( 'Mobile Check' );
     }
 
-  if ( userContext.orientation === true && userContext.motion === true) {
-    userContext.arCapable = true;
-    userContext.mobile =  true;
-    messageBar( 'Device is AR Capable' );
-    }
+ // if ( window.DeviceOrientationEvent ) {
+ //   userContext.orientation = true;
+ //   }
+
+//if ( userContext.orientation === true && userContext.motion === true) {
+//  userContext.arCapable = true;
+//  userContext.mobile =  true;
+//  messageBar( 'Device is AR Capable' );
+//  }
 
 }
 
