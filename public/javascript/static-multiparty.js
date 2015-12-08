@@ -800,14 +800,10 @@ function appInit() {
 
 var device = {};
 
-function isMobileDevice() {
-
-var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
-
-console.log('Orientation:', orientation);
-return orientation;
+function deviceOrientation() {
+  var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
+  return orientation;
     //return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
-
 }
 
 function findBrowserType() {
@@ -831,8 +827,8 @@ function findBrowserType() {
 function setBrowserDetails() {
   userContext.browserType = findBrowserType();
 
-  if ( isMobileDevice() ) {
-    console.log( 'Device is mobile', isMobileDevice() );
+  if ( deviceOrientation() ) {
+    console.log( 'Device Orientation' );
   userContext.mobile = true;
   }
 
@@ -841,8 +837,13 @@ function setBrowserDetails() {
     }
 
   if ( window.DeviceMotionEvent ) {
+    console.log( 'Device Orientation Event:', window.deviceMotionEvent  )
   userContext.motion = true;
     }
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ console.log( 'Mobile Check' );
+}
 
   if ( window.DeviceOrientationEvent ) {
     userContext.orientation = true;
