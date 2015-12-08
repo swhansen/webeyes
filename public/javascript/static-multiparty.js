@@ -854,7 +854,7 @@ function setBrowserDetails() {
     userContext.geoLocation = true;
     }
 
-  if ( typof window.DeviceMotionEvent != 'undefined'  ) {
+  if ( typeof window.DeviceMotionEvent != 'undefined' ) {
     console.log( 'DeviceMotionEvent:', window.deviceMotionEvent  )
     userContext.motion = true;
     }
