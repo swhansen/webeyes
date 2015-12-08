@@ -9,7 +9,6 @@ var connectList = [];
 var modmeState = false;
 var compassToggle = false;
 
-
 /*jshint -W020 */
 socketServer = io.connect( '/' );
 /*jshint +W020 */
@@ -802,9 +801,14 @@ function appInit() {
 var device = {};
 
 function isMobileDevice() {
-    return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
-}
 
+var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
+
+console.log('Orientation:', orientation);
+return orientation;
+    //return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
+
+}
 
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
@@ -819,6 +823,8 @@ function findBrowserType() {
   } else if (sUsrAg.indexOf("MSIE") > -1) {
       sBrowser = "Microsoft Internet Explorer";
   }
+  console.log( 'Browser:', sBrowser );
+
   return sBrowser;
 }
 
@@ -826,6 +832,7 @@ function setBrowserDetails() {
   userContext.browserType = findBrowserType();
 
   if ( isMobileDevice() ) {
+    console.log( 'Device is mobile', isMobileDevice() );
   userContext.mobile = true;
   }
 
