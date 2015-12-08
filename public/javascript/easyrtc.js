@@ -5457,6 +5457,19 @@ console.log( 'Entering EasyApp');
        }
        else {
 
+
+//var constraints = {  audio: {    optional: [{sourceId: audioSource}]  },  video: {    optional: [{sourceId: videoSource}]  }};
+//navigator.getUserMedia(constraints, successCallback, errorCallback);
+
+
+
+
+
+
+
+
+
+
 //    MediaStreamTrack.getSources(function (media_sources) {
 //    for (var i = 0; i < media_sources.length; i++) {
 //        var media_source = media_sources[i];
@@ -5480,31 +5493,6 @@ console.log( 'Entering EasyApp');
 //                }]
 //            };
 
-
-//  var constraints = {
-//  //audio: {
-//  //  optional: [{
-//  //    sourceId: audioSource
-//  //  }]
-//  //},
-//   video: {
-//     optional: [{
-//       sourceId: device.id
-//     }]
-//   }
-// };
-
-
-//  console.log( 'constraints:', constraints );
-//      // invoke getUserMedia to capture this device
-//      navigator.getUserMedia(constraints, function (stream) {
-//          console.log(stream.id, stream);
-//          theStream = stream;
-
-//  easyrtc.setVideoObjectSrc( monitorVideoId, stream.id);
-//      }, console.error);
-//    }
-//  } );
 
             self.initMediaSource(
                     postGetUserMedia,

@@ -26,7 +26,7 @@ var userContext = {
   orientation: false,
   motion: false,
   geoLocation: false,
-  mobile: '',
+  mobile: false,
   browserType: ''
 };
 
@@ -805,6 +805,10 @@ function isMobileDevice() {
     return ( typeof window.orientation !== 'undefined' ) || (navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
 }
 
+if (isMobileDevice() {
+  userContext.mobile = true;
+})
+
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
   if(sUsrAg.indexOf("Chrome") > -1) {
@@ -821,10 +825,17 @@ function findBrowserType() {
   return sBrowser;
 }
 
+function setBrowserType() {
+  userContext.browserType = findBrowserType();
+}
+
+setBrowserType();
+
 function isChromeMobile() {
   var mobile = isMobileDevice();
   var browserType = findBrowserType();
   userContext.browserType = browserType;
+  userContext.mobile = true;
   if (mobile && browserType === 'Chrome') {
  return true;
   } else {
