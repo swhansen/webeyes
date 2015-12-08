@@ -821,7 +821,7 @@ var isMobile = {
     }
 };
 
-console.log( 'Mobile:', ismobile.any() );
+console.log( 'Mobile:', isMobile.any() );
 
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
@@ -844,7 +844,7 @@ function findBrowserType() {
 function setBrowserDetails() {
   userContext.browserType = findBrowserType();
 
-  if ( ismobile.any() ) {
+  if ( isMobile.any() ) {
     console.log( 'Mobile' );
   userContext.mobile = true;
   }
