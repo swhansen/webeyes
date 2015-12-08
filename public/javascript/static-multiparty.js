@@ -859,18 +859,18 @@ function setBrowserDetails() {
 
 setBrowserDetails();
 
-function isChromeMobile() {
-  var mobile = isMobileDevice();
-  var browserType = findBrowserType();
-  userContext.browserType = browserType;
-  userContext.mobile = true;
-  if (mobile && browserType === 'Chrome') {
- return true;
-  } else {
-    return false;
-  }
-}
-console.log( 'Chrome and Mobile:', isChromeMobile() );
+//function isChromeMobile() {
+//  var mobile = isMobileDevice();
+//  var browserType = findBrowserType();
+//  userContext.browserType = browserType;
+//  userContext.mobile = true;
+//  if (mobile && browserType === 'Chrome') {
+// return true;
+//  } else {
+//    return false;
+//  }
+//}
+//console.log( 'Chrome and Mobile:', isChromeMobile() );
 
 //      // set the media source
 //      // from 3318
