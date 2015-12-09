@@ -847,9 +847,9 @@ function handleOrientation(event){
   console.log( 'Handle Orientation:', canHandleOrientation );
 }
 
-if ( !canHandleOrientation ) {
-  console.log( 'No Gyro' );
-  userContext.orientation = false;
+if ( canHandleOrientation ) {
+  console.log( 'Gyro' );
+  userContext.orientation = true;
 }
 
 
