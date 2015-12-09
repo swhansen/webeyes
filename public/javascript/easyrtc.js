@@ -5463,13 +5463,6 @@ console.log( 'Entering EasyApp');
 
 
 
-
-
-
-
-
-
-
 //    MediaStreamTrack.getSources(function (media_sources) {
 //    for (var i = 0; i < media_sources.length; i++) {
 //        var media_source = media_sources[i];

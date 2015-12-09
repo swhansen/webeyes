@@ -853,20 +853,18 @@ function findBrowserType() {
 // }
 
 
-
-
 function setBrowserDetails() {
 
   userContext.browserType = findBrowserType();
   console.log( 'Browser:', userContext.browserType );
 
   if ( isMobile.any() ) {
-    console.log( 'Mobile:', isMobile.any() );
+    console.log( 'Is Mobile:', isMobile.any() );
     userContext.mobile = true;
   }
 
   if ( navigator.geolocation ) {
-    console.log( 'Geolocation' );
+    console.log( 'Is Geolocation Capable' );
     userContext.geoLocation = true;
     }
 
@@ -882,17 +880,15 @@ function setBrowserDetails() {
 
   if ( userContext.geolocation && userContext.mobile ) {
       userContext.arCapable = true;
+      console.log( 'Is AR Capable' );
+      messageBar( 'Your Device is AR Capable' );
     }
 
-    if( window.DeviceOrientationEvent) { // gyroscope support
-    alert( 'DeviceOrientationEvent support OK' );
-} else {
-    alert( 'DeviceOrientationEvent support KO' );
-}
-
- // if ( window.DeviceOrientationEvent ) {
- //   userContext.orientation = true;
- //   }
+//    if( window.DeviceOrientationEvent) { // gyroscope support
+//    alert( 'DeviceOrientationEvent support OK' );
+//    } else {
+//    alert( 'DeviceOrientationEvent support KO' );
+//    }
 
 //if ( userContext.orientation === true && userContext.motion === true) {
 //  userContext.arCapable = true;
