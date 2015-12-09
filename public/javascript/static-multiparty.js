@@ -848,8 +848,8 @@ function setBrowserDetails() {
     userContext.geoLocation = true;
     }
 
-  if ( typeof window.DeviceMotionEvent != 'undefined' ) {
-    console.log( 'DeviceMotionEvent:', window.deviceMotionEvent  )
+  if ( window.DeviceMotionEvent ) {
+    console.log( 'DeviceMotionEvent Supported:', window.DeviceMotionEvent  )
     userContext.motion = true;
     }
 
