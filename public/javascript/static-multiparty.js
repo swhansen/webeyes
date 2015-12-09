@@ -22,7 +22,6 @@ var userContext = {
   uiState: '',
   mode: '',
   arCapable: false,
-  orientation: false,
   geoLocation: false,
   mobile: false,
   browserType: ''
@@ -833,9 +832,6 @@ function findBrowserType() {
   return sBrowser;
 }
 
-
-
-
 // var canHandleOrientation;
 // if (window.DeviceOrientationEvent) {
 //     window.addEventListener("deviceorientation", handleOrientation, false);
@@ -878,7 +874,7 @@ function setBrowserDetails() {
  //   userContext.orientation = true;
  //   }
 
-  if ( userContext.geolocation && userContext.mobile ) {
+  if ( userContext.geoLocation && userContext.mobile ) {
       userContext.arCapable = true;
       console.log( 'Is AR Capable' );
       messageBar( 'Your Device is AR Capable' );
