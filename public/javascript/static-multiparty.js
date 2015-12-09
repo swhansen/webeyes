@@ -879,9 +879,6 @@ function setBrowserDetails() {
 
 setBrowserDetails();
 
-if ( isMobile ) {
-  easyrtc.enableAudio( false );
-}
 
 //function isChromeMobile() {
 //  var mobile = isMobileDevice();
