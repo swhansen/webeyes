@@ -833,6 +833,18 @@ function findBrowserType() {
   return sBrowser;
 }
 
+var canHandleOrientation;
+if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", handleOrientation, false);
+}
+
+function handleOrientation(event){
+  console.log("Orientation:" + event.alpha + ", " + event.beta + ", " + event.gamma);
+  canHandleOrientation = event; // will be either null or with event data
+  console.log( 'Handle Orientation:', canHandleOrientation );
+}
+
+
 function setBrowserDetails() {
 
   userContext.browserType = findBrowserType();
