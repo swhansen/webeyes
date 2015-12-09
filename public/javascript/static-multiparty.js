@@ -836,21 +836,21 @@ function findBrowserType() {
 
 
 
-var canHandleOrientation;
-if (window.DeviceOrientationEvent) {
-    window.addEventListener("deviceorientation", handleOrientation, false);
-}
-
-function handleOrientation(event){
-  console.log("Orientation:" + event.alpha + ", " + event.beta + ", " + event.gamma);
-  canHandleOrientation = event; // will be either null or with event data
-  console.log( 'Handle Orientation:', canHandleOrientation );
-}
-
-if ( canHandleOrientation ) {
-  console.log( 'Gyro' );
-  userContext.orientation = true;
-}
+// var canHandleOrientation;
+// if (window.DeviceOrientationEvent) {
+//     window.addEventListener("deviceorientation", handleOrientation, false);
+// }
+//
+// function handleOrientation(event){
+//   console.log("Orientation:" + event.alpha + ", " + event.beta + ", " + event.gamma);
+//   canHandleOrientation = event; // will be either null or with event data
+//   console.log( 'Handle Orientation:', canHandleOrientation );
+// }
+//
+// if ( canHandleOrientation ) {
+//   console.log( 'Gyro' );
+//   userContext.orientation = true;
+// }
 
 
 
@@ -880,9 +880,15 @@ function setBrowserDetails() {
  //   userContext.orientation = true;
  //   }
 
-  if ( userContext.geolocation && userContext.orientation && userContext.mobile ) {
+  if ( userContext.geolocation && userContext.mobile ) {
       userContext.arCapable = true;
     }
+
+    if( window.DeviceOrientationEvent) { // gyroscope support
+    alert( 'DeviceOrientationEvent support OK' );
+} else {
+    alert( 'DeviceOrientationEvent support KO' );
+}
 
  // if ( window.DeviceOrientationEvent ) {
  //   userContext.orientation = true;
