@@ -794,10 +794,7 @@ function appInit() {
 
   easyrtc.enableDebug( true );
 
-//   Begin experimental camera select
-//
-
-var device = {};
+//   Set userContext for Browser Functions
 
 var isMobile = {
     Android: function() {
@@ -820,11 +817,9 @@ var isMobile = {
     }
 };
 
-console.log( 'Mobile:', isMobile.any() );
-
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
-  if(sUsrAg.indexOf("Chrome") > -1) {
+  if( sUsrAg.indexOf("Chrome") > -1) {
       sBrowser = "Chrome";
   } else if (sUsrAg.indexOf("Safari") > -1) {
       sBrowser = "Apple Safari";
@@ -835,16 +830,16 @@ function findBrowserType() {
   } else if (sUsrAg.indexOf("MSIE") > -1) {
       sBrowser = "Microsoft Internet Explorer";
   }
-  console.log( 'Browser:', sBrowser );
-
   return sBrowser;
 }
 
 function setBrowserDetails() {
+
   userContext.browserType = findBrowserType();
+  console.log( 'Browser:', userContext.browserType );
 
   if ( isMobile.any() ) {
-    console.log( 'Mobile' );
+    console.log( 'Mobile:', isMobile.any() );
     userContext.mobile = true;
   }
 
@@ -858,7 +853,7 @@ function setBrowserDetails() {
     userContext.motion = true;
     }
 
-    if ( userContext.geolocation && userContext.motion && userContext.mobile ) {
+  if ( userContext.geolocation && userContext.motion && userContext.mobile ) {
       userContext.arCapable = true;
     }
 
