@@ -91,11 +91,9 @@ function loadAr( participantState ) {
            arObject.rotation.z = data.rotation._z;
 
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-
        }
 
     if ( data.operation === 'newObject' ) {
-
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );

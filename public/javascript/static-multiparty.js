@@ -23,6 +23,7 @@ var userContext = {
   mode: '',
   arCapable: false,
   geoLocation: false,
+  orientation: false,
   mobile: false,
   browserType: ''
 };
@@ -895,12 +896,14 @@ _i = window.setInterval(function(){
         // Clear interval
         clearInterval(_i);
         console.log( 'Orientation Enabled' );
+        userContext.orientation = true;
     }else{
         _c++;
         if(_c === 10){
             // Clear interval
             clearInterval(_i);
             console.log( 'NOT Orientation Enabled' );
+            userContext.orientation = false;
         }
     }
 }, 200);
