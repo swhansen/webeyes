@@ -879,6 +879,32 @@ function setBrowserDetails() {
 
 setBrowserDetails();
 
+var _i = null;
+var _e = null;
+var _c = 0;
+
+var updateDegree = function(e){
+    _e = e;
+}
+
+window.addEventListener('deviceorientation', updateDegree, false);
+
+//  Check event support
+_i = window.setInterval(function(){
+    if(_e !== null && _e.alpha !== null){
+        // Clear interval
+        clearInterval(_i);
+        console.log( 'Orientation Enabled' );
+    }else{
+        _c++;
+        if(_c === 10){
+            // Clear interval
+            clearInterval(_i);
+            console.log( 'NOT Orientation Enabled' );
+        }
+    }
+}, 200);
+
 
 //function isChromeMobile() {
 //  var mobile = isMobileDevice();
