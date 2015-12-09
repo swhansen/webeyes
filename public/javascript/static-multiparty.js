@@ -833,6 +833,9 @@ function findBrowserType() {
   return sBrowser;
 }
 
+
+
+
 var canHandleOrientation;
 if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", handleOrientation, false);
@@ -843,6 +846,13 @@ function handleOrientation(event){
   canHandleOrientation = event; // will be either null or with event data
   console.log( 'Handle Orientation:', canHandleOrientation );
 }
+
+if ( !canHandleOrientation ) {
+  console.log( 'No Gyro' );
+  userContext.orientation = false;
+}
+
+
 
 
 function setBrowserDetails() {
@@ -865,10 +875,10 @@ function setBrowserDetails() {
  //   userContext.motion = true;
   //  }
 
-    if ( window.DeviceOrientationEvent ) {
-    console.log( 'DeviceOrientationEvent Supported:', window.DeviceOrientationEvent  )
-    userContext.orientation = true;
-    }
+ //   if ( window.DeviceOrientationEvent ) {
+ //   console.log( 'DeviceOrientationEvent Supported:', window.DeviceOrientationEvent  )
+ //   userContext.orientation = true;
+ //   }
 
   if ( userContext.geolocation && userContext.orientation && userContext.mobile ) {
       userContext.arCapable = true;
