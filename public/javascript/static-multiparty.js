@@ -22,7 +22,7 @@ var userContext = {
   uiState: '',
   mode: '',
   arCapable: false,
-  motion: false,
+  orientation: false,
   geoLocation: false,
   mobile: false,
   browserType: ''
@@ -848,12 +848,17 @@ function setBrowserDetails() {
     userContext.geoLocation = true;
     }
 
-  if ( window.DeviceMotionEvent ) {
-    console.log( 'DeviceMotionEvent Supported:', window.DeviceMotionEvent  )
-    userContext.motion = true;
+ // if ( window.DeviceMotionEvent ) {
+ //   console.log( 'DeviceMotionEvent Supported:', window.DeviceMotionEvent  )
+ //   userContext.motion = true;
+  //  }
+
+    if ( window.DeviceOrientationEvent ) {
+    console.log( 'DeviceOrientationEvent Supported:', window.DeviceOrientationEvent  )
+    userContext.orientation = true;
     }
 
-  if ( userContext.geolocation && userContext.motion && userContext.mobile ) {
+  if ( userContext.geolocation && userContext.orientation && userContext.mobile ) {
       userContext.arCapable = true;
     }
 
