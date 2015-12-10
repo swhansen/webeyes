@@ -159,6 +159,10 @@ function setUpArLayer( participantState ) {
   sphereE = new THREE.Mesh( geometrySphere, materialO );
   sphereW = new THREE.Mesh( geometrySphere, materialO );
 
+  lampSphere = new THREE.Mesh( geometrySphere, materialO );
+  lampSphere.position.set( -6.0, 1.2, 2.0 );
+  scene.add( lampSphere );
+
   sphereN.position.set( 0.0, 0.0, 6.0 );
   sphereS.position.set( 0.0, 0.0, -6.0 );
   sphereE.position.set( 6.0, 0.0, 0.0 );
@@ -176,13 +180,7 @@ function setUpArLayer( participantState ) {
 
   cube2.rotateZ = 10.00;
 
-
-
   var loader = new THREE.JSONLoader();
-
-  loader.onLoadComplete = function() {
-  console.log( 'JSON Load Complete' );
-};
 
   loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
@@ -210,19 +208,7 @@ function setUpArLayer( participantState ) {
    pivotPoint.position.set( 2.2, 0.8, 0.0 );
    scene.add(pivotPoint);
    pivotPoint.add( sheep2 );
-
-} );
-
-
-
-
- //   pivotPoint = new THREE.Object3D();
- //   pivotPoint.position.set( 3.0, 0.4, 0.0 );
- //   scene.add(pivotPoint);
- //   pivotPoint.add( sheep2 );
-    //arSelectObjectArray.push( sheep2 );
-
-
+  } );
 
   //scene.add( cube1 );
 
@@ -258,7 +244,7 @@ function setUpArLayer( participantState ) {
 
   //arSelectObjectArray.push( sheep );
 
-  // Create spline for "flying pig"
+  // Create spline for "flying pig" trajecory
 
   var numPoints = 20;
 
@@ -284,11 +270,6 @@ function setUpArLayer( participantState ) {
 
     var line = new THREE.Line(geometry, material);
     scene.add( line );
-
-
-
-
-
 
 
 function arConnectionController( participantState ) {
@@ -344,12 +325,10 @@ function arConnectionController( participantState ) {
 
 // Flying sheep
   if ( sheep2 !== undefined ) {
-   pivotPoint.rotation.x += 0.0051;
-   pivotPoint.rotation.y += 0.0051;
-   pivotPoint.rotation.z += 0.0051;
-  }
-
-
+    pivotPoint.rotation.x += 0.0051;
+    pivotPoint.rotation.y += 0.0051;
+    pivotPoint.rotation.z += 0.0051;
+    }
   }
 
   function connectToDeviceSensors() {
