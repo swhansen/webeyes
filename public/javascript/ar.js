@@ -253,7 +253,7 @@ function setUpArLayer( participantState ) {
     });
 
   var geometry = new THREE.Geometry();
-    var splinePoints = pigspline.getPoints(numPoints);
+    var splinePoints = pigSpline.getPoints(numPoints);
 
     for (var i = 0; i < splinePoints.length; i++) {
         geometry.vertices.push(splinePoints[i]);
