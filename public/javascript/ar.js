@@ -190,7 +190,7 @@ function setUpArLayer( participantState ) {
     arSelectObjectArray.push( sheep );
 
     sheep2.scale.set( 0.1, 0.1, 0.1 );
-    sheep2.position.set( 0.0, 1.5, 0.1 );
+    sheep2.position.set( 0.0, 0.7, 0.1 );
     sheep2.rotation.x = Math.PI / 2;
     sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
@@ -236,15 +236,31 @@ function setUpArLayer( participantState ) {
 
   // Create spline for "flying pig"
 
+  var numPoints = 20;
+
   pigSpline = new THREE.SplineCurve3(
   [
     new THREE.Vector3(0, 0, 0),
-    new THREE.Vector3(0, 200, 0),
-    new THREE.Vector3(150, 150, 0),
-    new THREE.Vector3(150, 50, 0),
-    new THREE.Vector3(250, 100, 0),
-    new THREE.Vector3(250, 300, 0)
+    new THREE.Vector3(-1.0, 0.1 , 0),
+    new THREE.Vector3(-1.0, 0.1, -0.2),
+    new THREE.Vector3(-2.0, 0.5, -0.4),
+    new THREE.Vector3(-2.0, 1.0, -0.8),
+    new THREE.Vector3(-2.0, 1.2, -1.5)
   ] );
+
+  var material = new THREE.LineBasicMaterial({
+        color: 0xff00f0,
+    });
+
+  var geometry = new THREE.Geometry();
+    var splinePoints = pigspline.getPoints(numPoints);
+
+    for (var i = 0; i < splinePoints.length; i++) {
+        geometry.vertices.push(splinePoints[i]);
+    }
+
+    var line = new THREE.Line(geometry, material);
+    scene.add( line );
 
 function arConnectionController( participantState ) {
 
