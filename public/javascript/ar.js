@@ -205,6 +205,22 @@ var self = this;
 
 
 
+ function loadPig (callback) {
+    var self = this;
+    var loader = new THREE.OBJLoader();
+
+    loader.load('../armodels/sheep3.json', function (model) { // inner function will be called on success
+        var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+sheep2 = new THREE.Mesh( model, material );
+        self.sheep2 = sheep2;
+        callback(sheep2); // pass loaded object to callback function
+    });
+}
+
+
+
+
+
  // var fooMaterial = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
  //  sheep2 = new THREE.Mesh( pigModel, fooMaterial );
 
