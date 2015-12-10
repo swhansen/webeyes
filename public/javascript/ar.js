@@ -91,11 +91,9 @@ function loadAr( participantState ) {
            arObject.rotation.z = data.rotation._z;
 
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-
        }
 
     if ( data.operation === 'newObject' ) {
-
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
@@ -179,6 +177,8 @@ function setUpArLayer( participantState ) {
   loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
     sheep = new THREE.Mesh( model, material );
+    sheep2 = new THREE.Mesh( model, material );
+
 
     sheep.scale.set( 0.1, 0.1, 0.1 );
     sheep.position.set( -2.0, -0.4, 0.0 );
@@ -188,6 +188,16 @@ function setUpArLayer( participantState ) {
     sheep.name = 'sheep';
     scene.add( sheep );
     arSelectObjectArray.push( sheep );
+
+    sheep2.scale.set( 0.1, 0.1, 0.1 );
+    sheep2.position.set( 2.0, 0.8, 0.0);
+    sheep2.rotation.x = Math.PI / 2;
+    sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
+    sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
+    sheep2.name = 'sheep2';
+    scene.add( sheep2 );
+    arSelectObjectArray.push( sheep2 );
+
   } );
 
   //scene.add( cube1 );
@@ -223,6 +233,33 @@ function setUpArLayer( participantState ) {
   arSelectObjectArray.push( knot );
 
   //arSelectObjectArray.push( sheep );
+
+  // Create spline for "flying pig"
+
+  var numPoints = 20;
+
+  pigSpline = new THREE.SplineCurve3(
+  [
+    new THREE.Vector3( -1.0, 0.1, 0 ),
+    new THREE.Vector3(-1.0, 0.1, -0.2),
+    new THREE.Vector3(-2.0, 0.5, -0.4),
+    new THREE.Vector3(-2.0, 1.0, -0.8),
+    new THREE.Vector3(-2.0, 1.2, -1.5)
+  ] );
+
+  var material = new THREE.LineBasicMaterial({
+        color: 0xff00f0,
+    });
+
+  var geometry = new THREE.Geometry();
+    var splinePoints = pigSpline.getPoints( numPoints );
+
+    for (var i = 0; i < splinePoints.length; i++) {
+        geometry.vertices.push(splinePoints[i]);
+    }
+
+    var line = new THREE.Line(geometry, material);
+    scene.add( line );
 
 function arConnectionController( participantState ) {
 

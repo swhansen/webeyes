@@ -22,9 +22,10 @@ var userContext = {
   uiState: '',
   mode: '',
   arCapable: false,
+  geoLocation: false,
   orientation: false,
-  motion: false,
-  geolocation: false
+  mobile: false,
+  browserType: ''
 };
 
 easyrtc.dontAddCloseButtons( false );
@@ -791,37 +792,216 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
-if ( !MediaStreamTrack.getSources ) {
-    console.log( 'No media stream track enumeration' );
-    return;
+  easyrtc.enableDebug( true );
+
+//   Set userContext for Browser Functions
+
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+function findBrowserType() {
+  var sBrowser, sUsrAg = navigator.userAgent;
+  if( sUsrAg.indexOf("Chrome") > -1) {
+      sBrowser = "Chrome";
+  } else if (sUsrAg.indexOf("Safari") > -1) {
+      sBrowser = "Apple Safari";
+  } else if (sUsrAg.indexOf("Opera") > -1) {
+      sBrowser = "Opera";
+  } else if (sUsrAg.indexOf("Firefox") > -1) {
+      sBrowser = "Mozilla Firefox";
+  } else if (sUsrAg.indexOf("MSIE") > -1) {
+      sBrowser = "Microsoft Internet Explorer";
+  }
+  return sBrowser;
+}
+
+function setBrowserDetails() {
+
+  userContext.browserType = findBrowserType();
+  console.log( 'Browser:', userContext.browserType );
+
+  if ( isMobile.any() ) {
+    console.log( 'Is Mobile:', isMobile.any() );
+    userContext.mobile = true;
   }
 
-  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
-    console.log( sourceInfos ) ;
-
-    var d = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-    console.log( 'd:', d );
-    console.log( 'id:', d.id );
-
-    // deal with the devices here
-
-} );
-
-
-
   if ( navigator.geolocation ) {
-    userContext.geoLocation = false;
+    console.log( 'Is Geolocation Capable' );
+    userContext.geoLocation = true;
     }
-  if ( window.DeviceMotionEvent ) {
-  userContext.motion = false;
+
+ // if ( window.DeviceMotionEvent ) {
+ //   console.log( 'DeviceMotionEvent Supported:', window.DeviceMotionEvent  )
+ //   userContext.motion = true;
+  //  }
+
+ //   if ( window.DeviceOrientationEvent ) {
+ //   console.log( 'DeviceOrientationEvent Supported:', window.DeviceOrientationEvent  )
+ //   userContext.orientation = true;
+ //   }
+
+  if ( userContext.geoLocation && userContext.mobile ) {
+      userContext.arCapable = true;
+      console.log( 'Is AR Capable' );
+      messageBar( 'Your Device is AR Capable' );
     }
-  if ( window.DeviceOrientationEvent ) {
-    userContext.orientation = false;
+
+// Check for orientation enabled devices
+
+var _i = null;
+var _e = null;
+var _c = 0;
+
+var updateDegree = function(e){
+    _e = e;
+}
+
+window.addEventListener('deviceorientation', updateDegree, false);
+
+//  Check event support
+_i = window.setInterval(function(){
+    if(_e !== null && _e.alpha !== null){
+        // Clear interval
+        clearInterval(_i);
+        console.log( 'Orientation Enabled' );
+        userContext.orientation = true;
+    }else{
+        _c++;
+        if(_c === 10){
+            // Clear interval
+            clearInterval(_i);
+            console.log( 'NOT Orientation Enabled' );
+            userContext.orientation = false;
+        }
     }
-  if (userContext.orientation === true && userContext.motion === true) {
-    userContext.arCapable = true;
-    messageBar( 'Device is AR Capable' );
-    }
+}, 200);
+
+}
+
+setBrowserDetails();
+
+
+
+//function isChromeMobile() {
+//  var mobile = isMobileDevice();
+//  var browserType = findBrowserType();
+//  userContext.browserType = browserType;
+//  userContext.mobile = true;
+//  if (mobile && browserType === 'Chrome') {
+// return true;
+//  } else {
+//    return false;
+//  }
+//}
+//console.log( 'Chrome and Mobile:', isChromeMobile() );
+
+//      // set the media source
+//      // from 3318
+//      //easyrtc.addStreamToCall( easyrtcid, streamname, receipthandler)
+//      //streamname is the id
+//      //var stream = getLocalMediaStreamByName(streamName);
+//
+//    navigator.getUserMedia = navigator.getUserMedia ||
+//      navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+//
+//    var videoElement = document.getElementById( 'box0' );
+//
+//   if ( !MediaStreamTrack.getSources ) {
+//       console.log( 'No media stream track enumeration' );
+//       return;
+//     } else {
+//
+//     MediaStreamTrack.getSources( gotSources );
+//  // }
+//
+//  function gotSources( sourceInfos ) {
+//      console.log( 'static-multi:', sourceInfos ) ;
+//      device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
+//      console.log( 'device:', device );
+//      console.log( 'facing:', device.facing );
+//      console.log( 'label:', device.label );
+//      console.log( 'id:', device.id );
+//
+//      //
+//      //  .....or
+//      //
+//
+//    easyrtc.getVideoSourceList( function(list) {
+//      console.log( 'easyrtc.getVideoSourceList:', list );
+//      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
+//      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
+//      easyrtc.setVideoSource( device.id );
+//      } );
+//
+//
+//
+//      var constraints = {
+//      //audio: {
+//      //  optional: [{
+//      //    sourceId: audioSource
+//      //  }]
+//      //},
+//       video: {
+//         optional: [{
+//           sourceId: device.id
+//         }]
+//       }
+//     };
+//
+//     function successCallback(stream) {
+//        var url = window.URL || window.webkitURL;
+//        videoElement.src = url ? url.createObjectURL(stream) : stream;
+//        videoElement.play();
+//
+//     //window.stream = stream; // make stream available to console
+//     //videoElement.src = window.URL.createObjectURL(stream);
+//     //videoElement.play();
+//    }
+//
+//     function errorCallback(error) {
+//     console.log('navigator.getUserMedia error: ', error);
+//    }
+//
+//     navigator.getUserMedia( constraints, successCallback, errorCallback );
+//    }
+//  }
+//
+//
+//   End experimental camera select
+//
+
+ //if ( navigator.geolocation ) {
+ //  userContext.geoLocation = true;
+ //  }
+ //if ( window.DeviceMotionEvent ) {
+ //userContext.motion = true;
+ //  }
+ //if ( window.DeviceOrientationEvent ) {
+ //  userContext.orientation = true;
+ //  }
+ //if ( userContext.orientation === true && userContext.motion === true) {
+ //  userContext.arCapable = true;
+ //  userContext.mobile =  true;
+ //  messageBar( 'Device is AR Capable' );
+ //  }
 
     // Prep for the top-down layout manager
     setReshaper( 'fullpage', reshapeFull );
@@ -846,32 +1026,41 @@ if ( !MediaStreamTrack.getSources ) {
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
-    easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
-      function( myId ) {
 
-        userContext.rtcId = myId;
+ //if ( userContext.mobile) {
+ // easyrtc.enableAudio( false );
+ // }
 
-// First time through for all connections
 
-        if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
-          connectList.push( {
-            rtcid: myId,
-            boxno: 0,
-            avatar: 'avatar0'
-          } );
-        }
-      }
-    );
 
-    easyrtc.setPeerListener( messageListener );
 
-    easyrtc.setDisconnectListener( function() {
-        easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
-    } );
+   easyrtc.easyApp( 'roomDemo', 'box0', [ 'box1', 'box2', 'box3' ],
+     function( myId ) {
+
+    console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
+
+       userContext.rtcId = myId;
+
+//     // First time through for all connections
+
+       if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
+         connectList.push( {
+           rtcid: myId,
+           boxno: 0,
+           avatar: 'avatar0'
+         } );
+       }
+     }
+   );
+
+   easyrtc.setPeerListener( messageListener );
+   easyrtc.setDisconnectListener( function() {
+       easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
+   } );
 
     easyrtc.setOnCall( function( easyrtcid, slot ) {
 
-        //console.log('a call with ' + easyrtcid + 'established');
+      //console.log('a call with ' + easyrtcid + 'established');
       //  console.log('Occupant IDs:', easyrtc.getRoomOccupantsAsArray('default'))
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;

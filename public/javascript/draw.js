@@ -22,6 +22,8 @@ var Line = function( line, c, client ) {
   this.client = client;
 };
 
+// animate();
+
 function drawCanvaslineArray() {
 
   context.clearRect( 0, 0, canvas.width, canvas.height );
@@ -31,7 +33,9 @@ function drawCanvaslineArray() {
 
     for ( var j = 0; j < points.length; j++ ) {
       context.strokeStyle = lineArray[i].line[j].color;
+
    //   context.shadowColor = lineArray[i].line[j].shadowColor;
+
       if ( j === 0 ) {
         context.beginPath();
         context.moveTo( lineArray[i].line[j].x, lineArray[i].line[j].y );
@@ -122,6 +126,11 @@ function receiveLineFromClient( data ) {
       break;
   }
 }
+
+//function animate(){
+//        requestAnimationFrame(animate);
+//        drawCanvaslineArray();
+//    }
 
 // socket.io communication
 
