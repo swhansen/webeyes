@@ -6,6 +6,7 @@ var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
 var sheep2;
+var pigModel;
 var pivotPoint;
 var torus1;
 
@@ -182,11 +183,11 @@ function setUpArLayer( participantState ) {
 
   loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+
+    pigModel = model;
+
+
    sheep = new THREE.Mesh( model, material );
-   sheep2 = new THREE.Mesh( model, material );
-
-
-
 
 
     sheep.scale.set( 0.1, 0.1, 0.1 );
@@ -197,6 +198,13 @@ function setUpArLayer( participantState ) {
     sheep.name = 'sheep';
     scene.add( sheep );
     arSelectObjectArray.push( sheep );
+
+});
+
+
+
+var fooMaterial = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+   sheep2 = new THREE.Mesh( pigModel, fooMaterial );
 
     sheep2.scale.set( 0.1, 0.1, 0.1 );
     sheep2.position.set( 2.0, 0.4, 0.0 );
@@ -211,7 +219,7 @@ function setUpArLayer( participantState ) {
     scene.add(pivotPoint);
     pivotPoint.add( sheep2 );
     //arSelectObjectArray.push( sheep2 );
-});
+
 
 
   //scene.add( cube1 );
