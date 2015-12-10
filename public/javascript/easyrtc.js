@@ -5343,44 +5343,16 @@ var Easyrtc = function() {
      *                  console.log(errorText);
      *              );
      */
-    this.easyApp = function(applicationName, monitorVideoId, videoIds, onReady, onFailure) {
+        this.easyApp = function(applicationName, monitorVideoId, videoIds, onReady, onFailure) {
 
 console.log( 'Entering EasyApp');
 
-
- var device = {};
-//if ( !MediaStreamTrack.getSources ) {
-//    console.log( 'No media stream track enumeration' );
-//    return;
-//  } else {
-//
-//
-//function get_media_sources() {
-//
-//  MediaStreamTrack.getSources( function gotSources( sourceInfos ) {
-//
-//    console.log( 'easyApp:', sourceInfos ) ;
-//    device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-//    console.log( 'device:', device );
-//    console.log( 'facing:', device.facing );
-//    console.log( 'label:', device.label );
-//    console.log( 'id:', device.id );
-//
-//    easyrtc.setVideoSource( device.id );
-//
-//    } );
-//  }
-//}
-
         var gotMediaCallback = null,
                 gotConnectionCallback = null;
-
         easyAppBody(monitorVideoId, videoIds);
-
-        self.setGotMedia = function( gotMediaCB ) {
+        self.setGotMedia = function(gotMediaCB) {
             gotMediaCallback = gotMediaCB;
         };
-
         /** Sets an event handler that gets called when a connection to the signaling
          * server has or has not been made. Can only be called after calling easyrtc.easyApp.
          * @param {Function} gotConnectionCB has the signature (gotConnection, errorText)
@@ -5394,7 +5366,7 @@ console.log( 'Entering EasyApp');
          *        }
          *    });
          */
-        self.setGotConnection = function( gotConnectionCB ) {
+        self.setGotConnection = function(gotConnectionCB) {
             gotConnectionCallback = gotConnectionCB;
         };
         var nextInitializationStep;
@@ -5405,26 +5377,12 @@ console.log( 'Entering EasyApp');
             onReady(self.myEasyrtcid);
         };
         function postGetUserMedia() {
-
-          console.log( 'at postGetUserMedia gotMediaCallback:', gotMediaCallback );
-
             if (gotMediaCallback) {
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
-
-              console.log( 'setting videoObjectSrc in postGetUserMedia', self.getLocalStream() );
-
-                self.setVideoObjectSrc( document.getElementById(monitorVideoId), self.getLocalStream() );
-
+                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream());
             }
-
-              console.log( 'postGetUserMedia-getLocalStream:', self.getLocalStreamAsUrl() );
-
-                self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
-
-            }
-
             function connectError(errorCode, errorText) {
                 if (gotConnectionCallback) {
                     gotConnectionCallback(false, errorText);
@@ -5440,109 +5398,13 @@ console.log( 'Entering EasyApp');
             self.connect(applicationName, nextInitializationStep, connectError);
         }
 
-//  easyrtc.getVideoSourceList( function(list) {
-//    console.log( 'videoSourceList:', list );
-//     //               var i;
-//      //               for( i = 0; i < list.length; i++ ) {
-//      //                   console.log("label=" + list[i].label + ", id= " + list[i].id + ", facing= " + list[i].facing );
-//      //               }
-//  device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
-
-//  console.log( 'easyrtc device-id:', device.id );
-
-//    easyrtc.setVideoSource( device.id );
-
-//    } );
-
-
-
-        var stream = getLocalMediaStreamByName( null );
-       if ( stream ) {
-
-        console.log( 'at if(stream):', stream);
-
-        var stream = getLocalMediaStreamByName( null );
-       if ( stream ) {
-
-        console.log( 'at if(stream) call postGetUserMedia:', stream);
-
-           postGetUserMedia();
-       }
-       else {
-
-
-
-
-//    MediaStreamTrack.getSources(function (media_sources) {
-//    for (var i = 0; i < media_sources.length; i++) {
-//        var media_source = media_sources[i];
-//        var constraints = {};
-//
-//        // if audio device
-//        if (media_source.kind == 'audio') {
-//            constraints.audio = {
-//                optional: [{
-//                    sourceId: media_source.id
-//                }]
-//            };
-//        }
-//
-//        // if video device
-//
-//          var videoDevice = _.find( media_sources, function( sources ) { return sources.facing == 'environment';} );
-//            constraints.video = {
-//                optional: [{
-//                    sourceId: videoDevice.id
-//                }]
-//            };
-
-
-
-
-//  var constraints = {
-//  //audio: {
-//  //  optional: [{
-//  //    sourceId: audioSource
-//  //  }]
-//  //},
-//   video: {
-//     optional: [{
-//       sourceId: device.id
-//     }]
-//   }
-// };
-
-
-//  console.log( 'constraints:', constraints );
-//      // invoke getUserMedia to capture this device
-//      navigator.getUserMedia(constraints, function (stream) {
-//          console.log(stream.id, stream);
-//          theStream = stream;
-
-//  easyrtc.setVideoObjectSrc( monitorVideoId, stream.id);
-//      }, console.error);
-//    }
-//  } );
-
-easyrtc.getVideoSourceList( function(list) {
-      console.log( 'easyrtc.getVideoSourceList:', list );
-      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
-      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
-      easyrtc.setVideoSource( device.id );
-      } );
-
-console.log( 'if (stream) else, before initMediaSource:', easyrtc.getLocalStream() );
-
-
-
-            self.initMediaSource(
-
-                    postGetUserMedia,
-
-
+        var stream = getLocalMediaStreamByName(null);
+        if (stream) {
+            postGetUserMedia();
+        }
+        else {
             self.initMediaSource(
                     postGetUserMedia,
-
                     function(errorCode, errorText) {
                         if (gotMediaCallback) {
                             gotMediaCallback(false, errorText);
@@ -5554,9 +5416,7 @@ console.log( 'if (stream) else, before initMediaSource:', easyrtc.getLocalStream
                             self.showError(self.errCodes.MEDIA_ERR, errorText);
                         }
                     },
-
                     null // default stream
-
                     );
         }
     };
