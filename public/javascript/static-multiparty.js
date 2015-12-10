@@ -864,21 +864,7 @@ function setBrowserDetails() {
       messageBar( 'Your Device is AR Capable' );
     }
 
-//    if( window.DeviceOrientationEvent) { // gyroscope support
-//    alert( 'DeviceOrientationEvent support OK' );
-//    } else {
-//    alert( 'DeviceOrientationEvent support KO' );
-//    }
-
-//if ( userContext.orientation === true && userContext.motion === true) {
-//  userContext.arCapable = true;
-//  userContext.mobile =  true;
-//  messageBar( 'Device is AR Capable' );
-//  }
-
-}
-
-setBrowserDetails();
+// Check for orientation enabled devices
 
 var _i = null;
 var _e = null;
@@ -907,6 +893,11 @@ _i = window.setInterval(function(){
         }
     }
 }, 200);
+
+}
+
+setBrowserDetails();
+
 
 
 //function isChromeMobile() {
