@@ -191,6 +191,7 @@ function setUpArLayer( participantState ) {
     arSelectObjectArray.push( sheep );
 
     sheep2.scale.set( 0.1, 0.1, 0.1 );
+    sheep2.position.set( 1.0, 1.0, 1.0 );
     sheep2.rotation.x = Math.PI / 2;
     sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
@@ -262,8 +263,6 @@ function setUpArLayer( participantState ) {
     scene.add( line );
 
 
-
-
 //var ppSphere = new THREE.SphereGeometry(0.1, 0.1, 0.1);
 //  var ppSphereMaterial = new THREE.MeshLambertMaterial({
 //    color: 0x5555ff
@@ -277,10 +276,9 @@ function setUpArLayer( participantState ) {
   pivotPoint = new THREE.Object3D();
   pivotPoint.position.set( 3.0, 0.0, 0.0 );
 
-  sheep2.position.set( 1.0, 1.0, 1.0 );
+//  sheep2.position.set( 1.0, 1.0, 1.0 );
 
   pivotPoint.add( sheep2 );
-
 
 
 
