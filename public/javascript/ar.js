@@ -217,6 +217,8 @@ sheep2 = new THREE.Mesh( model, material );
     });
 }
 
+loadPig();
+
 
 
 
