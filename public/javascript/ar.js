@@ -268,7 +268,7 @@ function setUpArLayer( participantState ) {
     new THREE.Vector3( 2.2, 1.0, -0.15 ),
     new THREE.Vector3( 2.3, 1.6, -1.0 ),
     new THREE.Vector3( 2.2, 1.8, -2.0 ),
-    new THREE.Vector3( 2.1, 2.0, 4.0 )
+    new THREE.Vector3( 2.1, 2.0, -4.0 )
   ] );
 
   var material = new THREE.LineBasicMaterial({
@@ -344,9 +344,9 @@ function arConnectionController( participantState ) {
 
 // Flying sheep
   if ( sheep2 !== undefined ) {
-   pivotPoint.rotation.x += 0.1;
-   pivotPoint.rotation.y += 0.1;
-   pivotPoint.rotation.z += 0.1;
+   pivotPoint.rotation.x += 0.01;
+   pivotPoint.rotation.y += 0.01;
+   pivotPoint.rotation.z += 0.01;
   }
 
 
