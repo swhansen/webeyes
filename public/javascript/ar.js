@@ -206,10 +206,10 @@ function setUpArLayer( participantState ) {
     sheep2.name = 'sheep2';
     scene.add( sheep2 );
 
- //   pivotPoint = new THREE.Object3D();
- //   pivotPoint.position.set( 2.2, 0.8, 0.0 );
- //   scene.add(pivotPoint);
- //   pivotPoint.add( sheep2 );
+   pivotPoint = new THREE.Object3D();
+   pivotPoint.position.set( 2.2, 0.8, 0.0 );
+   scene.add(pivotPoint);
+   pivotPoint.add( sheep2 );
 
 } );
 
@@ -264,11 +264,11 @@ function setUpArLayer( participantState ) {
 
   pigSpline = new THREE.SplineCurve3(
   [
-    new THREE.Vector3( 2.0, 1.1, 0.1 ),
-    new THREE.Vector3( 2.2, 1.2, 0.2 ),
-    new THREE.Vector3( 2.3, 1.3, 0.3 ),
-    new THREE.Vector3( 2.2, 1.2, 0.4 ),
-    new THREE.Vector3( 2.1, 1.1, 0.3 )
+    new THREE.Vector3( 2.0, 0.0, 0.1 ),
+    new THREE.Vector3( 2.2, 1.0, -0.15 ),
+    new THREE.Vector3( 2.3, 1.6, -1.0 ),
+    new THREE.Vector3( 2.2, 1.8, -2.0 ),
+    new THREE.Vector3( 2.1, 2.0, 4.0 )
   ] );
 
   var material = new THREE.LineBasicMaterial({
@@ -343,11 +343,11 @@ function arConnectionController( participantState ) {
     }
 
 // Flying sheep
-//  if ( sheep2 !== undefined ) {
-//   pivotPoint.rotation.x += 0.1;
-//   pivotPoint.rotation.y += 0.1;
-//   pivotPoint.rotation.z += 0.1;
-//  }
+  if ( sheep2 !== undefined ) {
+   pivotPoint.rotation.x += 0.1;
+   pivotPoint.rotation.y += 0.1;
+   pivotPoint.rotation.z += 0.1;
+  }
 
 
   }
