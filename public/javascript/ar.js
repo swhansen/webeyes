@@ -177,21 +177,13 @@ function setUpArLayer( participantState ) {
   cube2.rotateZ = 10.00;
 
 
-var self = this;
 
   var loader = new THREE.JSONLoader();
 
   loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
 
-
-
-   sheep2 = new THREE.Mesh( model, material );
-   self.sheep2 = sheep2;
-
    sheep = new THREE.Mesh( model, material );
-
-
     sheep.scale.set( 0.1, 0.1, 0.1 );
     sheep.position.set( -2.0, -0.4, 0.0 );
     sheep.rotation.x = Math.PI / 2;
@@ -201,31 +193,7 @@ var self = this;
     scene.add( sheep );
     arSelectObjectArray.push( sheep );
 
-} );
-
-
-
- function loadPig (callback) {
-    var self = this;
-    var loader = new THREE.JSONLoader();
-
-    loader.load('../armodels/sheep3.json', function (model) { // inner function will be called on success
-        var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
-sheep2 = new THREE.Mesh( model, material );
-        self.sheep2 = sheep2;
-        callback(sheep2); // pass loaded object to callback function
-    });
-}
-
-loadPig();
-
-
-
-
-
- // var fooMaterial = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
- //  sheep2 = new THREE.Mesh( pigModel, fooMaterial );
-
+    sheep2 = new THREE.Mesh( model, material );
     sheep2.scale.set( 0.1, 0.1, 0.1 );
     sheep2.position.set( 2.0, 0.4, 0.0 );
     sheep2.rotation.x = Math.PI / 2;
@@ -233,6 +201,12 @@ loadPig();
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
     sheep2.name = 'sheep2';
     scene.add( sheep2 );
+} );
+
+
+ // var fooMaterial = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+ //  sheep2 = new THREE.Mesh( pigModel, fooMaterial );
+
 
  //    pivotPoint = new THREE.Object3D();
  //   pivotPoint.position.set( 3.0, 0.4, 0.0 );
