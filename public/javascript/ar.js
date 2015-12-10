@@ -6,6 +6,7 @@ var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
 var sheep2;
+var pivotPoint;
 var torus1;
 
 function orientationAr( data ) {
@@ -174,12 +175,18 @@ function setUpArLayer( participantState ) {
 
   cube2.rotateZ = 10.00;
 
+
+
+
   var loader = new THREE.JSONLoader();
+
   loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
    sheep = new THREE.Mesh( model, material );
    sheep2 = new THREE.Mesh( model, material );
- });
+
+
+
 
 
     sheep.scale.set( 0.1, 0.1, 0.1 );
@@ -198,8 +205,12 @@ function setUpArLayer( participantState ) {
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
     sheep2.name = 'sheep2';
     scene.add( sheep2 );
-    //arSelectObjectArray.push( sheep2 );
 
+     pivotPoint = new THREE.Object3D();
+    pivotPoint.position.set( 3.0, 0.4, 0.0 );
+    pivotPoint.add( sheep2 );
+    //arSelectObjectArray.push( sheep2 );
+});
 
 
   //scene.add( cube1 );
@@ -274,14 +285,7 @@ function setUpArLayer( participantState ) {
 //  ppSphere.add( ppSphereMesh );
 
 
-  pivotPoint = new THREE.Object3D();
-  pivotPoint.position.set( 3.0, 0.4, 0.0 );
 
-sheep.position.set( -2.0, -0.4, 0.0 );
-  sheep2.position.set( 2.0, 0.4, 0.0 );
-
-
- // pivotPoint.add( sheep2 );
 
 
 
