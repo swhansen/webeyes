@@ -191,13 +191,13 @@ function setUpArLayer( participantState ) {
     arSelectObjectArray.push( sheep );
 
     sheep2.scale.set( 0.1, 0.1, 0.1 );
-    sheep2.position.set( 1.0, 1.0, 1.0 );
+    sheep2.position.set( 2.0, 0.4, 0.0 );
     sheep2.rotation.x = Math.PI / 2;
     sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
     sheep2.name = 'sheep2';
     scene.add( sheep2 );
-    arSelectObjectArray.push( sheep2 );
+    //arSelectObjectArray.push( sheep2 );
 
   } );
 
@@ -278,7 +278,7 @@ function setUpArLayer( participantState ) {
 
 //  sheep2.position.set( 1.0, 1.0, 1.0 );
 
-  pivotPoint.add( sheep2 );
+ // pivotPoint.add( sheep2 );
 
 
 
