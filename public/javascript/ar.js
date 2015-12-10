@@ -180,6 +180,10 @@ function setUpArLayer( participantState ) {
 
   var loader = new THREE.JSONLoader();
 
+  loader.onLoadComplete = function() {
+  console.log( 'JSON Load Complete' );
+};
+
   loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
 
@@ -195,7 +199,7 @@ function setUpArLayer( participantState ) {
 
     sheep2 = new THREE.Mesh( model, material );
     sheep2.scale.set( 0.1, 0.1, 0.1 );
-    sheep2.position.set( 2.0, 0.8, 0.0 );
+    sheep2.position.set( 2.0, 1.1, 0.1 );
     sheep2.rotation.x = Math.PI / 2;
     sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
@@ -210,9 +214,7 @@ function setUpArLayer( participantState ) {
 } );
 
 
-loader.onLoadComplete = function() {
-  console.log( 'JSON Load Complete' );
-}
+
 
  //   pivotPoint = new THREE.Object3D();
  //   pivotPoint.position.set( 3.0, 0.4, 0.0 );
@@ -262,15 +264,15 @@ loader.onLoadComplete = function() {
 
   pigSpline = new THREE.SplineCurve3(
   [
-    new THREE.Vector3( -1.0, 0.1, 0 ),
-    new THREE.Vector3(-1.0, 0.1, -0.2),
-    new THREE.Vector3(-2.0, 0.5, -0.4),
-    new THREE.Vector3(-2.0, 1.0, -0.8),
-    new THREE.Vector3(-2.0, 1.2, -1.5)
+    new THREE.Vector3( 2.0, 1.1, 0.1 ),
+    new THREE.Vector3( 2.2, 1.2, 0.2 ),
+    new THREE.Vector3( 2.3, 1.3, 0.3 ),
+    new THREE.Vector3( 2.2, 1.2, 0.4 ),
+    new THREE.Vector3( 2.1, 1.1, 0.3 )
   ] );
 
   var material = new THREE.LineBasicMaterial({
-        color: 0xff00f0,
+        color: 0xff00f0
     });
 
   var geometry = new THREE.Geometry();
