@@ -4,8 +4,8 @@ var animateZ = false;
 var animateSheep = false;
 var selectedArObject;
 var clock = new THREE.Clock();
-//var sheep;
-//var sheep2;
+var sheep;
+var sheep2;
 var torus1;
 
 function orientationAr( data ) {
@@ -177,8 +177,9 @@ function setUpArLayer( participantState ) {
   var loader = new THREE.JSONLoader();
   loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
-   var sheep = new THREE.Mesh( model, material );
-   var sheep2 = new THREE.Mesh( model, material );
+   sheep = new THREE.Mesh( model, material );
+   sheep2 = new THREE.Mesh( model, material );
+ });
 
 
     sheep.scale.set( 0.1, 0.1, 0.1 );
@@ -199,7 +200,7 @@ function setUpArLayer( participantState ) {
     scene.add( sheep2 );
     //arSelectObjectArray.push( sheep2 );
 
-  } );
+
 
   //scene.add( cube1 );
 
