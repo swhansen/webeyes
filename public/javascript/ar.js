@@ -344,9 +344,9 @@ function arConnectionController( participantState ) {
 
 // Flying sheep
   if ( sheep2 !== undefined ) {
-   pivotPoint.rotation.x += 0.01;
-   pivotPoint.rotation.y += 0.01;
-   pivotPoint.rotation.z += 0.01;
+   pivotPoint.rotation.x += 0.0051;
+   pivotPoint.rotation.y += 0.0051;
+   pivotPoint.rotation.z += 0.0051;
   }
 
 
