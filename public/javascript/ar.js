@@ -190,7 +190,7 @@ function setUpArLayer( participantState ) {
     arSelectObjectArray.push( sheep );
 
     sheep2.scale.set( 0.1, 0.1, 0.1 );
-    sheep2.position.set( 0.0, 3.0, 0.1 );
+    sheep2.position.set( 0.0, 1.5, 0.1 );
     sheep2.rotation.x = Math.PI / 2;
     sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
@@ -233,6 +233,18 @@ function setUpArLayer( participantState ) {
   arSelectObjectArray.push( knot );
 
   //arSelectObjectArray.push( sheep );
+
+  // Create spline for "flying pig"
+
+  pigSpline = new THREE.SplineCurve3(
+  [
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(0, 200, 0),
+    new THREE.Vector3(150, 150, 0),
+    new THREE.Vector3(150, 50, 0),
+    new THREE.Vector3(250, 100, 0),
+    new THREE.Vector3(250, 300, 0)
+  ] );
 
 function arConnectionController( participantState ) {
 
