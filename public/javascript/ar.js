@@ -199,11 +199,11 @@ function setUpArLayer( participantState ) {
     scene.add( sheep );
     arSelectObjectArray.push( sheep );
 
-});
+} );
 
 
 
-var fooMaterial = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+  var fooMaterial = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
    sheep2 = new THREE.Mesh( pigModel, fooMaterial );
 
     sheep2.scale.set( 0.1, 0.1, 0.1 );
@@ -214,10 +214,10 @@ var fooMaterial = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
     sheep2.name = 'sheep2';
     scene.add( sheep2 );
 
-     pivotPoint = new THREE.Object3D();
-    pivotPoint.position.set( 3.0, 0.4, 0.0 );
-    scene.add(pivotPoint);
-    pivotPoint.add( sheep2 );
+ //    pivotPoint = new THREE.Object3D();
+ //   pivotPoint.position.set( 3.0, 0.4, 0.0 );
+ //   scene.add(pivotPoint);
+//    pivotPoint.add( sheep2 );
     //arSelectObjectArray.push( sheep2 );
 
 
@@ -351,9 +351,9 @@ function arConnectionController( participantState ) {
 
 // Flying sheep
 
-    pivotPoint.rotation.x += 0.1;
-    pivotPoint.rotation.y += 0.1;
-    pivotPoint.rotation.z += 0.1;
+  // pivotPoint.rotation.x += 0.1;
+  // pivotPoint.rotation.y += 0.1;
+  // pivotPoint.rotation.z += 0.1;
 
 
 
