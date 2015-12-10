@@ -208,6 +208,7 @@ function setUpArLayer( participantState ) {
 
      pivotPoint = new THREE.Object3D();
     pivotPoint.position.set( 3.0, 0.4, 0.0 );
+    scene.add(pivotPoint);
     pivotPoint.add( sheep2 );
     //arSelectObjectArray.push( sheep2 );
 });
