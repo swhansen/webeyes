@@ -5347,14 +5347,8 @@ var Easyrtc = function() {
 
 console.log( 'Entering EasyApp');
 
-<<<<<<< HEAD
+
  var device = {};
-=======
-
-
-//console.log(' at entry to easyApp-device:', device);
->>>>>>> sh-video-device-select
-
 //if ( !MediaStreamTrack.getSources ) {
 //    console.log( 'No media stream track enumeration' );
 //    return;
@@ -5411,31 +5405,26 @@ console.log( 'Entering EasyApp');
             onReady(self.myEasyrtcid);
         };
         function postGetUserMedia() {
-<<<<<<< HEAD
-=======
+
           console.log( 'at postGetUserMedia gotMediaCallback:', gotMediaCallback );
->>>>>>> sh-video-device-select
+
             if (gotMediaCallback) {
                 gotMediaCallback(true, null);
             }
             if (monitorVideoId !== null) {
 
               console.log( 'setting videoObjectSrc in postGetUserMedia', self.getLocalStream() );
-<<<<<<< HEAD
 
                 self.setVideoObjectSrc( document.getElementById(monitorVideoId), self.getLocalStream() );
 
             }
 
-
-=======
               console.log( 'postGetUserMedia-getLocalStream:', self.getLocalStreamAsUrl() );
 
                 self.setVideoObjectSrc(document.getElementById(monitorVideoId), self.getLocalStream() );
 
             }
 
->>>>>>> sh-video-device-select
             function connectError(errorCode, errorText) {
                 if (gotConnectionCallback) {
                     gotConnectionCallback(false, errorText);
@@ -5465,32 +5454,25 @@ console.log( 'Entering EasyApp');
 
 //    } );
 
-<<<<<<< HEAD
 
 
         var stream = getLocalMediaStreamByName( null );
        if ( stream ) {
 
         console.log( 'at if(stream):', stream);
-=======
+
         var stream = getLocalMediaStreamByName( null );
        if ( stream ) {
 
         console.log( 'at if(stream) call postGetUserMedia:', stream);
->>>>>>> sh-video-device-select
+
            postGetUserMedia();
        }
        else {
 
-<<<<<<< HEAD
-=======
-
-//var constraints = {  audio: {    optional: [{sourceId: audioSource}]  },  video: {    optional: [{sourceId: videoSource}]  }};
-//navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 
 
->>>>>>> sh-video-device-select
 //    MediaStreamTrack.getSources(function (media_sources) {
 //    for (var i = 0; i < media_sources.length; i++) {
 //        var media_source = media_sources[i];
@@ -5515,7 +5497,7 @@ console.log( 'Entering EasyApp');
 //            };
 
 
-<<<<<<< HEAD
+
 
 //  var constraints = {
 //  //audio: {
@@ -5558,10 +5540,9 @@ console.log( 'if (stream) else, before initMediaSource:', easyrtc.getLocalStream
                     postGetUserMedia,
 
 
-=======
             self.initMediaSource(
                     postGetUserMedia,
->>>>>>> sh-video-device-select
+
                     function(errorCode, errorText) {
                         if (gotMediaCallback) {
                             gotMediaCallback(false, errorText);
