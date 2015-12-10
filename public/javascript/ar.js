@@ -273,17 +273,12 @@ function setUpArLayer( participantState ) {
 //  ppSphere.add( ppSphereMesh );
 
 
-pivotPoint = new THREE.Object3D();
-        ppSphereMesh.add( pivotPoint );
+  pivotPoint = new THREE.Object3D();
+  pivotPoint.position.set( 3.0, 0.0, 0.0 );
 
- sheep2.position.set( 1.0, 1.0, 1.0);
+  sheep2.position.set( 1.0, 1.0, 1.0 );
 
-
-pivotPoint.add( sheep2 );
-
-
-
-
+  pivotPoint.add( sheep2 );
 
 
 
