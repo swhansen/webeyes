@@ -214,10 +214,10 @@ function setUpArLayer( participantState ) {
     sheep2.name = 'sheep2';
     scene.add( sheep2 );
 
- //    pivotPoint = new THREE.Object3D();
- //   pivotPoint.position.set( 3.0, 0.4, 0.0 );
- //   scene.add(pivotPoint);
-//    pivotPoint.add( sheep2 );
+     pivotPoint = new THREE.Object3D();
+    pivotPoint.position.set( 3.0, 0.4, 0.0 );
+    scene.add(pivotPoint);
+    pivotPoint.add( sheep2 );
     //arSelectObjectArray.push( sheep2 );
 
 
@@ -284,15 +284,6 @@ function setUpArLayer( participantState ) {
     scene.add( line );
 
 
-//var ppSphere = new THREE.SphereGeometry(0.1, 0.1, 0.1);
-//  var ppSphereMaterial = new THREE.MeshLambertMaterial({
-//    color: 0x5555ff
-//  });
-//  var ppSphereMesh = new THREE.Mesh(ppSphere, ppSpherMaterial);
-//  ppSphereMesh.receiveShadow = true;
-//  ppSphereMesh.position.set(0, 1, 0);
-//  ppSphere.add( ppSphereMesh );
-
 
 
 
@@ -350,11 +341,11 @@ function arConnectionController( participantState ) {
     }
 
 // Flying sheep
-
-  // pivotPoint.rotation.x += 0.1;
-  // pivotPoint.rotation.y += 0.1;
-  // pivotPoint.rotation.z += 0.1;
-
+if ( sheep2 ) {
+   pivotPoint.rotation.x += 0.1;
+   pivotPoint.rotation.y += 0.1;
+   pivotPoint.rotation.z += 0.1;
+}
 
 
   }
