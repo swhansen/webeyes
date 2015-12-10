@@ -207,7 +207,7 @@ var self = this;
 
  function loadPig (callback) {
     var self = this;
-    var loader = new THREE.OBJLoader();
+    var loader = new THREE.JSONLoader();
 
     loader.load('../armodels/sheep3.json', function (model) { // inner function will be called on success
         var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
