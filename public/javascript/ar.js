@@ -197,7 +197,7 @@ function setUpArLayer( participantState ) {
 
     sheep2 = new THREE.Mesh( model, material );
     sheep2.scale.set( 0.1, 0.1, 0.1 );
-    sheep2.position.set( 2.1, 0.8, 0.1 );
+    sheep2.position.set( 0.2, 0.2, 0.2 );
     sheep2.rotation.x = Math.PI / 2;
     sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
@@ -205,8 +205,8 @@ function setUpArLayer( participantState ) {
     scene.add( sheep2 );
 
    pivotPoint = new THREE.Object3D();
-   //pivotPoint.position.set( 2.2, 0.9, 0.2 );
-   pivotPoint.position.set( 0.2, 0.2, 0.2 );
+   pivotPoint.position.set( 2.2, 1.0, 0.2 );
+   //pivotPoint.position.set( 0.2, 0.2, 0.2 );
    scene.add(pivotPoint);
    pivotPoint.add( sheep2 );
   } );
