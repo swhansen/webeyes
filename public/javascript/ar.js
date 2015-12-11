@@ -220,7 +220,7 @@ loader.load( '../armodels/lamp.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
 
     lamp = new THREE.Mesh( model, material );
-    lamp.scale.set( 500, 500, 500 );
+    lamp.scale.set( 100, 100, 100 );
     lamp.position.set( -4.0, 4.4, -3.0 );
     //lamp.rotation.x = Math.PI / 2;
     //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
