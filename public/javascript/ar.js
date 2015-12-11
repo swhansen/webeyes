@@ -221,7 +221,7 @@ loader.load( '../armodels/lamp.json', function( model ) {
 
     lamp = new THREE.Mesh( model, material );
     lamp.scale.set( 1.0, 1.0, 1.0 );
-    lamp.position.set( -4.0, 2.0, -2.0 );
+    lamp.position.set( -3.5, 2.0, -2.0 );
     //lamp.rotation.x = Math.PI / 2;
     //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
     //lamp.rotation.z = ( Math.PI / 2 ) * 0.3;
