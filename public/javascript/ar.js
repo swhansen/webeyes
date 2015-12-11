@@ -160,7 +160,7 @@ function setUpArLayer( participantState ) {
   sphereW = new THREE.Mesh( geometrySphere, materialO );
 
   lampSphere = new THREE.Mesh( geometrySphere, materialO );
-  lampSphere.position.set( -6.0, 3.9, -3.0 );
+  lampSphere.position.set( -4.0, 4.4, -3.0 );
   scene.add( lampSphere );
 
   sphereN.position.set( 0.0, 0.0, 6.0 );
@@ -205,7 +205,8 @@ function setUpArLayer( participantState ) {
     scene.add( sheep2 );
 
    pivotPoint = new THREE.Object3D();
-   pivotPoint.position.set( 2.2, 0.9, 0.2 );
+   //pivotPoint.position.set( 2.2, 0.9, 0.2 );
+   pivotPoint.position.set( 0.2, 0.2, 0.2 );
    scene.add(pivotPoint);
    pivotPoint.add( sheep2 );
   } );
@@ -326,7 +327,7 @@ function arConnectionController( participantState ) {
 // Flying sheep
   if ( sheep2 !== undefined ) {
     pivotPoint.rotation.x += 0.0051;
-   // pivotPoint.rotation.y += 0.0051;
+    pivotPoint.rotation.y += 0.0051;
     pivotPoint.rotation.z += 0.0051;
     }
   }
