@@ -9,6 +9,7 @@ var sheep2;
 var pigModel;
 var pivotPoint;
 var torus1;
+var counter = 0;
 
 function orientationAr( data ) {
 
@@ -197,7 +198,7 @@ function setUpArLayer( participantState ) {
 
     sheep2 = new THREE.Mesh( model, material );
     sheep2.scale.set( 0.1, 0.1, 0.1 );
-    sheep2.position.set( 0.4, 0.4, 0.4 );
+    sheep2.position.set( 0.6, 0.6, 0.6 );
     sheep2.rotation.x = Math.PI / 2;
     sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
@@ -262,7 +263,7 @@ function setUpArLayer( participantState ) {
 
   var material = new THREE.LineBasicMaterial( { color: 0xff00f0 } );
 
-  var geometry = new THREE.Geometry();
+    var geometry = new THREE.Geometry();
     var splinePoints = pigSpline.getPoints( numPoints );
 
     for ( var i = 0; i < splinePoints.length; i++ ) {
@@ -271,6 +272,11 @@ function setUpArLayer( participantState ) {
 
     var line = new THREE.Line( geometry, material );
     scene.add( line );
+
+    var box = new THREE.Mesh( geometryCube1, material1 );
+  box.position.set( 2.0, 0.0, 0.1 );
+  scene.add( box );
+
 
 function arConnectionController( participantState ) {
 
@@ -323,12 +329,19 @@ function arConnectionController( participantState ) {
       sheep.rotation.z += 0.02;
     }
 
-// Flying sheep
+// Flying  Pig
   if ( sheep2 !== undefined ) {
+
   //  pivotPoint.rotation.x += 0.0051;
+
     pivotPoint.rotation.y += 0.0051;
+
   //  pivotPoint.rotation.z += 0.0051;
-    }
+  }
+
+
+
+
   }
 
   function connectToDeviceSensors() {
