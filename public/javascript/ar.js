@@ -212,7 +212,26 @@ function setUpArLayer( participantState ) {
    pivotPoint.position.set( -4.0, 4.4, -3.0 );
    scene.add( pivotPoint );
    pivotPoint.add( sheep2 );
+
   } );
+
+loader.load( '../armodels/lamp.json', function( model ) {
+    var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+
+    lamp = new THREE.Mesh( model, material );
+    lamp.scale.set( 0.1, 0.1, 0.1 );
+    lamp.position.set( -4.0, 4.4, -3.0 );
+    //lamp.rotation.x = Math.PI / 2;
+    //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
+    //lamp.rotation.z = ( Math.PI / 2 ) * 0.3;
+    lamp.name = 'lamp';
+    scene.add( lamp );
+
+  } );
+
+
+
+
 
   //scene.add( cube1 );
 
@@ -273,7 +292,9 @@ function setUpArLayer( participantState ) {
     var line = new THREE.Line( geometry, material );
     scene.add( line );
 
-    var box = new THREE.Mesh( geometryCube1, material1 );
+
+var geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
+    var box = new THREE.Mesh( geometryBox, material1 );
   box.position.set( 2.0, 0.0, 0.1 );
   scene.add( box );
 
