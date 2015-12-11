@@ -162,7 +162,8 @@ function setUpArLayer( participantState ) {
   sphereW = new THREE.Mesh( geometrySphere, materialO );
 
   lampSphere = new THREE.Mesh( geometrySphere, materialO );
-  lampSphere.position.set( -4.0, 4.4, -3.0 );
+  //lampSphere.position.set( -4.0, 4.4, -3.0 );
+  lampSphere.position.set( -19.0, 16.0, 8.0 );
   scene.add( lampSphere );
 
   sphereN.position.set( 0.0, 0.0, 6.0 );
@@ -220,8 +221,9 @@ loader.load( '../armodels/lamp.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
 
     lamp = new THREE.Mesh( model, material );
-    lamp.scale.set( 1.0, 1.0, 1.0 );
-    lamp.position.set( -3.5, 2.0, -2.0 );
+    lamp.scale.set( 4.0, 4.0, 4.0 );
+   // lamp.position.set( -3.5, 2.0, -2.0 );
+    lamp.position.set( -27.0, 16.0, 8.0 );
     //lamp.rotation.x = Math.PI / 2;
     //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
     //lamp.rotation.z = ( Math.PI / 2 ) * 0.3;
@@ -350,7 +352,7 @@ function arConnectionController( participantState ) {
 
   //  pivotPoint.rotation.x += 0.0051;
 
-    pivotPoint.rotation.y += 0.0051;
+    pivotPoint.rotation.y -= 0.0051;
 
   //  pivotPoint.rotation.z += 0.0051;
   }
