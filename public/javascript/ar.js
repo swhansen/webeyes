@@ -204,9 +204,10 @@ function setUpArLayer( participantState ) {
     sheep2.name = 'sheep2';
     scene.add( sheep2 );
 
+// position of child(sheep2) is relative to pivotPoint
+
    pivotPoint = new THREE.Object3D();
    pivotPoint.position.set( 2.2, 1.0, 0.2 );
-   //pivotPoint.position.set( 0.2, 0.2, 0.2 );
    scene.add(pivotPoint);
    pivotPoint.add( sheep2 );
   } );
@@ -326,9 +327,9 @@ function arConnectionController( participantState ) {
 
 // Flying sheep
   if ( sheep2 !== undefined ) {
-    pivotPoint.rotation.x += 0.0051;
+  //  pivotPoint.rotation.x += 0.0051;
     pivotPoint.rotation.y += 0.0051;
-    pivotPoint.rotation.z += 0.0051;
+  //  pivotPoint.rotation.z += 0.0051;
     }
   }
 
