@@ -160,7 +160,7 @@ function setUpArLayer( participantState ) {
   sphereW = new THREE.Mesh( geometrySphere, materialO );
 
   lampSphere = new THREE.Mesh( geometrySphere, materialO );
-  lampSphere.position.set( -6.0, 2.9, -3.0 );
+  lampSphere.position.set( -6.0, 3.9, -3.0 );
   scene.add( lampSphere );
 
   sphereN.position.set( 0.0, 0.0, 6.0 );
@@ -205,7 +205,7 @@ function setUpArLayer( participantState ) {
     scene.add( sheep2 );
 
    pivotPoint = new THREE.Object3D();
-   pivotPoint.position.set( 0.2, 0.2, 0.0 );
+   pivotPoint.position.set( 2.2, 0.9, 0.2 );
    scene.add(pivotPoint);
    pivotPoint.add( sheep2 );
   } );
