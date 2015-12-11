@@ -10,7 +10,6 @@ var pigModel;
 var pivotPoint;
 var lamp;
 var torus1;
-var counter = 0;
 
 function orientationAr( data ) {
 
@@ -162,7 +161,6 @@ function setUpArLayer( participantState ) {
   sphereW = new THREE.Mesh( geometrySphere, materialO );
 
   lampSphere = new THREE.Mesh( geometrySphere, materialO );
-  //lampSphere.position.set( -4.0, 4.4, -3.0 );
   lampSphere.position.set( -19.0, 16.0, 8.0 );
   scene.add( lampSphere );
 
@@ -222,11 +220,12 @@ loader.load( '../armodels/lamp.json', function( model ) {
 
     lamp = new THREE.Mesh( model, material );
     lamp.scale.set( 4.0, 4.0, 4.0 );
-   // lamp.position.set( -3.5, 2.0, -2.0 );
     lamp.position.set( -27.0, 16.0, 8.0 );
+
     //lamp.rotation.x = Math.PI / 2;
     //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
     //lamp.rotation.z = ( Math.PI / 2 ) * 0.3;
+
     lamp.name = 'lamp';
     scene.add( lamp );
 
@@ -262,8 +261,6 @@ loader.load( '../armodels/lamp.json', function( model ) {
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
 
-  //arSelectObjectArray.push( sheep );
-
   // Create spline for "flying pig" trajecory
 
   var numPoints = 20;
@@ -289,12 +286,10 @@ loader.load( '../armodels/lamp.json', function( model ) {
     var line = new THREE.Line( geometry, material );
     scene.add( line );
 
-
 var geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
     var box = new THREE.Mesh( geometryBox, material1 );
   box.position.set( 2.0, 0.0, 0.1 );
   scene.add( box );
-
 
 function arConnectionController( participantState ) {
 
@@ -352,10 +347,10 @@ function arConnectionController( participantState ) {
 
   //  pivotPoint.rotation.x += 0.0051;
 
-    pivotPoint.rotation.y -= 0.0051;
+    pivotPoint.rotation.y -= 0.0;
 
   //  pivotPoint.rotation.z += 0.0051;
-  }
+    }
 
   }
 
