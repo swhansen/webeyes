@@ -197,7 +197,7 @@ function setUpArLayer( participantState ) {
 
     sheep2 = new THREE.Mesh( model, material );
     sheep2.scale.set( 0.1, 0.1, 0.1 );
-    sheep2.position.set( 0.2, 0.2, 0.2 );
+    sheep2.position.set( 0.25, 0.25, 0.25 );
     sheep2.rotation.x = Math.PI / 2;
     sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
@@ -207,8 +207,9 @@ function setUpArLayer( participantState ) {
 // position of child(sheep2) is relative to pivotPoint
 
    pivotPoint = new THREE.Object3D();
-   pivotPoint.position.set( 2.2, 1.0, 0.2 );
-   scene.add(pivotPoint);
+   //pivotPoint.position.set( 2.2, 1.0, 0.2 );
+   pivotPoint.position.set( -4.0, 4.4, -3.0 );
+   scene.add( pivotPoint );
    pivotPoint.add( sheep2 );
   } );
 
@@ -259,20 +260,17 @@ function setUpArLayer( participantState ) {
     new THREE.Vector3( 2.1, 2.0, -4.0 )
   ] );
 
-  var material = new THREE.LineBasicMaterial({
-        color: 0xff00f0
-    });
+  var material = new THREE.LineBasicMaterial( { color: 0xff00f0 } );
 
   var geometry = new THREE.Geometry();
     var splinePoints = pigSpline.getPoints( numPoints );
 
-    for (var i = 0; i < splinePoints.length; i++) {
-        geometry.vertices.push(splinePoints[i]);
+    for ( var i = 0; i < splinePoints.length; i++ ) {
+        geometry.vertices.push( splinePoints[i] );
     }
 
-    var line = new THREE.Line(geometry, material);
+    var line = new THREE.Line( geometry, material );
     scene.add( line );
-
 
 function arConnectionController( participantState ) {
 
