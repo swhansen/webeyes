@@ -127,8 +127,8 @@ function setUpArLayer( participantState ) {
   arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
-  var CANVAS_WIDTH = 300,
-      CANVAS_HEIGHT = 300;
+  var CANVAS_WIDTH = 1020,
+      CANVAS_HEIGHT = 760;
 
   scene = new THREE.Scene();
 
@@ -228,7 +228,6 @@ loader.load( '../armodels/lamp.json', function( model ) {
 
     lamp.name = 'lamp';
     scene.add( lamp );
-
   } );
 
   scene.add( cube2 );
@@ -246,9 +245,9 @@ loader.load( '../armodels/lamp.json', function( model ) {
   var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
   var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
-  plane.rotation.x = -0.5 * Math.PI;
-  plane.position.set( 1.5, -0.35, -5.5 );
-  scene.add( plane );
+//  plane.rotation.x = -0.5 * Math.PI;
+//  plane.position.set( 1.5, -0.35, -5.5 );
+//  scene.add( plane );
 
 // var axisHelper = new THREE.AxisHelper( 10 );
 // axisHelper.position.set( 1.5, -0.35, -5.5 );
@@ -347,7 +346,7 @@ function arConnectionController( participantState ) {
 
   //  pivotPoint.rotation.x += 0.0051;
 
-    pivotPoint.rotation.y -= 0.0;
+    pivotPoint.rotation.y -= 0.01;
 
   //  pivotPoint.rotation.z += 0.0051;
     }
