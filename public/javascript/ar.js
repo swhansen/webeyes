@@ -304,7 +304,7 @@ var geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
    flashlight = new THREE.SpotLight(0xffffff,4,40);
 sensorDrivenCamera.add(flashlight);
 flashlight.position.set(0,0,1);
-flashlight.target = camera;
+flashlight.target = sensorCameraControls;
 
 function arConnectionController( participantState ) {
 
