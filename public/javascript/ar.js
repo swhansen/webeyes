@@ -164,10 +164,6 @@ function setUpArLayer( participantState ) {
   sphereU = new THREE.Mesh( geometrySphere, materialO );
   sphereD = new THREE.Mesh( geometrySphere, materialO );
 
-  lampSphere = new THREE.Mesh( geometrySphere, materialO );
-  lampSphere.position.set( -19.0, 16.0, 8.0 );
-  scene.add( lampSphere );
-
   sphereN.position.set( 0.0, 0.0, 6.0 );
   sphereS.position.set( 0.0, 0.0, -6.0 );
   sphereE.position.set( 6.0, 0.0, 0.0 );
@@ -181,6 +177,10 @@ function setUpArLayer( participantState ) {
   scene.add( sphereW );
   scene.add( sphereU );
   scene.add( sphereD );
+
+  lampSphere = new THREE.Mesh( geometrySphere, materialO );
+  lampSphere.position.set( -19.0, 16.0, 8.0 );
+  scene.add( lampSphere );
 
   cube1.position.set( 0.0, 0.0,  -4.0 );
   cube2.position.set( -2.0, 0.0, -6.0 );
@@ -217,7 +217,7 @@ function setUpArLayer( participantState ) {
 //  pivotPoint sets the location, object is x,y,z units from it
 
    pivotPoint = new THREE.Object3D();
-   pivotPoint.position.set( -4.0, 4.4, -3.0 );
+   pivotPoint.position.set( -6.75, 4.0, 2.0 );
    scene.add( pivotPoint );
    pivotPoint.add( sheep2 );
 
@@ -229,7 +229,8 @@ loader.load( '../armodels/lamp2.json', function( model ) {
     lamp = new THREE.Mesh( model, material );
     lamp.scale.set( 4.0, 4.0, 4.0 );
   //  lamp.position.set( -27.0, 16.0, 8.0 );
-    lamp.position.set( -13.0, 8.0, 4.0 );
+  //  lamp.position.set( -13.0, 8.0, 4.0 );
+    lamp.position.set( -6.75, 4.0, 2.0 );
 
     //lamp.rotation.x = Math.PI / 2;
     //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
@@ -249,6 +250,7 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
+
 
 // var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
 // var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
@@ -298,6 +300,11 @@ var geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
     var box = new THREE.Mesh( geometryBox, material1 );
   box.position.set( 2.0, 0.0, 0.1 );
   scene.add( box );
+
+   flashlight = new THREE.SpotLight(0xffffff,4,40);
+sensorDrivenCamera.add(flashlight);
+flashlight.position.set(0,0,1);
+flashlight.target = camera;
 
 function arConnectionController( participantState ) {
 
