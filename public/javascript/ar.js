@@ -507,10 +507,9 @@ function getFactorPos( val, factor, step )
 
 },
 
-function(e) {
-    console.log('You released before longpress duration');
-}
- );
+function( e ) {
+    console.log( 'You released before longpress duration' );
+}, 200 );
 
 function addArObject( x, y, z ) {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
