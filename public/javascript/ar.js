@@ -301,11 +301,6 @@ var geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
   box.position.set( 2.0, 0.0, 0.1 );
   scene.add( box );
 
-   flashlight = new THREE.SpotLight(0xffffff,4,40);
-sensorDrivenCamera.add(flashlight);
-flashlight.position.set(0,0,1);
-flashlight.target = sensorDrivenCamera;
-
 function arConnectionController( participantState ) {
 
 //   Based on participantState(focus or peer)
@@ -422,8 +417,11 @@ $( '#ar-canvas' ).longpress( function( event ) {
   var v1 = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
   v1.unproject( cameraDriver );
+
   var dir = v1.sub( cameraDriver.position ).normalize();
-  var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
+
+  var distance =   - cameraDriver.position.z   / dir.z;
+
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
 
   console.log( 'cameraDriver:', cameraDriver );
