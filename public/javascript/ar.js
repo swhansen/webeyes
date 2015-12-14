@@ -420,13 +420,14 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   var dir = v1.sub( cameraDriver.position ).normalize();
 
-  var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
+  //var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
 
-  var pos = cameraDriver.position.clone().add( dir.multiplyScalar( distance ) );
+  var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 4 ) );
 
   console.log( 'cameraDriver:', cameraDriver );
-  console.log( 'distance:', distance );
+  console.log( 'v1:', v1 );
   console.log( 'dir:', dir );
+  console.log( 'distance:', distance );
   console.log( 'pos:', pos );
 
       arShareData.operation = 'newObject';
