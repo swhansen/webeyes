@@ -161,6 +161,8 @@ function setUpArLayer( participantState ) {
   sphereS = new THREE.Mesh( geometrySphere, materialO );
   sphereE = new THREE.Mesh( geometrySphere, materialO );
   sphereW = new THREE.Mesh( geometrySphere, materialO );
+  sphereU = new THREE.Mesh( geometrySphere, materialO );
+  sphereD = new THREE.Mesh( geometrySphere, materialO );
 
   lampSphere = new THREE.Mesh( geometrySphere, materialO );
   lampSphere.position.set( -19.0, 16.0, 8.0 );
@@ -170,11 +172,15 @@ function setUpArLayer( participantState ) {
   sphereS.position.set( 0.0, 0.0, -6.0 );
   sphereE.position.set( 6.0, 0.0, 0.0 );
   sphereW.position.set( -6.0, 0.0, 0.0 );
+  sphereU.position.set( 0.0, 6.0, 0.0 );
+  sphereD.position.set( 0.0, -6.0, 0.0 );
 
   scene.add( sphereN );
   scene.add( sphereS );
   scene.add( sphereE );
   scene.add( sphereW );
+  scene.add( sphereU );
+  scene.add( sphereD );
 
   cube1.position.set( 0.0, 0.0,  -4.0 );
   cube2.position.set( -2.0, 0.0, -6.0 );
@@ -222,7 +228,8 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
     lamp = new THREE.Mesh( model, material );
     lamp.scale.set( 4.0, 4.0, 4.0 );
-    lamp.position.set( -27.0, 16.0, 8.0 );
+  //  lamp.position.set( -27.0, 16.0, 8.0 );
+    lamp.position.set( -13.0, 8.0, 4.0 );
 
     //lamp.rotation.x = Math.PI / 2;
     //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
