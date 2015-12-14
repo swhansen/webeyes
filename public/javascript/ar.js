@@ -136,7 +136,9 @@ function setUpArLayer( participantState ) {
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
+
   renderer.setSize( box0Width, box0Width );
+
   renderer.setClearColor( 0x000000, 0 );
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
@@ -215,7 +217,7 @@ function setUpArLayer( participantState ) {
 
   } );
 
-loader.load( '../armodels/lamp.json', function( model ) {
+loader.load( '../armodels/lamp2.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
 
     lamp = new THREE.Mesh( model, material );
@@ -241,9 +243,9 @@ loader.load( '../armodels/lamp.json', function( model ) {
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
 
-  var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
-  var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
-  var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+// var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
+// var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
+// var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
 //  plane.rotation.x = -0.5 * Math.PI;
 //  plane.position.set( 1.5, -0.35, -5.5 );
