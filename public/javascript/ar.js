@@ -98,16 +98,13 @@ function loadAr( participantState ) {
        }
 
     if ( data.operation === 'newObject' ) {
-    //  var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-    //  var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-    //  var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    //  torus1.position.set( data.x, data.y, data.z );
-    //  torus1.name = 'torus1';
-    //  scene.add( torus1 );
-    //  arSelectObjectArray.push( torus1 );
-
-      addArObject( data.x, data.y, data.z );
-
+      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+      var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+      var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
+      torus1.position.set( data.x, data.y, data.z );
+      torus1.name = 'torus1';
+      scene.add( torus1 );
+      arSelectObjectArray.push( torus1 );
       console.log( 'receiveArObject-newObject:', data );
     }
   }
@@ -400,6 +397,16 @@ function setupArInteractionEvents( participantState ) {
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
   offsetY = rect.top;
+
+
+ar0.style.width = '100%';
+  ar0.style.height = '100%';
+  ar0.width = ar0.offsetWidth;
+  ar0.height = ar0.offsetHeight;
+
+
+
+
 
   var viewWidth = ar0.width;
   var viewHeight = ar0.height;
