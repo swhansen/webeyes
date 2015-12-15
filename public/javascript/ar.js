@@ -422,6 +422,8 @@ function setupArInteractionEvents( participantState ) {
 
 $( '#ar-canvas' ).longpress( function( event ) {
 
+  console.log( 'Start Longpress' );
+
   var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
@@ -452,12 +454,15 @@ $( '#ar-canvas' ).longpress( function( event ) {
 //    addArObject( pos.x, pos.y, pos.z );
 //    emitArObject( arShareData );
 
+  console.log( 'Good Longpress' );
   addNewArObject( arShareData );
+  return false;
 
   },
 
 function( e ) {
     console.log( 'You released before longpress duration' );
+    return false;
 }, 200 );
 
 function addNewArObject( data ) {
@@ -493,6 +498,10 @@ function addArObject( x, y, z ) {
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
+    if ( intersects.length < 0 ) {
+            return;
+        }
+
 // do things with the selected object
 
     if ( intersects[0].object.name === 'knot' ) {
@@ -522,7 +531,7 @@ function addArObject( x, y, z ) {
        arShareData.color = intersects[0].object.material.color;
 
        emitArObject( arShareData );
-     return;
+      false;
     }
 
     //if ( intersects.length > 0 ) {
