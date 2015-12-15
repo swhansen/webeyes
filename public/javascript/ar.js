@@ -424,7 +424,7 @@ function setupArInteractionEvents( participantState ) {
 
 var pressTimer
 
-$("a").mouseup(function(){
+$( '#ar-canvas' ).mouseup(function(){
   clearTimeout(pressTimer)
   // Clear timeout
   return false;
