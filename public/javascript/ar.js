@@ -420,7 +420,29 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-$( '#ar-canvas' ).longpress( function( event ) {
+//$( '#ar-canvas' ).longpress( function( event ) {
+
+
+
+var onlongtouch;
+var timer;
+var touchduration = 500; //length of time we want the user to touch before we do something
+
+touchstart() {
+    timer = setTimeout(onlongtouch, touchduration);
+}
+
+touchend() {
+
+    //stops short touches from firing the event
+    if (timer)
+        clearTimeout(timer); // clearTimeout, not cleartimeout..
+}
+
+onlongtouch = function() {
+
+
+  event.preventDefault();
 
   console.log( 'Start Longpress' );
 
@@ -458,12 +480,19 @@ $( '#ar-canvas' ).longpress( function( event ) {
   addNewArObject( arShareData );
   return false;
 
-  },
+}
 
-function( e ) {
-    console.log( 'You released before longpress duration' );
-    return false;
-}, 200 );
+// },
+
+//unction( e ) {
+//   console.log( 'You released before longpress duration' );
+//   return false;
+//, 200 );
+
+
+
+
+
 
 function addNewArObject( data ) {
 
