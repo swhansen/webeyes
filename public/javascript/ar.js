@@ -423,7 +423,7 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-$( '#ar-canvas' ).on( 'taphold',  function( event ) {
+$( '#ar-canvas' ).longpress( function( event ) {
 
   var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
@@ -493,10 +493,14 @@ function getFactorPos( val, factor, step )
 
 // add the object locally and tell everyone else
 
-    addArObject( pos.x, pos.y, pos.z );
+    //addArObject( pos.x, pos.y, pos.z );
     emitArObject( arShareData );
 
-} );
+},
+
+function( e ) {
+    console.log( 'You released before longpress duration' );
+}, 200 );
 
 function addArObject( x, y, z ) {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
