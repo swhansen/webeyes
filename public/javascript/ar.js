@@ -472,7 +472,7 @@ $( '#ar-canvas' ).longpress( function( event ) {
 function( e ) {
     console.log( 'You released before longpress duration' );
     return false;
-}, 200 );
+}, 750 );
 
 function addNewArObject( data ) {
 
