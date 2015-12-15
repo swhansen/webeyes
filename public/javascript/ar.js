@@ -439,7 +439,7 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   var rayDir = new THREE.Vector3(raycaster.ray.direction.x*scale,raycaster.ray.direction.y*scale,raycaster.ray.direction.z*scale);
   var rayVector = new THREE.Vector3(cameraDriver.position.x + rayDir.x, cameraDriver.position.y + rayDir.y, cameraDriver.position.z + rayDir.z);
-  drawParticleLine(cameraDriver.position, rayVector, particleMaterialBlack);
+  drawParticleLine( cameraDriver.position, rayVector, particleMaterialBlack );
   //var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
 
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
@@ -493,15 +493,28 @@ function getFactorPos( val, factor, step )
   }
 
 // add the object locally and tell everyone else
-    console.log( 'longpress-call addArObject:', arShareData);
-    addArObject( pos.x, pos.y, pos.z );
-    emitArObject( arShareData );
+//    console.log( 'longpress-call addArObject:', arShareData);
+//    addArObject( pos.x, pos.y, pos.z );
+//    emitArObject( arShareData );
 
-},
+  addNewArObject(arShareData);
+
+  },
 
 function( e ) {
     console.log( 'You released before longpress duration' );
 }, 200 );
+
+function addNewArObject( data ) {
+
+// add the object locally and tell everyone else
+    console.log( 'longpress-call addArObject:', arShareData);
+    addArObject( data.x, data.y, data.z );
+    emitArObject( data );
+
+}
+
+
 
 function addArObject( x, y, z ) {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
