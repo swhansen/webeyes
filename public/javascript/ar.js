@@ -98,14 +98,17 @@ function loadAr( participantState ) {
        }
 
     if ( data.operation === 'newObject' ) {
-      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-      var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-      var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-      torus1.position.set( data.x, data.y, data.z );
-      torus1.name = 'torus1';
+    //  var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+    //  var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+    //  var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
+    //  torus1.position.set( data.x, data.y, data.z );
+    //  torus1.name = 'torus1';
+    //  scene.add( torus1 );
+    //  arSelectObjectArray.push( torus1 );
+
+      addArObject( data.x, data.y, data.z );
+
       console.log( 'receiveArObject-newObject:', data );
-      scene.add( torus1 );
-      arSelectObjectArray.push( torus1 );
     }
   }
 
@@ -439,8 +442,6 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   var rayDir = new THREE.Vector3(raycaster.ray.direction.x*scale,raycaster.ray.direction.y*scale,raycaster.ray.direction.z*scale);
   var rayVector = new THREE.Vector3(cameraDriver.position.x + rayDir.x, cameraDriver.position.y + rayDir.y, cameraDriver.position.z + rayDir.z);
-  drawParticleLine( cameraDriver.position, rayVector, particleMaterialBlack );
-  //var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
 
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
 
@@ -459,45 +460,12 @@ $( '#ar-canvas' ).longpress( function( event ) {
       arShareData.y = pos.y;
       arShareData.z = pos.z;
 
-function addNewParticle(pos, scale, particleMaterial)
-            {
-                if( !scale )
-                {
-                    scale = 16;
-                }
-                if( !particleMaterial )
-                {
-                    particleMaterial = particleMaterialBlack;
-                }
-                var particle = new THREE.Sprite( particleMaterial );
-                particle.position = pos;
-                particle.scale.x = particle.scale.y = scale;
-                scene.add( particle );
-            }
-
-function getFactorPos( val, factor, step )
-            {
-                return step / factor * val;
-            }
-
- function drawParticleLine(pointA,pointB,particleMaterial)
-  {
-      var factor = 50;
-      for( var i = 0; i < factor; i++ )
-      {
-          var x = getFactorPos( pointB.x - pointA.x, factor, i );
-          var y = getFactorPos( pointB.y - pointA.y, factor, i );
-          var z = getFactorPos( pointB.z - pointA.z, factor, i );
-          addNewParticle( new THREE.Vector3( pointA.x+x,pointA.y+y,pointA.z+z ), Math.max(1, window.innerWidth / 500), particleMaterial );
-      }
-  }
-
 // add the object locally and tell everyone else
 //    console.log( 'longpress-call addArObject:', arShareData);
 //    addArObject( pos.x, pos.y, pos.z );
 //    emitArObject( arShareData );
 
-  addNewArObject(arShareData);
+  addNewArObject( arShareData );
 
   },
 
@@ -513,8 +481,6 @@ function addNewArObject( data ) {
     emitArObject( data );
 
 }
-
-
 
 function addArObject( x, y, z ) {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
