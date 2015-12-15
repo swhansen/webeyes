@@ -420,14 +420,20 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-$( '#ar-canvas' ).longpress( function( event ) {
+//ar0.addEventListener
+
+var pressTimer
+
+$("a").mouseup(function(){
+  clearTimeout(pressTimer)
+  // Clear timeout
+  return false;
+}).mousedown(function(){
+  // Set timeout
+  pressTimer = window.setTimeout(function(event) {
 
 
-
-
-
-
-
+//$( '#ar-canvas' ).longpress( function( event ) {
 
   event.preventDefault();
 
@@ -463,16 +469,20 @@ $( '#ar-canvas' ).longpress( function( event ) {
 //    addArObject( pos.x, pos.y, pos.z );
 //    emitArObject( arShareData );
 
-  console.log( 'Good Longpress' );
-  addNewArObject( arShareData );
+}, 1000 )
   return false;
+} );
 
-  },
-
-function( e ) {
-    console.log( 'You released before longpress duration' );
-    return false;
-}, 750 );
+//  console.log( 'Good Longpress' );
+//  addNewArObject( arShareData );
+//  return false;
+//
+//  },
+//
+//function( e ) {
+//    console.log( 'You released before longpress duration' );
+//    return false;
+//}, 750 );
 
 function addNewArObject( data ) {
 
@@ -496,6 +506,9 @@ function addArObject( x, y, z ) {
 // Select an object
 
   ar0.addEventListener( 'click', function( event ) {
+
+    console.log( 'click event fired');
+
     event.preventDefault();
 
     var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
@@ -560,7 +573,7 @@ function addArObject( x, y, z ) {
       arShareData.rotation = intersects[0].object.rotation;
       arShareData.color = intersects[0].object.material.color;
 
-      console.log( 'arShareData:', arShareData );
+      console.log( 'clicked-arShareData:', arShareData );
 
       emitArObject( arShareData );
     }
