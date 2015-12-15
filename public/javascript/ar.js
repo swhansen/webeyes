@@ -255,13 +255,6 @@ loader.load( '../armodels/lamp2.json', function( model ) {
   scene.add( light );
 
 
-  loader.load( "armodels/knight.js", function ( geometry, materials ) {
-
-          createScene( geometry, materials, 0, FLOOR, -300, 60 )
-
-        } );
-
-
 // var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
 // var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
 // var plane = new THREE.Mesh( planeGeometry, planeMaterial );
