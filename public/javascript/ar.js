@@ -303,16 +303,7 @@ var geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
 
 var PI2 = Math.PI * 2;
         particleMaterialBlack = new THREE.SpriteMaterial( {
-
-          color: 0x000000,
-          program: function ( context ) {
-
-            context.beginPath();
-            context.arc( 0, 0, 0.5, 0, PI2, true );
-            context.fill();
-
-          }
-
+          color: 0x000000
         } );
 
 
@@ -432,7 +423,7 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-$( '#ar-canvas' ).longpress( function( event ) {
+$( '#ar-canvas' ).on( 'taphold',  function( event ) {
 
   var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
@@ -447,7 +438,7 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   var rayDir = new THREE.Vector3(raycaster.ray.direction.x*scale,raycaster.ray.direction.y*scale,raycaster.ray.direction.z*scale);
   var rayVector = new THREE.Vector3(cameraDriver.position.x + rayDir.x, cameraDriver.position.y + rayDir.y, cameraDriver.position.z + rayDir.z);
-  // drawParticleLine(cameraDriver.position, rayVector, particleMaterialBlack);
+  drawParticleLine(cameraDriver.position, rayVector, particleMaterialBlack);
   //var distance =  ( -4.0 - cameraDriver.position.z )  / dir.z;
 
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
@@ -489,27 +480,23 @@ function getFactorPos( val, factor, step )
             }
 
  function drawParticleLine(pointA,pointB,particleMaterial)
-            {
-                var factor = 50;
-                for( var i = 0; i < factor; i++ )
-                {
-                    var x = getFactorPos( pointB.x - pointA.x, factor, i );
-                    var y = getFactorPos( pointB.y - pointA.y, factor, i );
-                    var z = getFactorPos( pointB.z - pointA.z, factor, i );
-                    addNewParticle( new THREE.Vector3( pointA.x+x,pointA.y+y,pointA.z+z ), Math.max(1, window.innerWidth / 500), particleMaterial );
-                }
-            }
+  {
+      var factor = 50;
+      for( var i = 0; i < factor; i++ )
+      {
+          var x = getFactorPos( pointB.x - pointA.x, factor, i );
+          var y = getFactorPos( pointB.y - pointA.y, factor, i );
+          var z = getFactorPos( pointB.z - pointA.z, factor, i );
+          addNewParticle( new THREE.Vector3( pointA.x+x,pointA.y+y,pointA.z+z ), Math.max(1, window.innerWidth / 500), particleMaterial );
+      }
+  }
 
 // add the object locally and tell everyone else
 
     addArObject( pos.x, pos.y, pos.z );
     emitArObject( arShareData );
 
-},
-
-function( e ) {
-    console.log( 'You released before longpress duration' );
-}, 200 );
+} );
 
 function addArObject( x, y, z ) {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
