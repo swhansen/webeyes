@@ -9,7 +9,8 @@ var sheep2;
 var pigModel;
 var pivotPoint;
 var lamp;
-var torus1;
+var torus1
+var FLOOR = -250
 
 function orientationAr( data ) {
 
@@ -80,8 +81,9 @@ function loadAr( participantState ) {
 
   function receiveArObject( data ) {
 
+    console.log( 'receiveArObject:', data );
+
     if ( data.operation === 'moveObject' ) {
-      console .log( 'at moveObject recieve:', data );
 
       if ( data.name === 'sheep' ) { animateSheep = data.animate; }
 
@@ -105,7 +107,7 @@ function loadAr( participantState ) {
       torus1.name = 'torus1';
       scene.add( torus1 );
       arSelectObjectArray.push( torus1 );
-      console.log( 'receiveArObject-newObject:', data );
+
     }
   }
 
@@ -253,6 +255,13 @@ loader.load( '../armodels/lamp2.json', function( model ) {
   scene.add( light );
 
 
+  loader.load( "armodels/knight.js", function ( geometry, materials ) {
+
+          createScene( geometry, materials, 0, FLOOR, -300, 60 )
+
+        } );
+
+
 // var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
 // var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
 // var plane = new THREE.Mesh( planeGeometry, planeMaterial );
@@ -398,15 +407,10 @@ function setupArInteractionEvents( participantState ) {
   offsetX = rect.left;
   offsetY = rect.top;
 
-
   //ar0.style.width = '100%';
   //ar0.style.height = '100%';
   //ar0.width = ar0.offsetWidth;
   //ar0.height = ar0.offsetHeight;
-
-
-
-
 
   var viewWidth = ar0.width;
   var viewHeight = ar0.height;
@@ -466,10 +470,10 @@ function( e ) {
 function addNewArObject( data ) {
 
 // add the object locally and tell everyone else
-    console.log( 'longpress-call addArObject:', arShareData);
+
+    console.log( 'longpress-call addNewArbject:', arShareData);
     addArObject( data.x, data.y, data.z );
     emitArObject( data );
-
 }
 
 function addArObject( x, y, z ) {
