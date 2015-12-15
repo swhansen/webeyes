@@ -103,6 +103,7 @@ function loadAr( participantState ) {
       var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
       torus1.position.set( data.x, data.y, data.z );
       torus1.name = 'torus1';
+      console.log( 'receiveArObject-newObject:', data );
       scene.add( torus1 );
       arSelectObjectArray.push( torus1 );
     }
@@ -492,8 +493,8 @@ function getFactorPos( val, factor, step )
   }
 
 // add the object locally and tell everyone else
-
-    //addArObject( pos.x, pos.y, pos.z );
+    console.log( 'longpress-call addArObject:', arShareData);
+    addArObject( pos.x, pos.y, pos.z );
     emitArObject( arShareData );
 
 },
