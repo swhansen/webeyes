@@ -399,10 +399,10 @@ function setupArInteractionEvents( participantState ) {
   offsetY = rect.top;
 
 
-ar0.style.width = '100%';
-  ar0.style.height = '100%';
-  ar0.width = ar0.offsetWidth;
-  ar0.height = ar0.offsetHeight;
+  //ar0.style.width = '100%';
+  //ar0.style.height = '100%';
+  //ar0.width = ar0.offsetWidth;
+  //ar0.height = ar0.offsetHeight;
 
 
 
