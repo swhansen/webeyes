@@ -305,17 +305,6 @@ var geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
   box.position.set( 2.0, 0.0, 0.1 );
   scene.add( box );
 
-var PI2 = Math.PI * 2;
-        particleMaterialBlack = new THREE.SpriteMaterial( {
-          color: 0x000000
-        } );
-
-
-
-
-
-
-
 function arConnectionController( participantState ) {
 
 //   Based on participantState(focus or peer)
@@ -433,26 +422,20 @@ $( '#ar-canvas' ).longpress( function( event ) {
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
   mouse3D.unproject( cameraDriver );
-
   var dir = mouse3D.sub( cameraDriver.position ).normalize();
-
   var raycaster = new THREE.Raycaster( cameraDriver.position, mouse3D );
 
   var scale = 4.0;
 
   var rayDir = new THREE.Vector3(raycaster.ray.direction.x*scale,raycaster.ray.direction.y*scale,raycaster.ray.direction.z*scale);
   var rayVector = new THREE.Vector3(cameraDriver.position.x + rayDir.x, cameraDriver.position.y + rayDir.y, cameraDriver.position.z + rayDir.z);
-
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
-
-  addNewParticle( pos, 16, particleMaterialBlack );
 
   console.log( 'cameraDriver:', cameraDriver );
   console.log( 'mouse3D:', mouse3D );
   console.log( 'rayDir:', rayDir );
   console.log( 'rayVector:', rayVector );
   console.log( 'dir:', dir );
-  //console.log( 'distance:', distance );
   console.log( 'pos:', pos );
 
       arShareData.operation = 'newObject';
