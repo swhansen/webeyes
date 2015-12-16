@@ -256,7 +256,7 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
       //  ground.receiveShadow = true;
 
-loader.load( "../armodels/knight.js", function( geometry, materials ) {
+loader.load( '../armodels/knight.js', function( geometry, materials ) {
           createScene( geometry, materials, 0, -10.0, 75.0, 3.0 );
         } );
 
@@ -286,6 +286,7 @@ function createScene( geometry, materials, x, y, z, s ) {
         mesh = new THREE.SkinnedMesh( geometry, new THREE.MeshFaceMaterial( materials ) );
         mesh.position.set( x, y - bb.min.y * s, z );
         mesh.scale.set( s, s, s );
+        mesh.rotation.y =  -Math.PI/2;
         scene.add( mesh );
 
         mesh.castShadow = true;
