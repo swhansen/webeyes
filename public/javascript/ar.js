@@ -9,8 +9,8 @@ var sheep2;
 var pigModel;
 var pivotPoint;
 var lamp;
-var torus1
-var FLOOR = -250
+var torus1;
+var FLOOR = -10;
 
 function orientationAr( data ) {
 
@@ -251,11 +251,11 @@ loader.load( '../armodels/lamp2.json', function( model ) {
         var material = new THREE.MeshPhongMaterial( { emissive: 0x888888 } );
 
         var ground = new THREE.Mesh( geometry, material );
-        ground.position.set( 0, FLOOR, 0 );
+        ground.position.set( 0, 10, -2.0 );
         ground.rotation.x = -Math.PI/2;
-        scene.add( ground );
+       // scene.add( ground );
 
-        ground.receiveShadow = true;
+      //  ground.receiveShadow = true;
 
 loader.load( "../armodels/knight.js", function ( geometry, materials ) {
 
@@ -322,9 +322,6 @@ console.log( 'at createScene' );
         mixer.addAction( new THREE.AnimationAction( clipMorpher ) );
         mixer.addAction( new THREE.AnimationAction( clipBones ) );
       }
-
-
-
 
 
 
