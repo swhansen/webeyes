@@ -5,7 +5,7 @@ var animateSheep = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
-var sheep2;
+var flyingPig;
 var pigModel;
 var pivotPoint;
 var lamp;
@@ -207,21 +207,21 @@ function setUpArLayer( participantState ) {
     scene.add( sheep );
     arSelectObjectArray.push( sheep );
 
-    sheep2 = new THREE.Mesh( model, material );
-    sheep2.scale.set( 0.1, 0.1, 0.1 );
-    sheep2.position.set( 0.9, 0.9, 0.9 );
-    sheep2.rotation.x = Math.PI / 2;
-    sheep2.rotation.y = ( Math.PI / 2 ) * 0.5;
-    sheep2.rotation.z = ( Math.PI / 2 ) * 0.3;
-    sheep2.name = 'sheep2';
-    scene.add( sheep2 );
+    flyingPig = new THREE.Mesh( model, material );
+    flyingPig.scale.set( 0.1, 0.1, 0.1 );
+    flyingPig.position.set( 0.9, 0.9, 0.9 );
+    flyingPig.rotation.x = Math.PI / 2;
+    flyingPig.rotation.y = ( Math.PI / 2 ) * 0.5;
+    flyingPig.rotation.z = ( Math.PI / 2 ) * 0.3;
+    flyingPig.name = 'flyingPig';
+    scene.add( flyingPig );
 
-// note: position of child(sheep2) is relative to pivotPoint
+// note: position of child(flyingPig) is relative to pivotPoint
 
    pivotPoint = new THREE.Object3D();
    pivotPoint.position.set( -6.75, 4.0, 2.0 );
    scene.add( pivotPoint );
-   pivotPoint.add( sheep2 );
+   pivotPoint.add( flyingPig );
 
   } );
 
@@ -395,7 +395,7 @@ function arConnectionController( participantState ) {
     }
 
 // Flying  Pig
-  if ( sheep2 !== undefined ) {
+  if ( flyingPig !== undefined ) {
     pivotPoint.rotation.y -= 0.01;
     }
 
@@ -405,7 +405,6 @@ function arConnectionController( participantState ) {
           mixer.update( dt );
           helper.update();
         }
-
   }
 
   function connectToDeviceSensors() {
