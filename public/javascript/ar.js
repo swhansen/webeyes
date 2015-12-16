@@ -216,8 +216,7 @@ function setUpArLayer( participantState ) {
     sheep2.name = 'sheep2';
     scene.add( sheep2 );
 
-// position of child(sheep2) is relative to pivotPoint
-//  pivotPoint sets the location, object is x,y,z units from it
+// note: position of child(sheep2) is relative to pivotPoint
 
    pivotPoint = new THREE.Object3D();
    pivotPoint.position.set( -6.75, 4.0, 2.0 );
@@ -226,15 +225,11 @@ function setUpArLayer( participantState ) {
 
   } );
 
-loader.load( '../armodels/lamp2.json', function( model ) {
+  loader.load( '../armodels/lamp2.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
 
     lamp = new THREE.Mesh( model, material );
     lamp.scale.set( 4.0, 4.0, 4.0 );
-
-  //  lamp.position.set( -27.0, 16.0, 8.0 );
-  //  lamp.position.set( -13.0, 8.0, 4.0 );
-
     lamp.position.set( -6.75, 4.0, 2.0 );
 
     //lamp.rotation.x = Math.PI / 2;
@@ -243,38 +238,18 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
     lamp.name = 'lamp';
     scene.add( lamp );
-  } );
+    } );
 
 // Sword guy
 
-// ground plane
-
-//      var geometry = new THREE.PlaneBufferGeometry( 16000, 16000 );
-//      var material = new THREE.MeshPhongMaterial( { emissive: 0x888888 } );
-//      var ground = new THREE.Mesh( geometry, material );
-//      ground.position.set( 0, 10, -2.0 );
-//      ground.rotation.x = -Math.PI/2;
-//      scene.add( ground );
-//      ground.receiveShadow = true;
-
-loader.load( '../armodels/knight.js', function( geometry, materials ) {
-          createScene( geometry, materials, 0, -15.0, 65.0, 3.0 );
+  loader.load( '../armodels/knight.js', function( geometry, materials ) {
+          createSwordGuy( geometry, materials, 0, -15.0, 65.0, 3.0 );
         } );
 
-  function createScene( geometry, materials, x, y, z, s ) {
-
-        //ensureLoop( geometry.animation );
+  function createSwordGuy( geometry, materials, x, y, z, s ) {
 
         geometry.computeBoundingBox();
         var bb = geometry.boundingBox;
-
-     //  var path = "textures/cube/Park2/";
-     //  var format = '.jpg';
-     //  var urls = [
-     //      path + 'posx' + format, path + 'negx' + format,
-     //      path + 'posy' + format, path + 'negy' + format,
-     //      path + 'posz' + format, path + 'negz' + format
-     //    ];
 
         for ( var i = 0; i < materials.length; i++ ) {
           var m = materials[ i ];
@@ -501,14 +476,17 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   var scale = 4.0;
 
-  var rayDir = new THREE.Vector3(raycaster.ray.direction.x*scale,raycaster.ray.direction.y*scale,raycaster.ray.direction.z*scale);
-  var rayVector = new THREE.Vector3(cameraDriver.position.x + rayDir.x, cameraDriver.position.y + rayDir.y, cameraDriver.position.z + rayDir.z);
+  //var rayDir = new THREE.Vector3(raycaster.ray.direction.x*scale,raycaster.ray.direction.y*scale,raycaster.ray.direction.z*scale);
+ // var rayVector = new THREE.Vector3(cameraDriver.position.x + rayDir.x, cameraDriver.position.y + rayDir.y, cameraDriver.position.z + rayDir.z);
+
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
 
   console.log( 'cameraDriver:', cameraDriver );
   console.log( 'mouse3D:', mouse3D );
-  console.log( 'rayDir:', rayDir );
-  console.log( 'rayVector:', rayVector );
+
+//  console.log( 'rayDir:', rayDir );
+//  console.log( 'rayVector:', rayVector );
+
   console.log( 'dir:', dir );
   console.log( 'pos:', pos );
 
@@ -537,7 +515,7 @@ function addNewArObject( data ) {
 
 // add the object locally and tell everyone else
 
-    console.log( 'longpress-call addNewArbject:', arShareData);
+    console.log( 'longpress-call addNewArbject:', arShareData );
     addArObject( data.x, data.y, data.z );
     emitArObject( data );
 }
