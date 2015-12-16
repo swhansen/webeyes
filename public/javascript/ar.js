@@ -10,6 +10,7 @@ var pigModel;
 var pivotPoint;
 var lamp;
 var torus1;
+var mixer;
 
 function orientationAr( data ) {
 
