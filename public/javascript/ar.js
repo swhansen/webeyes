@@ -231,8 +231,10 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
     lamp = new THREE.Mesh( model, material );
     lamp.scale.set( 4.0, 4.0, 4.0 );
+
   //  lamp.position.set( -27.0, 16.0, 8.0 );
   //  lamp.position.set( -13.0, 8.0, 4.0 );
+
     lamp.position.set( -6.75, 4.0, 2.0 );
 
     //lamp.rotation.x = Math.PI / 2;
@@ -245,7 +247,7 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
 // Sword guy
 
-// GROUND
+// ground plane
 
 //      var geometry = new THREE.PlaneBufferGeometry( 16000, 16000 );
 //      var material = new THREE.MeshPhongMaterial( { emissive: 0x888888 } );
@@ -259,7 +261,7 @@ loader.load( '../armodels/knight.js', function( geometry, materials ) {
           createScene( geometry, materials, 0, -15.0, 65.0, 3.0 );
         } );
 
-function createScene( geometry, materials, x, y, z, s ) {
+  function createScene( geometry, materials, x, y, z, s ) {
 
         //ensureLoop( geometry.animation );
 
@@ -274,7 +276,7 @@ function createScene( geometry, materials, x, y, z, s ) {
      //      path + 'posz' + format, path + 'negz' + format
      //    ];
 
-        for ( var i = 0; i < materials.length; i ++ ) {
+        for ( var i = 0; i < materials.length; i++ ) {
           var m = materials[ i ];
           m.skinning = true;
           m.morphTargets = true;
@@ -288,8 +290,8 @@ function createScene( geometry, materials, x, y, z, s ) {
         mesh.rotation.y =  -Math.PI;
         scene.add( mesh );
 
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
+     //   mesh.castShadow = true;
+     //   mesh.receiveShadow = true;
 
         helper = new THREE.SkeletonHelper( mesh );
         helper.material.linewidth = 3;
@@ -304,7 +306,6 @@ function createScene( geometry, materials, x, y, z, s ) {
         mixer.addAction( new THREE.AnimationAction( clipBones ) );
       }
 
-
   scene.add( cube2 );
   scene.add( sphere );
   scene.add( knot );
@@ -316,6 +317,7 @@ function createScene( geometry, materials, x, y, z, s ) {
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
 
+// Orietation plane and axis
 
 // var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
 // var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
@@ -422,7 +424,9 @@ function arConnectionController( participantState ) {
     pivotPoint.rotation.y -= 0.01;
     }
 
-    if( mixer ) {
+// Sword Guy
+
+    if ( mixer ) {
           mixer.update( dt );
           helper.update();
         }
@@ -552,7 +556,7 @@ function addArObject( x, y, z ) {
 
   ar0.addEventListener( 'click', function( event ) {
 
-    console.log( 'click event fired');
+    console.log( 'click event fired' );
 
     event.preventDefault();
 
