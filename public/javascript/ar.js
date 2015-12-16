@@ -287,7 +287,7 @@ function createScene( geometry, materials, x, y, z, s ) {
         mesh = new THREE.SkinnedMesh( geometry, new THREE.MeshFaceMaterial( materials ) );
         mesh.position.set( x, y - bb.min.y * s, z );
         mesh.scale.set( s, s, s );
-        mesh.rotation.y =  -Math.PI/2;
+        mesh.rotation.y =  -Math.PI;
         scene.add( mesh );
 
         mesh.castShadow = true;
