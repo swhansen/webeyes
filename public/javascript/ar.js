@@ -243,6 +243,87 @@ loader.load( '../armodels/lamp2.json', function( model ) {
     scene.add( lamp );
   } );
 
+// sword guy
+
+loader.load( "../knight.js", function ( geometry, materials ) {
+
+          createScene( geometry, materials, 0, FLOOR, -300, 60 )
+
+        } );
+
+function createScene( geometry, materials, x, y, z, s ) {
+
+        //ensureLoop( geometry.animation );
+
+        geometry.computeBoundingBox();
+        var bb = geometry.boundingBox;
+
+     //  var path = "textures/cube/Park2/";
+     //  var format = '.jpg';
+     //  var urls = [
+     //      path + 'posx' + format, path + 'negx' + format,
+     //      path + 'posy' + format, path + 'negy' + format,
+     //      path + 'posz' + format, path + 'negz' + format
+     //    ];
+
+        for ( var i = 0; i < materials.length; i ++ ) {
+
+          var m = materials[ i ];
+          m.skinning = true;
+          m.morphTargets = true;
+
+          m.specular.setHSL( 0, 0, 0.1 );
+
+          m.color.setHSL( 0.6, 0, 0.6 );
+
+          //m.map = map;
+          //m.envMap = envMap;
+          //m.bumpMap = bumpMap;
+          //m.bumpScale = 2;
+
+          //m.combine = THREE.MixOperation;
+          //m.reflectivity = 0.75;
+
+        }
+
+        mesh = new THREE.SkinnedMesh( geometry, new THREE.MeshFaceMaterial( materials ) );
+        mesh.position.set( x, y - bb.min.y * s, z );
+        mesh.scale.set( s, s, s );
+        scene.add( mesh );
+
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+
+        helper = new THREE.SkeletonHelper( mesh );
+        helper.material.linewidth = 3;
+        helper.visible = false;
+        scene.add( helper );
+
+
+        var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', mesh.geometry.morphTargets, 3 );
+        var clipBones = geometry.animations[0];
+
+        mixer = new THREE.AnimationMixer( mesh );
+        mixer.addAction( new THREE.AnimationAction( clipMorpher ) );
+        mixer.addAction( new THREE.AnimationAction( clipBones ) );
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   scene.add( cube2 );
   scene.add( sphere );
   scene.add( knot );
@@ -420,20 +501,7 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-//ar0.addEventListener
-
-var pressTimer
-
-$( '#ar-canvas' ).mouseup(function(event){
-  clearTimeout(pressTimer)
-  // Clear timeout
-  return false;
-}).mousedown(function(event){
-  // Set timeout
-  pressTimer = window.setTimeout(function(event) {
-
-
-//$( '#ar-canvas' ).longpress( function( event ) {
+$( '#ar-canvas' ).longpress( function( event ) {
 
   event.preventDefault();
 
@@ -469,20 +537,16 @@ $( '#ar-canvas' ).mouseup(function(event){
 //    addArObject( pos.x, pos.y, pos.z );
 //    emitArObject( arShareData );
 
-}, 1000 )
+  console.log( 'Good Longpress' );
+  addNewArObject( arShareData );
   return false;
-} );
 
-//  console.log( 'Good Longpress' );
-//  addNewArObject( arShareData );
-//  return false;
-//
-//  },
-//
-//function( e ) {
-//    console.log( 'You released before longpress duration' );
-//    return false;
-//}, 750 );
+  },
+
+function( e ) {
+    console.log( 'You released before longpress duration' );
+    return false;
+}, 750 );
 
 function addNewArObject( data ) {
 
