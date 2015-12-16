@@ -10,7 +10,6 @@ var pigModel;
 var pivotPoint;
 var lamp;
 var torus1;
-var FLOOR = -10;
 
 function orientationAr( data ) {
 
@@ -259,7 +258,7 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
 loader.load( "../armodels/knight.js", function ( geometry, materials ) {
 
-          createScene( geometry, materials, 0, FLOOR, -10, 3 )
+          createScene( geometry, materials, 0, -10.0, -30, 3 )
 
           console.log( ' loaded knight' );
 
