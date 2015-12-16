@@ -242,7 +242,7 @@ loader.load( '../armodels/lamp2.json', function( model ) {
     scene.add( lamp );
   } );
 
-// sword guy
+// Sword guy
 
 // GROUND
 
@@ -256,17 +256,12 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
       //  ground.receiveShadow = true;
 
-loader.load( "../armodels/knight.js", function ( geometry, materials ) {
-
-          createScene( geometry, materials, 0, -10.0, -30, 3 )
-
-          console.log( ' loaded knight' );
-
+loader.load( "../armodels/knight.js", function( geometry, materials ) {
+          createScene( geometry, materials, 0, -10.0, -100.0, 3.0 )
         } );
 
 function createScene( geometry, materials, x, y, z, s ) {
 
-console.log( 'at createScene' );
         //ensureLoop( geometry.animation );
 
         geometry.computeBoundingBox();
@@ -281,23 +276,11 @@ console.log( 'at createScene' );
      //    ];
 
         for ( var i = 0; i < materials.length; i ++ ) {
-
           var m = materials[ i ];
           m.skinning = true;
           m.morphTargets = true;
-
           m.specular.setHSL( 0, 0, 0.1 );
-
           m.color.setHSL( 0.6, 0, 0.6 );
-
-          //m.map = map;
-          //m.envMap = envMap;
-          //m.bumpMap = bumpMap;
-          //m.bumpScale = 2;
-
-          //m.combine = THREE.MixOperation;
-          //m.reflectivity = 0.75;
-
         }
 
         mesh = new THREE.SkinnedMesh( geometry, new THREE.MeshFaceMaterial( materials ) );
@@ -313,7 +296,6 @@ console.log( 'at createScene' );
         helper.visible = false;
         scene.add( helper );
 
-
         var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', mesh.geometry.morphTargets, 3 );
         var clipBones = geometry.animations[0];
 
@@ -321,18 +303,6 @@ console.log( 'at createScene' );
         mixer.addAction( new THREE.AnimationAction( clipMorpher ) );
         mixer.addAction( new THREE.AnimationAction( clipBones ) );
       }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   scene.add( cube2 );
