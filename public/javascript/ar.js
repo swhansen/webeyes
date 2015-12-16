@@ -247,18 +247,16 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
 // GROUND
 
-        var geometry = new THREE.PlaneBufferGeometry( 16000, 16000 );
-        var material = new THREE.MeshPhongMaterial( { emissive: 0x888888 } );
-
-        var ground = new THREE.Mesh( geometry, material );
-        ground.position.set( 0, 10, -2.0 );
-        ground.rotation.x = -Math.PI/2;
-       // scene.add( ground );
-
-      //  ground.receiveShadow = true;
+//      var geometry = new THREE.PlaneBufferGeometry( 16000, 16000 );
+//      var material = new THREE.MeshPhongMaterial( { emissive: 0x888888 } );
+//      var ground = new THREE.Mesh( geometry, material );
+//      ground.position.set( 0, 10, -2.0 );
+//      ground.rotation.x = -Math.PI/2;
+//      scene.add( ground );
+//      ground.receiveShadow = true;
 
 loader.load( '../armodels/knight.js', function( geometry, materials ) {
-          createScene( geometry, materials, 0, -10.0, 65.0, 3.0 );
+          createScene( geometry, materials, 0, -15.0, 65.0, 3.0 );
         } );
 
 function createScene( geometry, materials, x, y, z, s ) {
