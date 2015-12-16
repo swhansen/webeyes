@@ -257,7 +257,7 @@ loader.load( '../armodels/lamp2.json', function( model ) {
       //  ground.receiveShadow = true;
 
 loader.load( '../armodels/knight.js', function( geometry, materials ) {
-          createScene( geometry, materials, 0, -10.0, 75.0, 3.0 );
+          createScene( geometry, materials, 0, -10.0, 65.0, 3.0 );
         } );
 
 function createScene( geometry, materials, x, y, z, s ) {
@@ -420,13 +420,13 @@ function arConnectionController( participantState ) {
 
 // Flying  Pig
   if ( sheep2 !== undefined ) {
-
-  //  pivotPoint.rotation.x += 0.0051;
-
     pivotPoint.rotation.y -= 0.01;
-
-  //  pivotPoint.rotation.z += 0.0051;
     }
+
+    if( mixer ) {
+          mixer.update( dt );
+          helper.update();
+        }
 
   }
 
