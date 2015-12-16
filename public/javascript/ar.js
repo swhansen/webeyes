@@ -245,14 +245,29 @@ loader.load( '../armodels/lamp2.json', function( model ) {
 
 // sword guy
 
-loader.load( "../knight.js", function ( geometry, materials ) {
+// GROUND
 
-          createScene( geometry, materials, 0, FLOOR, -300, 60 )
+        var geometry = new THREE.PlaneBufferGeometry( 16000, 16000 );
+        var material = new THREE.MeshPhongMaterial( { emissive: 0x888888 } );
+
+        var ground = new THREE.Mesh( geometry, material );
+        ground.position.set( 0, FLOOR, 0 );
+        ground.rotation.x = -Math.PI/2;
+        scene.add( ground );
+
+        ground.receiveShadow = true;
+
+loader.load( "../armodels/knight.js", function ( geometry, materials ) {
+
+          createScene( geometry, materials, 0, FLOOR, -10, 3 )
+
+          console.log( ' loaded knight' );
 
         } );
 
 function createScene( geometry, materials, x, y, z, s ) {
 
+console.log( 'at createScene' );
         //ensureLoop( geometry.animation );
 
         geometry.computeBoundingBox();
