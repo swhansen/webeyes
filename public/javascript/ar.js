@@ -579,7 +579,7 @@ function addArObject( x, y, z ) {
 
        arShareData.animate = animateSheep;
 
-       arShareData.operation = 'animateSelectedObjectObject';
+       arShareData.operation = 'animateSelectedObject';
        arShareData.name = intersects[0].object.name;
        arShareData.x = intersects[0].object.position.x;
        arShareData.y = intersects[0].object.position.y;
