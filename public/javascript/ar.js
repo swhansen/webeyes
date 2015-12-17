@@ -87,8 +87,6 @@ function loadAr( participantState ) {
 
     if ( data.operation === 'moveObject' ) {
 
-      if ( data.name === 'sheep' ) { animateSheep = data.animate; }
-
        var arObject = scene.getObjectByName( data.name );
            arObject.position.x = data.position.x;
            arObject.position.y = data.position.y;
@@ -112,7 +110,8 @@ function loadAr( participantState ) {
     }
 
     if ( data.operation === 'animateSelectedObject' ) {
-      console.log( 'animateSelected:', data );
+      console.log( 'animateSelectedObject:', data );
+      if ( data.name === 'sheep' ) { animateSheep = data.animate; }
     }
 
   }
@@ -580,7 +579,7 @@ function addArObject( x, y, z ) {
 
        arShareData.animate = animateSheep;
 
-       arShareData.operation = 'animateObject';
+       arShareData.operation = 'animateSelectedObjectObject';
        arShareData.name = intersects[0].object.name;
        arShareData.x = intersects[0].object.position.x;
        arShareData.y = intersects[0].object.position.y;
