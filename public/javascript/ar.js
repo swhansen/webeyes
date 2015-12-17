@@ -4,6 +4,7 @@ var arDeviceOrientation = {};
 var arSelectObjectArray = [];
 var animateZ = false;
 var animateSheep = false;
+var animateSwordGuy = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
@@ -112,6 +113,7 @@ function loadAr( participantState ) {
     if ( data.operation === 'animateSelectedObject' ) {
       console.log( 'animateSelectedObject:', data );
       if ( data.name === 'sheep' ) { animateSheep = data.animate; }
+      if ( data.name === 'swordGuy' ) { animateSwordGuy = data.animate; }
     }
 
   }
@@ -410,11 +412,12 @@ function arConnectionController( participantState ) {
     }
 
 // Sword Guy
-
+  if ( animateSwordGuy === true )
     if ( mixer ) {
           mixer.update( dt );
           helper.update();
         }
+      }
   }
 
   function connectToDeviceSensors() {
@@ -591,6 +594,14 @@ function addArObject( x, y, z ) {
        emitArObject( arShareData );
       false;
     }
+
+    if ( !animateSwordGuy ) {
+      arShareData.operation = 'animateSelectedObjectimateSelected';
+      arShareData.name = intersects[0].object.name;
+      emitArObject( arShareData );
+    false;
+    }
+
 
     //if ( intersects.length > 0 ) {
 
