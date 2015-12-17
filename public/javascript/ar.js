@@ -99,7 +99,7 @@ function loadAr( participantState ) {
            arObject.rotation.z = data.rotation._z;
 
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-       }
+    }
 
     if ( data.operation === 'newObject' ) {
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
@@ -110,6 +110,11 @@ function loadAr( participantState ) {
       scene.add( torus1 );
       arSelectObjectArray.push( torus1 );
     }
+
+    if ( data.operation === 'animateSelectedObject' ) {
+      console.log( 'animateSelected:', data );
+    }
+
   }
 
 function setUpArLayer( participantState ) {
@@ -276,7 +281,8 @@ function setUpArLayer( participantState ) {
         helper.visible = false;
         scene.add( helper );
 
-        var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
+        var clipMorpher =
+        THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
         var clipBones = geometry.animations[0];
 
         mixer = new THREE.AnimationMixer( swordGuyMesh );
@@ -574,7 +580,7 @@ function addArObject( x, y, z ) {
 
        arShareData.animate = animateSheep;
 
-       arShareData.operation = 'moveObject';
+       arShareData.operation = 'animateObject';
        arShareData.name = intersects[0].object.name;
        arShareData.x = intersects[0].object.position.x;
        arShareData.y = intersects[0].object.position.y;
