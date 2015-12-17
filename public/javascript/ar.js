@@ -1,3 +1,5 @@
+
+
 var arDeviceOrientation = {};
 var arSelectObjectArray = [];
 var animateZ = false;
@@ -127,8 +129,9 @@ function setUpArLayer( participantState ) {
   ar0.height = ar0.offsetHeight;
 
   arCanvas.style.visibility = 'visible';
-  arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
-  arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
+
+  //arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
+  //arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
   var CANVAS_WIDTH = 300,
       CANVAS_HEIGHT = 300;
