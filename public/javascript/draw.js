@@ -170,7 +170,7 @@ function toolPencil() {
       lastx = data.x;
       lasty = data.y;
       data.pointerState = 'pointerMove';
-      console.log( 'Mouse Move:', dataEnabled );
+      console.log( 'Mouse Move:', data );
       emitDraw( data );
       }
     }
