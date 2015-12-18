@@ -574,6 +574,7 @@ function addArObject( x, y, z ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      }
 
+
 // you need all the oritation data to show where it stopped on click
 
        arShareData.animate = animateSheep;
@@ -593,9 +594,13 @@ function addArObject( x, y, z ) {
 
     if ( intersects[0].object.name === 'swordGuy' ) {
       console.log( 'Selected swordGuy' );
+      animateSwordGuy = !animateSwordGuy;
+      arShareData.animate = animateSwordGuy;
+       arShareData.operation = 'animateSelectedObject';
+       arShareData.name = intersects[0].object.name;
     }
 
-     animateSheep = !animateSheep;
+    // animateSheep = !animateSheep;
 
     //if ( intersects.length > 0 ) {
 
