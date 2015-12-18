@@ -8,6 +8,7 @@ var lineArray  = [];
 var fade       = false;
 var fadeTimer;
 var fadeSwitch = true;
+var drawPixCartScale = 10;
 
 function baseLineStyle() {
   context.lineWidth = 2;
@@ -127,11 +128,6 @@ function receiveLineFromClient( data ) {
   }
 }
 
-//function animate(){
-//        requestAnimationFrame(animate);
-//        drawCanvaslineArray();
-//    }
-
 // socket.io communication
 
 function emitDraw( data ) {
@@ -163,19 +159,19 @@ function toolPencil() {
       data.x = Math.round( ev._x );
       data.y = Math.round( ev._y );
 
-    d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
-    if ( d < 20 ) {
-      data.x = lastx;
-      data.y = lasty;
+   d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
+    if ( d < drawPixCartScale ) {
+     // data.x = lastx;
+    //  data.y = lasty;
       console.log( 'Small Mouse move:', d );
-    }
-   lastx = data.x;
+      } else {
+      data.pointerState = 'pointerMove';
+      console.log( 'pointerMove x:', data.x );
+      emitDraw( data );
+      }
+  }
+    lastx = data.x;
     lasty = data.y;
-
-    data.pointerState = 'pointerMove';
-    emitDraw( data );
-
-    }
   };
 
   this.mouseup = function() {
@@ -224,17 +220,33 @@ function touchStartHandler( e ) {
   }
 
 function touchMoveHandler( e ) {
+   var lastx = 0;
+  var lasty = 0;
+  var d;
   e.preventDefault();
   if ( tool.started ) {
     var touches = e.touches.item( 0 );
     var canvasLocation = canvas.getBoundingClientRect();
     data.x = Math.round( touches.clientX - canvasLocation.left );
     data.y = Math.round( touches.clientY - canvasLocation.top );
-    data.pointerState = 'pointerMove';
 
-    emitDraw( data );
+    d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
+    if ( d < drawPixCartScale ) {
+     // data.x = lastx;
+    //  data.y = lasty;
+      console.log( 'Small Mouse move:', d );
+      } else {
+      data.pointerState = 'pointerMove';
+      console.log( 'x-move:', datax );
+      emitDraw( data );
+      }
   }
-}
+
+    lastx = data.x;
+    lasty = data.y;
+
+  }
+
 
   function touchEndHandler( e ) {
     e.preventDefault();
