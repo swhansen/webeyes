@@ -167,8 +167,7 @@ function toolPencil() {
      // data.x = lastx;
     //  data.y = lasty;
       data.pointerState = 'hold';
-
-      console.log( 'Small Mouse move:', d );
+      console.log( 'Small Mouse move:', d, data );
       } else {
       lastx = data.x;
       lasty = data.y;
@@ -239,7 +238,8 @@ function touchMoveHandler( e ) {
     if ( d < drawPixCartScale ) {
      // data.x = lastx;
     //  data.y = lasty;
-      console.log( 'Small Mouse move:', d );
+    data.pointerState = 'hold';
+      console.log( 'Small Touch move:', d, data );
       } else {
       lastx = data.x;
       lasty = data.y;
