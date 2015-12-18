@@ -401,7 +401,7 @@ function arConnectionController( participantState ) {
 
 // Flying  Pig
   if ( flyingPig !== undefined ) {
-    pivotPoint.rotation.y -= 0.01;
+    pivotPoint.rotation.y += step * 1;
     }
 
 // Sword Guy
