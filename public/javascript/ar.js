@@ -579,7 +579,6 @@ function addArObject( x, y, z ) {
 // you need all the oritation data to show where it stopped on click
 
        arShareData.animate = animateSheep;
-
        arShareData.operation = 'animateSelectedObject';
        arShareData.name = intersects[0].object.name;
        arShareData.x = intersects[0].object.position.x;
@@ -596,9 +595,12 @@ function addArObject( x, y, z ) {
     if ( intersects[0].object.name === 'swordGuy' ) {
       console.log( 'Selected swordGuy' );
       animateSwordGuy = !animateSwordGuy;
+
       arShareData.animate = animateSwordGuy;
-       arShareData.operation = 'animateSelectedObject';
-       arShareData.name = intersects[0].object.name;
+      arShareData.operation = 'animateSelectedObject';
+      arShareData.name = intersects[0].object.name;
+
+      emitArObject( arShareData );
     }
 
     // animateSheep = !animateSheep;
