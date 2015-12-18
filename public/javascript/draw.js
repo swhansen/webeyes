@@ -146,6 +146,9 @@ socketServer.on( 'drawLine', function( data ) {
 //handlers for mouse events, 'emit' to the server
 
 function toolPencil() {
+  var lastx = 0;
+  var lasty = 0;
+  var d;
   var tool = this;
   this.started = false;
 
@@ -159,8 +162,19 @@ function toolPencil() {
     if ( tool.started ) {
       data.x = Math.round( ev._x );
       data.y = Math.round( ev._y );
-      data.pointerState = 'pointerMove';
-      emitDraw( data );
+
+    d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
+    if ( d < 20 ) {
+      data.x = lastx;
+      data.y = lasty;
+      console.log( 'Small Mouse move:', d );
+    }
+   lastx = data.x;
+    lasty = data.y;
+
+    data.pointerState = 'pointerMove';
+    emitDraw( data );
+
     }
   };
 
