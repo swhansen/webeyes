@@ -254,7 +254,6 @@ function touchMoveHandler( e ) {
     e.preventDefault();
     if ( tool.started ) {
       data.pointerState = 'pointerUp';
-
       emitDraw( data );
       tool.started = false;
     }
