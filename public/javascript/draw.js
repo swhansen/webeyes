@@ -165,13 +165,13 @@ function toolPencil() {
     //  data.y = lasty;
       console.log( 'Small Mouse move:', d );
       } else {
+      lastx = data.x;
+      lasty = data.y;
       data.pointerState = 'pointerMove';
       console.log( 'pointerMove x:', data.x );
       emitDraw( data );
       }
   }
-    lastx = data.x;
-    lasty = data.y;
   };
 
   this.mouseup = function() {
@@ -236,14 +236,14 @@ function touchMoveHandler( e ) {
     //  data.y = lasty;
       console.log( 'Small Mouse move:', d );
       } else {
+      lastx = data.x;
+      lasty = data.y;
       data.pointerState = 'pointerMove';
       console.log( 'x-move:', datax );
       emitDraw( data );
       }
   }
 
-    lastx = data.x;
-    lasty = data.y;
 
   }
 
