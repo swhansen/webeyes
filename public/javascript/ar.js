@@ -113,6 +113,7 @@ function loadAr( participantState ) {
     if ( data.operation === 'animateSelectedObject' ) {
       console.log( 'animateSelectedObject:', data );
       if ( data.name === 'sheep' ) { animateSheep = data.animate; }
+      if ( data.name === 'swordGuy' ) { animateSwordGuy = data.animate; }
     }
 
   }
