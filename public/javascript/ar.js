@@ -396,12 +396,12 @@ function arConnectionController( participantState ) {
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
     if ( animateSheep === true ) {
-      sheep.rotation.z += 0.02;
+      sheep.rotation.z += dt * 2;
     }
 
 // Flying  Pig
   if ( flyingPig !== undefined ) {
-    pivotPoint.rotation.y += dt * 0.1;
+    pivotPoint.rotation.y += dt * 1.0;
     }
 
 // Sword Guy
