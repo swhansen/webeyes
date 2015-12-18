@@ -125,7 +125,9 @@ function receiveLineFromClient( data ) {
       fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 100 );
     }
       break;
-  }
+    case 'hold':
+    break;
+    }
 }
 
 // socket.io communication
@@ -164,6 +166,7 @@ function toolPencil() {
 
      // data.x = lastx;
     //  data.y = lasty;
+      data.pointerState = 'hold';
 
       console.log( 'Small Mouse move:', d );
       } else {
