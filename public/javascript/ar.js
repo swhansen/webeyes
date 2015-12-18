@@ -4,6 +4,7 @@ var arDeviceOrientation = {};
 var arSelectObjectArray = [];
 var animateZ = false;
 var animateSheep = false;
+var animateSwordGuy = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
@@ -203,7 +204,7 @@ function setUpArLayer( participantState ) {
   loader.load( '../armodels/sheep3.json', function( model ) {
     var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
 
-   sheep = new THREE.Mesh( model, material );
+    sheep = new THREE.Mesh( model, material );
     sheep.scale.set( 0.1, 0.1, 0.1 );
     sheep.position.set( -2.0, -0.4, 0.0 );
     sheep.rotation.x = Math.PI / 2;
@@ -253,10 +254,8 @@ function setUpArLayer( participantState ) {
         } );
 
   function createSwordGuy( geometry, materials, x, y, z, s ) {
-
         geometry.computeBoundingBox();
         var bb = geometry.boundingBox;
-
         for ( var i = 0; i < materials.length; i++ ) {
           var m = materials[ i ];
           m.skinning = true;
@@ -264,7 +263,6 @@ function setUpArLayer( participantState ) {
           m.specular.setHSL( 0, 0, 0.1 );
           m.color.setHSL( 0.6, 0, 0.6 );
         }
-
         swordGuyMesh = new THREE.SkinnedMesh( geometry, new THREE.MeshFaceMaterial( materials ) );
         swordGuyMesh.position.set( x, y - bb.min.y * s, z );
         swordGuyMesh.scale.set( s, s, s );
@@ -410,11 +408,10 @@ function arConnectionController( participantState ) {
     }
 
 // Sword Guy
-
-    if ( mixer ) {
-          mixer.update( dt );
+  if ( animateSwordGuy ) {
+         mixer.update( dt );
           helper.update();
-        }
+    }
   }
 
   function connectToDeviceSensors() {
@@ -577,6 +574,8 @@ function addArObject( x, y, z ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      }
 
+// you need all the oritation data to show where it stopped on click
+
        arShareData.animate = animateSheep;
 
        arShareData.operation = 'animateSelectedObject';
@@ -591,6 +590,12 @@ function addArObject( x, y, z ) {
        emitArObject( arShareData );
       false;
     }
+
+    if ( intersects[0].object.name === 'swordGuy' ) {
+      console.log( 'Selected swordGuy' );
+    }
+
+     animateSheep = !animateSheep;
 
     //if ( intersects.length > 0 ) {
 
