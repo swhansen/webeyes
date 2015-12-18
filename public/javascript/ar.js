@@ -318,7 +318,7 @@ function setUpArLayer( participantState ) {
 // axisHelper.position.set( 1.5, -0.35, -5.5 );
 // scene.add( axisHelper );
 
-// Create spline for "flying pig" trajecory
+  // Create spline for "flying pig" trajecory
 
   var numPoints = 20;
 
@@ -400,10 +400,8 @@ function arConnectionController( participantState ) {
     }
 
 // Flying  Pig
-
   if ( flyingPig !== undefined ) {
-   // pivotPoint.rotation.y -= 0.01;
-   pivotPoint.rotation.y += delta * 1;
+    pivotPoint.rotation.y -= 0.01;
     }
 
 // Sword Guy
@@ -572,6 +570,7 @@ function addArObject( x, y, z ) {
      if ( !animateSheep ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      }
+
 
 // you need all the oritation data to show where it stopped on click
 
