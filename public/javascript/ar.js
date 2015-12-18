@@ -2,7 +2,7 @@
 
 var arDeviceOrientation = {};
 var arSelectObjectArray = [];
-var animateZ = false;
+var animateKnot = false;
 var animateSheep = false;
 var animateSwordGuy = false;
 var selectedArObject;
@@ -390,7 +390,7 @@ function arConnectionController( participantState ) {
 
     knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
 
-    if ( animateZ === true ) {
+    if ( animateKnot === true ) {
         knot.rotation.y += 0.03;
         knot.rotation.z += 0.03;
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
@@ -401,7 +401,7 @@ function arConnectionController( participantState ) {
 
 // Flying  Pig
   if ( flyingPig !== undefined ) {
-    pivotPoint.rotation.y += dt * .02;
+    pivotPoint.rotation.y += dt * 0.1;
     }
 
 // Sword Guy
@@ -557,7 +557,7 @@ function addArObject( x, y, z ) {
 // do things with the selected object
 
     if ( intersects[0].object.name === 'knot' ) {
-      animateZ = !animateZ;
+      animateKnot = !animateKnot;
       return;
     }
 
