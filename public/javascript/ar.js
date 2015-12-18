@@ -301,6 +301,9 @@ function setUpArLayer( participantState ) {
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
 
+  arSelectObjectArray.push( cube2 );
+  arSelectObjectArray.push( knot );
+
 // Orietation plane and axis
 
 // var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
@@ -315,14 +318,7 @@ function setUpArLayer( participantState ) {
 // axisHelper.position.set( 1.5, -0.35, -5.5 );
 // scene.add( axisHelper );
 
-// add to the selection array
-
- // arSelectObjectArray.push( cube1 );
-
-  arSelectObjectArray.push( cube2 );
-  arSelectObjectArray.push( knot );
-
-  // Create spline for "flying pig" trajecory
+// Create spline for "flying pig" trajecory
 
   var numPoints = 20;
 
@@ -405,7 +401,8 @@ function arConnectionController( participantState ) {
 
 // Flying  Pig
   if ( flyingPig !== undefined ) {
-    pivotPoint.rotation.y -= 0.01;
+   // pivotPoint.rotation.y -= 0.01;
+   pivotPoint.rotation.y -= delta * 1;
     }
 
 // Sword Guy
