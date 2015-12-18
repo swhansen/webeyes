@@ -234,19 +234,19 @@ function touchMoveHandler( e ) {
     data.x = Math.round( touches.clientX - canvasLocation.left );
     data.y = Math.round( touches.clientY - canvasLocation.top );
 
-    d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
-    if ( d < drawPixCartScale ) {
+    //d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
+   // if ( d < drawPixCartScale ) {
      // data.x = lastx;
     //  data.y = lasty;
-    data.pointerState = 'hold';
-      console.log( 'Small Touch move:', d, data );
-      } else {
-      lastx = data.x;
-      lasty = data.y;
+    //data.pointerState = 'hold';
+    //  console.log( 'Small Touch move:', d, data );
+   //   } else {
+   //   lastx = data.x;
+   //   lasty = data.y;
       data.pointerState = 'pointerMove';
       console.log( 'Touch-move:', data );
       emitDraw( data );
-      }
+   // }
     }
   }
 
