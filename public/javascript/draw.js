@@ -62,7 +62,7 @@ function drawCanvaslineArray() {
 // if lineArray is empty turn off the fadder and clear array
 
     if ( lineArray.length === 0 ) {
-      lineArray = [];
+      lineArray.length = 0;
       fade = false;
       clearInterval( fadeTimer );
     }
