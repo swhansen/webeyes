@@ -161,14 +161,16 @@ function toolPencil() {
 
    d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
     if ( d < drawPixCartScale ) {
+
      // data.x = lastx;
     //  data.y = lasty;
+
       console.log( 'Small Mouse move:', d );
       } else {
       lastx = data.x;
       lasty = data.y;
       data.pointerState = 'pointerMove';
-      console.log( 'pointerMove x:', data.x );
+      console.log( 'Mouse Move:', dataEnabled );
       emitDraw( data );
       }
     }
@@ -220,7 +222,7 @@ function touchStartHandler( e ) {
   }
 
 function touchMoveHandler( e ) {
-   var lastx = 0;
+  var lastx = 0;
   var lasty = 0;
   var d;
   e.preventDefault();
@@ -239,7 +241,7 @@ function touchMoveHandler( e ) {
       lastx = data.x;
       lasty = data.y;
       data.pointerState = 'pointerMove';
-      console.log( 'x-move:', data.x );
+      console.log( 'Touch-move:', data );
       emitDraw( data );
       }
     }
