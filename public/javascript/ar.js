@@ -400,9 +400,10 @@ function arConnectionController( participantState ) {
     }
 
 // Flying  Pig
+
   if ( flyingPig !== undefined ) {
    // pivotPoint.rotation.y -= 0.01;
-   pivotPoint.rotation.y -= delta * 1;
+   pivotPoint.rotation.y += delta * 1;
     }
 
 // Sword Guy
@@ -571,7 +572,6 @@ function addArObject( x, y, z ) {
      if ( !animateSheep ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      }
-
 
 // you need all the oritation data to show where it stopped on click
 
