@@ -50,7 +50,7 @@ function drawCanvaslineArray() {
 // fade logic
 
     if ( fadeSwitch === true ) {
-       lineArray[i].line.shift();
+       lineArray[i].line.pop();
     }
 
   }
@@ -67,7 +67,7 @@ function drawCanvaslineArray() {
 // toggle the interval for the fade effect
 
 function toggleFade() {
-
+if ( fadeTimer ) {return;}
   if ( fadeSwitch === true && fade === true  ) {
       fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 100 );
     }
