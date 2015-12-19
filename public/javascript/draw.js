@@ -58,6 +58,7 @@ function drawCanvaslineArray() {
  //   if ( lineArray[i].line.length === 0 ) {
  //     lineArray.splice( i );
  //  }
+  }
 
 // if lineArray is empty turn off the fadder and clear array
 
@@ -66,7 +67,6 @@ function drawCanvaslineArray() {
       fade = false;
       clearInterval( fadeTimer );
     }
-  }
 }
 
 // toggle the interval for the fade effect
@@ -224,9 +224,6 @@ function touchStartHandler( e ) {
   }
 
 function touchMoveHandler( e ) {
-  var lastx = 0;
-  var lasty = 0;
-  var d;
   e.preventDefault();
   if ( tool.started ) {
     var touches = e.touches.item( 0 );
@@ -234,19 +231,9 @@ function touchMoveHandler( e ) {
     data.x = Math.round( touches.clientX - canvasLocation.left );
     data.y = Math.round( touches.clientY - canvasLocation.top );
 
-    //d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
-   // if ( d < drawPixCartScale ) {
-     // data.x = lastx;
-    //  data.y = lasty;
-    //data.pointerState = 'hold';
-    //  console.log( 'Small Touch move:', d, data );
-   //   } else {
-   //   lastx = data.x;
-   //   lasty = data.y;
       data.pointerState = 'pointerMove';
       console.log( 'Touch-move:', data );
       emitDraw( data );
-   // }
     }
   }
 
