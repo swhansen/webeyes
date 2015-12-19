@@ -8,7 +8,7 @@ var lineArray  = [];
 var fade       = false;
 var fadeTimer;
 var fadeSwitch = true;
-var drawPixCartScale = 10;
+var drawPixCartScale = 20;
 
 function baseLineStyle() {
   context.lineWidth = 2;
@@ -50,7 +50,7 @@ function drawCanvaslineArray() {
 // fade logic
 
     if ( fadeSwitch === true ) {
-       lineArray[i].line.pop();
+       lineArray[i].line.shift();
     }
 
   }
