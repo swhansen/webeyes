@@ -23,25 +23,24 @@ var Line = function( line, c, client ) {
   this.client = client;
 };
 
-// animate();
-
 function drawCanvaslineArray() {
 
   context.clearRect( 0, 0, canvas.width, canvas.height );
 
   for ( var i = 0; i < lineArray.length; i++ ) {
     var points = lineArray[i].line;
+    context.strokeStyle = lineArray[i].color;
 
     for ( var j = 0; j < points.length; j++ ) {
-      context.strokeStyle = lineArray[i].line[j].color;
 
+    //  context.strokeStyle = lineArray[i].line[j].color;
    //   context.shadowColor = lineArray[i].line[j].shadowColor;
 
       if ( j === 0 ) {
         context.beginPath();
-        context.moveTo( lineArray[i].line[j].x, lineArray[i].line[j].y );
+        context.moveTo( points[j].x, points.y );
       }
-      context.lineTo( lineArray[i].line[j].x, lineArray[i].line[j].y );
+      context.lineTo( points[j].x, points[j].y );
 
       baseLineStyle();
       context.stroke();
@@ -62,7 +61,7 @@ function drawCanvaslineArray() {
       fade = false;
       clearInterval( fadeTimer );
     }
-}
+  }
 
 // toggle the interval for the fade effect
 
