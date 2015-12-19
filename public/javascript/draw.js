@@ -53,11 +53,6 @@ function drawCanvaslineArray() {
        lineArray[i].line.shift();
     }
 
-// cleanup
-
- //   if ( lineArray[i].line.length === 0 ) {
- //     lineArray.splice( i );
- //  }
   }
 
 // if lineArray is empty turn off the fadder and clear array
@@ -121,9 +116,10 @@ function receiveLineFromClient( data ) {
       line = [];
       context.beginPath();
       fade = true;
-      if ( fadeSwitch === true && fade === true  ) {
-      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 100 );
-    }
+      toggleFade();
+     // if ( fadeSwitch === true && fade === true  ) {
+     // fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 100 );
+     // }
       break;
     case 'hold':
     break;
