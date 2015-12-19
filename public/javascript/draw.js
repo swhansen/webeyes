@@ -26,6 +26,7 @@ var Line = function( line, c, client ) {
 function drawCanvaslineArray() {
 
   context.clearRect( 0, 0, canvas.width, canvas.height );
+  baseLineStyle();
 
   for ( var i = 0; i < lineArray.length; i++ ) {
     var points = lineArray[i].line;
@@ -33,16 +34,15 @@ function drawCanvaslineArray() {
 
     for ( var j = 0; j < points.length; j++ ) {
 
-    //  context.strokeStyle = lineArray[i].line[j].color;
    //   context.shadowColor = lineArray[i].line[j].shadowColor;
 
       if ( j === 0 ) {
         context.beginPath();
-        context.moveTo( points[j].x, points.y );
+        context.moveTo( points[j].x, points[j].y );
       }
       context.lineTo( points[j].x, points[j].y );
 
-      baseLineStyle();
+  //    baseLineStyle();
       context.stroke();
     }
 
