@@ -25,7 +25,8 @@ var userContext = {
   geoLocation: false,
   orientation: false,
   mobile: false,
-  browserType: ''
+  browserType: '',
+  browserDevices: ''
 };
 
 easyrtc.dontAddCloseButtons( false );
@@ -944,12 +945,14 @@ setBrowserDetails();
 //      //  .....or
 //      //
 //
-//    easyrtc.getVideoSourceList( function(list) {
-//      console.log( 'easyrtc.getVideoSourceList:', list );
+    easyrtc.getVideoSourceList( function( list ) {
+      console.log( 'easyrtc.getVideoSourceList:', list );
+        userContext.browserDevices = list;
+
 //      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 //      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
 //      easyrtc.setVideoSource( device.id );
-//      } );
+      } );
 //
 //
 //
