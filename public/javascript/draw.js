@@ -14,6 +14,7 @@ function baseLineStyle() {
   context.lineWidth = 4;
   context.lineJoin = 'round';
   context.lineCap = 'round';
+  context.shadowBlur = 3;
 
   //context.shadowBlur = 2;
 
@@ -33,6 +34,7 @@ function drawCanvaslineArray() {
   for ( var i = 0; i < lineArray.length; i++ ) {
     var points = lineArray[i].line;
     context.strokeStyle = lineArray[i].color;
+    context.shadowColor = lineArray[i].color;
 
     for ( var j = 0; j < points.length; j++ ) {
 
