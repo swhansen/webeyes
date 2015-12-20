@@ -14,7 +14,7 @@ function baseLineStyle() {
   context.lineWidth = 4;
   context.lineJoin = 'round';
   context.lineCap = 'round';
-  context.shadowBlur = 3;
+  context.shadowBlur = 10;
 
   //context.shadowBlur = 2;
 
