@@ -26,7 +26,7 @@ var userContext = {
   orientation: false,
   mobile: false,
   browserType: '',
-  browserDevices: ''
+  browserVideoDevices: ''
 };
 
 easyrtc.dontAddCloseButtons( false );
@@ -577,7 +577,7 @@ function expandThumb( whichBox ) {
     handleWindowResize();
 
     if ( userContext.modMeState === true && modSwitch === true ) {
-      console.log( "modMeState:", userContext.modMeState );
+      console.log( 'modMeState:', userContext.modMeState );
       var rtcidToExpand = _( connectList )
       .filter( function( connectList ) { return connectList.boxno == whichBox; } )
       .pluck( 'rtcid' )
@@ -814,7 +814,7 @@ var isMobile = {
         return navigator.userAgent.match(/IEMobile/i);
     },
     any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        return ( isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows() );
     }
 };
 
@@ -947,11 +947,16 @@ setBrowserDetails();
 //
     easyrtc.getVideoSourceList( function( list ) {
       console.log( 'easyrtc.getVideoSourceList:', list );
-        userContext.browserDevices = list;
+        userContext.browserVideoDevices = list;
 
 //      device = _.find( list, function( sources ) { return sources.facing == 'environment';} );
 //      console.log( 'easyrtc.getVideoSourceList device-id:', device.id );
 //      easyrtc.setVideoSource( device.id );
+      } );
+
+    easyrtc.getAudioSourceList( function( list ) {
+      console.log( 'easyrtc.getAudioSourceList:', list );
+        userContext.browserAudioDevices = list;
       } );
 //
 //
