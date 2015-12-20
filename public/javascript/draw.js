@@ -8,7 +8,7 @@ var lineArray  = [];
 var fade       = false;
 var fadeTimer;
 var fadeSwitch = true;
-var drawPixCartScale = 20;
+var drawPixCartScale = 10;
 
 function baseLineStyle() {
   context.lineWidth = 4;
