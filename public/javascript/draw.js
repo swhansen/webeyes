@@ -11,11 +11,12 @@ var fadeSwitch = true;
 var drawPixCartScale = 20;
 
 function baseLineStyle() {
-  context.lineWidth = 2;
+  context.lineWidth = 4;
   context.lineJoin = 'round';
   context.lineCap = 'round';
 
   //context.shadowBlur = 2;
+
 }
 
 var Line = function( line, c, client ) {
@@ -118,9 +119,11 @@ function receiveLineFromClient( data ) {
       context.beginPath();
       fade = true;
       toggleFade();
+
      // if ( fadeSwitch === true && fade === true  ) {
      // fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 100 );
      // }
+
       break;
     case 'hold':
     break;
