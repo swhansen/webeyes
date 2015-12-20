@@ -1,10 +1,8 @@
-
-
 var arDeviceOrientation = {};
 var arSelectObjectArray = [];
-var animateKnot = false;
-var animateSheep = false;
-var animateSwordGuy = false;
+var isAnimateKnot = false;
+var isAnimateSheep = false;
+var isAnimateSwordGuy = false;
 var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
@@ -112,10 +110,27 @@ function loadAr( participantState ) {
 
     if ( data.operation === 'animateSelectedObject' ) {
       console.log( 'animateSelectedObject:', data );
-      if ( data.name === 'sheep' ) { animateSheep = data.animate; }
-      if ( data.name === 'swordGuy' ) { animateSwordGuy = data.animate; }
+      if ( data.name === 'sheep' ) { isAnimateSheep = data.animate; }
+      if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
     }
 
+  }
+
+  function arMoveObject( data ) {
+
+       var arObject = scene.getObjectByName( data.name );
+
+       if ( data.position ) {
+           arObject.position.x = data.position.x;
+           arObject.position.y = data.position.y;
+           arObject.position.z = data.position.z;
+         }
+       if ( data.rotation ) {
+
+           arObject.rotation.x = data.rotation._x;
+           arObject.rotation.y = data.rotation._y;
+           arObject.rotation.z = data.rotation._z;
+          }
   }
 
 function setUpArLayer( participantState ) {
@@ -390,12 +405,12 @@ function arConnectionController( participantState ) {
 
     knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
 
-    if ( animateKnot === true ) {
+    if ( isAnimateKnot === true ) {
         knot.rotation.y += 0.03;
         knot.rotation.z += 0.03;
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
-    if ( animateSheep === true ) {
+    if ( isAnimateSheep === true ) {
       sheep.rotation.z += dt * 2;
     }
 
@@ -405,7 +420,7 @@ function arConnectionController( participantState ) {
     }
 
 // Sword Guy
-  if ( animateSwordGuy ) {
+  if ( isAnimateSwordGuy ) {
          mixer.update( dt );
           helper.update();
     }
@@ -478,9 +493,6 @@ $( '#ar-canvas' ).longpress( function( event ) {
   var raycaster = new THREE.Raycaster( cameraDriver.position, mouse3D );
 
   var scale = 4.0;
-
-  //var rayDir = new THREE.Vector3(raycaster.ray.direction.x*scale,raycaster.ray.direction.y*scale,raycaster.ray.direction.z*scale);
- // var rayVector = new THREE.Vector3(cameraDriver.position.x + rayDir.x, cameraDriver.position.y + rayDir.y, cameraDriver.position.z + rayDir.z);
 
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
 
@@ -557,24 +569,25 @@ function addArObject( x, y, z ) {
 // do things with the selected object
 
     if ( intersects[0].object.name === 'knot' ) {
-      animateKnot = !animateKnot;
+      isAnimateKnot = !isAnimateKnot;
       return;
     }
 
    if ( intersects[0].object.name === 'sheep' ) {
 
-     animateSheep = !animateSheep;
+     isAnimateSheep = !isAnimateSheep;
 
 // only change the color when animation is stopped
 
-     if ( !animateSheep ) {
+     if ( !isAnimateSheep ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
      }
 
+// isAnimateXxxxxx - boolean toggle for animation state
 
 // you need all the oritation data to show where it stopped on click
 
-       arShareData.animate = animateSheep;
+       arShareData.animate = isAnimateSheep;
        arShareData.operation = 'animateSelectedObject';
        arShareData.name = intersects[0].object.name;
        arShareData.x = intersects[0].object.position.x;
@@ -590,16 +603,16 @@ function addArObject( x, y, z ) {
 
     if ( intersects[0].object.name === 'swordGuy' ) {
       console.log( 'Selected swordGuy' );
-      animateSwordGuy = !animateSwordGuy;
+      isAnimateSwordGuy = !isAnimateSwordGuy;
 
-      arShareData.animate = animateSwordGuy;
+      arShareData.animate = isAnimateSwordGuy;
       arShareData.operation = 'animateSelectedObject';
       arShareData.name = intersects[0].object.name;
 
       emitArObject( arShareData );
     }
 
-    // animateSheep = !animateSheep;
+    // isAnimateSheep = !isAnimateSheep;
 
     //if ( intersects.length > 0 ) {
 
