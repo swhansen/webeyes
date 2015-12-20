@@ -15,9 +15,6 @@ function baseLineStyle() {
   context.lineJoin = 'round';
   context.lineCap = 'round';
   context.shadowBlur = 10;
-
-  //context.shadowBlur = 2;
-
 }
 
 var Line = function( line, c, client ) {
@@ -163,18 +160,15 @@ function toolPencil() {
       data.x = Math.round( ev._x );
       data.y = Math.round( ev._y );
 
+  // only capture point if the cartesian distance exceeds the sample limit
+
    d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
     if ( d < drawPixCartScale ) {
-
-     // data.x = lastx;
-    //  data.y = lasty;
-      data.pointerState = 'hold';
-      console.log( 'Small Mouse move:', d, data );
+        data.pointerState = 'hold';
       } else {
       lastx = data.x;
       lasty = data.y;
       data.pointerState = 'pointerMove';
-      console.log( 'Mouse Move:', data );
       emitDraw( data );
       }
     }
@@ -234,7 +228,6 @@ function touchMoveHandler( e ) {
     data.y = Math.round( touches.clientY - canvasLocation.top );
 
       data.pointerState = 'pointerMove';
-      console.log( 'Touch-move:', data );
       emitDraw( data );
     }
   }
