@@ -533,9 +533,17 @@ function addNewArObject( newData ) {
     torus1.position.set( newData.x, newData.y, newData.z );
     scene.add( torus1 );
     torus1.name = torus1.id;
-    newData.name = torus.name;
     arSelectObjectArray.push( torus1 );
-    emitArObject( newData );
+
+// push the data
+
+    var newArObj;
+    newArObject.position = torus1.position;
+    //newArObject.y = newData.y;
+    //newArObject.z = newData.z;
+    newArObject.name = torus1.name;
+
+    emitArObject( newArObj );
   }
 
 // Select an object
