@@ -8,10 +8,10 @@ var lineArray  = [];
 var fade       = false;
 var fadeTimer;
 var fadeSwitch = true;
-var drawPixCartScale = 20;
+var drawPixCartScale = 25;
 
 function baseLineStyle() {
-  context.lineWidth = 4;
+  context.lineWidth = 7;
   context.lineJoin = 'round';
   context.lineCap = 'round';
   context.shadowBlur = 7;
