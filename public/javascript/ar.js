@@ -101,6 +101,7 @@ function loadAr( participantState ) {
 
 
     if ( data.operation === 'newObject' ) {
+      console.log( 'adding newObject:,' newObject );
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
@@ -538,10 +539,12 @@ function addNewArObject( newData ) {
 // push the data
 
     var newArObj;
-    newArObject.position = torus1.position;
+    newArObj.position = torus1.position;
     //newArObject.y = newData.y;
     //newArObject.z = newData.z;
-    newArObject.name = torus1.name;
+    newArObj.name = torus1.name;
+
+    console.log( 'sent newArObj:', newArObj);
 
     emitArObject( newArObj );
   }
