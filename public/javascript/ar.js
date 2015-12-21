@@ -525,16 +525,17 @@ function( e ) {
 }, 750 );
 
 
-function addNewArObject( data ) {
+function addNewArObject( newData ) {
     console.log( 'longpress-call addNewArbject:', arShareData );
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    torus1.position.set( data.x, data.y, data.z );
+    torus1.position.set( newData.x, newData.y, newData.z );
     scene.add( torus1 );
     torus1.name = torus1.id;
+    newData.name = torus.name;
     arSelectObjectArray.push( torus1 );
-    emitArObject( data );
+    emitArObject( newData );
   }
 
 // Select an object
