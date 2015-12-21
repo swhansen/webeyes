@@ -11,10 +11,10 @@ var fadeSwitch = true;
 var drawPixCartScale = 25;
 
 function baseLineStyle() {
-  context.lineWidth = 3;
+  context.lineWidth = 5;
   context.lineJoin = 'round';
   context.lineCap = 'round';
-  context.shadowBlur = 7;
+  context.shadowBlur = 8;
 }
 
 var Line = function( line, c, client ) {
@@ -64,7 +64,6 @@ if ( fadeTimer ) {return;}
   }
 
 // collect the points FROM the server and build the canvas lineArray
-//   - draw the initial line in real-time to provide the live drawing effect
 
 function receiveLineFromClient( data ) {
 
@@ -81,9 +80,6 @@ function receiveLineFromClient( data ) {
       context.lineTo( data.x, data.y );
       baseLineStyle();
       context.stroke();
-
-  // build the array of points coming in from the channel
-
       points.push( {
         x: data.x,
         y: data.y,
@@ -104,11 +100,6 @@ function receiveLineFromClient( data ) {
       context.beginPath();
       fade = true;
       toggleFade();
-
-     // if ( fadeSwitch === true && fade === true  ) {
-     // fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 100 );
-     // }
-
       break;
     case 'hold':
     break;
@@ -126,7 +117,7 @@ socketServer.on( 'drawLine', function( data ) {
   receiveLineFromClient( data );
 } );
 
-//handlers for mouse events, 'emit' to the server
+//mouse event handlers, 'emit' to the server
 
 function toolPencil() {
   var lastx = 0;
@@ -195,7 +186,7 @@ function evCanvas( ev ) {
   }
 }
 
-// Handlers for touch events, 'emit' to the server
+// touch event handlers, 'emit' to the server
 
 function touchStartHandler( e ) {
   e.preventDefault();
@@ -212,9 +203,8 @@ function touchMoveHandler( e ) {
     var canvasLocation = canvas.getBoundingClientRect();
     data.x = Math.round( touches.clientX - canvasLocation.left );
     data.y = Math.round( touches.clientY - canvasLocation.top );
-
-      data.pointerState = 'pointerMove';
-      emitDraw( data );
+    data.pointerState = 'pointerMove';
+    emitDraw( data );
     }
   }
 

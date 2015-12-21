@@ -483,8 +483,6 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   event.preventDefault();
 
-  console.log( 'Start Longpress' );
-
   var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
@@ -496,11 +494,6 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
 
-  console.log( 'cameraDriver:', cameraDriver );
-  console.log( 'mouse3D:', mouse3D );
-
-//  console.log( 'rayDir:', rayDir );
-//  console.log( 'rayVector:', rayVector );
 
   console.log( 'dir:', dir );
   console.log( 'pos:', pos );
