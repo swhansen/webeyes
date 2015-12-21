@@ -98,7 +98,7 @@ function receiveLineFromClient( data ) {
       lineArray.push( new Line( line, data.color, data.client ) );
       line = [];
       points = [];
-      context.beginPath();
+    //  context.beginPath();
       fade = true;
       toggleFade();
       break;
