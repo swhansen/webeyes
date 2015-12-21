@@ -538,7 +538,7 @@ function addNewArObject( newData ) {
 
 // push the data
 
-    var newArObj;
+    var newArObj = {};
     newArObj.operation = 'newObject';
     newArObj.position.x = newData.x;
     newArObj.position.y = newData.y;
