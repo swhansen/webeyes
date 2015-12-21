@@ -34,36 +34,24 @@ function drawCanvaslineArray() {
     context.shadowColor = lineArray[i].color;
 
     for ( var j = 0; j < points.length; j++ ) {
-
-   //   context.shadowColor = lineArray[i].line[j].shadowColor;
-
       if ( j === 0 ) {
         context.beginPath();
         context.moveTo( points[j].x, points[j].y );
       }
       context.lineTo( points[j].x, points[j].y );
-
     }
       context.stroke();
-
-// fade logic
-
     if ( fadeSwitch === true ) {
        lineArray[i].line.shift();
     }
-
   }
-
-// if lineArray is empty turn off the fadder and clear array
 
     if ( lineArray.length === 0 ) {
       lineArray.length = 0;
       fade = false;
       clearInterval( fadeTimer );
     }
-  }
-
-// toggle the interval for the fade effect
+}
 
 function toggleFade() {
 if ( fadeTimer ) {return;}
