@@ -35,12 +35,12 @@ function drawCanvaslineArray() {
 
     for ( var j = 0; j < points.length; j++ ) {
       if ( j === 0 ) {
-        context.moveTo( points[j].x, points[j].y );
         context.beginPath();
+        context.moveTo( points[j].x, points[j].y );
       }
       context.lineTo( points[j].x, points[j].y );
-      context.stroke();
     }
+      context.stroke();
     if ( fadeSwitch === true ) {
        lineArray[i].line.shift();
     }
