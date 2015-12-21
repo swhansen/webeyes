@@ -34,12 +34,12 @@ function drawCanvaslineArray() {
     context.shadowColor = lineArray[i].color;
 
     for ( var j = 0; j < points.length; j++ ) {
-      if ( j === 0 ) {
+   //   if ( j === 0 ) {
         context.beginPath();
-        context.moveTo( points[j].x, points[j].y );
-      }
+   //     context.moveTo( points[j].x, points[j].y );
+    //  }
       context.lineTo( points[j].x, points[j].y );
-    }
+   // }
       context.stroke();
     if ( fadeSwitch === true ) {
        lineArray[i].line.shift();
@@ -99,7 +99,9 @@ function receiveLineFromClient( data ) {
       lineArray.push( new Line( line, data.color, data.client ) );
       line = [];
       points = [];
+
     //  context.beginPath();
+
       fade = true;
       toggleFade();
       break;
