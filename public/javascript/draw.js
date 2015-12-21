@@ -71,11 +71,9 @@ function receiveLineFromClient( data ) {
   baseLineStyle();
   context.strokeStyle = data.color;
   context.shadowColor = data.color;
-
   switch ( data.pointerState ) {
     case 'pointerDown':
       context.moveTo( data.x, data.y );
-      context.beginPath();
       context.beginPath();
       points.length = 0;
       break;
@@ -99,7 +97,8 @@ function receiveLineFromClient( data ) {
       context.stroke();
       lineArray.push( new Line( line, data.color, data.client ) );
       line = [];
-      //context.beginPath();
+      points[];
+      context.beginPath();
       fade = true;
       toggleFade();
       break;
