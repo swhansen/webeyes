@@ -105,7 +105,7 @@ function loadAr( participantState ) {
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-      torus1.position.set( data.position.x, data..position.y, data.position.z );
+      torus1.position.set( data.position.x, data.position.y, data.position.z );
       torus1.name = data.name;
       scene.add( torus1 );
       arSelectObjectArray.push( torus1 );
