@@ -71,11 +71,12 @@ function receiveLineFromClient( data ) {
   baseLineStyle();
   context.strokeStyle = data.color;
   context.shadowColor = data.color;
+
   switch ( data.pointerState ) {
     case 'pointerDown':
+      points.length = 0;
       context.moveTo( data.x, data.y );
       context.beginPath();
-      points.length = 0;
       break;
     case 'pointerMove':
       context.lineTo( data.x, data.y );
