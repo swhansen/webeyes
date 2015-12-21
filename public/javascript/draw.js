@@ -75,12 +75,12 @@ function receiveLineFromClient( data ) {
   switch ( data.pointerState ) {
     case 'pointerDown':
       points.length = 0;
-      context.moveTo( data.x, data.y );
-      context.beginPath();
+      //context.moveTo( data.x, data.y );
+     // context.beginPath();
       break;
     case 'pointerMove':
-      context.lineTo( data.x, data.y );
-      context.stroke();
+      //context.lineTo( data.x, data.y );
+      //context.stroke();
       points.push( {
         x: data.x,
         y: data.y,
@@ -94,8 +94,8 @@ function receiveLineFromClient( data ) {
       } );
       break;
     case 'pointerUp':
-      context.lineTo( data.x, data.y );
-      context.stroke();
+     // context.lineTo( data.x, data.y );
+     // context.stroke();
       lineArray.push( new Line( line, data.color, data.client ) );
       line = [];
       points = [];
