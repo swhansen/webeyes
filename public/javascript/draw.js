@@ -56,7 +56,7 @@ function drawCanvaslineArray() {
 function toggleFade() {
 if ( fadeTimer ) {return;}
   if ( fadeSwitch === true && fade === true  ) {
-      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 50 );
+      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 20 );
     }
   if ( fade === false || fadeSwitch === false ) {
       clearInterval( fadeTimer );
