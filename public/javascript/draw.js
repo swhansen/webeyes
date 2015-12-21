@@ -127,8 +127,10 @@ function toolPencil() {
   var tool = this;
   this.started = false;
 
-  this.mousedown = function() {
+  this.mousedown = function( e ) {
     tool.started = true;
+    data.x = Math.round( ev._x );
+    data.y = Math.round( ev._y );
     data.pointerState = 'pointerDown';
     emitDraw( data );
   };
