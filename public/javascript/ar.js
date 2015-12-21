@@ -98,15 +98,20 @@ function loadAr( participantState ) {
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
     }
 
+
+
     if ( data.operation === 'newObject' ) {
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
       torus1.position.set( data.x, data.y, data.z );
-      torus1.name = 'torus1';
+      torus1.name = data.name;
       scene.add( torus1 );
       arSelectObjectArray.push( torus1 );
     }
+
+
+
 
     if ( data.operation === 'animateSelectedObject' ) {
       console.log( 'animateSelectedObject:', data );
@@ -519,23 +524,17 @@ function( e ) {
     return false;
 }, 750 );
 
+
 function addNewArObject( data ) {
-
-// add the object locally and tell everyone else
-
     console.log( 'longpress-call addNewArbject:', arShareData );
-    addArObject( data.x, data.y, data.z );
-    emitArObject( data );
-}
-
-function addArObject( x, y, z ) {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    torus1.position.set( x, y, z );
+    torus1.position.set( data.x, data.y, data.z );
     scene.add( torus1 );
-    torus1.name = 'torus1';
+    torus1.name = torus1.id;
     arSelectObjectArray.push( torus1 );
+    emitArObject( data );
   }
 
 // Select an object

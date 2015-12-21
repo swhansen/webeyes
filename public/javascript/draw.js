@@ -64,8 +64,13 @@ if ( fadeTimer ) {return;}
   }
 
 // collect the points FROM the server and build the canvas lineArray
+// - draw the line when the data is recieved
 
 function receiveLineFromClient( data ) {
+
+  baseLineStyle();
+  context.strokeStyle = data.color;
+  context.shadowColor = data.color;
 
   switch ( data.pointerState ) {
     case 'pointerDown':
@@ -75,10 +80,7 @@ function receiveLineFromClient( data ) {
       points.length = 0;
       break;
     case 'pointerMove':
-      context.strokeStyle = data.color;
-      context.shadowColor = data.color;
       context.lineTo( data.x, data.y );
-      baseLineStyle();
       context.stroke();
       points.push( {
         x: data.x,
