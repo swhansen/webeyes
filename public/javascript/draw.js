@@ -192,11 +192,13 @@ function touchStartHandler( e ) {
   e.preventDefault();
     tool.started = true;
     data.pointerState = 'pointerDown';
-
     emitDraw( data );
   }
 
 function touchMoveHandler( e ) {
+  var lastx = 0;
+  var lasty = 0;
+  var d;
   e.preventDefault();
   if ( tool.started ) {
     var touches = e.touches.item( 0 );
