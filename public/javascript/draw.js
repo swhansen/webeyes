@@ -203,8 +203,18 @@ function touchMoveHandler( e ) {
     var canvasLocation = canvas.getBoundingClientRect();
     data.x = Math.round( touches.clientX - canvasLocation.left );
     data.y = Math.round( touches.clientY - canvasLocation.top );
-    data.pointerState = 'pointerMove';
-    emitDraw( data );
+
+  // only capture point if the cartesian distance exceeds the sample limit
+
+   d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
+    if ( d < drawPixCartScale ) {
+        data.pointerState = 'hold';
+      } else {
+       lastx = data.x;
+       lasty = data.y;
+       data.pointerState = 'pointerMove';
+       emitDraw( data );
+      }
     }
   }
 
