@@ -43,10 +43,8 @@ function drawCanvaslineArray() {
       }
       context.lineTo( points[j].x, points[j].y );
 
-  //    baseLineStyle();
-
-      context.stroke();
     }
+      context.stroke();
 
 // fade logic
 
