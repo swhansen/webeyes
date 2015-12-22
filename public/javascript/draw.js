@@ -76,9 +76,9 @@ function receiveLineFromClient( data ) {
     case 'pointerDown':
       points.length = 0;
       context.moveTo( data.x, data.y );
-      context.beginPath();
       break;
     case 'pointerMove':
+      context.beginPath();
       context.lineTo( data.x, data.y );
       context.stroke();
       points.push( {
