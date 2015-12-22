@@ -561,9 +561,11 @@ function addNewArObjectToWorld( d ) {
         }
 
       console.log( 'intersected object:', intersects[0], intersects[0].object.name );
-    //  intersects[0].userData = { isAnimated: true };
+      var selectedObject = scene.getObjectByName( intersects[0].object.name );
+      console.log( 'intersected object:', intersects[0] );
 
-
+  //    intersects[0].object.userData = { isAnimated: true };
+  //    console.log( 'intersected object userDtata:', intersects[0].object.name );
 
 // do things with the selected object
 
