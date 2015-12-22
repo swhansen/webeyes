@@ -561,7 +561,7 @@ function addNewArObjectToWorld( d ) {
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
-    if ( intersects.length < 0 ) {
+    if ( intersects.length > 0 ) {
             return;
         }
 
@@ -578,11 +578,11 @@ function addNewArObjectToWorld( d ) {
       }
 
       arShareData.operation = 'animateSelectedObject';
-      //arShareData.object = selectedObject.name;
+      arShareData.object = selectedObject.name;
       arShareData.animate = selectedObject.userData.isAnimated;
       arShareData.name = selectedObject.name;
 
-      //emitArObject( arShareData );
+      emitArObject( arShareData );
 
 
       //intersects[0].object.userData = { isAnimated: true };
@@ -620,7 +620,7 @@ function addNewArObjectToWorld( d ) {
        arShareData.color = intersects[0].object.material.color;
 
        emitArObject( arShareData );
-      false;
+     // false;
     }
 
     if ( intersects[0].object.name === 'swordGuy' ) {
@@ -658,6 +658,6 @@ function addNewArObjectToWorld( d ) {
       emitArObject( arShareData );
     }
 
-  }, false );
+  } );
 
-}
+
