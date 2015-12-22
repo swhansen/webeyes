@@ -90,14 +90,11 @@ function loadAr( participantState ) {
            arObject.position.x = data.position.x;
            arObject.position.y = data.position.y;
            arObject.position.z = data.position.z;
-
            arObject.rotation.x = data.rotation._x;
            arObject.rotation.y = data.rotation._y;
            arObject.rotation.z = data.rotation._z;
-
            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
     }
-
 
     if ( data.operation === 'newObject' ) {
       console.log( 'adding newObject:', data );
@@ -115,7 +112,6 @@ function loadAr( participantState ) {
       if ( data.name === 'sheep' ) { isAnimateSheep = data.animate; }
       if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
     }
-
   }
 
   function arMoveObject( data ) {
@@ -505,11 +501,7 @@ $( '#ar-canvas' ).longpress( function( event ) {
       arShareData.z = pos.z;
 
 // add the object locally and tell everyone else
-//    console.log( 'longpress-call addArObject:', arShareData);
-//    addArObject( pos.x, pos.y, pos.z );
-//    emitArObject( arShareData );
 
-  console.log( 'Good Longpress' );
   addNewArObjectToWorld( arShareData );
   return false;
 
@@ -519,7 +511,6 @@ function( e ) {
     console.log( 'You released before longpress duration' );
     return false;
 }, 750 );
-
 
 function addNewArObjectToWorld( d ) {
     console.log( 'longpress-call addNewArbject:', arShareData );
@@ -563,6 +554,15 @@ function addNewArObjectToWorld( d ) {
     if ( intersects.length < 0 ) {
             return;
         }
+
+
+
+    if ( intersects[0].object.name === 'torus1' ) {
+
+        console.log( 'torus1 found:', intersects[0] );
+
+    }
+
 
 // do things with the selected object
 
