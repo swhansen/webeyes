@@ -56,7 +56,7 @@ function drawCanvaslineArray() {
 function toggleFade() {
 if ( fadeTimer ) {return;}
   if ( fadeSwitch === true && fade === true  ) {
-      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 50 );
+      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 20 );
     }
   if ( fade === false || fadeSwitch === false ) {
       clearInterval( fadeTimer );
@@ -75,7 +75,7 @@ function receiveLineFromClient( data ) {
   switch ( data.pointerState ) {
     case 'pointerDown':
       points.length = 0;
-      context.beginPath();
+     context.beginPath();
       context.moveTo( data.x, data.y );
       break;
     case 'pointerMove':
@@ -97,10 +97,10 @@ function receiveLineFromClient( data ) {
      // context.lineTo( data.x, data.y );
      // context.stroke();
       lineArray.push( new Line( line, data.color, data.client ) );
-     // line.length = 0;
-     // points.length = 0;
+      line = [];
+      points = [];
 
-      context.beginPath();
+    //  context.beginPath();
 
       fade = true;
       toggleFade();
