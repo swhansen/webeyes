@@ -564,8 +564,10 @@ function addNewArObjectToWorld( d ) {
 
       var selectedObject = scene.getObjectByName( intersects[0].object.name );
 
-      if ( !selectedObject.userData.isAnimated ) {
+      if ( selectedObject.userData.isAnimated === false ) {
         selectedObject.userData.isAnimated = true;
+        } else {
+        selectedObject.userData.isAnimated = false;
       }
 
       console.log( 'SelectedObject:', selectedObject );
