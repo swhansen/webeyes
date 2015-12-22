@@ -134,6 +134,8 @@ function toolPencil() {
     tool.started = true;
     data.x = Math.round( ev._x );
     data.y = Math.round( ev._y );
+    lastx = data.x;
+    lasty = data.y;
     data.pointerState = 'pointerDown';
     console.log( 'mouseDown:', ev._x, ev._y );
     emitDraw( data );
@@ -158,10 +160,11 @@ function toolPencil() {
     }
   };
 
-  this.mouseup = function() {
+  this.mouseup = function( ev ) {
     if ( tool.started ) {
 
-      //  tool.mousemove(ev);
+      data.x = Math.round( ev._x );
+      data.y = Math.round( ev._y );
 
       data.pointerState = 'pointerUp';
       emitDraw( data );
