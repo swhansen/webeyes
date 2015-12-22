@@ -34,13 +34,13 @@ function drawCanvaslineArray() {
     context.shadowColor = lineArray[i].color;
 
     for ( var j = 0; j < points.length; j++ ) {
-      if ( j === 1 ) {
+      if ( j === 0 ) {
         context.beginPath();
         context.moveTo( points[j].x, points[j].y );
       }
       context.lineTo( points[j].x, points[j].y );
-    }
       context.stroke();
+    }
     if ( fadeSwitch === true ) {
        lineArray[i].line.shift();
     }
