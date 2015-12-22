@@ -100,7 +100,7 @@ function receiveLineFromClient( data ) {
       line = [];
       points = [];
 
-    //  context.beginPath();
+      context.beginPath();
 
       fade = true;
       toggleFade();
