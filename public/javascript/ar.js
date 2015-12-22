@@ -404,9 +404,9 @@ function arConnectionController( participantState ) {
     knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
 
 
-    if ( obj.userData.isAnimted ) {
-      console.log( 'selected onject animated?:', obj.object.userData.isAnimted );
-    }
+   // if ( obj.userData.isAnimted ) {
+   //   console.log( 'selected onject animated?:', obj.object.userData.isAnimted );
+   // }
 
     if ( isAnimateKnot === true ) {
         knot.rotation.y += 0.03;
@@ -561,7 +561,7 @@ function addNewArObjectToWorld( d ) {
         }
 
       console.log( 'intersected object:', intersects[0], intersects[0].object.name );
-      intersects[0].userData = { isAnimated: true };
+    //  intersects[0].userData = { isAnimated: true };
 
 
 
