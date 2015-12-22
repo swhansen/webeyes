@@ -110,7 +110,7 @@ function loadAr( participantState ) {
     if ( data.operation === 'animateSelectedObject' ) {
       console.log( 'animateSelectedObject:', data );
 
-        var tempObj =  scene.getObjectByName( data.object );
+        var tempObj =  scene.getObjectByName( data.name );
         console.log( 'animateSelectedObject:', tempObj );
 
 
@@ -578,11 +578,11 @@ function addNewArObjectToWorld( d ) {
       }
 
       arShareData.operation = 'animateSelectedObject';
-      arShareData.object = selectedObject.name;
+      //arShareData.object = selectedObject.name;
       arShareData.animate = selectedObject.userData.isAnimated;
-      arShareData.name = intersects[0].object.name;
+      arShareData.name = selectedObject.name;
 
-      emitArObject( arShareData );
+      //emitArObject( arShareData );
 
 
       //intersects[0].object.userData = { isAnimated: true };
