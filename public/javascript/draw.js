@@ -94,13 +94,11 @@ function receiveLineFromClient( data ) {
       } );
       break;
     case 'pointerUp':
-     // context.lineTo( data.x, data.y );
-     // context.stroke();
+     context.lineTo( data.x, data.y );
+     context.stroke();
       lineArray.push( new Line( line, data.color, data.client ) );
       line = [];
       points = [];
-
-    //  context.beginPath();
 
       fade = true;
       toggleFade();
@@ -155,6 +153,7 @@ function toolPencil() {
       lastx = data.x;
       lasty = data.y;
       data.pointerState = 'pointerMove';
+      console.log( 'mouseMove:', ev._x, ev._y );
       emitDraw( data );
       }
     }
@@ -162,11 +161,10 @@ function toolPencil() {
 
   this.mouseup = function( ev ) {
     if ( tool.started ) {
-
       data.x = Math.round( ev._x );
       data.y = Math.round( ev._y );
-
       data.pointerState = 'pointerUp';
+      console.log( 'mouseUp:', ev._x, ev._y );
       emitDraw( data );
       tool.started = false;
     }
