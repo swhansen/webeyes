@@ -56,7 +56,7 @@ function drawCanvaslineArray() {
 function toggleFade() {
 if ( fadeTimer ) {return;}
   if ( fadeSwitch === true && fade === true  ) {
-      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 20 );
+      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 50 );
     }
   if ( fade === false || fadeSwitch === false ) {
       clearInterval( fadeTimer );
@@ -97,8 +97,8 @@ function receiveLineFromClient( data ) {
      // context.lineTo( data.x, data.y );
      // context.stroke();
       lineArray.push( new Line( line, data.color, data.client ) );
-      line = [];
-      points = [];
+      line.length = 0;
+      points.length = 0;
 
       context.beginPath();
 
