@@ -97,8 +97,8 @@ function receiveLineFromClient( data ) {
      // context.lineTo( data.x, data.y );
      // context.stroke();
       lineArray.push( new Line( line, data.color, data.client ) );
-      line.length = 0;
-      points.length = 0;
+     // line.length = 0;
+     // points.length = 0;
 
       context.beginPath();
 
