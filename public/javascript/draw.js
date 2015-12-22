@@ -34,7 +34,7 @@ function drawCanvaslineArray() {
     context.shadowColor = lineArray[i].color;
 
     for ( var j = 0; j < points.length; j++ ) {
-      if ( j === 0 ) {
+      if ( j === 1 ) {
         context.beginPath();
         context.moveTo( points[j].x, points[j].y );
       }
@@ -75,8 +75,8 @@ function receiveLineFromClient( data ) {
   switch ( data.pointerState ) {
     case 'pointerDown':
       points.length = 0;
-     context.beginPath();
       context.moveTo( data.x, data.y );
+      context.beginPath();
       break;
     case 'pointerMove':
       context.lineTo( data.x, data.y );
