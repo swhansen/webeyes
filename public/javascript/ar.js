@@ -99,7 +99,6 @@ function loadAr( participantState ) {
     }
 
 
-
     if ( data.operation === 'newObject' ) {
       console.log( 'adding newObject:', data );
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
@@ -110,9 +109,6 @@ function loadAr( participantState ) {
       scene.add( torus1 );
       arSelectObjectArray.push( torus1 );
     }
-
-
-
 
     if ( data.operation === 'animateSelectedObject' ) {
       console.log( 'animateSelectedObject:', data );
@@ -500,7 +496,6 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
 
-
   console.log( 'dir:', dir );
   console.log( 'pos:', pos );
 
@@ -515,7 +510,7 @@ $( '#ar-canvas' ).longpress( function( event ) {
 //    emitArObject( arShareData );
 
   console.log( 'Good Longpress' );
-  addNewArObject( arShareData );
+  addNewArObjectToWorld( arShareData );
   return false;
 
   },
@@ -526,12 +521,12 @@ function( e ) {
 }, 750 );
 
 
-function addNewArObject( newData ) {
+function addNewArObjectToWorld( d ) {
     console.log( 'longpress-call addNewArbject:', arShareData );
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    torus1.position.set( newData.x, newData.y, newData.z );
+    torus1.position.set( d.x, d.y, d.z );
     torus1.name = torus1.id;
     scene.add( torus1 );
     arSelectObjectArray.push( torus1 );
@@ -540,12 +535,12 @@ function addNewArObject( newData ) {
 
     var newArObj = {};
     newArObj.operation = 'newObject';
-    newArObj.x = newData.x;
-    newArObj.y = newData.y;
-    newArObj.z = newData.z;
+    newArObj.x = d.x;
+    newArObj.y = d.y;
+    newArObj.z = d.z;
     newArObj.name = torus1.name;
 
-    console.log( 'sent newArObj:', newArObj );
+    console.log( 'sending newArObj:', newArObj );
 
     emitArObject( newArObj );
   }
@@ -553,8 +548,6 @@ function addNewArObject( newData ) {
 // Select an object
 
   ar0.addEventListener( 'click', function( event ) {
-
-    console.log( 'click event fired' );
 
     event.preventDefault();
 
