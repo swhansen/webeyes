@@ -578,7 +578,7 @@ function addNewArObjectToWorld( d ) {
       }
 
       arShareData.operation = 'animateSelectedObject';
-      arshareData.object = selectedObject.name;
+      arShareData.object = selectedObject.name;
       arShareData.animate = selectedObject.userData.isAnimated;
       arShareData.name = intersects[0].object.name;
 
