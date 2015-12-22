@@ -556,12 +556,8 @@ function addNewArObjectToWorld( d ) {
         }
 
 
+        console.log( 'intersected object:', intersects[0], intersects[0].name );
 
-    if ( intersects[0].object.name === 'torus1' ) {
-
-        console.log( 'torus1 found:', intersects[0] );
-
-    }
 
 
 // do things with the selected object
