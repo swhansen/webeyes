@@ -109,6 +109,11 @@ function loadAr( participantState ) {
 
     if ( data.operation === 'animateSelectedObject' ) {
       console.log( 'animateSelectedObject:', data );
+
+        var tempObj =  scene.getObjectByName( data.object );
+        console.log( 'animateSelectedObject:', tempObj );
+
+
       if ( data.name === 'sheep' ) { isAnimateSheep = data.animate; }
       if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
     }
@@ -562,6 +567,8 @@ function addNewArObjectToWorld( d ) {
 
      // console.log( 'intersected object:', intersects[0], intersects[0].object.name );
 
+// get the selected object and toggle the animation
+
       var selectedObject = scene.getObjectByName( intersects[0].object.name );
 
       if ( selectedObject.userData.isAnimated === false ) {
@@ -570,8 +577,13 @@ function addNewArObjectToWorld( d ) {
         selectedObject.userData.isAnimated = false;
       }
 
-      console.log( 'SelectedObject:', selectedObject );
-      console.log( 'SelectedObject-userData.isAnimated:', selectedObject.userData.isAnimated );
+      arShareData.operation = 'animateSelectedObject';
+      arshareData.object = selectedObject.name;
+      arShareData.animate = selectedObject.userData.isAnimated;
+      arShareData.name = intersects[0].object.name;
+
+      emitArObject( arShareData );
+
 
       //intersects[0].object.userData = { isAnimated: true };
      // console.log( ' userData:', intersects[0].object.userData );
