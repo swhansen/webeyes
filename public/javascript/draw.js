@@ -130,11 +130,12 @@ function toolPencil() {
   var tool = this;
   this.started = false;
 
-  this.mousedown = function( e ) {
+  this.mousedown = function( ev ) {
     tool.started = true;
     data.x = Math.round( ev._x );
     data.y = Math.round( ev._y );
     data.pointerState = 'pointerDown';
+    console.log( 'mouseDown:', ev._x, ev._y );
     emitDraw( data );
   };
 
