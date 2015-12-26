@@ -398,7 +398,7 @@ function arConnectionController( participantState ) {
 
   arConnectionController( participantState );
 
-  function animateArObjects( obj ) {
+  function animateArObjects() {
 
     var dt = clock.getDelta();
     step += dt * 0.5;
@@ -432,6 +432,7 @@ function arConnectionController( participantState ) {
          mixer.update( dt );
           helper.update();
     }
+
   }
 
   function connectToDeviceSensors() {
@@ -561,7 +562,7 @@ function addNewArObjectToWorld( d ) {
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
-    if ( intersects.length > 0 ) {
+    if ( intersects.length < 0 ) {
             return;
         }
 
@@ -583,7 +584,6 @@ function addNewArObjectToWorld( d ) {
       arShareData.name = selectedObject.name;
 
       emitArObject( arShareData );
-
 
       //intersects[0].object.userData = { isAnimated: true };
      // console.log( ' userData:', intersects[0].object.userData );
@@ -620,7 +620,7 @@ function addNewArObjectToWorld( d ) {
        arShareData.color = intersects[0].object.material.color;
 
        emitArObject( arShareData );
-     // false;
+      false;
     }
 
     if ( intersects[0].object.name === 'swordGuy' ) {
@@ -658,6 +658,6 @@ function addNewArObjectToWorld( d ) {
       emitArObject( arShareData );
     }
 
-  } );
+  }, false );
 
-
+}
