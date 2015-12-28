@@ -104,6 +104,13 @@ function loadAr( participantState ) {
       torus1.position.set( data.x, data.y, data.z );
       torus1.name = data.name;
       scene.add( torus1 );
+
+      torus1.position.set( d.x, d.y, d.z );
+      torus1.name = torus1.id;
+      torus1.userData.isAnimater = false;
+      torus1.userData.isUserCreated = true;
+      torus1.userData.id = data.id;
+
       arSelectObjectArray.push( torus1 );
     }
 
@@ -530,6 +537,9 @@ function addNewArObjectToWorld( d ) {
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
     torus1.position.set( d.x, d.y, d.z );
     torus1.name = torus1.id;
+    torus1.userData.isAnimater = false;
+    torus1.userData.isUserCreated = true;
+    torus1.userData.id = torus1.id;
     scene.add( torus1 );
     arSelectObjectArray.push( torus1 );
 
@@ -540,7 +550,7 @@ function addNewArObjectToWorld( d ) {
     newArObj.x = d.x;
     newArObj.y = d.y;
     newArObj.z = d.z;
-    newArObj.name = torus1.name;
+    newArObj.id = torus1.id;
 
     console.log( 'sending newArObj:', newArObj );
 
@@ -562,15 +572,28 @@ function addNewArObjectToWorld( d ) {
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
-    if ( intersects.length < 0 ) {
-            return;
-        }
+    if ( intersects.length > 0 ) {
+     //       return;
+     //   }
 
-     // console.log( 'intersected object:', intersects[0], intersects[0].object.name );
+
+if ( intersects[0].object.name === 'torus1' ) {
+
+
+     console.log( 'intersected object:', intersects[0], '.name:', intersects[0].object.name );
 
 // get the selected object and toggle the animation
 
-      var selectedObject = scene.getObjectByName( intersects[0].object.name );
+      var selectedObject = intersects[0].object ;
+
+
+     // var selectedObject = scene.getObjectByName( intersects[0].object.name );
+
+
+
+
+
+      console.log( 'selectedObject:', selectedObject, '.name:', selectedObject.name );
 
       if ( selectedObject.userData.isAnimated === false ) {
         selectedObject.userData.isAnimated = true;
@@ -585,8 +608,8 @@ function addNewArObjectToWorld( d ) {
 
       emitArObject( arShareData );
 
-      //intersects[0].object.userData = { isAnimated: true };
-     // console.log( ' userData:', intersects[0].object.userData );
+}
+
 
 // do things with the selected object
 
@@ -657,6 +680,7 @@ function addNewArObjectToWorld( d ) {
 
       emitArObject( arShareData );
     }
+  }
 
   }, false );
 
