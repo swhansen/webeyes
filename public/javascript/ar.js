@@ -105,8 +105,6 @@ function loadAr( participantState ) {
       torus1.name = data.id;
       scene.add( torus1 );
 
-      torus1.position.set( d.x, d.y, d.z );
-      //torus1.name = torus1.id;
       torus1.userData.isAnimated = false;
       torus1.userData.isUserCreated = true;
       torus1.userData.id = data.id;
