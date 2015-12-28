@@ -102,12 +102,12 @@ function loadAr( participantState ) {
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
       torus1.position.set( data.x, data.y, data.z );
-      torus1.name = data.name;
+      torus1.name = data.id;
       scene.add( torus1 );
 
       torus1.position.set( d.x, d.y, d.z );
-      torus1.name = torus1.id;
-      torus1.userData.isAnimater = false;
+      //torus1.name = torus1.id;
+      torus1.userData.isAnimated = false;
       torus1.userData.isUserCreated = true;
       torus1.userData.id = data.id;
 
@@ -304,8 +304,7 @@ function setUpArLayer( participantState ) {
         helper.visible = false;
         scene.add( helper );
 
-        var clipMorpher =
-        THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
+        var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
         var clipBones = geometry.animations[0];
 
         mixer = new THREE.AnimationMixer( swordGuyMesh );
@@ -537,7 +536,7 @@ function addNewArObjectToWorld( d ) {
     var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
     torus1.position.set( d.x, d.y, d.z );
     torus1.name = torus1.id;
-    torus1.userData.isAnimater = false;
+    torus1.userData.isAnimated = false;
     torus1.userData.isUserCreated = true;
     torus1.userData.id = torus1.id;
     scene.add( torus1 );
@@ -586,12 +585,7 @@ if ( intersects[0].object.name === 'torus1' ) {
 
       var selectedObject = intersects[0].object ;
 
-
      // var selectedObject = scene.getObjectByName( intersects[0].object.name );
-
-
-
-
 
       console.log( 'selectedObject:', selectedObject, '.name:', selectedObject.name );
 
