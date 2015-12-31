@@ -10,7 +10,7 @@ var flyingPig;
 var pigModel;
 var pivotPoint;
 var lamp;
-var torus1;
+var arUserCreateObject;
 var mixer;
 
 function orientationAr( data ) {
@@ -84,45 +84,44 @@ function loadAr( participantState ) {
 
     console.log( 'receiveArObject:', data );
 
-    if ( data.operation === 'moveObject' ) {
+    switch ( data.operation ) {
+      case 'moveObject':
+        var arObject = scene.getObjectByName( data.name );
+        arObject.position.x = data.position.x;
+        arObject.position.y = data.position.y;
+        arObject.position.z = data.position.z;
+        arObject.rotation.x = data.rotation._x;
+        arObject.rotation.y = data.rotation._y;
+        arObject.rotation.z = data.rotation._z;
+        arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+      break;
 
-       var arObject = scene.getObjectByName( data.name );
-           arObject.position.x = data.position.x;
-           arObject.position.y = data.position.y;
-           arObject.position.z = data.position.z;
-           arObject.rotation.x = data.rotation._x;
-           arObject.rotation.y = data.rotation._y;
-           arObject.rotation.z = data.rotation._z;
-           arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-    }
+      case 'newObject':
+        console.log( 'adding newObject:', data );
+        var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+        var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+        var arUserCreateObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+        arUserCreateObject.position.set( data.x, data.y, data.z );
+        arUserCreateObject.name = data.id;
+        scene.add( arUserCreateObject );
 
-    if ( data.operation === 'newObject' ) {
-      console.log( 'adding newObject:', data );
-      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-      var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-      var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-      torus1.position.set( data.x, data.y, data.z );
-      torus1.name = data.id;
-      scene.add( torus1 );
+        arUserCreateObject.userData.isAnimated = false;
+        arUserCreateObject.userData.isUserCreated = true;
+        arUserCreateObject.userData.id = data.id;
+        arUserCreateObject.userData.createdBy = data.createdBy;
 
-      torus1.userData.isAnimated = false;
-      torus1.userData.isUserCreated = true;
-      torus1.userData.id = data.id;
+        arSelectObjectArray.push( arUserCreateObject );
+      break;
 
-      arSelectObjectArray.push( torus1 );
-    }
-
-    if ( data.operation === 'animateSelectedObject' ) {
-      console.log( 'animateSelectedObject:', data );
-
+      case 'animateSelectedObject':
+        console.log( 'animateSelectedObject:', data );
         var tempObj =  scene.getObjectByName( data.name );
         console.log( 'animateSelectedObject:', tempObj );
-
-
-      if ( data.name === 'sheep' ) { isAnimateSheep = data.animate; }
-      if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
-    }
+        if ( data.name === 'sheep' ) { isAnimateSheep = data.animate; }
+        if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
+      break;
   }
+}
 
   function arMoveObject( data ) {
 
@@ -531,14 +530,15 @@ function addNewArObjectToWorld( d ) {
     console.log( 'longpress-call addNewArbject:', arShareData );
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-    var torus1 = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    torus1.position.set( d.x, d.y, d.z );
-    torus1.name = torus1.id;
-    torus1.userData.isAnimated = false;
-    torus1.userData.isUserCreated = true;
-    torus1.userData.id = torus1.id;
-    scene.add( torus1 );
-    arSelectObjectArray.push( torus1 );
+    var arUserCreateObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+    arUserCreateObject.position.set( d.x, d.y, d.z );
+    arUserCreateObject.name = arUserCreateObject.id;
+    arUserCreateObject.userData.isAnimated = false;
+    arUserCreateObject.userData.isUserCreated = true;
+    arUserCreateObject.userData.createdBy = userContext.rtcId;
+    arUserCreateObject.userData.id = arUserCreateObject.id;
+    scene.add( arUserCreateObject );
+    arSelectObjectArray.push( arUserCreateObject );
 
 // push the data
 
@@ -547,7 +547,8 @@ function addNewArObjectToWorld( d ) {
     newArObj.x = d.x;
     newArObj.y = d.y;
     newArObj.z = d.z;
-    newArObj.id = torus1.id;
+    newArObj.id = arUserCreateObject.id;
+    newArObj.createdBy = userContext.rtcId;
 
     console.log( 'sending newArObj:', newArObj );
 
@@ -574,7 +575,7 @@ function addNewArObjectToWorld( d ) {
      //   }
 
 
-if ( intersects[0].object.name === 'torus1' ) {
+if ( intersects[0].object.name === 'arUserCreateObject' ) {
 
 
      console.log( 'intersected object:', intersects[0], '.name:', intersects[0].object.name );
