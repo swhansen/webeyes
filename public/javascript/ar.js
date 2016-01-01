@@ -109,6 +109,7 @@ function loadAr( participantState ) {
         arUserCreateObject.userData.isUserCreated = true;
         arUserCreateObject.userData.id = data.id;
         arUserCreateObject.userData.createdBy = data.createdBy;
+        arUserCreateObject.userData.isSelectable = true;
 
         arSelectObjectArray.push( arUserCreateObject );
       break;
@@ -537,10 +538,27 @@ function addNewArObjectToWorld( d ) {
     arUserCreateObject.userData.isUserCreated = true;
     arUserCreateObject.userData.createdBy = userContext.rtcId;
     arUserCreateObject.userData.id = arUserCreateObject.id;
+    arUserCreateObject.userData.isSelectable = true;
     scene.add( arUserCreateObject );
     arSelectObjectArray.push( arUserCreateObject );
 
-// push the data
+// push the data to peers
+
+    var newArObj = {};
+    newArObj.operation = 'newObject';
+    newArObj.x = d.x;
+    newArObj.y = d.y;
+    newArObj.z = d.z;
+    newArObj.id = arUserCreateObject.id;
+    newArObj.createdBy = userContext.rtcId;
+    newArObj.isSelectable = true;
+
+    console.log( 'sending newArObj:', newArObj );
+
+    emitArObject( newArObj );
+  }
+
+  function pushNewArObject( d ) {
 
     var newArObj = {};
     newArObj.operation = 'newObject';
@@ -553,6 +571,7 @@ function addNewArObjectToWorld( d ) {
     console.log( 'sending newArObj:', newArObj );
 
     emitArObject( newArObj );
+
   }
 
 // Select an object
@@ -571,22 +590,12 @@ function addNewArObjectToWorld( d ) {
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
     if ( intersects.length > 0 ) {
-     //       return;
-     //   }
 
-
-if ( intersects[0].object.name === 'arUserCreateObject' ) {
-
-
-     console.log( 'intersected object:', intersects[0], '.name:', intersects[0].object.name );
-
-// get the selected object and toggle the animation
+if ( intersects[0].object.userData.isUserCreated === true ) {
 
       var selectedObject = intersects[0].object ;
 
-     // var selectedObject = scene.getObjectByName( intersects[0].object.name );
-
-      console.log( 'selectedObject:', selectedObject, '.name:', selectedObject.name );
+      console.log( 'selectedObject:', selectedObject );
 
       if ( selectedObject.userData.isAnimated === false ) {
         selectedObject.userData.isAnimated = true;
@@ -600,9 +609,7 @@ if ( intersects[0].object.name === 'arUserCreateObject' ) {
       arShareData.name = selectedObject.name;
 
       emitArObject( arShareData );
-
 }
-
 
 // do things with the selected object
 
