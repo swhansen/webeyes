@@ -121,23 +121,23 @@ $( document ).ready( function() {
 //  - auto, none
 //  - all other events are SVG realted
 
-
 $( function() {
   $( '#utilButton' ).click( function() {
+    buildSideMenu( 'util' );
+    }
+  );  }
+);
 
-//function utilUI() {
-buildSideMenu( 'util' );
-}
-)}
-  );
-
-function drawUI() {
-  buildSideMenu( 'draw' );
-  userContext.uiState = 'draw';
-  setDomMouseEvent( 'arcanvaspane', 'none' );
-  setDomMouseEvent( 'canvas0', 'auto' );
-  setDomMouseEvent( 'arcanvaspane', 'none' );
-}
+$( function() {
+  $( '#drawButton' ).click( function() {
+      buildSideMenu( 'draw' );
+      userContext.uiState = 'draw';
+      setDomMouseEvent( 'arcanvaspane', 'none' );
+      setDomMouseEvent( 'canvas0', 'auto' );
+      setDomMouseEvent( 'arcanvaspane', 'none' );
+    }
+  ); }
+);
 
 function modmeUI() {
   buildSideMenu( 'modme' );
