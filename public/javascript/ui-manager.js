@@ -121,9 +121,15 @@ $( document ).ready( function() {
 //  - auto, none
 //  - all other events are SVG realted
 
-function utilUI() {
+
+$( function() {
+  $( '#utilButton' ).click( function() {
+
+//function utilUI() {
 buildSideMenu( 'util' );
 }
+)}
+  );
 
 function drawUI() {
   buildSideMenu( 'draw' );
