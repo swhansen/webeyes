@@ -110,6 +110,7 @@ function loadAr( participantState ) {
         arUserCreateObject.userData.id = data.id;
         arUserCreateObject.userData.createdBy = data.createdBy;
         arUserCreateObject.userData.isSelectable = true;
+        arUserCreateObject.userData.objectType = data.objectType;
 
         arSelectObjectArray.push( arUserCreateObject );
       break;
@@ -432,6 +433,12 @@ function arConnectionController( participantState ) {
           helper.update();
     }
 
+    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+        if ( arSelectObjectArray[i].userData.isAnimated ) {
+          arSelectObjectArray[i].rotation.z += dt * 1.0;
+        }
+    }
+
   }
 
   function connectToDeviceSensors() {
@@ -447,7 +454,6 @@ function arConnectionController( participantState ) {
     renderer.render( scene, broadcastDrivenCamera );
     requestAnimationFrame( connectToBroadcastSensors );
   }
-
     arConnectionController( participantState );
 
   }
@@ -466,11 +472,6 @@ function setupArInteractionEvents( participantState ) {
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
   offsetY = rect.top;
-
-  //ar0.style.width = '100%';
-  //ar0.style.height = '100%';
-  //ar0.width = ar0.offsetWidth;
-  //ar0.height = ar0.offsetHeight;
 
   var viewWidth = ar0.width;
   var viewHeight = ar0.height;
@@ -527,6 +528,7 @@ function addNewArObjectToWorld( d ) {
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var arUserCreateObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+    arUserCreateObject.userData.objectType =  'bagel';
     arUserCreateObject.position.set( d.x, d.y, d.z );
     arUserCreateObject.name = arUserCreateObject.id;
     arUserCreateObject.userData.isAnimated = false;
@@ -547,6 +549,7 @@ function addNewArObjectToWorld( d ) {
     newArObj.id = arUserCreateObject.id;
     newArObj.createdBy = userContext.rtcId;
     newArObj.isSelectable = true;
+    newArObj.objectType = 'bagel';
 
     console.log( 'sending newArObj:', newArObj );
 
