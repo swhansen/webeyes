@@ -121,6 +121,10 @@ function loadAr( participantState ) {
         console.log( 'animateSelectedObject:', tempObj );
         if ( data.name === 'sheep' ) { isAnimateSheep = data.animate; }
         if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
+
+        if ( data.isUserCreated ) {
+          tempObj.userData.isAnimated  = data.isAnimated;
+        }
       break;
   }
 }
@@ -433,9 +437,11 @@ function arConnectionController( participantState ) {
           helper.update();
     }
 
+// User Created Objects
+
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
         if ( arSelectObjectArray[i].userData.isAnimated ) {
-          arSelectObjectArray[i].rotation.z += dt * 1.0;
+          arSelectObjectArray[i].rotation.y += dt * 1.0;
         }
     }
 
@@ -602,8 +608,9 @@ function addNewArObjectToWorld( d ) {
         }
 
         arShareData.operation = 'animateSelectedObject';
-        arShareData.object = selectedObject.name;
-        arShareData.animate = selectedObject.userData.isAnimated;
+        arShareData.id = selectedObject.userData.id;
+        arShareData.isUserCreated = true;
+        arShareData.isAnimated = selectedObject.userData.isAnimated;
         arShareData.name = selectedObject.name;
 
         emitArObject( arShareData );
