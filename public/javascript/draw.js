@@ -239,12 +239,6 @@ function touchMoveHandler( e ) {
 
 function initDraw() {
 
-
-function buildChannelLayer( domid ) {
-}
-
-
-
   document.getElementById( 'canvaspane' ).className = 'canvascenter';
 
   canvas.style.width = '100%';
