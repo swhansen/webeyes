@@ -125,8 +125,8 @@ $( function() {
   $( '#utilButton' ).click( function() {
     buildSideMenu( 'util' );
     }
-  );  }
-);
+  );
+});
 
 $( function() {
   $( '#drawButton' ).click( function() {
@@ -136,30 +136,37 @@ $( function() {
       setDomMouseEvent( 'canvas0', 'auto' );
       setDomMouseEvent( 'arcanvaspane', 'none' );
     }
-  ); }
-);
+  );
+});
 
-function modmeUI() {
-  buildSideMenu( 'modme' );
-  userContext.modMeState = true;
-  setDomMouseEvent( 'canvas0', 'none' );
-  setDomMouseEvent( 'arcanvaspane', 'none' );
-}
 
-function augmeUI() {
-  console.log( 'at augmeUI' );
-  buildSideMenu( 'augme' );
-  userContext.participantState = 'focus';
-  userContext.modMeState = true;
-  userContext.uiState = 'ar';
 
-  loadAr( userContext.participantState );
+$( function() {
+  $( '#modmeButton' ).click( function() {
+      buildSideMenu( 'modme' );
+      userContext.modMeState = true;
+      setDomMouseEvent( 'canvas0', 'none' );
+      setDomMouseEvent( 'arcanvaspane', 'none' );
+    }
+  );
+});
 
-  document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
-  setDomMouseEvent( 'canvas0', 'none' );
-  setDomMouseEvent( 'arcanvaspane', 'auto' );
-}
+$( function() {
+  $( '#arMainButton' ).click( function() {
+      buildSideMenu( 'augme' );
+      userContext.participantState = 'focus';
+      userContext.modMeState = true;
+      userContext.uiState = 'ar';
+
+      loadAr( userContext.participantState );
+
+      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+      setDomMouseEvent( 'canvas0', 'none' );
+      setDomMouseEvent( 'arcanvaspane', 'auto' );
+    }
+  );
+} );
 
 function shareAr() {
 
