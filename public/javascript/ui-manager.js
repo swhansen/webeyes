@@ -126,7 +126,7 @@ $( function() {
     buildSideMenu( 'util' );
     }
   );
-});
+} );
 
 $( function() {
   $( '#drawButton' ).click( function() {
@@ -137,9 +137,7 @@ $( function() {
       setDomMouseEvent( 'arcanvaspane', 'none' );
     }
   );
-});
-
-
+} );
 
 $( function() {
   $( '#modmeButton' ).click( function() {
@@ -149,8 +147,7 @@ $( function() {
       setDomMouseEvent( 'arcanvaspane', 'none' );
     }
   );
-});
-
+} );
 
 $( function() {
   $( '#arMainButton' ).click( function() {

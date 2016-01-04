@@ -239,6 +239,12 @@ function touchMoveHandler( e ) {
 
 function initDraw() {
 
+
+function buildChannelLayer( domid ) {
+}
+
+
+
   document.getElementById( 'canvaspane' ).className = 'canvascenter';
 
   canvas.style.width = '100%';
@@ -247,8 +253,8 @@ function initDraw() {
   canvas.height = canvas.offsetHeight;
 
   canvasPane.style.visibility = 'visible';
-  canvasPane.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
-  canvasPane.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
+  //canvasPane.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
+  //canvasPane.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
   line.length = 0;
   lineArray.length = 0;

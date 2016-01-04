@@ -412,26 +412,22 @@ function arConnectionController( participantState ) {
 
     knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
 
-   // if ( obj.userData.isAnimted ) {
-   //   console.log( 'selected onject animated?:', obj.object.userData.isAnimted );
-   // }
-
     if ( isAnimateKnot === true ) {
         knot.rotation.y += 0.03;
         knot.rotation.z += 0.03;
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
     if ( isAnimateSheep === true ) {
-      sheep.rotation.z += dt * 2;
+        sheep.rotation.z += dt * 2;
     }
 
 // Flying  Pig
-  if ( flyingPig !== undefined ) {
-    pivotPoint.rotation.y += dt * 1.0;
+    if ( flyingPig !== undefined ) {
+      pivotPoint.rotation.y += dt * 1.0;
     }
 
 // Sword Guy
-  if ( isAnimateSwordGuy ) {
+    if ( isAnimateSwordGuy ) {
          mixer.update( dt );
           helper.update();
     }
@@ -592,57 +588,52 @@ function addNewArObjectToWorld( d ) {
 
       if ( intersects[0].object.userData.isUserCreated === true ) {
 
-      var selectedObject = intersects[0].object ;
+        var selectedObject = intersects[0].object ;
 
-      console.log( 'selectedObject:', selectedObject );
+        console.log( 'selectedObject:', selectedObject );
 
-      if ( selectedObject.userData.isAnimated === false ) {
-        selectedObject.userData.isAnimated = true;
-        } else {
-        selectedObject.userData.isAnimated = false;
+        if ( selectedObject.userData.isAnimated === false ) {
+          selectedObject.userData.isAnimated = true;
+          } else {
+          selectedObject.userData.isAnimated = false;
+        }
+
+        arShareData.operation = 'animateSelectedObject';
+        arShareData.object = selectedObject.name;
+        arShareData.animate = selectedObject.userData.isAnimated;
+        arShareData.name = selectedObject.name;
+
+        emitArObject( arShareData );
       }
 
-      arShareData.operation = 'animateSelectedObject';
-      arShareData.object = selectedObject.name;
-      arShareData.animate = selectedObject.userData.isAnimated;
-      arShareData.name = selectedObject.name;
-
-      emitArObject( arShareData );
-}
-
-// do things with the selected object
+      // Special Cases - Hardwired
 
     if ( intersects[0].object.name === 'knot' ) {
-      isAnimateKnot = !isAnimateKnot;
-      return;
+        isAnimateKnot = !isAnimateKnot;
+        return;
     }
 
-   if ( intersects[0].object.name === 'sheep' ) {
+    if ( intersects[0].object.name === 'sheep' ) {
 
-     isAnimateSheep = !isAnimateSheep;
+       isAnimateSheep = !isAnimateSheep;
 
-// only change the color when animation is stopped
+        // only change the color when animation is stopped
 
-     if ( !isAnimateSheep ) {
-      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-     }
+       if ( !isAnimateSheep ) {
+        intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+       }
 
-// isAnimateXxxxxx - boolean toggle for animation state
+         arShareData.animate = isAnimateSheep;
+         arShareData.operation = 'animateSelectedObject';
+         arShareData.name = intersects[0].object.name;
+         arShareData.x = intersects[0].object.position.x;
+         arShareData.y = intersects[0].object.position.y;
+         arShareData.z = intersects[0].object.position.z;
+         arShareData.position = intersects[0].object.position;
+         arShareData.rotation = intersects[0].object.rotation;
+         arShareData.color = intersects[0].object.material.color;
 
-// you need all the oritation data to show where it stopped on click
-
-       arShareData.animate = isAnimateSheep;
-       arShareData.operation = 'animateSelectedObject';
-       arShareData.name = intersects[0].object.name;
-       arShareData.x = intersects[0].object.position.x;
-       arShareData.y = intersects[0].object.position.y;
-       arShareData.z = intersects[0].object.position.z;
-       arShareData.position = intersects[0].object.position;
-       arShareData.rotation = intersects[0].object.rotation;
-       arShareData.color = intersects[0].object.material.color;
-
-       emitArObject( arShareData );
-      false;
+         emitArObject( arShareData );
     }
 
     if ( intersects[0].object.name === 'swordGuy' ) {
@@ -656,11 +647,7 @@ function addNewArObjectToWorld( d ) {
       emitArObject( arShareData );
     }
 
-    // isAnimateSheep = !isAnimateSheep;
-
-    //if ( intersects.length > 0 ) {
-
-   if ( intersects[0].object.name === 'cube2' ) {
+    if ( intersects[0].object.name === 'cube2' ) {
       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
 
@@ -682,6 +669,5 @@ function addNewArObjectToWorld( d ) {
   }
 
   }, false );
-
 
 }
