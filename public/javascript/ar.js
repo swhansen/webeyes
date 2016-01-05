@@ -441,7 +441,8 @@ function arConnectionController( participantState ) {
 // User Created Objects
 
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
-        if ( arSelectObjectArray[i].userData.objectType === 'bagel' ) {
+        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
           arSelectObjectArray[i].rotation.y += dt * 1.0;
         }
     }
