@@ -65,9 +65,8 @@ function drawBullsEye() {
   ctx.stroke();
 }
 
-function emitUtility(data) {
+function emitUtility( data ) {
   var sessionId = socketServer.sessionid;
- // console.log('emitUtility:', data);
   socketServer.emit('utility', data, sessionId);
 }
 

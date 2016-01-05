@@ -397,16 +397,6 @@ socketServer.on( 'videoMute', function( videoMuteData ) {
 
   var avatarForBox = videoMuteData.avatar;
 
-  //= _(connectList)
-  //.filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
-  //.pluck('avatar')
-  //.value();
-
-   //var theAvatar = _(connectList)
-   //.filter(function(connectList) { return connectList.rtcid == videoMuteData.rtcid; })
-   //.pluck('avatar')
-   //.value();
-
 //  Toggle the video box
 
   document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = videoMuteData.state;

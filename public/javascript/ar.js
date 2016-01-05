@@ -58,9 +58,9 @@ function removeUserCreatedArObjects() {
         console.log( 'object:', scene.children[i], 'removed' );
       }
     }
-    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
-      if ( arSelectObjectArray[i].userData.isUserCreated ) {
-        arSelectObjectArray.splice( i, 1 );
+    for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
+      if ( arSelectObjectArray[j].userData.isUserCreated ) {
+        arSelectObjectArray.splice( j, 1 );
       }
     }
   }
@@ -577,7 +577,7 @@ function addNewArObjectToWorld( d ) {
     scene.add( arUserCreatedObject );
     arSelectObjectArray.push( arUserCreatedObject );
 
-// push new object to peers
+// push the new object to peers
 
     var newArObj = {};
     newArObj.operation = 'newObject';
@@ -587,6 +587,7 @@ function addNewArObjectToWorld( d ) {
     newArObj.id = arUserCreatedObject.id;
     newArObj.createdBy = userContext.rtcId;
     newArObj.isSelectable = true;
+    newArObj.isUserCreated = true;
     newArObj.objectType = 'bagel';
 
     console.log( 'sending newArObj:', newArObj );
