@@ -58,7 +58,11 @@ function removeUserCreatedArObjects() {
         console.log( 'object:', scene.children[i], 'removed' );
       }
     }
-      var arSelectObjectArray = [];
+    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+      if ( arSelectObjectArray[i].userData.isUserCreated ) {
+        arSelectObjectArray.splice( i, 1 );
+      }
+    }
   }
 
 function emitArOrientationData() {
