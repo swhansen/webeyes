@@ -287,6 +287,16 @@ $( function() {
     );
   } );
 
+$( function() {
+    $( '#clearaug' ).click( function() {
+        removeUserCreatedArObjects();
+        clearUtilCanvas();
+        clearDrawCanvas();
+        emitUtility( 'reset' );
+      }
+    );
+  } );
+
 // --------------------------
 
  $( function() {

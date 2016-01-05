@@ -52,8 +52,8 @@ function orientationAr( data ) {
 
 function removeUserCreatedArObjects() {
   console.log( 'at removeUserCreatedArObjects' );
-    for ( var i = 0; i < scene.length; i++ ) {
-      if ( scene[i].children.userData.isUserCreated ) {
+    for ( var i = 0; i < scene.children.length; i++ ) {
+      if ( scene.children[i].userData.isUserCreated ) {
         scene.remove( scene.children[i] );
         console.log( 'object:', scene.children[i], 'removed' );
       }
