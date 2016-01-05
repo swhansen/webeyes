@@ -415,6 +415,16 @@ function arConnectionController( participantState ) {
 
   arConnectionController( participantState );
 
+
+  function removeUserCreatedArObjects() {
+    for ( var i = 0; i < scene.length; i++ ) {
+      if ( scene[i].userData.isUserCreated ) {
+        scene.remove( scene[i] );
+      }
+    }
+      var selectedObject = [];
+  }
+
   function animateArObjects() {
 
     var dt = clock.getDelta();
@@ -498,19 +508,17 @@ function setupArInteractionEvents( participantState ) {
       cameraDriver = broadcastDrivenCamera;
     }
 
+  function toggleArAnimation( arObject ) {
+    if ( arObject.userData.isAnimated === false ) {
+          arObject.userData.isAnimated = true;
+      } else {
+        arObject.userData.isAnimated = false;
+      }
+    }
+
 //
 // Place an object with a long click
 //
-
-function toggleArAnimation( arObject ) {
-  if ( arObject.userData.isAnimated === false ) {
-      arObject.userData.isAnimated = true;
-  } else {
-    arObject.userData.isAnimated = false;
-  }
-}
-
-
 
 $( '#ar-canvas' ).longpress( function( event ) {
 
@@ -611,16 +619,10 @@ function addNewArObjectToWorld( d ) {
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
     if ( intersects.length > 0 ) {
-
       if ( intersects[0].object.userData.isUserCreated === true ) {
+          var selectedObject = intersects[0].object ;
 
-        var selectedObject = intersects[0].object ;
-
-        console.log( 'selectedObject:', selectedObject );
-
-
-        toggleArAnimation( selectedObject );
-
+          toggleArAnimation( selectedObject );
 
     //   if ( selectedObject.userData.isAnimated === false ) {
     //     selectedObject.userData.isAnimated = true;
@@ -630,7 +632,6 @@ function addNewArObjectToWorld( d ) {
 
         arShareData.operation = 'animateSelectedObject';
         arShareData.id = selectedObject.userData.id;
-        arShareData.isUserCreated = true;
         arShareData.isAnimated = selectedObject.userData.isAnimated;
         arShareData.name = selectedObject.name;
 

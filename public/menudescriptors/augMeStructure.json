@@ -75,6 +75,7 @@
             "sideBar": "#aug-ui-container",
             "buttons": [
                 "#shareaug"
+                "#clearaug"
             ],
             "renderElement": "arcanvaspane",
             "desc": "AR code functions",

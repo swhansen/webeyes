@@ -55,10 +55,6 @@ var handlebars = require( 'express-handlebars' )
 app.engine( 'hbs', handlebars.engine );
 app.set( 'view engine', 'hbs' );
 
-//
-// mongoosep
-//
-
 mongoose.connect( mongoUriString, function( err, res ) {
   if ( err ) {
   console.log( 'ERROR connecting to:' + mongoUriString + '. '  + err );
