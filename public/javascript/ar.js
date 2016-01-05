@@ -63,6 +63,7 @@ function removeUserCreatedArObjects() {
         arSelectObjectArray.splice( j, 1 );
       }
     }
+    animateArObjects();
   }
 
 function emitArOrientationData() {
@@ -209,6 +210,7 @@ function setUpArLayer( participantState ) {
   var cube2 = new THREE.Mesh( geometryCube2, material2 );
   var sphere = new THREE.Mesh( geometrySphere, material3 );
   var knot = new THREE.Mesh( geometryKnot, materialKnot );
+  knot.userData.isSelectable = true;
 
   sphereN = new THREE.Mesh( geometrySphere, materialO );
   sphereS = new THREE.Mesh( geometrySphere, materialO );
@@ -254,6 +256,7 @@ function setUpArLayer( participantState ) {
     sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
     sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
     sheep.name = 'sheep';
+    sheep.userData.isSelectable = true;
     scene.add( sheep );
     arSelectObjectArray.push( sheep );
 
@@ -622,9 +625,10 @@ function addNewArObjectToWorld( d ) {
     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
 
+    var selectedObject = intersects[0].object ;
+
     if ( intersects.length > 0 ) {
-      if ( intersects[0].object.userData.isUserCreated === true ) {
-          var selectedObject = intersects[0].object ;
+      if ( selectedObject.userData.isUserCreated === true ) {
 
      //     toggleArAnimation( selectedObject );
 
@@ -652,10 +656,9 @@ function addNewArObjectToWorld( d ) {
     }
 
     if ( intersects[0].object.name === 'sheep' ) {
-
        isAnimateSheep = !isAnimateSheep;
 
-        // only change the color when animation is stopped
+    // only change the color when animation is stopped
 
        if ( !isAnimateSheep ) {
         intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
