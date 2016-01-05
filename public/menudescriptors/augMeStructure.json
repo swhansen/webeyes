@@ -74,7 +74,7 @@
             "mainButton": "#arMainButton",
             "sideBar": "#aug-ui-container",
             "buttons": [
-                "#shareaug"
+                "#shareaug",
                 "#clearaug"
             ],
             "renderElement": "arcanvaspane",
