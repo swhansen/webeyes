@@ -10,7 +10,7 @@ var flyingPig;
 var pigModel;
 var pivotPoint;
 var lamp;
-var arUserCreateObject;
+var arUserCreatedObject;
 var mixer;
 
 function orientationAr( data ) {
@@ -100,19 +100,20 @@ function loadAr( participantState ) {
         console.log( 'adding newObject:', data );
         var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
         var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-        var arUserCreateObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
-        arUserCreateObject.position.set( data.x, data.y, data.z );
-        arUserCreateObject.name = data.id;
-        scene.add( arUserCreateObject );
+        var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
 
-        arUserCreateObject.userData.isAnimated = false;
-        arUserCreateObject.userData.isUserCreated = true;
-        arUserCreateObject.userData.id = data.id;
-        arUserCreateObject.userData.createdBy = data.createdBy;
-        arUserCreateObject.userData.isSelectable = true;
-        arUserCreateObject.userData.objectType = data.objectType;
+        arUserCreatedObject.position.set( data.x, data.y, data.z );
+        arUserCreatedObject.name = data.id;
+        scene.add( arUserCreatedObject );
 
-        arSelectObjectArray.push( arUserCreateObject );
+        arUserCreatedObject.userData.id = data.id;
+        arUserCreatedObject.userData.isAnimated = false;
+        arUserCreatedObject.userData.isUserCreated = true;
+        arUserCreatedObject.userData.isSelectable = true;
+        arUserCreatedObject.userData.createdBy = data.createdBy;
+        arUserCreatedObject.userData.objectType = data.objectType;
+
+        arSelectObjectArray.push( arUserCreatedObject );
       break;
 
       case 'animateSelectedObject':
@@ -440,11 +441,10 @@ function arConnectionController( participantState ) {
 // User Created Objects
 
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
-        if ( arSelectObjectArray[i].userData.isAnimated ) {
+        if ( arSelectObjectArray[i].userData.objectType === 'bagel' ) {
           arSelectObjectArray[i].rotation.y += dt * 1.0;
         }
     }
-
   }
 
   function connectToDeviceSensors() {
@@ -521,7 +521,6 @@ $( '#ar-canvas' ).longpress( function( event ) {
 
   addNewArObjectToWorld( arShareData );
   return false;
-
   },
 
 function( e ) {
@@ -533,26 +532,28 @@ function addNewArObjectToWorld( d ) {
     console.log( 'longpress-call addNewArbject:', arShareData );
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-    var arUserCreateObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
-    arUserCreateObject.userData.objectType =  'bagel';
-    arUserCreateObject.position.set( d.x, d.y, d.z );
-    arUserCreateObject.name = arUserCreateObject.id;
-    arUserCreateObject.userData.isAnimated = false;
-    arUserCreateObject.userData.isUserCreated = true;
-    arUserCreateObject.userData.createdBy = userContext.rtcId;
-    arUserCreateObject.userData.id = arUserCreateObject.id;
-    arUserCreateObject.userData.isSelectable = true;
-    scene.add( arUserCreateObject );
-    arSelectObjectArray.push( arUserCreateObject );
+    var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
 
-// push the data to peers
+    arUserCreatedObject.position.set( d.x, d.y, d.z );
+    arUserCreatedObject.userData.id = arUserCreatedObject.id;
+    arUserCreatedObject.userData.objectType =  'bagel';
+    arUserCreatedObject.name = arUserCreatedObject.id;
+    arUserCreatedObject.userData.isAnimated = false;
+    arUserCreatedObject.userData.isUserCreated = true;
+    arUserCreatedObject.userData.isSelectable = true;
+    arUserCreatedObject.userData.createdBy = userContext.rtcId;
+
+    scene.add( arUserCreatedObject );
+    arSelectObjectArray.push( arUserCreatedObject );
+
+// push new object to peers
 
     var newArObj = {};
     newArObj.operation = 'newObject';
     newArObj.x = d.x;
     newArObj.y = d.y;
     newArObj.z = d.z;
-    newArObj.id = arUserCreateObject.id;
+    newArObj.id = arUserCreatedObject.id;
     newArObj.createdBy = userContext.rtcId;
     newArObj.isSelectable = true;
     newArObj.objectType = 'bagel';
@@ -563,19 +564,17 @@ function addNewArObjectToWorld( d ) {
   }
 
   function pushNewArObject( d ) {
-
     var newArObj = {};
     newArObj.operation = 'newObject';
     newArObj.x = d.x;
     newArObj.y = d.y;
     newArObj.z = d.z;
-    newArObj.id = arUserCreateObject.id;
+    newArObj.id = arUserCreatedObject.id;
     newArObj.createdBy = userContext.rtcId;
 
     console.log( 'sending newArObj:', newArObj );
 
     emitArObject( newArObj );
-
   }
 
 // Select an object
