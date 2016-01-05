@@ -50,6 +50,15 @@ function orientationAr( data ) {
   }
 }
 
+function removeUserCreatedArObjects() {
+    for ( var i = 0; i < scene.length; i++ ) {
+      if ( scene[i].userData.isUserCreated ) {
+        scene.remove( scene[i] );
+      }
+    }
+      var selectedObject = [];
+  }
+
 function emitArOrientationData() {
 
   window.addEventListener( 'deviceorientation', function( event ) {
@@ -414,16 +423,6 @@ function arConnectionController( participantState ) {
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
   arConnectionController( participantState );
-
-
-  function removeUserCreatedArObjects() {
-    for ( var i = 0; i < scene.length; i++ ) {
-      if ( scene[i].userData.isUserCreated ) {
-        scene.remove( scene[i] );
-      }
-    }
-      var selectedObject = [];
-  }
 
   function animateArObjects() {
 
