@@ -298,6 +298,13 @@ function setUpArLayer( participantState ) {
         swordGuyMesh.scale.set( s, s, s );
         swordGuyMesh.rotation.y =  -Math.PI;
         swordGuyMesh.name = 'swordGuy';
+
+        swordGuyMesh.userData.objectType =  'swordGuyMesh';
+        swordGuyMesh.userData.isAnimated = false;
+        swordGuyMesh.userData.isUserCreated = false;
+        swordGuyMesh.userData.isSelectable = true;
+        swordGuyMesh.userData.createdBy = 'system';
+
         scene.add( swordGuyMesh );
 
      //   swordGuyMesh.castShadow = true;
@@ -438,7 +445,7 @@ function arConnectionController( participantState ) {
           helper.update();
     }
 
-// User Created Objects
+// User Created Objects - as of now only torus
 
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
         if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
@@ -494,6 +501,16 @@ function setupArInteractionEvents( participantState ) {
 //
 // Place an object with a long click
 //
+
+function toggleArAnimation( arObject ) {
+  if ( arObject.userData.isAnimated === false ) {
+      arObject.userData.isAnimated = true;
+  } else {
+    arObject.userData.isAnimated = false;
+  }
+}
+
+
 
 $( '#ar-canvas' ).longpress( function( event ) {
 
@@ -601,11 +618,15 @@ function addNewArObjectToWorld( d ) {
 
         console.log( 'selectedObject:', selectedObject );
 
-        if ( selectedObject.userData.isAnimated === false ) {
-          selectedObject.userData.isAnimated = true;
-          } else {
-          selectedObject.userData.isAnimated = false;
-        }
+
+        toggleArAnimation( selectedArObject );
+
+
+    //   if ( selectedObject.userData.isAnimated === false ) {
+    //     selectedObject.userData.isAnimated = true;
+    //     } else {
+    //     selectedObject.userData.isAnimated = false;
+    //   }
 
         arShareData.operation = 'animateSelectedObject';
         arShareData.id = selectedObject.userData.id;
