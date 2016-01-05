@@ -619,7 +619,7 @@ function addNewArObjectToWorld( d ) {
         console.log( 'selectedObject:', selectedObject );
 
 
-        toggleArAnimation( selectedArObject );
+        toggleArAnimation( selectedObject );
 
 
     //   if ( selectedObject.userData.isAnimated === false ) {
