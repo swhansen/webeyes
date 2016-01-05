@@ -292,6 +292,7 @@ $( function() {
         removeUserCreatedArObjects();
         clearUtilCanvas();
         clearDrawCanvas();
+
         emitUtility( 'reset' );
       }
     );

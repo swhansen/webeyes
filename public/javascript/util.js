@@ -88,6 +88,7 @@ socketServer.on('utility', function(data) {
       case 'reset':
       clearUtilCanvas();
       clearDrawCanvas();
+      removeUserCreatedArObjects();
       break;
     case 'arClientInit':
         loadAr( 'peer' );
