@@ -74,23 +74,23 @@ socketServer.on('utility', function(data) {
   switch ( data ) {
     case 'bullseye':
       drawBullsEye();
-      break;
+    break;
     case 'doc-1':
       drawDoc1();
-      break;
+    break;
     case 'doc-2':
       drawDoc2();
-      break;
+    break;
     case 'arch':
       drawArch();
-      break;
-      case 'reset':
+    break;
+    case 'reset':
       clearUtilCanvas();
       clearDrawCanvas();
       removeUserCreatedArObjects();
-      break;
+    break;
     case 'arClientInit':
         loadAr( 'peer' );
-      break;
+    break;
   }
 } );

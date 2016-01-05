@@ -63,7 +63,6 @@ function removeUserCreatedArObjects() {
         arSelectObjectArray.splice( j, 1 );
       }
     }
-    animateArObjects();
   }
 
 function emitArOrientationData() {
