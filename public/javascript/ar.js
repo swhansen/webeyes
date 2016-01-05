@@ -51,12 +51,14 @@ function orientationAr( data ) {
 }
 
 function removeUserCreatedArObjects() {
+  console.log( 'at removeUserCreatedArObjects' );
     for ( var i = 0; i < scene.length; i++ ) {
-      if ( scene[i].userData.isUserCreated ) {
-        scene.remove( scene[i] );
+      if ( scene[i].children.userData.isUserCreated ) {
+        scene.remove( scene.children[i] );
+        console.log( 'object:', scene.children[i], 'removed' );
       }
     }
-      var selectedObject = [];
+      var arSelectObjectArray = [];
   }
 
 function emitArOrientationData() {
