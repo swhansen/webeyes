@@ -628,13 +628,13 @@ function addNewArObjectToWorld( d ) {
       if ( intersects[0].object.userData.isUserCreated === true ) {
           var selectedObject = intersects[0].object ;
 
-          toggleArAnimation( selectedObject );
+     //     toggleArAnimation( selectedObject );
 
-    //   if ( selectedObject.userData.isAnimated === false ) {
-    //     selectedObject.userData.isAnimated = true;
-    //     } else {
-    //     selectedObject.userData.isAnimated = false;
-    //   }
+       if ( selectedObject.userData.isAnimated === false ) {
+         selectedObject.userData.isAnimated = true;
+         } else {
+         selectedObject.userData.isAnimated = false;
+       }
 
         arShareData.operation = 'animateSelectedObject';
         arShareData.id = selectedObject.userData.id;
@@ -642,6 +642,8 @@ function addNewArObjectToWorld( d ) {
         arShareData.name = selectedObject.name;
 
         emitArObject( arShareData );
+
+        return;
       }
 
       // Special Cases - Hardwired
