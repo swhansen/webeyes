@@ -132,21 +132,18 @@ function loadAr( participantState ) {
       break;
 
       case 'animateSelectedObject':
-        console.log( 'data at animateSelectedObject:', data );
+
         if ( data.name === 'sheep' ) {
             arObject = scene.getObjectByName( data.name );
             arObject.rotation.x = data.rotation._x;
             arObject.rotation.y = data.rotation._y;
             arObject.rotation.z = data.rotation._z;
             arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+            arObject.userData.isAnimate = data.animate;
             isAnimateSheep = data.animate;
           }
 
         if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
-
-        var tempObj = scene.getObjectByName( data.name );
-        tempObj.userData.isAnimated = data.isAnimated;
-        console.log( 'object at animateSelectedObject:', scene.getObjectByName( data.name ) );
       break;
   }
 }
