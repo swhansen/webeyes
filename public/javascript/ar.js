@@ -55,7 +55,7 @@ function removeUserCreatedArObjects() {
     for ( var i = 0; i < scene.children.length; i++ ) {
       if ( scene.children[i].userData.isUserCreated ) {
         scene.remove( scene.children[i] );
-        console.log( 'object:', scene.children[i], 'removed' );
+        console.log( 'object:', scene.children[i], 'removed', i );
       }
     }
     for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
@@ -133,7 +133,15 @@ function loadAr( participantState ) {
 
       case 'animateSelectedObject':
         console.log( 'data at animateSelectedObject:', data );
-        if ( data.name === 'sheep' ) { isAnimateSheep = data.animate; }
+        if ( data.name === 'sheep' ) {
+            arObject = scene.getObjectByName( data.name );
+            arObject.rotation.x = data.rotation._x;
+            arObject.rotation.y = data.rotation._y;
+            arObject.rotation.z = data.rotation._z;
+            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+            isAnimateSheep = data.animate;
+          }
+
         if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
 
         var tempObj = scene.getObjectByName( data.name );
@@ -445,6 +453,7 @@ function arConnectionController( participantState ) {
         knot.rotation.z += 0.03;
         knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
+
     if ( isAnimateSheep === true ) {
         sheep.rotation.z += dt * 2;
     }
@@ -539,9 +548,6 @@ $( '#ar-canvas' ).longpress( function( event ) {
   var scale = 4.0;
 
   var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
-
-  console.log( 'dir:', dir );
-  console.log( 'pos:', pos );
 
       arShareData.operation = 'newObject';
       arShareData.x = pos.x;
@@ -656,6 +662,8 @@ function addNewArObjectToWorld( d ) {
 
     if ( intersects[0].object.name === 'sheep' ) {
        isAnimateSheep = !isAnimateSheep;
+
+      console.log( 'its a sheep:', isAnimateSheep );
 
     // only change the color when animation is stopped
 
