@@ -95,6 +95,8 @@ function loadAr( participantState ) {
   setupArInteractionEvents( participantState );
    }
 
+// Recieve socket.io  AR object info from peers
+
   function receiveArObject( data ) {
 
     console.log( 'receiveArObject:', data );
@@ -102,15 +104,8 @@ function loadAr( participantState ) {
     switch ( data.operation ) {
       case 'moveObject':
         var arObject = scene.getObjectByName( data.name );
-
-        arMoveObject( data );
-       //arObject.position.x = data.position.x;
-       //arObject.position.y = data.position.y;
-       //arObject.position.z = data.position.z;
-       //arObject.rotation.x = data.rotation._x;
-       //arObject.rotation.y = data.rotation._y;
-       //arObject.rotation.z = data.rotation._z;
         arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+        arMoveObject( data );
       break;
 
       case 'newObject':
@@ -154,19 +149,17 @@ function loadAr( participantState ) {
 }
 
   function arMoveObject( data ) {
-
-       var arObject = scene.getObjectByName( data.name );
-
-       if ( data.position ) {
-           arObject.position.x = data.position.x;
-           arObject.position.y = data.position.y;
-           arObject.position.z = data.position.z;
-         }
-       if ( data.rotation ) {
-           arObject.rotation.x = data.rotation._x;
-           arObject.rotation.y = data.rotation._y;
-           arObject.rotation.z = data.rotation._z;
-          }
+    var arObject = scene.getObjectByName( data.name );
+      if ( data.position ) {
+          arObject.position.x = data.position.x;
+          arObject.position.y = data.position.y;
+          arObject.position.z = data.position.z;
+        }
+      if ( data.rotation ) {
+          arObject.rotation.x = data.rotation._x;
+          arObject.rotation.y = data.rotation._y;
+          arObject.rotation.z = data.rotation._z;
+        }
   }
 
 function setUpArLayer( participantState ) {
