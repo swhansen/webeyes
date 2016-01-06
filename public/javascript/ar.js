@@ -112,7 +112,6 @@ function loadAr( participantState ) {
       break;
 
       case 'newObject':
-        console.log( 'adding newObject:', data );
         var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
         var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
         var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
@@ -132,18 +131,22 @@ function loadAr( participantState ) {
       break;
 
       case 'animateSelectedObject':
-
         if ( data.name === 'sheep' ) {
             arObject = scene.getObjectByName( data.name );
             arObject.rotation.x = data.rotation._x;
             arObject.rotation.y = data.rotation._y;
             arObject.rotation.z = data.rotation._z;
             arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-            arObject.userData.isAnimate = data.animate;
             isAnimateSheep = data.animate;
           }
 
         if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
+
+        // User Created Objects
+
+        var tempObj = scene.getObjectByName( data.name );
+        tempObj.userData.isAnimated = data.isAnimated;
+
       break;
   }
 }
