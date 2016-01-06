@@ -102,12 +102,14 @@ function loadAr( participantState ) {
     switch ( data.operation ) {
       case 'moveObject':
         var arObject = scene.getObjectByName( data.name );
-        arObject.position.x = data.position.x;
-        arObject.position.y = data.position.y;
-        arObject.position.z = data.position.z;
-        arObject.rotation.x = data.rotation._x;
-        arObject.rotation.y = data.rotation._y;
-        arObject.rotation.z = data.rotation._z;
+
+        arMoveObject( data );
+       //arObject.position.x = data.position.x;
+       //arObject.position.y = data.position.y;
+       //arObject.position.z = data.position.z;
+       //arObject.rotation.x = data.rotation._x;
+       //arObject.rotation.y = data.rotation._y;
+       //arObject.rotation.z = data.rotation._z;
         arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
       break;
 
@@ -161,7 +163,6 @@ function loadAr( participantState ) {
            arObject.position.z = data.position.z;
          }
        if ( data.rotation ) {
-
            arObject.rotation.x = data.rotation._x;
            arObject.rotation.y = data.rotation._y;
            arObject.rotation.z = data.rotation._z;
