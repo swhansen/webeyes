@@ -39,6 +39,7 @@ Leap.loop()
     console.log('hand found');
     document.getElementById('leapcanvas').style.display = 'block';
   }).on('handLost', function(hand){
+    console.log('hand lost');
     if (Leap.loopController.frame(0).hands.length === 0){
       document.getElementById('leapcanvas').style.display = 'none';
     }
@@ -46,5 +47,4 @@ Leap.loop()
 
 //  document.getElementById('view-source').href = "view-source:" + window.location.href;
 //  document.getElementById('view-source').target = "_blank";
-
 }
