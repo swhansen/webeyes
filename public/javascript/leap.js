@@ -57,7 +57,7 @@ Leap.loop()
     }
   });
 
-  document.getElementById('view-source').href = "view-source:" + window.location.href;
+//  document.getElementById('view-source').href = "view-source:" + window.location.href;
   document.getElementById('view-source').target = "_blank";
 
 }
