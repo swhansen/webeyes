@@ -23,11 +23,6 @@ function orientationAr( data ) {
     } else {
     document.getElementById( 'compassCube' ).style.visibility = 'hidden';
   }
-
-  //if ( !window.DeviceOrientationEvent ) {
-  //          console.log( 'no device orientation' );
-  //   } else {
-
   if ( userContext.participantState === 'focus' ) {
       window.addEventListener( 'deviceorientation', function( event ) {
       document.getElementById( 'compassCube' ).style.webkitTransform =
@@ -50,23 +45,7 @@ function orientationAr( data ) {
   }
 }
 
-function removeUserCreatedArObjects() {
-  console.log( 'at removeUserCreatedArObjects' );
-    for ( var i = 0; i < scene.children.length; i++ ) {
-      if ( scene.children[i].userData.isUserCreated ) {
-        scene.remove( scene.children[i] );
-        console.log( 'object:', scene.children[i], 'removed', i );
-      }
-    }
-    for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
-      if ( arSelectObjectArray[j].userData.isUserCreated ) {
-        arSelectObjectArray.splice( j, 1 );
-      }
-    }
-  }
-
 function emitArOrientationData() {
-
   window.addEventListener( 'deviceorientation', function( event ) {
   arDeviceOrientation.alpha = event.alpha;
   arDeviceOrientation.beta = event.beta;
@@ -80,6 +59,19 @@ function emitArOrientationData() {
 socketServer.on( 'toggleCompass', function( data ) {
   orientationAr( data );
   } );
+
+function removeUserCreatedArObjects() {
+    for ( var i = 0; i < scene.children.length; i++ ) {
+      if ( scene.children[i].userData.isUserCreated ) {
+        scene.remove( scene.children[i] );
+      }
+    }
+    for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
+      if ( arSelectObjectArray[j].userData.isUserCreated ) {
+        arSelectObjectArray.splice( j, 1 );
+      }
+    }
+  }
 
 //
 // ----------  Main Loader  --------------------------
@@ -101,7 +93,9 @@ function loadAr( participantState ) {
 
     console.log( 'receiveArObject:', data );
 
-    switch ( data.operation ) {
+    ar obj =  scene.getObjectByName( data.name );
+
+    switch ( obj.userData.operation ) {
       case 'moveObject':
         var arObject = scene.getObjectByName( data.name );
         arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
@@ -372,33 +366,33 @@ function setUpArLayer( participantState ) {
 
   // Create spline for "flying pig" trajecory
 
-  var numPoints = 20;
+//var numPoints = 20;
 
-  pigSpline = new THREE.SplineCurve3(
-  [
-    new THREE.Vector3( 2.0, 0.0, 0.1 ),
-    new THREE.Vector3( 2.2, 1.0, -0.15 ),
-    new THREE.Vector3( 2.3, 1.6, -1.0 ),
-    new THREE.Vector3( 2.2, 1.8, -2.0 ),
-    new THREE.Vector3( 2.1, 2.0, -4.0 )
-  ] );
+//pigSpline = new THREE.SplineCurve3(
+//[
+//  new THREE.Vector3( 2.0, 0.0, 0.1 ),
+//  new THREE.Vector3( 2.2, 1.0, -0.15 ),
+//  new THREE.Vector3( 2.3, 1.6, -1.0 ),
+//  new THREE.Vector3( 2.2, 1.8, -2.0 ),
+//  new THREE.Vector3( 2.1, 2.0, -4.0 )
+//] );
 
-  var material = new THREE.LineBasicMaterial( { color: 0xff00f0 } );
+//var material = new THREE.LineBasicMaterial( { color: 0xff00f0 } );
 
-    var geometry = new THREE.Geometry();
-    var splinePoints = pigSpline.getPoints( numPoints );
+//  var geometry = new THREE.Geometry();
+//  var splinePoints = pigSpline.getPoints( numPoints );
 
-    for ( var i = 0; i < splinePoints.length; i++ ) {
-        geometry.vertices.push( splinePoints[i] );
-    }
+//  for ( var i = 0; i < splinePoints.length; i++ ) {
+//      geometry.vertices.push( splinePoints[i] );
+//  }
 
-    var line = new THREE.Line( geometry, material );
-    scene.add( line );
+//  var line = new THREE.Line( geometry, material );
+//  scene.add( line );
 
-var geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
-    var box = new THREE.Mesh( geometryBox, material1 );
-  box.position.set( 2.0, 0.0, 0.1 );
-  scene.add( box );
+//r geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
+//  var box = new THREE.Mesh( geometryBox, material1 );
+//box.position.set( 2.0, 0.0, 0.1 );
+//scene.add( box );
 
 function arConnectionController( participantState ) {
 
