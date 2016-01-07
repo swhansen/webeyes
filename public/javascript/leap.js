@@ -3,19 +3,6 @@ function setUpLeapLayer() {
 
   console.log( 'at setUpLeapLayer');
 
- //leapCanvas = document.getElementById( 'leapcanvaspane' );
- //l0 = document.getElementById( 'leap-canvas' );
- //mouseVector;
-
- //ment.getElementById( 'leapcanvaspane' ).className = 'canvascenter';
-
- //tyle.width = '100%';
- //tyle.height = '100%';
- //idth = ar0.offsetWidth;
- //eight = ar0.offsetHeight;
-
- //Canvas.style.visibility = 'visible';
-
 
 Leap.loop()
     .use('boneHand', {
@@ -50,14 +37,14 @@ Leap.loop()
 
   Leap.loopController.on('handFound', function(hand) {
     console.log('hand found');
-    document.querySelector('canvas').style.display = 'block';
+    document.getElementById('leapcanvas').style.display = 'block';
   }).on('handLost', function(hand){
     if (Leap.loopController.frame(0).hands.length === 0){
-      document.querySelector('canvas').style.display = 'none';
+      document.getElementById('leapcanvas').style.display = 'none';
     }
   });
 
 //  document.getElementById('view-source').href = "view-source:" + window.location.href;
-  document.getElementById('view-source').target = "_blank";
+//  document.getElementById('view-source').target = "_blank";
 
 }
