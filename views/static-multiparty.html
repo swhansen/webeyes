@@ -28,38 +28,6 @@
         <link rel="stylesheet" type="text/css" href="bower/materialize/dist/css/materialize.css" />
 
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-<style>
-    body {
-      margin: 10px;
-      font-family: Helvetica;
-    }
-    canvas.leap-boneHand {
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: none;
-      z-index: 200;
-    }
-    table, th, td {
-      border: 1px solid #aaa;
-    }
-    table {
-      border-collapse: collapse;
-    }
-    td, th {
-      vertical-align: top;
-      padding: 3px;
-    }
-    th {
-      color: #555;
-    }
-    #view-source {
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin: 10px;
-    }
-  </style>
 
     </head>
     <body onload="appInit()">
@@ -186,46 +154,5 @@
          <script type="text/javascript"  src="javascript/ui-manager.js" ></script>
          <script type="text/javascript"  src="javascript/video-select.js" ></script>
          <script type="text/javascript"  src="javascript/BroadcastOrientationControls.js" ></script>
-
-        <script type="text/javascript" src="bower/threejs/examples/js/controls/OrbitControls.js"></script>
-
-        <script src=http://js.leapmotion.com/leap-0.6.4.js ></script>
-        <script type="text/javascript" src="javascript/leap-plugins-0.1.11.min.js" ></script>
-
     </body>
-    <script>
-  // Set up plugins
-  Leap.loop()
-//    .use('transform', {vr: true})
-    .use('boneHand', {
-      targetEl: document.body,
-      arm: true,
-      opacity: 0.8
-    });
-  // Set up scene
-  var scene    = Leap.loopController.plugins.boneHand.scene;
-  var camera   = Leap.loopController.plugins.boneHand.camera;
-  var renderer = Leap.loopController.plugins.boneHand.renderer;
-  var plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(80,80),
-    new THREE.MeshPhongMaterial({wireframe: false, side: THREE.DoubleSide})
-  );
-  plane.scale.set(2,2,2);
-  plane.position.set(0,200,-100);
-  plane.receiveShadow = true;
-  scene.add(plane);
-  camera.lookAt( plane.position );
-  var axisHelper = new THREE.AxisHelper( 100 );
-  scene.add( axisHelper );
-  var controls = new THREE.OrbitControls( camera, renderer.domElement );
-  Leap.loopController.on('handFound', function(hand) {
-    console.log('hand in');
-    document.querySelector('canvas').style.display = 'block';
-  }).on('handLost', function(hand){
-    if (Leap.loopController.frame(0).hands.length === 0){
-      document.querySelector('canvas').style.display = 'none';
-    }
-  });
-
-</script>
 </html>
