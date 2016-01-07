@@ -93,9 +93,7 @@ function loadAr( participantState ) {
 
     console.log( 'receiveArObject:', data );
 
-    var obj =  scene.getObjectByName( data.name );
-
-    switch ( obj.userData.operation ) {
+    switch ( data.operation ) {
       case 'moveObject':
         var arObject = scene.getObjectByName( data.name );
         arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
