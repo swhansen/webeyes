@@ -1,18 +1,20 @@
 
 function setUpLeapLayer() {
 
-  var leapCanvas = document.getElementById( 'leapcanvaspane' );
-  var l0 = document.getElementById( 'leap-canvas' );
-  var mouseVector;
+  console.log( 'at setUpLeapLayer');
 
-  document.getElementById( 'leapcanvaspane' ).className = 'canvascenter';
+ //leapCanvas = document.getElementById( 'leapcanvaspane' );
+ //l0 = document.getElementById( 'leap-canvas' );
+ //mouseVector;
 
-  l0.style.width = '100%';
-  l0.style.height = '100%';
-  l0.width = ar0.offsetWidth;
-  l0.height = ar0.offsetHeight;
+ //ment.getElementById( 'leapcanvaspane' ).className = 'canvascenter';
 
-  leapCanvas.style.visibility = 'visible';
+ //tyle.width = '100%';
+ //tyle.height = '100%';
+ //idth = ar0.offsetWidth;
+ //eight = ar0.offsetHeight;
+
+ //Canvas.style.visibility = 'visible';
 
 
 Leap.loop()
@@ -46,13 +48,16 @@ Leap.loop()
 
   var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-
   Leap.loopController.on('handFound', function(hand) {
-    document.querySelector('l0').style.display = 'block';
+    console.log('hand found');
+    document.querySelector('canvas').style.display = 'block';
   }).on('handLost', function(hand){
     if (Leap.loopController.frame(0).hands.length === 0){
-      document.querySelector('lo').style.display = 'none';
+      document.querySelector('canvas').style.display = 'none';
     }
   });
+
+  document.getElementById('view-source').href = "view-source:" + window.location.href;
+  document.getElementById('view-source').target = "_blank";
 
 }
