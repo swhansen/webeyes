@@ -9,8 +9,6 @@
 //  buttons: button list in the layer menu
 //
 
-setUpLeapLayer();
-
 var uiStructure = {};
 var mainCollapsed = true;
 var modSwitch = false;
