@@ -191,7 +191,8 @@
         <script src=http://js.leapmotion.com/leap-0.6.4.js ></script>
         <script type="text/javascript" src="javascript/leap-plugins-0.1.11.min.js" ></script>
 
-<script>
+    </body>
+    <script>
   // Set up plugins
   Leap.loop()
 //    .use('transform', {vr: true})
@@ -217,6 +218,7 @@
   scene.add( axisHelper );
   var controls = new THREE.OrbitControls( camera, renderer.domElement );
   Leap.loopController.on('handFound', function(hand) {
+    console.log('hand in');
     document.querySelector('canvas').style.display = 'block';
   }).on('handLost', function(hand){
     if (Leap.loopController.frame(0).hands.length === 0){
@@ -225,6 +227,4 @@
   });
 
 </script>
-
-    </body>
 </html>
