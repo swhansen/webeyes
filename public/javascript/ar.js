@@ -93,7 +93,7 @@ function loadAr( participantState ) {
 
     console.log( 'receiveArObject:', data );
 
-    ar obj =  scene.getObjectByName( data.name );
+    var obj =  scene.getObjectByName( data.name );
 
     switch ( obj.userData.operation ) {
       case 'moveObject':
