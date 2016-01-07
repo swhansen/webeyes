@@ -6,7 +6,7 @@ function setUpLeapLayer() {
 
 Leap.loop()
     .use('boneHand', {
-      targetEl: document.body,
+      targetEl: 'leapcanvas',
       arm: true,
       opacity: 0.5
     } );
