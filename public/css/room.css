@@ -6,18 +6,6 @@
     -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
 }
 
-#leapcanvas.leap-boneHand {
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: none;
-      z-index: 200;
-    }
-#leapcanvas {
-  zindez: 200;
-}
-
-
 #message-bar-container {
     bottom: 0;
     position: fixed;
