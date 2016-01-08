@@ -5,7 +5,7 @@ function setUpLeapLayer() {
 
 var arCanvas = document.getElementById( 'leapcanvas' );
 
-foo = getElementById('leap');
+foo = document.getElementById('leap');
 
 
 Leap.loop()
