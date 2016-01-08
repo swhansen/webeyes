@@ -6,6 +6,35 @@
     -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
 }
 
+
+
+
+canvas.leap-boneHand {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+    table, th, td {
+      border: 1px solid #aaa;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      vertical-align: top;
+      padding: 3px;
+    }
+    th {
+      color: #555;
+    }
+    #view-source {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 10px;
+    }
+
 #message-bar-container {
     bottom: 0;
     position: fixed;
