@@ -5,9 +5,12 @@ function setUpLeapLayer() {
 
 var arCanvas = document.getElementById( 'leapcanvas' );
 
+foo = getElementById('leap');
+
+
 Leap.loop()
     .use('boneHand', {
-      targetEl: 'leap',
+      targetEl: foo,
       arm: true,
       opacity: 0.5
     } );
