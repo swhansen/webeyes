@@ -7,7 +7,7 @@ var arCanvas = document.getElementById( 'leapcanvas' );
 
 Leap.loop()
     .use('boneHand', {
-      targetEl: leapcanvas,
+      targetEl: document.getElementById(leap),
       arm: true,
       opacity: 0.5
     } );
@@ -38,11 +38,11 @@ Leap.loop()
 
   Leap.loopController.on('handFound', function(hand) {
     console.log('hand found');
-    document.getElementById('leapcanvas').style.display = 'block';
+    document.getElementById('canvas').style.display = 'block';
   }).on('handLost', function(hand){
     console.log('hand lost');
     if (Leap.loopController.frame(0).hands.length === 0){
-      document.getElementById('leapcanvas').style.display = 'none';
+      document.getElementById('canvas').style.display = 'none';
     }
   });
 

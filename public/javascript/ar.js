@@ -67,7 +67,7 @@ function removeUserCreatedArObjects() {
       }
     }
     for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
-      if ( arSelectObjectArray[j].userData.isUserCreated ) {
+      if ( arSelectObjectArray[j].userData.isUserCreated === true ) {
         arSelectObjectArray.splice( j, 1 );
       }
     }
