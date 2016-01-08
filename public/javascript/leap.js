@@ -7,7 +7,7 @@ var arCanvas = document.getElementById( 'leapcanvas' );
 
 Leap.loop()
     .use('boneHand', {
-      targetEl: document.getElementById(leap),
+      targetEl: 'leap',
       arm: true,
       opacity: 0.5
     } );
