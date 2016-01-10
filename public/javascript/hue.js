@@ -13,6 +13,7 @@ var hueLightState = function( lightNo, state) {
 
     $.ajax( {
     type: 'PUT',
+    crossDomain:true,
     dataType: 'json',
     url: hueURL,
     data: JSON.stringify( dataObject ),
