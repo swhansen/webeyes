@@ -690,10 +690,10 @@ function addNewArObjectToWorld( d ) {
 
       if ( selectedObject.userData.isOn === false ) {
               selectedObject.userData.isOn = true;
-              selectedObject.material.opacity = 0.2;
+             // selectedObject.material.opacity = 0.2;
               } else {
               selectedObject.userData.isOn = false;
-              selectedObject.material.opacity = 0.8;
+             // selectedObject.material.opacity = 0.8;
             }
 
         hueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
@@ -705,7 +705,7 @@ function addNewArObjectToWorld( d ) {
         arShareData.isOn = selectedObject.userData.isOn;
         arShareData.iotDeviceId = selectedObject.userData.iotDeviceId;
       //  arShareData.arObjectOpacity = selectedObject.material.opacity;
-        arShareData.name = selectedObject.name;
+      //  arShareData.name = selectedObject.name;
 
         console.log( 'emit toggleIot:', arShareData );
 
