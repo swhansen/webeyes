@@ -346,21 +346,22 @@ function setUpArLayer( participantState ) {
   hueLight1 = new THREE.Mesh( geometrySphere, hueLightmaterial );
   hueLight2 = new THREE.Mesh( geometrySphere, hueLightmaterial );
   hueLight3 = new THREE.Mesh( geometrySphere, hueLightmaterial );
+
   hueLight1.position.set( -0.809, -0.737, -5.227 );
   hueLight2.position.set( 1.077, 0.68140, -5.227 );
   hueLight3.position.set( -2.785, 0.68140, -5.227 );
 
-  hue.Light1.userData.isSelectable = true;
-  hue.Light2.userData.isSelectable = true;
-  hue.Light3.userData.isSelectable = true;
+  hueLight1.userData.isSelectable = true;
+  hueLight2.userData.isSelectable = true;
+  hueLight3.userData.isSelectable = true;
 
-  hue.Light1.userData.isIot = true;
-  hue.Light2.userData.isIot = true;
-  hue.Light3.userData.isIot = true;
+  hueLight1.userData.isIot = true;
+  hueLight2.userData.isIot = true;
+  hueLight3.userData.isIot = true;
 
-  hue.Light1.userData.iotDeviceId = 1;
-  hue.Light2.userData.iotDeviceId = 2;
-  hue.Light3.userData.iotDeviceId = 3;
+  hueLight1.userData.iotDeviceId = 1;
+  hueLight2.userData.iotDeviceId = 2;
+  hueLight3.userData.iotDeviceId = 3;
 
 
 
