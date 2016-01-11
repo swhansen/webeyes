@@ -140,7 +140,9 @@ function loadAr( participantState ) {
 
       case  'toggleIot':
 
-      hueLightState( data.iotDeviceId, data.isAnimated  );
+        console.log( 'at toggleIOT:', data) ;
+
+        hueLightState( data.iotDeviceId, data.isAnimated  );
 
       break;
 
