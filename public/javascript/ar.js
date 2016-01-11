@@ -146,7 +146,7 @@ function loadAr( participantState ) {
 
          arObject = scene.getObjectByName( data.name );
 
-         console.log( 'toggleIot arObject:', arObject);
+         console.log( 'toggleIot arObject:', arObject );
          arObject.material.opacity = data.arObjectOpacity;
 
 
@@ -353,16 +353,30 @@ function setUpArLayer( participantState ) {
 
   var hueGeometrySphere = new THREE.SphereGeometry( 0.3, 16, 16 );
 
-  hueLightmaterial = new THREE.MeshPhongMaterial ( {
+  hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
     color: 0xff00ff,
     shininess: 66,
     opacity:0.6,
     transparent: true
 } );
 
-  hueLight1 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial );
-  hueLight2 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial );
-  hueLight3 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial );
+  hueLightmaterial2 = new THREE.MeshPhongMaterial ( {
+    color: 0xff00ff,
+    shininess: 66,
+    opacity:0.6,
+    transparent: true
+} );
+
+  hueLightmaterial3 = new THREE.MeshPhongMaterial ( {
+    color: 0xff00ff,
+    shininess: 66,
+    opacity:0.6,
+    transparent: true
+} );
+
+  hueLight1 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial1 );
+  hueLight2 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial2 );
+  hueLight3 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial3 );
 
   hueLight1.position.set( -0.809, -0.737, -5.227 );
   hueLight2.position.set( 1.077, 1.606, -5.17 );
