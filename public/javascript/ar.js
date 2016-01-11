@@ -691,7 +691,7 @@ function addNewArObjectToWorld( d ) {
               selectedObject.userData.isOn = false;
             }
 
-             hueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
+        hueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
 
         arShareData.operation = 'toggleIot';
       //  arShareData.id = selectedObject.userData.id;
@@ -699,8 +699,10 @@ function addNewArObjectToWorld( d ) {
         arShareData.iotDeviceId = selectedObject.userData.iotDeviceId;
         arShareData.name = selectedObject.name;
 
-        emitArObject( arShareData );
+        console.log( 'emit toggleIot:', arShareData );
 
+        emitArObject( arShareData );
+          return;
            }
 
 // User created objects
