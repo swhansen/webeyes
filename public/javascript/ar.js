@@ -705,7 +705,7 @@ function addNewArObjectToWorld( d ) {
         arShareData.isOn = selectedObject.userData.isOn;
         arShareData.iotDeviceId = selectedObject.userData.iotDeviceId;
         arShareData.arObjectOpacity = selectedObject.material.opacity;
-      //  arShareData.name = selectedObject.name;
+        arShareData.name = selectedObject.name;
 
         console.log( 'emit toggleIot:', arShareData );
 
