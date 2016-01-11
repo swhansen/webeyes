@@ -334,6 +334,25 @@ function setUpArLayer( participantState ) {
         arSelectObjectArray.push( swordGuyMesh );
       }
 
+// hue light control objects
+
+  hueLightmaterial = new THREE.MeshPhongMaterial ( {
+    color: 'red',
+    shininess: 66,
+    opacity:0.3,
+    transparent: true
+} );
+
+  hueLight1 = new THREE.Mesh( geometrySphere, hueLightmaterial );
+  hueLight1.position.set( -2.785, 0.68140, -5.227 );
+
+  scene.add( hueLight1 );
+
+
+
+
+
+
   scene.add( cube2 );
   scene.add( sphere );
   scene.add( knot );
