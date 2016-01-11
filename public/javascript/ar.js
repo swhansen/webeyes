@@ -142,12 +142,13 @@ function loadAr( participantState ) {
 
         console.log( 'at toggleIOT:', data);
 
+        hueLightState( data.iotDeviceId, data.isOn  );
+
          arObject = scene.getObjectByName( data.name );
 
          console.log( 'toggleIot arObject:', arObject);
-     //   arObject.material.opacity = data.arObjectOpacity;
+         arObject.material.opacity = data.arObjectOpacity;
 
-        hueLightState( data.iotDeviceId, data.isOn  );
 
       break;
 
@@ -350,7 +351,7 @@ function setUpArLayer( participantState ) {
 
 // hue light control objects
 
-  var hueGeometrySphere = new THREE.SphereGeometry( 0.4, 16, 16 );
+  var hueGeometrySphere = new THREE.SphereGeometry( 0.3, 16, 16 );
 
   hueLightmaterial = new THREE.MeshPhongMaterial ( {
     color: 0xff00ff,
@@ -371,9 +372,9 @@ function setUpArLayer( participantState ) {
   hueLight2.userData.isSelectable = true;
   hueLight3.userData.isSelectable = true;
 
-  hueLight1.name = hueLight1;
-  hueLight2.name = hueLight2;
-  hueLight3.name = hueLight3;
+  hueLight1.name = 'hueLight1';
+  hueLight2.name = 'hueLight2';
+  hueLight3.name = 'hueLight3';
 
   hueLight1.userData.isIot = true;
   hueLight2.userData.isIot = true;
