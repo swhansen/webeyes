@@ -339,19 +339,22 @@ function setUpArLayer( participantState ) {
   hueLightmaterial = new THREE.MeshPhongMaterial ( {
     color: 'red',
     shininess: 66,
-    opacity:0.3,
+    opacity:0.4,
     transparent: true
 } );
 
   hueLight1 = new THREE.Mesh( geometrySphere, hueLightmaterial );
-  hueLight1.position.set( -2.785, 0.68140, -5.227 );
+  hueLight2 = new THREE.Mesh( geometrySphere, hueLightmaterial );
+  hueLight3 = new THREE.Mesh( geometrySphere, hueLightmaterial );
+  hueLight1.position.set( -0.809, -0.737, -5.227 );
+  hueLight2.position.set( 2.785, 0.68140, -5.227 );
+  hueLight3.position.set( -2.785, 0.68140, -5.227 );
 
   scene.add( hueLight1 );
+  scene.add( hueLight2 );
+  scene.add( hueLight3 );
 
-
-
-
-
+// end hue light objects
 
   scene.add( cube2 );
   scene.add( sphere );
