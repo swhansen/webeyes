@@ -142,7 +142,7 @@ function loadAr( participantState ) {
 
         console.log( 'at toggleIOT:', data) ;
 
-        hueLightState( data.iotDeviceId, data.isAnimated  );
+        hueLightState( data.iotDeviceId, data.isOn  );
 
       break;
 
@@ -695,9 +695,9 @@ function addNewArObjectToWorld( d ) {
 
         arShareData.operation = 'toggleIot';
       //  arShareData.id = selectedObject.userData.id;
-        arShareData.isAnimated = selectedObject.userData.isOn;
+        arShareData.isOn = selectedObject.userData.isOn;
         arShareData.iotDeviceId = selectedObject.userData.iotDeviceId;
-        arShareData.name = selectedObject.name;
+      //  arShareData.name = selectedObject.name;
 
         console.log( 'emit toggleIot:', arShareData );
 
@@ -718,9 +718,9 @@ function addNewArObjectToWorld( d ) {
        }
 
         arShareData.operation = 'animateSelectedObject';
-        arShareData.id = selectedObject.userData.id;
+        arShareData.id = selectedObject.userData.iotDeviceId
         arShareData.isAnimated = selectedObject.userData.isAnimated;
-        arShareData.name = selectedObject.name;
+       // arShareData.name = selectedObject.name;
 
         emitArObject( arShareData );
 
