@@ -347,12 +347,31 @@ function setUpArLayer( participantState ) {
   hueLight2 = new THREE.Mesh( geometrySphere, hueLightmaterial );
   hueLight3 = new THREE.Mesh( geometrySphere, hueLightmaterial );
   hueLight1.position.set( -0.809, -0.737, -5.227 );
-  hueLight2.position.set( 2.785, 0.68140, -5.227 );
+  hueLight2.position.set( 1.077, 0.68140, -5.227 );
   hueLight3.position.set( -2.785, 0.68140, -5.227 );
+
+  hue.Light1.userData.isSelectable = true;
+  hue.Light2.userData.isSelectable = true;
+  hue.Light3.userData.isSelectable = true;
+
+  hue.Light1.userData.isIot = true;
+  hue.Light2.userData.isIot = true;
+  hue.Light3.userData.isIot = true;
+
+  hue.Light1.userData.iotDeviceId = 1;
+  hue.Light2.userData.iotDeviceId = 2;
+  hue.Light3.userData.iotDeviceId = 3;
+
+
+
+
 
   scene.add( hueLight1 );
   scene.add( hueLight2 );
   scene.add( hueLight3 );
+  arSelectObjectArray.push( hueLight1 );
+  arSelectObjectArray.push( hueLight2 );
+  arSelectObjectArray.push( hueLight3 );
 
 // end hue light objects
 
@@ -641,6 +660,15 @@ function addNewArObjectToWorld( d ) {
     var selectedObject = intersects[0].object ;
 
     if ( intersects.length > 0 ) {
+
+      if ( selectedObject.userData.isIot === true ) {
+        hueLightState( selectedObject.userData.iotDeviceId, true );
+      }
+
+
+
+
+
       if ( selectedObject.userData.isUserCreated === true ) {
 
      //     toggleArAnimation( selectedObject );
