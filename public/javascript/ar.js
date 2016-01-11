@@ -137,6 +137,13 @@ function loadAr( participantState ) {
         tempObj.userData.isAnimated = data.isAnimated;
 
       break;
+
+      case  'toggleIot':
+
+      hueLightState( data.iotDeviceId, data.isAnimated  );
+
+      break;
+
   }
 }
 
@@ -355,6 +362,10 @@ function setUpArLayer( participantState ) {
   hueLight2.userData.isSelectable = true;
   hueLight3.userData.isSelectable = true;
 
+  hueLight1.name = hueLight1;
+  hueLight2.name = hueLight2;
+  hueLight3.name = hueLight3;
+
   hueLight1.userData.isIot = true;
   hueLight2.userData.isIot = true;
   hueLight3.userData.isIot = true;
@@ -367,16 +378,18 @@ function setUpArLayer( participantState ) {
   hueLight2.userData.isOn = false;
   hueLight3.userData.isOn = false;
 
-
-
-
-
   scene.add( hueLight1 );
   scene.add( hueLight2 );
   scene.add( hueLight3 );
+
   arSelectObjectArray.push( hueLight1 );
   arSelectObjectArray.push( hueLight2 );
   arSelectObjectArray.push( hueLight3 );
+
+
+  function initIotArObject( obj ) {
+
+  }
 
 // end hue light objects
 
@@ -678,9 +691,17 @@ function addNewArObjectToWorld( d ) {
 
              hueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
 
+        arShareData.operation = 'toggleIot';
+      //  arShareData.id = selectedObject.userData.id;
+        arShareData.isAnimated = selectedObject.userData.isOn;
+        arShareData.iotDeviceId = selectedObject.userData.iotDeviceId;
+        arShareData.name = selectedObject.name;
+
+        emitArObject( arShareData );
+
            }
 
-
+// User created objects
 
       if ( selectedObject.userData.isUserCreated === true ) {
 
