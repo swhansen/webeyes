@@ -349,7 +349,7 @@ function setUpArLayer( participantState ) {
 // hue light control objects
 
   hueLightmaterial = new THREE.MeshPhongMaterial ( {
-    color: 'red',
+    color: 0xff00ff,
     shininess: 66,
     opacity:0.8,
     transparent: true
