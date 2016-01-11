@@ -363,9 +363,9 @@ function setUpArLayer( participantState ) {
   hueLight2.userData.iotDeviceId = 2;
   hueLight3.userData.iotDeviceId = 3;
 
-  hueLight1.userData.isOn = false1;
-  hueLight2.userData.isOn = false2;
-  hueLight3.userData.isOn = false3;
+  hueLight1.userData.isOn = false;
+  hueLight2.userData.isOn = false;
+  hueLight3.userData.isOn = false;
 
 
 
