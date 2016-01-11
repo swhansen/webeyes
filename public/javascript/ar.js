@@ -140,7 +140,7 @@ function loadAr( participantState ) {
 
       case  'toggleIot':
 
-        console.log( 'at toggleIOT:', data) ;
+        console.log( 'at toggleIOT:', data);
 
      //   arObject = scene.getObjectByName( data.name );
      //   arObject.material.opacity = data.arObjectOpacity;
@@ -690,10 +690,10 @@ function addNewArObjectToWorld( d ) {
 
       if ( selectedObject.userData.isOn === false ) {
               selectedObject.userData.isOn = true;
-             // selectedObject.material.opacity = 0.2;
+              selectedObject.material.opacity = 0.2;
               } else {
               selectedObject.userData.isOn = false;
-             // selectedObject.material.opacity = 0.8;
+              selectedObject.material.opacity = 0.8;
             }
 
         hueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
