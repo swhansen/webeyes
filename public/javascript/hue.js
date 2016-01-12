@@ -1,6 +1,6 @@
 
 
-var setHueLightState = function( lightNo, state ) {
+var setHueLightState = function( lightNo, state) {
 
     var dataObject =  {};
     dataObject.on = state;
@@ -16,17 +16,16 @@ var setHueLightState = function( lightNo, state ) {
     } );
 };
 
+
 var getHueLightState = function( lightNo ) {
 
-    var dataObject =  {};
     var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b/lights/' + lightNo ;
-
     $.ajax( {
-        type: 'GET',
-        dataType: 'json',
-        url: hueURL,
-        success: function( data ) { console.log( data );  },
-        error: function( a, err ) { }
+    type: 'GET',
+    dataType: 'json',
+    url: hueURL,
+    success: function( data ) { console.log( data ); console.log(data.state.bri); },
+    error: function( a, err ) { }
     } );
 };
 
@@ -53,4 +52,4 @@ function HSVtoRGB(h, s, v) {
         g: Math.round(g * 255),
         b: Math.round(b * 255)
     };
-};
+}
