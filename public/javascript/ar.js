@@ -719,7 +719,8 @@ function addNewArObjectToWorld( d ) {
 
         setHueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
         var lightState = getHueLightState( selectedObject.userData.iotDeviceId );
-        console.log(lightState);
+
+        console.log('light state bri:', lightState.state.bri);
 
         arShareData.operation = 'toggleIot';
         arShareData.isOn = selectedObject.userData.isOn;

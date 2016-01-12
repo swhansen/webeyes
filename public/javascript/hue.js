@@ -25,7 +25,6 @@ var getHueLightState = function( lightNo ) {
         type: 'GET',
         dataType: 'json',
         url: hueURL,
-        data: JSON.stringify( dataObject ),
         success: function( data ) { console.log( data );  },
         error: function( a, err ) { }
     } );
