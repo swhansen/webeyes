@@ -138,6 +138,10 @@ function loadAr( participantState ) {
 
       break;
 
+      case 'hideSelectedObject':
+
+      break;
+
       case  'toggleIot':
 
         console.log( 'at toggleIOT:', data);
@@ -354,21 +358,21 @@ function setUpArLayer( participantState ) {
   hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
     color: 0xff00ff,
     shininess: 66,
-    opacity:0.6,
+    opacity:0.5,
     transparent: true
 } );
 
   hueLightmaterial2 = new THREE.MeshPhongMaterial ( {
     color: 0xff00ff,
     shininess: 66,
-    opacity:0.6,
+    opacity:0.5,
     transparent: true
 } );
 
   hueLightmaterial3 = new THREE.MeshPhongMaterial ( {
     color: 0xff00ff,
     shininess: 66,
-    opacity:0.6,
+    opacity:0.5,
     transparent: true
 } );
 
@@ -705,30 +709,27 @@ function addNewArObjectToWorld( d ) {
 
       if ( selectedObject.userData.isIot === true ) {
 
-      if ( selectedObject.userData.isOn === false ) {
+        if ( selectedObject.userData.isOn === false ) {
               selectedObject.userData.isOn = true;
-              selectedObject.material.opacity = 0.2;
+              selectedObject.material.opacity = 0.1;
               } else {
               selectedObject.userData.isOn = false;
-              selectedObject.material.opacity = 0.8;
+              selectedObject.material.opacity = 0.5;
             }
 
-        hueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
-
-
+        setHueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
+        var lightState = getHueLightState( selectedObject.userData.iotDeviceId );
+        console.log(lightState);
 
         arShareData.operation = 'toggleIot';
-      //  arShareData.id = selectedObject.userData.id;
         arShareData.isOn = selectedObject.userData.isOn;
         arShareData.iotDeviceId = selectedObject.userData.iotDeviceId;
         arShareData.arObjectOpacity = selectedObject.material.opacity;
         arShareData.name = selectedObject.name;
 
-        console.log( 'emit toggleIot:', arShareData );
-
         emitArObject( arShareData );
-          return;
-           }
+        return;
+      }
 
 // User created objects
 
