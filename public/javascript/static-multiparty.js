@@ -1070,8 +1070,6 @@ setBrowserDetails();
 
     easyrtc.setOnCall( function( easyrtcid, slot ) {
 
-      alertWeg2rtEntry();
-
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
         var theBox =  theSlot;
