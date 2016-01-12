@@ -16,20 +16,18 @@ var setHueLightState = function( lightNo, state ) {
     } );
 };
 
-
 var getHueLightState = function( lightNo ) {
 
     var dataObject =  {};
-    dataObject.on = state;
     var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b/lights/' + lightNo ;
 
     $.ajax( {
-    type: 'GET',
-    dataType: 'json',
-    url: hueURL,
-    data: JSON.stringify( dataObject ),
-    success: function( data ) { console.log( data );  },
-    error: function( a, err ) { }
+        type: 'GET',
+        dataType: 'json',
+        url: hueURL,
+        data: JSON.stringify( dataObject ),
+        success: function( data ) { console.log( data );  },
+        error: function( a, err ) { }
     } );
 };
 
