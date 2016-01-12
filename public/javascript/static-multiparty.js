@@ -1070,8 +1070,8 @@ setBrowserDetails();
 
     easyrtc.setOnCall( function( easyrtcid, slot ) {
 
-      //console.log('a call with ' + easyrtcid + 'established');
-      //  console.log('Occupant IDs:', easyrtc.getRoomOccupantsAsArray('default'))
+      alertWeg2rtEntry();
+
         boxUsed[slot + 1] = true;
         var theSlot = slot + 1;
         var theBox =  theSlot;
@@ -1083,7 +1083,7 @@ setBrowserDetails();
         rtcid: easyrtcid,
         boxno: theBox,
         avatar: av
-     } );
+      } );
 
        //console.log('onCall - ConnectList:', connectList);
 
