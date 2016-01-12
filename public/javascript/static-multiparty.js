@@ -17,6 +17,7 @@ socketServer = io.connect( '/' );
 
 var userContext = {
   rtcId: '',
+  isSessionInitiator: false,
   modMeState: 'false',
   participantState: 'peer',
   uiState: '',
@@ -1052,6 +1053,7 @@ setBrowserDetails();
 //     // First time through for all connections
 
        if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
+         userContext.isSessionInitiator = true;
          connectList.push( {
            rtcid: myId,
            boxno: 0,
@@ -1075,7 +1077,7 @@ setBrowserDetails();
         var theBox =  theSlot;
         var av = 'avatar0';
 
-        //console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,'avatar:', av );
+        console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,'avatar:', av );
 
        connectList.push( {
         rtcid: easyrtcid,

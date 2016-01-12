@@ -149,9 +149,7 @@ function loadAr( participantState ) {
          console.log( 'toggleIot arObject:', arObject );
          arObject.material.opacity = data.arObjectOpacity;
 
-
       break;
-
   }
 }
 
