@@ -417,6 +417,8 @@ function setUpArLayer( participantState ) {
 
   function initIotArObject( objName ) {
 
+    objName = objName.toString();
+
     objName.name = objName;
     objName.userData.isSelectable = true;
     objName.userData.isIot = true;
