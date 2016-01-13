@@ -415,22 +415,18 @@ function setUpArLayer( participantState ) {
   arSelectObjectArray.push( hueLight3 );
 
 
-  function initIotArObject( objName ) {
-
-    objName = objName.toString();
+  var initIotArObject = function( objName, deviceId ) {
 
     objName.name = objName;
     objName.userData.isSelectable = true;
     objName.userData.isIot = true;
     objName.userData.isOn = false;
-    objName.userData.iotDeviceId = objName.charAt( objName.length - 1 );
+    objName.userData.iotDeviceId = deviceId;
 
    // scene.add( objName );
    // arSelectObjectArray.push( objName );
 
-  }
-
-  initIotArObject( hueLight4 );
+  };
 
 // end hue light objects
 
