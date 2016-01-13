@@ -421,14 +421,14 @@ function setUpArLayer( participantState ) {
     obj.userData.isSelectable = true;
     obj.userData.isIot = true;
     obj.userData.isOn = false;
-    obj.userData.iotDeviceId = obj.slice(-1);
+    obj.userData.iotDeviceId = obj.slice( -1 );
 
    // scene.add( obj );
    // arSelectObjectArray.push( obj );
 
   }
 
-  initIotArObject(hueLight4);
+  initIotArObject( hueLight4 );
 
 // end hue light objects
 
