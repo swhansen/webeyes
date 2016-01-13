@@ -429,6 +429,8 @@ function setUpArLayer( participantState ) {
 
   }
 
+  initIotArObject(hueLight4);
+
 // end hue light objects
 
   scene.add( cube2 );
