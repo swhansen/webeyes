@@ -29,19 +29,16 @@ var alertWeg2rtEntry = function() {
     } );
 };
 
-var promise = getHueLightState();
-
-promise.success(function (data) {
-  alert(data);
-});
+var hueLightState = function( data ) {console.log( 'lightState:', data ); };
 
 var getHueLightState = function( lightNo ) {
     var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b/lights/' + lightNo ;
-    return promise.resolve( $.ajax( {
+    $.ajax( {
     type: 'GET',
     dataType: 'json',
     url: hueURL,
-    success: function( data ) { console.log( data ); },
+    success: function( data ) { hueLightState( data ); },
     error: function( a, err ) { }
-        } ) );
-    };
+    } );
+};
+
