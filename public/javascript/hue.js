@@ -29,6 +29,12 @@ var alertWeg2rtEntry = function() {
     } );
 };
 
+var promise = getHueLightState();
+
+promise.success(function (data) {
+  alert(data);
+});
+
 var getHueLightState = function( lightNo ) {
     var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b/lights/' + lightNo ;
     return promise.resolve( $.ajax( {
