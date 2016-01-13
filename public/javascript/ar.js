@@ -420,9 +420,8 @@ function setUpArLayer( participantState ) {
     obj.name = obj;
     obj.userData.isSelectable = true;
     obj.userData.isIot = true;
-    obj.userData.isOn =false;
-
-    obj.userData.iotDeviceId = obj.name.slice(-1);
+    obj.userData.isOn = false;
+    obj.userData.iotDeviceId = obj.slice(-1);
 
    // scene.add( obj );
    // arSelectObjectArray.push( obj );
