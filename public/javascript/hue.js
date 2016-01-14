@@ -1,28 +1,30 @@
 
+var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b';
+
 var setHueLightState = function( lightNo, state ) {
 
     var dataObject =  {};
     dataObject.on = state;
-    var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b/lights/' + lightNo + '/state';
+    var URL = hueURL + '/lights/' + lightNo + '/state';
 
     $.ajax( {
     type: 'PUT',
     dataType: 'json',
-    url: hueURL,
+    url: URL,
     data: JSON.stringify( dataObject ),
     success: function( data ) { console.log( data ); },
     error: function( a, err ) { }
     } );
 };
 
-var alertWeg2rtEntry = function() {
-    var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b/lights/2/state';
+var alertWeg2rtEntry = function( lightNo ) {
+    var URL = hueURL + '/lights/' + lightNo '/state';
     var dataObject = {};
     dataObject.alert = 'lselect';
     $.ajax( {
     type: 'PUT',
     dataType: 'json',
-    url: hueURL,
+    url: URL,
     data: JSON.stringify( dataObject ),
     success: function( data ) { console.log( data ); },
     error: function( a, err ) { }
@@ -32,11 +34,11 @@ var alertWeg2rtEntry = function() {
 var hueLightState = function( data ) {console.log( 'lightState:', data ); };
 
 var getHueLightState = function( lightNo ) {
-    var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b/lights/' + lightNo ;
+    var URL = hueURL + '/lights/' + lightNo ;
     $.ajax( {
     type: 'GET',
     dataType: 'json',
-    url: hueURL,
+    url: URL,
     success: function( data ) { hueLightState( data ); },
     error: function( a, err ) { }
     } );

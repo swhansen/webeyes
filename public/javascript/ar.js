@@ -144,7 +144,7 @@ function loadAr( participantState ) {
 
       case  'toggleIot':
 
-        console.log( 'at toggleIOT:', data);
+        console.log( 'at toggleIOT:', data );
 
         setHueLightState( data.iotDeviceId, data.isOn  );
 

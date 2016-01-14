@@ -1119,7 +1119,6 @@ setBrowserDetails();
 
 initDraw();
 initUtil();
-setUpLeapLayer();
 messageBar( 'User Session Initialized' );
 
 }
