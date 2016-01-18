@@ -5,7 +5,7 @@ function initLeap() {
 
   // Leap not availabe on mobile
 
-  if ( userContext.mobile === false ) {
+
 
 var leapFullScreen = document.getElementById( 'leapfull' );
 
@@ -45,4 +45,4 @@ Leap.loop()
       }
     } );
   }
-}
+
