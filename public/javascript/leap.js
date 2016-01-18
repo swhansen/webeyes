@@ -4,9 +4,10 @@ function initLeap() {
   console.log( 'at initLeap' );
 
 var leapController = new Leap.Controller();
+leapController.connect();
 
-leapController.on('deviceConnected', function() {
-  console.log("A Leap device has been connected.");
+leapController.on('deviceAttached', function() {
+  console.log("A Leap device has been attached.");
 
 
   var leapFullScreen = document.getElementById( 'leapfull' );
