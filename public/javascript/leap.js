@@ -5,7 +5,7 @@ function initLeap() {
 
 var leapController = new Leap.Controller();
 
-leapControllerontroller.on('deviceConnected', function() {
+leapController.on('deviceConnected', function() {
   console.log("A Leap device has been connected.");
 
 
