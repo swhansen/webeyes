@@ -3,6 +3,14 @@ function initLeap() {
 
 console.log( 'at setUpLeapLayer' );
 
+// list the z-factors
+
+ $( '*' ).filter( function() {
+   return $( this ).css( 'z-index' ) >= 10;
+ } ).each( function() {
+   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+ } );
+
 // If the device is mobile then no hands
 
 if ( userContext.mobile === false ) {
