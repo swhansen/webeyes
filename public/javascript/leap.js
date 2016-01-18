@@ -18,12 +18,10 @@ Leap.loop()
   var camera   = Leap.loopController.plugins.boneHand.camera;
   var renderer = Leap.loopController.plugins.boneHand.renderer;
 
-//  var plane = new THREE.Mesh(
-//    new THREE.PlaneGeometry(80,80),
-//    new THREE.MeshPhongMaterial({wireframe: false})
-//  );
-//
-//
+  var plane = new THREE.Mesh(
+    new THREE.PlaneGeometry(80,80),
+    new THREE.MeshPhongMaterial({wireframe: false})
+  );
   plane.scale.set(2,2,2);
   plane.position.set(0,200,-100);
 
