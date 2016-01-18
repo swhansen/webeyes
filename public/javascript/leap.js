@@ -27,12 +27,12 @@ Leap.loop()
 //  plane.scale.set(2,2,2);
 //  plane.position.set(0,200,-100);
 
-  camera.lookAt( plane.position );
+//  camera.lookAt( plane.position );
 
 //  scene.add(plane);
 
-  var axisHelper = new THREE.AxisHelper( 100 );
-  scene.add( axisHelper );
+//  var axisHelper = new THREE.AxisHelper( 100 );
+//  scene.add( axisHelper );
 
   var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
