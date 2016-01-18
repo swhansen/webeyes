@@ -3,6 +3,8 @@ function initLeap() {
 
   console.log( 'at setUpLeapLayer' );
 
+  if ( userContext.mobile === false ) {
+
   var leapFullScreen = document.getElementById( 'leapfull' );
 
 Leap.loop()
@@ -43,5 +45,7 @@ Leap.loop()
       document.getElementById( 'canvas' ).style.display = 'none';
     }
   } );
+
+}
 
 }
