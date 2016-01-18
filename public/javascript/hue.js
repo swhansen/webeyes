@@ -18,7 +18,7 @@ var setHueLightState = function( lightNo, state ) {
 };
 
 var alertWeg2rtEntry = function( lightNo ) {
-    var URL = hueURL + '/lights/' + lightNo '/state';
+    var URL = hueURL + '/lights/' + lightNo + '/state';
     var dataObject = {};
     dataObject.alert = 'lselect';
     $.ajax( {

@@ -6,6 +6,12 @@
     -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
 }
 
+#leapfull {position:absolute;
+     left:0;
+      width:100%;
+      min-height:100%;
+    }
+
 #message-bar-container {
     bottom: 0;
     position: fixed;

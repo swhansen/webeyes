@@ -1,11 +1,13 @@
 
-function setUpLeapLayer() {
+function initLeap() {
 
   console.log( 'at setUpLeapLayer');
 
+  var leapFullScreen = document.getElementById( 'leapfull' );
+
 Leap.loop()
     .use('boneHand', {
-      targetEl: document.body,
+      targetEl: leapFullScreen,
       arm: true,
       opacity: 0.5
     } );
@@ -44,6 +46,4 @@ Leap.loop()
     }
   });
 
-//  document.getElementById('view-source').href = "view-source:" + window.location.href;
-//  document.getElementById('view-source').target = "_blank";
 }
