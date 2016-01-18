@@ -3,6 +3,12 @@ function initLeap() {
 
   console.log( 'at initLeap' );
 
+var leapController = new Leap.Controller();
+
+leapControllerontroller.on('deviceConnected', function() {
+  console.log("A Leap device has been connected.");
+
+
   var leapFullScreen = document.getElementById( 'leapfull' );
 
 Leap.loop()
@@ -45,3 +51,5 @@ Leap.loop()
   } );
 
 }
+
+});
