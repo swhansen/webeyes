@@ -1119,10 +1119,10 @@ setBrowserDetails();
 
 initDraw();
 initUtil();
-if ( userContext.isSessionInitiator ) {
-  console.log( 'userContext.isSessionInitiator:', userContext.isSessionInitiator );
+//if ( userContext.isSessionInitiator ) {
+//  console.log( 'userContext.isSessionInitiator:', userContext.isSessionInitiator );
   initLeap();
-  };
+//  };
 messageBar( 'User Session Initialized' );
 
 }

@@ -1,7 +1,7 @@
 
 function initLeap() {
 
-  console.log( 'at setUpLeapLayer' );
+  console.log( 'at initLeap' );
 
   var leapFullScreen = document.getElementById( 'leapfull' );
 
