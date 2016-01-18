@@ -1,9 +1,11 @@
 
 function initLeap() {
 
-  console.log( 'at setUpLeapLayer' );
+console.log( 'at setUpLeapLayer' );
 
-  if ( userContext.mobile === false ) {
+// If the device is mobile then no hands
+
+if ( userContext.mobile === false ) {
 
   var leapFullScreen = document.getElementById( 'leapfull' );
 
