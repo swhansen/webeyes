@@ -3,10 +3,6 @@ function initLeap() {
 
   console.log( 'at initLeap' );
 
-  // Leap not availabe on mobile
-
-
-
 var leapFullScreen = document.getElementById( 'leapfull' );
 
 Leap.loop()
@@ -44,5 +40,4 @@ Leap.loop()
         document.getElementById( 'canvas' ).style.display = 'none';
       }
     } );
-  }
-
+}
