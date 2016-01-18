@@ -3,9 +3,6 @@ function initLeap() {
 
   console.log( 'at setUpLeapLayer' );
 
-
-
-
   var leapFullScreen = document.getElementById( 'leapfull' );
 
 Leap.loop()
