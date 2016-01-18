@@ -29,8 +29,8 @@ Leap.loop()
 
 //  scene.add(plane);
 
-  var axisHelper = new THREE.AxisHelper( 100 );
-  scene.add( axisHelper );
+//  var axisHelper = new THREE.AxisHelper( 100 );
+//  scene.add( axisHelper );
 
   var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
