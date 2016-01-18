@@ -1119,7 +1119,9 @@ setBrowserDetails();
 
 initDraw();
 initUtil();
-initLeap();
+if ( userContext.isSessionInitiator ) {
+  initLeap();
+  };
 messageBar( 'User Session Initialized' );
 
 }
