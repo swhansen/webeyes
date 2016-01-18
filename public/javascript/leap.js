@@ -3,11 +3,9 @@ function initLeap() {
 
   console.log( 'at initLeap' );
 
-var leapController = new Leap.Controller();
-leapController.connect();
+  // Leap not availabe on mobile
 
-leapController.on( 'deviceAttached', function() {
-  console.log( 'A Leap device has been attached.' );
+  if ( userContext.mobile === false ) {
 
 var leapFullScreen = document.getElementById( 'leapfull' );
 
@@ -46,9 +44,5 @@ Leap.loop()
         document.getElementById( 'canvas' ).style.display = 'none';
       }
     } );
-  } );
+  }
 }
-
-
-
-
