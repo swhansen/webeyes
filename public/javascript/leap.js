@@ -35,7 +35,7 @@ Leap.loop()
   var axisHelper = new THREE.AxisHelper( 100 );
   scene.add( axisHelper );
 
-  //var controls = new THREE.OrbitControls( camera, renderer.domElement );
+  var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
     Leap.loopController.on( 'handFound' , function( hand ) {
       document.getElementById( 'canvas' ).style.display = 'block';
