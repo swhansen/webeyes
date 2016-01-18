@@ -20,7 +20,7 @@ if ( userContext.mobile === false ) {
 Leap.loop()
     .use( 'boneHand', {
       targetEl: leapFullScreen,
-      arm: true,
+      arm: false,
       opacity: 0.5
     } );
 
