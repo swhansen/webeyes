@@ -10,7 +10,7 @@
      left:0;
       width:100%;
       min-height:100%;
-      z-index: 100;
+      z-index: 15;
     }
 
 #message-bar-container {
@@ -73,7 +73,7 @@ width: 1000px;
 }
 
 .ui-zindex {
-  z-index: 30;
+  z-index: 20;
 }
 
 #geo-data {
