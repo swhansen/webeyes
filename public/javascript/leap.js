@@ -12,7 +12,10 @@ console.log( 'at setUpLeapLayer' );
 
 // If the device is mobile then no physicakl device - hack
 
-if ( userContext.isSessionInitiator == true ) {
+var isInitiator = userContext.isSessionInitiator;
+console.log( 'isInitiator:', isInitiator );
+
+if ( userContext.mobile === false && isInitiator ) {
   runHands();
 }
 
