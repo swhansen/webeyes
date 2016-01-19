@@ -23,10 +23,10 @@ if ( userContext.mobile === false ) {
 
   var renderer, scene, camera, controls;
 
-  init();
+  //init();
   Leap.loop( {background: true}, leapAnimate ).connect();
 
-  function init() {
+  //function init() {
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -55,7 +55,7 @@ if ( userContext.mobile === false ) {
 
 //  window.addEventListener( 'resize', onWindowResize, false );
 
-  }
+  //}
 
   function onWindowResize() {
 
