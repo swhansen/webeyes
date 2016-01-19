@@ -302,6 +302,11 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'arObjectShare', data );
   } );
 
+client.on( 'leapShare', function( data, session ) {
+   // client.emit( 'arObjectShare ', data );
+    client.broadcast.emit( 'leapShare', data );
+  } );
+
   client.on( 'toggleCompass', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
     client.broadcast.emit( 'toggleCompass', data );

@@ -23,11 +23,11 @@ if ( userContext.mobile === false && userContext.isLeap ) {
   runHands();
 }
 
-if (userContext.participantState == 'peer') {
-  console.log( 'User State is peer' );
-}
-
 function runHands() {
+
+//  socketServer.on( 'leapShare', function( data ) {
+//  console.log( data );
+//    } );
 
  var leapfull = document.getElementById( 'leapfull' );
 
@@ -102,7 +102,27 @@ function runHands() {
 
   }
 
+//  function emitLeap( data ) {
+//    var sessionId = socketServer.sessionid;
+//    socketServer.emit( 'leapShare', data, sessionId );
+//  }
+
+var target = 20;
+var counter;
+
   function leapAnimate( frame ) {
+
+counter++;
+console.log ( 'counter:', counter );
+
+if ( counter === target ) {
+ //   emitLeap( frame );
+ console.log( 'counter HIT' );
+    counter = 0;
+  }
+}
+
+//  emitLeap( frame );
 
     var countBones = 0;
     var countArms = 0;
