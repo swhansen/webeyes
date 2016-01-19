@@ -1,88 +1,42 @@
 
 function initLeap() {
 
+var LeapController = new Leap.Controller({enableGestures: true});
 
 
+window.L = LeapController;
 
-  function LeapExample(exampleID, initCallback, frameCallback) {
-    var self = this;
-    this.exampleID = exampleID;
-    this.initCallback = initCallback;
-    this.frameCallback = frameCallback;
-
-    this.serviceConnected = false;
-    this.leapConnected = false;
-    this.initialized = false;
-    this.controller = new Leap.Controller();
-
-    //Initialize example code and set onframe callback
-    this.init = function () {
-        self.exampleElement = document.getElementById(self.exampleID);
-        if (self.initCallback) self.initialized = self.initCallback();
-        self.controller.on("frame", self.forwardFrameCallback);
-    }
-
-    //Look for a valid frame to see if device is present
-    this.frameDetectedCallback = function() {
-        if(self.controller.frame(0).valid){
-           if (!self.initialized) self.init();
-           console.log("Device detected");
-           self.leapConnected = true;
-           self.exampleElement.style.visibility = "visible";
-           window.clearTimeout(self.timeout);
-           self.controller.removeListener("frame", self.frameDetectedCallback);
-        }
-    }
-
-    //Forward frames to example code
-    this.forwardFrameCallback = function(){
-         if (self.frameCallback) self.frameCallback(self.controller.frame(0));
-    }
-
-    //On connection to service, set a timeout to warn if valid frames
-    //aren't detected in a reasonable amount of time
-    this.controller.on('connect', function () {
-        console.log("Service connected");
-        serviceConnected = true;
-        self.timeout = window.setTimeout(function(){
-            console.log("Couldn't detect device");
-        }, 500);
-        self.controller.on("frame", self.frameDetectedCallback);
+    LeapController.on('deviceConnected', function () {
+        console.log('deviceConnected', arguments);
+        // in the example code, this fires when the app starts.
+        // in our app, it only fires when the device is reconnected after having been connected when the app was started.
+        dispatch.trigger('LeapControl:reconnect');
     });
 
-    this.controller.on('disconnect', function () {
-        console.log("Service disconnected");
-        serviceConnected = false;
+    LeapController.on('ready', function () {
+        // this fires when the app is ready.
+        dispatch.trigger('LeapControl:reconnect');
     });
 
-    this.controller.on('deviceConnected', function () {
-        if (!self.initialized) self.init();
-        console.log("Device connected");
-        self.leapConnected = true;
-        self.exampleElement.style.visibility = "visible";
+    LeapController.on('connect', function () {
+        console.log('device is connected');
+        // this fires when no device is plugged in. wtf.
     });
 
-    this.controller.on('deviceDisconnected', function () {
-        console.log("Device disconnected");
-        self.leapConnected = false;
-        self.exampleElement.style.visibility = "hidden";
+    LeapController.connection.on('deviceConnect', function () {
+        console.log('deviceConnect');
+        // this fires when the device is changes state from plugged in to ungplugged and vice versa.
     });
 
-    this.controller.connect();
-}
+    LeapController.on('deviceDisconnected', function () {
+        console.log('deviceDisconnected', arguments);
+        dispatch.trigger('LeapControl:disconnect');
+    });
 
-//Example example that uses the LeapExample class:
 
-var exampleInit = function () {
-    console.log("Init called")
-    return true;
-}
 
-var exampleFrame = function (frame) {
-    console.log("Frame: " + frame.id + " is " + (frame.valid ? "valid." : "invalid."));
-}
 
-var example = new LeapExample("thisLeapExample", exampleInit, exampleFrame);
+
 
 console.log( 'at setUpLeapLayer' );
 
