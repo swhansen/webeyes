@@ -124,6 +124,7 @@ $( document ).ready( function() {
 
 $( function() {
   $( '#leapButton' ).click( function() {
+    userContext.isLeap = true;
     initLeap()();
     messageBar( 'Leap Hand Interaction Initalized' );
     }

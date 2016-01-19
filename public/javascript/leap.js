@@ -11,13 +11,15 @@ console.log( 'at setUpLeapLayer' );
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
+
+// tell all peers to initalize leap-recieve and subscribe to the broadcast.
+
 // If the device is mobile then no physical device - hack
 
-var isInitiator = userContext.isSessionInitiator;
-console.log( 'isInitiator:', isInitiator );
-console.log( 'userContext...isInitiator:', userContext.isSessionInitiator );
+console.log( 'userContext:', userContext );
+console.log( 'userContext.isLeap:', userContext.isLeap );
 
-if ( userContext.mobile === false ) {
+if ( userContext.mobile === false && userContext.isLeap ) {
   runHands();
 }
 
