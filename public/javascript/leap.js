@@ -14,6 +14,9 @@ console.log( 'at setUpLeapLayer' );
 // If the device is mobile then no hands
 
 if ( userContext.mobile === false ) {
+runHands();
+}
+function runHands() {
 
  var leapfull = document.getElementById( 'leapfull' );
 
@@ -128,3 +131,6 @@ if ( userContext.mobile === false ) {
 }
 
 }
+
+}
+
