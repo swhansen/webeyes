@@ -108,7 +108,7 @@ function runHands() {
 //  }
 
 var target = 20;
-var counter;
+var counter = 0;
 
   function leapAnimate( frame ) {
 
