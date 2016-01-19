@@ -121,6 +121,15 @@ $( document ).ready( function() {
 //  - auto, none
 //  - all other events are SVG realted
 
+
+$( function() {
+  $( '#leapButton' ).click( function() {
+    initLeap()();
+    messageBar( 'Leap Hand Interaction Initalized' );
+    }
+  );
+} );
+
 $( function() {
   $( '#utilButton' ).click( function() {
     buildSideMenu( 'util' );

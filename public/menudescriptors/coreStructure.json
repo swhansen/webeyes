@@ -23,9 +23,7 @@
                 "#fadeButton",
                 "#b1"
             ],
-
             "renderElement": "canvaspane",
-
             "desc": "drawing layer",
             "initState": "none",
             "baseZ": "20"
