@@ -1,7 +1,7 @@
-
 function initLeap() {
 
 console.log( 'at setUpLeapLayer' );
+console.log( 'userContext:', userContext );
 
 // list the z-factors
 
@@ -11,11 +11,12 @@ console.log( 'at setUpLeapLayer' );
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-// If the device is mobile then no hands
+// If the device is mobile then no physicakl device - hack
 
 if ( userContext.mobile === false ) {
-runHands();
+  runHands();
 }
+
 function runHands() {
 
  var leapfull = document.getElementById( 'leapfull' );
@@ -96,8 +97,8 @@ function runHands() {
     var countBones = 0;
     var countArms = 0;
 
-    armMeshes.forEach( function( item ) { scene.remove( item ) } );
-    boneMeshes.forEach( function( item ) { scene.remove( item ) } );
+    armMeshes.forEach( function( item ) { scene.remove( item ); } );
+    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
 
@@ -124,10 +125,7 @@ function runHands() {
 
     renderer.render( scene, camera );
     controls.update();
-
-
   }
-
 }
 
 }
