@@ -1,43 +1,6 @@
 
 function initLeap() {
 
-var LeapController = new Leap.Controller({enableGestures: true});
-
-
-window.L = LeapController;
-
-    LeapController.on('deviceConnected', function () {
-        console.log('deviceConnected', arguments);
-        // in the example code, this fires when the app starts.
-        // in our app, it only fires when the device is reconnected after having been connected when the app was started.
-        dispatch.trigger('LeapControl:reconnect');
-    });
-
-    LeapController.on('ready', function () {
-        // this fires when the app is ready.
-        dispatch.trigger('LeapControl:reconnect');
-    });
-
-    LeapController.on('connect', function () {
-        console.log('device is connected');
-        // this fires when no device is plugged in. wtf.
-    });
-
-    LeapController.connection.on('deviceConnect', function () {
-        console.log('deviceConnect');
-        // this fires when the device is changes state from plugged in to ungplugged and vice versa.
-    });
-
-    LeapController.on('deviceDisconnected', function () {
-        console.log('deviceDisconnected', arguments);
-        dispatch.trigger('LeapControl:disconnect');
-    });
-
-
-
-
-
-
 console.log( 'at setUpLeapLayer' );
 
 // list the z-factors
