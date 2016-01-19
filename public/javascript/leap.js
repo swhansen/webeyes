@@ -28,7 +28,7 @@ if ( userContext.mobile === false ) {
 
   function init() {
 
-    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
+    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
   //  document.body.appendChild( renderer.domElement );
 
