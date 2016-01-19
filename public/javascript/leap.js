@@ -120,7 +120,7 @@ if ( counter === target ) {
  console.log( 'counter HIT' );
     counter = 0;
   }
-}
+
 
 //  emitLeap( frame );
 
