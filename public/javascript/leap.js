@@ -1,8 +1,6 @@
 function initLeap() {
 
 console.log( 'at setUpLeapLayer' );
-console.log( 'userContext:', userContext );
-console.log( 'userContext.isSessionInitiator:', userContext.isSessionInitiator );
 
 // list the z-factors
 

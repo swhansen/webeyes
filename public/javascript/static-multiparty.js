@@ -18,7 +18,7 @@ socketServer = io.connect( '/' );
 var userContext = {
   rtcId: '',
   isSessionInitiator: false,
-  modMeState: 'false',
+  modMeState: false,
   participantState: 'peer',
   uiState: '',
   mode: '',
