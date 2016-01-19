@@ -14,7 +14,7 @@ console.log( 'userContext.isSessionInitiator:', userContext.isSessionInitiator )
 
 // If the device is mobile then no physicakl device - hack
 
-if ( userContext.mobile === false  && userContext.isSessionInitiator === true ) {
+if ( userContext.mobile === false ) {
   runHands();
 }
 
