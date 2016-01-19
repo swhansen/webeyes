@@ -12,7 +12,7 @@ console.log( 'at setUpLeapLayer' );
 
 // If the device is mobile then no physicakl device - hack
 
-if ( userContext.mobile === false ) {
+if ( userContext.mobile === false && userContext.isSessionInitiator == true ) {
   runHands();
 }
 
@@ -100,7 +100,6 @@ function runHands() {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
-
 
       for ( var finger of hand.fingers ) {
 
