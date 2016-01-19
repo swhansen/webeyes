@@ -14,8 +14,9 @@ console.log( 'at setUpLeapLayer' );
 
 var isInitiator = userContext.isSessionInitiator;
 console.log( 'isInitiator:', isInitiator );
+console.log( 'userContext...isInitiator:', userContext.isSessionInitiator );
 
-if ( userContext.mobile === false && isInitiator ) {
+if ( userContext.mobile === false && isInitiator === true ) {
   runHands();
 }
 
