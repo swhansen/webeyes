@@ -30,7 +30,7 @@ if ( userContext.mobile === false ) {
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
+  //  document.body.appendChild( renderer.domElement );
 
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
     camera.position.set( -500, 500, 500 );
