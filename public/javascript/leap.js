@@ -40,9 +40,17 @@ console.log( 'runLeap-state:', participantState );
 
   var renderer, scene, camera, controls;
 
-  //init();
+
+
+
   var controller = Leap.loop( {background: true}, leapAnimate )
   controller.connect();
+
+  console.log( JSON.stringify(controller.beforeFrameCreated));
+
+
+
+
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -119,8 +127,8 @@ counter++;
 if ( counter === target ) {
  //   emitLeap( frame );
  console.log( frame );
- var jsonFrame = JSON.stringify( frame );
-  emitLeap( jsonframe );
+// var jsonFrame = JSON.stringify( frame );
+//  emitLeap( jsonframe );
     counter = 0;
   }
 
