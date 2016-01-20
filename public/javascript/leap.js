@@ -1,5 +1,5 @@
 
-function initLeap() {
+function initLeap( state ) {
 
 console.log( 'at setUpLeapLayer' );
 
@@ -20,10 +20,12 @@ console.log( 'userContext:', userContext );
 console.log( 'userContext.isLeap:', userContext.isLeap );
 
 if ( userContext.mobile === false && userContext.isLeap ) {
-  runHands();
+  runLeap( state );
 }
 
-function runHands() {
+function runLeap( state ) {
+
+  console.log( 'runLeap-state:', state );
 
 //  socketServer.on( 'leapShare', function( data ) {
 //  console.log( data );

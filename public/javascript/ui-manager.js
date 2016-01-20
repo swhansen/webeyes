@@ -125,8 +125,22 @@ $( document ).ready( function() {
 $( function() {
   $( '#leapButton' ).click( function() {
     userContext.isLeap = true;
-    initLeap();
-    messageBar( 'Leap Hand Interaction Initalized' );
+
+// Focus the Leap initiator (modme)
+
+  //  var sessionId = socketServer.sessionid;
+  //      socketServer.emit( 'focus', userContext.rtcId, sessionId );
+
+  // Tell everyone to initialize Leap
+
+  //var sessionId = socketServer.sessionid;
+  //      socketServer.emit( 'utility', 'leapClientInit', sessionId );
+
+    var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
+    messageBar( msgString );
+
+    initLeap( 'focus' );
+
     }
   );
 } );
