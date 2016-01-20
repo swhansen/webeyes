@@ -43,12 +43,10 @@ console.log( 'runLeap-state:', participantState );
 
 
 
-  var controller = Leap.loop( {background: true}, leapAnimate )
+  var controller = Leap.loop( {background: true}, leapAnimate );
   controller.connect();
 
- // console.log( JSON.stringify(controller.beforeFrameCreated));
-
-controller.on( 'beforeFrameCreated', function(frameData) { console.log( frameData ); });
+  controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap( frameData ); });
 
 
 
@@ -117,20 +115,20 @@ controller.on( 'beforeFrameCreated', function(frameData) { console.log( frameDat
     socketServer.emit( 'leapShare', data, sessionId );
   }
 
-var target = 200;
-var counter = 0;
+ //var target = 200;
+// var counter = 0;
 
   function leapAnimate( frame ) {
 
-counter++;
-
-if ( counter === target ) {
- //   emitLeap( frame );
- console.log( frame );
-// var jsonFrame = JSON.stringify( frame );
-//  emitLeap( jsonframe );
-    counter = 0;
-  }
+//counter++;
+//
+//if ( counter === target ) {
+// //   emitLeap( frame );
+// console.log( frame );
+//// var jsonFrame = JSON.stringify( frame );
+////  emitLeap( jsonframe );
+//    counter = 0;
+//  }
 
 
 
