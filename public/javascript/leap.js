@@ -107,10 +107,10 @@ console.log( 'runLeap-state:', participantState );
 
   }
 
-//  function emitLeap( data ) {
-//    var sessionId = socketServer.sessionid;
-//    socketServer.emit( 'leapShare', data, sessionId );
-//  }
+  function emitLeap( data ) {
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'leapShare', data, sessionId );
+  }
 
 var target = 200;
 var counter = 0;
@@ -122,11 +122,11 @@ counter++;
 if ( counter === target ) {
  //   emitLeap( frame );
  console.log( frame );
+  emitLeap( frame );
     counter = 0;
   }
 
 
-//  emitLeap( frame );
 
     var countBones = 0;
     var countArms = 0;
