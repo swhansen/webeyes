@@ -113,7 +113,6 @@ var counter = 0;
   function leapAnimate( frame ) {
 
 counter++;
-console.log ( 'counter:', counter );
 
 if ( counter === target ) {
  //   emitLeap( frame );
