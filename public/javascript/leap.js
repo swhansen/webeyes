@@ -28,6 +28,14 @@ function runLeap( participantState ) {
 //  console.log( data );
 //    } );
 
+
+if (participantState === 'peer' ) {
+
+  socketServer.on( 'leapShare', function( data ) {
+    console.log( data );
+    } );
+  } else {
+
  var leapfull = document.getElementById( 'leapfull' );
 
   var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
@@ -154,7 +162,7 @@ if ( counter === target ) {
     controls.update();
   }
 }
-
+}
 }
 
 

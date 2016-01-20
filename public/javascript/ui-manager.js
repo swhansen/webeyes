@@ -139,16 +139,17 @@ $( function() {
   //  var sessionId = socketServer.sessionid;
   //      socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-  // Tell everyone to initialize Leap
-
-  //var sessionId = socketServer.sessionid;
-  //      socketServer.emit( 'utility', 'leapClientInit', sessionId );
-
-    var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
-    messageBar( msgString );
+// Load Leap locally
 
     loadLeap( 'focus' );
 
+  // Tell everyone to initialize Leap
+
+  var sessionId = socketServer.sessionid;
+      socketServer.emit( 'utility', 'leapClientInit', sessionId );
+
+    var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
+    messageBar( msgString );
     }
   );
 } );
