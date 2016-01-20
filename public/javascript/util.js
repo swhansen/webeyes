@@ -93,7 +93,7 @@ socketServer.on('utility', function(data) {
         loadAr( 'peer' );
     break;
     case 'leapClientInit':
-        initLeap( 'peer' );
+        loadLeap( 'peer' );
     break;
   }
 } );

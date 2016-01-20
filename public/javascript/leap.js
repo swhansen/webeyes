@@ -1,5 +1,5 @@
 
-function initLeap( state ) {
+function loadLeap( participantState ) {
 
 console.log( 'at setUpLeapLayer' );
 
@@ -16,16 +16,13 @@ console.log( 'at setUpLeapLayer' );
 
 // If the device is mobile then no physical device - hack
 
-console.log( 'userContext:', userContext );
-console.log( 'userContext.isLeap:', userContext.isLeap );
+//if ( userContext.mobile === false && userContext.isLeap && participantState === 'focus' ) {
+  runLeap( participantState );
+//}
 
-if ( userContext.mobile === false && userContext.isLeap ) {
-  runLeap( state );
-}
+function runLeap( participantState ) {
 
-function runLeap( state ) {
-
-  console.log( 'runLeap-state:', state );
+  console.log( 'runLeap-state:', participantState );
 
 //  socketServer.on( 'leapShare', function( data ) {
 //  console.log( data );

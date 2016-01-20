@@ -37,7 +37,7 @@ easyrtc.dontAddCloseButtons( false );
 
 function messageBar( msg ) {
   $( '#messageFooter' ).html( msg ).fadeIn( 500 );
-  $( '#messageFooter' ).html( msg ).fadeOut( 4000 );
+  $( '#messageFooter' ).html( msg ).fadeOut( 5000 );
 }
 
 // socket.io communication

@@ -124,9 +124,17 @@ $( document ).ready( function() {
 
 $( function() {
   $( '#leapButton' ).click( function() {
+
+//
+//  Do checks to see if Leap is connected and viable
+//
+// temp hack
+
+//if ( userContext.mobile === false  ) {................
+
     userContext.isLeap = true;
 
-// Focus the Leap initiator (modme)
+// Focus the Leap initiator
 
   //  var sessionId = socketServer.sessionid;
   //      socketServer.emit( 'focus', userContext.rtcId, sessionId );
@@ -139,7 +147,7 @@ $( function() {
     var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
     messageBar( msgString );
 
-    initLeap( 'focus' );
+    loadLeap( 'focus' );
 
     }
   );
