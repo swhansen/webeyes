@@ -26,6 +26,7 @@ function runLeap( participantState ) {
 if (participantState === 'peer' ) {
 
   socketServer.on( 'leapShare', function( data ) {
+
     console.log( 'at runLeap-frame:', data );
     } );
   } else {
@@ -44,17 +45,14 @@ console.log( 'runLeap-state:', participantState );
   controller.connect();
 
 function emitLeap( data ) {
-    JSON.stringify( data );
     var sessionId = socketServer.sessionid;
-    socketServer.emit( 'leapShare', data, sessionId );
+    socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
   }
 
-
+// grab the Lepa data before frame creation
+//  - https://community.leapmotion.com/t/sending-leap-frames-over-websockets/2374/4//
 
   controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap( frameData ); });
-
-
-
 
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
