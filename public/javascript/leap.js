@@ -46,9 +46,9 @@ console.log( 'runLeap-state:', participantState );
   var controller = Leap.loop( {background: true}, leapAnimate )
   controller.connect();
 
-  console.log( JSON.stringify(controller.beforeFrameCreated));
+ // console.log( JSON.stringify(controller.beforeFrameCreated));
 
-
+controller.on( 'beforeFrameCreated', function(frameData) { console.log( frameData ); });
 
 
 
