@@ -34,6 +34,9 @@ function leapFromBroadcast( data ) {
 
   frame = JSON.parse( data );
 
+  console.log( 'at leapFromBroadcast:', frame );
+
+
 var leapfull = document.getElementById( 'leapfull' );
 
   var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
@@ -135,12 +138,6 @@ var leapfull = document.getElementById( 'leapfull' );
     controls.update();
   }
 }
-
-
-
-
-
-
 
 
 
