@@ -13,17 +13,16 @@ console.log( 'at setUpLeapLayer' );
 
 // tell all peers to initalize leap-recieve and subscribe to the broadcast.
 
-// If the device is mobile then no physical device - hack
-
-//if ( userContext.mobile === false && userContext.isLeap && participantState === 'focus' ) {
-  runLeap( participantState );
-//}
-
-function runLeap( participantState ) {
-
-  console.log( 'runLeap-state:', participantState );
 
 if ( participantState === 'peer' ) {
+  leapPeer();
+  } else {
+   leapFocus();
+ }
+
+function leapPeer() {
+
+  console.log( ' at leapPeer' );
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
@@ -55,45 +54,32 @@ if ( participantState === 'peer' ) {
     scene = new THREE.Scene();
 
   function onWindowResize() {
-
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-
     renderer.setSize( window.innerWidth, window.innerHeight );
-
   }
 
   function addMesh( meshes ) {
-
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
     var material = new THREE.MeshNormalMaterial();
     var mesh = new THREE.Mesh( geometry, material );
     meshes.push( mesh );
-
     return mesh;
-
   }
 
   function updateMesh( bone, mesh ) {
-
       mesh.position.fromArray( bone.center() );
       mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
       mesh.quaternion.multiply( baseBoneRotation );
       mesh.scale.set( bone.width, bone.width, bone.length );
-
       scene.add( mesh );
-
   }
-
- //var target = 200;
-// var counter = 0;
 
   function leapAnimate( data ) {
 
-frame = JSON.parse( data );
+  frame = JSON.parse( data );
 
  console.log( 'at leapAnimate:', frame );
-
 
     var countBones = 0;
     var countArms = 0;
@@ -111,33 +97,24 @@ frame = JSON.parse( data );
 
           var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
           updateMesh( bone, boneMesh );
-
         }
-
       }
 
       var arm = hand.arm;
       var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
       updateMesh( arm, armMesh );
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-
     }
 
     renderer.render( scene, camera );
     controls.update();
   }
 
+  }
 
+function leapFocus() {
 
-
-
-
-//
-// -------------------------------------------------------------------------------
-//
-
-
-  } else {
+  console.log( ' at leapPeer' );
 
 console.log( 'runLeap-state:', participantState );
 
@@ -176,34 +153,25 @@ function emitLeap( data ) {
     scene = new THREE.Scene();
 
   function onWindowResize() {
-
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-
     renderer.setSize( window.innerWidth, window.innerHeight );
-
   }
 
   function addMesh( meshes ) {
-
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
     var material = new THREE.MeshNormalMaterial();
     var mesh = new THREE.Mesh( geometry, material );
     meshes.push( mesh );
-
     return mesh;
-
   }
 
   function updateMesh( bone, mesh ) {
-
       mesh.position.fromArray( bone.center() );
       mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
       mesh.quaternion.multiply( baseBoneRotation );
       mesh.scale.set( bone.width, bone.width, bone.length );
-
       scene.add( mesh );
-
   }
 
  //var target = 200;
@@ -254,9 +222,11 @@ function emitLeap( data ) {
     renderer.render( scene, camera );
     controls.update();
   }
+
 }
+
 }
-}
+
 
 
 
