@@ -27,14 +27,12 @@ if (participantState === 'peer' ) {
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
-    leapFromBroadcast( data );
+    leapAnimate( data );
     } );
 
-function leapFromBroadcast( data ) {
+//function leapFromBroadcast( data ) {
 
-  leapAnimate( JSON.parse( data ));
-
- // console.log( 'at leapFromBroadcast:', frame );
+ //console.log( 'at leapFromBroadcast:', frame );
 
   var leapfull = document.getElementById( 'leapfull' );
 
@@ -90,8 +88,9 @@ function leapFromBroadcast( data ) {
  //var target = 200;
 // var counter = 0;
 
-  function leapAnimate( frame ) {
+  function leapAnimate( data ) {
 
+frame = JSON.parse( data );
 
  console.log( 'at leapAnimate:', frame );
 
@@ -127,9 +126,9 @@ function leapFromBroadcast( data ) {
     renderer.render( scene, camera );
     controls.update();
   }
+
+
 }
-
-
 
 
 
@@ -161,11 +160,11 @@ function emitLeap( data ) {
     socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
   }
 
-// grab the Lepa data before frame creation
+// grab the Leap data before frame creation
 //  - https://community.leapmotion.com/t/sending-leap-frames-over-websockets/2374/4//
+//
 
-  controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap( frameData ); });
-
+    controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap( frameData ); });
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
