@@ -79,7 +79,7 @@ function leapPeer() {
 
   frame = JSON.parse( data );
 
- console.log( 'at leapAnimate:', frame );
+  console.log( 'at leepPeer - leapAnimate:', frame );
 
     var countBones = 0;
     var countArms = 0;
@@ -178,6 +178,8 @@ function emitLeap( data ) {
 // var counter = 0;
 
   function leapAnimate( frame ) {
+
+  console.log( 'at leepFocus - leapAnimate:', frame );
 
 //counter++;
 //
