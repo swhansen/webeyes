@@ -107,7 +107,7 @@ function runHands() {
 //    socketServer.emit( 'leapShare', data, sessionId );
 //  }
 
-var target = 20;
+var target = 200;
 var counter = 0;
 
   function leapAnimate( frame ) {
@@ -117,7 +117,7 @@ console.log ( 'counter:', counter );
 
 if ( counter === target ) {
  //   emitLeap( frame );
- console.log( 'counter HIT' );
+ console.log( frame );
     counter = 0;
   }
 
