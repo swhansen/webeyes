@@ -40,13 +40,20 @@ console.log( 'runLeap-state:', participantState );
 
   var renderer, scene, camera, controls;
 
-
-
-
   var controller = Leap.loop( {background: true}, leapAnimate );
   controller.connect();
 
+function emitLeap( data ) {
+    JSON.stringify( data );
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'leapShare', data, sessionId );
+  }
+
+
+
   controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap( frameData ); });
+
+
 
 
 
@@ -108,11 +115,6 @@ console.log( 'runLeap-state:', participantState );
 
       scene.add( mesh );
 
-  }
-
-  function emitLeap( data ) {
-    var sessionId = socketServer.sessionid;
-    socketServer.emit( 'leapShare', data, sessionId );
   }
 
  //var target = 200;
