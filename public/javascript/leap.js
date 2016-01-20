@@ -32,7 +32,7 @@ if (participantState === 'peer' ) {
 
 function leapFromBroadcast( data ) {
 
-  frame = JSON.parse( data );
+  leapAnimate( JSON.parse( data ));
 
  // console.log( 'at leapFromBroadcast:', frame );
 
@@ -43,9 +43,6 @@ function leapFromBroadcast( data ) {
   var boneMeshes = [];
 
   var renderer, scene, camera, controls;
-
-  var controller = Leap.loop( {background: true}, leapAnimate );
-  controller.connect();
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -131,6 +128,15 @@ function leapFromBroadcast( data ) {
     controls.update();
   }
 }
+
+
+
+
+
+//
+// -------------------------------------------------------------------------------
+//
+
 
 
 
