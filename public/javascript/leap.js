@@ -34,10 +34,9 @@ function leapFromBroadcast( data ) {
 
   frame = JSON.parse( data );
 
-  console.log( 'at leapFromBroadcast:', frame );
+ // console.log( 'at leapFromBroadcast:', frame );
 
-
-var leapfull = document.getElementById( 'leapfull' );
+  var leapfull = document.getElementById( 'leapfull' );
 
   var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
   var armMeshes = [];
@@ -45,6 +44,8 @@ var leapfull = document.getElementById( 'leapfull' );
 
   var renderer, scene, camera, controls;
 
+  var controller = Leap.loop( {background: true}, leapAnimate );
+  controller.connect();
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -94,16 +95,8 @@ var leapfull = document.getElementById( 'leapfull' );
 
   function leapAnimate( frame ) {
 
-//counter++;
-//
-//if ( counter === target ) {
-// //   emitLeap( frame );
-// console.log( frame );
-//// var jsonFrame = JSON.stringify( frame );
-////  emitLeap( jsonframe );
-//    counter = 0;
-//  }
 
+ console.log( 'at leapAnimate:', frame );
 
 
     var countBones = 0;
