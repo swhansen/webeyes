@@ -11,7 +11,6 @@ console.log( 'at setUpLeapLayer' );
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-
 // tell all peers to initalize leap-recieve and subscribe to the broadcast.
 
 // If the device is mobile then no physical device - hack
@@ -23,7 +22,6 @@ console.log( 'at setUpLeapLayer' );
 function runLeap( participantState ) {
 
   console.log( 'runLeap-state:', participantState );
-
 
 if (participantState === 'peer' ) {
 
@@ -44,8 +42,6 @@ console.log( 'runLeap-state:', participantState );
 
   //init();
   Leap.loop( {background: true}, leapAnimate ).connect();
-
-  //function init() {
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -122,7 +118,8 @@ counter++;
 if ( counter === target ) {
  //   emitLeap( frame );
  console.log( frame );
-  emitLeap( frame );
+ var jsonFrame = JSON.stringify( frame );
+  emitLeap( jsonframe );
     counter = 0;
   }
 
