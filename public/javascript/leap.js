@@ -41,7 +41,8 @@ console.log( 'runLeap-state:', participantState );
   var renderer, scene, camera, controls;
 
   //init();
-  var controller = new Leap.loop( {background: true}, leapAnimate ).connect();
+  var controller = new Leap.loop( {background: true}, leapAnimate )
+  controller.connect();
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
