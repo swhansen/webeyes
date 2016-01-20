@@ -93,6 +93,7 @@ socketServer.on('utility', function(data) {
         loadAr( 'peer' );
     break;
     case 'leapClientInit':
+    console.log( 'util call to loadLeap-peer' );
         loadLeap( 'peer' );
     break;
   }

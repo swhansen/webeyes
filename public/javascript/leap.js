@@ -24,17 +24,15 @@ function runLeap( participantState ) {
 
   console.log( 'runLeap-state:', participantState );
 
-//  socketServer.on( 'leapShare', function( data ) {
-//  console.log( data );
-//    } );
-
 
 if (participantState === 'peer' ) {
 
   socketServer.on( 'leapShare', function( data ) {
-    console.log( data );
+    console.log( 'at runLeap-frame:', data );
     } );
   } else {
+
+console.log( 'runLeap-state:', participantState );
 
  var leapfull = document.getElementById( 'leapfull' );
 
