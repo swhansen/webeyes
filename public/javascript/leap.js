@@ -23,7 +23,7 @@ function runLeap( participantState ) {
 
   console.log( 'runLeap-state:', participantState );
 
-if (participantState === 'peer' ) {
+if ( participantState === 'peer' ) {
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
@@ -128,16 +128,13 @@ frame = JSON.parse( data );
   }
 
 
-}
+
 
 
 
 //
 // -------------------------------------------------------------------------------
 //
-
-
-
 
 
   } else {
