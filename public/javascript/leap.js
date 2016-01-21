@@ -131,7 +131,7 @@ console.log( 'runLeap-state:', participantState );
 
 function emitLeap( data ) {
     var sessionId = socketServer.sessionid;
-    socketServer.emit( 'leapShare', data , sessionId );
+    socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
   }
 
 // grab the Leap data before frame creation
@@ -190,8 +190,6 @@ function emitLeap( data ) {
 ////  emitLeap( jsonframe );
 //    counter = 0;
 //  }
-
-
 
     var countBones = 0;
     var countArms = 0;
