@@ -80,8 +80,11 @@ function leapPeer() {
   frame = JSON.parse( data );
 
   //console.log( 'at leepPeer - leapAnimate:', frame );
-  console.log( 'at leepPeer - hand:', frame.hands );
-  console.log( 'at leepPeer - fingers:', frame.hand.fingers );
+
+  var hand = frame.hands;
+  console.log( 'at leepPeer - hand:', hand );
+  var finger = hand.fingers;
+  console.log( 'at leepPeer - fingers:', finger );
 
  //  var countBones = 0;
  //  var countArms = 0;
