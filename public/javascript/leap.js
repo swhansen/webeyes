@@ -130,7 +130,7 @@ function leapFocus() {
   var renderer, scene, camera, controls;
 
   var controller = Leap.loop( {background: true}).use('boneHand', {
-      targetEl: document.body,
+      targetEl: 'leapfull',
       arm: true});
   controller.connect();
 
