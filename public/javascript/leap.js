@@ -119,9 +119,7 @@ function leapPeer() {
 
 function leapFocus() {
 
-  console.log( ' at leapPeer' );
-
-console.log( 'runLeap-state:', participantState );
+  console.log( ' at leapFocus' );
 
  var leapfull = document.getElementById( 'leapfull' );
 
@@ -131,7 +129,9 @@ console.log( 'runLeap-state:', participantState );
 
   var renderer, scene, camera, controls;
 
-  var controller = Leap.loop( {background: true}, leapAnimate );
+  var controller = Leap.loop( {background: true}).use('boneHand', {
+      targetEl: document.body,
+      arm: true});
   controller.connect();
 
 function emitLeap( data ) {
