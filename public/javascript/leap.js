@@ -70,7 +70,7 @@ function leapPeer() {
       mesh.scale.set( bone.width, bone.width, bone.length );
       scene.add( mesh );
   }
-}
+
 
   function leapAnimate( data ) {
 
@@ -107,6 +107,7 @@ function leapPeer() {
    renderer.render( scene, camera );
    controls.update();
   }
+}
 
 function leapFocus() {
 
