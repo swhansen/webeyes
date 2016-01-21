@@ -183,21 +183,11 @@ function emitLeap( data ) {
 
   function leapAnimate( frame ) {
 
-  console.log( 'at leepPeer - frame:', frame );
-  var hand = frame.hands;
-  console.log( 'at leepPeer - hand:', hand );
-  var finger = hand.fingers;
-  console.log( 'at leepPeer - fingers:', finger );
-
-//counter++;
-//
-//if ( counter === target ) {
-// //   emitLeap( frame );
-// console.log( frame );
-//// var jsonFrame = JSON.stringify( frame );
-////  emitLeap( jsonframe );
-//    counter = 0;
-//  }
+// console.log( 'at leepPeer - frame:', frame );
+// var hand = frame.hands;
+// console.log( 'at leepPeer - hand:', hand );
+// var finger = hand.fingers;
+// console.log( 'at leepPeer - fingers:', finger );
 
     var countBones = 0;
     var countArms = 0;
@@ -208,6 +198,7 @@ function emitLeap( data ) {
     for ( var hand of frame.hands ) {
 
       for ( var finger of hand.fingers ) {
+        console.log( 'finger:', finger );
 
         for ( var bone of finger.bones ) {
 
