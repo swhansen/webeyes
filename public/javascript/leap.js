@@ -137,7 +137,7 @@ function emitLeap( data ) {
 //  - https://community.leapmotion.com/t/sending-leap-frames-over-websockets/2374/4//
 //
 
-    controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap( frameData ); });
+    controller.on( 'beforeFrameCreated', function( frameData ) { console.log(frameData); });
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
