@@ -79,35 +79,37 @@ function leapPeer() {
 
   frame = JSON.parse( data );
 
-  console.log( 'at leepPeer - leapAnimate:', frame );
+  //console.log( 'at leepPeer - leapAnimate:', frame );
+  console.log( 'at leepPeer - hand:', frame.hands );
+  console.log( 'at leepPeer - fingers:', frame.fingers );
 
-    var countBones = 0;
-    var countArms = 0;
+ //  var countBones = 0;
+ //  var countArms = 0;
 
-    armMeshes.forEach( function( item ) { scene.remove( item ); } );
-    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+ //  armMeshes.forEach( function( item ) { scene.remove( item ); } );
+ //  boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
-    for ( var hand of frame.hands ) {
+ //  for ( var hand of frame.hands ) {
 
-      for ( var finger of hand.fingers ) {
+ //    for ( var finger of hand.fingers ) {
 
-        for ( var bone of finger.bones ) {
+ //      for ( var bone of finger.bones ) {
 
-          if ( countBones++ === 0 ) { continue; }
+ //        if ( countBones++ === 0 ) { continue; }
 
-          var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
-          updateMesh( bone, boneMesh );
-        }
-      }
+ //        var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
+ //        updateMesh( bone, boneMesh );
+ //      }
+ //    }
 
-      var arm = hand.arm;
-      var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
-      updateMesh( arm, armMesh );
-      armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-    }
+ //    var arm = hand.arm;
+ //    var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
+ //    updateMesh( arm, armMesh );
+ //    armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
+ //  }
 
-    renderer.render( scene, camera );
-    controls.update();
+ //  renderer.render( scene, camera );
+ //  controls.update();
   }
 
   }
