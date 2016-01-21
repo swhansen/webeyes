@@ -81,6 +81,7 @@ function leapPeer() {
 
   //console.log( 'at leepPeer - leapAnimate:', frame );
 
+  console.log( 'at leepPeer - frame:', frame );
   var hand = frame.hands;
   console.log( 'at leepPeer - hand:', hand );
   var finger = hand.fingers;
@@ -119,7 +120,7 @@ function leapPeer() {
 
 function leapFocus() {
 
-  console.log( ' at leapFocus' );
+  console.log( ' at leepFocus' );
 
  var leapfull = document.getElementById( 'leapfull' );
 
@@ -129,9 +130,7 @@ function leapFocus() {
 
   var renderer, scene, camera, controls;
 
-  var controller = Leap.loop( {background: true}).use('boneHand', {
-      targetEl: 'leapfull',
-      arm: true});
+  var controller = Leap.loop( {background: true}, leapAnimate );
   controller.connect();
 
 function emitLeap( data ) {
