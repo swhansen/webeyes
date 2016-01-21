@@ -51,7 +51,7 @@ function leapPeer() {
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix()
+    camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
   }
 
@@ -75,6 +75,8 @@ function leapPeer() {
 
   frame = JSON.parse( data );
 
+  console.log('..parse:', frame );
+
   //console.log( 'at leepPeer - leapAnimate:', frame );
 
    var countBones = 0;
@@ -84,7 +86,6 @@ function leapPeer() {
    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
    for ( var hand of frame.hands ) {
-    console.log( 'hand:', hand );
      for ( var finger of hand.fingers ) {
 
        for ( var bone of finger.bones ) {
@@ -173,7 +174,7 @@ function emitLeap( data ) {
 
   function leapAnimate( frame ) {
 
-// console.log( 'at leepPeer - frame:', frame );
+ console.log( 'leapFocus-frame:', frame );
 // var hand = frame.hands;
 // console.log( 'at leepPeer - hand:', hand );
 // var finger = hand.fingers;
