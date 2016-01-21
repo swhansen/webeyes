@@ -81,7 +81,7 @@ function leapPeer() {
 
   //console.log( 'at leepPeer - leapAnimate:', frame );
   console.log( 'at leepPeer - hand:', frame.hands );
-  console.log( 'at leepPeer - fingers:', frame.fingers );
+  console.log( 'at leepPeer - fingers:', frame.hand.fingers );
 
  //  var countBones = 0;
  //  var countArms = 0;
