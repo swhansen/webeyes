@@ -183,7 +183,11 @@ function emitLeap( data ) {
 
   function leapAnimate( frame ) {
 
-  console.log( 'at leepFocus - leapAnimate:', frame );
+  console.log( 'at leepPeer - frame:', frame );
+  var hand = frame.hands;
+  console.log( 'at leepPeer - hand:', hand );
+  var finger = hand.fingers;
+  console.log( 'at leepPeer - fingers:', finger );
 
 //counter++;
 //
