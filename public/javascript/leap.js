@@ -29,10 +29,6 @@ function leapPeer() {
     leapAnimate( data );
     } );
 
-//function leapFromBroadcast( data ) {
-
- //console.log( 'at leapFromBroadcast:', frame );
-
   var leapfull = document.getElementById( 'leapfull' );
 
   var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
@@ -89,17 +85,13 @@ function leapPeer() {
 
    for ( var hand of frame.hands ) {
 
-     for ( var finger of hand.fingers ) {
-      console.log( 'finger:', finger );
 
-       for ( var bone of finger.bones ) {
 
-         if ( countBones++ === 0 ) { continue; }
 
          var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
          updateMesh( bone, boneMesh );
-       }
-     }
+
+
 
      var arm = hand.arm;
      var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
