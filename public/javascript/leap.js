@@ -90,7 +90,7 @@ function leapPeer() {
 
      for ( var pointables of frame.pointables ) {
 
-       for ( var bases of pointables.bases ) {
+       for ( var base of pointables.bases ) {
 
          if ( countBones++ === 0 ) { continue; }
 
