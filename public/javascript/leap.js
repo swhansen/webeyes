@@ -70,7 +70,7 @@ function leapPeer() {
       mesh.scale.set( bone.width, bone.width, bone.length );
       scene.add( mesh );
   }
-
+}
 
   function leapAnimate( data ) {
 
@@ -87,10 +87,9 @@ function leapPeer() {
    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
    for ( var hand of frame.hands ) {
+     for ( var finger of hand.fingers ) {
 
-     for ( var pointables of frame.pointables ) {
-
-       for ( var bone of pointables.bases ) {
+       for ( var bone of finger.bones ) {
 
          if ( countBones++ === 0 ) { continue; }
 
@@ -108,7 +107,6 @@ function leapPeer() {
    renderer.render( scene, camera );
    controls.update();
   }
-}
 
 function leapFocus() {
 
@@ -134,7 +132,7 @@ function emitLeap( data ) {
 //  - https://community.leapmotion.com/t/sending-leap-frames-over-websockets/2374/4//
 //
 
-    controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); } );
+    controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); });
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
