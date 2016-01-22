@@ -87,7 +87,8 @@ function leapPeer() {
    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
    for ( var hand of frame.hands ) {
-     for ( var pointables of hand.pointables ) {
+
+     for ( var pointables of frame.pointables ) {
 
        for ( var bases of pointables.bases ) {
 
