@@ -1,6 +1,8 @@
 
 function loadLeap( participantState ) {
 
+  var renderer, scene, camera, controls;
+
 console.log( 'at setUpLeapLayer' );
 
 // list the z-factors
@@ -35,11 +37,11 @@ function leapPeer() {
   var armMeshes = [];
   var boneMeshes = [];
 
-  var renderer, scene, camera, controls;
+//  var renderer, scene, camera, controls;
 
 
-  sphere = new THREE.Mesh( new THREE.SphereGeometry(1), new THREE.MeshBasicMaterial(0x0000ff) );
-  scene.add( sphere );
+//  sphere = new THREE.Mesh( new THREE.SphereGeometry(1), new THREE.MeshBasicMaterial(0x0000ff) );
+//  scene.add( sphere );
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
