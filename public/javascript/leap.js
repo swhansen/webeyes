@@ -37,6 +37,10 @@ function leapPeer() {
 
   var renderer, scene, camera, controls;
 
+
+  sphere = new THREE.Mesh( new THREE.SphereGeometry(1), new THREE.MeshBasicMaterial(0x0000ff) );
+  scene.add( sphere );
+
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
@@ -69,13 +73,13 @@ function leapPeer() {
       mesh.scale.set( bone.width, bone.width, bone.length );
       scene.add( mesh );
   }
-}
+
 
   function leapAnimate( data ) {
 
   frame = JSON.parse( data );
 
-  console.log('..parse:', frame );
+  console.log('peer leapAnimate..parse:', frame );
 
   //console.log( 'at leepPeer - leapAnimate:', frame );
 
@@ -106,6 +110,7 @@ function leapPeer() {
    renderer.render( scene, camera );
    controls.update();
   }
+}
 
 function leapFocus() {
 
