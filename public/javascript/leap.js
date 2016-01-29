@@ -140,11 +140,6 @@ camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight
 
     scene = new THREE.Scene();
 
-
-
-
-
-
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
