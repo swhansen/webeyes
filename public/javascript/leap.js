@@ -26,7 +26,7 @@ function leapPeer() {
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
-//    leapAnimate( data );
+    leapAnimate( data );
     } );
 
   var leapfull = document.getElementById( 'leapfull' );
@@ -86,21 +86,21 @@ function leapPeer() {
    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
    for ( var hand of frame.hands ) {
-     for ( var finger of hand.fingers ) {
+   // for ( var finger of hand.fingers ) {
 
-       for ( var bone of finger.bones ) {
+   //   for ( var bone of finger.bones ) {
 
-         if ( countBones++ === 0 ) { continue; }
+   //     if ( countBones++ === 0 ) { continue; }
 
-         var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
-         updateMesh( bone, boneMesh );
-       }
-     }
+   //     var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
+   //     updateMesh( bone, boneMesh );
+   //   }
+   // }
 
-     var arm = hand.arm;
-     var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
-     updateMesh( arm, armMesh );
-     armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
+   //  var arm = hand.arm;
+   //  var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
+   //  updateMesh( arm, armMesh );
+   //  armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
    }
 
    renderer.render( scene, camera );
