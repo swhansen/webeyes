@@ -26,7 +26,7 @@ function leapPeer() {
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
-    leapAnimate( data );
+//    leapAnimate( data );
     } );
 
   var leapfull = document.getElementById( 'leapfull' );
@@ -39,7 +39,6 @@ function leapPeer() {
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
-  //  document.body.appendChild( renderer.domElement );
 
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
     camera.position.set( -500, 500, 500 );
@@ -128,23 +127,10 @@ function emitLeap( data ) {
     socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
   }
 
-// grab the Leap data before frame creation
-//  - https://community.leapmotion.com/t/sending-leap-frames-over-websockets/2374/4//
-//
-
     controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); });
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
-  //  document.body.appendChild( renderer.domElement );
-
-    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
-    camera.position.set( -500, 500, 500 );
-
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.maxDistance = 1000;
-
-    scene = new THREE.Scene();
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -168,16 +154,9 @@ function emitLeap( data ) {
       scene.add( mesh );
   }
 
- //var target = 200;
-// var counter = 0;
-
   function leapAnimate( frame ) {
 
  console.log( 'leapFocus-frame:', frame );
-// var hand = frame.hands;
-// console.log( 'at leepPeer - hand:', hand );
-// var finger = hand.fingers;
-// console.log( 'at leepPeer - fingers:', finger );
 
     var countBones = 0;
     var countArms = 0;
@@ -213,7 +192,7 @@ function emitLeap( data ) {
     controls.update();
   }
 
-}
+  }
 
 }
 
