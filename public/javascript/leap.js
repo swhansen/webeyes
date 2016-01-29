@@ -82,8 +82,8 @@ function leapPeer() {
    var countBones = 0;
    var countArms = 0;
 
-   armMeshes.forEach( function( item ) { scene.remove( item ); } );
-   boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+   //armMeshes.forEach( function( item ) { scene.remove( item ); } );
+   //boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
    for ( var hand of frame.hands ) {
    // for ( var finger of hand.fingers ) {
