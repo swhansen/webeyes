@@ -93,7 +93,7 @@ function leapPeer() {
 
    for ( var hand of frame.hands ) {
 
-    if ( frame.pointables.length > 0 ) {}
+    if ( frame.pointables.length > 0 ) {
 
     var bone = frame.pointables[0].stabalizedTipPosition;
     var normalized = frame.interactionBox.normalizePoint(position);
