@@ -94,12 +94,12 @@ function leapPeer() {
    //for ( var hand of frame.hands ) {
 
     if (frame.pointables.length > 0) {
-    var position = frame.pointables[0].stabilizedTipPosition;
+    var position = frame.pointables[2].stabilizedTipPosition;
 
     var element = document.getElementById("position");
 
-    element.style.left = window.innerWidth + position[0];
-    element.style.top = window.innerHeight + position[1];
+    element.style.left =  position[0];
+    element.style.top =  position[1];
 
 
    // var normalized = frame.interactionBox.normalizePoint(position);
