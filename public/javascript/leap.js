@@ -81,9 +81,9 @@ function leapPeer() {
 
   frame = JSON.parse( data );
 
-  //console.log('peer leapAnimate..parse:', frame );
+  console.log('peer leapAnimate..parse:', frame );
 
-  //console.log( 'at leepPeer - leapAnimate:', frame );
+
 
    var countBones = 0;
    var countArms = 0;
@@ -96,9 +96,10 @@ function leapPeer() {
     if ( frame.pointables.length > 0 ) {
 
     var position = frame.pointables[0].stabalizedTipPosition;
-    var normalized = frame.interactionBox.normalizePoint( position );
-    var x = window.innerWidth * normalized[0];
-    var y = window.innerHeight * (1 - normalized[1]);
+   // var normalized = frame.interactionBox.normalizePoint( position );
+  //  var x = window.innerWidth * normalized[0];
+  //  var y = window.innerHeight * (1 - normalized[1]);
+  console.log("X: " + position[0] + " Y: " + position[1]);
 
     console.log("X: " + x + " Y: " + y);
     //console.log( 'boneTest:', bone);
