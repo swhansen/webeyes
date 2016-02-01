@@ -106,8 +106,9 @@ for  ( i = 0; i < position.lenght; i++ ) {
 
 normalized[i] = ( ( position[i] - frame.interactionBox.center[i] ) / frame.interactionBox.size[i] ) + 0.5 ;
 
-console.log( 'normalized:', normalized );
+console.log( 'normalized:', normalized[i] );
 }
+console.log( 'normalized:', normalized[i] );
 
 
 //InteractionBox.prototype.normalizePoint = function(position, clamp) {
