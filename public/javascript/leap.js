@@ -81,7 +81,7 @@ function leapPeer() {
 
   frame = JSON.parse( data );
 
-  console.log('peer leapAnimate..parse:', frame );
+  //console.log('peer leapAnimate..parse:', frame );
 
 
 
@@ -130,8 +130,8 @@ function leapPeer() {
    //  armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
   // }
 
-   renderer.render( scene, camera );
-   controls.update();
+  // renderer.render( scene, camera );
+  // controls.update();
   }
 }
 
