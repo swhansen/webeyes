@@ -98,8 +98,8 @@ function leapPeer() {
 
     var element = document.getElementById("position");
 
-    element.style.left =  Math.abs( position[0] );
-    element.style.top =  position[1];
+    element.style.left = window.innerWidth + Math.abs( position[0] );
+    element.style.top =  window.innerWidth + position[1];
 
 
    // var normalized = frame.interactionBox.normalizePoint(position);
@@ -107,7 +107,7 @@ function leapPeer() {
    // var x = window.innerWidth * normalized[0];
     //var y = window.innerHeight * (1 - normalized[1]);
 
-    console.log("X: " + position[0] + " Y: " + position[1] );
+    console.log("X: " + Math.abs( position[0] ) + " Y: " + position[1] );
     console.log( 'interactionBox:', frame.interactionBox );
 
     //console.log( 'boneTest:', bone);
