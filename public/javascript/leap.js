@@ -98,7 +98,7 @@ function leapPeer() {
 
     var element = document.getElementById("position");
 
-    element.style.left =  position[0];
+    element.style.left =  Math.abs( position[0] );
     element.style.top =  position[1];
 
 
