@@ -108,7 +108,7 @@ function leapPeer() {
 
 //function norm ( position ) {
 
-  for ( i = 0; i < position.lenght; i++ ) {
+  for ( i = 0; i < position.length; i++ ) {
 
     console.log( ' in loop ', position[i] );
 
