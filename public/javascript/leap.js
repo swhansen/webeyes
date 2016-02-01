@@ -81,7 +81,7 @@ function leapPeer() {
 
   frame = JSON.parse( data );
 
-  console.log('peer leapAnimate..parse:', frame );
+  //console.log('peer leapAnimate..parse:', frame );
 
   //console.log( 'at leepPeer - leapAnimate:', frame );
 
@@ -93,8 +93,16 @@ function leapPeer() {
 
    for ( var hand of frame.hands ) {
 
-    var bone = frame.pointables[2].dipPosition;
-    console.log( 'boneTest:', bone);
+    if ( frame.pointables.length > 0 ) {}
+
+    var bone = frame.pointables[0].stabalizedTipPosition;
+    var normalized = frame.interactionBox.normalizePoint(position);
+    var x = window.innerWidth * normalized[0];
+    var y = window.innerHeight * (1 - normalized[1]);
+
+    console.log("X: " + x + " Y: " + y);
+    //console.log( 'boneTest:', bone);
+  }
 
    // for ( var finger of hand.fingers ) {
 
@@ -138,7 +146,7 @@ function emitLeap( data ) {
     socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
   }
 
- //   controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); });
+    controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); });
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -177,8 +185,6 @@ camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight
 
  //console.log( 'leapFocus-frame:', frame );
 
- emitLeap( frame );
-
     var countBones = 0;
     var countArms = 0;
 
@@ -186,10 +192,10 @@ camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
-      console.log( 'hand:', hand );
+
 
       for ( var finger of hand.fingers ) {
-        console.log( 'finger:', finger );
+
 
         for ( var bone of finger.bones ) {
 
