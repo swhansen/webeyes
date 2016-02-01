@@ -100,7 +100,7 @@ function leapPeer() {
 
     element.style.left =  Math.abs( position[0] );
     element.style.top =  position[1];
-    var normalized[];
+    var normalized = [];
 
 for  ( i = 0; i < position.lenght; i++ ) {
 
