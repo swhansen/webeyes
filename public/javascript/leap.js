@@ -101,6 +101,9 @@ function leapPeer() {
     element.style.left = window.innerWidth + Math.abs( position[0] );
     element.style.top =  window.innerWidth + position[1];
 
+    element.style.left = ( window.innerWidth + Math.abs( position[0]) + 'px' );
+    element.style.top =  ( window.innerWidth + position[1] ) + 'px';
+
 
    // var normalized = frame.interactionBox.normalizePoint(position);
 
