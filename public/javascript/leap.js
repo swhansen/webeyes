@@ -93,15 +93,15 @@ function leapPeer() {
 
    //for ( var hand of frame.hands ) {
 
-    if ( frame.pointables.length > 0 ) {
+    if (frame.pointables.length > 0) {
+    var position = frame.pointables[0].stabilizedTipPosition;
+    var normalized = frame.interactionBox.normalizePoint(position);
 
-    var position = frame.pointables[0].stabalizedTipPosition;
-   // var normalized = frame.interactionBox.normalizePoint( position );
-  //  var x = window.innerWidth * normalized[0];
-  //  var y = window.innerHeight * (1 - normalized[1]);
-  console.log("X: " + position[0] + " Y: " + position[1]);
+    var x = window.innerWidth * normalized[0];
+    var y = window.innerHeight * (1 - normalized[1]);
 
     console.log("X: " + x + " Y: " + y);
+
     //console.log( 'boneTest:', bone);
   }
 
