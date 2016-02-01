@@ -104,10 +104,10 @@ function leapPeer() {
 
 for  ( i = 0; i < position.lenght; i++ ) {
 
-normalized[i] = ( position[i] - frame.interactionBox.center[i] / frame.interactionBox.size[i] ) + 0.5 ;
+normalized[i] = ( ( position[i] - frame.interactionBox.center[i] ) / frame.interactionBox.size[i] ) + 0.5 ;
 
-}
 console.log( 'normalized:', normalized );
+}
 
 
 //InteractionBox.prototype.normalizePoint = function(position, clamp) {
