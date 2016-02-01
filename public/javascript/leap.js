@@ -95,6 +95,8 @@ function leapPeer() {
 
     if (frame.pointables.length > 0) {
     var position = frame.pointables[2].stabilizedTipPosition;
+    var lCenter = frame.interactionBox.center;
+    var lSize = frame.interactionBox.size;
 
     var element = document.getElementById( 'position' );
 
@@ -104,19 +106,20 @@ function leapPeer() {
 
 
 
-function norm ( position ) {
+//function norm ( position ) {
 
-  for  ( i = 0; i < position.lenght; i++ ) {
+  for ( i = 0; i < position.lenght; i++ ) {
 
-    console.log( ' in loop ', posion[i] );
+    console.log( ' in loop ', position[i] );
 
-    normalized[i] = ( ( position[i] - frame.interactionBox.center[i] ) / frame.interactionBox.size[i] ) + 0.5 ;
+    normalized[i] = ( ( position[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
 
-    console.log( 'normalized:', normalized[i] );
+    console.log( 'normalized:', position[i], normalized[i] );
+
 }
-}
+//}
 
-norm( position );
+//norm( position );
 
     console.log( 'normalized:', normalized );
 
