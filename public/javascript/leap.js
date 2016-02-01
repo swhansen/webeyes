@@ -91,12 +91,12 @@ function leapPeer() {
    //armMeshes.forEach( function( item ) { scene.remove( item ); } );
    //boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
-   for ( var hand of frame.hands ) {
+   //for ( var hand of frame.hands ) {
 
     if ( frame.pointables.length > 0 ) {
 
-    var bone = frame.pointables[0].stabalizedTipPosition;
-    var normalized = frame.interactionBox.normalizePoint(position);
+    var position = frame.pointables[0].stabalizedTipPosition;
+    var normalized = frame.interactionBox.normalizePoint( position );
     var x = window.innerWidth * normalized[0];
     var y = window.innerHeight * (1 - normalized[1]);
 
@@ -119,7 +119,7 @@ function leapPeer() {
    //  var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
    //  updateMesh( arm, armMesh );
    //  armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-   }
+  // }
 
    renderer.render( scene, camera );
    controls.update();
