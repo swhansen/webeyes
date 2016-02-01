@@ -100,9 +100,25 @@ function leapPeer() {
 
     element.style.left =  Math.abs( position[0] );
     element.style.top =  position[1];
+    var normalized[];
 
-    element.style.left =  Math.abs( position[0] + 'px' );
-    element.style.top =  position[1]  + 'px';
+for  ( i = 0; i < position.lenght; i++ ) {
+
+normalized[i] = ( position[i] - frame.interactionBox.center[i] / frame.interactionBox.size[i] ) + 0.5 ;
+
+}
+console.log( 'normalized:', normalized );
+
+
+//InteractionBox.prototype.normalizePoint = function(position, clamp) {
+//  var vec = vec3.fromValues(
+//    ((position[0] - this.center[0]) / this.size[0]) + 0.5,
+//    ((position[1] - this.center[1]) / this.size[1]) + 0.5,
+//    ((position[2] - this.center[2]) / this.size[2]) + 0.5
+//  );
+
+    element.style.left =  window.innerWidth * normalized[0] + 'px' ;
+    element.style.top =  window.innerHeight * (1 - normalized[1]) + 'px';
 
 
    // var normalized = frame.interactionBox.normalizePoint(position);
