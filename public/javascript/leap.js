@@ -93,7 +93,7 @@ function leapPeer() {
 
    for ( var hand of frame.hands ) {
 
-    var bone frame.pointables[2].dipPosition;
+    var bone = frame.pointables[2].dipPosition;
     console.log( 'boneTest:', bone);
 
    // for ( var finger of hand.fingers ) {
