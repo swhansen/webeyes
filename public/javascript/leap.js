@@ -95,6 +95,13 @@ function leapPeer() {
 
     if (frame.pointables.length > 0) {
     var position = frame.pointables[0].stabilizedTipPosition;
+
+    var element = document.getElementById("position");
+
+    element.style.left = window.innerWidth + position[0];
+    element.style.top = window.innerHeight + position[1];
+
+
    // var normalized = frame.interactionBox.normalizePoint(position);
 
    // var x = window.innerWidth * normalized[0];

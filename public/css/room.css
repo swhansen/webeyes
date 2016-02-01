@@ -6,6 +6,15 @@
     -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
 }
 
+#position {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        background-color: blue;
+      }
+
+
+
 #leapfull {position:absolute;
      left:0;
       width:100%;
