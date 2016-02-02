@@ -146,7 +146,7 @@ function leapAnimate( data ) {
  var leapctx = lCanvas.getContext( '2d' );
 
 
-document.getElementById( 'leapfull' ).className = 'canvascenter';
+document.getElementById( 'leapfull' ).className = 'leapcenter';
 
   lCanvas.style.width = '100%';
   lCanvas.style.height = '100%';

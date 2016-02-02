@@ -15,9 +15,7 @@
       }
 
 #leapcanvas {position:absolute;
-     left:0;
-      width:100%;
-      min-height:100%;
+
       z-index: 15;
     }
 
@@ -222,7 +220,18 @@ width: 1000px;
     margin: auto;
     z-index:25;
     visibility: hidden;
-}
+
+}.leapcenter {
+    width: 1020px;
+    height: 760px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index:15;
+    }
 
 #canvas0 {
 }
