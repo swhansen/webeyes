@@ -202,9 +202,11 @@ if (frame.pointables.length > 0) {
 leapctx.beginPath();
 leapctx.moveTo(tipx, tipy);
 leapctx.lineTo(dipx, dipy );
-leapctx.moveTo(dipx, dipy );
 leapctx.lineTo(pipx, pipy );
-context.strokeStyle = '#ff0000';
+leapctx.lineTo(mcpx, mcpy );
+leapctx.lineTo(carpx, carpy );
+
+leapctx.strokeStyle = '#FF0000';
 leapctx.stroke();
 
 
