@@ -145,18 +145,12 @@ function leapAnimate( data ) {
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
 
-
 document.getElementById( 'leapfull' ).className = 'leapcenter';
 
   lCanvas.style.width = '100%';
   lCanvas.style.height = '100%';
   lCanvas.width = lCanvas.offsetWidth;
   lCanvas.height = lCanvas.offsetHeight;
-
-
-
-
-
 
  leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
 
@@ -228,23 +222,23 @@ if (frame.pointables.length > 0) {
 
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
-  leapctx.fillRect(tipx, tipy, 2, 2);
+  leapctx.fillRect(tipx, tipy, 4, 4);
   //leapctx.fill();
 
   leapctx.fillStyle = 'blue';
-  leapctx.fillRect(dipx, dipy, 3, 3);
+  leapctx.fillRect(dipx, dipy, 6, 6);
   //leapctx.fill();
 
   leapctx.fillStyle = 'yellow';
-  leapctx.fillRect(pipx, dipy, 4, 4);
+  leapctx.fillRect(pipx, dipy, 8, 8);
  // leapctx.fill();
 
   leapctx.fillStyle = 'green';
-  leapctx.fillRect(mcpx, dipy, 5, 5);
+  leapctx.fillRect(mcpx, dipy, 10, 10);
   //leapctx.fill();
 
   leapctx.fillStyle = 'orange';
-  leapctx.fillRect(carpx, carpy, 6, 6);
+  leapctx.fillRect(carpx, carpy, 12, 12);
   //leapctx.fill();
 
   } );
