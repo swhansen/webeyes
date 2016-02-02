@@ -53,52 +53,91 @@ var normalToScreen = 1.0;
       };
 
 
+      /*
+       * Put leap-scale Vectors into a unit space
+       */
+      function normalizeVector(position){
+        var pos = new Vector(position[0]/10.0, position[1]/10.0, position[2]/10.0);
+         pos.x = (pos.x - LEAP_MIN.x) / (LEAP_MAX.x - LEAP_MIN.x);
+         pos.y = (pos.y - LEAP_MIN.y) / (LEAP_MAX.y - LEAP_MIN.y);
+         pos.z = (pos.z - LEAP_MIN.z) / (LEAP_MAX.z - LEAP_MIN.z);
+         return pos;
+      }
+    /*
+     * Vector Object - mostly for the sake of symantics.
+     */
+    function Vector(mX,mY,mZ){
+      this.x = typeof mX!=='undefined'?mX:0;
+      this.y = typeof mY!=='undefined'?mY:0;
+      this.z = typeof mZ!=='undefined'?mZ:0;
+    }
+    Vector.prototype.add = function(v2){
+      return new Vector(
+        this.x + v2.x,
+        this.y + v2.y,
+        this.z + v2.z);
+    };
+    Vector.prototype.subtract = function(v2){
+      return new Vector(
+        this.x - v2.x,
+        this.y - v2.y,
+        this.z - v2.z);
+    };
+    Vector.prototype.multiply = function(v2){
+      return new Vector(
+        this.x * v2.x,
+        this.y * v2.y,
+        this.z * v2.z);
+    };
+    Vector.prototype.multiplyScalar = function(scalar){
+      return new Vector(
+        this.x * scalar,
+        this.y * scalar,
+        this.z * scalar);
+    };
+    Vector.prototype.equals = function(v2){
+      return this.x == v2.x && this.y == v2.y && this.z == v2.z;
+    };
+    Vector.prototype.squaredDistanceTo = function(v2){
+      var diff = this.subtract(v2);
+      return (diff.x*diff.x)+(diff.y*diff.y)+(diff.z*diff.z);
+    };
+    Vector.prototype.normalized = function() {
+      var mag = this.magnitude();
+      return new Vector(
+        this.x / mag,
+        this.y / mag,
+        this.z / mag);
+    };
+    Vector.prototype.magnitude = function() {
+      return Math.sqrt((this.x*this.x)+(this.y*this.y)+(this.z*this.z));
+    };
+    Vector.prototype.distanceTo = function(v2){
+      return Math.sqrt(this.squaredDistance(v2));
+    };
+    Vector.prototype.dotProduct = function(v2) {
+      var v1 = this.normalized();
+      v2 = v2.normalized();
+      var n = 0;
+      n += v1.x * v2.x;
+      n += v1.y * v2.y;
+      n += v1.z * v2.z;
+      return n;
+     };
+
+     function leapToVector(leapPosition){
+      return new Vector(leapPosition[0], leapPosition[1], leapPosition[2]);
+     }
+
+
+
+
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     leapAnimate( data );
     } );
 
-//  var leapfull = document.getElementById( 'leapfull' );
-//
-//  var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
-//  var armMeshes = [];
-//  var boneMeshes = [];
-//
-////  var renderer, scene, camera, controls;
-//
-//    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
-//    renderer.setSize( window.innerWidth, window.innerHeight );
-//
-//    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
-//    camera.position.set( -500, 500, 500 );
-//
-//    controls = new THREE.OrbitControls( camera, renderer.domElement );
-//    controls.maxDistance = 1000;
-//
-//    scene = new THREE.Scene();
-//
-//  function onWindowResize() {
-//    camera.aspect = window.innerWidth / window.innerHeight;
-//    camera.updateProjectionMatrix();
-//    renderer.setSize( window.innerWidth, window.innerHeight );
-//  }
-//
-//  function addMesh( meshes ) {
-//    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-//    var material = new THREE.MeshNormalMaterial();
-//    var mesh = new THREE.Mesh( geometry, material );
-//    meshes.push( mesh );
-//    return mesh;
-//  }
-//
-//  function updateMesh( bone, mesh ) {
-//      mesh.position.fromArray( bone.center() );
-//      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
-//      mesh.quaternion.multiply( baseBoneRotation );
-//      mesh.scale.set( bone.width, bone.width, bone.length );
-//      scene.add( mesh );
-//  }
 
 
 function leapAnimate( data ) {
@@ -138,6 +177,13 @@ if (frame.pointables.length > 0) {
   //        var labelPosition = dipPosition;
   //  }
 
+
+  var tipPosition = pointable.stabilizedTipPosition;
+
+
+
+
+
   var tipPosition = pointable.stabilizedTipPosition;
   var dipPosition = pointable.dipPosition;
   var pipPosition = pointable.pipPosition;
@@ -168,15 +214,15 @@ if (frame.pointables.length > 0) {
 
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
-  leapctx.fillRect(tipx, tipy, 5, 5);
+  leapctx.fillRect(tipx, tipy, 2, 2);
   //leapctx.fill();
 
   leapctx.fillStyle = 'blue';
-  leapctx.fillRect(dipx, dipy, 5, 5);
+  leapctx.fillRect(dipx, dipy, 3, 3);
   //leapctx.fill();
 
   leapctx.fillStyle = 'yellow';
-  leapctx.fillRect(pipx, dipy, 5, 5);
+  leapctx.fillRect(pipx, dipy, 4, 4);
  // leapctx.fill();
 
   leapctx.fillStyle = 'green';
@@ -184,7 +230,7 @@ if (frame.pointables.length > 0) {
   //leapctx.fill();
 
   leapctx.fillStyle = 'orange';
-  leapctx.fillRect(carpx, carpy, 5, 5);
+  leapctx.fillRect(carpx, carpy, 6, 6);
   //leapctx.fill();
 
   } );
