@@ -112,6 +112,7 @@ frame.pointables.forEach( function( pointable ) {
   //  element.style.left =  Math.abs( position[0] );
   //  element.style.top =  position[1];
     var normalized =  normalizePosition( position );
+    console.log( 'normalized:', normalized );
 
   function normalizePosition( pos) {
     var norm = [];
@@ -125,6 +126,8 @@ frame.pointables.forEach( function( pointable ) {
 
           var x = leapctx.canvas.width * normalized[0];
           var y = leapctx.canvas.height * (1 - normalized[1]);
+
+          console.log( x, y );
 
           leapctx.beginPath();
           leapctx.rect(x, y, 20, 20);
