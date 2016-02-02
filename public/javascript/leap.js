@@ -150,8 +150,8 @@ document.getElementById( 'leapfull' ).className = 'canvascenter';
 
   lCanvas.style.width = '100%';
   lCanvas.style.height = '100%';
-  lCanvas.width = lcanvas.offsetWidth;
-  lCanvas.height = lcanvas.offsetHeight;
+  lCanvas.width = lCanvas.offsetWidth;
+  lCanvas.height = lCanvas.offsetHeight;
 
 
 
