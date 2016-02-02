@@ -24,6 +24,36 @@ if ( participantState === 'peer' ) {
 
 function leapPeer() {
 
+const MAX_HANDS = 2; //More than 1 hand drops DOM performance
+const FINGER_COUNT = 5;
+const LEAP_MIN = { 'x':-15.0, 'y':15.0, 'z':-20.0 };
+const LEAP_MAX = { 'x': 15.0, 'y':26.0, 'z': 20.0 };
+const LABEL_OFFSET = { 'x': 30.0, 'y': -20 };
+const PALM_HTML = "<div class='palm'><img src='images/palm.png' /></div>";
+const DIP_HTML  = "<div class='dip'><img src='images/dip.png' /></div>";
+const PIP_HTML  = "<div class='pip'><img src='images/pip.png' /></div>";
+const MCP_HTML  = "<div class='mcp'><img src='images/mcp.png' /></div>";
+const LABEL_HTML = "<div class='finger_label'></div>";
+
+var showLabels = true;
+var screenWidth, screenHeight;
+var normalToScreen = 1.0;
+      //Symantic sugar. Maps finger names to IDs.
+      const fingerMap = {
+        'thumb': 0,
+        'index': 1,
+        'middle':2,
+        'ring': 3,
+        'pinky': 4,
+        0: 'thumb',
+        1: 'index',
+        2: 'middle',
+        3: 'ring',
+        4: 'pinky'
+      };
+
+
+
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     leapAnimate( data );
@@ -94,6 +124,8 @@ function leapAnimate( data ) {
 
 if (frame.pointables.length > 0) {
 
+
+
   frame.pointables.forEach( function( pointable ) {
 
    function normalizePosition( pos ) {
@@ -104,13 +136,27 @@ if (frame.pointables.length > 0) {
      return  norm;
      }
 
-  var position = pointable.stabilizedTipPosition;
+  //for(var f=0; f < FINGER_COUNT; f++) {
+  //        var mcpPosition = normalizeVector(leap_hand.fingers[f].mcpPosition).multiplyScalar(normalToScreen);
+  //        var pipPosition = normalizeVector(leap_hand.fingers[f].pipPosition).multiplyScalar(normalToScreen);
+  //        var dipPosition = normalizeVector(leap_hand.fingers[f].dipPosition).multiplyScalar(normalToScreen);
+  //        var labelPosition = dipPosition;
+  //  }
+
+
+  var tipPosition = pointable.stabilizedTipPosition;
+  var mcpPosition = pointable.mcpPosition;
+  var pipPosition = pointable.pipPosition;
+  var dipPosition = pointable.dipPosition;
+
   var lCenter = frame.interactionBox.center;
   var lSize = frame.interactionBox.size;
-  var normalizedPosition =  normalizePosition( position );
+  var normalizedPosition =  normalizePosition( tipPosition );
 
   var x = leapctx.canvas.width * normalizedPosition[0];
   var y = leapctx.canvas.height * (1 - normalizedPosition[1]);
+
+
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
   leapctx.rect(x, y, 10, 10);
