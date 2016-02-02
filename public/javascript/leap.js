@@ -89,26 +89,20 @@ function leapAnimate( data ) {
 
    //for ( var hand of frame.hands ) {
 
+
+
+
 if (frame.pointables.length > 0) {
 
-frame.pointables.forEach( function( pointable ) {
+  frame.pointables.forEach( function( pointable ) {
 
-
-function normalizePosition( pos) {
-_.each( position, function( posIndex ) {
-       var norm = [];
-       norm[i] = ( ( posIndex[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
-     } );
-  return norm;
-}
-
-//  function normalizePosition( pos) {
-//    var norm = [];
-//    for ( i = 0; i < pos.length; i++ ) {
-//      norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
-//    }
-//    return  norm;
-//    }
+   function normalizePosition( pos ) {
+     var norm = [];
+     for ( i = 0; i < pos.length; i++ ) {
+       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+     }
+     return  norm;
+     }
 
   var position = pointable.stabilizedTipPosition;
   var lCenter = frame.interactionBox.center;
@@ -122,9 +116,8 @@ _.each( position, function( posIndex ) {
   leapctx.rect(x, y, 10, 10);
   leapctx.fill();
 
-} );
+  } );
 }
-
 
    // for ( var finger of hand.fingers ) {
 
