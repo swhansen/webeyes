@@ -180,24 +180,18 @@ if (frame.pointables.length > 0) {
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
   leapctx.fillRect(tipx, tipy, 4, 4);
-  //leapctx.fill();
 
   leapctx.fillStyle = 'blue';
   leapctx.fillRect(dipx, dipy, 6, 6);
 
-  //leapctx.fill();
-
   leapctx.fillStyle = 'yellow';
-  leapctx.fillRect(pipx, dipy, 8, 8);
- // leapctx.fill();
+  leapctx.fillRect(pipx, pipy, 8, 8);
 
   leapctx.fillStyle = 'green';
-  leapctx.fillRect(mcpx, dipy, 10, 10);
-  //leapctx.fill();
+  leapctx.fillRect(mcpx, mcpy, 10, 10);
 
   leapctx.fillStyle = 'orange';
   leapctx.fillRect(carpx, carpy, 12, 12);
-  //leapctx.fill();
 
 leapctx.beginPath();
 leapctx.moveTo(tipx, tipy);
