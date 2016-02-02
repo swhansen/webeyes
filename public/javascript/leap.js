@@ -24,35 +24,6 @@ if ( participantState === 'peer' ) {
 
 function leapPeer() {
 
-const MAX_HANDS = 2; //More than 1 hand drops DOM performance
-const FINGER_COUNT = 5;
-const LEAP_MIN = { 'x':-15.0, 'y':15.0, 'z':-20.0 };
-const LEAP_MAX = { 'x': 15.0, 'y':26.0, 'z': 20.0 };
-const LABEL_OFFSET = { 'x': 30.0, 'y': -20 };
-const PALM_HTML = "<div class='palm'><img src='images/palm.png' /></div>";
-const DIP_HTML  = "<div class='dip'><img src='images/dip.png' /></div>";
-const PIP_HTML  = "<div class='pip'><img src='images/pip.png' /></div>";
-const MCP_HTML  = "<div class='mcp'><img src='images/mcp.png' /></div>";
-const LABEL_HTML = "<div class='finger_label'></div>";
-
-var showLabels = true;
-var screenWidth, screenHeight;
-var normalToScreen = 1.0;
-      //Symantic sugar. Maps finger names to IDs.
-      const fingerMap = {
-        'thumb': 0,
-        'index': 1,
-        'middle':2,
-        'ring': 3,
-        'pinky': 4,
-        0: 'thumb',
-        1: 'index',
-        2: 'middle',
-        3: 'ring',
-        4: 'pinky'
-      };
-
-
       /*
        * Put leap-scale Vectors into a unit space
        */
@@ -178,20 +149,6 @@ if (frame.pointables.length > 0) {
      return  norm;
      }
 
-  //for(var f=0; f < FINGER_COUNT; f++) {
-  //        var mcpPosition = normalizeVector(leap_hand.fingers[f].mcpPosition).multiplyScalar(normalToScreen);
-  //        var pipPosition = normalizeVector(leap_hand.fingers[f].pipPosition).multiplyScalar(normalToScreen);
-  //        var dipPosition = normalizeVector(leap_hand.fingers[f].dipPosition).multiplyScalar(normalToScreen);
-  //        var labelPosition = dipPosition;
-  //  }
-
-
-  var tipPosition = pointable.stabilizedTipPosition;
-
-
-
-
-
   var tipPosition = pointable.stabilizedTipPosition;
   var dipPosition = pointable.dipPosition;
   var pipPosition = pointable.pipPosition;
@@ -227,6 +184,7 @@ if (frame.pointables.length > 0) {
 
   leapctx.fillStyle = 'blue';
   leapctx.fillRect(dipx, dipy, 6, 6);
+
   //leapctx.fill();
 
   leapctx.fillStyle = 'yellow';
@@ -240,6 +198,17 @@ if (frame.pointables.length > 0) {
   leapctx.fillStyle = 'orange';
   leapctx.fillRect(carpx, carpy, 12, 12);
   //leapctx.fill();
+
+leapctx.beginPath();
+leapctx.moveTo(tipx, tipy);
+leapctx.lineTo(dipx, dipy );
+leapctx.moveTo(dipx, dipy );
+leapctx.lineTo(pipx, pipy );
+context.strokeStyle = '#ff0000';
+leapctx.stroke();
+
+
+
 
   } );
 }
