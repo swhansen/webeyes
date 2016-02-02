@@ -151,15 +151,22 @@ if (frame.pointables.length > 0) {
 
   var lCenter = frame.interactionBox.center;
   var lSize = frame.interactionBox.size;
-  var normalizedPosition =  normalizePosition( tipPosition );
 
-  var x = leapctx.canvas.width * normalizedPosition[0];
-  var y = leapctx.canvas.height * (1 - normalizedPosition[1]);
+
+  var tipx =  leapctx.canvas.width * normalizePosition( tipPosition )[0];
+  var tipy =  leapctx.canvas.width * ( 1 - normalizePosition( tipPosition )[1]);
+
+  //var normalizedPosition =  normalizePosition( tipPosition );
+
+
+
+  //var x = leapctx.canvas.width * normalizedPosition[0];
+  //var y = leapctx.canvas.height * (1 - normalizedPosition[1]);
 
 
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
-  leapctx.rect(x, y, 10, 10);
+  leapctx.rect(tipx, tipy, 5, 5);
   leapctx.fill();
 
   } );
