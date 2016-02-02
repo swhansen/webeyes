@@ -115,7 +115,7 @@ frame.pointables.forEach( function( pointable ) {
 
   function normalizePosition( pos) {
   for ( i = 0; i < pos.length; i++ ) {
-    normalized[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+   var normalized[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
  }
 }
 
