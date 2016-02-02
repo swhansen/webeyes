@@ -24,8 +24,6 @@ if ( participantState === 'peer' ) {
 
 function leapPeer() {
 
- // console.log( ' at leapPeer' );
-
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     leapAnimate( data );
@@ -77,14 +75,11 @@ function leapPeer() {
 //  }
 
 
-  function leapAnimate( data ) {
+function leapAnimate( data ) {
 
  var lCanvas = document.getElementById("leapcanvas");
  var leapctx = lCanvas.getContext("2d");
-
  leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
-
-    //var element = document.getElementById( 'position' );
 
   frame = JSON.parse( data );
 
@@ -100,37 +95,27 @@ function leapPeer() {
 
   //  if (frame.pointables.length > 0) {
 
-
-
 frame.pointables.forEach( function( pointable ) {
-    var position = pointable.stabilizedTipPosition;
- //   console.log( 'position:', position );
-    var lCenter = frame.interactionBox.center;
-    var lSize = frame.interactionBox.size;
 
-  //  element.style.left =  Math.abs( position[0] );
-  //  element.style.top =  position[1];
-    var normalized =  normalizePosition( position );
-  //  console.log( 'normalized:', normalized );
+  var position = pointable.stabilizedTipPosition;
+  var lCenter = frame.interactionBox.center;
+  var lSize = frame.interactionBox.size;
+  var normalized =  normalizePosition( position );
 
   function normalizePosition( pos) {
     var norm = [];
-  for ( i = 0; i < pos.length; i++ ) {
-   norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
- }
- return  norm;
-}
+    for ( i = 0; i < pos.length; i++ ) {
+      norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+    }
+    return  norm;
+    }
 
-
-
-          var x = leapctx.canvas.width * normalized[0];
-          var y = leapctx.canvas.height * (1 - normalized[1]);
-
-          leapctx.beginPath();
-          leapctx.fillStyle = 'red';
-          leapctx.rect(x, y, 10, 10);
-          leapctx.fill();
-
+  var x = leapctx.canvas.width * normalized[0];
+  var y = leapctx.canvas.height * (1 - normalized[1]);
+  leapctx.beginPath();
+  leapctx.fillStyle = 'red';
+  leapctx.rect(x, y, 10, 10);
+  leapctx.fill();
 
 } );
 
