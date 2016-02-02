@@ -37,10 +37,6 @@ function leapPeer() {
 //
 ////  var renderer, scene, camera, controls;
 //
-//
-////  sphere = new THREE.Mesh( new THREE.SphereGeometry(1), new THREE.MeshBasicMaterial(0x0000ff) );
-////  scene.add( sphere );
-//
 //    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
 //    renderer.setSize( window.innerWidth, window.innerHeight );
 //
@@ -77,13 +73,13 @@ function leapPeer() {
 
 function leapAnimate( data ) {
 
- var lCanvas = document.getElementById("leapcanvas");
- var leapctx = lCanvas.getContext("2d");
+ // console.log( 'tracking:', data);
+
+ var lCanvas = document.getElementById( 'leapcanvas' );
+ var leapctx = lCanvas.getContext( '2d' );
  leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
 
   frame = JSON.parse( data );
-
-  //console.log('peer leapAnimate..parse:', frame );
 
    var countBones = 0;
    var countArms = 0;
@@ -93,14 +89,9 @@ function leapAnimate( data ) {
 
    //for ( var hand of frame.hands ) {
 
-  //  if (frame.pointables.length > 0) {
+if (frame.pointables.length > 0) {
 
 frame.pointables.forEach( function( pointable ) {
-
-  var position = pointable.stabilizedTipPosition;
-  var lCenter = frame.interactionBox.center;
-  var lSize = frame.interactionBox.size;
-  var normalized =  normalizePosition( position );
 
   function normalizePosition( pos) {
     var norm = [];
@@ -110,14 +101,21 @@ frame.pointables.forEach( function( pointable ) {
     return  norm;
     }
 
-  var x = leapctx.canvas.width * normalized[0];
-  var y = leapctx.canvas.height * (1 - normalized[1]);
+  var position = pointable.stabilizedTipPosition;
+  var lCenter = frame.interactionBox.center;
+  var lSize = frame.interactionBox.size;
+  var normalizedPosition =  normalizePosition( position );
+
+
+  var x = leapctx.canvas.width * normalizedPosition[0];
+  var y = leapctx.canvas.height * (1 - normalizedPosition[1]);
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
   leapctx.rect(x, y, 10, 10);
   leapctx.fill();
 
 } );
+}
 
 
  //   element.style.left =  window.innerWidth * normalized[0] + 'px' ;
