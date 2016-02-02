@@ -79,11 +79,15 @@ function leapPeer() {
 
   function leapAnimate( data ) {
 
+ //var canvas = document.getElementById("leapcanvas");
+ //   var leapctx = canvas.getContext("2d");
+
+    var element = document.getElementById( 'position' );
+
   frame = JSON.parse( data );
 
+
   //console.log('peer leapAnimate..parse:', frame );
-
-
 
    var countBones = 0;
    var countArms = 0;
@@ -98,31 +102,16 @@ function leapPeer() {
     var lCenter = frame.interactionBox.center;
     var lSize = frame.interactionBox.size;
 
-    var element = document.getElementById( 'position' );
 
     element.style.left =  Math.abs( position[0] );
     element.style.top =  position[1];
     var normalized = [];
 
-
-
-//function norm ( position ) {
-
+  function normal( position ) {
   for ( i = 0; i < position.length; i++ ) {
-
-    console.log( ' in loop ', position[i] );
-
     normalized[i] = ( ( position[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
-
-    console.log( 'normalized:', position[i], normalized[i] );
-
 }
-//}
-
-//norm( position );
-
-    console.log( 'normalized:', normalized );
-
+}
 
 //InteractionBox.prototype.normalizePoint = function(position, clamp) {
 //  var vec = vec3.fromValues(
@@ -134,16 +123,8 @@ function leapPeer() {
     element.style.left =  window.innerWidth * normalized[0] + 'px' ;
     element.style.top =  window.innerHeight * (1 - normalized[1]) + 'px';
 
-
-   // var normalized = frame.interactionBox.normalizePoint(position);
-
-   // var x = window.innerWidth * normalized[0];
-    //var y = window.innerHeight * (1 - normalized[1]);
-
-    console.log("X: " + Math.abs( position[0] ) + " Y: " + position[1] );
-    console.log( 'interactionBox:', frame.interactionBox );
-
-    //console.log( 'boneTest:', bone);
+ //   console.log("X: " + Math.abs( position[0] ) + " Y: " + position[1] );
+ //   console.log( 'interactionBox:', frame.interactionBox );
   }
 
    // for ( var finger of hand.fingers ) {
