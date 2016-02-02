@@ -104,22 +104,23 @@ function leapPeer() {
 
 
 frame.pointables.forEach(function(pointable) {
-    var position = frame.pointables.stabilizedTipPosition;
+    var position = frame.pointable.stabilizedTipPosition;
     var lCenter = frame.interactionBox.center;
     var lSize = frame.interactionBox.size;
 
 
   //  element.style.left =  Math.abs( position[0] );
   //  element.style.top =  position[1];
-    var normalized = [];
+    var normalized =  normalizePosition( position );
 
   function normalizePosition( position ) {
   for ( i = 0; i < position.length; i++ ) {
     normalized[i] = ( ( position[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
  }
+ return normalized;
 }
 
-  normalizePosition( position );
+ // normalizePosition( position );
 
 var x = leapctx.canvas.width * normalized[0];
           var y = leapctx.canvas.height * (1 - normalized[1]);
