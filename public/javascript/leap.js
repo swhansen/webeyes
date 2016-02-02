@@ -110,8 +110,10 @@ function leapPeer() {
   function normal( position ) {
   for ( i = 0; i < position.length; i++ ) {
     normalized[i] = ( ( position[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+ }
 }
-}
+
+normal( position );
 
 //InteractionBox.prototype.normalizePoint = function(position, clamp) {
 //  var vec = vec3.fromValues(
