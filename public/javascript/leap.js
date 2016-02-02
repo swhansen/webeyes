@@ -191,7 +191,7 @@ if (frame.pointables.length > 0) {
   leapctx.fillRect(mcpx, mcpy, 10, 10);
 
   leapctx.fillStyle = 'orange';
-  leapctx.fillRect(carpx, carpy, 12, 12);
+  leapctx.fillRect(carpx, carpy, 14, 14);
 
 leapctx.beginPath();
 leapctx.moveTo(tipx, tipy);
