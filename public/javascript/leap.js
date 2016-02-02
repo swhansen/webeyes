@@ -3,7 +3,7 @@ function loadLeap( participantState ) {
 
   var renderer, scene, camera, controls;
 
-console.log( 'at setUpLeapLayer' );
+//console.log( 'at setUpLeapLayer' );
 
 // list the z-factors
 
@@ -24,57 +24,57 @@ if ( participantState === 'peer' ) {
 
 function leapPeer() {
 
-  console.log( ' at leapPeer' );
+ // console.log( ' at leapPeer' );
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     leapAnimate( data );
     } );
 
-  var leapfull = document.getElementById( 'leapfull' );
-
-  var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
-  var armMeshes = [];
-  var boneMeshes = [];
-
-//  var renderer, scene, camera, controls;
-
-
-//  sphere = new THREE.Mesh( new THREE.SphereGeometry(1), new THREE.MeshBasicMaterial(0x0000ff) );
-//  scene.add( sphere );
-
-    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
-    renderer.setSize( window.innerWidth, window.innerHeight );
-
-    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
-    camera.position.set( -500, 500, 500 );
-
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.maxDistance = 1000;
-
-    scene = new THREE.Scene();
-
-  function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-  }
-
-  function addMesh( meshes ) {
-    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var material = new THREE.MeshNormalMaterial();
-    var mesh = new THREE.Mesh( geometry, material );
-    meshes.push( mesh );
-    return mesh;
-  }
-
-  function updateMesh( bone, mesh ) {
-      mesh.position.fromArray( bone.center() );
-      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
-      mesh.quaternion.multiply( baseBoneRotation );
-      mesh.scale.set( bone.width, bone.width, bone.length );
-      scene.add( mesh );
-  }
+//  var leapfull = document.getElementById( 'leapfull' );
+//
+//  var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
+//  var armMeshes = [];
+//  var boneMeshes = [];
+//
+////  var renderer, scene, camera, controls;
+//
+//
+////  sphere = new THREE.Mesh( new THREE.SphereGeometry(1), new THREE.MeshBasicMaterial(0x0000ff) );
+////  scene.add( sphere );
+//
+//    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
+//    renderer.setSize( window.innerWidth, window.innerHeight );
+//
+//    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
+//    camera.position.set( -500, 500, 500 );
+//
+//    controls = new THREE.OrbitControls( camera, renderer.domElement );
+//    controls.maxDistance = 1000;
+//
+//    scene = new THREE.Scene();
+//
+//  function onWindowResize() {
+//    camera.aspect = window.innerWidth / window.innerHeight;
+//    camera.updateProjectionMatrix();
+//    renderer.setSize( window.innerWidth, window.innerHeight );
+//  }
+//
+//  function addMesh( meshes ) {
+//    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+//    var material = new THREE.MeshNormalMaterial();
+//    var mesh = new THREE.Mesh( geometry, material );
+//    meshes.push( mesh );
+//    return mesh;
+//  }
+//
+//  function updateMesh( bone, mesh ) {
+//      mesh.position.fromArray( bone.center() );
+//      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
+//      mesh.quaternion.multiply( baseBoneRotation );
+//      mesh.scale.set( bone.width, bone.width, bone.length );
+//      scene.add( mesh );
+//  }
 
 
   function leapAnimate( data ) {
@@ -87,7 +87,6 @@ function leapPeer() {
     //var element = document.getElementById( 'position' );
 
   frame = JSON.parse( data );
-
 
   //console.log('peer leapAnimate..parse:', frame );
 
@@ -105,14 +104,14 @@ function leapPeer() {
 
 frame.pointables.forEach( function( pointable ) {
     var position = pointable.stabilizedTipPosition;
-    console.log( 'position:', position );
+ //   console.log( 'position:', position );
     var lCenter = frame.interactionBox.center;
     var lSize = frame.interactionBox.size;
 
   //  element.style.left =  Math.abs( position[0] );
   //  element.style.top =  position[1];
     var normalized =  normalizePosition( position );
-    console.log( 'normalized:', normalized );
+  //  console.log( 'normalized:', normalized );
 
   function normalizePosition( pos) {
     var norm = [];
@@ -122,15 +121,14 @@ frame.pointables.forEach( function( pointable ) {
  return  norm;
 }
 
- // normalizePosition( position );
+
 
           var x = leapctx.canvas.width * normalized[0];
           var y = leapctx.canvas.height * (1 - normalized[1]);
 
-          console.log( x, y );
-
           leapctx.beginPath();
-          leapctx.rect(x, y, 20, 20);
+          leapctx.fillStyle = 'red';
+          leapctx.rect(x, y, 10, 10);
           leapctx.fill();
 
 
