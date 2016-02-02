@@ -103,7 +103,7 @@ var normalToScreen = 1.0;
 
 function leapAnimate( data ) {
 
- // console.log( 'tracking:', data);
+  console.log( 'tracking:', data);
 
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
@@ -123,8 +123,6 @@ function leapAnimate( data ) {
 
 
 if (frame.pointables.length > 0) {
-
-
 
   frame.pointables.forEach( function( pointable ) {
 
