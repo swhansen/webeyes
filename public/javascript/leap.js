@@ -194,19 +194,19 @@ if (frame.pointables.length > 0) {
   var lSize = frame.interactionBox.size;
 
   var tipx =  leapctx.canvas.width * normalizePosition( tipPosition )[0];
-  var tipy =  leapctx.canvas.width * ( 1 - normalizePosition( tipPosition )[1]);
+  var tipy =  leapctx.canvas.height * ( 1 - normalizePosition( tipPosition )[1]);
 
   var dipx =  leapctx.canvas.width * normalizePosition( dipPosition )[0];
-  var dipy =  leapctx.canvas.width * ( 1 - normalizePosition( dipPosition )[1]);
+  var dipy =  leapctx.canvas.height * ( 1 - normalizePosition( dipPosition )[1]);
 
   var pipx =  leapctx.canvas.width * normalizePosition( pipPosition )[0];
-  var pipy =  leapctx.canvas.width * ( 1 - normalizePosition( pipPosition )[1]);
+  var pipy =  leapctx.canvas.height * ( 1 - normalizePosition( pipPosition )[1]);
 
   var mcpx =  leapctx.canvas.width * normalizePosition( mcpPosition )[0];
-  var mcpy =  leapctx.canvas.width * ( 1 - normalizePosition( mcpPosition )[1]);
+  var mcpy =  leapctx.canvas.height * ( 1 - normalizePosition( mcpPosition )[1]);
 
   var carpx =  leapctx.canvas.width * normalizePosition( carpPosition )[0];
-  var carpy =  leapctx.canvas.width * ( 1 - normalizePosition( carpPosition )[1]);
+  var carpy =  leapctx.canvas.height * ( 1 - normalizePosition( carpPosition )[1]);
 
   //var normalizedPosition =  normalizePosition( tipPosition );
   //var x = leapctx.canvas.width * normalizedPosition[0];
