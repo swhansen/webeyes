@@ -11,8 +11,15 @@
         height: 25px;
         position: absolute;
         background-color: blue;
-        z-index:  200;
+        z-index:  20;
       }
+
+#leapcanvas {position:absolute;
+     left:0;
+      width:100%;
+      min-height:100%;
+      z-index: 15;
+    }
 
 #leapfull {position:absolute;
      left:0;
