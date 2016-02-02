@@ -141,12 +141,18 @@ if (frame.pointables.length > 0) {
 
   frame.pointables.forEach( function( pointable ) {
 
-   function normalizePosition( pos ) {
-     var norm = [];
-     for ( i = 0; i < pos.length; i++ ) {
-       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
-     }
-     return  norm;
+   function normalizePosition( position ) {
+     var pos = new Vector( position[0]/10.0, position[1]/10, position[2]/10 );
+
+        pos.x = (pos.x - LEAP_MIN.x) / (LEAP_MAX.x - LEAP_MIN.x);
+         pos.y = (pos.y - LEAP_MIN.y) / (LEAP_MAX.y - LEAP_MIN.y);
+         pos.z = (pos.z - LEAP_MIN.z) / (LEAP_MAX.z - LEAP_MIN.z);
+
+
+   //  for ( i = 0; i < pos.length; i++ ) {
+   //    norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+   //  }
+     return  pos;
      }
 
   var tipPosition = pointable.stabilizedTipPosition;
@@ -202,9 +208,6 @@ leapctx.lineTo(carpx, carpy );
 
 leapctx.strokeStyle = '#FF0000';
 leapctx.stroke();
-
-
-
 
   } );
 }
