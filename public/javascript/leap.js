@@ -156,6 +156,9 @@ if (frame.pointables.length > 0) {
   var tipx =  leapctx.canvas.width * normalizePosition( tipPosition )[0];
   var tipy =  leapctx.canvas.width * ( 1 - normalizePosition( tipPosition )[1]);
 
+  var dipx =  leapctx.canvas.width * normalizePosition( dipPosition )[0];
+  var dipy =  leapctx.canvas.width * ( 1 - normalizePosition( dipPosition )[1]);
+
   //var normalizedPosition =  normalizePosition( tipPosition );
 
 
@@ -167,6 +170,9 @@ if (frame.pointables.length > 0) {
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
   leapctx.rect(tipx, tipy, 5, 5);
+  leapctx.fillStyle = 'blue';
+  leapctx.rect(dipx, dipy, 5, 5);
+
   leapctx.fill();
 
   } );
