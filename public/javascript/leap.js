@@ -144,6 +144,20 @@ function leapAnimate( data ) {
 
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
+
+
+document.getElementById( 'leapfull' ).className = 'canvascenter';
+
+  lcanvas.style.width = '100%';
+  lcanvas.style.height = '100%';
+  lcanvas.width = lcanvas.offsetWidth;
+  lcanvas.height = lcanvas.offsetHeight;
+
+
+
+
+
+
  leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
 
   frame = JSON.parse( data );
