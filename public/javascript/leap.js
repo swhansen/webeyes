@@ -104,10 +104,9 @@ function leapPeer() {
 
 
 frame.pointables.forEach(function(pointable) {
-    var position = frame.pointable.stabilizedTipPosition;
+    var position = pointable.stabilizedTipPosition;
     var lCenter = frame.interactionBox.center;
     var lSize = frame.interactionBox.size;
-
 
   //  element.style.left =  Math.abs( position[0] );
   //  element.style.top =  position[1];
