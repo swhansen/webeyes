@@ -93,19 +93,27 @@ if (frame.pointables.length > 0) {
 
 frame.pointables.forEach( function( pointable ) {
 
-  function normalizePosition( pos) {
-    var norm = [];
-    for ( i = 0; i < pos.length; i++ ) {
-      norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
-    }
-    return  norm;
-    }
+
+function normalizePosition( pos) {
+_.each( position, function( posIndex ) {
+       var norm = [];
+       norm[i] = ( ( posIndex[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+     } );
+  return norm;
+}
+
+//  function normalizePosition( pos) {
+//    var norm = [];
+//    for ( i = 0; i < pos.length; i++ ) {
+//      norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+//    }
+//    return  norm;
+//    }
 
   var position = pointable.stabilizedTipPosition;
   var lCenter = frame.interactionBox.center;
   var lSize = frame.interactionBox.size;
   var normalizedPosition =  normalizePosition( position );
-
 
   var x = leapctx.canvas.width * normalizedPosition[0];
   var y = leapctx.canvas.height * (1 - normalizedPosition[1]);
@@ -117,12 +125,6 @@ frame.pointables.forEach( function( pointable ) {
 } );
 }
 
-
- //   element.style.left =  window.innerWidth * normalized[0] + 'px' ;
-  //  element.style.top =  window.innerHeight * (1 - normalized[1]) + 'px';
-
- //   console.log("X: " + Math.abs( position[0] ) + " Y: " + position[1] );
- //   console.log( 'interactionBox:', frame.interactionBox );/}
 
    // for ( var finger of hand.fingers ) {
 
