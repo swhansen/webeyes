@@ -79,10 +79,12 @@ function leapPeer() {
 
   function leapAnimate( data ) {
 
- //var canvas = document.getElementById("leapcanvas");
- //   var leapctx = canvas.getContext("2d");
+ var lCanvas = document.getElementById("leapcanvas");
+ var leapctx = lCanvas.getContext("2d");
 
-    var element = document.getElementById( 'position' );
+ leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
+
+    //var element = document.getElementById( 'position' );
 
   frame = JSON.parse( data );
 
@@ -97,37 +99,44 @@ function leapPeer() {
 
    //for ( var hand of frame.hands ) {
 
-    if (frame.pointables.length > 0) {
-    var position = frame.pointables[2].stabilizedTipPosition;
+  //  if (frame.pointables.length > 0) {
+
+
+
+frame.pointables.forEach(function(pointable) {
+    var position = frame.pointables.stabilizedTipPosition;
     var lCenter = frame.interactionBox.center;
     var lSize = frame.interactionBox.size;
 
 
-    element.style.left =  Math.abs( position[0] );
-    element.style.top =  position[1];
+  //  element.style.left =  Math.abs( position[0] );
+  //  element.style.top =  position[1];
     var normalized = [];
 
-  function normal( position ) {
+  function normalizePosition( position ) {
   for ( i = 0; i < position.length; i++ ) {
     normalized[i] = ( ( position[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
  }
 }
 
-normal( position );
+  normalizePosition( position );
 
-//InteractionBox.prototype.normalizePoint = function(position, clamp) {
-//  var vec = vec3.fromValues(
-//    ((position[0] - this.center[0]) / this.size[0]) + 0.5,
-//    ((position[1] - this.center[1]) / this.size[1]) + 0.5,
-//    ((position[2] - this.center[2]) / this.size[2]) + 0.5
-//  );
+var x = leapctx.canvas.width * normalized[0];
+          var y = leapctx.canvas.height * (1 - normalized[1]);
 
-    element.style.left =  window.innerWidth * normalized[0] + 'px' ;
-    element.style.top =  window.innerHeight * (1 - normalized[1]) + 'px';
+          leapctx.beginPath();
+          leapctx.rect(x, y, 20, 20);
+          leapctx.fill();
+
+
+} );
+
+
+ //   element.style.left =  window.innerWidth * normalized[0] + 'px' ;
+  //  element.style.top =  window.innerHeight * (1 - normalized[1]) + 'px';
 
  //   console.log("X: " + Math.abs( position[0] ) + " Y: " + position[1] );
- //   console.log( 'interactionBox:', frame.interactionBox );
-  }
+ //   console.log( 'interactionBox:', frame.interactionBox );/}
 
    // for ( var finger of hand.fingers ) {
 
@@ -150,6 +159,7 @@ normal( position );
   // controls.update();
   }
 }
+
 
 function leapFocus() {
 
