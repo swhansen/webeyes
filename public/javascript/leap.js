@@ -143,15 +143,14 @@ if (frame.pointables.length > 0) {
   //        var labelPosition = dipPosition;
   //  }
 
-
   var tipPosition = pointable.stabilizedTipPosition;
-  var mcpPosition = pointable.mcpPosition;
-  var pipPosition = pointable.pipPosition;
   var dipPosition = pointable.dipPosition;
+  var pipPosition = pointable.pipPosition;
+  var mcpPosition = pointable.mcpPosition;
+  var carpPosition = pointable.carpPosition;
 
   var lCenter = frame.interactionBox.center;
   var lSize = frame.interactionBox.size;
-
 
   var tipx =  leapctx.canvas.width * normalizePosition( tipPosition )[0];
   var tipy =  leapctx.canvas.width * ( 1 - normalizePosition( tipPosition )[1]);
@@ -165,26 +164,32 @@ if (frame.pointables.length > 0) {
   var mcpx =  leapctx.canvas.width * normalizePosition( mcpPosition )[0];
   var mcpy =  leapctx.canvas.width * ( 1 - normalizePosition( mcpPosition )[1]);
 
-
+  var carpx =  leapctx.canvas.width * normalizePosition( carpPosition )[0];
+  var carpy =  leapctx.canvas.width * ( 1 - normalizePosition( carpPosition )[1]);
 
   //var normalizedPosition =  normalizePosition( tipPosition );
-
-
-
   //var x = leapctx.canvas.width * normalizedPosition[0];
   //var y = leapctx.canvas.height * (1 - normalizedPosition[1]);
-
 
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
   leapctx.rect(tipx, tipy, 5, 5);
+  leapctx.fill();
+
   leapctx.fillStyle = 'blue';
   leapctx.rect(dipx, dipy, 5, 5);
+  leapctx.fill();
+
   leapctx.fillStyle = 'yellow';
   leapctx.rect(pipx, dipy, 5, 5);
+  leapctx.fill();
+
   leapctx.fillStyle = 'green';
   leapctx.rect(mcpx, dipy, 5, 5);
+  leapctx.fill();
 
+  leapctx.fillStyle = 'orange';
+  leapctx.rect(carpx, carpy, 5, 5);
   leapctx.fill();
 
   } );
