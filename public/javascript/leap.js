@@ -103,13 +103,13 @@ var normalToScreen = 1.0;
 
 function leapAnimate( data ) {
 
-  console.log( 'tracking:', data);
-
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
  leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
 
   frame = JSON.parse( data );
+
+  console.log( 'frame:', frame );
 
    var countBones = 0;
    var countArms = 0;
