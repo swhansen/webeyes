@@ -131,7 +131,7 @@ if (frame.pointables.length > 0) {
    function normalizePosition( pos ) {
      var norm = [];
      for ( i = 0; i < pos.length; i++ ) {
-       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.3 ;
      }
      return  norm;
      }
