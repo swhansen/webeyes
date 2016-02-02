@@ -109,7 +109,7 @@ function leapAnimate( data ) {
 
   frame = JSON.parse( data );
 
-  console.log( 'frame:', frame );
+  //console.log( 'frame:', frame );
 
    var countBones = 0;
    var countArms = 0;
@@ -119,9 +119,6 @@ function leapAnimate( data ) {
 
    //for ( var hand of frame.hands ) {
 
-
-
-
 if (frame.pointables.length > 0) {
 
   frame.pointables.forEach( function( pointable ) {
@@ -129,7 +126,7 @@ if (frame.pointables.length > 0) {
    function normalizePosition( pos ) {
      var norm = [];
      for ( i = 0; i < pos.length; i++ ) {
-       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.3 ;
+       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
      }
      return  norm;
      }
@@ -171,24 +168,24 @@ if (frame.pointables.length > 0) {
 
   leapctx.beginPath();
   leapctx.fillStyle = 'red';
-  leapctx.rect(tipx, tipy, 5, 5);
-  leapctx.fill();
+  leapctx.fillRect(tipx, tipy, 5, 5);
+  //leapctx.fill();
 
   leapctx.fillStyle = 'blue';
-  leapctx.rect(dipx, dipy, 5, 5);
-  leapctx.fill();
+  leapctx.fillRect(dipx, dipy, 5, 5);
+  //leapctx.fill();
 
   leapctx.fillStyle = 'yellow';
-  leapctx.rect(pipx, dipy, 5, 5);
-  leapctx.fill();
+  leapctx.fillRect(pipx, dipy, 5, 5);
+ // leapctx.fill();
 
   leapctx.fillStyle = 'green';
-  leapctx.rect(mcpx, dipy, 5, 5);
-  leapctx.fill();
+  leapctx.fillRect(mcpx, dipy, 5, 5);
+  //leapctx.fill();
 
   leapctx.fillStyle = 'orange';
-  leapctx.rect(carpx, carpy, 5, 5);
-  leapctx.fill();
+  leapctx.fillRect(carpx, carpy, 5, 5);
+  //leapctx.fill();
 
   } );
 }
