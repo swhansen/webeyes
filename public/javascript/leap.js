@@ -27,6 +27,7 @@ if ( participantState === 'peer' ) {
 
 function leapPeer() {
 
+var finger = {};
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
