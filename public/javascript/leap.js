@@ -22,85 +22,130 @@ if ( participantState === 'peer' ) {
    leapFocus();
  }
 
+
 function leapPeer() {
 
-      /*
-       * Put leap-scale Vectors into a unit space
-       */
-      function normalizeVector(position){
-        var pos = new Vector(position[0]/10.0, position[1]/10.0, position[2]/10.0);
-         pos.x = (pos.x - LEAP_MIN.x) / (LEAP_MAX.x - LEAP_MIN.x);
-         pos.y = (pos.y - LEAP_MIN.y) / (LEAP_MAX.y - LEAP_MIN.y);
-         pos.z = (pos.z - LEAP_MIN.z) / (LEAP_MAX.z - LEAP_MIN.z);
-         return pos;
-      }
+  var sceneSize = 100;
+
+function initLeap(){
+
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera(
+      50 ,
+      window.innerWidth / window.innerHeight,
+      sceneSize / 100 ,
+      sceneSize * 4
+    );
+    // placing our camera position so it can see everything
+    camera.position.z = sceneSize;
+    // Getting the container in the right location
+    container = document.createElement( 'div' );
+    container.style.width      = '100%';
+    container.style.height     = '100%';
+    container.style.position   = 'absolute';
+    container.style.top        = '0px';
+    container.style.left       = '0px';
+    container.style.background = '#000';
+    document.body.appendChild( container );
+    // Getting the stats in the right position
+    stats = new Stats();
+    stats.domElement.style.position  = 'absolute';
+    stats.domElement.style.bottom    = '0px';
+    stats.domElement.style.right     = '0px';
+    stats.domElement.style.zIndex    = '999';
+    document.body.appendChild( stats.domElement );
+    // Setting up our Renderer
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    container.appendChild( renderer.domElement );
+    // Making sure our renderer is always the right size
+    window.addEventListener( 'resize', onWindowResize , false );
     /*
-     * Vector Object - mostly for the sake of symantics.
-     */
-    function Vector(mX,mY,mZ){
-      this.x = typeof mX!=='undefined'?mX:0;
-      this.y = typeof mY!=='undefined'?mY:0;
-      this.z = typeof mZ!=='undefined'?mZ:0;
+      INITIALIZE AWESOMENESS!
+    */
+    initLights();
+    initMaterials();
+    initGeometry();
+    initFingers();
+
+  }
+
+   function initLights(){
+    // We are creating a directional light,
+    // coloring and placing it according to the light array
+    for( var i = 0; i < lightArray.length; i++ ){
+      // The parameters for the light
+      var l = lightArray[i];
+      // Creating the light
+      var light = new THREE.DirectionalLight( l[0] , 0.5 );
+      light.position.set( l[1][0] , l[1][1]  , l[1][2]  );
+      // Making sure that the light is part of
+      // Whats getting rendered
+      scene.add( light );
     }
-    Vector.prototype.add = function(v2){
-      return new Vector(
-        this.x + v2.x,
-        this.y + v2.y,
-        this.z + v2.z);
-    };
-    Vector.prototype.subtract = function(v2){
-      return new Vector(
-        this.x - v2.x,
-        this.y - v2.y,
-        this.z - v2.z);
-    };
-    Vector.prototype.multiply = function(v2){
-      return new Vector(
-        this.x * v2.x,
-        this.y * v2.y,
-        this.z * v2.z);
-    };
-    Vector.prototype.multiplyScalar = function(scalar){
-      return new Vector(
-        this.x * scalar,
-        this.y * scalar,
-        this.z * scalar);
-    };
-    Vector.prototype.equals = function(v2){
-      return this.x == v2.x && this.y == v2.y && this.z == v2.z;
-    };
-    Vector.prototype.squaredDistanceTo = function(v2){
-      var diff = this.subtract(v2);
-      return (diff.x*diff.x)+(diff.y*diff.y)+(diff.z*diff.z);
-    };
-    Vector.prototype.normalized = function() {
-      var mag = this.magnitude();
-      return new Vector(
-        this.x / mag,
-        this.y / mag,
-        this.z / mag);
-    };
-    Vector.prototype.magnitude = function() {
-      return Math.sqrt((this.x*this.x)+(this.y*this.y)+(this.z*this.z));
-    };
-    Vector.prototype.distanceTo = function(v2){
-      return Math.sqrt(this.squaredDistance(v2));
-    };
-    Vector.prototype.dotProduct = function(v2) {
-      var v1 = this.normalized();
-      v2 = v2.normalized();
-      var n = 0;
-      n += v1.x * v2.x;
-      n += v1.y * v2.y;
-      n += v1.z * v2.z;
-      return n;
-     };
+  }
+  // Creates the proper materials to use for creating the fingers
+  function initMaterials(){
+    for( var i = 0; i < fingerMaterialArray.length; i++ ){
+      var fM = fingerMaterialArray[i];
+      // Uses the parts of the finger material array to assign
+      // an aesthetic material
+      var material = new THREE.MeshPhongMaterial({
+        color:                 fM[0],
+        specular:              fM[1],
+        emissive:              fM[2],
+        shininess:                10,
+        shading:    THREE.FlatShading
+      });
+      fingerMaterials.push( material );
+    }
+  }
+  // Creates all the geometries we want,
+  // In this case, spheres that get slightly smaller
+  // as they get closer to the tip
+  function initGeometry(){
+    for( var i = 0; i < 4; i++ ){
+      var size = sceneSize / ( 20  + ( 2 * ( i + 1 ) ));
+      var geometry = new THREE.IcosahedronGeometry( size , 2 );
 
-     function leapToVector(leapPosition){
-      return new Vector(leapPosition[0], leapPosition[1], leapPosition[2]);
-     }
+      geometries.push( geometry );
+    }
+  }
+
+  function initFingers(){
+    // Creating dramatically more finger points than needed
+    // just in case 4 hands are in the field
+    for( var i = 0 ; i < 20; i++ ){
+      var finger = {};
+      finger.points = [];
+      for( var j = 0; j < geometries.length; j++ ){
+        var geo = new THREE.Mesh( geometries[j] , fingerMaterials[j] );
+        finger.points.push( geo );
+        scene.add( geo );
+      }
+      fingers.push( finger );
+    }
+  }
 
 
+
+
+
+function leapToScene( position ){
+    var x = position[0] - frame.interactionBox.center[0];
+    var y = position[1] - frame.interactionBox.center[1];
+    var z = position[2] - frame.interactionBox.center[2];
+
+    x /= frame.interactionBox.size[0];
+    y /= frame.interactionBox.size[1];
+    z /= frame.interactionBox.size[2];
+    x *= sceneSize;
+    y *= sceneSize;
+    z *= sceneSize;
+    z -= sceneSize;
+    return new THREE.Vector3( x , y , z );
+  }
 
 
 
@@ -110,13 +155,20 @@ function leapPeer() {
     } );
 
 
+   function normalizePosition( pos ) {
+     var norm = [];
+     for ( i = 0; i < pos.length; i++ ) {
+       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+     }
+     return  norm;
+     }
 
 function leapAnimate( data ) {
 
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
 
-document.getElementById( 'leapfull' ).className = 'leapcenter';
+  document.getElementById( 'leapfull' ).className = 'leapcenter';
 
   lCanvas.style.width = '100%';
   lCanvas.style.height = '100%';
@@ -127,33 +179,12 @@ document.getElementById( 'leapfull' ).className = 'leapcenter';
 
   frame = JSON.parse( data );
 
-  //console.log( 'frame:', frame );
-
-   var countBones = 0;
-   var countArms = 0;
-
-   //armMeshes.forEach( function( item ) { scene.remove( item ); } );
-   //boneMeshes.forEach( function( item ) { scene.remove( item ); } );
-
    //for ( var hand of frame.hands ) {
 
 if (frame.pointables.length > 0) {
 
   frame.pointables.forEach( function( pointable ) {
 
-   function normalizePosition( position ) {
-     var pos = new Vector( position[0]/10.0, position[1]/10, position[2]/10 );
-
-        pos.x = (pos.x - LEAP_MIN.x) / (LEAP_MAX.x - LEAP_MIN.x);
-         pos.y = (pos.y - LEAP_MIN.y) / (LEAP_MAX.y - LEAP_MIN.y);
-         pos.z = (pos.z - LEAP_MIN.z) / (LEAP_MAX.z - LEAP_MIN.z);
-
-
-   //  for ( i = 0; i < pos.length; i++ ) {
-   //    norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
-   //  }
-     return  pos;
-     }
 
   var tipPosition = pointable.stabilizedTipPosition;
   var dipPosition = pointable.dipPosition;
@@ -197,7 +228,7 @@ if (frame.pointables.length > 0) {
   leapctx.fillRect(mcpx, mcpy, 10, 10);
 
   leapctx.fillStyle = 'orange';
-  leapctx.fillRect(carpx, carpy, 14, 14);
+  leapctx.fillRect(carpx, carpy, 14, 14 );
 
 leapctx.beginPath();
 leapctx.moveTo(tipx, tipy);
