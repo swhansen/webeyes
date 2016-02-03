@@ -245,9 +245,9 @@ if (frame.pointables.length > 0) {
 
   console.log( 'tipPosition:', tipPosition );
 
-  finger.points[0].position.set = ( tipPosition.x, tipPosition.y, tipPosition.z );
+  finger[0].points[0].position = tipPosition.;
 
-  console.log('finger:', finger.points[0].position );
+  console.log('finger:', finger[0].points[0] );
 
 
 
