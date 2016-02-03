@@ -2,9 +2,6 @@
 function leapPeer() {
 
   var frame;
-  var renderer, scene, camera, controls;
-
-//console.log( 'at setUpLeapLayer' );
 
 // list the z-factors
 
@@ -14,23 +11,10 @@ function leapPeer() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-// tell all peers to initalize leap-recieve and subscribe to the broadcast.
-
-
-//if ( participantState === 'peer' ) {
-//  leapPeer();
-//  } else {
-//   leapFocus();
-// }
-
-
-//function leapPeer() {
-
-
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     parseTrackingData( data );
-    leapAnimate( );
+    animateTrackingData( );
     } );
 
   function parseTrackingData( data ) {
@@ -38,13 +22,11 @@ function leapPeer() {
   }
 
 
+
 // Global Variables for THREE.JS
   var container , camera, scene, renderer;
 
   // Global variable for leap
-
-
-
 
   // Setting up how big we want the scene to be
 
@@ -81,10 +63,7 @@ function leapPeer() {
   var geometries = [];
   var fingers = [];
 
-initLeap();
-
-
-function initLeap(){
+function initHand() {
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(
@@ -181,7 +160,7 @@ function initLeap(){
     }
   }
 
-
+ initHand();
 
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
@@ -206,7 +185,12 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 
 
-function leapAnimate() {
+
+
+
+
+
+function animateTrackingData() {
 
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
@@ -329,6 +313,7 @@ leapctx.stroke();
   // renderer.render( scene, camera );
   // controls.update();
   }
+
 }
 
 
