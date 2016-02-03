@@ -44,7 +44,6 @@ function leapPeer() {
 
   // Global variable for leap
 
-  var frame, controller;
 
   // Setting up how big we want the scene to be
 
@@ -236,6 +235,8 @@ if (frame.pointables.length > 0) {
      }
      return  norm;
      }
+
+console.log( 'pointable:', pointable );
 
   var tipPosition = pointable.stabilizedTipPosition;
 
