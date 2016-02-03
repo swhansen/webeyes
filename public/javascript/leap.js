@@ -38,12 +38,55 @@ function leapPeer() {
     frame = JSON.parse( data );
   }
 
+
+// Global Variables for THREE.JS
+  var container , camera, scene, renderer , stats;
+
+  // Global variable for leap
+
+  var frame, controller;
+
+  // Setting up how big we want the scene to be
+
   var sceneSize = 100;
+
+  // This is the color and direction
+  // of every light we are creating
+
+  var lightArray = [
+
+    [ 0x0F4DA8 , [  1 ,  0 ,  0 ] ],
+    [ 0x437DD4 , [ -1 ,  0 ,  0 ] ],
+    [ 0x6A94D4 , [  0 ,  1 ,  0 ] ],
+    [ 0xFFF040 , [  0 , -1 ,  0 ] ],
+    [ 0xBF3330 , [  0 ,  0 ,  1 ] ],
+    [ 0xA60400 , [  0 ,  0 , -1 ] ]
+  ];
+
+  // The array we will store our finished materials in
+
+  var fingerMaterials = [];
+
+  // We will need a different material for each joint
+  // Because we will be using Phong lighting,
+  // we will also need a few different properties:
+
+  var fingerMaterialArray = [
+  // Diffuse , Specular , Emissive
+    [ 0x007AFF , 0x37B6FF , 0x36BBCE ],
+    [ 0xFF00FF , 0x3FEFF3 , 0x1FFB75 ],
+    [ 0xDCFF55 , 0xAA6B9E , 0xFF6B75 ],
+    [ 0xFFAA00 , 0xD0F7F3 , 0xFC8CD5 ],
+  ];
+  var geometries = [];
+  var fingers = [];
+
+initLeap();
+
 
 function initLeap(){
 
     scene = new THREE.Scene();
-
     camera = new THREE.PerspectiveCamera(
       50 ,
       window.innerWidth / window.innerHeight,
@@ -157,10 +200,6 @@ function leapToScene( position ){
     z -= sceneSize;
     return new THREE.Vector3( x , y , z );
   }
-
-
-
-
 
 
 var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'tipPosition' ];
