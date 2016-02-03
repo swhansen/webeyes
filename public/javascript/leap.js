@@ -38,9 +38,6 @@ function leapPeer() {
     frame = JSON.parse( data );
   }
 
-
-
-
   var sceneSize = 100;
 
 function initLeap(){
@@ -190,7 +187,7 @@ document.getElementById( 'leapfull' ).className = 'leapcenter';
 
  leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
 
-  frame = JSON.parse( data );
+ // frame = JSON.parse( data );
 
  //console.log( 'frame:', frame );
 
