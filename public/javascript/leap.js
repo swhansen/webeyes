@@ -235,15 +235,15 @@ if (frame.pointables.length > 0) {
      return  norm;
      }
 
-  console.log( 'pointable:', pointable );
+  //console.log( 'pointable:', pointable );
 
-  //var tipPosition = pointable.stabilizedTipPosition;
+  var tipPosition = leapToScene( pointable.stabilizedTipPosition );
 
-  var tipScene = leapToScene( tipPosition );
+ // var tipScene = leapToScene( tipPosition );
 
  // console.log( 'tipScene:', tipScene );
 
-  finger.points[0].position = tipScene;
+  finger.points[0].position = tipPosition;
 
   console.log('finger:', finger );
 
