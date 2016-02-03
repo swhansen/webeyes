@@ -243,11 +243,11 @@ if (frame.pointables.length > 0) {
 
  // var tipScene = leapToScene( tipPosition );
 
- // console.log( 'tipScene:', tipScene );
+  console.log( 'tipPosition:', tipPosition );
 
   finger.points[0].position = tipPosition;
 
-  console.log('finger:', finger );
+  console.log('finger:', finger.points[0] );
 
 
 
