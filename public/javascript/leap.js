@@ -204,9 +204,6 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 
 
-
-
-
 function leapAnimate() {
 
  var lCanvas = document.getElementById( 'leapcanvas' );
@@ -225,6 +222,9 @@ document.getElementById( 'leapfull' ).className = 'leapcenter';
 
  //console.log( 'frame:', frame );
 
+
+
+
 if (frame.pointables.length > 0) {
 
   frame.pointables.forEach( function( pointable ) {
@@ -240,6 +240,8 @@ if (frame.pointables.length > 0) {
   var tipPosition = pointable.stabilizedTipPosition;
 
   var tipScene = leapToScene( tipPosition[0], tipPosition[1], tipPosition[2] );
+
+  console.log( 'tipScene:', tipScene );
 
 
 
