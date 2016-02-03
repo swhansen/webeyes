@@ -1,7 +1,6 @@
 
 function leapPeer() {
 
-
   var frame;
   var renderer, scene, camera, controls;
 
