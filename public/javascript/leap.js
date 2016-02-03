@@ -104,13 +104,7 @@ function initLeap(){
     container.style.left       = '0px';
     container.style.background = '#000';
     document.body.appendChild( container );
-    // Getting the stats in the right position
-    stats = new Stats();
-    stats.domElement.style.position  = 'absolute';
-    stats.domElement.style.bottom    = '0px';
-    stats.domElement.style.right     = '0px';
-    stats.domElement.style.zIndex    = '999';
-    document.body.appendChild( stats.domElement );
+
     // Setting up our Renderer
     renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
