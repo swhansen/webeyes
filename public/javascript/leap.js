@@ -164,8 +164,10 @@ function initLeap(){
   }
 
   function initFingers(){
+
     // Creating dramatically more finger points than needed
     // just in case 4 hands are in the field
+
     for( var i = 0 ; i < 20; i++ ){
       var finger = {};
       finger.points = [];
@@ -235,11 +237,15 @@ if (frame.pointables.length > 0) {
 
   console.log( 'pointable:', pointable );
 
-  var tipPosition = pointable.stabilizedTipPosition;
+  //var tipPosition = pointable.stabilizedTipPosition;
 
   var tipScene = leapToScene( tipPosition );
 
-  console.log( 'tipScene:', tipScene );
+ // console.log( 'tipScene:', tipScene );
+
+  finger.points[0].position = tipScene;
+
+  console.log('finger:', finger );
 
 
 
