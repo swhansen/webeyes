@@ -1,6 +1,8 @@
 
 function loadLeap( participantState ) {
 
+
+  var frame;
   var renderer, scene, camera, controls;
 
 //console.log( 'at setUpLeapLayer' );
@@ -24,6 +26,20 @@ if ( participantState === 'peer' ) {
 
 
 function leapPeer() {
+
+
+  socketServer.on( 'leapShare', function( data ) {
+    //console.log( 'at runLeap-frame:', JSON.parse( data ) );
+    parseTrackingData( data );
+    leapAnimate( );
+    } );
+
+  function parseTrackingData( data ) {
+    frame = JSON.parse( data );
+  }
+
+
+
 
   var sceneSize = 100;
 
@@ -147,14 +163,20 @@ function leapToScene( position ){
 
 
 
-  socketServer.on( 'leapShare', function( data ) {
-    //console.log( 'at runLeap-frame:', JSON.parse( data ) );
-    leapAnimate( data );
-    } );
 
 
 
-function leapAnimate( data ) {
+var fingerPositions = [carpPosition, mcpPosition, pipPosition, dipPosition, tipPosition];
+
+var fingerNameMap = ["thumb", "index", "middle", "ring", "pinky"];
+//var fingerName = fingerNameMap[pointables[i].type];
+
+
+
+
+
+
+function leapAnimate() {
 
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
@@ -170,7 +192,7 @@ document.getElementById( 'leapfull' ).className = 'leapcenter';
 
   frame = JSON.parse( data );
 
- console.log( 'frame:', frame );
+ //console.log( 'frame:', frame );
 
 if (frame.pointables.length > 0) {
 
@@ -185,6 +207,12 @@ if (frame.pointables.length > 0) {
      }
 
   var tipPosition = pointable.stabilizedTipPosition;
+
+  var tipScene = leapToScene( tipPosition[0], tipPosition[1], tipPosition[2] );
+
+
+
+
   var dipPosition = pointable.dipPosition;
   var pipPosition = pointable.pipPosition;
   var mcpPosition = pointable.mcpPosition;
