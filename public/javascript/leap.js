@@ -130,8 +130,6 @@ function initLeap(){
 
 
 
-
-
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
     var y = position[1] - frame.interactionBox.center[1];
@@ -172,7 +170,7 @@ document.getElementById( 'leapfull' ).className = 'leapcenter';
 
   frame = JSON.parse( data );
 
-   //for ( var hand of frame.hands ) {
+ console.log( 'frame:', frame );
 
 if (frame.pointables.length > 0) {
 
@@ -197,6 +195,7 @@ if (frame.pointables.length > 0) {
 
   var tipx =  leapctx.canvas.width * normalizePosition( tipPosition )[0];
   var tipy =  leapctx.canvas.height * ( 1 - normalizePosition( tipPosition )[1]);
+
 
   var dipx =  leapctx.canvas.width * normalizePosition( dipPosition )[0];
   var dipy =  leapctx.canvas.height * ( 1 - normalizePosition( dipPosition )[1]);
