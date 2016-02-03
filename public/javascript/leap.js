@@ -166,9 +166,9 @@ function leapToScene( position ){
 
 
 
-var fingerPositions = [carpPosition, mcpPosition, pipPosition, dipPosition, tipPosition];
+var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'tipPosition' ];
 
-var fingerNameMap = ["thumb", "index", "middle", "ring", "pinky"];
+var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
