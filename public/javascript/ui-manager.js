@@ -125,13 +125,6 @@ $( document ).ready( function() {
 $( function() {
   $( '#leapButton' ).click( function() {
 
-//
-//  Do checks to see if Leap is connected and viable
-//
-// temp hack
-
-//if ( userContext.mobile === false  ) {................
-
     userContext.isLeap = true;
 
 // Focus the Leap initiator
@@ -141,7 +134,7 @@ $( function() {
 
 // Load Leap locally
 
-    loadLeap( 'focus' );
+    leapFocus();
 
   // Tell everyone to initialize Leap
 
