@@ -240,7 +240,7 @@ console.log( 'pointable:', pointable );
 
   var tipPosition = pointable.stabilizedTipPosition;
 
-  var tipScene = leapToScene( tipPosition[0], tipPosition[1], tipPosition[2] );
+  var tipScene = leapToScene( tipPosition );
 
   console.log( 'tipScene:', tipScene );
 
