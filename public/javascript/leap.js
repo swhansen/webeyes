@@ -155,20 +155,13 @@ function leapToScene( position ){
     } );
 
 
-   function normalizePosition( pos ) {
-     var norm = [];
-     for ( i = 0; i < pos.length; i++ ) {
-       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
-     }
-     return  norm;
-     }
 
 function leapAnimate( data ) {
 
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
 
-  document.getElementById( 'leapfull' ).className = 'leapcenter';
+document.getElementById( 'leapfull' ).className = 'leapcenter';
 
   lCanvas.style.width = '100%';
   lCanvas.style.height = '100%';
@@ -185,6 +178,13 @@ if (frame.pointables.length > 0) {
 
   frame.pointables.forEach( function( pointable ) {
 
+   function normalizePosition( pos ) {
+     var norm = [];
+     for ( i = 0; i < pos.length; i++ ) {
+       norm[i] = ( ( pos[i] - lCenter[i] ) / lSize[i] ) + 0.5 ;
+     }
+     return  norm;
+     }
 
   var tipPosition = pointable.stabilizedTipPosition;
   var dipPosition = pointable.dipPosition;
