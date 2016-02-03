@@ -109,8 +109,9 @@ function initLeap(){
     renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
+
     // Making sure our renderer is always the right size
-    window.addEventListener( 'resize', onWindowResize , false );
+   // window.addEventListener( 'resize', onWindowResize , false );
     /*
       INITIALIZE AWESOMENESS!
     */
