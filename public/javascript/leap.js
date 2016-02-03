@@ -188,9 +188,9 @@ function leapToScene( position ){
     x /= frame.interactionBox.size[0];
     y /= frame.interactionBox.size[1];
     z /= frame.interactionBox.size[2];
-    x *= sceneSize;
-    y *= sceneSize;
-    z *= sceneSize;
+   // x *= sceneSize;
+   // y *= sceneSize;
+   // z *= sceneSize;
     z -= sceneSize;
     return new THREE.Vector3( x , y , z );
   }
@@ -220,9 +220,6 @@ document.getElementById( 'leapfull' ).className = 'leapcenter';
  // frame = JSON.parse( data );
 
  //console.log( 'frame:', frame );
-
-
-
 
 if (frame.pointables.length > 0) {
 
