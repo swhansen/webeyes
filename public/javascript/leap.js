@@ -44,7 +44,7 @@ function leapPeer() {
 
   // Global variable for leap
 
-  var finger = {};
+
 
 
   // Setting up how big we want the scene to be
@@ -171,7 +171,7 @@ function initLeap(){
     // just in case 4 hands are in the field
 
     for( var i = 0 ; i < 20; i++ ){
-     // var finger = {};
+      var finger = {};
       finger.points = [];
       for( var j = 0; j < geometries.length; j++ ){
         var geo = new THREE.Mesh( geometries[j] , fingerMaterials[j] );
