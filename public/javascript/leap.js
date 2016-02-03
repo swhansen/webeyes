@@ -188,9 +188,9 @@ function leapToScene( position ){
     x /= frame.interactionBox.size[0];
     y /= frame.interactionBox.size[1];
     z /= frame.interactionBox.size[2];
-   // x *= sceneSize;
-   // y *= sceneSize;
-   // z *= sceneSize;
+    x *= sceneSize;
+    y *= sceneSize;
+    z *= sceneSize;
     z -= sceneSize;
     return new THREE.Vector3( x , y , z );
   }
@@ -233,11 +233,11 @@ if (frame.pointables.length > 0) {
      return  norm;
      }
 
-console.log( 'pointable:', pointable );
+  console.log( 'pointable:', pointable );
 
   var tipPosition = pointable.stabilizedTipPosition;
 
-  var tipScene = normalizePosition( tipPosition );
+  var tipScene = leapToScene( tipPosition );
 
   console.log( 'tipScene:', tipScene );
 
@@ -294,7 +294,7 @@ leapctx.lineTo(dipx, dipy );
 leapctx.lineTo(pipx, pipy );
 leapctx.lineTo(mcpx, mcpy );
 leapctx.lineTo(carpx, carpy );
-
+leapctx.lineWidth = 15;
 leapctx.strokeStyle = '#FF0000';
 leapctx.stroke();
 
