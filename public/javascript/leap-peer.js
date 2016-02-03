@@ -251,7 +251,7 @@ if (frame.pointables.length > 0) {
 
 
 
-  var dipPosition = pointable.stabilizedTipPosition;
+  var tipPosition = pointable.stabilizedTipPosition;
   var dipPosition = pointable.dipPosition;
   var pipPosition = pointable.pipPosition;
   var mcpPosition = pointable.mcpPosition;
