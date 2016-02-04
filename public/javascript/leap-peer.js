@@ -254,7 +254,7 @@ if (frame.pointables.length > 0) {
   position = leapToScene(leapFinger.stabilizedTipPosition);
   console.log( 'position:', position );
   finger.points[0].position = position;
-  console.log( 'finger:', finger.points[0].position );
+  console.log( 'finger:', fingers[0].points[0].position );
 
 
 
