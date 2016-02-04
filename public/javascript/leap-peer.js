@@ -65,6 +65,11 @@ function leapPeer() {
   var geometries = [];
   var fingers = [];
 
+
+
+
+  animateTrackingData( );
+
 function initHand() {
 
     scene = new THREE.Scene();
