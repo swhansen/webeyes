@@ -134,8 +134,8 @@ function initLeapPeerHand() {
         color:                 fM[0],
         specular:              fM[1],
         emissive:              fM[2],
-        shininess:                10,
-        shading:    THREE.FlatShading
+        shininess:                10
+ //       shading:    THREE.FlatShading
       });
       fingerMaterials.push( material );
     }
