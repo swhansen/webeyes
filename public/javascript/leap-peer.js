@@ -221,7 +221,7 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
-function update() {
+function update( frame ) {
 
   console.log( 'at update');
 
