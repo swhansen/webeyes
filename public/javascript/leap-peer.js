@@ -14,7 +14,7 @@ function leapPeer() {
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
- //   animateTrackingData( );
+    animateTrackingData( );
     } );
 
 //  function parseTrackingData( data ) {
@@ -66,8 +66,6 @@ function leapPeer() {
   var fingers = [];
 
   initHand();
-
-   animate( );
 
 function initHand() {
 
@@ -322,12 +320,6 @@ leapctx.stroke();
   }
 
 }
-
-function animate(){
-
-    animateTrackingData();
-
-  }
 
 
 
