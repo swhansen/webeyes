@@ -13,14 +13,6 @@
   lCanvas.width = lCanvas.offsetWidth;
   lCanvas.height = lCanvas.offsetHeight;
 
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(
-      50 ,
-      window.innerWidth / window.innerHeight,
-      sceneSize / 100 ,
-      sceneSize * 4
-    );
-
 // list the z-factors
 
 // $( '*' ).filter( function() {
@@ -32,7 +24,7 @@
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
-    animate();
+    animateTrackingData();
     } );
 
 //  function parseTrackingData( data ) {
@@ -86,6 +78,25 @@
   //initHand();
 
 function initLeapPeerHand() {
+
+
+  var lCanvas = document.getElementById( 'leapcanvas' );
+ var leapctx = lCanvas.getContext( '2d' );
+
+  document.getElementById( 'leapfull' ).className = 'leapcenter';
+
+  lCanvas.style.width = '100%';
+  lCanvas.style.height = '100%';
+  lCanvas.width = lCanvas.offsetWidth;
+  lCanvas.height = lCanvas.offsetHeight;
+
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(
+      50 ,
+      window.innerWidth / window.innerHeight,
+      sceneSize / 100 ,
+      sceneSize * 4
+    );
 
     // placing our camera position so it can see everything
 
@@ -305,7 +316,7 @@ leapctx.stroke();
 
 function animate(){
 //    frame = controller.frame();
-    animateTrackingData();
+//    animateTrackingData();
     renderer.render( scene , camera );
     requestAnimationFrame( animate );
   }
