@@ -223,13 +223,20 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 function update() {
 
-   var leapFinger = pointable;
-  var finger = fingers[0];
+if (frame.pointables.length > 0) {
 
-  position = leapToScene(leapFinger.stabilizedTipPosition);
-  console.log( 'position:', position );
-  finger.points[0].position = position;
-  console.log( 'finger:', fingers[0].points[0].position );
+  frame.pointables.forEach( function( pointable ) {
+
+   var leapFinger = pointable;
+    var finger = fingers[0];
+
+     position = leapToScene(leapFinger.stabilizedTipPosition);
+     console.log( 'position:', position );
+     finger.points[0].position = position;
+     console.log( 'finger:', fingers[0].points[0].position );
+    }
+  );
+  }
 }
 
 
