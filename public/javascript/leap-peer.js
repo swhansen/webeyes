@@ -1,5 +1,5 @@
 
-function leapPeer() {
+//function leapPeer() {
 
   var frame;
 
@@ -319,7 +319,7 @@ leapctx.stroke();
   // controls.update();
   }
 
-}
+//}
 
 
 
