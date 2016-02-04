@@ -13,8 +13,8 @@
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
-    frame = JSON.parse( data );
-    animate();
+  //  frame = JSON.parse( data );
+    animate( data );
     } );
 
 //  function parseTrackingData( data ) {
@@ -295,6 +295,7 @@ leapctx.stroke();
 
 function animate(){
 //    frame = controller.frame();
+frame = JSON.parse( data );
     animateTrackingData();
     renderer.render( scene , camera );
     requestAnimationFrame( animate );
