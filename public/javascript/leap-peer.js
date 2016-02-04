@@ -14,7 +14,7 @@
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
-    animate( data );
+    animate();
     } );
 
 //  function parseTrackingData( data ) {
@@ -68,6 +68,17 @@
   //initHand();
 
 function initLeapPeerHand() {
+
+
+  var lCanvas = document.getElementById( 'leapcanvas' );
+ var leapctx = lCanvas.getContext( '2d' );
+
+  document.getElementById( 'leapfull' ).className = 'leapcenter';
+
+  lCanvas.style.width = '100%';
+  lCanvas.style.height = '100%';
+  lCanvas.width = lCanvas.offsetWidth;
+  lCanvas.height = lCanvas.offsetHeight;
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(
@@ -197,15 +208,15 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 function animateTrackingData() {
 
- var lCanvas = document.getElementById( 'leapcanvas' );
- var leapctx = lCanvas.getContext( '2d' );
+//var lCanvas = document.getElementById( 'leapcanvas' );
+//var leapctx = lCanvas.getContext( '2d' );
 
-  document.getElementById( 'leapfull' ).className = 'leapcenter';
+// document.getElementById( 'leapfull' ).className = 'leapcenter';
 
-  lCanvas.style.width = '100%';
-  lCanvas.style.height = '100%';
-  lCanvas.width = lCanvas.offsetWidth;
-  lCanvas.height = lCanvas.offsetHeight;
+// lCanvas.style.width = '100%';
+// lCanvas.style.height = '100%';
+// lCanvas.width = lCanvas.offsetWidth;
+// lCanvas.height = lCanvas.offsetHeight;
 
  leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
 
