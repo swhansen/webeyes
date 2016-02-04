@@ -67,7 +67,7 @@
 
   initHand();
 
-function initHand() {
+function initLeapPeerHand() {
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(
@@ -88,7 +88,7 @@ function initHand() {
     container.style.position   = 'absolute';
     container.style.top        = '0px';
     container.style.left       = '0px';
-  //  container.style.background = '#000';
+    container.style.background = transparent;
 
     document.body.appendChild( container );
 
@@ -171,6 +171,8 @@ function initHand() {
 
  initHand();
 
+ animate(),
+
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
     var y = position[1] - frame.interactionBox.center[1];
@@ -222,20 +224,6 @@ if (frame.pointables.length > 0) {
      }
      return  norm;
      }
-
-  //console.log( 'pointable:', pointable );
-
-
-
-//  var threetipPosition = leapToScene( pointable.stabilizedTipPosition );
-//
-// // var tipScene = leapToScene( tipPosition );
-//
-//  console.log( 'threetipPosition:', threetipPosition );
-//
-// finger[0].points[0].position = threetipPosition;
-//
-//  console.log('finger:', finger );
 
 
 
@@ -320,6 +308,14 @@ leapctx.stroke();
   }
 
 //}
+
+function animate(){
+    frame = controller.frame();
+    animateTrackingData();
+
+    renderer.render( scene , camera );
+    requestAnimationFrame( animate );
+  }
 
 
 
