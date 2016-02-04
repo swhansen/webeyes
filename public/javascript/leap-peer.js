@@ -171,7 +171,7 @@ function initLeapPeerHand() {
 
  initHand();
 
- animate(),
+ animate();
 
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
@@ -224,6 +224,12 @@ if (frame.pointables.length > 0) {
      }
      return  norm;
      }
+
+
+
+
+
+
 
 
 
@@ -285,37 +291,11 @@ leapctx.stroke();
 
   } );
 }
-
-   // for ( var finger of hand.fingers ) {
-
-   //   for ( var bone of finger.bones ) {
-
-   //     if ( countBones++ === 0 ) { continue; }
-
-   //     var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
-   //     updateMesh( bone, boneMesh );
-   //   }
-   // }
-
-   //  var arm = hand.arm;
-   //  var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
-   //  updateMesh( arm, armMesh );
-   //  armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-  // }
-
-  // renderer.render( scene, camera );
-  // controls.update();
-  }
-
-//}
+}
 
 function animate(){
-    frame = controller.frame();
+//    frame = controller.frame();
     animateTrackingData();
-
     renderer.render( scene , camera );
     requestAnimationFrame( animate );
   }
-
-
-
