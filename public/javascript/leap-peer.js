@@ -110,7 +110,7 @@ function initLeapPeerHand() {
     container.style.top        = '0px';
     container.style.left       = '0px';
     container.style.zIndex = '200';
-    container.style.backgroundColor = 'transparent';
+   // container.style.backgroundColor = 'transparent';
 
     document.body.appendChild( container );
 
