@@ -197,7 +197,7 @@ function initLeapPeerHand() {
 
   initLeapPeerHand();
 
- animate();
+
 
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
@@ -221,7 +221,7 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
-function updata() {
+function update() {
 
    var leapFinger = pointable;
   var finger = fingers[0];
