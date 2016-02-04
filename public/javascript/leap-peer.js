@@ -113,7 +113,7 @@ function initLeapPeerHand() {
 
     document.body.appendChild( container );
 
-    // Setting up our Renderer
+    // Setting up our  (transparent background )
 
     renderer = new THREE.WebGLRenderer( { alpha: true });
     renderer.setClearColor( 0xffffff, 0 );
@@ -248,7 +248,11 @@ if (frame.pointables.length > 0) {
      }
 
 
+  var leapFinger = pointable;
+  var finger = fingers[0];
 
+  position = leapToScene(leapFinger.stabilizedTipPosition);
+  finger.points[0].position = position;
 
 
 
