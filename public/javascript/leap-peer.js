@@ -169,7 +169,7 @@ function initLeapPeerHand() {
     }
   }
 
- initHand();
+ //initHand();
 
  animate();
 
