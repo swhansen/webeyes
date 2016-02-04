@@ -293,7 +293,7 @@ leapctx.stroke();
 }
 }
 
-function animate(){
+function animate( data ){
 //    frame = controller.frame();
 frame = JSON.parse( data );
     animateTrackingData();
