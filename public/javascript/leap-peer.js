@@ -80,15 +80,15 @@
 function initLeapPeerHand() {
 
 
-  var lCanvas = document.getElementById( 'leapcanvas' );
- var leapctx = lCanvas.getContext( '2d' );
-
-  document.getElementById( 'leapfull' ).className = 'leapcenter';
-
-  lCanvas.style.width = '100%';
-  lCanvas.style.height = '100%';
-  lCanvas.width = lCanvas.offsetWidth;
-  lCanvas.height = lCanvas.offsetHeight;
+//  var lCanvas = document.getElementById( 'leapcanvas' );
+// var leapctx = lCanvas.getContext( '2d' );
+//
+//  document.getElementById( 'leapfull' ).className = 'leapcenter';
+//
+//  lCanvas.style.width = '100%';
+//  lCanvas.style.height = '100%';
+//  lCanvas.width = lCanvas.offsetWidth;
+//  lCanvas.height = lCanvas.offsetHeight;
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(
@@ -109,6 +109,7 @@ function initLeapPeerHand() {
     container.style.position   = 'absolute';
     container.style.top        = '0px';
     container.style.left       = '0px';
+    container.style.zIndex = '200';
     container.style.backgroundColor = 'transparent';
 
     document.body.appendChild( container );
