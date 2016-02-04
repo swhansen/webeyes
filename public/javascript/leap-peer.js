@@ -79,7 +79,7 @@
 
 // Start the threejs animation
 
-  animate();
+  animate( frame );
 
 function initLeapPeerHand() {
 
@@ -223,6 +223,8 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 function update() {
 
+  console.log( 'at update');
+
 if (frame.pointables.length > 0) {
 
   frame.pointables.forEach( function( pointable ) {
@@ -339,7 +341,7 @@ leapctx.stroke();
 }
 }
 
-function animate(){
+function animate() {
 //    frame = controller.frame();
 //    animateTrackingData();
     update();
