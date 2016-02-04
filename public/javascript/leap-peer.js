@@ -344,7 +344,7 @@ leapctx.stroke();
 function animate() {
 //    frame = controller.frame();
 //    animateTrackingData();
-    update();
+    update( frame );
     renderer.render( scene , camera );
     requestAnimationFrame( animate );
   }
