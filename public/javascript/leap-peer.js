@@ -1,7 +1,6 @@
 
 function leapPeer() {
 
-  var frame;
 
 // list the z-factors
 
@@ -24,9 +23,12 @@ function leapPeer() {
 
 
 // Global Variables for THREE.JS
+
   var container , camera, scene, renderer;
 
   // Global variable for leap
+
+  var frame;
 
   // Setting up how big we want the scene to be
 
@@ -72,8 +74,11 @@ function initHand() {
       sceneSize / 100 ,
       sceneSize * 4
     );
+
     // placing our camera position so it can see everything
+
     camera.position.z = sceneSize;
+
     // Getting the container in the right location
     container = document.createElement( 'div' );
     container.style.width      = '100%';
@@ -82,9 +87,11 @@ function initHand() {
     container.style.top        = '0px';
     container.style.left       = '0px';
     container.style.background = '#000';
+
     document.body.appendChild( container );
 
     // Setting up our Renderer
+
     renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
@@ -184,18 +191,12 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
-
-
-
-
-
-
 function animateTrackingData() {
 
  var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
 
-document.getElementById( 'leapfull' ).className = 'leapcenter';
+  document.getElementById( 'leapfull' ).className = 'leapcenter';
 
   lCanvas.style.width = '100%';
   lCanvas.style.height = '100%';
