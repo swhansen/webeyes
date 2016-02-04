@@ -227,15 +227,15 @@ if (frame.pointables.length > 0) {
 
 
 
-  var threetipPosition = leapToScene( pointable.stabilizedTipPosition );
+//  var threetipPosition = leapToScene( pointable.stabilizedTipPosition );
 //
 // // var tipScene = leapToScene( tipPosition );
 //
 //  console.log( 'threetipPosition:', threetipPosition );
 //
-  finger[0].points[0].position = threetipPosition;
+// finger[0].points[0].position = threetipPosition;
 //
-  console.log('finger:', finger );
+//  console.log('finger:', finger );
 
 
 
