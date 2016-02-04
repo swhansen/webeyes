@@ -25,6 +25,7 @@
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
     animateTrackingData();
+    update();
     } );
 
 //  function parseTrackingData( data ) {
@@ -221,7 +222,7 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
-function update( frame ) {
+function update() {
 
   console.log( 'at update');
 
@@ -344,7 +345,7 @@ leapctx.stroke();
 function animate() {
 //    frame = controller.frame();
 //    animateTrackingData();
-    update( frame );
+   // update();
     renderer.render( scene , camera );
     requestAnimationFrame( animate );
   }
