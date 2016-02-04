@@ -72,10 +72,14 @@
     [ 0xDCFF55 , 0xAA6B9E , 0xFF6B75 ],
     [ 0xFFAA00 , 0xD0F7F3 , 0xFC8CD5 ],
   ];
+
   var geometries = [];
+
   var fingers = [];
 
-  //initHand();
+// Start the threejs animation
+
+  animate();
 
 function initLeapPeerHand() {
 
@@ -217,6 +221,19 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
+function updata() {
+
+   var leapFinger = pointable;
+  var finger = fingers[0];
+
+  position = leapToScene(leapFinger.stabilizedTipPosition);
+  console.log( 'position:', position );
+  finger.points[0].position = position;
+  console.log( 'finger:', fingers[0].points[0].position );
+}
+
+
+
 function animateTrackingData() {
 
 //var lCanvas = document.getElementById( 'leapcanvas' );
@@ -248,13 +265,7 @@ if (frame.pointables.length > 0) {
      }
 
 
-  var leapFinger = pointable;
-  var finger = fingers[0];
 
-  position = leapToScene(leapFinger.stabilizedTipPosition);
-  console.log( 'position:', position );
-  finger.points[0].position = position;
-  console.log( 'finger:', fingers[0].points[0].position );
 
 
 
@@ -324,6 +335,7 @@ leapctx.stroke();
 function animate(){
 //    frame = controller.frame();
 //    animateTrackingData();
+    update();
     renderer.render( scene , camera );
     requestAnimationFrame( animate );
   }
