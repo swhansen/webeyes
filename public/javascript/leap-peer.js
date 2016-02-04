@@ -1,6 +1,7 @@
 
 function leapPeer() {
 
+  var frame;
 
 // list the z-factors
 
@@ -12,13 +13,13 @@ function leapPeer() {
 
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
-    parseTrackingData( data );
-    animateTrackingData( );
+    frame = JSON.parse( data );
+ //   animateTrackingData( );
     } );
 
-  function parseTrackingData( data ) {
-    frame = JSON.parse( data );
-  }
+//  function parseTrackingData( data ) {
+//    frame = JSON.parse( data );
+//  }
 
 
 
@@ -28,7 +29,6 @@ function leapPeer() {
 
   // Global variable for leap
 
-  var frame;
 
   // Setting up how big we want the scene to be
 
@@ -65,10 +65,9 @@ function leapPeer() {
   var geometries = [];
   var fingers = [];
 
+  initHand();
 
-
-
-  animateTrackingData( );
+   animate( );
 
 function initHand() {
 
@@ -234,7 +233,7 @@ if (frame.pointables.length > 0) {
 //
 // // var tipScene = leapToScene( tipPosition );
 //
-  console.log( 'threetipPosition:', threetipPosition );
+//  console.log( 'threetipPosition:', threetipPosition );
 //
   finger[0].points[0].position = threetipPosition;
 //
@@ -323,6 +322,12 @@ leapctx.stroke();
   }
 
 }
+
+function animate(){
+
+    animateTrackingData();
+
+  }
 
 
 
