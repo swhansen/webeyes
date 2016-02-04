@@ -65,7 +65,7 @@
   var geometries = [];
   var fingers = [];
 
-  initHand();
+  //initHand();
 
 function initLeapPeerHand() {
 
@@ -88,7 +88,7 @@ function initLeapPeerHand() {
     container.style.position   = 'absolute';
     container.style.top        = '0px';
     container.style.left       = '0px';
-    container.style.background = transparent;
+   // container.style.background = transparent;
 
     document.body.appendChild( container );
 
