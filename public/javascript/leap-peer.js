@@ -20,12 +20,12 @@
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-  socketServer.on( 'leapShare', function( data ) {
-    //console.log( 'at runLeap-frame:', JSON.parse( data ) );
-    frame = JSON.parse( data );
-    animateTrackingData();
-//    update();
-    } );
+//  socketServer.on( 'leapShare', function( data ) {
+//    //console.log( 'at runLeap-frame:', JSON.parse( data ) );
+//    frame = JSON.parse( data );
+//    animateTrackingData();
+////    update();
+//    } );
 
 
 // Global Variables for THREE.JS
@@ -335,9 +335,18 @@ leapctx.stroke();
 
 function animate() {
 
+
+
+  socketServer.on( 'leapShare', function( data ) {
+    //console.log( 'at runLeap-frame:', JSON.parse( data ) );
+    frame = JSON.parse( data );
+    animateTrackingData();
+    update();
+    } );
+
 //    frame = controller.frame();
 //    animateTrackingData();
-    update();
+//    update();
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
   }
