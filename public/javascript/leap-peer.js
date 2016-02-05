@@ -233,10 +233,8 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
     _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
 
-        console.log( 'position:', index, frame.pointable.position );
-
+        console.log( 'position:', index, frame.pointables[position] );
     }
-
     )
 
 
