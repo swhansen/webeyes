@@ -231,19 +231,16 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
 
 
-    _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
+ //  _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
 
 
 
-var joints = frame.pointables[ 0 ];
-var foo = joints[ position ]
+ //      var joints = frame.pointables[ 0 ];
+ //      var joint = joints[ position ]
 
-
-
-        console.log( 'position name:', position );
-        console.log( 'position:', index, foo );
-    }
-    )
+ //      console.log( 'position:', index, joint );
+ //  }
+ //  )
 
 
 
@@ -252,26 +249,37 @@ var foo = joints[ position ]
 
   //console.log( 'at update');
 
-//  if (frame.pointables.length > 0) {  // pointables on a finger exist
+  if (frame.pointables.length > 0) {  // pointables on a finger exist
 //
-//    for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
-//
-//
-//      for (var i = 0; i < fingerPositions.length; i++) {  // iterate over the leap joint positions
-//
-//        position = leapToScene( frame.pointables[fingerPositions[i] ] );  // position of leap joint - transformed
-//
+ //   for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
+
+for ( i = 0; i = frames.pointables; ++1  ) {
+
+
+
+
+
+ _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
+
+
+        var joints = frame.pointables[ index ];
+        var joint = joints[ position ]
+
+        console.log( 'position:', index, joint );
+       position = leapToScene( joint);  // position of leap joint - transformed
 //
 //// assign the joint vector to the three fingers
 //
-//        fingers[threeFinger].points[i].position.x = position.x;
-//        fingers[threeFinger].points[i].position.y = position.y;
-//        fingers[threeFinger].points[i].position.z = position.z;
-//
-//        }
-//      }
-//  }
+        fingers[i].points[i].position.x = position.x;
+        fingers[i].points[i].position.y = position.y;
+        fingers[i].points[i].position.z = position.z;
 
+      }
+
+       );
+
+    }
+  }
 }
 
 
