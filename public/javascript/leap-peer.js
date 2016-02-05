@@ -24,7 +24,7 @@
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
     animateTrackingData();
-    update();
+  //  update();
     } );
 
 //  function parseTrackingData( data ) {
