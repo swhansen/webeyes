@@ -113,6 +113,7 @@ function initLeapPeerHand() {
     container.style.position   = 'absolute';
     container.style.top        = '0px';
     container.style.left       = '0px';
+    container.style.zIndex = 200;
    // container.style.backgroundColor = 'transparent';
 
     document.body.appendChild( container );
@@ -234,6 +235,7 @@ if (frame.pointables.length > 0) {
 
      position = leapToScene( pointable.stabilizedTipPosition );
      console.log( 'position:', position );
+
      fingers[0].points[0].position.x = position.x;
      fingers[0].points[0].position.y = position.y;
      fingers[0].points[0].position.z = position.z;
@@ -244,11 +246,7 @@ if (frame.pointables.length > 0) {
   }
 }
 
-
-
 function animateTrackingData() {
-
-
 
 //var lCanvas = document.getElementById( 'leapcanvas' );
 //var leapctx = lCanvas.getContext( '2d' );
