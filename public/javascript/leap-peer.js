@@ -235,7 +235,7 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
 
         console.log( 'position name:', position );
-     //   console.log( 'position:', index, frame.pointables[ position ] );
+        console.log( 'position:', index, frame.pointables[ position ] );
     }
     )
 
@@ -244,7 +244,7 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
 
 
-  console.log( 'at update');
+  //console.log( 'at update');
 
 //  if (frame.pointables.length > 0) {  // pointables on a finger exist
 //
