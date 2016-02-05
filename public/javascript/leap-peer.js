@@ -1,5 +1,4 @@
 
-//function leapPeer() {
 
   var frame;
 
@@ -343,9 +342,11 @@ leapctx.stroke();
 }
 
 function animate() {
+
+  console.log( 'at animate' );
 //    frame = controller.frame();
 //    animateTrackingData();
-   // update();
+    update();
     renderer.render( scene , camera );
     requestAnimationFrame( animate );
   }
