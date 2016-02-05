@@ -24,13 +24,8 @@
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
     animateTrackingData();
-    update();
+//    update();
     } );
-
-//  function parseTrackingData( data ) {
-//    frame = JSON.parse( data );
-//  }
-
 
 
 // Global Variables for THREE.JS
@@ -198,8 +193,6 @@ function initLeapPeerHand() {
 
   initLeapPeerHand();
 
-
-
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
     var y = position[1] - frame.interactionBox.center[1];
@@ -220,6 +213,8 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
 var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
+
+
 
 
 function update() {
