@@ -231,11 +231,13 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
 
 
-//    _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
-//
-//        console.log( 'position:', index, frame.pointable.position );
-//
-//    }
+    _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
+
+        console.log( 'position:', index, frame.pointable.position );
+
+    }
+
+    )
 
 
 
@@ -244,25 +246,25 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
   console.log( 'at update');
 
-  if (frame.pointables.length > 0) {  // pointables on a finger exist
-
-    for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
-
-
-      for (var i = 0; i < fingerPositions.length; i++) {  // iterate over the leap joint positions
-
-        position = leapToScene( frame.pointables[fingerPositions[i] ] );  // position of leap joint - transformed
-
-
-// assign the joint vector to the three fingers
-
-        fingers[threeFinger].points[i].position.x = position.x;
-        fingers[threeFinger].points[i].position.y = position.y;
-        fingers[threeFinger].points[i].position.z = position.z;
-
-        }
-      }
-  }
+//  if (frame.pointables.length > 0) {  // pointables on a finger exist
+//
+//    for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
+//
+//
+//      for (var i = 0; i < fingerPositions.length; i++) {  // iterate over the leap joint positions
+//
+//        position = leapToScene( frame.pointables[fingerPositions[i] ] );  // position of leap joint - transformed
+//
+//
+//// assign the joint vector to the three fingers
+//
+//        fingers[threeFinger].points[i].position.x = position.x;
+//        fingers[threeFinger].points[i].position.y = position.y;
+//        fingers[threeFinger].points[i].position.z = position.z;
+//
+//        }
+//      }
+//  }
 
 }
 
