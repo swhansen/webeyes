@@ -2,7 +2,7 @@
 
   var frame;
 
-  var lCanvas = document.getElementById( 'leapcanvas' );
+var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
 
   document.getElementById( 'leapfull' ).className = 'leapcenter';
@@ -123,7 +123,7 @@ function initLeapPeerHand() {
     container.appendChild( renderer.domElement );
 
     // Making sure our renderer is always the right size
-   // window.addEventListener( 'resize', onWindowResize , false );
+     window.addEventListener( 'resize', onWindowResize , false );
     /*
       INITIALIZE AWESOMENESS!
     */
@@ -181,7 +181,7 @@ function initLeapPeerHand() {
     // Creating dramatically more finger points than needed
     // just in case 4 hands are in the field
 
-    for( var i = 0 ; i < 20; i++ ){
+    for( var i = 0 ; i < 10; i++ ){
       var finger = {};
       finger.points = [];
       for( var j = 0; j < geometries.length; j++ ){
@@ -194,6 +194,10 @@ function initLeapPeerHand() {
   }
 
   initLeapPeerHand();
+
+
+
+
 
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
@@ -217,31 +221,56 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
-
-
 function update() {
+
+// fingers - three fingers  array[10]
+// pointables - leap joints array
+// fingerPositions - array og leap joint names
+
+
+
 
   console.log( 'at update');
 
-if (frame.pointables.length > 0) {
+  if (frame.pointables.length > 0) {  // pointables on a finger exist
 
-  frame.pointables.forEach( function( pointable ) {
+    for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
 
-  // var leapFinger = pointable;
-    var finger = fingers[0];
 
-     position = leapToScene( pointable.stabilizedTipPosition );
-     console.log( 'position:', position );
+      for (var i = 0; i < fingerPosition.length; i++) {  // iterate over the leap joint positions
 
-     fingers[0].points[0].position.x = position.x;
-     fingers[0].points[0].position.y = position.y;
-     fingers[0].points[0].position.z = position.z;
+        position = leapToScene( pointable.fingerPosition[i] );  // position of leap joint - transformed
 
-     console.log( 'fingers:', fingers );
-    }
-  );
+
+// assign the joint vector to the three fingers
+
+        fingers[threeFinger].points[i].position.x = position.x;
+        fingers[threeFinger].points[i].position.y = position.y;
+        fingers[threeFinger].points[i].position.z = position.z;
+
+        }
+      }
   }
+
 }
+
+
+
+
+
+// // var leapFinger = pointable;
+//   var finger = fingers[0];
+
+//    position = leapToScene( pointable.stabilizedTipPosition );
+//  //  console.log( 'position:', position );
+
+//    fingers[0].points[0].position.x = position.x;
+//    fingers[0].points[0].position.y = position.y;
+//    fingers[0].points[0].position.z = position.z;
+
+//    console.log( 'fingers:', fingers );
+
+
 
 function animateTrackingData() {
 
@@ -335,9 +364,7 @@ leapctx.stroke();
 
 function animate() {
 
-
   socketServer.on( 'leapShare', function( data ) {
-    //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
     animateTrackingData();
     update();
@@ -346,6 +373,7 @@ function animate() {
 //    frame = controller.frame();
 //    animateTrackingData();
 //    update();
+    console.log( 'at animate' );
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
   }
