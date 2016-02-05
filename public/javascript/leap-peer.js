@@ -72,6 +72,8 @@
 
   var fingers = [];
 
+
+initLeapPeerHand();
 // Start the threejs animation
 
   animate();
