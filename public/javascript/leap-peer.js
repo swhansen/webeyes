@@ -243,17 +243,13 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
  //  )
 
 
-
-
-
-
   //console.log( 'at update');
 
   if (frame.pointables.length > 0) {  // pointables on a finger exist
 //
  //   for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
 
-for ( i = 0; i = frames.pointables; ++1  ) {
+for ( i = 0; i < frames.pointables.length; i++  ) {
 
 
 
