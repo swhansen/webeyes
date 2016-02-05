@@ -24,6 +24,7 @@
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
     animateTrackingData();
+    update();
     } );
 
 //  function parseTrackingData( data ) {
@@ -228,13 +229,13 @@ if (frame.pointables.length > 0) {
 
   frame.pointables.forEach( function( pointable ) {
 
-   var leapFinger = pointable;
+  // var leapFinger = pointable;
     var finger = fingers[0];
 
-     position = leapToScene(leapFinger.stabilizedTipPosition);
+     position = leapToScene(pointable.stabilizedTipPosition);
      console.log( 'position:', position );
      finger.points[0].position = position;
-     console.log( 'finger:', fingers[0].points[0].position );
+     console.log( 'finger:', fingers );
     }
   );
   }
@@ -244,7 +245,7 @@ if (frame.pointables.length > 0) {
 
 function animateTrackingData() {
 
-  update();
+
 
 //var lCanvas = document.getElementById( 'leapcanvas' );
 //var leapctx = lCanvas.getContext( '2d' );
