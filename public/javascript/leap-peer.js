@@ -24,7 +24,6 @@
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
     animateTrackingData();
-  //  update();
     } );
 
 //  function parseTrackingData( data ) {
@@ -79,7 +78,7 @@
 
 // Start the threejs animation
 
-  animate( frame );
+  animate();
 
 function initLeapPeerHand() {
 
@@ -245,6 +244,8 @@ if (frame.pointables.length > 0) {
 
 function animateTrackingData() {
 
+  update();
+
 //var lCanvas = document.getElementById( 'leapcanvas' );
 //var leapctx = lCanvas.getContext( '2d' );
 
@@ -346,7 +347,7 @@ function animate() {
   console.log( 'at animate' );
 //    frame = controller.frame();
 //    animateTrackingData();
-    update();
+//    update();
     renderer.render( scene , camera );
     requestAnimationFrame( animate );
   }
