@@ -237,7 +237,7 @@ function update() {
     for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
 
 
-      for (var i = 0; i < fingerPosition.length; i++) {  // iterate over the leap joint positions
+      for (var i = 0; i < fingerPositions.length; i++) {  // iterate over the leap joint positions
 
         position = leapToScene( pointable.fingerPosition[i] );  // position of leap joint - transformed
 
