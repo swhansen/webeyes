@@ -215,13 +215,15 @@ function leapToScene( position ){
   }
 
 
-var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'tipPosition' ];
 
 var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
 function update() {
+
+
+var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'tipPosition' ];
 
 // fingers - three fingers  array[10]
 // pointables - leap joints array
@@ -249,7 +251,7 @@ function update() {
 
       for (var i = 0; i < fingerPositions.length; i++) {  // iterate over the leap joint positions
 
-        position = leapToScene( frame.pointable.fingerPositions[i] );  // position of leap joint - transformed
+        position = leapToScene( frame.pointable[fingerPositions[i] ] );  // position of leap joint - transformed
 
 
 // assign the joint vector to the three fingers
