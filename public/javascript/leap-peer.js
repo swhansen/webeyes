@@ -251,7 +251,7 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
       for (var i = 0; i < fingerPositions.length; i++) {  // iterate over the leap joint positions
 
-        position = leapToScene( frame.pointable[fingerPositions[i] ] );  // position of leap joint - transformed
+        position = leapToScene( frame.pointables[fingerPositions[i] ] );  // position of leap joint - transformed
 
 
 // assign the joint vector to the three fingers
