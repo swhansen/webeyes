@@ -232,9 +232,12 @@ if (frame.pointables.length > 0) {
   // var leapFinger = pointable;
     var finger = fingers[0];
 
-     position = leapToScene(pointable.stabilizedTipPosition);
+     position = leapToScene( pointable.stabilizedTipPosition );
      console.log( 'position:', position );
-     fingers[0].points[0].position = position;
+     fingers[0].points[0].position.x = position.x;
+     fingers[0].points[0].position.y = position.y;
+     fingers[0].points[0].position.z = position.z;
+
      console.log( 'fingers:', fingers );
     }
   );
