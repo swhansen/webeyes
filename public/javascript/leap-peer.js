@@ -229,6 +229,16 @@ function update() {
 
 
 
+//    _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
+//
+//        console.log( 'position:', index, frame.pointable.position );
+//
+//    }
+
+
+
+
+
 
   console.log( 'at update');
 
@@ -239,7 +249,7 @@ function update() {
 
       for (var i = 0; i < fingerPositions.length; i++) {  // iterate over the leap joint positions
 
-        position = leapToScene( pointable.fingerPosition[i] );  // position of leap joint - transformed
+        position = leapToScene( frame.pointable.fingerPosition[i] );  // position of leap joint - transformed
 
 
 // assign the joint vector to the three fingers
