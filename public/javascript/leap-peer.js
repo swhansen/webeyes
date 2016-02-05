@@ -336,7 +336,6 @@ leapctx.stroke();
 function animate() {
 
 
-
   socketServer.on( 'leapShare', function( data ) {
     //console.log( 'at runLeap-frame:', JSON.parse( data ) );
     frame = JSON.parse( data );
