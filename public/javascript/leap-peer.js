@@ -263,7 +263,7 @@ for ( i = 0; i = frames.pointables; ++1  ) {
 
 
         var joints = frame.pointables[ index ];
-        var joint = joints[ position ]
+        var joint = joints[ position ];
 
         console.log( 'position:', index, joint );
        position = leapToScene( joint);  // position of leap joint - transformed
