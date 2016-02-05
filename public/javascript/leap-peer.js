@@ -249,7 +249,7 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 //
  //   for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
 
-for ( i = 0; i < frames.pointables.length; i++  ) {
+for ( i = 0; i < frame.pointables.length; i++  ) {
 
 
 
