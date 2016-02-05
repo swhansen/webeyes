@@ -235,7 +235,7 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
 
         console.log( 'position name:', position );
-        console.log( 'position:', index, frame.pointables[ 0 ].position );
+        console.log( 'position:', index, frame.pointables[ 0 ][ position ] );
     }
     )
 
