@@ -120,7 +120,7 @@ function initLeapPeerHand() {
 
     // Setting up our  (transparent background )
 
-    renderer = new THREE.WebGLRenderer( { alpha: true });
+    renderer = new THREE.WebGLRenderer( { alpha: true } );
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
@@ -277,14 +277,6 @@ if (frame.pointables.length > 0) {
      }
 
 
-
-
-
-
-
-
-
-
   var tipPosition = pointable.stabilizedTipPosition;
   var dipPosition = pointable.dipPosition;
   var pipPosition = pointable.pipPosition;
@@ -346,10 +338,9 @@ leapctx.stroke();
 
 function animate() {
 
-  console.log( 'at animate' );
 //    frame = controller.frame();
 //    animateTrackingData();
-//    update();
-    renderer.render( scene , camera );
+    update();
+    renderer.render( scene, camera );
     requestAnimationFrame( animate );
   }
