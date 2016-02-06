@@ -250,7 +250,7 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
         console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
 
-        position = leapToScene( joint );  // position of leap joint - transformed
+        position = leapToScene( jointPos );  // position of leap joint - transformed
 //
 //// assign the joint vector to the three fingers
 //
