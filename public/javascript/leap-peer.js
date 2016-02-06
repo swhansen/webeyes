@@ -244,11 +244,11 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
         var joints = frame.pointables[ pointableIndex ];  //  a finger object
 
-      _.forEach( jointList, function( joint, index ) {  // leap - (jointname, index)
+      _.forEach( jointList, function( jointName, index ) {  // leap - (jointname, index)
 
-        var joint = joints[ joint ];
+        var jointPos = joints[ jointName ];  //array location
 
-        console.log( 'popintavleIndex, joint:', pointableIndex, joint );
+        console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
 
         position = leapToScene( joint );  // position of leap joint - transformed
 //
