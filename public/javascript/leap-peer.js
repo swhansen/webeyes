@@ -223,7 +223,7 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 function update() {
 
 
-var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'tipPosition' ];
+var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
 // fingers - three fingers  array[10]
 // pointables - leap joints array
@@ -240,15 +240,15 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 //
  //   for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
 
-    _.forEach( frame.pointables, function( pointable, pointableIndex ) {
+    _.forEach( frame.pointables, function( pointable, pointableIndex ) {    // all the pointable objects
 
 
 // for ( i = 0; i < frame.pointables.length; i++  ) {
 
-      _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
+      _.forEach( fingerPositions, function( position, index ) {  // leap - joints
 
 
-        var joints = frame.pointables[ index ];
+      //  var joints = frame.pointables[ position ];
         var joint = joints[ position ];
 
         console.log( 'position:', index, joint );
@@ -256,9 +256,9 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 //
 //// assign the joint vector to the three fingers
 //
-        fingers[threeFingerIndex].points.position.x = position.x;
-        fingers[threeFingerIndex].points.position.y = position.y;
-        fingers[threeFingerIndex].points.position.z = position.z;
+        fingers[ threeFingerIndex ].points[ index ].position.x = position.x;
+        fingers[ threeFingerIndex ].points[ index] .position.y = position.y;
+        fingers[ threeFingerIndex ].points[ index ].position.z = position.z;
 
         threeFingerIndex++;
 
