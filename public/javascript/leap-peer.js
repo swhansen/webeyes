@@ -240,7 +240,7 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 //
  //   for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
 
-    _.forEachframe.pointables( function( pointable, pointableIndex ) {
+    _.forEach( frame.pointables, function( pointable, pointableIndex ) {
 
 
 // for ( i = 0; i < frame.pointables.length; i++  ) {
@@ -262,14 +262,15 @@ var fingerPositions = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPositi
 
         threeFingerIndex++;
 
-      }
+      } );
 
-       );
+    } );
 
     }
-    )
-  }
-}
+
+    }
+
+
 
 
 
