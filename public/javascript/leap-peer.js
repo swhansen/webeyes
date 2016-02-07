@@ -390,5 +390,5 @@ function animate() {
 //    update();
     console.log( 'at animate' );
     renderer.render( scene, camera );
-    requestAnimationFrame( animate );
+   // requestAnimationFrame( animate );
   }
