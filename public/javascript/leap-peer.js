@@ -288,21 +288,7 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
 function animateTrackingData() {
 
-//var lCanvas = document.getElementById( 'leapcanvas' );
-//var leapctx = lCanvas.getContext( '2d' );
-
-// document.getElementById( 'leapfull' ).className = 'leapcenter';
-
-// lCanvas.style.width = '100%';
-// lCanvas.style.height = '100%';
-// lCanvas.width = lCanvas.offsetWidth;
-// lCanvas.height = lCanvas.offsetHeight;
-
  leapctx.clearRect(0, 0, leapctx.canvas.width, leapctx.canvas.height);
-
- // frame = JSON.parse( data );
-
- //console.log( 'frame:', frame );
 
 if (frame.pointables.length > 0) {
 
@@ -377,9 +363,10 @@ leapctx.stroke();
 }
 
   socketServer.on( 'leapShare', function( data ) {
+    console.log(data);
     frame = JSON.parse( data );
-    animateTrackingData();
-    update();
+ //   animateTrackingData();
+ //   update();
     } );
 
 function animate() {
