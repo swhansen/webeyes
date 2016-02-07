@@ -123,6 +123,9 @@ function initLeapPeerHand() {
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
 
+     // Making sure our renderer is always the right size
+    window.addEventListener( 'resize', onWindowResize , false );
+
     // Making sure our renderer is always the right size
   //   window.addEventListener( 'resize', onWindowResize , false );
     /*
@@ -263,7 +266,7 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
     } );
 
     }
-animate();
+
     }
 
 
@@ -391,4 +394,10 @@ function animate() {
     console.log( 'at animate' );
     renderer.render( scene, camera );
    // requestAnimationFrame( animate );
+ }
+
+  function onWindowResize(){
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
   }
