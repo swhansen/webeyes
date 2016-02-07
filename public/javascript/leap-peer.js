@@ -1,6 +1,6 @@
 
 
-  var frame;
+
 
 var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
@@ -30,10 +30,11 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 
 // Global Variables for THREE.JS
 
-  var container , camera, scene, renderer;
+  var container, camera, scene, renderer;
 
   // Global variable for leap
 
+  var frame;
 
   // Setting up how big we want the scene to be
 
@@ -196,9 +197,6 @@ function initLeapPeerHand() {
   initLeapPeerHand();
 
 
-
-
-
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
     var y = position[1] - frame.interactionBox.center[1];
@@ -258,10 +256,10 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
         fingers[ threeFingerIndex ].points[ index] .position.y = position.y;
         fingers[ threeFingerIndex ].points[ index ].position.z = position.z;
 
-        threeFingerIndex++;
 
       } );
 
+        threeFingerIndex++;
     } );
 
     }
