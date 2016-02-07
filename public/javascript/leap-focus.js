@@ -75,7 +75,10 @@ camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight
           if ( countBones++ === 0 ) { continue; }
 
           var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
+
+          console.log( bone );
           updateMesh( bone, boneMesh );
+
 
         }
 

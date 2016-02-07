@@ -126,8 +126,6 @@ function initLeapPeerHand() {
      // Making sure our renderer is always the right size
     window.addEventListener( 'resize', onWindowResize , false );
 
-    // Making sure our renderer is always the right size
-  //   window.addEventListener( 'resize', onWindowResize , false );
     /*
       INITIALIZE AWESOMENESS!
     */
@@ -135,7 +133,6 @@ function initLeapPeerHand() {
     initMaterials();
     initGeometry();
     initFingers();
-
   }
 
    function initLights(){
