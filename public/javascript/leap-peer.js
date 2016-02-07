@@ -219,20 +219,9 @@ function update() {
 
 var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
-// fingers - three fingers  array[10]
-// pointables - leap joints array
-// fingerPositions - array of leap joint names
-
- //  _.forEach( fingerPositions, function( position, index ) {  // leap - all the pointables
-
  threeFingerIndex = 0;
 
-
- //      console.log( 'position:', inde
-
   if (frame.pointables.length > 0) {  // pointables on a finger exist
-//
- //   for( var threeFinger = 0; threeFinger < fingers.length; i++ ){   // all the  three fingers -just an array
 
     _.forEach( frame.pointables, function( pointable, pointableIndex ) {    // all the pointable (object, index)
 
@@ -245,15 +234,12 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
         console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
 
         position = leapToScene( jointPos );  // position of leap joint - transformed
-//
-// assign the joint vector to the three fingers
-//
+
         fingers[ threeFingerIndex ].points[ index ].position.x = position.x;
         fingers[ threeFingerIndex ].points[ index] .position.y = position.y;
         fingers[ threeFingerIndex ].points[ index ].position.z = position.z;
 
         console.log( fingers[ threeFingerIndex ].points[ index ].position.x = position.x );
-
 
       } );
 
@@ -263,26 +249,6 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
     }
 
     }
-
-
-
-
-
-
-
-// // var leapFinger = pointable;
-//   var finger = fingers[0];
-
-//    position = leapToScene( pointable.stabilizedTipPosition );
-//  //  console.log( 'position:', position );
-
-//    fingers[0].points[0].position.x = position.x;
-//    fingers[0].points[0].position.y = position.y;
-//    fingers[0].points[0].position.z = position.z;
-
-//    console.log( 'fingers:', fingers );
-
-
 
 function animateTrackingData() {
 
@@ -362,17 +328,16 @@ leapctx.stroke();
 
   socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
-    animateTrackingData();
-    update();
+    animate();
+ //   update();
     } );
 
 function animate() {
 
-
 //    frame = controller.frame();
-//    animateTrackingData();
-//    update();
-    console.log( 'at animate' );
+    animateTrackingData();
+    update();
+ //   console.log( 'at animate' );
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
  }
