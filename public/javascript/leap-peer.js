@@ -381,16 +381,16 @@ leapctx.stroke();
 
   socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
-    animateTrackingData();
-    update();
+   // animateTrackingData();
+  //  update();
     } );
 
 function animate() {
 
 
 //    frame = controller.frame();
-//    animateTrackingData();
-//    update();
+    animateTrackingData();
+    update();
     console.log( 'at animate' );
     renderer.render( scene, camera );
    // requestAnimationFrame( animate );
