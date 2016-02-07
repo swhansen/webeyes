@@ -156,11 +156,7 @@ function initLeapPeerHand() {
       // Uses the parts of the finger material array to assign
       // an aesthetic material
       var material = new THREE.MeshPhongMaterial({
-        color:                 fM[0],
-        specular:              fM[1],
-        emissive:              fM[2],
-        shininess:                10,
-        shading:    THREE.FlatShading
+        color:0xFF69B4
       });
       fingerMaterials.push( material );
     }
@@ -171,7 +167,7 @@ function initLeapPeerHand() {
   function initGeometry(){
     for( var i = 0; i < 4; i++ ){
       var size = sceneSize / ( 20  + ( 2 * ( i + 1 ) ));
-      var geometry = new THREE.IcosahedronGeometry( size , 2 );
+      var geometry = new THREE.SphereGeometry( size , 2 );
 
       geometries.push( geometry );
     }
@@ -365,7 +361,6 @@ leapctx.stroke();
 }
 
   socketServer.on( 'leapShare', function( data ) {
-    console.log(data);
     frame = JSON.parse( data );
     animateTrackingData();
     update();
