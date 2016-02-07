@@ -19,7 +19,7 @@ function emitLeap( data ) {
     socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
   }
 
- //   controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); });
+   // controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); });
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -76,9 +76,8 @@ camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight
 
           var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
 
-          emitLeap( bone );
           updateMesh( bone, boneMesh );
-
+emitLeap(bone.center);
 
         }
 
