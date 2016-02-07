@@ -256,6 +256,8 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
         fingers[ threeFingerIndex ].points[ index] .position.y = position.y;
         fingers[ threeFingerIndex ].points[ index ].position.z = position.z;
 
+        console.log( fingers[ threeFingerIndex ].points[ index ].position.x = position.x );
+
 
       } );
 
@@ -363,10 +365,10 @@ leapctx.stroke();
 }
 
   socketServer.on( 'leapShare', function( data ) {
+    console.log(data);
     frame = JSON.parse( data );
-    console.log(frame);
- //   animateTrackingData();
- //   update();
+    animateTrackingData();
+    update();
     } );
 
 function animate() {
