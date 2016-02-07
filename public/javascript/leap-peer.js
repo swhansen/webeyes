@@ -246,7 +246,7 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
         var jointPos = joints[ jointName ];  //array location
 
-   //     console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
+        console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
 
         position = leapToScene( jointPos );  // position of leap joint - transformed
 //
@@ -376,13 +376,14 @@ leapctx.stroke();
 }
 }
 
-function animate() {
-
   socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
     animateTrackingData();
     update();
     } );
+
+function animate() {
+
 
 //    frame = controller.frame();
 //    animateTrackingData();
