@@ -234,12 +234,15 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
         console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
 
         position = leapToScene( jointPos );  // position of leap joint - transformed
-
+//
+// assign the joint vector to the three fingers
+//
         fingers[ threeFingerIndex ].points[ index ].position.x = position.x;
         fingers[ threeFingerIndex ].points[ index] .position.y = position.y;
         fingers[ threeFingerIndex ].points[ index ].position.z = position.z;
 
         console.log( fingers[ threeFingerIndex ].points[ index ].position.x = position.x );
+
 
       } );
 
@@ -249,6 +252,20 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
     }
 
     }
+
+// // var leapFinger = pointable;
+//   var finger = fingers[0];
+
+//    position = leapToScene( pointable.stabilizedTipPosition );
+//  //  console.log( 'position:', position );
+
+//    fingers[0].points[0].position.x = position.x;
+//    fingers[0].points[0].position.y = position.y;
+//    fingers[0].points[0].position.z = position.z;
+
+//    console.log( 'fingers:', fingers );
+
+
 
 function animateTrackingData() {
 
@@ -328,16 +345,17 @@ leapctx.stroke();
 
   socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
-    animate();
- //   update();
+    animateTrackingData();
+    update();
     } );
 
 function animate() {
 
+
 //    frame = controller.frame();
-    animateTrackingData();
-    update();
- //   console.log( 'at animate' );
+//    animateTrackingData();
+//    update();
+    console.log( 'at animate' );
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
  }
