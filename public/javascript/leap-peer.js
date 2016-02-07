@@ -263,7 +263,7 @@ var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
     } );
 
     }
-
+animate();
     }
 
 
