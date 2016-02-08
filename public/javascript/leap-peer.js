@@ -105,7 +105,7 @@ function initLeapPeerHand() {
     camera.position.z = sceneSize;
 
     // Getting the container in the right location
-    container = document.createElement( 'div' );
+ //   container = document.createElement( 'div' );
     container.style.width      = '100%';
     container.style.height     = '100%';
     container.style.position   = 'absolute';
