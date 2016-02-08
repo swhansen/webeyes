@@ -1,6 +1,7 @@
 
 
 var output = document.getElementById('output');
+document.getElementById("output").style.zIndex = "200";
 
 var container = document.getElementById( 'leapfull' );
 
