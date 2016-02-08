@@ -145,7 +145,7 @@ function initLeapPeerHand() {
 //      light.position.set( l[1][0] , l[1][1]  , l[1][2]  );
 //      // Making sure that the light is part of
 //      // Whats getting rendered
-      var lighjt = new THREE.AmbientLight( 0x404040 );
+      var light = new THREE.AmbientLight( 0x404040 );
       scene.add( light );
     }
  // }
