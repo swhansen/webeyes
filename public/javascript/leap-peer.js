@@ -1,6 +1,6 @@
 
 
-var container = document.getElementById( 'leapsphere' );
+var container = document.getElementById( 'leapfull' );
 
 var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
