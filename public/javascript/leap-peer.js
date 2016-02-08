@@ -253,7 +253,7 @@ function update() {
     }
 
     output.innerHTML =  fingers[1].points[1].position;
-   // console.log( 'a finger joint', fingers[1].points[1].position );
+    console.log( 'a finger joint', fingers[1].points[1].position );
   }
 
 // // var leapFinger = pointable;
