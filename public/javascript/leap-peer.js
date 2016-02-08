@@ -199,6 +199,8 @@ function refObjects() {
   var geometry1 = new THREE.SphereGeometry( 1, 4 );
   var refgeo = new THREE.Mesh( geometry1, material1 );
   refgeo.position.x = -20.0;
+  refgeo.position.y = -4.0;
+  refgeo.position.z = -25.0;
 
   //set( 0.0, 0.0, 6.0 );
 
