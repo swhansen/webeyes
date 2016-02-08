@@ -78,7 +78,7 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 initLeapPeerHand();
 // Start the threejs animation
 
-  animate();
+ // animate();
 
 function initLeapPeerHand() {
 
