@@ -241,20 +241,14 @@ function update() {
         fingers[ fingersIndex ].points[ index] .position.y = position.y;
         fingers[ fingersIndex ].points[ index ].position.z = position.z;
 
-  //      console.log( fingers[ threeFingerIndex ].points[ index ].position.x = position.x );
-
       } );
     } else {
-
       var finger = fingers[ fingersIndex ];
       for( var j = 0; j < finger.points.length; j++ ){
-
             finger.points[j].position.x = sceneSize * 100;
-
         }
       }
     }
-
     console.log( 'a finger joint', fingers[1].points[1].position );
   }
 
