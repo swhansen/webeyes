@@ -194,6 +194,14 @@ function initLeapPeerHand() {
   initLeapPeerHand();
 
 
+var materialO = new THREE.MeshLambertMaterial( { color: 'red' } );
+var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
+sphere = new THREE.Mesh( geometrySphere, materialO );
+sphere.position.set( 10.0, 10.0, 10.0 );
+scene.add( sphere );
+
+
+
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
     var y = position[1] - frame.interactionBox.center[1];
