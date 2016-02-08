@@ -51,7 +51,6 @@ camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight
       mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
       mesh.quaternion.multiply( baseBoneRotation );
       mesh.scale.set( bone.width, bone.width, bone.length );
-      console.log( 'bone center', bone.center() );
       scene.add( mesh );
   }
 
