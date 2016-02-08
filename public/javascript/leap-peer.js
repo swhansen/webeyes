@@ -217,9 +217,9 @@ function leapToScene( position ){
     x /= frame.interactionBox.size[0];
     y /= frame.interactionBox.size[1];
     z /= frame.interactionBox.size[2];
-  //  x *= sceneSize;
-  //  y *= sceneSize;
- //   z *= sceneSize;
+    x *= sceneSize;
+    y *= sceneSize;
+    z *= sceneSize;
     z -= sceneSize;
     return new THREE.Vector3( x , y , z );
   }
@@ -266,6 +266,7 @@ function update() {
       }
     }
 
+renderer.render( scene, camera );
 
     console.log( 'a finger joint', fingers[1].points[1].position );
   }
@@ -364,15 +365,15 @@ leapctx.stroke();
     update();
     } );
 
-function animate() {
+//function animate() {
 
 //    frame = controller.frame();
 //    animateTrackingData();
 //    update();
 //    console.log( 'at animate' );
-    renderer.render( scene, camera );
-    requestAnimationFrame( animate );
- }
+//    renderer.render( scene, camera );
+//    requestAnimationFrame( animate );
+// }
 
   function onWindowResize(){
     camera.aspect = window.innerWidth / window.innerHeight;
