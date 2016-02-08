@@ -178,7 +178,7 @@ function initLeapPeerHand() {
     // Creating dramatically more finger points than needed
     // just in case 4 hands are in the field
 
-    for( var i = 0 ; i < 10; i++ ){
+    for( var i = 0 ; i < 20; i++ ){
       var finger = {};
       finger.points = [];
       for( var j = 0; j < geometries.length; j++ ){
@@ -217,39 +217,41 @@ function update() {
 
   var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
-  threeFingerIndex = 0;
 
-  if (frame.pointables.length > 0) {  // pointables on a finger exist
+    for ( fingersIndex = 0; fingersIndex < fingers.length; fingersIndex++ ) {  //big list of fingers
 
-    _.forEach( frame.pointables, function( pointable, pointableIndex ) {    // all the pointable (object, index)
+      if ( frame.pointables[ fingerIndex ] ) {  // pointables on a finger exist
 
-        var joints = frame.pointables[ pointableIndex ];  //  a finger object
+
+   // _.forEach( frame.pointables, function( pointable, pointableIndex ) {    // all the pointable (object, index)
+
+     // var joints = frame.pointables[ pointableIndex ];  //  a finger object
 
       _.forEach( jointList, function( jointName, index ) {  // leap - (jointname, index)
 
         var jointPos = joints[ jointName ];  //array location
 
-        console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
+    //    console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
 
         position = leapToScene( jointPos );  // position of leap joint - transformed
 //
 // assign the joint vector to the three fingers
 //
-        fingers[ threeFingerIndex ].points[ index ].position.x = position.x;
-        fingers[ threeFingerIndex ].points[ index] .position.y = position.y;
-        fingers[ threeFingerIndex ].points[ index ].position.z = position.z;
+        fingers[ fingerIndex ].points[ index ].position.x = position.x;
+        fingers[ fingerIndex ].points[ index] .position.y = position.y;
+        fingers[ fingerIndex ].points[ index ].position.z = position.z;
 
-        console.log( fingers[ threeFingerIndex ].points[ index ].position.x = position.x );
-
+  //      console.log( fingers[ threeFingerIndex ].points[ index ].position.x = position.x );
 
       } );
 
-        threeFingerIndex++;
-    } );
+    } ;
 
-    }
+  }
 
-    }
+    console.log( 'a finger joint', fingers[1].points[1].position );
+
+  }
 
 // // var leapFinger = pointable;
 //   var finger = fingers[0];
