@@ -225,7 +225,7 @@ function update() {
 
    // _.forEach( frame.pointables, function( pointable, pointableIndex ) {    // all the pointable (object, index)
 
-     // var joints = frame.pointables[ pointableIndex ];  //  a finger object
+      var joints = frame.pointables[ fingersIndex ];  //  leap joint pointables[i]
 
       _.forEach( jointList, function( jointName, index ) {  // leap - (jointname, index)
 
