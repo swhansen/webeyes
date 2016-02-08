@@ -244,13 +244,18 @@ function update() {
   //      console.log( fingers[ threeFingerIndex ].points[ index ].position.x = position.x );
 
       } );
+    } else {
 
-    } ;
+      var finger = fingers[i];
+      for( var j = 0; j < finger.points.length; j++ ){
 
-  }
+            finger.points[j].position.x = sceneSize * 100;
+
+        }
+      }
+    }
 
     console.log( 'a finger joint', fingers[1].points[1].position );
-
   }
 
 // // var leapFinger = pointable;
