@@ -246,7 +246,7 @@ function update() {
       } );
     } else {
 
-      var finger = fingers[i];
+      var finger = fingers[ fingersIndex ];
       for( var j = 0; j < finger.points.length; j++ ){
 
             finger.points[j].position.x = sceneSize * 100;
