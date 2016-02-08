@@ -1,5 +1,6 @@
 
 
+
 var container = document.getElementById( 'leapfull' );
 
 var lCanvas = document.getElementById( 'leapcanvas' );
@@ -137,18 +138,17 @@ function initLeapPeerHand() {
    function initLights(){
     // We are creating a directional light,
     // coloring and placing it according to the light array
-//    for( var i = 0; i < lightArray.length; i++ ){
-//      // The parameters for the light
-//      var l = lightArray[i];
-//      // Creating the light
-//      var light = new THREE.DirectionalLight( l[0] , 0.5 );
-//      light.position.set( l[1][0] , l[1][1]  , l[1][2]  );
-//      // Making sure that the light is part of
-//      // Whats getting rendered
-      var light = new THREE.AmbientLight( 0x404040 );
+    for( var i = 0; i < lightArray.length; i++ ){
+      // The parameters for the light
+      var l = lightArray[i];
+      // Creating the light
+      var light = new THREE.DirectionalLight( l[0] , 0.5 );
+      light.position.set( l[1][0] , l[1][1]  , l[1][2]  );
+      // Making sure that the light is part of
+      // Whats getting rendered
       scene.add( light );
     }
- // }
+  }
   // Creates the proper materials to use for creating the fingers
   function initMaterials(){
     for( var i = 0; i < fingerMaterialArray.length; i++ ){
@@ -166,8 +166,7 @@ function initLeapPeerHand() {
   // as they get closer to the tip
   function initGeometry(){
     for( var i = 0; i < 4; i++ ){
-   //   var size = sceneSize / ( 20  + ( 2 * ( i + 1 ) ));
-      var size = 2;
+      var size = sceneSize / ( 20  + ( 2 * ( i + 1 ) ));
       var geometry = new THREE.SphereGeometry( size , 2 );
 
       geometries.push( geometry );
@@ -193,13 +192,6 @@ function initLeapPeerHand() {
 
   initLeapPeerHand();
 
-//var materialO = new THREE.MeshLambertMaterial( { color: 'red' } );
-//var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
-//sphere = new THREE.Mesh( geometrySphere, materialO );
-//sphere.position.set( 50.0, 50.0, -10.0 );
-//scene.add( sphere );
-
-renderer.render( scene, camera );
 
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
@@ -291,6 +283,7 @@ if (frame.pointables.length > 0) {
      }
      return  norm;
      }
+
 
   var tipPosition = pointable.stabilizedTipPosition;
   var dipPosition = pointable.dipPosition;
