@@ -1,8 +1,5 @@
 
 
-var output = document.getElementById('output');
-document.getElementById("output").style.zIndex = "200";
-
 var container = document.getElementById( 'leapfull' );
 
 var lCanvas = document.getElementById( 'leapcanvas' );
@@ -140,17 +137,18 @@ function initLeapPeerHand() {
    function initLights(){
     // We are creating a directional light,
     // coloring and placing it according to the light array
-    for( var i = 0; i < lightArray.length; i++ ){
-      // The parameters for the light
-      var l = lightArray[i];
-      // Creating the light
-      var light = new THREE.DirectionalLight( l[0] , 0.5 );
-      light.position.set( l[1][0] , l[1][1]  , l[1][2]  );
-      // Making sure that the light is part of
-      // Whats getting rendered
+//    for( var i = 0; i < lightArray.length; i++ ){
+//      // The parameters for the light
+//      var l = lightArray[i];
+//      // Creating the light
+//      var light = new THREE.DirectionalLight( l[0] , 0.5 );
+//      light.position.set( l[1][0] , l[1][1]  , l[1][2]  );
+//      // Making sure that the light is part of
+//      // Whats getting rendered
+      var lighjt = new THREE.AmbientLight( 0x404040 );
       scene.add( light );
     }
-  }
+ // }
   // Creates the proper materials to use for creating the fingers
   function initMaterials(){
     for( var i = 0; i < fingerMaterialArray.length; i++ ){
@@ -252,7 +250,7 @@ function update() {
       }
     }
 
-    output.innerHTML =  fingers[1].points[1].position;
+
     console.log( 'a finger joint', fingers[1].points[1].position );
   }
 
