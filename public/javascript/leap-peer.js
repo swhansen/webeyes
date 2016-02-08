@@ -1,6 +1,6 @@
 
 
-
+var container = document.getElementById( 'leapsphere' );
 
 var lCanvas = document.getElementById( 'leapcanvas' );
  var leapctx = lCanvas.getContext( '2d' );
@@ -114,14 +114,14 @@ function initLeapPeerHand() {
     container.style.zIndex = 10;
    // container.style.backgroundColor = 'transparent';
 
-    document.body.appendChild( container );
+    //document.body.appendChild( container );
 
     // Setting up our  (transparent background )
 
-    renderer = new THREE.WebGLRenderer( { alpha: true } );
+    renderer = new THREE.WebGLRenderer( { canvas:leapshpere, alpha: true } );
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
-    container.appendChild( renderer.domElement );
+   // container.appendChild( renderer.domElement );
 
      // Making sure our renderer is always the right size
     window.addEventListener( 'resize', onWindowResize , false );
@@ -209,17 +209,15 @@ function leapToScene( position ){
   }
 
 
-
 var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 
 function update() {
 
+  var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
-var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
-
- threeFingerIndex = 0;
+  threeFingerIndex = 0;
 
   if (frame.pointables.length > 0) {  // pointables on a finger exist
 
@@ -351,11 +349,10 @@ leapctx.stroke();
 
 function animate() {
 
-
 //    frame = controller.frame();
 //    animateTrackingData();
 //    update();
-    console.log( 'at animate' );
+//    console.log( 'at animate' );
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
  }
