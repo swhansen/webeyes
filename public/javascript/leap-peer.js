@@ -220,7 +220,7 @@ function update() {
 
     for ( fingersIndex = 0; fingersIndex < fingers.length; fingersIndex++ ) {  //big list of fingers
 
-      if ( frame.pointables[ fingerIndex ] ) {  // pointables on a finger exist
+      if ( frame.pointables[ fingersIndex ] ) {  // pointables on a finger exist
 
 
    // _.forEach( frame.pointables, function( pointable, pointableIndex ) {    // all the pointable (object, index)
