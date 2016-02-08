@@ -133,6 +133,7 @@ function initLeapPeerHand() {
     initMaterials();
     initGeometry();
     initFingers();
+    refObjects();
   }
 
    function initLights(){
@@ -189,6 +190,21 @@ function initLeapPeerHand() {
       fingers.push( finger );
     }
   }
+
+function refObjects() {
+  var material1 = new THREE.MeshPhongMaterial({
+        color:0xFF69B4
+      });
+
+  var geometry1 = new THREE.SphereGeometry( 4, 2 );
+  var refgeo = new THREE.Mesh( geometry1, material1 );
+  refgeo.position.x = -1.0;
+
+  //set( 0.0, 0.0, 6.0 );
+
+  scene.add( refgeo );
+}
+
 
   initLeapPeerHand();
 
@@ -265,8 +281,6 @@ function update() {
 //    fingers[0].points[0].position.z = position.z;
 
 //    console.log( 'fingers:', fingers );
-
-
 
 function animateTrackingData() {
 
