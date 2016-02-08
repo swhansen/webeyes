@@ -118,7 +118,7 @@ function initLeapPeerHand() {
 
     // Setting up our  (transparent background )
 
-    renderer = new THREE.WebGLRenderer( { canvas:leapshpere, alpha: true } );
+    renderer = new THREE.WebGLRenderer( { canvas:container, alpha: true } );
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
    // container.appendChild( renderer.domElement );
