@@ -1,5 +1,7 @@
 
 
+var output = document.getElementById('output');
+
 var container = document.getElementById( 'leapfull' );
 
 var lCanvas = document.getElementById( 'leapcanvas' );
@@ -80,7 +82,6 @@ initLeapPeerHand();
   animate();
 
 function initLeapPeerHand() {
-
 
 //  var lCanvas = document.getElementById( 'leapcanvas' );
 // var leapctx = lCanvas.getContext( '2d' );
@@ -249,7 +250,9 @@ function update() {
         }
       }
     }
-    console.log( 'a finger joint', fingers[1].points[1].position );
+
+    output.innerHTML =  fingers[1].points[1].position;
+   // console.log( 'a finger joint', fingers[1].points[1].position );
   }
 
 // // var leapFinger = pointable;
