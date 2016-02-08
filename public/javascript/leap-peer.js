@@ -196,9 +196,9 @@ function refObjects() {
         color:0xFF69B4
       });
 
-  var geometry1 = new THREE.SphereGeometry( 4, 2 );
+  var geometry1 = new THREE.SphereGeometry( 1, 4 );
   var refgeo = new THREE.Mesh( geometry1, material1 );
-  refgeo.position.x = -10.0;
+  refgeo.position.x = -20.0;
 
   //set( 0.0, 0.0, 6.0 );
 
@@ -217,9 +217,9 @@ function leapToScene( position ){
     x /= frame.interactionBox.size[0];
     y /= frame.interactionBox.size[1];
     z /= frame.interactionBox.size[2];
-    x *= sceneSize;
-    y *= sceneSize;
-    z *= sceneSize;
+  //  x *= sceneSize;
+  //  y *= sceneSize;
+ //   z *= sceneSize;
     z -= sceneSize;
     return new THREE.Vector3( x , y , z );
   }
