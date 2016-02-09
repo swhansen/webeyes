@@ -63,7 +63,7 @@ var lCanvas = document.getElementById( 'leapcanvas' );
     [ 0xFF00FF , 0x3FEFF3 , 0x1FFB75 ],
     [ 0xDCFF55 , 0xAA6B9E , 0xFF6B75 ],
     [ 0xFFAA00 , 0xD0F7F3 , 0xFC8CD5 ],
-    [ 0xf7dda9 , 0xD0F7F3 , 0xFC8CD5 ],
+    [ 0x1078AC , 0xD0F7F3 , 0xFC8CD5 ],
   ];
 
   var geometries = [];
