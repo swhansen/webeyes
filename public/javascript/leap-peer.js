@@ -222,15 +222,12 @@ function leapToScene( position ){
     return new THREE.Vector3( x , y , z );
   }
 
-
 var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
-
 
 function update() {
 
   var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
-
 
     for ( fingersIndex = 0; fingersIndex < fingers.length; fingersIndex++ ) {  //big list of fingers
 
@@ -259,9 +256,10 @@ function update() {
       }
     }
 
-    renderer.render( scene, camera );
+ //   renderer.render( scene, camera );
 
   //  console.log( 'a finger joint', fingers[1].points[1].position );
+
   }
 
 function animateTrackingData() {
@@ -350,10 +348,10 @@ leapctx.stroke();
 
 //    frame = controller.frame();
 //    animateTrackingData();
-//    update();
+    update();
 //    console.log( 'at animate' );
-//    renderer.render( scene, camera );
-//    requestAnimationFrame( animate );
+    renderer.render( scene, camera );
+    requestAnimationFrame( animate );
 // }
 
   function onWindowResize(){
