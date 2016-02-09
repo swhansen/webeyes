@@ -13,6 +13,14 @@ var lCanvas = document.getElementById( 'leapcanvas' );
   lCanvas.width = lCanvas.offsetWidth;
   lCanvas.height = lCanvas.offsetHeight;
 
+  renderer = new THREE.WebGLRenderer( { canvas:container, alpha: true } );
+    renderer.setClearColor( 0xffffff, 0 );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+   // container.appendChild( renderer.domElement );
+
+     // Making sure our renderer is always the right size
+    window.addEventListener( 'resize', onWindowResize , false );
+
 // list the z-factors
 
 // $( '*' ).filter( function() {
@@ -116,13 +124,7 @@ function initLeapPeerHand() {
 
     // Setting up our  (transparent background )
 
-    renderer = new THREE.WebGLRenderer( { canvas:container, alpha: true } );
-    renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( window.innerWidth, window.innerHeight );
-   // container.appendChild( renderer.domElement );
 
-     // Making sure our renderer is always the right size
-    window.addEventListener( 'resize', onWindowResize , false );
 
     /*
       INITIALIZE AWESOMENESS!
