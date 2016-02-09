@@ -202,8 +202,6 @@ function refObjects() {
   refgeo.position.y = -4.0;
   refgeo.position.z = -25.0;
 
-  //set( 0.0, 0.0, 6.0 );
-
   scene.add( refgeo );
 }
 
@@ -267,6 +265,11 @@ function update() {
         }
       }
     }
+
+  refgeo.position.x = fingers[1].points[1].position.x
+  refgeo.position.y = fingers[1].points[1].position.y
+  refgeo.position.z = fingers[1].points[1].position.z
+
 
 renderer.render( scene, camera );
 
