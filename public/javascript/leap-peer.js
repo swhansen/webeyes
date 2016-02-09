@@ -1,4 +1,6 @@
 
+function initLeapPeerHand() {
+
 var refgeo;
 
 var container = document.getElementById( 'leapfull' );
@@ -76,11 +78,10 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 
 
 initLeapPeerHand();
-// Start the threejs animation
 
  // animate();
 
-function initLeapPeerHand() {
+//function initLeapPeerHand() {
 
 //  var lCanvas = document.getElementById( 'leapcanvas' );
 // var leapctx = lCanvas.getContext( '2d' );
@@ -179,7 +180,7 @@ function initLeapPeerHand() {
     // Creating dramatically more finger points than needed
     // just in case 4 hands are in the field
 
-    for( var i = 0 ; i < 20; i++ ){
+    for( var i = 0 ; i < 10; i++ ){
       var finger = {};
       finger.points = [];
       for( var j = 0; j < geometries.length; j++ ){
@@ -271,22 +272,11 @@ function update() {
   refgeo.position.z = fingers[1].points[3].position.z
 
 
-renderer.render( scene, camera );
+    renderer.render( scene, camera );
 
-    console.log( 'a finger joint', fingers[1].points[1].position );
+  //  console.log( 'a finger joint', fingers[1].points[1].position );
   }
 
-// // var leapFinger = pointable;
-//   var finger = fingers[0];
-
-//    position = leapToScene( pointable.stabilizedTipPosition );
-//  //  console.log( 'position:', position );
-
-//    fingers[0].points[0].position.x = position.x;
-//    fingers[0].points[0].position.y = position.y;
-//    fingers[0].points[0].position.z = position.z;
-
-//    console.log( 'fingers:', fingers );
 
 function animateTrackingData() {
 
