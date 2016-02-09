@@ -24,13 +24,6 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-//  socketServer.on( 'leapShare', function( data ) {
-//    //console.log( 'at runLeap-frame:', JSON.parse( data ) );
-//    frame = JSON.parse( data );
-//    animateTrackingData();
-////    update();
-//    } );
-
 // Global Variables for THREE.JS
 
   var container, camera, scene, renderer;
@@ -202,7 +195,7 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 function update() {
 
-  var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
+  var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'stabilizedTipPosition' ];
 
    for ( fingersIndex = 0; fingersIndex < fingers.length; fingersIndex++ ) {  //big list of fingers
 
