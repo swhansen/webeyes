@@ -196,7 +196,7 @@ function refObjects() {
         color:0xFF69B4
       });
 
-  var geometry1 = new THREE.SphereGeometry( 1, 4 );
+  var geometry1 = new THREE.SphereGeometry( 4, 4 );
   var refgeo = new THREE.Mesh( geometry1, material1 );
   refgeo.position.x = -20.0;
   refgeo.position.y = -4.0;
