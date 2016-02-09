@@ -17,15 +17,15 @@ var leapPeerWindow = document.getElementById( 'leapfull' );
 
 // list the z-factors
 
- $( '*' ).filter( function() {
-   return $( this ).css( 'z-index' ) >= 10;
- } ).each( function() {
-   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
- } );
+// $( '*' ).filter( function() {
+//   return $( this ).css( 'z-index' ) >= 10;
+// } ).each( function() {
+//   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+// } );
 
 // Global Variables for THREE.JS
 
-  var leapPeerWindow, camera, scene, renderer;
+  var  camera, scene, renderer;
 
   // Global variable for leap
 
