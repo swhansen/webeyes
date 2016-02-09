@@ -1,5 +1,8 @@
 
-var refgeo;
+//TODO rename container
+//      size window for main display
+//      correct z factors for side menus
+//      gestures
 
 var container = document.getElementById( 'leapfull' );
 
@@ -27,7 +30,6 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 //    animateTrackingData();
 ////    update();
 //    } );
-
 
 // Global Variables for THREE.JS
 
@@ -74,9 +76,7 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 
   var fingers = [];
 
-//initLeapPeerHand();
-
- // animate();
+// called from focus user through util.js
 
 function initLeapPeerHand() {
 
@@ -102,15 +102,12 @@ function initLeapPeerHand() {
 
     camera.position.z = sceneSize;
 
-  // Getting the container in the right location
- //   container = document.createElement( 'div' );
     container.style.width      = '100%';
     container.style.height     = '100%';
     container.style.position   = 'absolute';
     container.style.top        = '0px';
     container.style.left       = '0px';
     container.style.zIndex = 10;
-   // container.style.backgroundColor = 'transparent';
 
     //document.body.appendChild( container );
 
@@ -119,14 +116,9 @@ function initLeapPeerHand() {
     renderer = new THREE.WebGLRenderer( { canvas:container, alpha: true } );
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
-   // container.appendChild( renderer.domElement );
 
-     // Making sure our renderer is always the right size
     window.addEventListener( 'resize', onWindowResize , false );
 
-    /*
-      INITIALIZE AWESOMENESS!
-    */
     initLights();
     initMaterials();
     initGeometry();
@@ -139,8 +131,6 @@ function initLeapPeerHand() {
       var l = lightArray[i];
       var light = new THREE.DirectionalLight( l[0] , 0.5 );
       light.position.set( l[1][0] , l[1][1]  , l[1][2]  );
-      // Making sure that the light is part of
-      // Whats getting rendered
       scene.add( light );
     }
   }
@@ -150,8 +140,10 @@ function initLeapPeerHand() {
   function initMaterials(){
     for( var i = 0; i < fingerMaterialArray.length; i++ ){
       var fM = fingerMaterialArray[i];
+
       // Uses the parts of the finger material array to assign
       // an aesthetic material
+
       var material = new THREE.MeshPhongMaterial({
         color:                 fM[0],
         specular:              fM[1],
@@ -178,9 +170,6 @@ function initLeapPeerHand() {
 
   function initFingers(){
 
-    // Creating dramatically more finger points than needed
-    // just in case 4 hands are in the field
-
     for( var i = 0 ; i < 10; i++ ){
       var finger = {};
       finger.points = [];
@@ -192,20 +181,6 @@ function initLeapPeerHand() {
       fingers.push( finger );
     }
   }
-
-//function refObjects() {
-//  var material1 = new THREE.MeshPhongMaterial({
-//        color:0xFF69B4
-//      });
-//
-//  var geometry1 = new THREE.SphereGeometry( 4, 4 );
-//  refgeo = new THREE.Mesh( geometry1, material1 );
-//  refgeo.position.x = -20.0;
-//  refgeo.position.y = -4.0;
-//  refgeo.position.z = -25.0;
-//
-//  scene.add( refgeo );
-//}
 
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
@@ -222,7 +197,6 @@ function leapToScene( position ){
     return new THREE.Vector3( x , y , z );
   }
 
-
 var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
@@ -230,37 +204,33 @@ function update() {
 
   var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition' ];
 
-    for ( fingersIndex = 0; fingersIndex < fingers.length; fingersIndex++ ) {  //big list of fingers
+   for ( fingersIndex = 0; fingersIndex < fingers.length; fingersIndex++ ) {  //big list of fingers
 
-      if ( frame.pointables[ fingersIndex ] ) {  // pointables on a finger exist
+     if ( frame.pointables[ fingersIndex ] ) {  // pointables on a finger exist
 
-      var joints = frame.pointables[ fingersIndex ];  //  leap joint pointables[i]
+       var joints = frame.pointables[ fingersIndex ];  //  leap joint pointables[i]
 
-      _.forEach( jointList, function( jointName, index ) {  // leap - (carpPosition, 0)
+       _.forEach( jointList, function( jointName, index ) {  // leap - (carpPosition, 0)
 
-        var jointPos = joints[ jointName ];  //array location
+           var jointPos = joints[ jointName ];  //array location
+           position = leapToScene( jointPos );  // position of leap joint - transformed
 
-        position = leapToScene( jointPos );  // position of leap joint - transformed
-//
-// assign the joint vector to the three fingers
-//
-        fingers[ fingersIndex ].points[ index ].position.x = position.x;
-        fingers[ fingersIndex ].points[ index] .position.y = position.y;
-        fingers[ fingersIndex ].points[ index ].position.z = position.z;
+           fingers[ fingersIndex ].points[ index ].position.x = position.x;
+           fingers[ fingersIndex ].points[ index] .position.y = position.y;
+           fingers[ fingersIndex ].points[ index ].position.z = position.z;
+         } );
+     } else {
+       var finger = fingers[ fingersIndex ];
+       for( var j = 0; j < finger.points.length; j++ ){
+             finger.points[j].position.x = sceneSize * 100;
+       }
+     }
+   }
 
-      } );
-    } else {
-      var finger = fingers[ fingersIndex ];
-      for( var j = 0; j < finger.points.length; j++ ){
-            finger.points[j].position.x = sceneSize * 100;
-        }
-      }
-    }
-
-    renderer.render( scene, camera );
+   renderer.render( scene, camera );
 
   //  console.log( 'a finger joint', fingers[1].points[1].position );
-  }
+}
 
 function animateTrackingData() {
 
