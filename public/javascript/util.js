@@ -94,7 +94,7 @@ socketServer.on('utility', function(data) {
     break;
     case 'leapClientInit':
     console.log( 'util call to loadLeap-peer' );
-    if ( !userContext.isSessionInitiator ) {
+    if ( !userContext.isLeap ) {
         initLeapPeerHand();
       }
     break;
