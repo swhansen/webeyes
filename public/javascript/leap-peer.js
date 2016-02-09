@@ -6,7 +6,7 @@
 
 var leapPeerWindow = document.getElementById( 'leapfull' );
 
-document.getElementById( 'leapfull' ).className = 'leapcenter';
+//document.getElementById( 'leapfull' ).className = 'leapcenter';
 
 // var lCanvas = document.getElementById( 'leapcanvas' );
 // var leapctx = lCanvas.getContext( '2d' );
