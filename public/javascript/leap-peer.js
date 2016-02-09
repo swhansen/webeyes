@@ -13,14 +13,6 @@ var lCanvas = document.getElementById( 'leapcanvas' );
   lCanvas.width = lCanvas.offsetWidth;
   lCanvas.height = lCanvas.offsetHeight;
 
-  renderer = new THREE.WebGLRenderer( { canvas:container, alpha: true } );
-    renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( window.innerWidth, window.innerHeight );
-   // container.appendChild( renderer.domElement );
-
-     // Making sure our renderer is always the right size
-    window.addEventListener( 'resize', onWindowResize , false );
-
 // list the z-factors
 
 // $( '*' ).filter( function() {
@@ -84,7 +76,7 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 
 //initLeapPeerHand();
 
-  animate();
+ // animate();
 
 function initLeapPeerHand() {
 
@@ -124,7 +116,13 @@ function initLeapPeerHand() {
 
     // Setting up our  (transparent background )
 
+    renderer = new THREE.WebGLRenderer( { canvas:container, alpha: true } );
+    renderer.setClearColor( 0xffffff, 0 );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+   // container.appendChild( renderer.domElement );
 
+     // Making sure our renderer is always the right size
+    window.addEventListener( 'resize', onWindowResize , false );
 
     /*
       INITIALIZE AWESOMENESS!
@@ -224,6 +222,7 @@ function leapToScene( position ){
     return new THREE.Vector3( x , y , z );
   }
 
+
 var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
@@ -258,10 +257,9 @@ function update() {
       }
     }
 
- //   renderer.render( scene, camera );
+    renderer.render( scene, camera );
 
   //  console.log( 'a finger joint', fingers[1].points[1].position );
-
   }
 
 function animateTrackingData() {
@@ -346,15 +344,15 @@ leapctx.stroke();
     update();
     } );
 
-function animate() {
+//function animate() {
 
 //    frame = controller.frame();
 //    animateTrackingData();
-    update();
+//    update();
 //    console.log( 'at animate' );
-    renderer.render( scene, camera );
-    requestAnimationFrame( animate );
- }
+//    renderer.render( scene, camera );
+//    requestAnimationFrame( animate );
+// }
 
   function onWindowResize(){
     camera.aspect = window.innerWidth / window.innerHeight;
