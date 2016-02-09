@@ -63,6 +63,7 @@ var lCanvas = document.getElementById( 'leapcanvas' );
     [ 0xFF00FF , 0x3FEFF3 , 0x1FFB75 ],
     [ 0xDCFF55 , 0xAA6B9E , 0xFF6B75 ],
     [ 0xFFAA00 , 0xD0F7F3 , 0xFC8CD5 ],
+    [ 0xFFAA00 , 0xD0F7F3 , 0xFC8CD5 ],
   ];
 
   var geometries = [];
@@ -153,7 +154,7 @@ function initLeapPeerHand() {
   // as they get closer to the tip
 
   function initGeometry(){
-    for( var i = 0; i < 4; i++ ){
+    for( var i = 0; i < 5; i++ ){
       var size = sceneSize / ( 25  + ( 2 * ( i + 1 ) ));
       var geometry = new THREE.IcosahedronGeometry( size , 2 );
 
