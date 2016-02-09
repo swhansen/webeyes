@@ -131,7 +131,7 @@ function initLeapPeerHand() {
     initMaterials();
     initGeometry();
     initFingers();
-    refObjects();
+    //refObjects();
   }
 
    function initLights(){
@@ -148,25 +148,30 @@ function initLeapPeerHand() {
       scene.add( light );
     }
   }
-  // Creates the proper materials to use for creating the fingers
+ // Creates the proper materials to use for creating the fingers
   function initMaterials(){
     for( var i = 0; i < fingerMaterialArray.length; i++ ){
       var fM = fingerMaterialArray[i];
       // Uses the parts of the finger material array to assign
       // an aesthetic material
       var material = new THREE.MeshPhongMaterial({
-        color:0xFF69B4
+        color:                 fM[0],
+        specular:              fM[1],
+        emissive:              fM[2],
+        shininess:                10,
+        shading:    THREE.FlatShading
       });
       fingerMaterials.push( material );
     }
   }
+
   // Creates all the geometries we want,
   // In this case, spheres that get slightly smaller
   // as they get closer to the tip
   function initGeometry(){
     for( var i = 0; i < 4; i++ ){
       var size = sceneSize / ( 20  + ( 2 * ( i + 1 ) ));
-      var geometry = new THREE.SphereGeometry( size , 2 );
+      var geometry = new THREE.IcosahedronGeometry( size , 2 );
 
       geometries.push( geometry );
     }
@@ -189,19 +194,19 @@ function initLeapPeerHand() {
     }
   }
 
-function refObjects() {
-  var material1 = new THREE.MeshPhongMaterial({
-        color:0xFF69B4
-      });
-
-  var geometry1 = new THREE.SphereGeometry( 4, 4 );
-  refgeo = new THREE.Mesh( geometry1, material1 );
-  refgeo.position.x = -20.0;
-  refgeo.position.y = -4.0;
-  refgeo.position.z = -25.0;
-
-  scene.add( refgeo );
-}
+//function refObjects() {
+//  var material1 = new THREE.MeshPhongMaterial({
+//        color:0xFF69B4
+//      });
+//
+//  var geometry1 = new THREE.SphereGeometry( 4, 4 );
+//  refgeo = new THREE.Mesh( geometry1, material1 );
+//  refgeo.position.x = -20.0;
+//  refgeo.position.y = -4.0;
+//  refgeo.position.z = -25.0;
+//
+//  scene.add( refgeo );
+//}
 
 
 //  initLeapPeerHand();
