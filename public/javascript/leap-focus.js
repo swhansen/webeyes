@@ -19,6 +19,10 @@ function emitLeap( data ) {
 
     controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); });
 
+    cointroller.on( 'gesture', function( gesture ){
+      console.log( 'gesture detected:', gesture );
+    } );
+
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
