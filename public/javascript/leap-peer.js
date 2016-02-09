@@ -1,6 +1,4 @@
 
-function initLeapPeerHand() {
-
 var refgeo;
 
 var container = document.getElementById( 'leapfull' );
@@ -77,11 +75,11 @@ var lCanvas = document.getElementById( 'leapcanvas' );
   var fingers = [];
 
 
-initLeapPeerHand();
+//initLeapPeerHand();
 
  // animate();
 
-//function initLeapPeerHand() {
+function initLeapPeerHand() {
 
 //  var lCanvas = document.getElementById( 'leapcanvas' );
 // var leapctx = lCanvas.getContext( '2d' );
@@ -276,7 +274,6 @@ function update() {
 
   //  console.log( 'a finger joint', fingers[1].points[1].position );
   }
-
 
 function animateTrackingData() {
 
