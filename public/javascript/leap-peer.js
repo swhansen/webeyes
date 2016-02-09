@@ -39,7 +39,6 @@ document.getElementById( 'leapfull' ).className = 'leapcenter';
   // of every light we are creating
 
   var lightArray = [
-
     [ 0x0F4DA8 , [  1 ,  0 ,  0 ] ],
     [ 0x437DD4 , [ -1 ,  0 ,  0 ] ],
     [ 0x6A94D4 , [  0 ,  1 ,  0 ] ],
@@ -107,7 +106,7 @@ function initLeapPeerHand() {
     // Setting up our  (transparent background )
 
     renderer = new THREE.WebGLRenderer( { canvas:leapPeerWindow, alpha: true } );
-    renderer.setClearColor( 0xffffff, 0 );
+   // renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
     window.addEventListener( 'resize', onWindowResize , false );
@@ -116,7 +115,6 @@ function initLeapPeerHand() {
     initMaterials();
     initGeometry();
     initFingers();
-    //refObjects();
   }
 
    function initLights(){
