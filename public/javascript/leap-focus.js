@@ -9,7 +9,7 @@ $( '*' ).filter( function() {
  } );
 
 
- var leapfull = document.getElementById( 'leapfull' );
+ var leapFull = document.getElementById( 'leapfull' );
 
   var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
   var armMeshes = [];
@@ -32,8 +32,20 @@ function emitLeap( data ) {
       console.log( 'gesture detected:', gesture );
     } );
 
-    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
-    renderer.setSize( window.innerWidth, window.innerHeight );
+
+
+
+
+
+
+    renderer = new THREE.WebGLRenderer( { canvas: leapFull, alpha: true }  );
+
+  renderer.setSize( box0Width, box0Width );
+
+  renderer.setClearColor( 0x000000, 0 );
+
+
+ //   renderer.setSize( window.innerWidth, window.innerHeight );
 
 camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
     camera.position.set( -500, 500, 500 );
