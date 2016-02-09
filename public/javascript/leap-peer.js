@@ -342,7 +342,7 @@ leapctx.stroke();
 
   socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
-    animateTrackingData();
+//    animateTrackingData();
     update();
     } );
 
