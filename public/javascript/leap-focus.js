@@ -11,6 +11,13 @@ function leapFocus() {
 
  var leapFull = document.getElementById( 'leapfull' );
 
+    leapFull.style.width      = '100%';
+    leapFull.style.height     = '100%';
+    leapFull.style.position   = 'absolute';
+    leapFull.style.top        = '0px';
+    leapFull.style.left       = '0px';
+    leapFull.style.zIndex = 10;
+
   var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
   var armMeshes = [];
   var boneMeshes = [];
