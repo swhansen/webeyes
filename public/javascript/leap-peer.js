@@ -269,9 +269,9 @@ function update() {
       }
     }
 
-  refgeo.position.x = fingers[1].points[3].position.x
-  refgeo.position.y = fingers[1].points[3].position.y
-  refgeo.position.z = fingers[1].points[3].position.z
+ // refgeo.position.x = fingers[1].points[3].position.x
+ // refgeo.position.y = fingers[1].points[3].position.y
+ // refgeo.position.z = fingers[1].points[3].position.z
 
 
     renderer.render( scene, camera );
