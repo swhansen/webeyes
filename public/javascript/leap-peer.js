@@ -303,7 +303,6 @@ function update() {
 // }
 
   socketServer.on( 'leapShare', function( data ) {
-    console.log(data);
     frame = JSON.parse( data );
 //    animateTrackingData();
     update();
