@@ -135,12 +135,8 @@ function initLeapPeerHand() {
   }
 
    function initLights(){
-    // We are creating a directional light,
-    // coloring and placing it according to the light array
     for( var i = 0; i < lightArray.length; i++ ){
-      // The parameters for the light
       var l = lightArray[i];
-      // Creating the light
       var light = new THREE.DirectionalLight( l[0] , 0.5 );
       light.position.set( l[1][0] , l[1][1]  , l[1][2]  );
       // Making sure that the light is part of
@@ -148,7 +144,9 @@ function initLeapPeerHand() {
       scene.add( light );
     }
   }
+
  // Creates the proper materials to use for creating the fingers
+
   function initMaterials(){
     for( var i = 0; i < fingerMaterialArray.length; i++ ){
       var fM = fingerMaterialArray[i];
@@ -168,9 +166,10 @@ function initLeapPeerHand() {
   // Creates all the geometries we want,
   // In this case, spheres that get slightly smaller
   // as they get closer to the tip
+
   function initGeometry(){
     for( var i = 0; i < 4; i++ ){
-      var size = sceneSize / ( 20  + ( 2 * ( i + 1 ) ));
+      var size = sceneSize / ( 25  + ( 2 * ( i + 1 ) ));
       var geometry = new THREE.IcosahedronGeometry( size , 2 );
 
       geometries.push( geometry );
@@ -208,10 +207,6 @@ function initLeapPeerHand() {
 //  scene.add( refgeo );
 //}
 
-
-//  initLeapPeerHand();
-
-
 function leapToScene( position ){
     var x = position[0] - frame.interactionBox.center[0];
     var y = position[1] - frame.interactionBox.center[1];
@@ -241,16 +236,11 @@ function update() {
 
       if ( frame.pointables[ fingersIndex ] ) {  // pointables on a finger exist
 
-
-   // _.forEach( frame.pointables, function( pointable, pointableIndex ) {    // all the pointable (object, index)
-
       var joints = frame.pointables[ fingersIndex ];  //  leap joint pointables[i]
 
       _.forEach( jointList, function( jointName, index ) {  // leap - (carpPosition, 0)
 
         var jointPos = joints[ jointName ];  //array location
-
-    //    console.log( threeFingerIndex, jointName, pointableIndex, jointPos );
 
         position = leapToScene( jointPos );  // position of leap joint - transformed
 //
@@ -268,11 +258,6 @@ function update() {
         }
       }
     }
-
- // refgeo.position.x = fingers[1].points[3].position.x
- // refgeo.position.y = fingers[1].points[3].position.y
- // refgeo.position.z = fingers[1].points[3].position.z
-
 
     renderer.render( scene, camera );
 
