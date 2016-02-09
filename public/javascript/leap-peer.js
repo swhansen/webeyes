@@ -196,7 +196,7 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 function update() {
 
-  var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'stabilizedTipPosition' ];
+  var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'stabilizedTipPosition' ];
 
    for ( fingersIndex = 0; fingersIndex < fingers.length; fingersIndex++ ) {  //big list of fingers
 
