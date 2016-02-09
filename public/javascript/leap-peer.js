@@ -1,5 +1,5 @@
 
-//var refgeo;
+var refgeo;
 
 var container = document.getElementById( 'leapfull' );
 
@@ -195,7 +195,7 @@ function refObjects() {
       });
 
   var geometry1 = new THREE.SphereGeometry( 4, 4 );
-  var refgeo = new THREE.Mesh( geometry1, material1 );
+  refgeo = new THREE.Mesh( geometry1, material1 );
   refgeo.position.x = -20.0;
   refgeo.position.y = -4.0;
   refgeo.position.z = -25.0;
@@ -204,7 +204,7 @@ function refObjects() {
 }
 
 
-  initLeapPeerHand();
+//  initLeapPeerHand();
 
 
 function leapToScene( position ){
