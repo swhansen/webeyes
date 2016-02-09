@@ -1,8 +1,6 @@
 
 function leapFocus() {
 
-  console.log( ' at leepFocus' );
-
  var leapfull = document.getElementById( 'leapfull' );
 
   var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
@@ -65,28 +63,18 @@ camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
-
-
       for ( var finger of hand.fingers ) {
-
-
         for ( var bone of finger.bones ) {
-
           if ( countBones++ === 0 ) { continue; }
-
           var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
-
           updateMesh( bone, boneMesh );
-
         }
-
       }
 
       var arm = hand.arm;
       var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
       updateMesh( arm, armMesh );
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-
     }
 
     renderer.render( scene, camera );
