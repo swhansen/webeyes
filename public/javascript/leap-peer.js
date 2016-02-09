@@ -17,11 +17,11 @@ document.getElementById( 'leapfull' ).className = 'leapcenter';
 
 // list the z-factors
 
-// $( '*' ).filter( function() {
-//   return $( this ).css( 'z-index' ) >= 10;
-// } ).each( function() {
-//   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
-// } );
+ $( '*' ).filter( function() {
+   return $( this ).css( 'z-index' ) >= 10;
+ } ).each( function() {
+   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+ } );
 
 // Global Variables for THREE.JS
 

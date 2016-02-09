@@ -1,6 +1,14 @@
 
 function leapFocus() {
 
+
+$( '*' ).filter( function() {
+   return $( this ).css( 'z-index' ) >= 10;
+ } ).each( function() {
+   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+ } );
+
+
  var leapfull = document.getElementById( 'leapfull' );
 
   var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
