@@ -32,7 +32,7 @@ function emitLeap( data ) {
       console.log( 'gesture detected:', gesture );
     } );
 
-    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1, antialias: true, clearColor: 0xffffff }  );
+    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: 1 }  );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
 camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
