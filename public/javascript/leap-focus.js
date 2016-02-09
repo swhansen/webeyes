@@ -32,12 +32,12 @@ function emitLeap( data ) {
     socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
   }
 
-    controller.on( 'beforeFrameCreated', function( frameData ) {
-        emitLeap (frameData); });
+//  controller.on( 'beforeFrameCreated', function( frameData ) {
+//      emitLeap (frameData); });
 
-    controller.on( 'gesture', function( gesture ) {
-      console.log( 'gesture detected:', gesture );
-    } );
+//  controller.on( 'gesture', function( gesture ) {
+//    console.log( 'gesture detected:', gesture );
+//  } );
 
     renderer = new THREE.WebGLRenderer( { canvas: leapFull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
