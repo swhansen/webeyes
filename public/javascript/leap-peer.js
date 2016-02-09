@@ -76,7 +76,7 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 
 //initLeapPeerHand();
 
- // animate();
+  animate();
 
 function initLeapPeerHand() {
 
@@ -344,7 +344,7 @@ leapctx.stroke();
     update();
     } );
 
-//function animate() {
+function animate() {
 
 //    frame = controller.frame();
 //    animateTrackingData();
@@ -352,7 +352,7 @@ leapctx.stroke();
 //    console.log( 'at animate' );
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
-// }
+ }
 
   function onWindowResize(){
     camera.aspect = window.innerWidth / window.innerHeight;
