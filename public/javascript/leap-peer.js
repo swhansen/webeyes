@@ -1,5 +1,5 @@
 
-//TODO rename leapPeerWindow
+//TODO
 //      size window for main display
 //      correct z factors for side menus
 //      gestures
