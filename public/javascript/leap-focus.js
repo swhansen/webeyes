@@ -19,7 +19,7 @@ function emitLeap( data ) {
 
     controller.on( 'beforeFrameCreated', function( frameData ) { emitLeap (frameData); });
 
-    cointroller.on( 'gesture', function( gesture ){
+    controller.on( 'gesture', function( gesture ){
       console.log( 'gesture detected:', gesture );
     } );
 
