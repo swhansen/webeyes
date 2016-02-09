@@ -14,16 +14,11 @@
         z-index:  20;
       }
 
-#leapcanvas {position:absolute;
-
-      z-index: 15;
-    }
-
 #leapfull {position:absolute;
      left:0;
       width:100%;
       min-height:100%;
-      z-index: 15;
+      z-index: 8;
     }
 
 #message-bar-container {
