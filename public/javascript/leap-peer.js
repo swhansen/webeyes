@@ -1,5 +1,5 @@
 
-var refgeo;
+//var refgeo;
 
 var container = document.getElementById( 'leapfull' );
 
@@ -74,7 +74,6 @@ var lCanvas = document.getElementById( 'leapcanvas' );
 
   var fingers = [];
 
-
 //initLeapPeerHand();
 
  // animate();
@@ -103,7 +102,7 @@ function initLeapPeerHand() {
 
     camera.position.z = sceneSize;
 
-    // Getting the container in the right location
+  // Getting the container in the right location
  //   container = document.createElement( 'div' );
     container.style.width      = '100%';
     container.style.height     = '100%';
@@ -196,7 +195,7 @@ function refObjects() {
       });
 
   var geometry1 = new THREE.SphereGeometry( 4, 4 );
-  refgeo = new THREE.Mesh( geometry1, material1 );
+  var refgeo = new THREE.Mesh( geometry1, material1 );
   refgeo.position.x = -20.0;
   refgeo.position.y = -4.0;
   refgeo.position.z = -25.0;
