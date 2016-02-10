@@ -5,7 +5,7 @@ var fullscreen = document.getElementById( 'leapfull');
 
   Leap.loop()
     .use('boneHand', {
-      targetEl: leappane,
+      targetEl: fullscreen,
       arm: true,
       opacity: 0.5
     } );

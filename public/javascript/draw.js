@@ -135,7 +135,6 @@ function toolPencil() {
     lastx = data.x;
     lasty = data.y;
     data.pointerState = 'pointerDown';
-    console.log( 'mouseDown:', ev._x, ev._y );
     emitDraw( data );
   };
 
@@ -153,7 +152,6 @@ function toolPencil() {
       lastx = data.x;
       lasty = data.y;
       data.pointerState = 'pointerMove';
-      console.log( 'mouseMove:', ev._x, ev._y );
       emitDraw( data );
       }
     }
@@ -164,7 +162,6 @@ function toolPencil() {
       data.x = Math.round( ev._x );
       data.y = Math.round( ev._y );
       data.pointerState = 'pointerUp';
-      console.log( 'mouseUp:', ev._x, ev._y );
       emitDraw( data );
       tool.started = false;
     }
