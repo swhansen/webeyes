@@ -1,11 +1,5 @@
 
 
-
-
-
-
-
-
 function leapFocus() {
 
 //$( '*' ).filter( function() {
@@ -31,7 +25,8 @@ function leapFocus() {
     var renderer, scene, camera, controls;
 
     var controller = Leap.loop( { background: false, loopWhileDisconnected: true }, leapAnimate );
-    controller.connect();
+
+    //controller.connect();
 
     function emitLeap( data ) {
       var sessionId = socketServer.sessionid;
@@ -41,9 +36,9 @@ function leapFocus() {
     controller.on( 'beforeFrameCreated', function( frameData ) {
         emitLeap (frameData); });
 
-    controller.on( 'gesture', function( gesture ) {
-    console.log( 'gesture detected:', gesture );
-      } );
+   // controller.on( 'gesture', function( gesture ) {
+  //  console.log( 'gesture detected:', gesture );
+  //    } );
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
