@@ -117,11 +117,6 @@ $( document ).ready( function() {
   } );
 } );
 
-//  Utility to make a dom element(e.g., video canvas, etc) mouse sensitive
-//  - auto, none
-//  - all other events are SVG realted
-
-
 $( function() {
   $( '#leapButton' ).click( function() {
 
@@ -138,11 +133,11 @@ $( function() {
 
   // Tell everyone to initialize Leap
 
-//  var sessionId = socketServer.sessionid;
-//      socketServer.emit( 'utility', 'leapClientInit', sessionId );
-//
-//    var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
-//    messageBar( msgString );
+  var sessionId = socketServer.sessionid;
+      socketServer.emit( 'utility', 'leapClientInit', sessionId );
+
+    var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
+    messageBar( msgString );
     }
   );
 } );
