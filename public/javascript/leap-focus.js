@@ -1,6 +1,12 @@
 
-function leapFocus() {
 
+
+
+
+
+
+
+function leapFocus() {
 
 //$( '*' ).filter( function() {
 //   return $( this ).css( 'z-index' ) >= 10;
@@ -9,22 +15,22 @@ function leapFocus() {
 // } );
 
 
-// var leapFull = document.getElementById( 'leapfull' );
-//
-//    leapFull.style.width      = '100%';
-//    leapFull.style.height     = '100%';
-//    leapFull.style.position   = 'absolute';
-//    leapFull.style.top        = '0px';
-//    leapFull.style.left       = '0px';
-//    leapFull.style.zIndex = 10;
-//
+ var leapFull = document.getElementById( 'leapfull' );
+
+    leapFull.style.width      = '100%';
+    leapFull.style.height     = '100%';
+    leapFull.style.position   = 'absolute';
+    leapFull.style.top        = '0px';
+    leapFull.style.left       = '0px';
+    leapFull.style.zIndex = 10;
+
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
     var boneMeshes = [];
 
     var renderer, scene, camera, controls;
 
-    var controller = Leap.loop( {background: false}, leapAnimate );
+    var controller = Leap.loop( { background: false, loopWhileDisconnected: true }, leapAnimate( frame ) );
     controller.connect();
 
     function emitLeap( data ) {
