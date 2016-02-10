@@ -1,3 +1,6 @@
+
+function leapFocus() {
+
 var fullscreen = document.getElementById( 'leapfull');
 
   Leap.loop()
@@ -39,3 +42,4 @@ var fullscreen = document.getElementById( 'leapfull');
       document.querySelector('canvas').style.display = 'none';
     }
   });
+}
