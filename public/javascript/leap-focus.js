@@ -24,7 +24,7 @@ function leapFocus() {
 //
 //  var renderer, scene, camera, controls;
 
-    var controller = Leap.loop( {background: true}, leapAnimate );
+    var controller = Leap.loop( {background: false}, leapAnimate );
     controller.connect();
 
     function emitLeap( data ) {
@@ -37,68 +37,68 @@ function leapFocus() {
 
     controller.on( 'gesture', function( gesture ) {
     console.log( 'gesture detected:', gesture );
-    } );
+      } );
 
-//   renderer = new THREE.WebGLRenderer( { canvas: leapFull, alpha: true }  );
-//   renderer.setClearColor( 0xffffff, 0 );
-//   renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer = new THREE.WebGLRenderer( { canvas: leapFull, alpha: true }  );
+    renderer.setClearColor( 0xffffff, 0 );
+    renderer.setSize( window.innerWidth, window.innerHeight );
 
-//   camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
-//   camera.position.set( -500, 500, 500 );
+    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
+    camera.position.set( -500, 500, 500 );
 
-//   controls = new THREE.OrbitControls( camera, renderer.domElement );
-//   controls.maxDistance = 1000;
+    controls = new THREE.OrbitControls( camera, renderer.domElement );
+    controls.maxDistance = 1000;
 
-//   scene = new THREE.Scene();
+    scene = new THREE.Scene();
 
-// function onWindowResize() {
-//   camera.aspect = window.innerWidth / window.innerHeight;
-//   camera.updateProjectionMatrix();
-//   renderer.setSize( window.innerWidth, window.innerHeight );
-// }
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+  }
 
-// function addMesh( meshes ) {
-//   var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-//   var material = new THREE.MeshNormalMaterial();
-//   var mesh = new THREE.Mesh( geometry, material );
-//   meshes.push( mesh );
-//   return mesh;
-// }
+  function addMesh( meshes ) {
+    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    var material = new THREE.MeshNormalMaterial();
+    var mesh = new THREE.Mesh( geometry, material );
+    meshes.push( mesh );
+    return mesh;
+  }
 
-// function updateMesh( bone, mesh ) {
-//     mesh.position.fromArray( bone.center() );
-//     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
-//     mesh.quaternion.multiply( baseBoneRotation );
-//     mesh.scale.set( bone.width, bone.width, bone.length );
-//     scene.add( mesh );
-// }
+  function updateMesh( bone, mesh ) {
+      mesh.position.fromArray( bone.center() );
+      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
+      mesh.quaternion.multiply( baseBoneRotation );
+      mesh.scale.set( bone.width, bone.width, bone.length );
+      scene.add( mesh );
+  }
 
-// function leapAnimate( frame ) {
+  function leapAnimate( frame ) {
 
-////console.log( 'leapFocus-frame:', frame );
+ //console.log( 'leapFocus-frame:', frame );
 
-//   var countBones = 0;
-//   var countArms = 0;
+    var countBones = 0;
+    var countArms = 0;
 
-//   armMeshes.forEach( function( item ) { scene.remove( item ); } );
-//   boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+    armMeshes.forEach( function( item ) { scene.remove( item ); } );
+    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
-//   for ( var hand of frame.hands ) {
-//     for ( var finger of hand.fingers ) {
-//       for ( var bone of finger.bones ) {
-//         if ( countBones++ === 0 ) { continue; }
-//         var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
-//         updateMesh( bone, boneMesh );
-//       }
-//     }
+    for ( var hand of frame.hands ) {
+      for ( var finger of hand.fingers ) {
+        for ( var bone of finger.bones ) {
+          if ( countBones++ === 0 ) { continue; }
+          var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
+          updateMesh( bone, boneMesh );
+        }
+      }
 
-//     var arm = hand.arm;
-//     var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
-//     updateMesh( arm, armMesh );
-//     armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-//   }
+      var arm = hand.arm;
+      var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
+      updateMesh( arm, armMesh );
+      armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
+    }
 
-//   renderer.render( scene, camera );
-//   controls.update();
-// }
+    renderer.render( scene, camera );
+    controls.update();
+  }
 }
