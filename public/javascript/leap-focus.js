@@ -39,7 +39,7 @@ function leapFocus() {
     console.log( 'gesture detected:', gesture );
       } );
 
-    renderer = new THREE.WebGLRenderer( { canvas: leapFull, alpha: true }  );
+    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
