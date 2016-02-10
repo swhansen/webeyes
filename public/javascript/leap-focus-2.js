@@ -1,7 +1,7 @@
 
 function leapFocus() {
 
-var fullscreen = document.getElementById( 'leapfull');
+var fullscreen = document.getElementById( 'leappane');
 
   Leap.loop()
     .use('boneHand', {
