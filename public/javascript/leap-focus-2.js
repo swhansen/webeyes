@@ -21,7 +21,6 @@ var fullscreen = document.getElementById( 'leappane');
     new THREE.MeshPhongMaterial({wireframe: false})
   );
 
-
   plane.scale.set(2,2,2);
   plane.position.set(0,200,-100);
 
@@ -34,12 +33,12 @@ var fullscreen = document.getElementById( 'leappane');
 
   var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-  Leap.loopController.on('handFound', function(hand) {
-    document.querySelector('canvas').style.display = 'block';
-
-  }).on('handLost', function(hand){
-    if (Leap.loopController.frame(0).hands.length === 0){
-      document.querySelector('canvas').style.display = 'none';
-    }
-  });
+//  Leap.loopController.on('handFound', function(hand) {
+//    document.querySelector('canvas').style.display = 'block';
+//
+//  }).on('handLost', function(hand){
+//    if (Leap.loopController.frame(0).hands.length === 0){
+//      document.querySelector('canvas').style.display = 'none';
+//    }
+//  } );
 }
