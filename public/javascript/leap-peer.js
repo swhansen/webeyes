@@ -4,7 +4,7 @@
 //      correct z factors for side menus
 //      gestures
 
-var leapPeerWindow = document.getElementById( 'leapfull' );
+var leapPeerWindow = document.getElementById( 'leappane' );
 
 //document.getElementById( 'leapfull' ).className = 'leapcenter';
 
@@ -94,18 +94,18 @@ function initLeapPeerHand() {
 
     camera.position.z = sceneSize;
 
- //  leapPeerWindow.style.width      = '100%';
- //  leapPeerWindow.style.height     = '100%';
- //  leapPeerWindow.style.position   = 'absolute';
- //  leapPeerWindow.style.top        = '0px';
- //  leapPeerWindow.style.left       = '0px';
- //  leapPeerWindow.style.zIndex = 10;
+    leapPeerWindow.style.width      = '100%';
+    leapPeerWindow.style.height     = '100%';
+    leapPeerWindow.style.position   = 'absolute';
+    leapPeerWindow.style.top        = '0px';
+    leapPeerWindow.style.left       = '0px';
+    leapPeerWindow.style.zIndex = 10;
 
     //document.body.appendChild( leapPeerWindow );
 
     // Setting up our  (transparent background )
 
-    renderer = new THREE.WebGLRenderer( { canvas:leapPeerWindow, alpha: true } );
+    renderer = new THREE.WebGLRenderer( { canvas:leapfull, alpha: true } );
 //    renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
