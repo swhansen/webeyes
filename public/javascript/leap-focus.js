@@ -18,11 +18,11 @@ function leapFocus() {
 //    leapFull.style.left       = '0px';
 //    leapFull.style.zIndex = 10;
 //
-//  var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
-//  var armMeshes = [];
-//  var boneMeshes = [];
-//
-//  var renderer, scene, camera, controls;
+    var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
+    var armMeshes = [];
+    var boneMeshes = [];
+
+    var renderer, scene, camera, controls;
 
     var controller = Leap.loop( {background: false}, leapAnimate );
     controller.connect();
