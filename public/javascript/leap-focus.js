@@ -30,7 +30,7 @@ function leapFocus() {
 
     var renderer, scene, camera, controls;
 
-    var controller = Leap.loop( { background: false, loopWhileDisconnected: true }, leapAnimate( frame ) );
+    var controller = Leap.loop( { background: false, loopWhileDisconnected: true }, leapAnimate );
     controller.connect();
 
     function emitLeap( data ) {
