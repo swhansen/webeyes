@@ -21,6 +21,13 @@
       z-index: 8;
     }
 
+    #leappane {position:absolute;
+     left:0;
+      width:100%;
+      min-height:100%;
+      z-index: 8;
+    }
+
 #message-bar-container {
     bottom: 0;
     position: fixed;
