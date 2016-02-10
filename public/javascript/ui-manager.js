@@ -138,11 +138,11 @@ $( function() {
 
   // Tell everyone to initialize Leap
 
-  var sessionId = socketServer.sessionid;
-      socketServer.emit( 'utility', 'leapClientInit', sessionId );
-
-    var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
-    messageBar( msgString );
+//  var sessionId = socketServer.sessionid;
+//      socketServer.emit( 'utility', 'leapClientInit', sessionId );
+//
+//    var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
+//    messageBar( msgString );
     }
   );
 } );
