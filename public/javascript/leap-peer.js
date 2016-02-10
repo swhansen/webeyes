@@ -4,7 +4,7 @@
 //      correct z factors for side menus
 //      gestures
 
-var leapPeerWindow = document.getElementById( 'leappane' );
+//var leapPeerWindow = document.getElementById( 'leappane' );
 
 //document.getElementById( 'leapfull' ).className = 'leapcenter';
 
@@ -93,6 +93,8 @@ function initLeapPeerHand() {
     // placing our camera position so it can see everything
 
     camera.position.z = sceneSize;
+
+    var leapPeerWindow = document.getElementById( 'leappane' );
 
     leapPeerWindow.style.width      = '100%';
     leapPeerWindow.style.height     = '100%';
