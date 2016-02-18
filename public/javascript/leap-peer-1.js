@@ -65,7 +65,7 @@ function initLeapPeerHand() {
   function leapAnimate( data ) {
 
     var frame = new Leap.Frame( data );
-    console.log('test frame:', myFrame );
+    console.log('test frame:', frame );
 
     var countBones = 0;
     var countArms = 0;
