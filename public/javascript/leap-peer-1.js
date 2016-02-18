@@ -3,6 +3,7 @@
 // a socket.io broadcast of raw JSON tracking data sent by leap-focus
 //
 
+
 function initLeapPeerHand() {
 
 //$( '*' ).filter( function() {
@@ -94,7 +95,7 @@ function initLeapPeerHand() {
 
 socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
-//    animateTrackingData();
+//    animateTrackingData( data );
     leapAnimate();
     } );
 
