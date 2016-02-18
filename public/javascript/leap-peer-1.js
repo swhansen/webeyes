@@ -38,7 +38,7 @@ function initLeapPeerHand() {
     controls.maxDistance = 1000;
 
     scene = new THREE.Scene();
-  }
+
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -98,4 +98,5 @@ socketServer.on( 'leapShare', function( data ) {
 //    animateTrackingData( data );
     leapAnimate( frame );
     } );
+}
 
