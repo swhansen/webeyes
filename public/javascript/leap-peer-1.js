@@ -1,15 +1,15 @@
 //
-// Implements a peers side Leap hand based on data from
-// a socket.io broadcast of raw JSON tracking data sent by leap-focus
+// Implements a peer side Leap hand based on raw tracking JSON data from
+// a socket.io broadcast sent by leap-focus
 //
 
 function initLeapPeerHand() {
 
-//$( '*' ).filter( function() {
-//   return $( this ).css( 'z-index' ) >= 10;
-// } ).each( function() {
-//   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
-// } );
+$( '*' ).filter( function() {
+   return $( this ).css( 'z-index' ) >= 10;
+ } ).each( function() {
+   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+ } );
 
  var leapFull = document.getElementById( 'leapfull' );
 
@@ -38,7 +38,6 @@ function initLeapPeerHand() {
 
     scene = new THREE.Scene();
 
-
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -64,8 +63,6 @@ function initLeapPeerHand() {
   function leapAnimate( data ) {
 
     var frame = new Leap.Frame( data );
-  //  console.log('test frame:', frame );
-
     var countBones = 0;
     var countArms = 0;
 
@@ -91,11 +88,9 @@ function initLeapPeerHand() {
     controls.update();
   }
 
-
 socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
 //    animateTrackingData( data );
     leapAnimate( frame );
     } );
 }
-
