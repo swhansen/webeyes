@@ -5,11 +5,11 @@
 
 function initLeapPeerHand() {
 
-$( '*' ).filter( function() {
-   return $( this ).css( 'z-index' ) >= 10;
- } ).each( function() {
-   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
- } );
+// $( '*' ).filter( function() {
+//    return $( this ).css( 'z-index' ) >= 10;
+//  } ).each( function() {
+//    console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+//  } );
 
  var leapFull = document.getElementById( 'leapfull' );
 

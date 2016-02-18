@@ -195,23 +195,11 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 function update() {
 
-
-
-
-
-  var myFrame = new Leap.Frame( frame );
+  // var myFrame = new Leap.Frame( frame );
   //console.log('test frame:', myFrame );
-
-  var myFingers = myFrame.fingers;
-  console.log( 'fingers:', myFingers );
-
-  console.log( 'fingers-bone-1.center:', myFingers.bones[1].center() );
-
-
-
-
-
-
+  //var myFingers = myFrame.fingers;
+  //console.log( 'fingers:', myFingers );
+  //console.log( 'fingers-bone-1.center:', myFingers.bones[1].center() );
 
   var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'stabilizedTipPosition' ];
 
