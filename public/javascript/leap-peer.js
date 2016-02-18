@@ -203,9 +203,9 @@ function update() {
   //console.log('test frame:', myFrame );
 
   var myFingers = myFrame.fingers;
- // console.log( 'fingers:', myFingers );
+  console.log( 'fingers:', myFingers );
 
-  console.log( 'fingers-bone-1.center:', myFingers[1].bones[1].center() );
+  console.log( 'fingers-bone-1.center:', myFingers.bones[1].center() );
 
 
 

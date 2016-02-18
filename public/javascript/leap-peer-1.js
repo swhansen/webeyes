@@ -3,7 +3,6 @@
 // a socket.io broadcast of raw JSON tracking data sent by leap-focus
 //
 
-
 function initLeapPeerHand() {
 
 //$( '*' ).filter( function() {
@@ -64,8 +63,8 @@ function initLeapPeerHand() {
 
   function leapAnimate( data ) {
 
-    var frame = new Leap.Frame( data );
-    console.log('test frame:', frame );
+  //  var frame = new Leap.Frame( data );
+  //  console.log('test frame:', frame );
 
     var countBones = 0;
     var countArms = 0;
