@@ -96,6 +96,6 @@ function initLeapPeerHand() {
 socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
 //    animateTrackingData( data );
-    leapAnimate();
+    leapAnimate( frame );
     } );
 
