@@ -195,7 +195,7 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 
 function update() {
 
-  var foo = new Leap.frame( frame );
+  var foo = new Leap.Frame( frame );
   console.log('test frame:', foo );
 
   var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'stabilizedTipPosition' ];
