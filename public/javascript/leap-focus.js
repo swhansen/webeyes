@@ -24,7 +24,7 @@ function leapFocus() {
 
     var renderer, scene, camera, controls;
 
-    var controller = Leap.loop( { background: false, loopWhileDisconnected: true }, leapAnimate );
+    var controller = Leap.loop( { background: false }, leapAnimate );
 
     //controller.connect();
 
@@ -75,8 +75,6 @@ function leapFocus() {
   }
 
   function leapAnimate( frame ) {
-
- //console.log( 'leapFocus-frame:', frame );
 
     var countBones = 0;
     var countArms = 0;

@@ -1,8 +1,8 @@
 
-//TODO
-//      size window for main display
-//      correct z factors for side menus
-//      gestures
+//
+//
+//  Implements Leap Spheres on raw tracking data from socket.io
+//
 
 //var leapPeerWindow = document.getElementById( 'leappane' );
 
@@ -194,6 +194,9 @@ var fingerNameMap = ['thumb', 'index', 'middle', 'ring', 'pinky'];
 //var fingerName = fingerNameMap[pointables[i].type];
 
 function update() {
+
+  var foo = new Leap.frame( frame );
+  console.log('test frame:', foo );
 
   var jointList = [ 'carpPosition', 'mcpPosition', 'pipPosition', 'dipPosition', 'stabilizedTipPosition' ];
 
