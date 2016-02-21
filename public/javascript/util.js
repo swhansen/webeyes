@@ -93,8 +93,8 @@ socketServer.on('utility', function(data) {
         loadAr( 'peer' );
     break;
     case 'leapClientInit':
-    console.log( 'util call to loadLeap-peer' );
-    if ( !userContext.isLeap ) {
+    // not the leap owner  an not mobile( performance )
+    if ( !userContext.isLeap && !userContext.mobile ) {
         initLeapPeerHand();
       }
     break;

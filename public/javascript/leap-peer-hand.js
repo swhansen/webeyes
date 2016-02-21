@@ -5,10 +5,6 @@
 
 function initLeapPeerHand() {
 
-// do not render hands on mobile device
-
-  if ( !userContext.mobile) {
-
 // $( '*' ).filter( function() {
 //    return $( this ).css( 'z-index' ) >= 10;
 //  } ).each( function() {
@@ -97,5 +93,4 @@ socketServer.on( 'leapShare', function( data ) {
 //    animateTrackingData( data );
     leapAnimate( frame );
     } );
-}
 }
