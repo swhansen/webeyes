@@ -5,7 +5,7 @@
 
 function initLeapPeerHand() {
 
-// do not render hands on mobile devices
+// do not render hands on mobile device
 
   if ( !userContext.mobile) {
 
@@ -41,6 +41,12 @@ function initLeapPeerHand() {
     controls.maxDistance = 1000;
 
     scene = new THREE.Scene();
+
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+  }
 
   function addMesh( meshes ) {
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
@@ -91,13 +97,5 @@ socketServer.on( 'leapShare', function( data ) {
 //    animateTrackingData( data );
     leapAnimate( frame );
     } );
-
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-  }
-
-
 }
 }

@@ -29,7 +29,7 @@ var userContext = {
   mobile: false,
   browserType: '',
   browserVideoDevices: ''
-};
+}
 
 easyrtc.dontAddCloseButtons( false );
 
