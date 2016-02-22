@@ -31,7 +31,7 @@ var alertWeg2rtEntry = function( lightNo ) {
     } );
 };
 
-var hueLightState = function( data ) {console.log( 'lightState:', data ); };
+var hueLightState = function( data ) { return data; };
 
 var getHueLightState = function( lightNo ) {
     var URL = hueURL + '/lights/' + lightNo ;
@@ -39,7 +39,7 @@ var getHueLightState = function( lightNo ) {
     type: 'GET',
     dataType: 'json',
     url: URL,
-    success: function( data ) { return data; },
+    success: function( data ) { hueLightState( data ); },
     error: function( a, err ) { }
     } );
 };
