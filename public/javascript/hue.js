@@ -39,7 +39,7 @@ var getHueLightState = function( lightNo ) {
     type: 'GET',
     dataType: 'json',
     url: URL,
-    success: function( data ) { return data ); },
+    success: function( data ) { return data; },
     error: function( a, err ) { }
     } );
 };
