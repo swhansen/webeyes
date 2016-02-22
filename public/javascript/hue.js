@@ -6,7 +6,6 @@ var setHueLightState = function( lightNo, state ) {
     var dataObject =  {};
     dataObject.on = state;
     var URL = hueURL + '/lights/' + lightNo + '/state';
-
     $.ajax( {
     type: 'PUT',
     dataType: 'json',
@@ -33,7 +32,6 @@ var alertWeg2rtEntry = function( lightNo ) {
 
 var hueLightState = function( data ) {
   console.log( 'lightState:', data );
-  return data;
 };
 
 var getHueLightState = function( lightNo ) {

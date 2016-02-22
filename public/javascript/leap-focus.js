@@ -42,20 +42,22 @@ function leapFocus() {
 
       switch ( gesture.type ) {
         case 'screenTap':
-        if ( getHueLightState( 1 ) === false ) {
           setHueLightState( 1, true );
-        } else {
-          setHueLightState( 1, false );
-        }
-          break;
+        break;
         case 'swipe':
+        setHueLightState( 1, false );
+        setHueLightState( 2, false );
+        setHueLightState( 3, false );
+        setHueLightState( 4, false );
+        break;
+        case 'Circle Gesture':
         setHueLightState( 1, true );
         setHueLightState( 2, true );
         setHueLightState( 3, true );
         setHueLightState( 4, true );
         break;
-        }
       }
+    }
     );
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
