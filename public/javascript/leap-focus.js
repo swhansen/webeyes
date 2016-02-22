@@ -38,10 +38,13 @@ function leapFocus() {
     controller.on( 'beforeFrameCreated', function( frameData ) {
         emitLeap ( frameData ); } );
 
-
     controller.on( 'gesture', function( gesture ) {
-    console.log( 'gesture detected:', gesture );
-      } );
+      if( gesture.type = 'screenTap' ) {
+          console.log( 'gesture-tap detected');
+          setHueLightState( 1, true );
+      }
+    }
+    );
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
@@ -104,3 +107,4 @@ function leapFocus() {
     controls.update();
   }
 }
+
