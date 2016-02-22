@@ -42,8 +42,11 @@ function leapFocus() {
 
       switch ( gesture.type ) {
         case 'screenTap':
-          console.log( 'gesture-tap detected');
+        if ( getHueLightState( 1 ) === false ) {
           setHueLightState( 1, true );
+        } else {
+          setHueLightState( 1, false );
+        }
           break;
         case 'swipe':
         setHueLightState( 1, true );
