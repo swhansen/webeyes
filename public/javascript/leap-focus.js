@@ -42,15 +42,18 @@ function leapFocus() {
 
       switch ( gesture.type ) {
         case 'screenTap':
-          setHueLightState( 1, true );
+        console.log( 'Tap' );
+        setHueLightState( 1, true );
         break;
         case 'swipe':
+        console.log( 'Swipe' );
         setHueLightState( 1, false );
         setHueLightState( 2, false );
         setHueLightState( 3, false );
         setHueLightState( 4, false );
         break;
         case 'Circle Gesture':
+        console.log( 'Circle Gesture' );
         setHueLightState( 1, true );
         setHueLightState( 2, true );
         setHueLightState( 3, true );
