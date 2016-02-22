@@ -31,7 +31,10 @@ var alertWeg2rtEntry = function( lightNo ) {
     } );
 };
 
-var hueLightState = function( data ) { return data; };
+var hueLightState = function( data ) {
+  console.log( 'lightState:', data );
+  return data;
+};
 
 var getHueLightState = function( lightNo ) {
     var URL = hueURL + '/lights/' + lightNo ;
