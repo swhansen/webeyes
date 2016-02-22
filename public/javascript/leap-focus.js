@@ -24,7 +24,7 @@ function leapFocus() {
 
     var renderer, scene, camera, controls;
 
-    var controller = Leap.loop( { background: false }, leapAnimate );
+    var controller = Leap.loop( { enableGesture:true, background: false }, leapAnimate );
 
     //controller.connect();
 
