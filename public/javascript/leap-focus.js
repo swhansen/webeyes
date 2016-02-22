@@ -33,17 +33,26 @@ function leapFocus() {
       socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
     }
 
-// detect hand entry and hand found
-
     controller.on( 'beforeFrameCreated', function( frameData ) {
         emitLeap ( frameData ); } );
 
+// gesture detection for hue
+
     controller.on( 'gesture', function( gesture ) {
-      if( gesture.type = 'screenTap' ) {
+
+      switch ( gesture.type ) {
+        case 'screenTap':
           console.log( 'gesture-tap detected');
           setHueLightState( 1, true );
+          break;
+        case 'swipe':
+        setHueLightState( 1, true );
+        setHueLightState( 2, true );
+        setHueLightState( 3, true );
+        setHueLightState( 4, true );
+        break;
+        }
       }
-    }
     );
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
