@@ -52,7 +52,7 @@ function leapFocus() {
         setHueLightState( 3, false );
         setHueLightState( 4, false );
         break;
-        case 'Circle Gesture':
+        case 'circle':
         console.log( 'Circle Gesture' );
         setHueLightState( 1, true );
         setHueLightState( 2, true );
