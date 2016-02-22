@@ -33,8 +33,11 @@ function leapFocus() {
       socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
     }
 
+// detect hand entry and hand found
+
     controller.on( 'beforeFrameCreated', function( frameData ) {
-        emitLeap (frameData); });
+        emitLeap ( frameData ); } );
+
 
     controller.on( 'gesture', function( gesture ) {
     console.log( 'gesture detected:', gesture );
