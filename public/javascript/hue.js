@@ -1,5 +1,5 @@
 
-var hueURL = 'http://10.0.1.24/api/4cca312bfd9d1976814b78d491ecd8b';
+var hueURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
 
 var setHueLightState = function( lightNo, state ) {
 
