@@ -83,7 +83,7 @@ var hueGetAllLights = function() {
   hueGetAllLights();
 
 var hueAllLights = function( state ) {
-  for ( i = 1; i === hueLightListLength; ++i ) {
+  for ( i = 1; i < hueLightListLength + 1; ++i ) {
   setHueLightState( i, state );
 }
   };
