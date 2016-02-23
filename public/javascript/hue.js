@@ -3,8 +3,6 @@ var hueURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
 
 var theLightState = {};
 
-
-
 var setHueLightState = function( lightNo, state ) {
     var dataObject =  {};
     dataObject.on = state;
@@ -14,7 +12,7 @@ var setHueLightState = function( lightNo, state ) {
     dataType: 'json',
     url: URL,
     data: JSON.stringify( dataObject ),
-    success: function( data ) { console.log( data ); },
+ //   success: function( data ) { console.log( data ); },
     error: function( a, err ) { }
     } );
 };
@@ -28,7 +26,7 @@ var alertWeg2rtEntry = function( lightNo ) {
     dataType: 'json',
     url: URL,
     data: JSON.stringify( dataObject ),
-    success: function( data ) { console.log( data ); },
+//    success: function( data ) { console.log( data ); },
     error: function( a, err ) { }
     } );
 };
