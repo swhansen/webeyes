@@ -68,7 +68,7 @@ var hueGetAllLights = function() {
     dataType: 'json',
     url: URL
   } );
-    hueGetAllLights.done( function( data ) {
+    allLightState.done( function( data ) {
       hueLightList = data;
     }
     );
