@@ -80,10 +80,12 @@ var hueGetAllLights = function() {
 
   hueGetAllLights();
 
-var hueAllLights( state ) {
-  for ( i = 1, 1 < Object.keys(hueLightList).length, ++1 ) {
-  hueLightList[i].state.on = state;
+var hueAllLights = function( state ) {
+  for ( i = 1; i < Object.keys( hueLightList ).length; ++i ) {
+
+  hueLightList[ i ].state.on = state;
 }
+
   }
 
 /**
