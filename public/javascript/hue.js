@@ -42,7 +42,7 @@ var getHueLightState = function( lightNo ) {
     url: URL
     } )
     .done(function( data ) {
-      return data;
+      return(data);
     }
    );
   };
