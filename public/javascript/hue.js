@@ -32,6 +32,7 @@ var alertWeg2rtEntry = function( lightNo ) {
 
 var hueLightState = function( data ) {
   console.log( 'lightState:', data );
+  return(data);
 };
 
 var getHueLightState = function( lightNo ) {
@@ -39,10 +40,10 @@ var getHueLightState = function( lightNo ) {
     $.ajax( {
     type: 'GET',
     dataType: 'json',
-    url: URL
-    } )
-    .done(function( data ) {
-      return(data);
-    }
-   );
-  };
+    url: URL,
+    success: function( data ) { console.log( data ); },
+    error: function( a, err ) { }
+    } );
+};
+
+
