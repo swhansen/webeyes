@@ -1,8 +1,11 @@
 
 var hueURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
 
-var setHueLightState = function( lightNo, state ) {
+var theLightState = {};
 
+
+
+var setHueLightState = function( lightNo, state ) {
     var dataObject =  {};
     dataObject.on = state;
     var URL = hueURL + '/lights/' + lightNo + '/state';
@@ -41,7 +44,7 @@ var getHueLightState = function( lightNo ) {
     type: 'GET',
     dataType: 'json',
     url: URL,
-    success: function( data ) { console.log( data ); },
+    success: function( data ) { theLightState = data; },
     error: function( a, err ) { }
     } );
 };
