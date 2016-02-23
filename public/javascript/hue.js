@@ -1,7 +1,7 @@
 
 var hueURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
 
-var hueLightState = {};
+var hueLightState;
 var hueLightList = {};
 
 var setHueLightState = function( lightNo, state ) {
@@ -37,6 +37,21 @@ var hueLightState = function( data ) {
   return ( data  );
 };
 
+var getHueLightState1 = function( lightNo ) {
+    var URL = hueURL + '/lights/' + lightNo ;
+
+    var lightState = $.ajax( {
+    type: 'GET',
+    dataType: 'json',
+    url: URL
+  } );
+
+    lightState.done( function( data ) {
+      hueLightState = data;
+    }
+    );
+  }
+
 var getHueLightState = function( lightNo ) {
     var URL = hueURL + '/lights/' + lightNo ;
     $.ajax( {
@@ -48,7 +63,7 @@ var getHueLightState = function( lightNo ) {
     } );
 };
 
-var hueGetAllLights = function()  {
+var hueGetAllLights = function() {
     var URL = hueURL + '/lights/';
     $.ajax( {
     type: 'GET',
