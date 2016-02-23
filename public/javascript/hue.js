@@ -48,7 +48,7 @@ var hueGetLightState = function( lightNo ) {
       hueLightState = data;
     }
     );
-  }
+  };
 
 // var getHueLightState = function( lightNo ) {
 //     var URL = hueURL + '/lights/' + lightNo ;
@@ -68,11 +68,11 @@ var hueGetAllLights = function() {
     dataType: 'json',
     url: URL
   } );
-    lightState.done( function( data ) {
+    hueGetAllLights.done( function( data ) {
       hueLightList = data;
     }
     );
-  }
+  };
 
 /**
  * Converts an HSL color value to RGB. Conversion formula
