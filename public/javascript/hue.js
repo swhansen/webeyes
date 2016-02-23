@@ -39,10 +39,10 @@ var getHueLightState = function( lightNo ) {
     $.ajax( {
     type: 'GET',
     dataType: 'json',
-    url: URL,
-    success: function( data ) {
-      return( data );
-    },
-    error: function( a, err ) { }
-    } );
-};
+    url: URL
+    } )
+    .done(function( data ) {
+      return data;
+    }
+   );
+  };
