@@ -2,7 +2,7 @@
 var hueURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
 
 var hueLightState;
-var hueLightList = {};
+var hueLightList;
 
 var setHueLightState = function( lightNo, state ) {
     var dataObject =  {};
@@ -37,45 +37,42 @@ var hueLightState = function( data ) {
   return ( data  );
 };
 
-var getHueLightState1 = function( lightNo ) {
+var hueGetLightState = function( lightNo ) {
     var URL = hueURL + '/lights/' + lightNo ;
-
     var lightState = $.ajax( {
     type: 'GET',
     dataType: 'json',
     url: URL
   } );
-
     lightState.done( function( data ) {
       hueLightState = data;
     }
     );
   }
 
-var getHueLightState = function( lightNo ) {
-    var URL = hueURL + '/lights/' + lightNo ;
-    $.ajax( {
-    type: 'GET',
-    dataType: 'json',
-    url: URL,
-    success: function( data ) { hueLightState = data; },
-    error: function( a, err ) { }
-    } );
-};
+// var getHueLightState = function( lightNo ) {
+//     var URL = hueURL + '/lights/' + lightNo ;
+//     $.ajax( {
+//     type: 'GET',
+//     dataType: 'json',
+//     url: URL,
+//     success: function( data ) { hueLightState = data; },
+//     error: function( a, err ) { }
+//     } );
+// };
 
 var hueGetAllLights = function() {
     var URL = hueURL + '/lights/';
-    $.ajax( {
+    var allLightState = $.ajax( {
     type: 'GET',
     dataType: 'json',
-    url: URL,
-    success: function( data ) {
-      console.log( 'lights:', data );
+    url: URL
+  } );
+    lightState.done( function( data ) {
       hueLightList = data;
-    },
-    error: function( a, err ) { }
-    } );
-};
+    }
+    );
+  }
 
 /**
  * Converts an HSL color value to RGB. Conversion formula
