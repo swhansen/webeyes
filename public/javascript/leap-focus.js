@@ -28,10 +28,10 @@ function leapFocus() {
 
     function emitLeap( data ) {
       var sessionId = socketServer.sessionid;
-      socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
-    }
+        socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
+      }
 
- //   controller.on( 'beforeFrameCreated', function( frameData ) {
+   //   controller.on( 'beforeFrameCreated', function( frameData ) {
  //       emitLeap ( frameData ); } );
 
 //
@@ -65,8 +65,10 @@ function leapFocus() {
 
     scene = new THREE.Scene();
 
-var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+  var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+  var aLight = new THREE.AmbientLight( 0x404040 );
   scene.add( light );
+  scene.add( aLight );
 
 
 var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
@@ -105,21 +107,19 @@ function updateHandSphere( center, radius ) {
   console.log( center, radius );
     handSphere.position.fromArray( center );
 
-if ( center[0] <= -120.0 ) { center[0] = -120.0};
-if ( center[0] >= 120.0 ) { center[0] = 120.0};
+if ( center[0] <= -120.0 ) { center[0] = -120.0; }
+if ( center[0] >= 120.0 ) { center[0] = 120.0; }
 
   var normalizedX = (center[0] + 120.0) / 240;
 
   console.log('center:', center[0], normalizedX );
 
-  rgb = getRGBFromXYAndBrightness(.5, normalizedX, 200)
+  rgb = getRGBFromXYAndBrightness(0.5, normalizedX, 200)
   console.log( 'rgb:', rgb );
 
  // handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
-  handSphere.material.color.setRGB( 255, 251, 87 );
-
-
-
+ // handSphere.material.color.setRGB( 255, 251, 87 );
+  handSphere.material.color.setRGB( 255, 255, 0 );
 
   scene.add( handSphere );
   }
