@@ -5,7 +5,7 @@ var hueLightState;
 var hueLightList;
 var hueLightListLength;
 
-var setHueLightState = function( lightNo, state ) {
+var hueSetLightState = function( lightNo, state ) {
     var dataObject =  {};
     dataObject.on = state;
     var URL = hueURL + '/lights/' + lightNo + '/state';
@@ -70,7 +70,7 @@ hueGetAllLights();
 
 var hueSetAllLights = function( state ) {
   for ( i = 1; i < hueLightListLength + 1; ++i ) {
-    setHueLightState( i, state );
+    hueSetLightState( i, state );
   }
 };
 

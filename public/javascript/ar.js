@@ -146,7 +146,7 @@ function loadAr( participantState ) {
 
         console.log( 'at toggleIOT:', data );
 
-        setHueLightState( data.iotDeviceId, data.isOn  );
+        hueSetLightState( data.iotDeviceId, data.isOn  );
 
          arObject = scene.getObjectByName( data.name );
 
@@ -712,7 +712,7 @@ function addNewArObjectToWorld( d ) {
               selectedObject.material.opacity = 0.5;
             }
 
-        setHueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
+        hueSetLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
 
        // var lightState = getHueLightState( selectedObject.userData.iotDeviceId );
        // console.log('light state bri:', lightState.state.bri);
