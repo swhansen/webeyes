@@ -72,7 +72,7 @@ var handMaterial = new THREE.MeshLambertMaterial( { color: 0xF20707 } );
 var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
 //handSphere.position.set( 0.0, 0.0, -2.0 );
-scene.add( handSphere );
+//scene.add( handSphere );
 
 
   function onWindowResize() {
@@ -107,7 +107,8 @@ function updateHue( grabStrength ) {
 function updateHandSphere( center, radius ) {
 //  console.log( center, radius );
     handSphere.position.fromArray( center );
-   // handSphere.geometry.radius = radius;
+    handSphere.geometry.radius = radius;
+    scene.add( handSphere );
   }
 
 
@@ -116,6 +117,8 @@ function updateHandSphere( center, radius ) {
     var countBones = 0;
     var countArms = 0;
 
+
+    scene.remove( handSphere );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
