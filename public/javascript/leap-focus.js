@@ -94,7 +94,6 @@ var handSphere = new THREE.Mesh( handGeometry, handMaterial );
       mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
       mesh.quaternion.multiply( baseBoneRotation );
       mesh.scale.set( bone.width, bone.width, bone.length );
-      console.log('mesh:', mesh );
       scene.add( mesh );
   }
 
