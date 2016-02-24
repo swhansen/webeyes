@@ -31,8 +31,8 @@ function leapFocus() {
       socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
     }
 
-  //  controller.on( 'beforeFrameCreated', function( frameData ) {
-  //      emitLeap ( frameData ); } );
+    controller.on( 'beforeFrameCreated', function( frameData ) {
+        emitLeap ( frameData ); } );
 
 //
 // gesture detection for hue
