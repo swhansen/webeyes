@@ -74,9 +74,6 @@ var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 handSphere.position.set( 0.0, 0.0, -2.0 );
 
 
-
-
-
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -101,6 +98,7 @@ handSphere.position.set( 0.0, 0.0, -2.0 );
 
 function updateHue( grabStrength ) {
   var v = ( grabStrength * 253) + 1;
+  console.log( 'hue Grab Value:', v);
   hueSetLightState( 1, true, 65535, v, v );
 }
 
