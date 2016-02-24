@@ -31,8 +31,8 @@ function leapFocus() {
       socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
     }
 
-    controller.on( 'beforeFrameCreated', function( frameData ) {
-        emitLeap ( frameData ); } );
+ //   controller.on( 'beforeFrameCreated', function( frameData ) {
+ //       emitLeap ( frameData ); } );
 
 //
 // gesture detection for hue
@@ -105,7 +105,7 @@ function updateHandSphere( center, radius ) {
   //  handSphere.geometry.radius = radius;
 
 
-     handSphere.material.color.setRGB( 255, 254, 149 );
+     handSphere.material.color.setRGB( 255, 254, 0 );
 
 
     scene.add( handSphere );
