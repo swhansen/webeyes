@@ -71,7 +71,8 @@ var handGeometry = new THREE.SphereGeometry( 0.15, 16, 16 );
 var handMaterial = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
 var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
-handSphere.position.set( 0.0, 0.0, -2.0 );
+//handSphere.position.set( 0.0, 0.0, -2.0 );
+scene.add( handSphere );
 
 
   function onWindowResize() {
@@ -102,6 +103,11 @@ function updateHue( grabStrength ) {
   hueSetLightState( 1, true, 65535, v, v );
 }
 
+function updateHandSphere( center, radius ) {
+    handSphere.position.fromArray( center );
+    handSphere.geometry.radius = radius;
+  }
+
 
   function leapAnimate( frame ) {
 
@@ -113,9 +119,8 @@ function updateHue( grabStrength ) {
 
     for ( var hand of frame.hands ) {
 
-    console.log( hand.sphereCenter, hand.sphereRadius );
-
-     updateHue( hand.grabStrength );
+      updateHandSphere( hand.sphereCenter, hand.sphereRadius );
+      updateHue( hand.grabStrength );
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
