@@ -1,5 +1,3 @@
-
-
 function leapFocus() {
 
 //$( '*' ).filter( function() {
@@ -39,11 +37,10 @@ function leapFocus() {
 //
 // gesture detection for hue
 //
-    controller.on( 'gesture', function( gesture ) {
 
+    controller.on( 'gesture', function( gesture ) {
       switch ( gesture.type ) {
         case 'screenTap':
-        console.log( 'Tap' );
         hueSetLightState( 1, true );
         break;
         case 'swipe':
@@ -68,6 +65,18 @@ function leapFocus() {
 
     scene = new THREE.Scene();
 
+
+
+var handGeometry = new THREE.SphereGeometry( 0.15, 16, 16 );
+var handMaterial = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
+var handSphere = new THREE.Mesh( handGeometry, handMaterial );
+
+handSphere.position.set( 0.0, 0.0, -2.0 );
+
+
+
+
+
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -90,6 +99,13 @@ function leapFocus() {
       scene.add( mesh );
   }
 
+function updateHue( grabStrength ) {
+  var bri = gripStrength * 256;
+  hueSetLightState( 1, true, 65535, 250, bri );
+}
+
+
+
   function leapAnimate( frame ) {
 
     var countBones = 0;
@@ -99,6 +115,9 @@ function leapFocus() {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
+
+     updateHue( hand.grabStrength );
+
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
