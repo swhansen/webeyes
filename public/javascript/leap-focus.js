@@ -114,7 +114,7 @@ if ( center[0] >= 120.0 ) { center[0] = 120.0; }
 
   console.log('center:', center[0], normalizedX );
 
-  var rgb = getRGBFromXYAndBrightness( normalizedX, 0.2 200);
+  var rgb = getRGBFromXYAndBrightness( normalizedX, 0.2, 200);
   console.log( 'rgb:', rgb );
 
 //rgb[0] = 255;
