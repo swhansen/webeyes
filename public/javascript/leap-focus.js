@@ -107,12 +107,6 @@ function updateHandSphere( center, radius ) {
 //  console.log( center, radius );
     handSphere.position.fromArray( center );
   //  handSphere.geometry.radius = radius;
-handSphere.scale.x = radius;
-handSphere.scale.y = radius;
-handSphere.scale.z = radius;
-
-
-
     scene.add( handSphere );
   }
 
