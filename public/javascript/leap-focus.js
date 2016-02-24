@@ -68,12 +68,8 @@ function leapFocus() {
 
 
 var handGeometry = new THREE.SphereGeometry( 70, 16, 16 );
-var handMaterial = new THREE.MeshLambertMaterial( { color: 0xF20707 } );
+var handMaterial = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
 var handSphere = new THREE.Mesh( handGeometry, handMaterial );
-
-//handSphere.position.set( 0.0, 0.0, -2.0 );
-//scene.add( handSphere );
-
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -117,13 +113,17 @@ function updateHandSphere( center, radius ) {
     var countArms = 0;
 
     scene.remove( handSphere );
+
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
 
+      if (hand.grabStrength > 0.3 ){
       updateHandSphere( hand.sphereCenter, hand.sphereRadius );
-      updateHue( hand.grabStrength );
+      }
+
+    //  updateHue( hand.grabStrength );
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
