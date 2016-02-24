@@ -105,13 +105,17 @@ function updateHandSphere( center, radius ) {
   console.log( center, radius );
     handSphere.position.fromArray( center );
 
+if ( center <= -120.0 ) { center = -120.0};
+if ( center >= 120.0 ) { center = 120.0};
+console.log('center:', center );
 
-//normalize center in x, y, x  -> rgb and XY
+  var normalizedCenter = (center + 120.0) / 240;
 
+  rgb = getRGBFromXYAndBrightness(.5, normalizedCenter, 200)
 
-    handSphere.material.color.setRGB( 255, 254, 0 );
+  handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
 
-    scene.add( handSphere );
+  scene.add( handSphere );
   }
 
   function leapAnimate( frame ) {
