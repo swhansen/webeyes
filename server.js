@@ -259,7 +259,7 @@ var port = process.env.PORT || 8080;
 
 // var webServer = app.listen(process.env.port || 8080);
 var webServer = app.listen( port );
-console.log( 'Listening on port ' + port );
+//console.log( 'Listening on port ' + port );
 
 // Start Socket.io so it attaches itself to Express server
 /*jshint -W079 */
