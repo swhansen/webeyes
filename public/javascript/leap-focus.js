@@ -102,17 +102,17 @@ function updateHue( grabStrength ) {
 }
 
 function updateHandSphere( center, radius ) {
-//  console.log( center, radius );
+  console.log( center, radius );
     handSphere.position.fromArray( center );
-  //  handSphere.geometry.radius = radius;
 
 
-     handSphere.material.color.setRGB( 255, 254, 0 );
+//normalize center in x, y, x  -> rgb and XY
 
+
+    handSphere.material.color.setRGB( 255, 254, 0 );
 
     scene.add( handSphere );
   }
-
 
   function leapAnimate( frame ) {
 
@@ -120,14 +120,13 @@ function updateHandSphere( center, radius ) {
     var countArms = 0;
 
     scene.remove( handSphere );
-
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
 
       if (hand.grabStrength > 0.3 ){
-      updateHandSphere( hand.sphereCenter, hand.sphereRadius );
+          updateHandSphere( hand.sphereCenter, hand.sphereRadius );
       }
 
     //  updateHue( hand.grabStrength );
