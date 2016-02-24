@@ -98,7 +98,7 @@ handSphere.position.set( 0.0, 0.0, -2.0 );
 
 function updateHue( grabStrength ) {
   var v = ( grabStrength * 253) + 1;
-  console.log( 'hue Grab Value:', v);
+  console.log( 'GrabStrength, v:', grabStrength, v);
   hueSetLightState( 1, true, 65535, v, v );
 }
 
