@@ -14,7 +14,6 @@ var setHueLightState = function( lightNo, state ) {
     dataType: 'json',
     url: URL,
     data: JSON.stringify( dataObject ),
- //   success: function( data ) { console.log( data ); },
     error: function( a, err ) { }
     } );
 };
@@ -28,7 +27,9 @@ var alertWeg2rtEntry = function( lightNo ) {
     dataType: 'json',
     url: URL,
     data: JSON.stringify( dataObject ),
+
 //    success: function( data ) { console.log( data ); },
+
     error: function( a, err ) { }
     } );
 };
@@ -51,21 +52,6 @@ var hueGetLightState = function( lightNo ) {
     );
   };
 
-// var getHueLightState = function( lightNo ) {
-//     var URL = hueURL + '/lights/' + lightNo ;
-//     $.ajax( {
-//     type: 'GET',
-//     dataType: 'json',
-//     url: URL,
-//     success: function( data ) { hueLightState = data; },
-//     error: function( a, err ) { }
-//     } );
-// };
-
-
-// Object.keys(hueLightList).length;
-// hueLightList[1].state.on;
-
 var hueGetAllLights = function() {
     var URL = hueURL + '/lights/';
     var allLightState = $.ajax( {
@@ -80,13 +66,7 @@ var hueGetAllLights = function() {
     );
   };
 
-  hueGetAllLights();
-
-var hueAllLights = function( state ) {
-  for ( i = 1; i < hueLightListLength + 1; ++i ) {
-  setHueLightState( i, state );
-}
-  };
+hueGetAllLights();
 
 /**
  * Converts an HSL color value to RGB. Conversion formula

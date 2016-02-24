@@ -49,20 +49,10 @@ function leapFocus() {
         setHueLightState( 1, true );
         break;
         case 'swipe':
-        console.log( 'Swipe' );
-       // setHueLightState( 1, false );
-       // setHueLightState( 2, false );
-       // setHueLightState( 3, false );
-       // setHueLightState( 4, false );
-        hueAllLights( false );
+          hueAllLights( false );
         break;
         case 'circle':
-        console.log( 'Circle Gesture' );
-        hueAllLights( true );
-       // setHueLightState( 1, true );
-       // setHueLightState( 2, true );
-       // setHueLightState( 3, true );
-       // setHueLightState( 4, true );
+         hueAllLights( true );
         break;
       }
     }
