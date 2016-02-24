@@ -47,10 +47,10 @@ function leapFocus() {
         setHueLightState( 1, true );
         break;
         case 'swipe':
-          hueAllLights( false );
+          hueSetAllLights( false );
         break;
         case 'circle':
-         hueAllLights( true );
+         hueSetAllLights( true );
         break;
       }
     }
