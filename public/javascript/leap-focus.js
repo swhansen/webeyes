@@ -114,12 +114,12 @@ if ( center[0] >= 120.0 ) { center[0] = 120.0; }
 
   console.log('center:', center[0], normalizedX );
 
-  var rgb = getRGBFromXYAndBrightness(0.2, normalizedX, 200);
+  var rgb = getRGBFromXYAndBrightness( normalizedX, 0.2 200);
   console.log( 'rgb:', rgb );
 
-rgb[0] = 255;
-rgb[1] = 255;
-rgb[2] = 0;
+//rgb[0] = 255;
+//rgb[1] = 255;
+//rgb[2] = 0;
 
 
   handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
