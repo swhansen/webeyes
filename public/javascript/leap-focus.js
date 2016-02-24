@@ -107,7 +107,13 @@ function updateHue( grabStrength ) {
 function updateHandSphere( center, radius ) {
 //  console.log( center, radius );
     handSphere.position.fromArray( center );
-    handSphere.geometry.radius = radius;
+  //  handSphere.geometry.radius = radius;
+handSphere.scale.x = radius;
+handSphere.scale.y = radius;
+handSphere.scale.z = radius;
+
+
+
     scene.add( handSphere );
   }
 
@@ -116,7 +122,6 @@ function updateHandSphere( center, radius ) {
 
     var countBones = 0;
     var countArms = 0;
-
 
     scene.remove( handSphere );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
