@@ -103,7 +103,6 @@ function updateHue( grabStrength ) {
 }
 
 
-
   function leapAnimate( frame ) {
 
     var countBones = 0;
@@ -113,6 +112,8 @@ function updateHue( grabStrength ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
+
+    console.log( hand.sphereCenter, hand.sphereRadius );
 
      updateHue( hand.grabStrength );
 
