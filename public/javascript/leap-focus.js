@@ -100,7 +100,7 @@ handSphere.position.set( 0.0, 0.0, -2.0 );
   }
 
 function updateHue( grabStrength ) {
-  var bri = gripStrength * 256;
+  var bri = grabStrength * 256;
   hueSetLightState( 1, true, 65535, 250, bri );
 }
 
