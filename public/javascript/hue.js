@@ -5,9 +5,12 @@ var hueLightState;
 var hueLightList;
 var hueLightListLength;
 
-var hueSetLightState = function( lightNo, state ) {
+var hueSetLightState = function( lightNo, state, hue, sat, bri ) {
     var dataObject =  {};
     dataObject.on = state;
+    dataObject.hue = hue;
+    dataObject.sat = sat;
+    dataObject.bri = bri;
     var URL = hueURL + '/lights/' + lightNo + '/state';
     $.ajax( {
     type: 'PUT',
@@ -34,10 +37,12 @@ var alertWeg2rtEntry = function( lightNo ) {
     } );
 };
 
-var hueLightState = function( data ) {
-  console.log( 'lightState:', data );
-  return ( data  );
-};
+// var hueLightState = function( data ) {
+//   console.log( 'lightState:', data );
+//   return ( data  );
+// };
+
+// get the state of a specific light
 
 var hueGetLightState = function( lightNo ) {
     var URL = hueURL + '/lights/' + lightNo ;
@@ -51,6 +56,8 @@ var hueGetLightState = function( lightNo ) {
     }
     );
   };
+
+// get the state of all lights
 
 var hueGetAllLights = function() {
     var URL = hueURL + '/lights/';
@@ -73,7 +80,6 @@ var hueSetAllLights = function( state ) {
     hueSetLightState( i, state );
   }
 };
-
 
 /**
  * Converts an HSL color value to RGB. Conversion formula
