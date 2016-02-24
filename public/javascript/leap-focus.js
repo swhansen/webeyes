@@ -67,7 +67,7 @@ function leapFocus() {
 
 
 
-var handGeometry = new THREE.SphereGeometry( 0.15, 16, 16 );
+var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
 var handMaterial = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
 var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
@@ -105,9 +105,9 @@ function updateHue( grabStrength ) {
 }
 
 function updateHandSphere( center, radius ) {
-  console.log( center, radius );
+//  console.log( center, radius );
     handSphere.position.fromArray( center );
-    handSphere.geometry.radius = radius;
+   // handSphere.geometry.radius = radius;
   }
 
 
