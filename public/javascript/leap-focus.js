@@ -65,6 +65,8 @@ function leapFocus() {
 
     scene = new THREE.Scene();
 
+var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+  scene.add( light );
 
 
 var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
