@@ -99,11 +99,12 @@ scene.add( handSphere );
 
 function updateHue( grabStrength ) {
   var v = ( grabStrength * 253) + 1;
-  console.log( 'GrabStrength, v:', grabStrength, v);
+ // console.log( 'GrabStrength, v:', grabStrength, v);
   hueSetLightState( 1, true, 65535, v, v );
 }
 
 function updateHandSphere( center, radius ) {
+  console.log( center, radius );
     handSphere.position.fromArray( center );
     handSphere.geometry.radius = radius;
   }
