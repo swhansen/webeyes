@@ -68,6 +68,13 @@ var hueGetAllLights = function() {
 
 hueGetAllLights();
 
+var hueSetAllLights = function( state ) {
+  for ( i = 1; i < hueLightListLength + 1; ++i ) {
+    setHueLightState( i, state );
+  }
+};
+
+
 /**
  * Converts an HSL color value to RGB. Conversion formula
  * adapted from http://en.wikipedia.org/wiki/HSL_color_space.

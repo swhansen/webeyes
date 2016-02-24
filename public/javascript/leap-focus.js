@@ -36,8 +36,6 @@ function leapFocus() {
     controller.on( 'beforeFrameCreated', function( frameData ) {
         emitLeap ( frameData ); } );
 
-
-
 //
 // gesture detection for hue
 //
