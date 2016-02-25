@@ -109,16 +109,19 @@ function updateHandSphere( center, radius ) {
 
 var maxX = 120.0;
 var minX = -120.0;
+var maxY = 120.0;
+var minY = -120.0;
 
 
 //if ( center[0] <= -120.0 ) { center[0] = -120.0; }
 //if ( center[0] >= 120.0 ) { center[0] = 120.0; }
 
   var normalizedX = (center[0] - minX ) / ( maxX - minX );
+  var normalizedY = (center[1] - minY ) / ( maxY - minY );
 
   console.log('center:', center[0], normalizedX );
 
-  var rgb = getRGBFromXYAndBrightness( normalizedX, 0.3, 200);
+  var rgb = getRGBFromXYAndBrightness( normalizedX, normalizedY, 200);
   console.log( 'rgb:', rgb );
 
 //rgb[0] = 255;
