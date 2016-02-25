@@ -128,7 +128,7 @@ console.log( ' normalize:', normalizedX, normalizedY, normalizedZ );
 
  // handSphere.material.color.setRGB( 0.5, 0.7, 0 );
 
-  handSphere.material.color.setRGB( normalizedX, normalizedY, normalizeZ );
+  handSphere.material.color.setRGB( normalizedX, normalizedY, normalizedZ );
 
   scene.add( handSphere );
   }
