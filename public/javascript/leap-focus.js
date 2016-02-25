@@ -68,13 +68,13 @@ function leapFocus() {
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   var aLight = new THREE.AmbientLight( 0x404040 );
   scene.add( light );
-  scene.add( aLight );
+  //scene.add( aLight );
 
 
-var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
+var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
 var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
 var handSphere = new THREE.Mesh( handGeometry, handMaterial );
-scene.add( handSphere );
+//scene.add( handSphere );
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -105,7 +105,7 @@ function updateHue( grabStrength ) {
 }
 
 function updateHandSphere( center, radius ) {
-  console.log( center, radius );
+//  console.log( center, radius );
     handSphere.position.fromArray( center );
 
 var maxX = 120.0;
@@ -120,10 +120,10 @@ var minY = -120.0;
   var normalizedX = (center[0] - minX ) / ( maxX - minX );
   var normalizedY = (center[1] - minY ) / ( maxY - minY );
 
-  console.log('center:', center[0], normalizedX );
+ // console.log('center:', center[0], normalizedX );
 
   var rgb = getRGBFromXYAndBrightness( 0.675, 0.322);
-  console.log( 'rgb:', rgb );
+//  console.log( 'rgb:', rgb );
 
 //rgb[0] = 255;
 //rgb[1] = 255;
@@ -132,8 +132,6 @@ var minY = -120.0;
   //handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
   handSphere.material.color.setRGB( 255, 96, 0 );
   console.log( 'color:', handSphere.material.color );
- // handSphere.material.color.setRGB( 255, 251, 87 );
- // handSphere.material.color.setRGB( 255, 255, 0 );
 
   scene.add( handSphere );
   }
