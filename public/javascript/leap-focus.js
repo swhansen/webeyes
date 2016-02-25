@@ -99,7 +99,8 @@ var handSphere = new THREE.Mesh( handGeometry, handMaterial );
   }
 
 function updateHue( grabStrength ) {
-  var v = ( grabStrength * 253) + 1;
+ // var v = ( grabStrength * 253) + 1;
+
  // console.log( 'GrabStrength, v:', grabStrength, v);
 //  hueSetLightState( 1, true, 65535, v, v );
 }
@@ -109,13 +110,13 @@ function bound( val, min, max ) {
   if ( val > max ) { return max; }
 }
 
-function updateHandSphere( center, radius ) {
+function updateHandSphere( center, radius, frame ) {
 
 handSphere.position.fromArray( center );
 
-//var interactionBox = frame.interactionBox;
-//var normalizedSphere = interactionBox.normalizePoint( center, true );
-//console.log( ' normalizedSphere:', normalizedSphere );
+var interactionBox = frame.interactionBox;
+var normalizedSphere = interactionBox.normalizePoint( center, true );
+console.log( ' normalizedSphere:', normalizedSphere );
 
 
 
@@ -159,7 +160,7 @@ console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
     for ( var hand of frame.hands ) {
 
       if (hand.grabStrength > 0.3 ){
-          updateHandSphere( hand.sphereCenter, hand.sphereRadius );
+          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame );
       }
 
     //  updateHue( hand.grabStrength );
