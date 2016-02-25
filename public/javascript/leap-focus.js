@@ -70,10 +70,9 @@ function leapFocus() {
   scene.add( light );
   scene.add( aLight );
 
-var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
-var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
-var handSphere = new THREE.Mesh( handGeometry, handMaterial );
-//scene.add( handSphere );
+  var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
+  var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
+  var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -118,14 +117,16 @@ function updateHandSphere( center, radius, frame ) {
 
   var interactionBox = frame.interactionBox;
   var normalizedSphere = interactionBox.normalizePoint( center, true );
-
-  var normalizedR = normalizedSphere[0];
-  var normalizedG = normalizedSphere[1];
-  var normalizedB = normalizedSphere[2];
+//  var normalizedR = normalizedSphere[0];
+//  var normalizedG = normalizedSphere[1];
+//  var normalizedB = normalizedSphere[2];
 
 //console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
 
-    handSphere.material.color.setRGB( normalizedR, normalizedG, normalizedB );
+  handSphere.material.color.setRGB(
+              normalizedSphere[0],
+              normalizedG = normalizedSphere[1],
+              normalizedSphere[2] );
 
     var hueXY = getXYPointFromRGB( normalizedR * 255, normalizedG * 255, normalizedB * 255);
 
