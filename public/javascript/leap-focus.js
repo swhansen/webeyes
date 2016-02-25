@@ -131,7 +131,8 @@ var minY = -120.0;
 
   //handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
 
-  handSphere.material.color.setRGB( 0.5, 0.7, 0 );
+ // handSphere.material.color.setRGB( 0.5, 0.7, 0 );
+  handSphere.material.color.setRGB( normalizedX, normalizedY, 0 );
   //console.log( 'color:', handSphere.material.color );
 
   scene.add( handSphere );
