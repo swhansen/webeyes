@@ -70,7 +70,6 @@ function leapFocus() {
   scene.add( light );
   scene.add( aLight );
 
-
 var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
 var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
 var handSphere = new THREE.Mesh( handGeometry, handMaterial );
@@ -98,12 +97,12 @@ var handSphere = new THREE.Mesh( handGeometry, handMaterial );
       scene.add( mesh );
   }
 
-function updateHue( grabStrength ) {
+//function updateHue( grabStrength ) {
  // var v = ( grabStrength * 253) + 1;
 
  // console.log( 'GrabStrength, v:', grabStrength, v);
 //  hueSetLightState( 1, true, 65535, v, v );
-}
+//}
 
 // function bound( val, min, max ) {
 //   if ( val < min ) { return min; }
@@ -112,27 +111,13 @@ function updateHue( grabStrength ) {
 
 function updateHandSphere( center, radius, frame ) {
 
-handSphere.position.fromArray( center );
+  handSphere.position.fromArray( center );
 
-var interactionBox = frame.interactionBox;
-var normalizedSphere = interactionBox.normalizePoint( center, true );
-// console.log( ' normalizedSphere:', normalizedSphere );
+// normalize Leap Palm Sphere
+// need for RGB color space - threejs wants rgb (0-1)
 
-
-
-// var maxX = 260.0;
-// var minX = -220.0;
-// var maxY = 360.0;
-// var minY = -70.0;
-// var maxZ = 200.0;
-// var minZ = -130.0;
-
-
-// normalize Leap x, y, z to RGB (threejs wants rgb (0-1)
-
-//  var normalizedR = ( center[0] - minX ) / ( maxX - minX );
-//  var normalizedG = ( center[1] - minY ) / ( maxY - minY );
-//  var normalizedB = ( center[2] - minZ ) / ( maxZ - minZ );
+  var interactionBox = frame.interactionBox;
+  var normalizedSphere = interactionBox.normalizePoint( center, true );
 
   var normalizedR = normalizedSphere[0];
   var normalizedG = normalizedSphere[1];
@@ -140,14 +125,11 @@ var normalizedSphere = interactionBox.normalizePoint( center, true );
 
 //console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
 
- // var rgb = getRGBFromXYAndBrightness( 0.675, 0.322);
- // handSphere.material.color.setRGB( 0.5, 0.7, 0 );
+    handSphere.material.color.setRGB( normalizedR, normalizedG, normalizedB );
 
-  handSphere.material.color.setRGB( normalizedR, normalizedG, normalizedB );
+    var hueXY = getXYPointFromRGB( normalizedR * 255, normalizedG * 255, normalizedB * 255);
 
-  var hueXY = getXYPointFromRGB( normalizedR * 255, normalizedG * 255, normalizedB * 255);
-
-  scene.add( handSphere );
+    scene.add( handSphere );
   }
 
   function leapAnimate( frame ) {
