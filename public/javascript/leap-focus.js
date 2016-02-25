@@ -66,12 +66,12 @@ function leapFocus() {
     scene = new THREE.Scene();
 
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-  var aLight = new THREE.AmbientLight( 0x404040 );
+  var aLight = new THREE.AmbientLight( 0x333333 );
   scene.add( light );
-  //scene.add( aLight );
+  scene.add( aLight );
 
 
-var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
+var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
 var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
 var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 //scene.add( handSphere );
@@ -130,8 +130,8 @@ var minY = -120.0;
 //rgb[2] = 0;
 
   //handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
-  handSphere.material.color.setRGB( 255, 96, 0 );
-  console.log( 'color:', handSphere.material.color );
+  //handSphere.material.color.setRGB( 255, 96, 0 );
+  //console.log( 'color:', handSphere.material.color );
 
   scene.add( handSphere );
   }
