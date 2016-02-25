@@ -121,7 +121,7 @@ var minY = -120.0;
 
   console.log('center:', center[0], normalizedX );
 
-  var rgb = getRGBFromXYAndBrightness( 0.675, 0.322, 200);
+  var rgb = getRGBFromXYAndBrightness( 0.675, 0.322);
   console.log( 'rgb:', rgb );
 
 //rgb[0] = 255;
@@ -129,7 +129,8 @@ var minY = -120.0;
 //rgb[2] = 0;
 
 
-  handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
+  //handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
+  handSphere.material.color.setRGB( 255, 96, 0 );
  // handSphere.material.color.setRGB( 255, 251, 87 );
  // handSphere.material.color.setRGB( 255, 255, 0 );
 
