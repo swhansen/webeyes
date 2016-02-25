@@ -110,7 +110,7 @@ function updateHandSphere( center, radius ) {
 if ( center[0] <= -120.0 ) { center[0] = -120.0; }
 if ( center[0] >= 120.0 ) { center[0] = 120.0; }
 
-  var normalizedX = (center[0] + 120.0) / 240;
+  var normalizedX = (center[0] - 120.0) / 240;
 
   console.log('center:', center[0], normalizedX );
 
