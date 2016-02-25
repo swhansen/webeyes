@@ -101,7 +101,7 @@ var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 function updateHue( grabStrength ) {
   var v = ( grabStrength * 253) + 1;
  // console.log( 'GrabStrength, v:', grabStrength, v);
-  hueSetLightState( 1, true, 65535, v, v );
+//  hueSetLightState( 1, true, 65535, v, v );
 }
 
 function updateHandSphere( center, radius ) {
@@ -129,7 +129,7 @@ var minY = -120.0;
 //rgb[1] = 96;
 //rgb[2] = 0;
 
-  handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
+  //handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
 
   //handSphere.material.color.setRGB( 255, 96, 0 );
   //console.log( 'color:', handSphere.material.color );
