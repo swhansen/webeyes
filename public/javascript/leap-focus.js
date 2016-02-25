@@ -159,7 +159,7 @@ console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
     for ( var hand of frame.hands ) {
 
       if (hand.grabStrength > 0.3 ){
-          updateHandSphere( hand.sphereCenter, hand.sphereRadius, );
+          updateHandSphere( hand.sphereCenter, hand.sphereRadius );
       }
 
     //  updateHue( hand.grabStrength );
