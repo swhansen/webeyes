@@ -105,10 +105,10 @@ function updateHue( grabStrength ) {
 //  hueSetLightState( 1, true, 65535, v, v );
 }
 
-function bound( val, min, max ) {
-  if ( val < min ) { return min; }
-  if ( val > max ) { return max; }
-}
+// function bound( val, min, max ) {
+//   if ( val < min ) { return min; }
+//   if ( val > max ) { return max; }
+// }
 
 function updateHandSphere( center, radius, frame ) {
 
@@ -116,19 +116,17 @@ handSphere.position.fromArray( center );
 
 var interactionBox = frame.interactionBox;
 var normalizedSphere = interactionBox.normalizePoint( center, true );
-console.log( ' normalizedSphere:', normalizedSphere );
+// console.log( ' normalizedSphere:', normalizedSphere );
 
 
 
-var maxX = 260.0;
-var minX = -220.0;
-var maxY = 360.0;
-var minY = -70.0;
-var maxZ = 200.0;
-var minZ = -130.0;
+// var maxX = 260.0;
+// var minX = -220.0;
+// var maxY = 360.0;
+// var minY = -70.0;
+// var maxZ = 200.0;
+// var minZ = -130.0;
 
-//if ( center[0] <= -120.0 ) { center[0] = -120.0; }
-//if ( center[1] >= 120.0 ) { center[1] = 120.0; }
 
 // normalize Leap x, y, z to RGB (threejs wants rgb (0-1)
 
