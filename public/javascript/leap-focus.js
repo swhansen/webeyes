@@ -110,7 +110,7 @@ function bound( val, min, max ) {
 }
 
 function updateHandSphere( center, radius ) {
-//  console.log( center, radius );
+  console.log( 'palm.center:', center );
     handSphere.position.fromArray( center );
 
 var maxX = 120.0;
