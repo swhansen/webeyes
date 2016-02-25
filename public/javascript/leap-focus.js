@@ -105,13 +105,13 @@ function updateHue( grabStrength ) {
 }
 
 function bound( val, min, max ) {
-  if ( val < -min ) { return -120; }
-  if ( val > max ) { return 120; }
+  if ( val < min ) { return min; }
+  if ( val > max ) { return max; }
 }
 
 function updateHandSphere( center, radius ) {
   console.log( 'palm.center:', center );
-    handSphere.position.fromArray( center );
+handSphere.position.fromArray( center );
 
 var maxX = 260.0;
 var minX = -220.0;
@@ -123,17 +123,20 @@ var minZ = -130.0;
 //if ( center[0] <= -120.0 ) { center[0] = -120.0; }
 //if ( center[1] >= 120.0 ) { center[1] = 120.0; }
 
-  var normalizedX = ( center[0] - minX ) / ( maxX - minX );
-  var normalizedY = ( center[1] - minY ) / ( maxY - minY );
-  var normalizedZ = ( center[2] - minZ ) / ( maxZ - minZ );
+// normalize Leap x, y, z to RGB (threejs wants rgb (0-1)
 
-console.log( ' normalized:', normalizedX, normalizedY, normalizedZ );
+  var normalizedR = ( center[0] - minX ) / ( maxX - minX );
+  var normalizedG = ( center[1] - minY ) / ( maxY - minY );
+  var normalizedB = ( center[2] - minZ ) / ( maxZ - minZ );
 
-  var rgb = getRGBFromXYAndBrightness( 0.675, 0.322);
+console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
 
+ // var rgb = getRGBFromXYAndBrightness( 0.675, 0.322);
  // handSphere.material.color.setRGB( 0.5, 0.7, 0 );
 
-  handSphere.material.color.setRGB( normalizedX, normalizedY, normalizedZ );
+  handSphere.material.color.setRGB( normalizedR, normalizedG, normalizedB );
+
+  var hueXY = getXYPointFromRGB( normalizedR * 255, normalizedG * 255, normalizedB * 255);
 
   scene.add( handSphere );
   }
