@@ -110,8 +110,16 @@ function bound( val, min, max ) {
 }
 
 function updateHandSphere( center, radius ) {
-  console.log( 'palm.center:', center );
-handSphere.position.fromArray( center );
+//handSphere.position.fromArray( center );
+
+var interactionBox = frame.interactionBox;
+var normalizedSphere = interactionBox.normalizePoint( center, true );
+console.log( ' normalizedSphere:', normalizedSphere );
+
+
+
+
+
 
 var maxX = 260.0;
 var minX = -220.0;
