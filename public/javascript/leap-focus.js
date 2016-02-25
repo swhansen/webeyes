@@ -130,8 +130,8 @@ var minY = -120.0;
 
 
   //handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
-  handSphere.material.color.setRGB( 255, 96, 0 );
-  console.log( 'color:', handSphere.material.color );
+  handSphere.handMaterial.color.setRGB( 255, 96, 0 );
+  console.log( 'color:', handSphere.handMaterial.color );
  // handSphere.material.color.setRGB( 255, 251, 87 );
  // handSphere.material.color.setRGB( 255, 255, 0 );
 
