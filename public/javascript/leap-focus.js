@@ -104,6 +104,11 @@ function updateHue( grabStrength ) {
 //  hueSetLightState( 1, true, 65535, v, v );
 }
 
+function bound( val, min, max ) {
+  if ( val < -min ) { return -120; }
+  if ( val > max ) { return 120; }
+}
+
 function updateHandSphere( center, radius ) {
 //  console.log( center, radius );
     handSphere.position.fromArray( center );
@@ -114,14 +119,6 @@ var maxY = 120.0;
 var minY = -120.0;
 var maxZ = 120.0;
 var minZ = -120.0;
-
-
-
-
-function bound( val, min, max ) {
-  if ( val < -min ) { return -120; }
-  if ( val  > max ) { return 120; }
-}
 
 
 //if ( center[0] <= -120.0 ) { center[0] = -120.0; }
