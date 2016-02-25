@@ -128,7 +128,10 @@ function updateHandSphere( center, radius, frame ) {
               normalizedSphere[1],
               normalizedSphere[2] );
 
-  //  var hueXY = getXYPointFromRGB( normalizedR * 255, normalizedG * 255, normalizedB * 255);
+  var hueXY = getXYPointFromRGB(
+              normalizedSphere[0] * 255,
+              normalizedSphere[1] * 255,
+              normalizedSphere[2] * 255 );
 
     scene.add( handSphere );
   }
