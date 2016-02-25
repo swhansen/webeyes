@@ -121,7 +121,7 @@ var minY = -120.0;
 
   console.log('center:', center[0], normalizedX );
 
-  var rgb = getRGBFromXYAndBrightness( normalizedX, 0.4, 200);
+  var rgb = getRGBFromXYAndBrightness( 0.675, 0.322 200);
   console.log( 'rgb:', rgb );
 
 //rgb[0] = 255;
