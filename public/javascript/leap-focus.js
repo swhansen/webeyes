@@ -112,28 +112,23 @@ var maxX = 120.0;
 var minX = -120.0;
 var maxY = 120.0;
 var minY = -120.0;
-
+var maxZ = 120.0;
+var minZ = -120.0;
 
 //if ( center[0] <= -120.0 ) { center[0] = -120.0; }
-//if ( center[0] >= 120.0 ) { center[0] = 120.0; }
+//if ( center[1] >= 120.0 ) { center[1] = 120.0; }
 
   var normalizedX = (center[0] - minX ) / ( maxX - minX );
   var normalizedY = (center[1] - minY ) / ( maxY - minY );
+  var normalizedZ = (center[2] - minZ ) / ( maxZ - minZ );
 
- // console.log('center:', center[0], normalizedX );
+console.log( ' normalize:', normalizedX, normalizedY, normalizedZ );
 
   var rgb = getRGBFromXYAndBrightness( 0.675, 0.322);
-//  console.log( 'rgb:', rgb );
-
-//rgb[0] = 255;
-//rgb[1] = 96;
-//rgb[2] = 0;
-
-  //handSphere.material.color.setRGB( rgb[0], rgb[1], rgb[2] );
 
  // handSphere.material.color.setRGB( 0.5, 0.7, 0 );
-  handSphere.material.color.setRGB( normalizedX, normalizedY, 0 );
-  //console.log( 'color:', handSphere.material.color );
+
+  handSphere.material.color.setRGB( normalizedX, normalizedY, normalizeZ );
 
   scene.add( handSphere );
   }
