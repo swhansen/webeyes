@@ -107,14 +107,18 @@ function updateHandSphere( center, radius ) {
   console.log( center, radius );
     handSphere.position.fromArray( center );
 
-if ( center[0] <= -120.0 ) { center[0] = -120.0; }
-if ( center[0] >= 120.0 ) { center[0] = 120.0; }
+var maxX = 120.0;
+var minX = -120.0;
 
-  var normalizedX = (center[0] - 120.0) / 240;
+
+//if ( center[0] <= -120.0 ) { center[0] = -120.0; }
+//if ( center[0] >= 120.0 ) { center[0] = 120.0; }
+
+  var normalizedX = (center[0] - minX) / maxX - minX;
 
   console.log('center:', center[0], normalizedX );
 
-  var rgb = getRGBFromXYAndBrightness( normalizedX, 0.2, 200);
+  var rgb = getRGBFromXYAndBrightness( normalizedX, 0.3, 200);
   console.log( 'rgb:', rgb );
 
 //rgb[0] = 255;
