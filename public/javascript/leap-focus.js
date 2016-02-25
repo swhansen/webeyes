@@ -121,10 +121,12 @@ var maxZ = 120.0;
 var minZ = -120.0;
 
 
+
+
 //if ( center[0] <= -120.0 ) { center[0] = -120.0; }
 //if ( center[1] >= 120.0 ) { center[1] = 120.0; }
 
-  var normalizedX = (center[0] - minX ) / ( maxX - minX );
+  var normalizedX = ( bound( center[0], minX, maxX ) - minX ) / ( maxX - minX );
   var normalizedY = (center[1] - minY ) / ( maxY - minY );
   var normalizedZ = (center[2] - minZ ) / ( maxZ - minZ );
 
