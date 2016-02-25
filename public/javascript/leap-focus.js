@@ -74,6 +74,7 @@ function leapFocus() {
 var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
 var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
 var handSphere = new THREE.Mesh( handGeometry, handMaterial );
+scene.add( handSphere );
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
