@@ -113,15 +113,12 @@ function updateHandSphere( center, radius ) {
   console.log( 'palm.center:', center );
     handSphere.position.fromArray( center );
 
-var maxX = 120.0;
-var minX = -120.0;
-var maxY = 120.0;
-var minY = -120.0;
-var maxZ = 120.0;
-var minZ = -120.0;
-
-
-
+var maxX = 260.0;
+var minX = -220.0;
+var maxY = 360.0;
+var minY = -70.0;
+var maxZ = 200.0;
+var minZ = -130.0;
 
 //if ( center[0] <= -120.0 ) { center[0] = -120.0; }
 //if ( center[1] >= 120.0 ) { center[1] = 120.0; }
