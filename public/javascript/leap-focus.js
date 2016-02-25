@@ -114,7 +114,7 @@ var minX = -120.0;
 //if ( center[0] <= -120.0 ) { center[0] = -120.0; }
 //if ( center[0] >= 120.0 ) { center[0] = 120.0; }
 
-  var normalizedX = (center[1] - minX ) / ( maxX - minX );
+  var normalizedX = (center[0] - minX ) / ( maxX - minX );
 
   console.log('center:', center[0], normalizedX );
 
