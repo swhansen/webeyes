@@ -132,11 +132,15 @@ var minZ = -130.0;
 
 // normalize Leap x, y, z to RGB (threejs wants rgb (0-1)
 
-  var normalizedR = ( center[0] - minX ) / ( maxX - minX );
-  var normalizedG = ( center[1] - minY ) / ( maxY - minY );
-  var normalizedB = ( center[2] - minZ ) / ( maxZ - minZ );
+//  var normalizedR = ( center[0] - minX ) / ( maxX - minX );
+//  var normalizedG = ( center[1] - minY ) / ( maxY - minY );
+//  var normalizedB = ( center[2] - minZ ) / ( maxZ - minZ );
 
-console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
+  var normalizedR = normalizedSphere[0];
+  var normalizedG = normalizedSphere[1];
+  var normalizedB = normalizedSphere[2];
+
+//console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
 
  // var rgb = getRGBFromXYAndBrightness( 0.675, 0.322);
  // handSphere.material.color.setRGB( 0.5, 0.7, 0 );
