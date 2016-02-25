@@ -123,11 +123,11 @@ var minZ = -130.0;
 //if ( center[0] <= -120.0 ) { center[0] = -120.0; }
 //if ( center[1] >= 120.0 ) { center[1] = 120.0; }
 
-  var normalizedX = ( bound( center[0], minX, maxX ) - minX ) / ( maxX - minX );
-  var normalizedY = (center[1] - minY ) / ( maxY - minY );
-  var normalizedZ = (center[2] - minZ ) / ( maxZ - minZ );
+  var normalizedX = ( center[0] - minX ) / ( maxX - minX );
+  var normalizedY = ( center[1] - minY ) / ( maxY - minY );
+  var normalizedZ = ( center[2] - minZ ) / ( maxZ - minZ );
 
-console.log( ' normalize:', normalizedX, normalizedY, normalizedZ );
+console.log( ' normalized:', normalizedX, normalizedY, normalizedZ );
 
   var rgb = getRGBFromXYAndBrightness( 0.675, 0.322);
 
