@@ -125,7 +125,7 @@ function updateHandSphere( center, radius, frame ) {
 
   handSphere.material.color.setRGB(
               normalizedSphere[0],
-              normalizedG = normalizedSphere[1],
+              normalizedSphere[1],
               normalizedSphere[2] );
 
     var hueXY = getXYPointFromRGB( normalizedR * 255, normalizedG * 255, normalizedB * 255);
