@@ -109,7 +109,7 @@ function bound( val, min, max ) {
   if ( val > max ) { return max; }
 }
 
-function updateHandSphere( center, radius ) {
+function updateHandSphere( center, radius, frame ) {
 //handSphere.position.fromArray( center );
 
 var interactionBox = frame.interactionBox;
@@ -161,7 +161,7 @@ console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
     for ( var hand of frame.hands ) {
 
       if (hand.grabStrength > 0.3 ){
-          updateHandSphere( hand.sphereCenter, hand.sphereRadius );
+          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame );
       }
 
     //  updateHue( hand.grabStrength );
