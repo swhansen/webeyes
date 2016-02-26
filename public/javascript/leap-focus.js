@@ -20,6 +20,8 @@ function leapFocus() {
     var armMeshes = [];
     var boneMeshes = [];
 
+    var handGrab = false;
+
     var renderer, scene, camera, controls;
 
     var controller = Leap.loop( { enableGesture:true, background: false }, leapAnimate );
@@ -70,7 +72,7 @@ function leapFocus() {
   scene.add( light );
   scene.add( aLight );
 
-  var handGeometry = new THREE.SphereGeometry( 50, 16, 16 );
+  var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
   var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
   var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
@@ -108,16 +110,15 @@ function leapFocus() {
 //   if ( val > max ) { return max; }
 // }
 
-function updateHandSphere( palmCenter, radius, frame ) {
+
+function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
-
-  console.log( 'radius:', radius);
 
 // normalize Leap Palm Sphere
 // need for RGB color space - threejs wants rgb (0-1)
 
-  var interactionBox = frame.interactionBox;
+ // var interactionBox = frame.interactionBox;
   var normalizedSphere = interactionBox.normalizePoint( palmCenter, true );
 
   handSphere.material.color.setRGB(
@@ -144,8 +145,9 @@ function updateHandSphere( palmCenter, radius, frame ) {
 
     for ( var hand of frame.hands ) {
 
-      if (hand.grabStrength > 0.3 ){
-          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame );
+      if ( hand.grabStrength > 0.3 ) {
+          handGrab = true;
+          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
       }
 
       for ( var finger of hand.fingers ) {
