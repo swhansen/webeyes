@@ -21,7 +21,7 @@ function leapFocus() {
     var boneMeshes = [];
 
     var setLightState;
-    var inChooseState false;
+    var inChooseState = false;
 
     var renderer, scene, camera, controls;
 
