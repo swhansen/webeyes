@@ -110,7 +110,7 @@ function leapFocus() {
 
 function updateHandSphere( palmCenter, radius, frame ) {
 
-  handSphere.position.fromArray( center );
+  handSphere.position.fromArray( palmCenter );
 
    handSphere.geomentry.radius.x = radius;
    handSphere.geomentry.radius.y = radius;
