@@ -5,6 +5,10 @@ var hueLightState;
 var hueLightList;
 var hueLightListLength;
 
+socketServer.on( 'iotState', function( data ) {
+           //receiveArObject( data );
+      } );
+
 var hueSetLightState = function( lightNo, state, hue, sat, bri ) {
     var dataObject =  {};
     dataObject.on = state;

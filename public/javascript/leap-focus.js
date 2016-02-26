@@ -99,18 +99,11 @@ function leapFocus() {
       scene.add( mesh );
   }
 
-//function updateHue( grabStrength ) {
- // var v = ( grabStrength * 253) + 1;
 
- // console.log( 'GrabStrength, v:', grabStrength, v);
-//  hueSetLightState( 1, true, 65535, v, v );
-//}
-
-// function bound( val, min, max ) {
-//   if ( val < min ) { return min; }
-//   if ( val > max ) { return max; }
-// }
-
+  function emitIOT( data ) {
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'iotState', data, sessionId );
+  }
 
 function updateHandSphere( palmCenter, radius, interactionBox ) {
 
@@ -134,14 +127,12 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     if ( setLightState === 'setLight' && inChooseState ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
-       // scene.remove( handSphere );
-       inChooseState = false;
-       handSphere.visible = false;
+        inChooseState = false;
+        handSphere.visible = false;
     }
 
     if ( setLightState === 'offLight' && inChooseState ) {
        hueSetLightStateXY( 1, false, [ hueXY.x, hueXY.y ], 100 );
-       //scene.remove( handSphere );
        inChooseState = false;
        handSphere.visible = false;
     }

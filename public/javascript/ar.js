@@ -147,10 +147,10 @@ function loadAr( participantState ) {
         console.log( 'at toggleIOT:', data );
 
         hueSetLightState( data.iotDeviceId, data.isOn  );
-
-         arObject = scene.getObjectByName( data.name );
+        arObject = scene.getObjectByName( data.name );
 
          console.log( 'toggleIot arObject:', arObject );
+
          arObject.material.opacity = data.arObjectOpacity;
 
       break;
