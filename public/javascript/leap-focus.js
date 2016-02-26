@@ -133,7 +133,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     scene.add( handSphere );
 
     if ( handGrab == false ) {
-        hueSetLightState( 1, true, [ hueXY.x, hueXY.y ], 100 );
+        hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
     }
 
   }
