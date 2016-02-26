@@ -132,6 +132,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     if ( setLightState === 'setLight' ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
+        scene.remove( handSphere );
     }
 
     if ( setLightState === 'offLight' ) {
@@ -142,8 +143,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     if ( setLightState === 'adjustLight' ) {
       scene.add( handSphere );
     }
-
-
   }
 
   function leapAnimate( frame ) {
