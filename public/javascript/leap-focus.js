@@ -112,10 +112,7 @@ function updateHandSphere( palmCenter, radius, frame ) {
 
   handSphere.position.fromArray( palmCenter );
 
-   handSphere.scale.x = radius;
-   handSphere.scale.y = radius;
-   handSphere.scale.z = radius;
-
+   handSphere.scale.set( radius, radius, radius );
 
 // normalize Leap Palm Sphere
 // need for RGB color space - threejs wants rgb (0-1)
