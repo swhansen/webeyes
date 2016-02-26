@@ -146,6 +146,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     }
 
     if ( setLightState === 'adjustLight' ) {
+      handSphere.visible = true;
       scene.add( handSphere );
     }
   }
