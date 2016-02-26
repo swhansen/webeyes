@@ -25,6 +25,7 @@ var hueSetLightStateXY = function( lightNo, state, xy, bri ) {
     var dataObject =  {};
     dataObject.on = state;
     dataObject.xy = xy;
+    dataObject.bri = bri;
     var URL = hueURL + '/lights/' + lightNo + '/state';
     $.ajax( {
     type: 'PUT',
@@ -34,11 +35,6 @@ var hueSetLightStateXY = function( lightNo, state, xy, bri ) {
     error: function( a, err ) { }
     } );
 };
-
-
-
-
-
 
 var alertWeg2rtEntry = function( lightNo ) {
     var URL = hueURL + '/lights/' + lightNo + '/state';
