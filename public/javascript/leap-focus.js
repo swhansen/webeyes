@@ -135,12 +135,14 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     if ( setLightState === 'setLight' ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
-        scene.remove( handSphere );
+       // scene.remove( handSphere );
+       handSphere.visible = false;
     }
 
     if ( setLightState === 'offLight' ) {
        hueSetLightStateXY( 1, false, [ hueXY.x, hueXY.y ], 100 );
-       scene.remove( handSphere );
+       //scene.remove( handSphere );
+       handSphere.visible = false;
     }
 
     if ( setLightState === 'adjustLight' ) {
