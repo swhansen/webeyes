@@ -166,7 +166,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //  Logic for hue grab-relase interaction
 //
 
-      if ( hand.grabStrength > 0.3 && hand.grabStrength < 0.8 ) {
+      if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
           setLightState = 'adjustLight';
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
         }
