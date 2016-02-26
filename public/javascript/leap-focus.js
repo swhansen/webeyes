@@ -21,6 +21,7 @@ function leapFocus() {
     var boneMeshes = [];
 
     var setLightState;
+    var inChooseState false;
 
     var renderer, scene, camera, controls;
 
@@ -48,9 +49,9 @@ function leapFocus() {
         case 'swipe':
           hueSetAllLights( false );
         break;
-        case 'circle':
-         hueSetAllLights( true );
-        break;
+      //  case 'circle':
+      //   hueSetAllLights( true );
+      //  break;
       }
     }
     );
@@ -115,13 +116,11 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
 
-// normalize Leap Palm Sphere
+// normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
 
   var normalizedSphere = interactionBox.normalizePoint( palmCenter, true );
-
-  var normalizedPalm = interactionBox.normalizePoint(palmCenter, true );
- // console.log( 'normalizePalm:', normalizePalm );
+  var normalizedPalm = interactionBox.normalizePoint( palmCenter, true );
 
   handSphere.material.color.setRGB(
               normalizedSphere[0],
@@ -133,19 +132,22 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
               normalizedPalm[1] * 255,
               normalizedPalm[2] * 255 );
 
-    if ( setLightState === 'setLight' ) {
+    if ( setLightState === 'setLight' && inChooseState ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
        // scene.remove( handSphere );
+       inChooseState = false;
        handSphere.visible = false;
     }
 
-    if ( setLightState === 'offLight' ) {
+    if ( setLightState === 'offLight' && inChooseState ) {
        hueSetLightStateXY( 1, false, [ hueXY.x, hueXY.y ], 100 );
        //scene.remove( handSphere );
+       inChooseState = false;
        handSphere.visible = false;
     }
 
     if ( setLightState === 'adjustLight' ) {
+      inChooseState = true;
       handSphere.visible = true;
       scene.add( handSphere );
     }
@@ -168,6 +170,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
       if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
           setLightState = 'adjustLight';
+          inChooseState = true;
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
         }
       if ( hand.grabStrength == 0 ) {
