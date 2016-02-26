@@ -112,9 +112,9 @@ function updateHandSphere( palmCenter, radius, frame ) {
 
   handSphere.position.fromArray( palmCenter );
 
-   handSphere.geomentry.radius.x = radius;
-   handSphere.geomentry.radius.y = radius;
-   handSphere.geomentry.radius.z = radius;
+   handSphere.scale.x = radius;
+   handSphere.scale.y = radius;
+   handSphere.scale.z = radius;
 
 
 // normalize Leap Palm Sphere
