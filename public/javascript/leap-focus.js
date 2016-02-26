@@ -135,7 +135,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     if ( handGrab == false ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
     }
-
   }
 
   function leapAnimate( frame ) {
@@ -149,14 +148,18 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     for ( var hand of frame.hands ) {
 
+//
+//  Logic for grab-relase state
+//
+
       if ( hand.grabStrength > 0.3 ) {
           handGrab = true;
+          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
         }
       if ( hand.grabStrength == 0 ) {
           handGrab = false;
       }
 
-    updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
