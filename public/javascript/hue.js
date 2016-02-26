@@ -90,12 +90,11 @@ var hueGetAllLights = function() {
 
 hueGetAllLights();
 
-var hueSetAllLights = function( state ) {
+var hueSetAllLightsXY = function( state, xy, bri ) {
   for ( i = 1; i < hueLightListLength + 1; ++i ) {
-    hueSetLightState( i, state );
+    hueSetLightStateXY( i, state, xy, bri );
   }
 };
-
 
 /**
  * Color utility functions, exposed as an AMD module.
@@ -106,8 +105,6 @@ var hueSetAllLights = function( state ) {
  *
  * https://github.com/bjohnso5/hue-hacking
  * Copyright (c) 2013 Bryan Johnson; Licensed MIT */
-
-
 
     /**
      * Represents a CIE 1931 XY coordinate pair.
