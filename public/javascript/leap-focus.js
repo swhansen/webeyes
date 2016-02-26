@@ -158,6 +158,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         }
       if ( hand.grabStrength == 0 ) {
           handGrab = false;
+          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
       }
 
 
