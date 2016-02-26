@@ -108,20 +108,20 @@ function leapFocus() {
 //   if ( val > max ) { return max; }
 // }
 
-function updateHandSphere( center, radius, frame ) {
+function updateHandSphere( palmCenter, radius, frame ) {
 
   handSphere.position.fromArray( center );
+
+   handSphere.geomentry.radius.x = radius;
+   handSphere.geomentry.radius.y = radius;
+   handSphere.geomentry.radius.z = radius;
+
 
 // normalize Leap Palm Sphere
 // need for RGB color space - threejs wants rgb (0-1)
 
   var interactionBox = frame.interactionBox;
-  var normalizedSphere = interactionBox.normalizePoint( center, true );
-//  var normalizedR = normalizedSphere[0];
-//  var normalizedG = normalizedSphere[1];
-//  var normalizedB = normalizedSphere[2];
-
-//console.log( ' normalized:', normalizedR, normalizedG, normalizedB);
+  var normalizedSphere = interactionBox.normalizePoint( palmCenter, true );
 
   handSphere.material.color.setRGB(
               normalizedSphere[0],
@@ -150,8 +150,6 @@ function updateHandSphere( center, radius, frame ) {
       if (hand.grabStrength > 0.3 ){
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame );
       }
-
-    //  updateHue( hand.grabStrength );
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
