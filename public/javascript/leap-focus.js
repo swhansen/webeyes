@@ -120,8 +120,8 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   var normalizedSphere = interactionBox.normalizePoint( palmCenter, true );
 
-  var normalizePalm = interactionBox.normalizePoint(palmCenter, true );
-  console.log( 'normalizePalm:', normalizePalm );
+  var normalizedPalm = interactionBox.normalizePoint(palmCenter, true );
+ // console.log( 'normalizePalm:', normalizePalm );
 
   handSphere.material.color.setRGB(
               normalizedSphere[0],
@@ -129,9 +129,9 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
               normalizedSphere[2] );
 
   var hueXY = getXYPointFromRGB(
-              normalizedSphere[0] * 255,
-              normalizedSphere[1] * 255,
-              normalizedSphere[2] * 255 );
+              normalizedPalm[0] * 255,
+              normalizedPalm[1] * 255,
+              normalizedPalm[2] * 255 );
 
     if ( setLightState === 'setLight' ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
