@@ -118,7 +118,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 // normalize Leap Palm Sphere
 // need for RGB color space - threejs wants rgb (0-1)
 
- // var interactionBox = frame.interactionBox;
   var normalizedSphere = interactionBox.normalizePoint( palmCenter, true );
 
   handSphere.material.color.setRGB(
@@ -132,6 +131,11 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
               normalizedSphere[2] * 255 );
 
     scene.add( handSphere );
+
+    if ( handGrab == false ) {
+        hueSetLightState( 1, true, [ hueXY.x, hueXY.y ], 100 );
+    }
+
   }
 
   function leapAnimate( frame ) {
@@ -147,8 +151,12 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
       if ( hand.grabStrength > 0.3 ) {
           handGrab = true;
-          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
+        }
+      if ( hand.grabStrength == 0 ) {
+          handGrab = false;
       }
+
+    updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {

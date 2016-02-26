@@ -21,6 +21,25 @@ var hueSetLightState = function( lightNo, state, hue, sat, bri ) {
     } );
 };
 
+var hueSetLightStateXY = function( lightNo, state, xy, bri ) {
+    var dataObject =  {};
+    dataObject.on = state;
+    dataObject.xy = xy;
+    var URL = hueURL + '/lights/' + lightNo + '/state';
+    $.ajax( {
+    type: 'PUT',
+    dataType: 'json',
+    url: URL,
+    data: JSON.stringify( dataObject ),
+    error: function( a, err ) { }
+    } );
+};
+
+
+
+
+
+
 var alertWeg2rtEntry = function( lightNo ) {
     var URL = hueURL + '/lights/' + lightNo + '/state';
     var dataObject = {};
