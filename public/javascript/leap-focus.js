@@ -20,7 +20,7 @@ function leapFocus() {
     var armMeshes = [];
     var boneMeshes = [];
 
-    var setLightState = false;
+    var setLightState;
 
     var renderer, scene, camera, controls;
 
@@ -130,13 +130,18 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
               normalizedSphere[1] * 255,
               normalizedSphere[2] * 255 );
 
-    if ( setLightState === true ) {
+    if ( setLightState === 'setLight' ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
     }
 
-    if ( setLightState === false ) {
-    scene.add( handSphere );
-  }
+    if ( setLightState === 'adjustLight' ) {
+      scene.add( handSphere );
+    }
+
+    if ( setLightState === 'offLight' ) {
+       hueSetLightStateXY( 1, false, [ hueXY.x, hueXY.y ], 100 );
+    }
+
   }
 
   function leapAnimate( frame ) {
@@ -151,17 +156,22 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     for ( var hand of frame.hands ) {
 
 //
-//  Logic for grab-relase state
+//  Logic for hue grab-relase interaction
 //
 
       if ( hand.grabStrength > 0.3 ) {
-          setLightState = false;
+          setLightState = 'adjustLight';
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
         }
       if ( hand.grabStrength == 0 ) {
-          setLightState = true;
+          setLightState = 'setLight';
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
       }
+      if ( hand.grabStrength == 1 ) {
+          setLightState = 'offLight';
+          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
+      }
+
 
 
       for ( var finger of hand.fingers ) {
