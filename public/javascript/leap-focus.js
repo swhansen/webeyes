@@ -120,6 +120,9 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   var normalizedSphere = interactionBox.normalizePoint( palmCenter, true );
 
+  var normalizePalm = interactionBox.normalizePoint(palmCenter, true );
+  console.log( 'normalizePalm:', normalizePalm );
+
   handSphere.material.color.setRGB(
               normalizedSphere[0],
               normalizedSphere[1],
