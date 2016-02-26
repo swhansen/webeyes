@@ -130,11 +130,13 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
               normalizedSphere[1] * 255,
               normalizedSphere[2] * 255 );
 
-    scene.add( handSphere );
-
-    if ( setLightState == false ) {
+    if ( setLightState === true ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
     }
+
+    if ( setLightState === false ) {
+    scene.add( handSphere );
+  }
   }
 
   function leapAnimate( frame ) {
