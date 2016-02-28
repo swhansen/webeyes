@@ -132,9 +132,6 @@ function leapFocus() {
     socketServer.emit( 'iotState', data, sessionId );
   }
 
-  function update hueDeviceId() {
-
-  }
 
 function updateHandSphere( palmCenter, radius, interactionBox ) {
 
