@@ -77,6 +77,33 @@ function leapFocus() {
   var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
   var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
+  var textGeometry = new THREE.TextGeometry( 'hue-1', {
+
+          font: font,
+
+          size: size,
+          height: height,
+          curveSegments: curveSegments,
+
+          bevelThickness: bevelThickness,
+          bevelSize: bevelSize,
+          bevelEnabled: bevelEnabled,
+
+          material: 0,
+          extrudeMaterial: 1
+
+        });
+
+  textMaterial = new THREE.MultiMaterial( [
+          new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading } ), // front
+          new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.SmoothShading } ) // side
+        ] );
+
+  hueDeviceText = new THREE.Mesh( textGeometry, textMaterial );
+
+
+
+
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -105,9 +132,15 @@ function leapFocus() {
     socketServer.emit( 'iotState', data, sessionId );
   }
 
+  function update hueDeviceId() {
+
+  }
+
 function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
+  hueDeviceText.position.fromArray( palmCenter );
+
 
 // normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
@@ -158,6 +191,12 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //
 //  Logic for hue grab-relase interaction
 //
+
+      if (hand.pinchStrength == 1) {
+
+        // cycle throught hueLighListLength
+
+      }
 
       if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
           setLightState = 'adjustLight';
