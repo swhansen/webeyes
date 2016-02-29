@@ -244,7 +244,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
           if ( pinchFinger.type == 1 ) {
             if ( firstClick === true ) {
                 selectedHueDevice++;
-                if ( selectedHueDevice > 4 ) { selectedHueDevice = 0; }
+                if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
             console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
             firstClick = false;
       }
