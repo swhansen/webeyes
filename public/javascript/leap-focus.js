@@ -228,7 +228,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         var pinchFinger = findPinchingFingerType( hand );
           if ( pinchFinger.type == 1 ) {
 
-            if ( isClicked === false ) { isClicked = true }
+            if ( firstClicked === false ) { firstClicked = true }
 
         updateHueText( hand.sphereCenter, isClicked );
         firstClick = false;
