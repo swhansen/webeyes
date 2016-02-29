@@ -139,7 +139,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
   handSphere.position.fromArray( palmCenter );
 
   textMesh.position.fromArray( palmCenter );
-  textMesh.setX += 0.3;
+  textMesh.setX += 0.5;
 
 
 // normalize Leap Palm
