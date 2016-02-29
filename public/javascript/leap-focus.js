@@ -77,29 +77,34 @@ function leapFocus() {
   var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
   var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
-  var textGeometry = new THREE.TextGeometry( 'hue-1', {
+  // add 3D text
+  var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+  var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+  var materialArray = [ materialFront, materialSide ];
 
-          font: font,
 
-          size: size,
-          height: height,
-          curveSegments: curveSegments,
 
-          bevelThickness: bevelThickness,
-          bevelSize: bevelSize,
-          bevelEnabled: bevelEnabled,
 
-          material: 0,
-          extrudeMaterial: 1
+  var textGeom = new THREE.TextGeometry( "Hello, World!",
+  {
+    size: 30, height: 4, curveSegments: 3,
+    font: "helvetiker", weight: "bold", style: "normal",
+    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+    material: 0, extrudeMaterial: 1
+  });
 
-        });
+  // font: helvetiker, gentilis, droid sans, droid serif, optimer
+  // weight: normal, bold
 
-  textMaterial = new THREE.MultiMaterial( [
-          new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading } ), // front
-          new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.SmoothShading } ) // side
-        ] );
+  var textMaterial = new THREE.MeshFaceMaterial(materialArray);
+  var textMesh = new THREE.Mesh(textGeom, textMaterial );
 
-  hueDeviceText = new THREE.Mesh( textGeometry, textMaterial );
+  textGeom.computeBoundingBox();
+  var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
+
+  textMesh.position.set( -0.5 * textWidth, 50, 100 );
+  textMesh.rotation.x = -Math.PI / 4;
+  scene.add(textMesh);
 
 
 
@@ -136,7 +141,6 @@ function leapFocus() {
 function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
-  hueDeviceText.position.fromArray( palmCenter );
 
 
 // normalize Leap Palm
