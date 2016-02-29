@@ -84,7 +84,7 @@ function leapFocus() {
 
 //function setIOTText( device ) {
 
-  var iotText = 'hue IOT - 1;
+  var iotText = 'hue IOT - 1';
 
   var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
   var materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
