@@ -219,7 +219,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //
   var pinchFinger = findPinchingFingerType( hand );
 
-      if ( pinchFinger == 1 && hand.pinchStrength == 1) {
+      if ( pinchFinger == 1 ) {
 
         updateHueText( hand.sphereCenter );
 
