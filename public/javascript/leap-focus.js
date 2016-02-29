@@ -23,6 +23,7 @@ function leapFocus() {
     var setLightState;
     var inChooseState = false;
     var selectedHueDevice = 0;
+    var firstClick = false;
 
     var renderer, scene, camera, controls;
 
@@ -131,6 +132,7 @@ var iotText = 'hue IOT-1';
 function updateHueText( palmCenter, firstClick ) {
 
   if ( firstClick === true ) {
+    firstClick = false;
   if ( selectedHueDevice > 4 ) { selectedHueDevice = 0; }  // reset cycle
 
   selectedHueDevice++;
@@ -218,7 +220,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //
 //  index-thumb pinch event
 
-      var firstClick = false;
+      if ( hand.pinchStrength < 0.2 ) { firstClick = false; }
 
       if ( hand.pinchStrength == 1 && hand.grabStrength < 0.3 ) {
 
