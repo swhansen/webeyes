@@ -102,10 +102,9 @@ function leapFocus() {
   textGeom.computeBoundingBox();
   var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
 
-  textMesh.position.set( -0.5 * textWidth, 50, 100 );
+  textMesh.position.set( -0.5 * textWidth,0 ,0  );
   textMesh.rotation.x = -Math.PI / 4;
   scene.add(textMesh);
-
 
 
 
@@ -141,6 +140,7 @@ function leapFocus() {
 function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
+  textMesh.position.fromArray( palmCenter );
 
 
 // normalize Leap Palm
