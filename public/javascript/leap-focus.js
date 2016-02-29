@@ -79,11 +79,13 @@ function leapFocus() {
 
 // hue IOT device ID text
 
+var iotText = 'hue IOT-1';
+
   var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
   var materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
   var materialArray = [ materialFront, materialSide ];
 
-  var textGeom = new THREE.TextGeometry( "IOT-1",
+  var textGeom = new THREE.TextGeometry( iotText,
   {
     size: 30, height: 4, curveSegments: 3,
     font: "helvetiker", weight: "bold", style: "normal",
