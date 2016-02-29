@@ -103,6 +103,7 @@ function setIOTText( device ) {
   hueDeviceText.rotation.y = -Math.PI / 4;
  scene.add( hueDeviceText );
  hueDeviceText.visible = false;
+ console.log(hueDeviceText);
 }
 
  setIOTText( 1 );
@@ -138,7 +139,7 @@ function setIOTText( device ) {
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-setIOTText( selectedHueDevice );
+  setIOTText( selectedHueDevice );
 
   hueDeviceText.position.fromArray( palmCenter );
   hueDeviceText.translateX( -100.0 );
