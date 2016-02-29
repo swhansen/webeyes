@@ -83,7 +83,7 @@ function leapFocus() {
   var materialArray = [ materialFront, materialSide ];
 
 
-  var textGeom = new THREE.TextGeometry( "Hello, World!",
+  var textGeom = new THREE.TextGeometry( "IOT-1",
   {
     size: 30, height: 4, curveSegments: 3,
     font: "helvetiker", weight: "bold", style: "normal",
@@ -101,7 +101,7 @@ function leapFocus() {
   var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
 
   //textMesh.position.set( -0.5 * textWidth,0 ,0  );
-  textMesh.rotation.x = -Math.PI / 4;
+//  textMesh.rotation.x = -Math.PI / 4;
   scene.add(textMesh);
 
 
@@ -139,7 +139,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
   textMesh.position.fromArray( palmCenter );
-  textMesh.setX += 0.2;
+  textMesh.setX += 0.3;
 
 
 // normalize Leap Palm
