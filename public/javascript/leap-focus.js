@@ -132,10 +132,11 @@ var iotText = 'hue IOT-1';
 function updateHueText( palmCenter, isClicked ) {
 
   if ( isClicked === true ) {
-    isClicked = false;
+   // isClicked = false;
   if ( selectedHueDevice > 4 ) { selectedHueDevice = 0; }  // reset cycle
 
   selectedHueDevice++;
+  isClicked = false;
 }
   console.log( 'selectedHueDevice:', selectedHueDevice );
 
@@ -227,7 +228,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         var pinchFinger = findPinchingFingerType( hand );
           if ( pinchFinger.type == 1 ) {
 
-isClicked = true;
+            if ( isClicked === false ) { isClicked = true }
 
         updateHueText( hand.sphereCenter, isClicked );
         firstClick = false;
