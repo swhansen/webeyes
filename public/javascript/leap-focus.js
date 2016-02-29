@@ -77,12 +77,10 @@ function leapFocus() {
   var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
   var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
+// hue IOT device ID text
 
-
-
-  // add 3D text
-  var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
-  var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+  var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
+  var materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
   var materialArray = [ materialFront, materialSide ];
 
   var textGeom = new THREE.TextGeometry( "IOT-1",
