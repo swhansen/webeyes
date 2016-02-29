@@ -81,7 +81,10 @@ function leapFocus() {
 
 // hue IOT device ID text
 
-var iotText = 'hue IOT-1';
+
+function setIOTText( device ) {
+
+  var iotText = 'hue IOT' + device;
 
   var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
   var materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
@@ -98,7 +101,7 @@ var iotText = 'hue IOT-1';
   var textMaterial = new THREE.MeshFaceMaterial( materialArray );
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
-
+}
 
 
 
@@ -129,8 +132,9 @@ var iotText = 'hue IOT-1';
     socketServer.emit( 'iotState', data, sessionId );
   }
 
-function updateHueText( palmCenter ) {
+function updateHueText( palmCenter, selectedHueDevice ) {
 
+setIOTText( selectedHueDevice );
 
   hueDeviceText.position.fromArray( palmCenter );
   hueDeviceText.translateX( -100.0 );
@@ -219,17 +223,13 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
         var pinchFinger = findPinchingFingerType( hand );
           if ( pinchFinger.type == 1 ) {
-
-
-if ( firstClick === true ) {
-    selectedHueDevice++;
-if ( selectedHueDevice > 4 ) { selectedHueDevice = 0; }
-console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
-firstClick = false;
-}
-
-
-        updateHueText( hand.sphereCenter );
+            if ( firstClick === true ) {
+                selectedHueDevice++;
+                if ( selectedHueDevice > 4 ) { selectedHueDevice = 0; }
+            console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
+            firstClick = false;
+      }
+        updateHueText( hand.sphereCenter, selectedHueDevice );
       }
     }
 
