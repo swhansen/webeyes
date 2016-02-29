@@ -139,8 +139,8 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
   handSphere.position.fromArray( palmCenter );
 
   textMesh.position.fromArray( palmCenter );
-  textMesh.translateX( -0.4 );
-  textMesh.translateY( -0.4 );
+  textMesh.translateX( -100.00 );
+  textMesh.translateY( -100.00 );
 
 
 
