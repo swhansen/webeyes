@@ -205,7 +205,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     }
 
     if ( setLightState === 'offLight' && inChooseState ) {
-       hueSetLightStateXY( 1, false, [ hueXY.x, hueXY.y ], 100 );
+       hueSetLightStateXY( selectedHueDevice, false, [ hueXY.x, hueXY.y ], 100 );
        inChooseState = false;
        handSphere.visible = false;
     }
