@@ -102,6 +102,7 @@ function setIOTText( device ) {
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
 }
+setIOTText( 1 );
 
 
 
