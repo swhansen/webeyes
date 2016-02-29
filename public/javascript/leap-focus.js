@@ -77,7 +77,7 @@ function leapFocus() {
   var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
   var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
-  // add 3D text
+  // add 3D text fot hue
   var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
   var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
   var materialArray = [ materialFront, materialSide ];
@@ -94,14 +94,14 @@ function leapFocus() {
   // weight: normal, bold
 
   var textMaterial = new THREE.MeshFaceMaterial(materialArray);
-  var textMesh = new THREE.Mesh(textGeom, textMaterial );
+  var hueText = new THREE.Mesh(textGeom, textMaterial );
 
   textGeom.computeBoundingBox();
   var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
 
   //textMesh.position.set( -0.5 * textWidth,0 ,0  );
-  textMesh.rotation.y = -Math.PI / 4;
-  scene.add(textMesh);
+  hueText.rotation.y = -Math.PI / 4;
+  scene.add( hueText );
 
 
 
@@ -138,8 +138,9 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
 
-  textMesh.position.fromArray( palmCenter );
-  textMesh.setX += 0.5;
+  hueSetAllLightsXY().position.fromArray( palmCenter );
+
+ hueText.translateX( 0.2 );
 
 
 // normalize Leap Palm
