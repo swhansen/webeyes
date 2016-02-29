@@ -81,7 +81,6 @@ function leapFocus() {
 
 // hue IOT device ID text
 
-
   var iotText = 'hue IOT - 1';
 
   var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
@@ -158,7 +157,6 @@ function updateHueText( palmCenter, selectedHueDevice ) {
   hueDeviceText.translateZ( 50.0 );
   scene.add( hueDeviceText );
   hueDeviceText.visible = true;
-
 }
 
 function findPinchingFingerType( hand ){
@@ -174,7 +172,6 @@ function findPinchingFingerType( hand ){
             pincher = current;
         }
     }
-   // console.log( 'pincher:', pincher.type);
     return pincher;
 }
 
