@@ -135,7 +135,7 @@ function updateHueText( palmCenter, firstClick ) {
 
   selectedHueDevice++;
 }
-  console.log( 'selectedHueDevice:' );
+  console.log( 'selectedHueDevice:', selectedHueDevice );
 
   hueDeviceText.position.fromArray( palmCenter );
   hueDeviceText.translateX( -100.0 );
