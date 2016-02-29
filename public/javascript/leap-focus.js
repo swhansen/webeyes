@@ -172,6 +172,7 @@ function findPinchingFingerType( hand ){
             pincher = current;
         }
     }
+
     return pincher;
 }
 
