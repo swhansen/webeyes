@@ -141,6 +141,7 @@ function updateHueText( palmCenter ) {
   hueDeviceText.position.fromArray( palmCenter );
   hueDeviceText.translateX( -100.00 );
   hueDeviceText.translateY( -100.00 );
+  scene.add( hueDeviceText );
 
 }
 
@@ -193,6 +194,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     var countArms = 0;
 
     scene.remove( handSphere );
+    scene.remove( hueDeviceText );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
@@ -202,7 +204,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //  Logic for hue grab-relase interaction
 //
 
-      if (hand.pinchStrength == 1) {
+      if ( hand.pinchStrength == 1) {
 
         updateHueText( hand.sphereCenter );
 
