@@ -22,6 +22,7 @@ function leapFocus() {
 
     var setLightState;
     var inChooseState = false;
+     var selectedHueDevice = 0;
 
     var renderer, scene, camera, controls;
 
@@ -128,6 +129,10 @@ var iotText = 'hue IOT-1';
   }
 
 function updateHueText( palmCenter ) {
+  if ( selectedHueDevice > 4 ) { selectedHueDevice = 0; }  // reset cycle
+
+  selectedHueDevice++;
+  console.log( 'selectedHueDevice:', selectedHueDevice );
 
   hueDeviceText.position.fromArray( palmCenter );
   hueDeviceText.translateX( -100.0 );
@@ -211,13 +216,14 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //  index-thumb pinch event
 
       if ( hand.pinchStrength == 1 && hand.grabStrength < 0.3 ) {
+
         var pinchFinger = findPinchingFingerType( hand );
           if ( pinchFinger.type == 1 ) {
         updateHueText( hand.sphereCenter );
       }
     }
 
-      if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
+      if ( hand.grabStrength > 0.2 && hand.grabStrength < 0.8 ) {
           setLightState = 'adjustLight';
           inChooseState = true;
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
