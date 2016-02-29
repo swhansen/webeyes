@@ -130,14 +130,13 @@ var iotText = 'hue IOT-1';
   }
 
 function updateHueText( palmCenter ) {
-  firstClick = true;
+  if ( firstClick === false ) { firstClick = true }
   if ( firstClick === true ) {
     selectedHueDevice++;
-    firstClick = false;
   if ( selectedHueDevice > 4 ) { selectedHueDevice = 0; }  // reset cycle
+  console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
   firstClick = false;
 }
-  console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
 
   hueDeviceText.position.fromArray( palmCenter );
   hueDeviceText.translateX( -100.0 );
@@ -226,10 +225,9 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
         var pinchFinger = findPinchingFingerType( hand );
           if ( pinchFinger.type == 1 ) {
-          if (firstClick === false ) { firstClick = true }
 
         updateHueText( hand.sphereCenter );
-        firstClick = false;
+
       }
     }
 
