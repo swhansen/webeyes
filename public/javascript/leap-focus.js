@@ -230,7 +230,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
             if ( firstClick === false ) { firstClick = true }
 
-        updateHueText( hand.sphereCenter, );
+        updateHueText( hand.sphereCenter );
         firstClick = false;
       }
     }
