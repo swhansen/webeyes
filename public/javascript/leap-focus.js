@@ -130,12 +130,13 @@ var iotText = 'hue IOT-1';
   }
 
 function updateHueText( palmCenter ) {
-  if ( firstClick === false ) { firstClick = true }
+  if ( !firstClick ) {
   if ( firstClick === true ) {
     selectedHueDevice++;
   if ( selectedHueDevice > 4 ) { selectedHueDevice = 0; }  // reset cycle
   console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
   firstClick = false;
+}
 }
 
   hueDeviceText.position.fromArray( palmCenter );
