@@ -82,7 +82,7 @@ function leapFocus() {
 // hue IOT device ID text
 
 
-function setIOTText( device ) {
+//function setIOTText( device ) {
 
   var iotText = 'hue IOT - ' + device;
 
@@ -101,12 +101,9 @@ function setIOTText( device ) {
   var textMaterial = new THREE.MeshFaceMaterial( materialArray );
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
- scene.add( hueDeviceText );
- hueDeviceText.visible = false;
- console.log(hueDeviceText);
-}
 
- setIOTText( 1 );
+
+// setIOTText( 1 );
 
 
 
@@ -210,7 +207,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     var countBones = 0;
     var countArms = 0;
-    setIOTText ( 1 );
 
     scene.remove( handSphere );
     scene.remove( hueDeviceText );
