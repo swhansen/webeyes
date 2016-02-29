@@ -102,7 +102,9 @@ function setIOTText( device ) {
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
 }
-setIOTText( 1 );
+ setIOTText( 1 );
+ scene.add( hueDeviceText );
+ hueDeviceText.visible = false;
 
 
 
@@ -142,6 +144,7 @@ setIOTText( selectedHueDevice );
   hueDeviceText.translateY( -100.0 );
   hueDeviceText.translateZ( 50.0 );
   scene.add( hueDeviceText );
+  hueDeviceText.visible = true;
 
 }
 
