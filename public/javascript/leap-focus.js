@@ -90,7 +90,7 @@ function leapFocus() {
   var textGeom = new THREE.TextGeometry( iotText,
   {
     size: 30, height: 4, curveSegments: 3,
-    font: "helvetiker", weight: "bold", style: "normal",
+    font: "helvetiker", weight: "normal", style: "normal",
     bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
     material: 0, extrudeMaterial: 1
   });
@@ -110,7 +110,7 @@ function setIOTText( device ) {
    textGeom = new THREE.TextGeometry( iotText,
   {
     size: 30, height: 4, curveSegments: 3,
-    font: "helvetiker", weight: "bold", style: "normal",
+    font: "helvetiker", weight: "normal", style: "normal",
     bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
     material: 0, extrudeMaterial: 1
   });
