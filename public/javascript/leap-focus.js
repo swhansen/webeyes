@@ -158,7 +158,7 @@ function findPinchingFingerType(hand){
             pincher = current;
         }
     }
-    console.log( 'pincher:', pincher.type);
+   // console.log( 'pincher:', pincher.type);
     return pincher;
 }
 
