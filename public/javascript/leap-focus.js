@@ -116,12 +116,10 @@ function setIOTText( device ) {
     material: 0, extrudeMaterial: 1
   });
 
-   textMaterial = new THREE.MeshFaceMaterial( materialArray );
-   hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
+  textMaterial = new THREE.MeshFaceMaterial( materialArray );
+  hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
 }
-
-
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -201,7 +199,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
               normalizedPalm[2] * 255 );
 
     if ( setLightState === 'setLight' && inChooseState ) {
-        hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
+        hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         inChooseState = false;
         handSphere.visible = false;
     }
@@ -234,7 +232,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //
 //  Logic for hue pinch grab-relase interaction
 //
-//  index-thumb pinch event
 
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
