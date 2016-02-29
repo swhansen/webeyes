@@ -210,6 +210,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     var countBones = 0;
     var countArms = 0;
+    setIOTText ( 1 );
 
     scene.remove( handSphere );
     scene.remove( hueDeviceText );
