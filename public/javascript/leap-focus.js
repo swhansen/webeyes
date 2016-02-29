@@ -84,7 +84,7 @@ function leapFocus() {
 
 function setIOTText( device ) {
 
-  var iotText = 'hue IOT' + device;
+  var iotText = 'hue IOT - ' + device;
 
   var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
   var materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
@@ -101,10 +101,11 @@ function setIOTText( device ) {
   var textMaterial = new THREE.MeshFaceMaterial( materialArray );
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
-}
- setIOTText( 1 );
  scene.add( hueDeviceText );
  hueDeviceText.visible = false;
+}
+
+ setIOTText( 1 );
 
 
 
