@@ -77,7 +77,7 @@ function leapFocus() {
   var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
   var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
-  // add 3D text fot hue
+  // add 3D text
   var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
   var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
   var materialArray = [ materialFront, materialSide ];
@@ -140,7 +140,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   hueSetAllLightsXY().position.fromArray( palmCenter );
 
- hueText.translateX( 0.2 );
+ textMesh.translateZ( 0.2 );
 
 
 // normalize Leap Palm
