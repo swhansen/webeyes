@@ -213,7 +213,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //
 //  index-thumb pinch event
 
-      if ( hand.pinchStrength > 0.5 ) { firstClick = true; }
+      if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
       if ( hand.pinchStrength == 1 && hand.grabStrength < 0.3 ) {
 
