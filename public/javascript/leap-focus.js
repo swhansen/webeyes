@@ -44,10 +44,10 @@ function leapFocus() {
     controller.on( 'gesture', function( gesture ) {
       switch ( gesture.type ) {
         case 'screenTap':
-        hueSetLightState( 1, true );
+      //  hueSetLightState( 1, true );
         break;
         case 'swipe':
-          hueSetAllLights( false );
+     //     hueSetAllLights( false );
         break;
       //  case 'circle':
       //   hueSetAllLights( true );
@@ -77,6 +77,9 @@ function leapFocus() {
   var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
   var handSphere = new THREE.Mesh( handGeometry, handMaterial );
 
+
+
+
   // add 3D text
   var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
   var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
@@ -93,15 +96,15 @@ function leapFocus() {
   // font: helvetiker, gentilis, droid sans, droid serif, optimer
   // weight: normal, bold
 
-  var textMaterial = new THREE.MeshFaceMaterial(materialArray);
-  var textMesh = new THREE.Mesh(textGeom, textMaterial );
+  var textMaterial = new THREE.MeshFaceMaterial( materialArray );
+  var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
 
   textGeom.computeBoundingBox();
   var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
 
-  //textMesh.position.set( -0.5 * textWidth,0 ,0  );
-  textMesh.rotation.y = -Math.PI / 4;
-  scene.add(textMesh);
+  //hueDeviceText.position.set( -0.5 * textWidth,0 ,0  );
+  hueDeviceText.rotation.y = -Math.PI / 4;
+  scene.add( hueDeviceText );
 
 
 
@@ -133,16 +136,21 @@ function leapFocus() {
     socketServer.emit( 'iotState', data, sessionId );
   }
 
+function updateHueText( palmCenter ) {
+
+  hueDeviceText.position.fromArray( palmCenter );
+  hueDeviceText.translateX( -100.00 );
+  hueDeviceText.translateY( -100.00 );
+
+}
+
+
+
+
 
 function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
-
-  textMesh.position.fromArray( palmCenter );
-  textMesh.translateX( -100.00 );
-  textMesh.translateY( -100.00 );
-
-
 
 // normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
@@ -195,6 +203,8 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //
 
       if (hand.pinchStrength == 1) {
+
+        updateHueText( hand.sphereCenter );
 
         // cycle throught hueLighListLength
 
