@@ -83,8 +83,6 @@ function leapFocus() {
   var materialArray = [ materialFront, materialSide ];
 
 
-
-
   var textGeom = new THREE.TextGeometry( "Hello, World!",
   {
     size: 30, height: 4, curveSegments: 3,
@@ -102,7 +100,7 @@ function leapFocus() {
   textGeom.computeBoundingBox();
   var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
 
-  textMesh.position.set( -0.5 * textWidth,0 ,0  );
+  //textMesh.position.set( -0.5 * textWidth,0 ,0  );
   textMesh.rotation.x = -Math.PI / 4;
   scene.add(textMesh);
 
