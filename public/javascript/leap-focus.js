@@ -96,7 +96,7 @@ var iotText = 'hue IOT-1';
   var textMaterial = new THREE.MeshFaceMaterial( materialArray );
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
-  //scene.add( hueDeviceText );
+
 
 
 
@@ -132,7 +132,7 @@ function updateHueText( palmCenter ) {
   hueDeviceText.position.fromArray( palmCenter );
   hueDeviceText.translateX( -100.0 );
   hueDeviceText.translateY( -50.0 );
-  hueDeviceText.translateY( 50.0 );
+  hueDeviceText.translateZ( 50.0 );
   scene.add( hueDeviceText );
 
 }
