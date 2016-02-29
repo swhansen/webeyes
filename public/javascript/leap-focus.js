@@ -94,14 +94,14 @@ function leapFocus() {
   // weight: normal, bold
 
   var textMaterial = new THREE.MeshFaceMaterial(materialArray);
-  var hueText = new THREE.Mesh(textGeom, textMaterial );
+  var textMesh = new THREE.Mesh(textGeom, textMaterial );
 
   textGeom.computeBoundingBox();
   var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
 
   //textMesh.position.set( -0.5 * textWidth,0 ,0  );
-  hueText.rotation.y = -Math.PI / 4;
-  scene.add( hueText );
+  textMesh.rotation.y = -Math.PI / 4;
+  scene.add(textMesh);
 
 
 
@@ -138,9 +138,8 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
 
-  hueSetAllLightsXY().position.fromArray( palmCenter );
-
- textMesh.translateZ( 0.2 );
+  textMesh.position.fromArray( palmCenter );
+  textMesh.translateX( 0.2 );
 
 
 // normalize Leap Palm
