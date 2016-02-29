@@ -217,15 +217,17 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //
 //  Logic for hue grab-relase interaction
 //
-  var pinchFinger = findPinchingFingerType( hand );
 
-      if ( hand.pinchStrength == 1) {
-
+      if ( hand.pinchStrength > 0 ) {
+        var pinchFinger = findPinchingFingerType( hand );
+          if  pinchFinger == 1 {
         updateHueText( hand.sphereCenter );
+
+      }
+    }
 
         // cycle throught hueLighListLength
 
-      }
 
       if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
           setLightState = 'adjustLight';
