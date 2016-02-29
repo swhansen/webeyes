@@ -93,18 +93,10 @@ var iotText = 'hue IOT-1';
     material: 0, extrudeMaterial: 1
   });
 
-  // font: helvetiker, gentilis, droid sans, droid serif, optimer
-  // weight: normal, bold
-
   var textMaterial = new THREE.MeshFaceMaterial( materialArray );
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
-
-  textGeom.computeBoundingBox();
-  var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
-
-  //hueDeviceText.position.set( -0.5 * textWidth,0 ,0  );
   hueDeviceText.rotation.y = -Math.PI / 4;
-  scene.add( hueDeviceText );
+  //scene.add( hueDeviceText );
 
 
 
@@ -130,7 +122,6 @@ var iotText = 'hue IOT-1';
       scene.add( mesh );
   }
 
-
   function emitIOT( data ) {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'iotState', data, sessionId );
@@ -139,8 +130,9 @@ var iotText = 'hue IOT-1';
 function updateHueText( palmCenter ) {
 
   hueDeviceText.position.fromArray( palmCenter );
-  hueDeviceText.translateX( -100.00 );
-  hueDeviceText.translateY( -100.00 );
+  hueDeviceText.translateX( -100.0 );
+  hueDeviceText.translateY( -50.0 );
+  hueDeviceText.translateY( 50.0 );
   scene.add( hueDeviceText );
 
 }
@@ -161,8 +153,6 @@ function findPinchingFingerType(hand){
    // console.log( 'pincher:', pincher.type);
     return pincher;
 }
-
-
 
 function updateHandSphere( palmCenter, radius, interactionBox ) {
 
@@ -216,19 +206,16 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     for ( var hand of frame.hands ) {
 
 //
-//  Logic for hue grab-relase interaction
+//  Logic for hue pinch grab-relase interaction
 //
+//  index-thumb pinch event
 
       if ( hand.pinchStrength == 1 && hand.grabStrength < 0.3 ) {
         var pinchFinger = findPinchingFingerType( hand );
           if ( pinchFinger.type == 1 ) {
         updateHueText( hand.sphereCenter );
-
       }
     }
-
-        // cycle throught hueLighListLength
-
 
       if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
           setLightState = 'adjustLight';
