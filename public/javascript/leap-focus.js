@@ -145,7 +145,21 @@ function updateHueText( palmCenter ) {
 
 }
 
-
+function findPinchingFingerType(hand){
+    var pincher;
+    var closest = 500;
+    for(var f = 1; f < 5; f++)
+    {
+        current = hand.fingers[f];
+        distance = Leap.vec3.distance(hand.thumb.tipPosition, current.tipPosition);
+        if(current != hand.thumb && distance < closest)
+        {
+            closest = distance;
+            pincher = current;
+        }
+    }
+    return pincher;
+}
 
 
 
@@ -203,8 +217,9 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //
 //  Logic for hue grab-relase interaction
 //
+  var pinchFinger = findPinchingFingerType( hand );
 
-      if ( !inChooseState && hand.pinchStrength == 1) {
+      if ( pinchFinger == 1 && hand.pinchStrength == 1) {
 
         updateHueText( hand.sphereCenter );
 
