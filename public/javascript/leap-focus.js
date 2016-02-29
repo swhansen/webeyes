@@ -219,7 +219,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 //  Logic for hue grab-relase interaction
 //
 
-      if ( hand.pinchStrength == 1 ) {
+      if ( hand.pinchStrength == 1 && hand.grabStrength < 0.3 ) {
         var pinchFinger = findPinchingFingerType( hand );
           if ( pinchFinger.type == 1 ) {
         updateHueText( hand.sphereCenter );
