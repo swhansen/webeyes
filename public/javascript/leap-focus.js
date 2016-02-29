@@ -100,7 +100,7 @@ function leapFocus() {
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
 
-setIOTText( device ) {
+function setIOTText( device ) {
 
    iotText = "hue IOT - " + device;
 
