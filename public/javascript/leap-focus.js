@@ -158,7 +158,7 @@ function findPinchingFingerType(hand){
             pincher = current;
         }
     }
-    console.log( 'pincher:', pincher);
+    console.log( 'pincher:', pincher.type);
     return pincher;
 }
 
@@ -221,7 +221,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
       if ( hand.pinchStrength > 0 ) {
         var pinchFinger = findPinchingFingerType( hand );
-          if ( pinchFinger == 1 ) {
+          if ( pinchFinger.type == 1 ) {
         updateHueText( hand.sphereCenter );
 
       }
