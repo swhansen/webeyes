@@ -133,6 +133,7 @@ function updateHueText( palmCenter ) {
   hueDeviceText.translateX( -100.0 );
   hueDeviceText.translateY( -100.0 );
   hueDeviceText.translateZ( 50.0 );
+  scene.add( hueDeviceText );
 
 }
 
