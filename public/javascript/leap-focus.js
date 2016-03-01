@@ -10,12 +10,6 @@ var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
-
-
-
-
-
-
 var hueDevice = document.createElement('div');
 hueDevice.style.position = 'absolute';
 hueDevice.style.width = 100;
@@ -27,7 +21,6 @@ hueDevice.style.left = 20 + 'px';
 hueDevice.style.fontSize = 'x-large';
 hueDevice.zIndex = 200;
 document.body.appendChild(hueDevice);
-
 
  var leapFull = document.getElementById( 'leapfull' );
 
@@ -72,6 +65,7 @@ document.body.appendChild(hueDevice);
         break;
         case 'swipe':
           hueSetAllLightsXY( false );
+          iotLightOff.play();
         break;
       //  case 'circle':
       //   hueSetAllLights( true );
@@ -195,7 +189,6 @@ function findPinchingFingerType( hand ){
             pincher = current;
         }
     }
-
     return pincher;
 }
 
@@ -266,7 +259,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
                 selectedHueDevice++;
                 iotIncrement.play();
                 if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
-            console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
             firstClick = false;
       }
         updateHueText( hand.sphereCenter, selectedHueDevice );
