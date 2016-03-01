@@ -27,7 +27,8 @@
     "sweetalert": "~1.1.0",
     "threejs": "*",
     "tweenjs": "~16.3.1",
-    "leapjs": "~0.6.4"
+    "leapjs": "~0.6.4",
+    "materialize": "~0.97.5"
   },
   "moduleType": [
     "amd",
