@@ -12,9 +12,11 @@ text2.style.position = 'absolute';
 text2.style.width = 100;
 text2.style.height = 100;
 text2.style.backgroundColor = "blue";
-text2.innerHTML = "hi there!";
+text2.innerHTML = "hue IOT-1";
 text2.style.top = 200 + 'px';
 text2.style.left = 200 + 'px';
+text2.style.fontSize = 'large';
+text2.zIndex = 200;
 document.body.appendChild(text2);
 
 
