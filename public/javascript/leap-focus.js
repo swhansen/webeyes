@@ -259,7 +259,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
           if ( pinchFinger.type == 1 ) {
             if ( firstClick === true ) {
                 selectedHueDevice++;
-                audio.play
+                audio.play();
                 if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
             console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
             firstClick = false;
