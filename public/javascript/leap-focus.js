@@ -6,19 +6,22 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-var floader = new THREE.FontLoader();
 
-floader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
+var loader = new THREE.FontLoader();
+loader.load( 'fonts/helvetiker_bold.typeface.js', function ( font ) {
 
-setIOTText( 1, font);
+    var textGeo = new THREE.TextGeometry( "THREE.JS", {
 
+        font: font,
 
-      } );
+        size: 200,
+        height: 50,
+        curveSegments: 12,
 
-
-
-
-
+        bevelThickness: 2,
+        bevelSize: 5,
+        bevelEnabled: true
+});
 
  var leapFull = document.getElementById( 'leapfull' );
 
