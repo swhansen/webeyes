@@ -6,18 +6,18 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-var text2 = document.createElement('div');
-text2.style.position = 'absolute';
+var hueDevice = document.createElement('div');
+hueDevice.style.position = 'absolute';
 //text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
-text2.style.width = 100;
-text2.style.height = 100;
-text2.style.backgroundColor = "blue";
-text2.innerHTML = "hue IOT-1";
-text2.style.top = 200 + 'px';
-text2.style.left = 200 + 'px';
-text2.style.fontSize = 'large';
-text2.zIndex = 200;
-document.body.appendChild(text2);
+hueDevice.style.width = 100;
+hueDevice.style.height = 100;
+hueDevice.style.backgroundColor = "blue";
+hueDevice.innerHTML = "hue IOT-1";
+hueDevice.style.top = 200 + 'px';
+hueDevice.style.left = 200 + 'px';
+hueDevice.style.fontSize = 'large';
+hueDevice.zIndex = 200;
+document.body.appendChild(hueDevice);
 
 
 
