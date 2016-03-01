@@ -6,6 +6,19 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
+var floader = new THREE.FontLoader();
+
+floader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
+
+setIOTText( 1, font);
+
+
+      } );
+
+
+
+
+
 
  var leapFull = document.getElementById( 'leapfull' );
 
@@ -99,7 +112,7 @@ function leapFocus() {
   var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
   hueDeviceText.rotation.y = -Math.PI / 4;
 
-function setIOTText( device ) {
+function setIOTText( device, font ) {
 
    iotText = "hue IOT - " + device;
 
