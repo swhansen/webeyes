@@ -22,7 +22,7 @@ loader.load( 'fonts/helvetiker_bold.typeface.js', function ( font ) {
         bevelSize: 5,
         bevelEnabled: true
 } );
-  }
+  } );
 
  var leapFull = document.getElementById( 'leapfull' );
 
