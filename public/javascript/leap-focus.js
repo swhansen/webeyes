@@ -6,7 +6,10 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-var audio = new Audio( 'audio/button-19.wav');
+var iotIncrement = new Audio( 'audio/button-19.wav');
+var iotLightOn = new Audio( 'audio/button-17.wav');
+var iotLightOff = new Audio( 'audio/button-47.wav');
+
 
 
 
@@ -259,7 +262,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
           if ( pinchFinger.type == 1 ) {
             if ( firstClick === true ) {
                 selectedHueDevice++;
-                audio.play();
+                iotIncrement.play();
                 if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
             console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
             firstClick = false;
@@ -275,10 +278,12 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         }
       if ( hand.grabStrength == 0 ) {
           setLightState = 'setLight';
+          iotLightOn.play();
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
       }
       if ( hand.grabStrength == 1 ) {
           setLightState = 'offLight';
+          iotLightOff.play();
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
       }
 
