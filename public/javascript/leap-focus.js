@@ -8,23 +8,17 @@ function leapFocus() {
 
 
 
-
-
 var hueDevice = document.createElement('div');
 hueDevice.style.position = 'absolute';
 hueDevice.style.width = 100;
 hueDevice.style.height = 100;
 //hueDevice.style.backgroundColor = "blue";
-hueDevice.innerHTML = "hue IOT-1";
+hueDevice.innerHTML = 'hue IOT-1';
 hueDevice.style.top = 20 + 'px';
 hueDevice.style.left = 20 + 'px';
 hueDevice.style.fontSize = 'x-large';
 hueDevice.zIndex = 200;
 document.body.appendChild(hueDevice);
-
-
-
-
 
 
  var leapFull = document.getElementById( 'leapfull' );
@@ -69,7 +63,7 @@ document.body.appendChild(hueDevice);
       //  hueSetLightState( 1, true );
         break;
         case 'swipe':
-     //     hueSetAllLights( false );
+          hueSetAllLightsXY( false );
         break;
       //  case 'circle':
       //   hueSetAllLights( true );
@@ -101,44 +95,44 @@ document.body.appendChild(hueDevice);
 
 // hue IOT device ID text
 
-  var iotText = 'hue IOT - 1';
+//  var iotText = 'hue IOT - 1';
+//
+//  var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
+//  var materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
+//  var materialArray = [ materialFront, materialSide ];
+//
+//  var textGeom = new THREE.TextGeometry( iotText,
+//  {
+//    size: 30, height: 4, curveSegments: 3,
+//    font: "helvetiker", weight: "normal", style: "normal",
+//    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+//    material: 0, extrudeMaterial: 1
+//  });
+//
+//  var textMaterial = new THREE.MeshFaceMaterial( materialArray );
+//  var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
+//  hueDeviceText.rotation.y = -Math.PI / 4;
+//
+//  function setIOTText( device, font ) {
+//
+//   iotText = "hue IOT -" + " " + device;
+//
+//   materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
+//   materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
+//   materialArray = [ materialFront, materialSide ];
+//
+//   textGeom = new THREE.TextGeometry( iotText,
+//  {
+//    size: 30, height: 4, curveSegments: 3,
+//    font: "helvetiker", weight: "normal", style: "normal",
+//    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+//    material: 0, extrudeMaterial: 1
+//  });
 
-  var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
-  var materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
-  var materialArray = [ materialFront, materialSide ];
-
-  var textGeom = new THREE.TextGeometry( iotText,
-  {
-    size: 30, height: 4, curveSegments: 3,
-    font: "helvetiker", weight: "normal", style: "normal",
-    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
-    material: 0, extrudeMaterial: 1
-  });
-
-  var textMaterial = new THREE.MeshFaceMaterial( materialArray );
-  var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
-  hueDeviceText.rotation.y = -Math.PI / 4;
-
-function setIOTText( device, font ) {
-
-   iotText = "hue IOT - " + device;
-
-   materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
-   materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
-   materialArray = [ materialFront, materialSide ];
-
-   textGeom = new THREE.TextGeometry( iotText,
-  {
-    size: 30, height: 4, curveSegments: 3,
-    font: "helvetiker", weight: "normal", style: "normal",
-    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
-    material: 0, extrudeMaterial: 1
-  });
-
-  textMaterial = new THREE.MeshFaceMaterial( materialArray );
-  hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
-  hueDeviceText.rotation.y = -Math.PI / 4;
-}
+//    textMaterial = new THREE.MeshFaceMaterial( materialArray );
+//    hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
+//    hueDeviceText.rotation.y = -Math.PI / 4;
+//  }
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -169,15 +163,15 @@ function setIOTText( device, font ) {
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-  setIOTText( selectedHueDevice );
+ // setIOTText( selectedHueDevice );
   hueDevice.innerHTML = "hue IOT -" + selectedHueDevice;
 
-  hueDeviceText.position.fromArray( palmCenter );
-  hueDeviceText.translateX( -100.0 );
-  hueDeviceText.translateY( -100.0 );
-  hueDeviceText.translateZ( 50.0 );
-  scene.add( hueDeviceText );
-  hueDeviceText.visible = true;
+//  hueDeviceText.position.fromArray( palmCenter );
+//  hueDeviceText.translateX( -100.0 );
+//  hueDeviceText.translateY( -100.0 );
+//  hueDeviceText.translateZ( 50.0 );
+//  scene.add( hueDeviceText );
+//  hueDeviceText.visible = true;
 }
 
 function findPinchingFingerType( hand ){
