@@ -12,14 +12,13 @@ function leapFocus() {
 
 var hueDevice = document.createElement('div');
 hueDevice.style.position = 'absolute';
-//text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
 hueDevice.style.width = 100;
 hueDevice.style.height = 100;
 //hueDevice.style.backgroundColor = "blue";
 hueDevice.innerHTML = "hue IOT-1";
 hueDevice.style.top = 20 + 'px';
 hueDevice.style.left = 20 + 'px';
-hueDevice.style.fontSize = 'large';
+hueDevice.style.fontSize = 'x-large';
 hueDevice.zIndex = 200;
 document.body.appendChild(hueDevice);
 
