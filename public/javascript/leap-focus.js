@@ -163,9 +163,9 @@ document.body.appendChild(hueDevice);
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
- // setIOTText( selectedHueDevice );
-  hueDevice.innerHTML = "hue IOT -" + selectedHueDevice;
+  hueDevice.innerHTML = "hue IOT -" + " " + selectedHueDevice;
 
+ // setIOTText( selectedHueDevice );
 //  hueDeviceText.position.fromArray( palmCenter );
 //  hueDeviceText.translateX( -100.0 );
 //  hueDeviceText.translateY( -100.0 );
