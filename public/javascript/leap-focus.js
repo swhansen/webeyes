@@ -223,12 +223,14 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         inChooseState = false;
         handSphere.visible = false;
+        iotLightOn.play();
     }
 
     if ( setLightState === 'offLight' && inChooseState ) {
        hueSetLightStateXY( selectedHueDevice, false, [ hueXY.x, hueXY.y ], 100 );
        inChooseState = false;
        handSphere.visible = false;
+       iotLightOff.play();
     }
 
     if ( setLightState === 'adjustLight' ) {
@@ -278,12 +280,10 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         }
       if ( hand.grabStrength == 0 ) {
           setLightState = 'setLight';
-          iotLightOn.play();
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
       }
       if ( hand.grabStrength == 1 ) {
           setLightState = 'offLight';
-          iotLightOff.play();
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
       }
 
