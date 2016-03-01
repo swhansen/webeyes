@@ -236,7 +236,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     var countArms = 0;
 
     scene.remove( handSphere );
-    scene.remove( hueDeviceText );
+  //  scene.remove( hueDeviceText );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
