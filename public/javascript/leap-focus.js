@@ -6,7 +6,7 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-var audio = new Audio( 'public/audio/button-19.wav');
+var audio = new Audio( 'audio/button-19.wav');
 
 
 
