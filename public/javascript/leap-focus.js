@@ -6,6 +6,11 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
+var audio = new Audio( 'public/audio/button-19.wav');
+
+
+
+
 
 
 var hueDevice = document.createElement('div');
@@ -254,6 +259,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
           if ( pinchFinger.type == 1 ) {
             if ( firstClick === true ) {
                 selectedHueDevice++;
+                audio.play
                 if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
             console.log( 'selectedHueDevice:', selectedHueDevice, firstClick );
             firstClick = false;
