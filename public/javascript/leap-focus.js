@@ -26,7 +26,6 @@ function setHueIotDevice( data ) {
 }
 
 
-
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
@@ -69,7 +68,8 @@ document.body.appendChild( iotZoneId );
 
     var setLightState;
     var inChooseState = false;
-    var selectedHueDevice = 0;
+    var selectedHueDevice = 1;
+    var selectedIotZone = 1;
     var firstClick = false;
 
     var renderer, scene, camera, controls;
@@ -99,10 +99,12 @@ document.body.appendChild( iotZoneId );
     controller.on( 'gesture', function( gesture ) {
       switch ( gesture.type ) {
         case 'screenTap':
-     console.log( 'screenTap:', gesture.position );
+          updateIotZone();
+          console.log( 'screenTap:', gesture.position );
         break;
         case 'keyTap':
-     console.log( 'keyTap:', gesture.position );
+          updateIotZone();
+          console.log( 'keyTap:', gesture.position );
         break;
         case 'swipe':
           hueSetAllLightsXY( false );
@@ -209,6 +211,13 @@ function updateHueText( palmCenter, selectedHueDevice ) {
 //  hueDeviceText.translateZ( 50.0 );
 //  scene.add( hueDeviceText );
 //  hueDeviceText.visible = true;
+}
+
+function updateIotZone() {
+
+  if ( selectedIotZone == 2 ) { selectedIotZone = 1 }
+  if ( selectedIotZone == 1 ) { selectedIotZone = 2 }
+  iotZoneId.innerHTML = "IOT Zone- " + selectedIotZone;
 }
 
 function findPinchingFingerType( hand ){
@@ -333,10 +342,14 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
                 iotIncrement.play();
                 if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
             firstClick = false;
-      }
+          }
         updateHueText( hand.sphereCenter, selectedHueDevice );
       }
     }
+
+
+// put a "wrapper" around grab to isolate the motion
+
 
       if ( hand.grabStrength > 0.2 && hand.grabStrength < 0.8 ) {
           setLightState = 'adjustLight';
