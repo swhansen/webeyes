@@ -297,10 +297,12 @@ console.log( 'at updateHandSphere emitIOT:', hueObjData );
       var hand1 = frame.hands[0];
       var hand2 = frame.hands[1];
 
-      var vector = Leap.vec3.create();
-      Leap.vec3.add(vector, hand1.palmNormal, hand2.palmNormal);
-      var faceTogether = Math.abs(vector[0]) < 0.1;
-              console.log( 'Clap Success');
+      console.log(hand1.palmNormal);;
+
+   //  var vector = Leap.vec3.create();
+   //  Leap.vec3.add(vector, hand1.palmNormal, hand2.palmNormal);
+   //  var faceTogether = Math.abs(vector[0]) < 0.1;
+   //          console.log( 'Clap Success');
 
      //if(faceTogether) {
      //      var clapVelocity = Math.abs(hand1.palmVelocity[0]) + Math.abs(hand2.palmVelocity[0]);
