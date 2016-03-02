@@ -214,11 +214,11 @@ function updateHueText( palmCenter, selectedHueDevice ) {
 }
 
 function updateIotZone() {
-
-  if ( selectedIotZone == 2 ) { selectedIotZone = 1 }
-  if ( selectedIotZone == 1 ) { selectedIotZone = 2 }
+  selectedIotZone++;
+  if ( selectedIotZone === 2 ) { selectedIotZone = 1 }
   iotZoneId.innerHTML = "IOT Zone- " + selectedIotZone;
 }
+
 
 function findPinchingFingerType( hand ){
     var pincher;
