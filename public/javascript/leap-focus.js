@@ -65,7 +65,8 @@ document.body.appendChild( iotZoneId );
    //   controller.on( 'beforeFrameCreated', function( frameData ) {
  //       emitLeap ( frameData ); } );
 
-    function emitIOT( hueObjData ) {
+    function emitIOT( data ) {
+      console.log( 'emitting hueObjData:', data);
         var sessionId = socketServer.sessionid;
       socketServer.emit( 'iotState', data, sessionId );
     }
@@ -232,7 +233,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
       hueObjData.hueXYState = [ hueXY.x, hueXY.y ];
       hueObjData.bri = 100
 
-console.log( 'at leap emit:', hueObjData );
+console.log( 'at updateHandSphere emitIOT:', hueObjData );
 
     emitIOT( hueObjData );
 
