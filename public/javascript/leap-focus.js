@@ -256,9 +256,9 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
 console.log( 'at updateHandSphere emitIOT:', hueObjData );
 
-    emitIOT( hueObjData );
+        emitIOT( hueObjData );
 
- //       hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
+        hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
 
         inChooseState = false;
         handSphere.visible = false;
@@ -288,6 +288,28 @@ console.log( 'at updateHandSphere emitIOT:', hueObjData );
   //  scene.remove( hueDeviceText );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+
+
+// clap recognition
+
+  if (frame.hands.length == 2) {
+
+      var hand1 = frame.hands[0];
+      var hand2 = frame.hands[1];
+
+      var vector = Leap.vec3.create();
+      Leap.vec3.add(vector, hand1.palmNormal, hand2.palmNormal);
+      var faceTogether = Math.abs(vector[0]) < 0.1;
+
+      if(faceTogether) {
+            var clapVelocity = Math.abs(hand1.palmVelocity[0]) + Math.abs(hand2.palmVelocity[0]);
+            if(clapVelocity > 200) {
+              frame.clapVelocity = clapVelocity;
+              frame.clapVector = vector;
+              console.log( 'Clap Success');
+            }
+          }
+  }
 
     for ( var hand of frame.hands ) {
 
