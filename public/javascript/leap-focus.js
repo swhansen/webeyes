@@ -35,7 +35,7 @@ var hueDeviceId = document.createElement('div');
 hueDeviceId.style.position = 'absolute';
 hueDeviceId.style.width = 100;
 hueDeviceId.style.height = 100;
-hueDeviceId.innerHTML = 'hue IOT-1';
+hueDeviceId.innerHTML = 'hue IOT- 1';
 hueDeviceId.style.top = 50 + 'px';
 hueDeviceId.style.left = 20 + 'px';
 hueDeviceId.style.fontSize = 'x-large';
@@ -46,7 +46,7 @@ var iotZoneId = document.createElement('div');
 iotZoneId.style.position = 'absolute';
 iotZoneId.style.width = 100;
 iotZoneId.style.height = 100;
-iotZoneId.innerHTML = 'IOT Zone - 1';
+iotZoneId.innerHTML = 'IOT Zone-1';
 iotZoneId.style.top = 20 + 'px';
 iotZoneId.style.left = 20 + 'px';
 iotZoneId.style.fontSize = 'x-large';
@@ -99,7 +99,7 @@ document.body.appendChild( iotZoneId );
     controller.on( 'gesture', function( gesture ) {
       switch ( gesture.type ) {
         case 'screenTap':
-     console.log( 'keyTap:', gesture.position );
+     console.log( 'screenTap:', gesture.position );
         break;
         case 'keyTap':
      console.log( 'keyTap:', gesture.position );
@@ -200,7 +200,7 @@ document.body.appendChild( iotZoneId );
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-  hueDeviceId.innerHTML = "hue IOT -" + " " + selectedHueDevice;
+  hueDeviceId.innerHTML = "hue IOT - " + selectedHueDevice;
 
  // setIOTText( selectedHueDevice );
 //  hueDeviceText.position.fromArray( palmCenter );
