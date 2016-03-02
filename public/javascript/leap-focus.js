@@ -214,7 +214,7 @@ function updateHueText( palmCenter, selectedHueDevice ) {
 function updateIotZone() {
   selectedIotZone++;
 
-  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1; }
+  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1 }
 
   iotZoneId.innerHTML = "IOT Zone - " + selectedIotZone;
 }
@@ -269,7 +269,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
         emitIOT( hueObjData );
 
-        hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
+        //hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
 
         inChooseState = false;
         handSphere.visible = false;
