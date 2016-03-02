@@ -10,33 +10,27 @@ var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
-var hueDevice = document.createElement('div');
-hueDevice.style.position = 'absolute';
-hueDevice.style.width = 100;
-hueDevice.style.height = 100;
-//hueDevice.style.backgroundColor = "blue";
-hueDevice.innerHTML = 'hue IOT-1';
-hueDevice.style.top = 20 + 'px';
-hueDevice.style.left = 20 + 'px';
-hueDevice.style.fontSize = 'x-large';
-hueDevice.zIndex = 200;
-document.body.appendChild(hueDevice);
+var hueDeviceId = document.createElement('div');
+hueDeviceId.style.position = 'absolute';
+hueDeviceId.style.width = 100;
+hueDeviceId.style.height = 100;
+hueDeviceId.innerHTML = 'hue IOT-1';
+hueDeviceId.style.top = 20 + 'px';
+hueDeviceId.style.left = 20 + 'px';
+hueDeviceId.style.fontSize = 'x-large';
+hueDeviceId.zIndex = 200;
+document.body.appendChild(hueDeviceId);
 
 var iotZoneId = document.createElement('div');
 iotZoneId.style.position = 'absolute';
 iotZoneId.style.width = 100;
 iotZoneId.style.height = 100;
 iotZoneId.innerHTML = 'IOT Zone - 1';
-iotZoneId.style.top = 20 + 'px';
-iotZoneId.style.left = 40 + 'px';
+iotZoneId.style.top = 40 + 'px';
+iotZoneId.style.left = 20 + 'px';
 iotZoneId.style.fontSize = 'x-large';
 iotZoneId.zIndex = 200;
 document.body.appendChild( iotZoneId );
-
-
-
-
-
 
 
  var leapFull = document.getElementById( 'leapfull' );
@@ -181,7 +175,7 @@ document.body.appendChild( iotZoneId );
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-  hueDevice.innerHTML = "hue IOT -" + " " + selectedHueDevice;
+  hueDeviceId.innerHTML = "hue IOT -" + " " + selectedHueDevice;
 
  // setIOTText( selectedHueDevice );
 //  hueDeviceText.position.fromArray( palmCenter );

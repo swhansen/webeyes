@@ -19,6 +19,7 @@ var userContext = {
   rtcId: '',
   isSessionInitiator: false,
   isLeap: false,
+  isIotHome: false,
   modMeState: false,
   participantState: 'peer',
   uiState: '',
