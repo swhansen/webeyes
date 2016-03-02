@@ -70,6 +70,7 @@ document.body.appendChild( iotZoneId );
     var inChooseState = false;
     var selectedHueDevice = 1;
     var selectedIotZone = 1;
+    var iotZones = 3;
     var firstClick = false;
 
     var renderer, scene, camera, controls;
@@ -215,7 +216,9 @@ function updateHueText( palmCenter, selectedHueDevice ) {
 
 function updateIotZone() {
   selectedIotZone++;
-  if ( selectedIotZone === 2 ) { selectedIotZone = 1 }
+
+  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1 }
+
   iotZoneId.innerHTML = "IOT Zone- " + selectedIotZone;
 }
 
