@@ -147,6 +147,10 @@ function loadAr( participantState ) {
         console.log( 'at toggleIOT:', data );
 
         hueSetLightState( data.iotDeviceId, data.isOn  );
+
+        hueSetLightStateXY( data.iotDeviceId, data.isOn, [ 0.5, 0.5 ], 100 );
+
+
         arObject = scene.getObjectByName( data.name );
 
          console.log( 'toggleIot arObject:', arObject );

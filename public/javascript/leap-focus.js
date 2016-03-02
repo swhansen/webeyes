@@ -21,7 +21,6 @@ function setHueIotDevice( data ) {
     } else {
       hueSetLightStateXY( hue.deviceId, data.state, data.XY, data.bri );
     }
-
 }
 
 var iotIncrement = new Audio( 'audio/button-19.wav');
@@ -112,7 +111,7 @@ document.body.appendChild( iotZoneId );
       //   hueSetAllLights( true );
       //  break;
       }
-    }
+      }
     );
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
@@ -215,9 +214,9 @@ function updateHueText( palmCenter, selectedHueDevice ) {
 function updateIotZone() {
   selectedIotZone++;
 
-  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1 }
+  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1; }
 
-  iotZoneId.innerHTML = "IOT Zone- " + selectedIotZone;
+  iotZoneId.innerHTML = "IOT Zone - " + selectedIotZone;
 }
 
 function findPinchingFingerType( hand ){
@@ -324,7 +323,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     }
 
 // put a "wrapper" around grab to isolate the motion
-
 
       if ( hand.grabStrength > 0.2 && hand.grabStrength < 0.8 ) {
           setLightState = 'adjustLight';
