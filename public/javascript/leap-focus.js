@@ -254,7 +254,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
       hueObjData.hueXYState = [ hueXY.x, hueXY.y ];
       hueObjData.bri = 100
 
-console.log( 'at updateHandSphere emitIOT:', hueObjData );
+      console.log( 'at updateHandSphere emitIOT:', hueObjData );
 
         emitIOT( hueObjData );
 
@@ -292,10 +292,10 @@ console.log( 'at updateHandSphere emitIOT:', hueObjData );
 
 // clap recognition
 
-  if (frame.hands.length == 2) {
-
-      var hand1 = frame.hands[0];
-      var hand2 = frame.hands[1];
+ // if (frame.hands.length == 2) {
+//
+ //     var hand1 = frame.hands[0];
+ //     var hand2 = frame.hands[1];
 
       console.log(hand1.palmNormal);;
 
@@ -311,7 +311,7 @@ console.log( 'at updateHandSphere emitIOT:', hueObjData );
      //        frame.clapVector = vector;
      //      }
      //    }
-  }
+ // }
 
     for ( var hand of frame.hands ) {
 
