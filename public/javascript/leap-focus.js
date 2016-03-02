@@ -8,8 +8,13 @@ function leapFocus() {
 
 
 socketServer.on( 'iotState', function( data ) {
+  setHueIotDevice( data );
 
-        //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
+      } );
+
+function setHueIotDevice( data ) {
+
+      //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
   console.log( 'hue.on', data );
 
   if ( data.deviceId === 'all' ) {
@@ -17,7 +22,8 @@ socketServer.on( 'iotState', function( data ) {
     } else {
       hueSetLightStateXY( hue.deviceId, data.state, data.XY, data.bri );
     }
-      } );
+
+}
 
 
 
