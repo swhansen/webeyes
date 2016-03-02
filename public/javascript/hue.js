@@ -10,7 +10,7 @@ var hueLightListLength;
 
 socketServer.on( 'iotState', function( data ) {
 
-        //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-1) }
+        //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
 console.log( 'hue.on', data );
 
 if (data.deviceId === 'all' ) {

@@ -224,16 +224,20 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     if ( setLightState === 'setLight' && inChooseState ) {
 
-      var hueXYState = [ hueXY.x, hueXY.y ];
+//{ deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
 
-var hueData = { selectedHueDevice, true, hueXYDState, 100 };
+      var hueObjData = {};
+      hueObjData.deviceID = selectedHueDevice;
+      hueObjData.state = true;
+      hueObjData.hueXYState = [ hueXY.x, hueXY.y ];
+      hueObjData.bri = 100
 
-console.log( 'at leap emit:', hueData );
+console.log( 'at leap emit:', hueObjData );
 
-
-emitIOT( data );
+    emitIOT( hueObjData );
 
  //       hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
+
         inChooseState = false;
         handSphere.visible = false;
         iotLightOn.play();
