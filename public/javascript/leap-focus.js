@@ -9,7 +9,6 @@ function leapFocus() {
 
 socketServer.on( 'iotState', function( data ) {
   setHueIotDevice( data );
-
       } );
 
 function setHueIotDevice( data ) {
@@ -24,7 +23,6 @@ function setHueIotDevice( data ) {
     }
 
 }
-
 
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
@@ -222,7 +220,6 @@ function updateIotZone() {
   iotZoneId.innerHTML = "IOT Zone- " + selectedIotZone;
 }
 
-
 function findPinchingFingerType( hand ){
     var pincher;
     var closest = 500;
@@ -304,30 +301,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
-
-// clap recognition
-
- // if (frame.hands.length == 2) {
-//
- //     var hand1 = frame.hands[0];
- //     var hand2 = frame.hands[1];
-
-  //    console.log(hand1.palmNormal);;
-
-   //  var vector = Leap.vec3.create();
-   //  Leap.vec3.add(vector, hand1.palmNormal, hand2.palmNormal);
-   //  var faceTogether = Math.abs(vector[0]) < 0.1;
-   //          console.log( 'Clap Success');
-
-     //if(faceTogether) {
-     //      var clapVelocity = Math.abs(hand1.palmVelocity[0]) + Math.abs(hand2.palmVelocity[0]);
-     //      if(clapVelocity > 200) {
-     //        frame.clapVelocity = clapVelocity;
-     //        frame.clapVector = vector;
-     //      }
-     //    }
- // }
-
     for ( var hand of frame.hands ) {
 
 //
@@ -350,7 +323,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
       }
     }
 
-
 // put a "wrapper" around grab to isolate the motion
 
 
@@ -359,13 +331,15 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
           inChooseState = true;
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
         }
-      if ( hand.grabStrength == 0 ) {
+      if ( hand.grabStrength == 0 && inChooseState) {
           setLightState = 'setLight';
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
+          inChooseState = false;
       }
-      if ( hand.grabStrength == 1 ) {
+      if ( hand.grabStrength == 1 && inChooseState) {
           setLightState = 'offLight';
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
+          inChooseState = false;
       }
 
       for ( var finger of hand.fingers ) {
