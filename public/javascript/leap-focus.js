@@ -22,7 +22,7 @@ hueDevice.style.fontSize = 'x-large';
 hueDevice.zIndex = 200;
 document.body.appendChild(hueDevice);
 
-var iotZoneID = document.createElement('div');
+var iotZoneId = document.createElement('div');
 iotZoneId.style.position = 'absolute';
 iotZoneId.style.width = 100;
 iotZoneId.style.height = 100;
@@ -31,7 +31,7 @@ iotZoneId.style.top = 20 + 'px';
 iotZoneId.style.left = 40 + 'px';
 iotZoneId.style.fontSize = 'x-large';
 iotZoneId.zIndex = 200;
-document.body.appendChild(iotZoneID);
+document.body.appendChild( iotZoneId );
 
 
 
