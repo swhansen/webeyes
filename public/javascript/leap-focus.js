@@ -99,7 +99,7 @@ document.body.appendChild( iotZoneId );
     controller.on( 'gesture', function( gesture ) {
       switch ( gesture.type ) {
         case 'screenTap':
-     console.log( ' screen Tap');
+     console.log( 'screen Tap:', gesture.position );
         break;
         case 'swipe':
           hueSetAllLightsXY( false );
