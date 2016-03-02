@@ -65,7 +65,7 @@ document.body.appendChild( iotZoneId );
    //   controller.on( 'beforeFrameCreated', function( frameData ) {
  //       emitLeap ( frameData ); } );
 
-    function emitIOT( data ) {
+    function emitIOT( hueObjData ) {
         var sessionId = socketServer.sessionid;
       socketServer.emit( 'iotState', data, sessionId );
     }
