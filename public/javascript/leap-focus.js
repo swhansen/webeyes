@@ -65,6 +65,11 @@ document.body.appendChild( iotZoneId );
    //   controller.on( 'beforeFrameCreated', function( frameData ) {
  //       emitLeap ( frameData ); } );
 
+    function emitIOT( data ) {
+        var sessionId = socketServer.sessionid;
+      socketServer.emit( 'iotState', data, sessionId );
+    }
+
 //
 // gesture detection for hue
 //
@@ -166,11 +171,6 @@ document.body.appendChild( iotZoneId );
       mesh.quaternion.multiply( baseBoneRotation );
       mesh.scale.set( bone.width, bone.width, bone.length );
       scene.add( mesh );
-  }
-
-  function emitIOT( data ) {
-    var sessionId = socketServer.sessionid;
-    socketServer.emit( 'iotState', data, sessionId );
   }
 
 function updateHueText( palmCenter, selectedHueDevice ) {
