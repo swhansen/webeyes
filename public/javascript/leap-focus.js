@@ -297,7 +297,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
  //     var hand1 = frame.hands[0];
  //     var hand2 = frame.hands[1];
 
-      console.log(hand1.palmNormal);;
+  //    console.log(hand1.palmNormal);;
 
    //  var vector = Leap.vec3.create();
    //  Leap.vec3.add(vector, hand1.palmNormal, hand2.palmNormal);
