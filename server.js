@@ -306,6 +306,7 @@ socketServer.sockets.on( 'connection', function( client ) {
 
   client.on( 'iotState', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
+   console.log( 'server iotState broadcast:', data );
     client.broadcast.emit( 'iotState', data );
   } );
 
