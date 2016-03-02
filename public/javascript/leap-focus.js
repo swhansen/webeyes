@@ -224,9 +224,12 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     if ( setLightState === 'setLight' && inChooseState ) {
 
-var hueData = { selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 };
+      var hueXYState = [ hueXY.x, hueXY.y ];
 
-conslole.log( 'at leap emit:', hueData);
+var hueData = { selectedHueDevice, true, hueXYDState, 100 };
+
+console.log( 'at leap emit:', hueData );
+
 
 emitIOT( data );
 
