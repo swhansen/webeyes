@@ -302,6 +302,13 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'arObjectShare', data );
   } );
 
+// set an IOT device
+
+  client.on( 'iotState', function( data, session ) {
+   // client.emit( 'arObjectShare ', data );
+    client.broadcast.emit( 'iotState', data );
+  } );
+
 client.on( 'leapShare', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
     client.broadcast.emit( 'leapShare', data );

@@ -15,7 +15,7 @@ hueDeviceId.style.position = 'absolute';
 hueDeviceId.style.width = 100;
 hueDeviceId.style.height = 100;
 hueDeviceId.innerHTML = 'hue IOT-1';
-hueDeviceId.style.top = 20 + 'px';
+hueDeviceId.style.top = 50 + 'px';
 hueDeviceId.style.left = 20 + 'px';
 hueDeviceId.style.fontSize = 'x-large';
 hueDeviceId.zIndex = 200;
@@ -26,7 +26,7 @@ iotZoneId.style.position = 'absolute';
 iotZoneId.style.width = 100;
 iotZoneId.style.height = 100;
 iotZoneId.innerHTML = 'IOT Zone - 1';
-iotZoneId.style.top = 40 + 'px';
+iotZoneId.style.top = 20 + 'px';
 iotZoneId.style.left = 20 + 'px';
 iotZoneId.style.fontSize = 'x-large';
 iotZoneId.zIndex = 200;
@@ -223,7 +223,14 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
               normalizedPalm[2] * 255 );
 
     if ( setLightState === 'setLight' && inChooseState ) {
-        hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
+
+var hueData = { selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 };
+
+conslole.log( 'at leap emit:', hueData);
+
+emitIOT( data );
+
+ //       hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         inChooseState = false;
         handSphere.visible = false;
         iotLightOn.play();
