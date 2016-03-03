@@ -74,7 +74,6 @@ document.body.appendChild( iotZoneId );
  //       emitLeap( frameData ); } );
 
     function emitIOT( data ) {
-      console.log( 'emitting hueObjData:', data);
         var sessionId = socketServer.sessionid;
       socketServer.emit( 'iotControl', data, sessionId );
     }
@@ -277,9 +276,10 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     }
 
 // broadcast the handSphere for peer intereaction
+
         var palmSphereData = {};
         palmSphereData.operation = 'move';
-        palmSphereData.visibility = true;
+        palmSphereData.visible = handSphere.visible;
         palmSphereData.position = palmCenter;
         palmSphereData.color = handSphere.material.color;
         palmSphereData.name = 'handSphere';

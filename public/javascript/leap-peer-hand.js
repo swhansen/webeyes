@@ -76,15 +76,13 @@ socketServer.on( 'leapSphere', function( data ) {
   }
 
   function updateLeapSphere( data ) {
-    //console.log( 'updateLeapSphere:', data);
 
     handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
               data.color.r,
               data.color.g,
               data.color.b );
-    handSphere.visibility = data.visibility;
-    console.log( 'color:', handSphere.material.color );
+    handSphere.visible = data.visible;
     scene.add( handSphere );
   }
 
