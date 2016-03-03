@@ -206,11 +206,11 @@ function updateIotZone() {
 function findPinchingFingerType( hand ){
     var pincher;
     var closest = 500;
-    for(var f = 1; f < 5; f++)
+    for( var f = 1; f < 5; f++ )
     {
         current = hand.fingers[f];
-        distance = Leap.vec3.distance(hand.thumb.tipPosition, current.tipPosition);
-        if(current != hand.thumb && distance < closest)
+        distance = Leap.vec3.distance( hand.thumb.tipPosition, current.tipPosition );
+        if( current !== hand.thumb && distance < closest )
         {
             closest = distance;
             pincher = current;
@@ -226,18 +226,18 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 // normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
 
-  var normalizedSphere = interactionBox.normalizePoint( palmCenter, true );
-  var normalizedPalm = interactionBox.normalizePoint( palmCenter, true );
+  var normalizedPalmSphere = interactionBox.normalizePoint( palmCenter, true );
+ // var normalizedPalm = interactionBox.normalizePoint( palmCenter, true );
 
   handSphere.material.color.setRGB(
-              normalizedSphere[0],
-              normalizedSphere[1],
-              normalizedSphere[2] );
+              normalizedPalmSphere[0],
+              normalizedPalmSphere[1],
+              normalizedPalmSphere[2] );
 
   var hueXY = getXYPointFromRGB(
-              normalizedPalm[0] * 255,
-              normalizedPalm[1] * 255,
-              normalizedPalm[2] * 255 );
+              normalizedPalmSphere[0] * 255,
+              normalizedPalmSphere[1] * 255,
+              normalizedPalmSphere[2] * 255 );
 
     if ( setLightState === 'setLight' && inChooseState ) {
 
