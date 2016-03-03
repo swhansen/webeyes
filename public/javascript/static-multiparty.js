@@ -30,7 +30,7 @@ var userContext = {
   mobile: false,
   browserType: '',
   browserVideoDevices: ''
-}
+};
 
 easyrtc.dontAddCloseButtons( false );
 
@@ -1121,7 +1121,6 @@ setBrowserDetails();
 
 initDraw();
 initUtil();
-initHue();
 messageBar( 'User Session Initialized' );
 
 }

@@ -7,21 +7,21 @@ function leapFocus() {
 // } );
 
 
-socketServer.on( 'iotState', function( data ) {
-  setHueIotDevice( data );
-      } );
-
-function setHueIotDevice( data ) {
-
-      //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
-  console.log( 'hue.on', data );
-
-  if ( data.deviceId === 'all' ) {
-    hueSetAllLightsXY( data.state, data.XY, data.bri );
-    } else {
-      hueSetLightStateXY( hue.deviceId, data.state, data.XY, data.bri );
-    }
-}
+//socketServer.on( 'iotState', function( data ) {
+//  setHueIotDevice( data );
+//      } );
+//
+//function setHueIotDevice( data ) {
+//
+//      //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
+//  console.log( 'hue.on', data );
+//
+//  if ( data.deviceId === 'all' ) {
+//    hueSetAllLightsXY( data.state, data.XY, data.bri );
+//    } else {
+//      hueSetLightStateXY( hue.deviceId, data.state, data.XY, data.bri );
+//    }
+//}
 
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
@@ -263,13 +263,13 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
       hueObjData.deviceID = selectedHueDevice;
       hueObjData.state = true;
       hueObjData.hueXYState = [ hueXY.x, hueXY.y ];
-      hueObjData.bri = 100
+      hueObjData.bri = 100;
 
       console.log( 'at updateHandSphere emitIOT:', hueObjData );
 
         emitIOT( hueObjData );
 
-        //hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
+        hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
 
         inChooseState = false;
         handSphere.visible = false;
