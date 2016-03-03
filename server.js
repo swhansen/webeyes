@@ -315,6 +315,12 @@ client.on( 'leapShare', function( data, session ) {
     client.broadcast.emit( 'leapShare', data );
   } );
 
+client.on( 'leapSphere', function( data, session ) {
+   // client.emit( 'arObjectShare ', data );
+   console.log( 'lepaSphere:', data );
+    client.broadcast.emit( 'leapSphere', data );
+  } );
+
   client.on( 'toggleCompass', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
     client.broadcast.emit( 'toggleCompass', data );

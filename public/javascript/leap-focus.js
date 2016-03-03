@@ -62,8 +62,13 @@ document.body.appendChild( iotZoneId );
 
     function emitLeap( data ) {
       var sessionId = socketServer.sessionid;
-        socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
-      }
+      socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
+    }
+
+    function emitLeapSphere( data ) {
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'leapSphere', data, sessionId );
+    }
 
    //   controller.on( 'beforeFrameCreated', function( frameData ) {
  //       emitLeap( frameData ); } );
@@ -278,6 +283,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         palmSphereData.location = palmCenter;
         palmSphereData.color = handSphere.material.color;
         palmSphereData.name = 'handSphere';
+        emitLeapSphere( palmSphereData );
 
   }
 
