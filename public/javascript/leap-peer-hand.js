@@ -80,9 +80,9 @@ socketServer.on( 'leapSphere', function( data ) {
 
     handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
-              data.color[0],
-              data.color[1],
-              data.color[2] );
+              data.color.r,
+              data.color.g,
+              data.color.b );
     handSphere.visibility = data.visibility;
     console.log( 'color:', handSphere.material.color );
     scene.add( handSphere );
