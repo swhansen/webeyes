@@ -1,4 +1,3 @@
-socketServer = io.connect( '/' );
 
 var hueURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
 
@@ -9,21 +8,7 @@ var hueLightState;
 var hueLightList;
 var hueLightListLength;
 
-socketServer.on( 'iotState', function( data ) {
-  setHueIotDevice( data );
-      } );
 
-function setHueIotDevice( data ) {
-
-  //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
-  console.log( 'hue.on', data );
-
-  if ( data.deviceId === 'all' ) {
-    hueSetAllLightsXY( data.state, data.XY, data.bri );
-    } else {
-      hueSetLightStateXY( hue.deviceId, data.state, data.XY, data.bri );
-    }
-}
 
 var hueSetLightState = function( lightNo, state, hue, sat, bri ) {
     var dataObject =  {};

@@ -6,23 +6,6 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-
-//socketServer.on( 'iotState', function( data ) {
-//  setHueIotDevice( data );
-//      } );
-//
-//function setHueIotDevice( data ) {
-//
-//      //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
-//  console.log( 'hue.on', data );
-//
-//  if ( data.deviceId === 'all' ) {
-//    hueSetAllLightsXY( data.state, data.XY, data.bri );
-//    } else {
-//      hueSetLightStateXY( hue.deviceId, data.state, data.XY, data.bri );
-//    }
-//}
-
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
@@ -48,7 +31,6 @@ iotZoneId.style.left = 20 + 'px';
 iotZoneId.style.fontSize = 'x-large';
 iotZoneId.zIndex = 200;
 document.body.appendChild( iotZoneId );
-
 
  var leapFull = document.getElementById( 'leapfull' );
 
@@ -90,6 +72,24 @@ document.body.appendChild( iotZoneId );
       socketServer.emit( 'iotState', data, sessionId );
     }
 
+
+
+
+socketServer.on( 'iotState', function( data ) {
+  setHueIotDevice( data );
+      } );
+
+function setHueIotDevice( data ) {
+
+  //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
+  console.log( 'hue.on', data );
+
+  if ( data.deviceId === 'all' ) {
+    hueSetAllLightsXY( data.state, data.XY, data.bri );
+    } else {
+      hueSetLightStateXY( hue.deviceId, data.state, data.XY, data.bri );
+    }
+}
 //
 // gesture detection for hue
 //
