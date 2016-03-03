@@ -71,11 +71,11 @@ document.body.appendChild( iotZoneId );
     function emitIOT( data ) {
       console.log( 'emitting hueObjData:', data);
         var sessionId = socketServer.sessionid;
-      socketServer.emit( 'iotState', data, sessionId );
+      socketServer.emit( 'iotControl', data, sessionId );
     }
 
 //
-// gesture detection for hue
+// gross gesture detection
 //
 
     controller.on( 'gesture', function( gesture ) {
@@ -278,8 +278,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         palmSphereData.location = palmCenter;
         palmSphereData.color = handSphere.material.color;
         palmSphereData.name = 'handSphere';
-
-        console.log('palmSphereData:', palmSphereData );
 
   }
 

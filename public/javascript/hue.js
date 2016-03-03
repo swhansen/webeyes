@@ -8,7 +8,7 @@ var hueLightState;
 var hueLightList;
 var hueLightListLength;
 
-socketServer.on( 'iotState', function( data ) {
+socketServer.on( 'iotControl', function( data ) {
     setHueIotDevice( data );
       } );
 
