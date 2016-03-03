@@ -48,6 +48,11 @@ socketServer.on( 'leapSphere', function( data ) {
     handSphere.name = 'handSphere';
     scene.add( handSphere );
 
+    var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    var aLight = new THREE.AmbientLight( 0x333333 );
+    scene.add( light );
+    scene.add( aLight );
+
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
