@@ -11,6 +11,10 @@ function initLeapPeerHand() {
 //    console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 //  } );
 
+socketServer.on( 'leapSphere', function( data ) {
+    updateLeapSphere( data );
+      } );
+
  var leapFull = document.getElementById( 'leapfull' );
 
     leapFull.style.width      = '100%';
@@ -38,6 +42,12 @@ function initLeapPeerHand() {
 
     scene = new THREE.Scene();
 
+    var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
+    var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
+    var handSphere = new THREE.Mesh( handGeometry, handMaterial );
+    handSphere.name = 'handSphere';
+    scene.add ( handSphere );
+
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -58,6 +68,17 @@ function initLeapPeerHand() {
       mesh.quaternion.multiply( baseBoneRotation );
       mesh.scale.set( bone.width, bone.width, bone.length );
       scene.add( mesh );
+  }
+
+  function updateLeapSphere( data ) {
+    console.log( 'updateLeapSphere:', data);
+
+    handSphere.position.fromArray( data.position );
+    handSphere.material.color.setRGB(
+              data.color[0],
+              data.color[1],
+              data.color[2] );
+    handSphere.visibility = data.visibility;
   }
 
   function leapAnimate( data ) {

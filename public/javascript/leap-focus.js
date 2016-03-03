@@ -280,7 +280,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         var palmSphereData = {};
         palmSphereData.operation = 'move';
         palmSphereData.visibility = true;
-        palmSphereData.location = palmCenter;
+        palmSphereData.position = palmCenter;
         palmSphereData.color = handSphere.material.color;
         palmSphereData.name = 'handSphere';
         emitLeapSphere( palmSphereData );
