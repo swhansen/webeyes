@@ -12,7 +12,7 @@ function initLeapPeerHand() {
 //  } );
 
 socketServer.on( 'leapSphere', function( data ) {
-    updateLeapSphere( data );
+    leapAnimate( data );
       } );
 
  var leapFull = document.getElementById( 'leapfull' );
@@ -46,7 +46,7 @@ socketServer.on( 'leapSphere', function( data ) {
     var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
-    scene.add ( handSphere );
+    scene.add( handSphere );
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -79,35 +79,46 @@ socketServer.on( 'leapSphere', function( data ) {
               data.color[1],
               data.color[2] );
     handSphere.visibility = data.visibility;
+    scene.add( handSphere );
   }
 
-  function leapAnimate( data ) {
+function leapAnimate( data ) {
 
-    var frame = new Leap.Frame( data );
-    var countBones = 0;
-    var countArms = 0;
+  scene.remove( handSphere );
+  updateLeapSphere( data );
+  renderer.render( scene, camera );
+   controls.update();
+ }
 
-    armMeshes.forEach( function( item ) { scene.remove( item ); } );
-    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
-    for ( var hand of frame.hands ) {
-      for ( var finger of hand.fingers ) {
-        for ( var bone of finger.bones ) {
-          if ( countBones++ === 0 ) { continue; }
-          var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
-          updateMesh( bone, boneMesh );
-        }
-      }
 
-      var arm = hand.arm;
-      var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
-      updateMesh( arm, armMesh );
-      armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-    }
-
-    renderer.render( scene, camera );
-    controls.update();
-  }
+//  function leapAnimate( data ) {
+//
+//    var frame = new Leap.Frame( data );
+//    var countBones = 0;
+//    var countArms = 0;
+//
+//    scene.remove( handSphere );
+//    armMeshes.forEach( function( item ) { scene.remove( item ); } );
+//    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+//
+//    for ( var hand of frame.hands ) {
+//      for ( var finger of hand.fingers ) {
+//        for ( var bone of finger.bones ) {
+//          if ( countBones++ === 0 ) { continue; }
+//          var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
+//          updateMesh( bone, boneMesh );
+//        }
+//      }
+//
+//      var arm = hand.arm;
+//      var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
+//      updateMesh( arm, armMesh );
+//      armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
+//    }
+//    renderer.render( scene, camera );
+//    controls.update();
+//  }
 
 socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
