@@ -305,7 +305,7 @@ socketServer.sockets.on( 'connection', function( client ) {
 // set an IOT device
 
   client.on( 'iotState', function( data, session ) {
-   client.emit( 'iotState ', data );
+  // client.emit( 'iotState ', data );
    console.log( 'server iotState broadcast:', data );
     client.broadcast.emit( 'iotState', data );
   } );

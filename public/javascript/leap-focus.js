@@ -12,6 +12,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
 var hueDeviceId = document.createElement('div');
 hueDeviceId.style.position = 'absolute';
+hueDeviceId.style.backgroundColor = 'gray';
 hueDeviceId.style.width = 100;
 hueDeviceId.style.height = 100;
 hueDeviceId.innerHTML = 'hue IOT- 1';
@@ -23,6 +24,7 @@ document.body.appendChild(hueDeviceId);
 
 var iotZoneId = document.createElement('div');
 iotZoneId.style.position = 'absolute';
+iotZoneId.style.backgroundColor = 'gray';
 iotZoneId.style.width = 100;
 iotZoneId.style.height = 100;
 iotZoneId.innerHTML = 'IOT Zone-1';
@@ -73,10 +75,8 @@ document.body.appendChild( iotZoneId );
     }
 
 
-
-
-socketServer.on( 'iotState', function( data ) {
-  setHueIotDevice( data );
+  socketServer.on( 'iotState', function( data ) {
+    setHueIotDevice( data );
       } );
 
 function setHueIotDevice( data ) {
@@ -200,7 +200,7 @@ function setHueIotDevice( data ) {
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-  hueDeviceId.innerHTML = "hue IOT - " + selectedHueDevice;
+  hueDeviceId.innerHTML = 'hue IOT - ' + selectedHueDevice;
 
  // setIOTText( selectedHueDevice );
 //  hueDeviceText.position.fromArray( palmCenter );
@@ -214,9 +214,9 @@ function updateHueText( palmCenter, selectedHueDevice ) {
 function updateIotZone() {
   selectedIotZone++;
 
-  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1 }
+  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1; }
 
-  iotZoneId.innerHTML = "IOT Zone - " + selectedIotZone;
+  iotZoneId.innerHTML = 'IOT Zone - ' + selectedIotZone;
 }
 
 function findPinchingFingerType( hand ){
