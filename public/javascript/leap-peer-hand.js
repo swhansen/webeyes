@@ -76,7 +76,7 @@ socketServer.on( 'leapSphere', function( data ) {
   }
 
   function updateLeapSphere( data ) {
-    console.log( 'updateLeapSphere:', data);
+    //console.log( 'updateLeapSphere:', data);
 
     handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
@@ -84,6 +84,7 @@ socketServer.on( 'leapSphere', function( data ) {
               data.color[1],
               data.color[2] );
     handSphere.visibility = data.visibility;
+    console.log( 'color:', handSphere.material.color );
     scene.add( handSphere );
   }
 
