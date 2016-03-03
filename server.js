@@ -304,10 +304,10 @@ socketServer.sockets.on( 'connection', function( client ) {
 
 // set an IOT device
 
-  client.on( 'iotState', function( data, session ) {
+  client.on( 'iotControl', function( data, session ) {
   // client.emit( 'iotState ', data );
-   console.log( 'server iotState broadcast:', data );
-    client.broadcast.emit( 'iotState', data );
+   console.log( 'server iotControl broadcast:', data );
+    client.broadcast.emit( 'iotControl', data );
   } );
 
 client.on( 'leapShare', function( data, session ) {
