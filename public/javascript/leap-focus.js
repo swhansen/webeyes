@@ -66,7 +66,7 @@ document.body.appendChild( iotZoneId );
       }
 
    //   controller.on( 'beforeFrameCreated', function( frameData ) {
- //       emitLeap ( frameData ); } );
+ //       emitLeap( frameData ); } );
 
     function emitIOT( data ) {
       console.log( 'emitting hueObjData:', data);
@@ -110,14 +110,15 @@ document.body.appendChild( iotZoneId );
 
     scene = new THREE.Scene();
 
-  var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-  var aLight = new THREE.AmbientLight( 0x333333 );
-  scene.add( light );
-  scene.add( aLight );
+    var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    var aLight = new THREE.AmbientLight( 0x333333 );
+    scene.add( light );
+    scene.add( aLight );
 
-  var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
-  var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
-  var handSphere = new THREE.Mesh( handGeometry, handMaterial );
+    var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
+    var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
+    var handSphere = new THREE.Mesh( handGeometry, handMaterial );
+    var hansSphere.name = 'handSphere';
 
 // hue IOT device ID text
 
@@ -175,11 +176,11 @@ document.body.appendChild( iotZoneId );
   }
 
   function updateMesh( bone, mesh ) {
-      mesh.position.fromArray( bone.center() );
-      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
-      mesh.quaternion.multiply( baseBoneRotation );
-      mesh.scale.set( bone.width, bone.width, bone.length );
-      scene.add( mesh );
+    mesh.position.fromArray( bone.center() );
+    mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
+    mesh.quaternion.multiply( baseBoneRotation );
+    mesh.scale.set( bone.width, bone.width, bone.length );
+    scene.add( mesh );
   }
 
 function updateHueText( palmCenter, selectedHueDevice ) {
@@ -227,7 +228,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 // need for RGB color space - threejs wants rgb (0-1)
 
   var normalizedPalmSphere = interactionBox.normalizePoint( palmCenter, true );
- // var normalizedPalm = interactionBox.normalizePoint( palmCenter, true );
 
   handSphere.material.color.setRGB(
               normalizedPalmSphere[0],
@@ -243,35 +243,44 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
 //{ deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
 
-      var hueObjData = {};
-      hueObjData.deviceID = selectedHueDevice;
-      hueObjData.state = true;
-      hueObjData.hueXYState = [ hueXY.x, hueXY.y ];
-      hueObjData.bri = 100;
+        var hueObjData = {};
+        hueObjData.deviceID = selectedHueDevice;
+        hueObjData.state = true;
+        hueObjData.hueXYState = [ hueXY.x, hueXY.y ];
+        hueObjData.bri = 100;
 
-      console.log( 'at updateHandSphere emitIOT:', hueObjData );
+        console.log( 'at updateHandSphere emitIOT:', hueObjData );
 
         emitIOT( hueObjData );
-
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
-
         inChooseState = false;
         handSphere.visible = false;
         iotLightOn.play();
-    }
+          }
 
     if ( setLightState === 'offLight' && inChooseState ) {
-       hueSetLightStateXY( selectedHueDevice, false, [ hueXY.x, hueXY.y ], 100 );
-       inChooseState = false;
-       handSphere.visible = false;
-       iotLightOff.play();
+          hueSetLightStateXY( selectedHueDevice, false, [ hueXY.x, hueXY.y ], 100 );
+          inChooseState = false;
+          handSphere.visible = false;
+          iotLightOff.play();
     }
 
     if ( setLightState === 'adjustLight' ) {
-      inChooseState = true;
-      handSphere.visible = true;
-      scene.add( handSphere );
+        inChooseState = true;
+        handSphere.visible = true;
+        scene.add( handSphere );
     }
+
+// broadcast the handSphere for peer intereaction
+        var palmSphereData = {};
+        palmSphereData.operation = 'move';
+        palmSphereData.visibility = true;
+        palmSphereData.location = palmCenter;
+        palmSphereData.color = handSphere.material.color;
+        palmSphereData.name = 'handSphere';
+
+        console.log('palmSphereData:', palmSphereData );
+
   }
 
   function leapAnimate( frame ) {
@@ -279,16 +288,12 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     var countBones = 0;
     var countArms = 0;
 
-    scene.remove( handSphere );
   //  scene.remove( hueDeviceText );
+    scene.remove( handSphere );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
-
-//
-//  Logic for hue pinch grab-relase interaction
-//
 
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
@@ -305,8 +310,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         updateHueText( hand.sphereCenter, selectedHueDevice );
       }
     }
-
-// put a "wrapper" around grab to isolate the motion
 
       if ( hand.grabStrength > 0.2 && hand.grabStrength < 0.8 ) {
           setLightState = 'adjustLight';
