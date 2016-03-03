@@ -118,7 +118,7 @@ document.body.appendChild( iotZoneId );
     var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
     var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
-    var handSphere.name = 'handSphere';
+    handSphere.name = 'handSphere';
 
 // hue IOT device ID text
 
