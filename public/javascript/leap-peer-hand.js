@@ -23,7 +23,7 @@ socketServer.on( 'leapSphere', function( data ) {
     leapFull.style.position   = 'absolute';
     leapFull.style.top        = '0px';
     leapFull.style.left       = '0px';
-    leapFull.style.zIndex = 200;
+    leapFull.style.zIndex = 300;
 
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
@@ -82,6 +82,7 @@ function evCanvas( ev ) {
   } else if ( ev.offsetX || ev.offsetX === 0 ) {
     ev._x = ev.offsetX;
     ev._y = ev.offsetY;
+    console.log( ex.x, ev.y );
   }
 
   var func = tool[ev.type];
