@@ -31,7 +31,7 @@ socketServer.on( 'leapSphere', function( data ) {
 
     var renderer, scene, camera, controls;
 
-    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
+    renderer = new THREE.WebGLRenderer( { canvas: leapFull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
@@ -41,9 +41,9 @@ socketServer.on( 'leapSphere', function( data ) {
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
 
-    renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
-    renderer.domElement.addEventListener( 'mouseup', onDocumentMouseUp, false );
+    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+    document.addEventListener( 'mouseup', onDocumentMouseUp, false );
 
     scene = new THREE.Scene();
 
