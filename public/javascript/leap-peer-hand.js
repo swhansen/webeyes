@@ -41,9 +41,11 @@ socketServer.on( 'leapSphere', function( data ) {
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
 
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-    document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+
+
+    leapFull.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    leapFull.addEventListener( 'mousedown', onDocumentMouseDown, false );
+    leapFull.addEventListener( 'mouseup', onDocumentMouseUp, false );
 
     scene = new THREE.Scene();
 
