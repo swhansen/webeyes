@@ -143,6 +143,7 @@ leapFull.addEventListener( 'click', function( event ) {
     console.log( intersects );
 
     }
+    );
 
 // onDocumentMouseMove: function (event) {
 //   event.preventDefault();
