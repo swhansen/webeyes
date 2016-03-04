@@ -16,7 +16,9 @@ socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
 
+ document.getElementById( 'leappane' ).className = 'leapcenter';
  var leapFull = document.getElementById( 'leappane' );
+
 
     leapFull.style.width      = '100%';
     leapFull.style.height     = '100%';
