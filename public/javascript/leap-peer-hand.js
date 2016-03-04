@@ -41,6 +41,10 @@ socketServer.on( 'leapSphere', function( data ) {
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
 
+    renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
+    renderer.domElement.addEventListener( 'mouseup', onDocumentMouseUp, false );
+
     scene = new THREE.Scene();
 
     var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
@@ -126,24 +130,26 @@ function leapAnimate( data ) {
 
 // ---------------------------------------------------------------------------
 
-leapFull.addEventListener( 'click', function( event ) {
+function onDocumentMouseMove( event ) {
 
-   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            - ( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+  event.preventDefault();
 
-   // var normalizedPoint = interactionBox.normalizePoint( vector, true );
 
-   console.log( vector, normalizedPoint );
+  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+  console.log( mouse.x, mouse.y );
 
-    projector.unprojectVector( vector, camera );
-    vector.sub( camera.position );
-    vector.normalize();
-    var rayCaster = new THREE.Raycaster( camera.position, vector );
-    var intersects = rayCaster.intersectObjects( scene.children );
-    console.log( intersects );
+        //
+
+        var vector = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
+        projector.unprojectVector( vector, camera );
+
+        var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
+
+        console.log( vector );
 
     }
-    );
+
 
 // onDocumentMouseMove: function (event) {
 //   event.preventDefault();
