@@ -17,6 +17,7 @@ socketServer.on( 'leapSphere', function( data ) {
       } );
 
  var leapFull = document.getElementById( 'leappane' );
+ //var leapCanvas = document.getElementById( 'leapfull' );
 
     leapFull.style.width      = '100%';
     leapFull.style.height     = '100%';
@@ -31,7 +32,7 @@ socketServer.on( 'leapSphere', function( data ) {
 
     var renderer, scene, camera, controls;
 
-    renderer = new THREE.WebGLRenderer( { canvas: leapFull, alpha: true }  );
+    renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
