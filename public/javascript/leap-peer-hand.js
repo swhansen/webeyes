@@ -23,7 +23,7 @@ socketServer.on( 'leapSphere', function( data ) {
     leapFull.style.position   = 'absolute';
     leapFull.style.top        = '0px';
     leapFull.style.left       = '0px';
-    leapFull.style.zIndex = 10;
+    leapFull.style.zIndex = 200;
 
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
@@ -91,7 +91,7 @@ function evCanvas( ev ) {
 }
 
 
-  function toolPencil() {
+function toolPencil() {
   var lastx = 0;
   var lasty = 0;
   var d;
