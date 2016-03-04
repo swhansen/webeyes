@@ -131,7 +131,7 @@ leapFull.addEventListener( 'click', function( event ) {
    var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                             - ( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
-   var normalizedPoint = interactionBox.normalizePoint( vector, true );
+   // var normalizedPoint = interactionBox.normalizePoint( vector, true );
 
    console.log( vector, normalizedPoint );
 
