@@ -42,10 +42,9 @@ socketServer.on( 'leapSphere', function( data ) {
     controls.maxDistance = 1000;
 
 
-
-    leapFull.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    leapFull.addEventListener( 'mousedown', onDocumentMouseDown, false );
-    leapFull.addEventListener( 'mouseup', onDocumentMouseUp, false );
+    leapFull.addEventListener( 'mousedown', evCanvas, false );
+    leapFull.addEventListener( 'mousemove', evCanvas, false );
+    leapFull.addEventListener( 'mouseup', evCanvas, false );
 
     scene = new THREE.Scene();
 
@@ -66,6 +65,56 @@ socketServer.on( 'leapSphere', function( data ) {
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
   }
+//----------------
+
+var tool = new toolPencil();
+
+// The general-purpose event handler for mouse events.
+
+function evCanvas( ev ) {
+
+// Firefox
+  if ( ev.layerX || ev.layerX === 0 ) {
+    ev._x = ev.layerX;
+    ev._y = ev.layerY;
+
+// Opera
+  } else if ( ev.offsetX || ev.offsetX === 0 ) {
+    ev._x = ev.offsetX;
+    ev._y = ev.offsetY;
+  }
+
+  var func = tool[ev.type];
+  if ( func ) {
+    func( ev );
+  }
+}
+
+
+  function toolPencil() {
+  var lastx = 0;
+  var lasty = 0;
+  var d;
+  var tool = this;
+  this.started = false;
+
+  this.mousedown = function( ev ) {
+    console.log( 'down:', ev.x, ev.y );
+  };
+
+  this.mousemove = function( ev ) {
+   console.log( 'move:', ev.x, ev.y );
+  };
+
+  this.mouseup = function( ev ) {
+    console.log( 'up:', ev.x, ev.y );
+  };
+}
+
+
+
+
+//------------------------
 
   function addMesh( meshes ) {
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
@@ -129,71 +178,6 @@ function leapAnimate( data ) {
 //    renderer.render( scene, camera );
 //    controls.update();
 //  }
-
-// ---------------------------------------------------------------------------
-
-function onDocumentMouseMove( event ) {
-
-  event.preventDefault();
-
-
-  event.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-  event.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-  console.log( event.x, event.y );
-
-        //
-
-//       var vector = new THREE.Vector3( .x, mouse.y, 0.5 );
-//       projector.unprojectVector( vector, camera );
-
-//       var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
-
-//       console.log( vector );
-
-    }
-
-
-// onDocumentMouseMove: function (event) {
-//   event.preventDefault();
-
-//   // Get mouse position
-//   var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-//   var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-
-//   // Get 3D vector from 3D mouse position using 'unproject' function
-//   var vector = new THREE.Vector3(mouseX, mouseY, 1);
-//   vector.unproject( camera );
-
-//   // Set the raycaster position
-//   raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
-
-//   if ( selection) {
-//     // Check the position where the plane is intersected
-//     var intersects = lesson10.raycaster.intersectObject(lesson10.plane);
-//     // Reposition the object based on the intersection point with the plane
-//     lesson10.selection.position.copy(intersects[0].point.sub(lesson10.offset));
-//   } else {
-//     // Update position of the plane if need
-//     var intersects = lesson10.raycaster.intersectObjects(lesson10.objects);
-//     if (intersects.length > 0) {
-//       lesson10.plane.position.copy(intersects[0].object.position);
-//       lesson10.plane.lookAt(lesson10.camera.position);
-//     }
-//   }
-// };
-
-// onDocumentMouseUp: function (event) {
-//   // Enable the controls
-//   lesson10.controls.enabled = true;
-//   lesson10.selection = null;
-// }
-
-
-
-
-
-
-
 
 // ------------------------------------------------------------------------------
 
