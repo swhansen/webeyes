@@ -16,7 +16,7 @@ socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
 
- var leapFull = document.getElementById( 'leapfull' );
+ var leapFull = document.getElementById( 'leappane' );
 
     leapFull.style.width      = '100%';
     leapFull.style.height     = '100%';
@@ -82,7 +82,6 @@ function evCanvas( ev ) {
   } else if ( ev.offsetX || ev.offsetX === 0 ) {
     ev._x = ev.offsetX;
     ev._y = ev.offsetY;
-    console.log( ex.x, ev.y );
   }
 
   var func = tool[ev.type];
@@ -93,6 +92,7 @@ function evCanvas( ev ) {
 
 
 function toolPencil() {
+
   var lastx = 0;
   var lasty = 0;
   var d;
