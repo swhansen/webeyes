@@ -5,6 +5,7 @@
 
 function initLeapPeerHand() {
 
+
 // $( '*' ).filter( function() {
 //    return $( this ).css( 'z-index' ) >= 10;
 //  } ).each( function() {
@@ -46,6 +47,7 @@ socketServer.on( 'leapSphere', function( data ) {
     var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
+    handSphere.userData.rtiId = userContext.rtcId;
     scene.add( handSphere );
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
@@ -94,8 +96,6 @@ function leapAnimate( data ) {
    controls.update();
  }
 
-
-
 //  function leapAnimate( data ) {
 //
 //    var frame = new Leap.Frame( data );
@@ -124,8 +124,73 @@ function leapAnimate( data ) {
 //    controls.update();
 //  }
 
+// ---------------------------------------------------------------------------
+
+leapFull.addEventListener( 'click', function( event ) {
+
+   var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+                            - ( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
+   var normalizedPoint = interactionBox.normalizePoint( vector, true );
+
+   console.log( vector, normalizedPoint );
+
+    projector.unprojectVector( vector, camera );
+    vector.sub( camera.position );
+    vector.normalize();
+    var rayCaster = new THREE.Raycaster( camera.position, vector );
+    var intersects = rayCaster.intersectObjects( scene.children );
+    console.log( intersects );
+
+    }
+
+// onDocumentMouseMove: function (event) {
+//   event.preventDefault();
+
+//   // Get mouse position
+//   var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+//   var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+//   // Get 3D vector from 3D mouse position using 'unproject' function
+//   var vector = new THREE.Vector3(mouseX, mouseY, 1);
+//   vector.unproject( camera );
+
+//   // Set the raycaster position
+//   raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
+
+//   if ( selection) {
+//     // Check the position where the plane is intersected
+//     var intersects = lesson10.raycaster.intersectObject(lesson10.plane);
+//     // Reposition the object based on the intersection point with the plane
+//     lesson10.selection.position.copy(intersects[0].point.sub(lesson10.offset));
+//   } else {
+//     // Update position of the plane if need
+//     var intersects = lesson10.raycaster.intersectObjects(lesson10.objects);
+//     if (intersects.length > 0) {
+//       lesson10.plane.position.copy(intersects[0].object.position);
+//       lesson10.plane.lookAt(lesson10.camera.position);
+//     }
+//   }
+// };
+
+// onDocumentMouseUp: function (event) {
+//   // Enable the controls
+//   lesson10.controls.enabled = true;
+//   lesson10.selection = null;
+// }
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------
+
 socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
+
 //    animateTrackingData( data );
     leapAnimate( frame );
     } );

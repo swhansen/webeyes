@@ -301,10 +301,10 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
-      if ( hand.pinchStrength == 1 && hand.grabStrength < 0.3 ) {
+      if ( hand.pinchStrength === 1 && hand.grabStrength < 0.3 ) {
 
         var pinchFinger = findPinchingFingerType( hand );
-          if ( pinchFinger.type == 1 ) {
+          if ( pinchFinger.type === 1 ) {
             if ( firstClick === true ) {
                 selectedHueDevice++;
                 iotIncrement.play();
@@ -320,12 +320,12 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
           inChooseState = true;
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
         }
-      if ( hand.grabStrength == 0 && inChooseState) {
+      if ( hand.grabStrength === 0 && inChooseState) {
           setLightState = 'setLight';
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
           inChooseState = false;
       }
-      if ( hand.grabStrength == 1 && inChooseState) {
+      if ( hand.grabStrength === 1 && inChooseState) {
           setLightState = 'offLight';
           updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
           inChooseState = false;
