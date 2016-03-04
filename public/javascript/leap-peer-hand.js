@@ -143,12 +143,12 @@ function onDocumentMouseMove( event ) {
 
         //
 
-        var vector = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
-        projector.unprojectVector( vector, camera );
+//       var vector = new THREE.Vector3( .x, mouse.y, 0.5 );
+//       projector.unprojectVector( vector, camera );
 
-        var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
+//       var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
 
-        console.log( vector );
+//       console.log( vector );
 
     }
 
