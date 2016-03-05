@@ -42,7 +42,6 @@ socketServer.on( 'leapSphere', function( data ) {
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
 
-
     leapFull.addEventListener( 'mousedown', evCanvas, false );
     leapFull.addEventListener( 'mousemove', evCanvas, false );
     leapFull.addEventListener( 'mouseup', evCanvas, false );
@@ -66,6 +65,7 @@ socketServer.on( 'leapSphere', function( data ) {
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
   }
+
 //----------------
 
 var tool = new toolPencil();
