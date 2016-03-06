@@ -283,8 +283,9 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         palmSphereData.position = palmCenter;
         palmSphereData.color = handSphere.material.color;
         palmSphereData.name = 'handSphere';
+        palmSphereData.originRtcId = userContext.rtcId;
+        palmSphereData.interactionBox = frame.interactionBox;
         emitLeapSphere( palmSphereData );
-
   }
 
   function leapAnimate( frame ) {

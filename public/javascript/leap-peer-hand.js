@@ -91,11 +91,22 @@ function evCanvas( ev ) {
 }
 
 function arObjMover() {
+
+
   var tool = this;
   this.down = false;
 
   this.mousedown = function( ev ) {
     tool.down = true;
+
+
+// var rect = leapFull.getBoundingClientRect();
+// offsetX = rect.left;
+// offsetY = rect.top;
+// var vector = new THREE.Vector3( ( ev.clientX - offsetX ) / leapFull.width * 2 - 1,
+//                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
+
+
     console.log( 'down:', ev.x, ev.y );
   };
 
@@ -131,8 +142,12 @@ function arObjMover() {
 
   function updateLeapSphere( data ) {
 
+    var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
+
+    console.log( 'normalized palm sphere:', normalizedPalmSphere );
+
     handSphere.position.fromArray( data.position );
-    console.log('spherel location:', handSphere );
+    console.log( 'spherel location:', data.positiion );
     handSphere.material.color.setRGB(
               data.color.r,
               data.color.g,
