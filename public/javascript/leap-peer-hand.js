@@ -92,7 +92,6 @@ function evCanvas( ev ) {
 
 function arObjMover() {
 
-
   var tool = this;
   this.down = false;
 
@@ -105,6 +104,13 @@ function arObjMover() {
 // offsetY = rect.top;
 // var vector = new THREE.Vector3( ( ev.clientX - offsetX ) / leapFull.width * 2 - 1,
 //                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
+
+var normalizedMouse = {};
+normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
+normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
+
+Console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
+
 
 
     console.log( 'down:', ev.x, ev.y );
@@ -141,8 +147,6 @@ function arObjMover() {
 // }
 
   function updateLeapSphere( data ) {
-
-    var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
 
     console.log( 'normalized palm sphere:', normalizedPalmSphere );
 
