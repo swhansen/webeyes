@@ -106,10 +106,8 @@ function toolPencil() {
   };
 
   this.mouseup = function( ev ) {
-   if ( tool.started ) {
       console.log( 'up:', ev.x, ev.y );
       tool.down = false;
-      }
     };
   }
 
