@@ -5,7 +5,6 @@
 
 function initLeapPeerHand() {
 
-
 // $( '*' ).filter( function() {
 //    return $( this ).css( 'z-index' ) >= 10;
 //  } ).each( function() {
@@ -91,30 +90,28 @@ function evCanvas( ev ) {
   }
 }
 
-
 function toolPencil() {
-
-  var lastx = 0;
-  var lasty = 0;
-  var d;
   var tool = this;
-  this.started = false;
+  this.down = false;
 
   this.mousedown = function( ev ) {
+    tool.down = true;
     console.log( 'down:', ev.x, ev.y );
   };
 
   this.mousemove = function( ev ) {
-   console.log( 'move:', ev.x, ev.y );
+    if ( tool.down ) {
+    console.log( 'moving object:', ev.x, ev.y );
+    }
   };
 
   this.mouseup = function( ev ) {
-    console.log( 'up:', ev.x, ev.y );
-  };
-}
-
-
-
+   if ( tool.started ) {
+      console.log( 'up:', ev.x, ev.y );
+      tool.down = false;
+      }
+    };
+  }
 
 //------------------------
 
