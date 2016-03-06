@@ -113,21 +113,21 @@ function toolPencil() {
 
 //------------------------
 
-  function addMesh( meshes ) {
-    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var material = new THREE.MeshNormalMaterial();
-    var mesh = new THREE.Mesh( geometry, material );
-    meshes.push( mesh );
-    return mesh;
-  }
+// function addMesh( meshes ) {
+//   var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+//   var material = new THREE.MeshNormalMaterial();
+//   var mesh = new THREE.Mesh( geometry, material );
+//   meshes.push( mesh );
+//   return mesh;
+// }
 
-  function updateMesh( bone, mesh ) {
-      mesh.position.fromArray( bone.center() );
-      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
-      mesh.quaternion.multiply( baseBoneRotation );
-      mesh.scale.set( bone.width, bone.width, bone.length );
-      scene.add( mesh );
-  }
+// function updateMesh( bone, mesh ) {
+//     mesh.position.fromArray( bone.center() );
+//     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
+//     mesh.quaternion.multiply( baseBoneRotation );
+//     mesh.scale.set( bone.width, bone.width, bone.length );
+//     scene.add( mesh );
+// }
 
   function updateLeapSphere( data ) {
 
@@ -178,10 +178,10 @@ function leapAnimate( data ) {
 
 // ------------------------------------------------------------------------------
 
-socketServer.on( 'leapShare', function( data ) {
-    frame = JSON.parse( data );
+//  socketServer.on( 'leapShare', function( data ) {
+//    frame = JSON.parse( data );
 
 //    animateTrackingData( data );
-    leapAnimate( frame );
-    } );
-}
+//    leapAnimate( frame );
+//    } );
+ }
