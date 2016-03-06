@@ -67,7 +67,7 @@ socketServer.on( 'leapSphere', function( data ) {
 
 //----------------
 
-var tool = new toolPencil();
+var tool = new arObjMover();
 
 // The general-purpose event handler for mouse events.
 
@@ -84,13 +84,13 @@ function evCanvas( ev ) {
     ev._y = ev.offsetY;
   }
 
-  var func = tool[ev.type];
+  var func = tool[ ev.type ];
   if ( func ) {
     func( ev );
   }
 }
 
-function toolPencil() {
+function arObjMover() {
   var tool = this;
   this.down = false;
 
@@ -132,6 +132,7 @@ function toolPencil() {
   function updateLeapSphere( data ) {
 
     handSphere.position.fromArray( data.position );
+    console.log('spherel location:', handSphere );
     handSphere.material.color.setRGB(
               data.color.r,
               data.color.g,
