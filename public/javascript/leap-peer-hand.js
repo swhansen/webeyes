@@ -202,6 +202,17 @@ var vector = new THREE.Vector3( ( ev.clientX - window.innerWidth ) / leapFull.wi
     scene.add( handSphere );
   }
 
+function normalizeObj( obj ) {
+
+  var objNorm = obj.normailize;
+  console.log( 'objNorm:', objNorm );
+
+  return {
+norm: objNorm
+  };
+}
+
+
 // convert the three object into screen coordinates
 
 function ThreeToScreenPosition( obj, camera ) {
@@ -232,8 +243,10 @@ function leapAnimate( data ) {
   updateLeapSphere( data );
   renderer.render( scene, camera );
 
-  var screenCoord = ThreeToScreenPosition( handSphere, camera );
-  console.log( 'obj Screen Coord:', screenCoord.x, screenCoord.y );
+  var sphereScreenCoordcreenCoord = ThreeToScreenPosition( handSphere, camera );
+  console.log( 'obj Screen Coord:', sphereScreenCoord.x, sphereScreenCoord.y );
+  var foo = normalizeObj( handSphere );
+  console.log( 'objNorm:', foo );
 
    controls.update();
  }
