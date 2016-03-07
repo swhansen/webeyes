@@ -53,6 +53,7 @@ socketServer.on( 'leapSphere', function( data ) {
     handSphere.name = 'handSphere';
     handSphere.userData.rtiId = userContext.rtcId;
     scene.add( handSphere );
+    var objects = [];
     objects.push( handSphere );
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
