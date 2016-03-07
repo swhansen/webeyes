@@ -106,7 +106,6 @@ function arObjMover() {
 //                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
 
 
-
 var normalizedMouse = {};
 normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
@@ -114,6 +113,11 @@ normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
     console.log( 'down:', ev.x, ev.y );
+
+    var raycaster = new THREE.Raycaster( camera.position, normalizedMouse.sub( camera.position ).normalize() );
+
+    var intersects = raycaster.intersectObjects( scene.children );
+    console.log( 'intersects:', intersects );
   };
 
   this.mousemove = function( ev ) {
@@ -159,7 +163,6 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
     scene.add( handSphere );
   }
 
-
 // convert the three object into screen coordinates
 
 function ThreeToScreenPosition( obj, camera ) {
@@ -175,15 +178,11 @@ function ThreeToScreenPosition( obj, camera ) {
     vector.x = ( vector.x * widthHalf ) + widthHalf;
     vector.y = - ( vector.y * heightHalf ) + heightHalf;
 
- //   console.log( 'sphere screen:', vector.x, vector.y );
-
     return {
         x: vector.x,
         y: vector.y
     };
 };
-
-
 
 function leapAnimate( data ) {
 
@@ -196,7 +195,6 @@ function leapAnimate( data ) {
 
   var screenCoord = ThreeToScreenPosition( handSphere, camera );
   console.log( 'obj Screen Coord:', screenCoord.x, screenCoord.y );
-
 
    controls.update();
  }
