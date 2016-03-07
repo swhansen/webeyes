@@ -114,7 +114,9 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
     console.log( 'down:', ev.x, ev.y );
 
-    var raycaster = new THREE.Raycaster( camera.position, normalizedMouse.sub( camera.position ).normalize() );
+    var vector = new Three.Vector( normalizedMouse.x, normalizedMouse.y, 0.5 );
+
+    var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
     var intersects = raycaster.intersectObjects( scene.children );
     console.log( 'intersects:', intersects );
