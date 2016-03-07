@@ -98,7 +98,6 @@ function arObjMover() {
   this.mousedown = function( ev ) {
     tool.down = true;
 
-
 // var rect = leapFull.getBoundingClientRect();
 // offsetX = rect.left;
 // offsetY = rect.top;
@@ -114,7 +113,7 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
     console.log( 'down:', ev.x, ev.y );
 
-    var vector = new Three.Vector( normalizedMouse.x, normalizedMouse.y, 0.5 );
+    var vector = new THREE.Vector( normalizedMouse.x, normalizedMouse.y, 0.5 );
 
     var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
@@ -175,7 +174,7 @@ function ThreeToScreenPosition( obj, camera ) {
 
     obj.updateMatrixWorld();
     vector.setFromMatrixPosition( obj.matrixWorld );
-    vector.project(camera);
+    vector.project( camera );
 
     vector.x = ( vector.x * widthHalf ) + widthHalf;
     vector.y = - ( vector.y * heightHalf ) + heightHalf;
@@ -184,7 +183,7 @@ function ThreeToScreenPosition( obj, camera ) {
         x: vector.x,
         y: vector.y
     };
-};
+}
 
 function leapAnimate( data ) {
 
