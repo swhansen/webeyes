@@ -116,6 +116,7 @@ normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
     console.log( 'down:', ev.x, ev.y );
 
     var mouse = new THREE.Vector2( ev.clientX, ev.clientY );
+    camera.updateMatrixWorld();
 
    // var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
