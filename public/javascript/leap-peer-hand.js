@@ -123,7 +123,7 @@ var raycaster = new THREE.Raycaster();
 raycaster.setFromCamera( mouse, camera );
 
 
-    var intersects = raycaster.intersectObjects( objects );
+    var intersects = raycaster.intersectObjects( scene.children );
 
     console.log( 'intersects:', intersects );
   };
