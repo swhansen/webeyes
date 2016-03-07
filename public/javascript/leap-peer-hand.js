@@ -106,14 +106,12 @@ function arObjMover() {
 //                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
 
 
-// values (-1 t0 +1 )
+// values (-1 to +1 )
 var normalizedMouse = {};
 normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
 console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
-
-
 
     console.log( 'down:', ev.x, ev.y );
   };
@@ -151,23 +149,59 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
   function updateLeapSphere( data ) {
 
     handSphere.position.fromArray( data.position );
-    console.log( 'spherel location:', data.positiion );
+    console.log( 'sphere location:', handSphere.positiion );
     handSphere.material.color.setRGB(
               data.color.r,
               data.color.g,
               data.color.b );
     handSphere.visible = data.visible;
 
-console.log( 'sphere:', handSphere.position );
-
     scene.add( handSphere );
   }
 
+
+function toScreenPosition(obj, camera)
+{
+    var vector = new THREE.Vector3();
+
+    var widthHalf = 0.5*renderer.context.canvas.width;
+    var heightHalf = 0.5*renderer.context.canvas.height;
+
+    obj.updateMatrixWorld();
+    vector.setFromMatrixPosition(obj.matrixWorld);
+    vector.project(camera);
+
+    vector.x = ( vector.x * widthHalf ) + widthHalf;
+    vector.y = - ( vector.y * heightHalf ) + heightHalf;
+    console.log( 'sphere screen:', vector.x, vector.y );
+    return {
+        x: vector.x,
+        y: vector.y
+    };
+
+};
+
+
+
+
+
+
+
 function leapAnimate( data ) {
+
+
+// get it to (-1 to 1) to match normalized mouse
+// normalizeSphere = ( sphere.x / interactionbox.x) * 2 - 1;
+
+
 
   scene.remove( handSphere );
   updateLeapSphere( data );
   renderer.render( scene, camera );
+
+toScreenPosition( handSphere, camera );
+
+
    controls.update();
  }
 
