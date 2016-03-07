@@ -106,7 +106,7 @@ function arObjMover() {
 //                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
 
 
-// values (-1 to +1 )
+
 var normalizedMouse = {};
 normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
@@ -185,17 +185,10 @@ function ThreeToScreenPosition( obj, camera ) {
 
 
 
-
-
-
-
 function leapAnimate( data ) {
-
 
 // get it to (-1 to 1) to match normalized mouse
 // normalizeSphere = ( sphere.x / interactionbox.x) * 2 - 1;
-
-
 
   scene.remove( handSphere );
   updateLeapSphere( data );
