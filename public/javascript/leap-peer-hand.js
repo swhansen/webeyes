@@ -109,7 +109,7 @@ var normalizedMouse = {};
 normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
-console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
+//console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
     console.log( 'down:', ev.x, ev.y );
 
@@ -117,7 +117,8 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
     var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
-    var intersects = raycaster.intersectObjects( scene.children );
+    var intersects = raycaster.intersectObjects( handSphere );
+
     console.log( 'intersects:', intersects );
   };
 
