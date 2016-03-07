@@ -115,9 +115,13 @@ normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
     console.log( 'down:', ev.x, ev.y );
 
-    var vector = new THREE.Vector3( ev.clientX, ev.clientY, 0.5 );
+    var mouse = new THREE.Vector2( ev.clientX, ev.clientY );
 
-    var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+   // var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+
+var raycaster = new Three.Raycaster();
+raycaster.setFromCamera( mouse, camera );
+
 
     var intersects = raycaster.intersectObjects( objects );
 
