@@ -243,7 +243,7 @@ function leapAnimate( data ) {
   updateLeapSphere( data );
   renderer.render( scene, camera );
 
-  var sphereScreenCoordcreenCoord = ThreeToScreenPosition( handSphere, camera );
+  var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
   console.log( 'obj Screen Coord:', sphereScreenCoord.x, sphereScreenCoord.y );
   var foo = normalizeObj( handSphere );
   console.log( 'objNorm:', foo );
