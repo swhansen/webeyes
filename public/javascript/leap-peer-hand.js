@@ -204,7 +204,7 @@ var vector = new THREE.Vector3( ( ev.clientX - window.innerWidth ) / leapFull.wi
 
 function normalizeObj( obj ) {
 
-  var objNorm = obj.normailize;
+  var objNorm = obj.position.normailize;
   console.log( 'objNorm:', objNorm );
 
   return {
