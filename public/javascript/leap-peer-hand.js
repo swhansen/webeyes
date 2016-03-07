@@ -109,7 +109,7 @@ var normalizedMouse = {};
 normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
-Console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
+console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
 
 
