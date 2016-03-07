@@ -38,6 +38,8 @@ socketServer.on( 'leapSphere', function( data ) {
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
     camera.position.set( -500, 500, 500 );
 
+    var projector = new THREE.Projector();
+
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
 
