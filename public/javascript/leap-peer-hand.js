@@ -160,15 +160,15 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
   }
 
 
-function toScreenPosition(obj, camera)
+function toScreenPosition( obj, camera )
 {
     var vector = new THREE.Vector3();
 
-    var widthHalf = 0.5*renderer.context.canvas.width;
-    var heightHalf = 0.5*renderer.context.canvas.height;
+    var widthHalf = 0.5 * renderer.context.canvas.width;
+    var heightHalf = 0.5 * renderer.context.canvas.height;
 
     obj.updateMatrixWorld();
-    vector.setFromMatrixPosition(obj.matrixWorld);
+    vector.setFromMatrixPosition( obj.matrixWorld );
     vector.project(camera);
 
     vector.x = ( vector.x * widthHalf ) + widthHalf;
@@ -199,7 +199,7 @@ function leapAnimate( data ) {
   updateLeapSphere( data );
   renderer.render( scene, camera );
 
-toScreenPosition( handSphere, camera );
+  toScreenPosition( handSphere, camera );
 
 
    controls.update();
