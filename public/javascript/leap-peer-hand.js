@@ -119,7 +119,7 @@ normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
    // var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
-var raycaster = new Three.Raycaster();
+var raycaster = new THREE.Raycaster();
 raycaster.setFromCamera( mouse, camera );
 
 
