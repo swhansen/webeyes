@@ -105,6 +105,8 @@ function arObjMover() {
 // var vector = new THREE.Vector3( ( ev.clientX - offsetX ) / leapFull.width * 2 - 1,
 //                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
 
+
+// values (-1 t0 +1 )
 var normalizedMouse = {};
 normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
@@ -155,6 +157,9 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
               data.color.g,
               data.color.b );
     handSphere.visible = data.visible;
+
+console.log( 'sphere:', handSphere.position );
+
     scene.add( handSphere );
   }
 
