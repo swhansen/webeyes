@@ -148,8 +148,6 @@ Console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
   function updateLeapSphere( data ) {
 
-    console.log( 'normalized palm sphere:', normalizedPalmSphere );
-
     handSphere.position.fromArray( data.position );
     console.log( 'spherel location:', data.positiion );
     handSphere.material.color.setRGB(
