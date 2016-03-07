@@ -107,27 +107,55 @@ function arObjMover() {
 //                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
 
 
-var normalizedMouse = {};
-normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
-normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
+// var normalizedMouse = {};
+// normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
+// normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
+
+var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+                            - ( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
+    projector.unprojectVector( vector, cameraDriver );
+    vector.sub( camera.position );
+    vector.normalize();
+    var rayCaster = new THREE.Raycaster( camera.position, vector );
+    var intersects = rayCaster.intersectObjects( objects );
+
+   console.log( 'intersects:', intersects );
+
+
+
+
+
+
+
+
+
+
+// var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
 
 //console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
     console.log( 'down:', ev.x, ev.y );
 
-    var mouse = new THREE.Vector2( ev.clientX, ev.clientY );
-    camera.updateMatrixWorld();
+//    var mouse = new THREE.Vector2( ev.clientX, ev.clientY );
+
 
    // var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
-var raycaster = new THREE.Raycaster();
-raycaster.setFromCamera( mouse, camera );
+//var raycaster = new THREE.Raycaster();
+//raycaster.setFromCamera( mouse, camera );
+
+//console.log( 'raycaster:', raycaster );
 
 
-    var intersects = raycaster.intersectObjects( scene.children );
+//    var intersects = raycaster.intersectObjects( scene.children );
 
-    console.log( 'intersects:', intersects );
   };
+
+
+
+
+
 
   this.mousemove = function( ev ) {
     if ( tool.down ) {
