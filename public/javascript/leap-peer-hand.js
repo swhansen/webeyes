@@ -113,7 +113,7 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
 
     console.log( 'down:', ev.x, ev.y );
 
-    var vector = new THREE.Vector3( normalizedMouse.x, normalizedMouse.y, 0.5 );
+    var vector = new THREE.Vector3( ev.clientX, ev.clientY, 0.5 );
 
     var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
