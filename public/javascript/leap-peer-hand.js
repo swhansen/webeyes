@@ -111,8 +111,8 @@ function arObjMover() {
 // normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 // normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
-var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            - ( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+var vector = new THREE.Vector3( ( ev.clientX - window.innerWidth ) / viewWidth * 2 - 1,
+                            - ( ev.clientY - window.innerHeigth ) / viewHeight * 2 + 1, 0.5 );
 
     projector.unprojectVector( vector, cameraDriver );
     vector.sub( camera.position );
