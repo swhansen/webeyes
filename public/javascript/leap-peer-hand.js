@@ -160,8 +160,9 @@ console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
   }
 
 
-function toScreenPosition( obj, camera )
-{
+// convert the three object into screen coordinates
+
+function ThreeToScreenPosition( obj, camera ) {
     var vector = new THREE.Vector3();
 
     var widthHalf = 0.5 * renderer.context.canvas.width;
@@ -173,12 +174,13 @@ function toScreenPosition( obj, camera )
 
     vector.x = ( vector.x * widthHalf ) + widthHalf;
     vector.y = - ( vector.y * heightHalf ) + heightHalf;
-    console.log( 'sphere screen:', vector.x, vector.y );
+
+ //   console.log( 'sphere screen:', vector.x, vector.y );
+
     return {
         x: vector.x,
         y: vector.y
     };
-
 };
 
 
@@ -199,7 +201,8 @@ function leapAnimate( data ) {
   updateLeapSphere( data );
   renderer.render( scene, camera );
 
-  toScreenPosition( handSphere, camera );
+  var screenCoord = ThreeToScreenPosition( handSphere, camera );
+  console.log( 'obj Screen Coord:', screenCoord.x, screenCoord.y );
 
 
    controls.update();
