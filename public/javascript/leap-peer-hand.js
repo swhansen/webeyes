@@ -17,14 +17,6 @@ socketServer.on( 'leapSphere', function( data ) {
 
  var leapFull = document.getElementById( 'leappane' );
 
- var rect = leapFull.getBoundingClientRect();
-  offsetX = rect.left;
-  offsetY = rect.top;
-
-  var viewWidth = leapFull.width;
-  var viewHeight = leapFull.height;
- //var leapCanvas = document.getElementById( 'leapfull' );
-
     leapFull.style.width      = '100%';
     leapFull.style.height     = '100%';
     leapFull.style.position   = 'absolute';
@@ -107,32 +99,20 @@ function arObjMover() {
   this.mousedown = function( ev ) {
     tool.down = true;
 
-// var rect = leapFull.getBoundingClientRect();
-// offsetX = rect.left;
-// offsetY = rect.top;
-// var vector = new THREE.Vector3( ( ev.clientX - offsetX ) / leapFull.width * 2 - 1,
-//                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
-
-// var mouse = {};
-// mouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
-// mouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
-
-  //console.log( 'ev._x:', Math.round( ev._x ) );
-  //data.y = Math.round( ev._y );
-
   var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
-                            - ( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
+                            -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
 
-  console.log( 'norm mouse vector:', mouseVector );
-
-  projector.unprojectVector( mouseVector, camera );
-  mouseVector.sub( camera.position );
-  mouseVector.normalize();
-  var rayCaster = new THREE.Raycaster( camera.position, mouseVector );
+ // projector.unprojectVector( mouseVector, camera );
+ // mouseVector.sub( camera.position );
+ // mouseVector.normalize();
+ // var rayCaster = new THREE.Raycaster( camera.position, mouseVector );
+  var rayCaster = new THREE.Raycaster();
+ raycaster.setFromCamera( mouse, camera );
   var intersects = rayCaster.intersectObjects( scene.children );
 
   if ( intersects.length > 0 ) {
     console.log( 'intersects:', intersects );
+    tool.selected = true;
     }
 
   };
@@ -147,7 +127,7 @@ function arObjMover() {
 //    var intersects = raycaster.intersectObjects( scene.children );
 
   this.mousemove = function( ev ) {
-    if ( tool.down ) {
+    if ( tool.down && tool.selected ) {
     console.log( 'moving object:', ev.x, ev.y );
     }
   };
@@ -179,7 +159,7 @@ function arObjMover() {
   function updateLeapSphere( data ) {
 
     handSphere.position.fromArray( data.position );
-    console.log( 'sphere location:', handSphere.position.fromArray( data.position ) );
+  //  console.log( 'sphere location:', handSphere.position.fromArray( data.position ) );
     handSphere.material.color.setRGB(
               data.color.r,
               data.color.g,
@@ -202,7 +182,7 @@ function ThreeToScreenPosition( obj, camera ) {
     vector.project( camera );
 
     vector.x = ( vector.x * widthHalf ) + widthHalf;
-    vector.y = - ( vector.y * heightHalf ) + heightHalf;
+    vector.y = -( vector.y * heightHalf ) + heightHalf;
 
     return {
         x: vector.x,
@@ -221,7 +201,6 @@ function leapAnimate( data ) {
 
  // var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
  // console.log( 'obj Screen Coord:', sphereScreenCoord.x, sphereScreenCoord.y );
-
 
    controls.update();
  }
