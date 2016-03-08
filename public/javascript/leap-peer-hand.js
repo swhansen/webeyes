@@ -114,19 +114,25 @@ function arObjMover() {
     console.log( 'moving object:', ev.x, ev.y );
 
     var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
-                            -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
+                            -( ev._y / window.innerHeight ) * 2 + 1, 1.0 );
+
+   var mv projector.unprojectVector( mouseVector, camera );
+   console.log( 'mv-unProject:', mv );
+
+
 
     //var foo = raycaster.setFromCamera( mouseVector, camera );
 
-    mouseVector.unproject( camera );
+ //  mouseVector.unproject( camera );
+ //  console.log( 'mv-unProject:', mouseVector );
 
-    var dir = mouseVector.sub( camera.position ).normalize();
-    console.log( 'dir:', dir );
+ //  var dir = mouseVector.sub( camera.position ).normalize();
+ //  console.log( 'dir:', dir );
 
-    var distance = -camera.position.z / dir.z;
-    console.log( 'distance:', distance );
+ //  var distance = -camera.position.z / dir.z;
+ //  console.log( 'distance:', distance );
 
-    var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
+ //  var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
 
     //var ray = new THREE.Ray( camera.position, mouseVector.subSelf( camera.position ).normalize() );
 //console.log( 'ray:', ray );
@@ -141,7 +147,7 @@ function arObjMover() {
 
 console.log( 'mouseMove-updateData:', updateData );
 
-    leapAnimate( updateData );
+  //  leapAnimate( updateData );
 
 
 
