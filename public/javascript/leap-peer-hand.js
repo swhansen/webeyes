@@ -16,6 +16,13 @@ socketServer.on( 'leapSphere', function( data ) {
       } );
 
  var leapFull = document.getElementById( 'leappane' );
+
+ var rect = leapFull.getBoundingClientRect();
+  offsetX = rect.left;
+  offsetY = rect.top;
+
+  var viewWidth = leapFull.width;
+  var viewHeight = leapFull.height;
  //var leapCanvas = document.getElementById( 'leapfull' );
 
     leapFull.style.width      = '100%';
@@ -113,8 +120,8 @@ function arObjMover() {
 // mouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 // mouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
-var vector = new THREE.Vector3( ( ev.clientX - window.innerWidth ) / leapFull.width * 2 - 1,
-                            - ( ev.clientY - window.innerHeigth ) / leapFull.height * 2 + 1, 0.5 );
+var vector = new THREE.Vector3( ( ev.clientX - offsetX ) / viewWidth * 2 - 1,
+                            - ( ev.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
   console.log( 'norm mouse vector:', vector );
 
