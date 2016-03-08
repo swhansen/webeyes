@@ -109,35 +109,30 @@ function arObjMover() {
 //                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
 
 
-// var normalizedMouse = {};
-// normalizedMouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
-// normalizedMouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
+// var mouse = {};
+// mouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
+// mouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
 var vector = new THREE.Vector3( ( ev.clientX - window.innerWidth ) / leapFull.width * 2 - 1,
                             - ( ev.clientY - window.innerHeigth ) / leapFull.height * 2 + 1, 0.5 );
 
+  console.log( 'normmouse vector:', vector );
+
     projector.unprojectVector( vector, camera );
+
     vector.sub( camera.position );
     vector.normalize();
+
     var rayCaster = new THREE.Raycaster( camera.position, vector );
-    var intersects = rayCaster.intersectObjects( objects );
+
+    var intersects = rayCaster.intersectObjects( handSphere );
 
    console.log( 'intersects:', intersects );
-
-
-
-
-
-
-
-
 
 
 // var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
 
 //console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
-
-    console.log( 'down:', ev.x, ev.y );
 
 //    var mouse = new THREE.Vector2( ev.clientX, ev.clientY );
 
@@ -228,14 +223,13 @@ function leapAnimate( data ) {
 // get it to (-1 to 1) to match normalized mouse
 // normalizeSphere = ( sphere.x / interactionbox.x) * 2 - 1;
 
-  scene.remove( handSphere );
+  //scene.remove( handSphere );
   updateLeapSphere( data );
   renderer.render( scene, camera );
 
-  var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
-  console.log( 'obj Screen Coord:', sphereScreenCoord.x, sphereScreenCoord.y );
+ // var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
+ // console.log( 'obj Screen Coord:', sphereScreenCoord.x, sphereScreenCoord.y );
 
-  console.log( 'HNP:', handSphere.position.normalize );
 
    controls.update();
  }
