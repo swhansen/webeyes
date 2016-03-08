@@ -123,8 +123,8 @@ function arObjMover() {
 console.log( 'ev._x:', Math.round( ev._x ) );
 //data.y = Math.round( ev._y );
 
-var vector = new THREE.Vector3( ( ev._x - offsetX ) / viewWidth * 2 - 1,
-                            - ( ev._y - offsetY ) / viewHeight * 2 + 1, 0.5 );
+var vector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
+                            - ( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
 
   console.log( 'norm mouse vector:', vector );
 
