@@ -110,12 +110,18 @@ function arObjMover() {
   this.mousemove = function( ev ) {
     if ( tool.down && selectState ) {
     console.log( 'moving object:', ev.x, ev.y );
+
+    handSphere.position.set( ev.x, ev.y, 0.5 );
+
+
+
     }
   };
 
   this.mouseup = function( ev ) {
       console.log( 'up:', ev.x, ev.y );
       tool.down = false;
+      selectState = false
     };
   }
 
