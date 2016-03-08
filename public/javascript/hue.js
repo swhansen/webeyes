@@ -20,7 +20,7 @@ socketServer.on( 'iotControl', function( data ) {
   if ( data.deviceId === 'all' ) {
     hueSetAllLightsXY( data.state, data.XY, data.bri );
     } else {
-      hueSetLightStateXY( hue.deviceId, data.state, data.XY, data.bri );
+      hueSetLightStateXY( data.deviceId, data.state, data.XY, data.bri );
     }
 }
 
