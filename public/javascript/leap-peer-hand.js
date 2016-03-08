@@ -46,6 +46,8 @@ socketServer.on( 'leapSphere', function( data ) {
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
 
+    var selectState = false;
+
     scene = new THREE.Scene();
 
     var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
@@ -88,7 +90,6 @@ function evCanvas( ev ) {
 }
 
 function arObjMover() {
-
   var tool = this;
   this.down = false;
 
@@ -97,18 +98,17 @@ function arObjMover() {
 
   var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
-
   raycaster.setFromCamera( mouseVector, camera );
   var intersects = raycaster.intersectObjects( scene.children );
 
   if ( intersects.length > 0 ) {
     console.log( 'intersects:', intersects );
-    tool.selected = true;
+    selectState = true;
     }
   };
 
   this.mousemove = function( ev ) {
-    if ( tool.down && tool.selected ) {
+    if ( tool.down && selectState ) {
     console.log( 'moving object:', ev.x, ev.y );
     }
   };
