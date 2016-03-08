@@ -116,7 +116,7 @@ function arObjMover() {
     var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
 
-    projector.unproject( mouseVector, camera );
+    projector.unprojectVector( mouseVector, camera );
 
     console.log( 'mouseVector.unproject:', projector );
 
