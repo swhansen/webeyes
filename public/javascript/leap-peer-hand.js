@@ -12,6 +12,7 @@ function initLeapPeerHand() {
 //  } );
 
 socketServer.on( 'leapSphere', function( data ) {
+  console.log( 'handSphere - data:', data );
     leapAnimate( data );
       } );
 
@@ -127,7 +128,7 @@ function arObjMover() {
         updateData.name = 'handSphere';
         updateData.originRtcId = userContext.rtcId;
 
-console.log( 'updateData:', updateData );
+console.log( 'mouseMove-updateData:', updateData );
 
     leapAnimate( updateData );
 
@@ -165,7 +166,6 @@ console.log( 'updateData:', updateData );
 
   function updateLeapSphere( data ) {
 
-    console.log( 'updateLeapSphrer data:', data );
     handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
               data.color.r,
