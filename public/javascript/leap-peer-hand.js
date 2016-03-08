@@ -111,7 +111,17 @@ function arObjMover() {
     if ( tool.down && selectState ) {
     console.log( 'moving object:', ev.x, ev.y );
 
-    handSphere.position.set( ev.x, ev.y, 0.5 );
+        var updateData = {};
+        updateData.operation = 'move';
+        updateData.visible = handSphere.visible;
+        updateData.position.set( ev.x, ev.y, 0.5 );
+        //palmSphereData.color = handSphere.material.color;
+        updateData.name = 'handSphere';
+        updateData.originRtcId = userContext.rtcId;
+
+console.log( 'updateData:', updateData );
+
+    leapAnimate( updateData );
 
 
 
@@ -121,7 +131,7 @@ function arObjMover() {
   this.mouseup = function( ev ) {
       console.log( 'up:', ev.x, ev.y );
       tool.down = false;
-      selectState = false
+      selectState = false;
     };
   }
 
