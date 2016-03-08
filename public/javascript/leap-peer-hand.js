@@ -115,7 +115,7 @@ function arObjMover() {
         updateData.operation = 'move';
         updateData.visible = handSphere.visible;
         updateData.position = [ ev.x, ev.y, 0.5 ];
-        //palmSphereData.color = handSphere.material.color;
+        updateData.color = handSphere.material.color;
         updateData.name = 'handSphere';
         updateData.originRtcId = userContext.rtcId;
 
