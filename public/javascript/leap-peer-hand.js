@@ -187,14 +187,14 @@ var vector = new THREE.Vector3( ( ev.clientX - window.innerWidth ) / leapFull.wi
   function updateLeapSphere( data ) {
 
     handSphere.position.fromArray( data.position );
-    console.log( 'sphere location:', handSphere.positiion.fromArray( data.position ) );
+    console.log( 'sphere location:', handSphere.position.fromArray( data.position ) );
     handSphere.material.color.setRGB(
               data.color.r,
               data.color.g,
               data.color.b );
     handSphere.visible = data.visible;
 
-    scene.add( handSphere );
+   // scene.add( handSphere );
   }
 
 // convert the three object into screen coordinates
@@ -223,7 +223,7 @@ function leapAnimate( data ) {
 // get it to (-1 to 1) to match normalized mouse
 // normalizeSphere = ( sphere.x / interactionbox.x) * 2 - 1;
 
-  scene.remove( handSphere );
+  //scene.remove( handSphere );
   updateLeapSphere( data );
   renderer.render( scene, camera );
 
