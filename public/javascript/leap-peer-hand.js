@@ -113,54 +113,38 @@ function arObjMover() {
 // var vector = new THREE.Vector3( ( ev.clientX - offsetX ) / leapFull.width * 2 - 1,
 //                           - ( ev.clientY - offsetY ) / leapFull.height * 2 + 1, 0.5 );
 
-
 // var mouse = {};
 // mouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 // mouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
-console.log( 'ev._x:', Math.round( ev._x ) );
-//data.y = Math.round( ev._y );
+  //console.log( 'ev._x:', Math.round( ev._x ) );
+  //data.y = Math.round( ev._y );
 
-var vector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
+  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             - ( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
 
-  console.log( 'norm mouse vector:', vector );
+  console.log( 'norm mouse vector:', mouseVector );
 
-    projector.unprojectVector( vector, camera );
+  projector.unprojectVector( mouseVector, camera );
+  mouseVector.sub( camera.position );
+  mouseVector.normalize();
+  var rayCaster = new THREE.Raycaster( camera.position, mouseVector );
+  var intersects = rayCaster.intersectObjects( scene.children );
 
-    vector.sub( camera.position );
-    vector.normalize();
-
-    var rayCaster = new THREE.Raycaster( camera.position, vector );
-
-    var intersects = rayCaster.intersectObjects( scene.children );
-
-   console.log( 'intersects:', intersects );
-
-
-// var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
-
-//console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
-
-//    var mouse = new THREE.Vector2( ev.clientX, ev.clientY );
-
-
-   // var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-
-//var raycaster = new THREE.Raycaster();
-//raycaster.setFromCamera( mouse, camera );
-
-//console.log( 'raycaster:', raycaster );
-
-
-//    var intersects = raycaster.intersectObjects( scene.children );
+  if ( intersects.length > 0 ) {
+    console.log( 'intersects:', intersects );
+    }
 
   };
 
-
-
-
-
+// var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
+//console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
+//    var mouse = new THREE.Vector2( ev.clientX, ev.clientY );
+// var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+//var raycaster = new THREE.Raycaster();
+//raycaster.setFromCamera( mouse, camera );
+//console.log( 'raycaster:', raycaster );
+//    var intersects = raycaster.intersectObjects( scene.children );
 
   this.mousemove = function( ev ) {
     if ( tool.down ) {
