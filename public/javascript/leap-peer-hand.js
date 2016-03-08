@@ -120,7 +120,7 @@ function arObjMover() {
 // mouse.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
 // mouse.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 
-//data.x = Math.round( ev._x );
+console.log( 'ev._x:', Math.round( ev._x ) );
 //data.y = Math.round( ev._y );
 
 var vector = new THREE.Vector3( ( ev._x - offsetX ) / viewWidth * 2 - 1,
