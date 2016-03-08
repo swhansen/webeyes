@@ -24,6 +24,10 @@ socketServer.on( 'leapSphere', function( data ) {
     leapFull.style.left       = '0px';
     leapFull.style.zIndex = 300;
 
+    leapFull.addEventListener( 'mousedown', evCanvas, false );
+    leapFull.addEventListener( 'mousemove', evCanvas, false );
+    leapFull.addEventListener( 'mouseup', evCanvas, false );
+
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
     var boneMeshes = [];
@@ -37,14 +41,10 @@ socketServer.on( 'leapSphere', function( data ) {
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
     camera.position.set( -500, 500, 500 );
 
-    var projector = new THREE.Projector();
+    var raycaster = new THREE.Raycaster();
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
-
-    leapFull.addEventListener( 'mousedown', evCanvas, false );
-    leapFull.addEventListener( 'mousemove', evCanvas, false );
-    leapFull.addEventListener( 'mouseup', evCanvas, false );
 
     scene = new THREE.Scene();
 
@@ -65,10 +65,6 @@ socketServer.on( 'leapSphere', function( data ) {
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
   }
-
-//----------------
-
-var tool = new arObjMover();
 
 // The general-purpose event handler for mouse events.
 
@@ -102,29 +98,14 @@ function arObjMover() {
   var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
 
- // projector.unprojectVector( mouseVector, camera );
- // mouseVector.sub( camera.position );
- // mouseVector.normalize();
- // var rayCaster = new THREE.Raycaster( camera.position, mouseVector );
-  var raycaster = new THREE.Raycaster();
- raycaster.setFromCamera( mouseVector, camera );
+  raycaster.setFromCamera( mouseVector, camera );
   var intersects = raycaster.intersectObjects( scene.children );
 
   if ( intersects.length > 0 ) {
     console.log( 'intersects:', intersects );
     tool.selected = true;
     }
-
   };
-
-// var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
-//console.log( 'normalizedMouse:', normalizedMouse.x, normalizedMouse.y );
-//    var mouse = new THREE.Vector2( ev.clientX, ev.clientY );
-// var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-//var raycaster = new THREE.Raycaster();
-//raycaster.setFromCamera( mouse, camera );
-//console.log( 'raycaster:', raycaster );
-//    var intersects = raycaster.intersectObjects( scene.children );
 
   this.mousemove = function( ev ) {
     if ( tool.down && tool.selected ) {
@@ -137,6 +118,8 @@ function arObjMover() {
       tool.down = false;
     };
   }
+
+  var tool = new arObjMover();
 
 //------------------------
 
@@ -159,14 +142,11 @@ function arObjMover() {
   function updateLeapSphere( data ) {
 
     handSphere.position.fromArray( data.position );
-  //  console.log( 'sphere location:', handSphere.position.fromArray( data.position ) );
     handSphere.material.color.setRGB(
               data.color.r,
               data.color.g,
               data.color.b );
     handSphere.visible = data.visible;
-
-   // scene.add( handSphere );
   }
 
 // convert the three object into screen coordinates

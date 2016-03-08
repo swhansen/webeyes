@@ -284,7 +284,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         palmSphereData.color = handSphere.material.color;
         palmSphereData.name = 'handSphere';
         palmSphereData.originRtcId = userContext.rtcId;
-        palmSphereData.interactionBox = interactionBox;
+        //palmSphereData.interactionBox = interactionBox;
         emitLeapSphere( palmSphereData );
   }
 
