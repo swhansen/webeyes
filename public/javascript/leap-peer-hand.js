@@ -116,6 +116,8 @@ function arObjMover() {
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
 
     mouseVector.unproject( camera );
+
+    console.log( 'mouseVector.unproject:', mouseVector );
     var dir = mouseVector.sub( camera.position ).normalize();
     var distance = - camera.position.z / dir.z;
     var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
