@@ -106,7 +106,7 @@ function arObjMover() {
  // mouseVector.sub( camera.position );
  // mouseVector.normalize();
  // var rayCaster = new THREE.Raycaster( camera.position, mouseVector );
-  var rayCaster = new THREE.Raycaster();
+  var raycaster = new THREE.Raycaster();
  raycaster.setFromCamera( mouse, camera );
   var intersects = rayCaster.intersectObjects( scene.children );
 
