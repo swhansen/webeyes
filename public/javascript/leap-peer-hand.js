@@ -111,10 +111,13 @@ function arObjMover() {
     if ( tool.down && selectState ) {
     console.log( 'moving object:', ev.x, ev.y );
 
+    var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
+                            -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
+
         var updateData = {};
         updateData.operation = 'move';
         updateData.visible = handSphere.visible;
-        updateData.position = [ ev.x, ev.y, 0.5 ];
+        updateData.position = mouseVector;
         updateData.color = handSphere.material.color;
         updateData.name = 'handSphere';
         updateData.originRtcId = userContext.rtcId;
