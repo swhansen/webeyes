@@ -228,6 +228,8 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
 
+  console.log( 'palmCenter:', palmCenter );
+
 // normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
 
