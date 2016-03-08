@@ -59,6 +59,11 @@ socketServer.on( 'leapSphere', function( data ) {
     handSphere.userData.rtiId = userContext.rtcId;
     scene.add( handSphere );
 
+    var testGeometry = new THREE.SphereGeometry( 20, 16, 16 );
+    var testMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
+    var testSphere = new THREE.Mesh( testGeometry, testMaterial );
+    testSphere.position.set( 0.0, 0.0, 0.0 );
+
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
     scene.add( light );
@@ -94,7 +99,7 @@ function evCanvas( ev ) {
 function arObjMover() {
   var tool = this;
   this.down = false;
-  var testLoc = [ 0, 0 ,0 ];
+  var testLoc = [ 0, 0 , 0 ];
 
   this.mousedown = function( ev ) {
     tool.down = true;
