@@ -160,6 +160,7 @@ console.log( 'updateData:', updateData );
 
   function updateLeapSphere( data ) {
 
+    console.log( 'updateLeapSphrer data:', data );
     handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
               data.color.r,
