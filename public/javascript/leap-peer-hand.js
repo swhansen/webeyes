@@ -63,6 +63,7 @@ socketServer.on( 'leapSphere', function( data ) {
     var testMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var testSphere = new THREE.Mesh( testGeometry, testMaterial );
     testSphere.position.set( 0.0, 0.0, 0.0 );
+    scene.add( testSphere );
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
