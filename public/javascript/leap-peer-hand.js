@@ -62,8 +62,6 @@ socketServer.on( 'leapSphere', function( data ) {
     handSphere.name = 'handSphere';
     handSphere.userData.rtiId = userContext.rtcId;
     scene.add( handSphere );
-    var objects = [];
-    objects.push( handSphere );
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
@@ -135,7 +133,7 @@ var vector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
 
     var rayCaster = new THREE.Raycaster( camera.position, vector );
 
-    var intersects = rayCaster.intersectObjects( handSphere );
+    var intersects = rayCaster.intersectObjects( scene.children );
 
    console.log( 'intersects:', intersects );
 
