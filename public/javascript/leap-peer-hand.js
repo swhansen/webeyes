@@ -116,12 +116,14 @@ function arObjMover() {
     var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
 
-    projector.unprojectVector( mouseVector, camera );
+    var foo = raycaster.setFromCamera( mouseVector, camera );
 
-    console.log( 'mouseVector.unproject:', projector );
+    //projector.unprojectVector( mouseVector, camera );
 
-    var ray = new THREE.Ray( camera.position, mouseVector.subSelf( camera.position ).normalize() );
-console.log( 'ray:', ray );
+    console.log( 'raycaster:', raycaster );
+
+    //var ray = new THREE.Ray( camera.position, mouseVector.subSelf( camera.position ).normalize() );
+//console.log( 'ray:', ray );
    // var dir = mouseVector.sub( camera.position ).normalize();
    // var distance = - camera.position.z / dir.z;
    // var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
@@ -129,7 +131,7 @@ console.log( 'ray:', ray );
         var updateData = {};
         updateData.operation = 'move';
         updateData.visible = handSphere.visible;
-        updateData.position = ray;
+        updateData.position = foo;
         updateData.color = handSphere.material.color;
         updateData.name = 'handSphere';
         updateData.originRtcId = userContext.rtcId;
