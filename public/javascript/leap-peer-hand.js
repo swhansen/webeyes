@@ -121,7 +121,7 @@ function arObjMover() {
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
     //var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
-    var leapY = ( ev._y / window.innerHeight * 2 ) * 270;
+    var leapY = ( ev._y / window.innerHeight * 270 ) + 70;
 
     console.log( 'LeapX-Y:', leapX, leapY );
 
