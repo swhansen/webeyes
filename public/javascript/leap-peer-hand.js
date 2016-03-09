@@ -44,6 +44,7 @@ socketServer.on( 'leapSphere', function( data ) {
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
+    offset = new THREE.Vector;
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
@@ -104,14 +105,10 @@ function arObjMover() {
   this.mousedown = function( ev ) {
     tool.down = true;
 
-
-  console.log( 'mouse down:', ev.x, ev.y );
-
   var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
   raycaster.setFromCamera( mouseVector, camera );
   var intersects = raycaster.intersectObjects( scene.children );
-
 
   if ( intersects.length > 0 ) {
     console.log( 'intersects:', intersects );
@@ -127,14 +124,16 @@ function arObjMover() {
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
     console.log( 'LeapX-Y:', leapX, leapY );
 
-    var leapPos = [ leapX, leapY, 0 ];
+    var leapPos = [ leapX, leapY, 100 ];
 
  //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
- //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
+ //                          -( ev._y / window.innerHeight )  * 2 + 1, 0.5 );
+
+ //var mouseVector = new THREE.Vector3( leapX, LeapY, 0 );
 
  //  console.log( 'mouseVector:', mouseVector );
 
- //  //var foo = raycaster.setFromCamera( mouseVector, camera );
+ //var foo = raycaster.setFromCamera( mouseVector, camera );
 
  // mouseVector.unproject( camera );
  // console.log( 'mv-unProject:', mouseVector );
@@ -161,9 +160,6 @@ function arObjMover() {
         console.log( 'mouseMove-updateData:', updateData );
 
         leapAnimate( updateData );
-
-
-
     }
   };
 
