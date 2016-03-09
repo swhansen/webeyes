@@ -133,7 +133,7 @@ function arObjMover() {
 
 // var leapPos = camera.position.clone().add( dir.multiplyScalar( distance ) );
 
-var leapVector.set( leapX, leapY, 0 );
+ leapVector.set( leapX, leapY, 0 );
 
     console.log( 'leapPos:', leapVector );
 
