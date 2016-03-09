@@ -40,7 +40,7 @@ socketServer.on( 'leapSphere', function( data ) {
     renderer.setSize( window.innerWidth, window.innerHeight );
 
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
-    camera.position.set( 500, 500, 500 );
+    camera.position.set( -500, 500, 500 );
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
@@ -120,8 +120,8 @@ function arObjMover() {
   //  console.log( 'moving object:', ev.x, ev.y );
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
-    //var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
-    var leapY = ( ev._y / window.innerHeight * 270 ) + 70;
+    var leapY = -(( ev._y / window.innerHeight * 2 - 1 ) * 270) - 130 ;
+    //var leapY = ( ev._y / window.innerHeight * 270 ) + 70;
 
     console.log( 'LeapX-Y:', leapX, leapY );
 
