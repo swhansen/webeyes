@@ -104,13 +104,18 @@ function arObjMover() {
   this.mousedown = function( ev ) {
     tool.down = true;
 
+
+  console.log( 'mouse down:', ev.x, ev.y );
+
+    var leapX = ( ex._x / window.innerWidth * 2 -1) * 270;
+    var leapY = -( ex._y / window.innerWidth * 2 -1) * 270;
+    console.log( 'LeapX-Y:', LeapX, LeapY );
+
   var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
   raycaster.setFromCamera( mouseVector, camera );
   var intersects = raycaster.intersectObjects( scene.children );
 
-  console.log( 'w.innerW, H:', window.innerWidth, window.innerWidth );
-  console.log( 'mouse down:', ev.x, ev.y );
 
   if ( intersects.length > 0 ) {
     console.log( 'intersects:', intersects );
