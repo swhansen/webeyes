@@ -119,8 +119,8 @@ function arObjMover() {
     if ( tool.down && selectState ) {
   //  console.log( 'moving object:', ev.x, ev.y );
 
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
-    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
+    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 135;
+    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 135;
     console.log( 'LeapX-Y:', leapX, leapY );
 
     var leapPos = [ leapX, leapY, 100 ];
@@ -157,9 +157,6 @@ function arObjMover() {
         console.log( 'mouseMove-updateData:', updateData );
 
         leapAnimate( updateData );
-
-
-
     }
   };
 
