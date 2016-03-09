@@ -44,7 +44,6 @@ socketServer.on( 'leapSphere', function( data ) {
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
-    offset = new THREE.Vector;
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxDistance = 1000;
@@ -122,9 +121,11 @@ function arObjMover() {
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
-    console.log( 'LeapX-Y:', leapX, leapY );
+    //console.log( 'LeapX-Y:', leapX, leapY );
 
     var leapPos = [ leapX, leapY, 100 ];
+
+    console.log( 'leapPos:', leapPos );
 
  //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
  //                          -( ev._y / window.innerHeight )  * 2 + 1, 0.5 );
