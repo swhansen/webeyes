@@ -40,7 +40,7 @@ socketServer.on( 'leapSphere', function( data ) {
     renderer.setSize( window.innerWidth, window.innerHeight );
 
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
-    camera.position.set( 0, 500, 500 );
+    camera.position.set( -500, 500, 500 );
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
