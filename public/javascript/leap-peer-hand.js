@@ -120,8 +120,8 @@ function arObjMover() {
   //  console.log( 'moving object:', ev.x, ev.y );
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
-    var leapY = -(( ev._y / window.innerHeight * 2 - 1 ) * 270) - 130 ;
-    //var leapY = ( ev._y / window.innerHeight * 270 ) + 70;
+    //var leapY = -(( ev._y / window.innerHeight * 2 - 1 ) * 270) - 130;
+    var leapY = ( ev._y / window.innerHeight * 2 - 1) + 270;
 
     console.log( 'LeapX-Y:', leapX, leapY );
 
@@ -157,6 +157,7 @@ function arObjMover() {
         updateData.originRtcId = userContext.rtcId;
 
         console.log( 'mouseMove-updateData:', updateData );
+
 
         leapAnimate( updateData );
     }
@@ -197,6 +198,8 @@ function arObjMover() {
               data.color.g,
               data.color.b );
     handSphere.visible = data.visible;
+
+    console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
   }
 
 // convert the three object into screen coordinates
