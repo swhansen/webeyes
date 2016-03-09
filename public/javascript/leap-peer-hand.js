@@ -160,7 +160,7 @@ function arObjMover() {
 
         console.log( 'mouseMove-updateData:', updateData );
 
-  //  leapAnimate( updateData );
+        leapAnimate( updateData );
 
 
 
