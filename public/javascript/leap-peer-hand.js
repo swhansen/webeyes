@@ -121,20 +121,16 @@ function arObjMover() {
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
-    //console.log( 'LeapX-Y:', leapX, leapY );
+    console.log( 'LeapX-Y:', leapX, leapY );
 
     var leapPos = [ leapX, leapY, 100 ];
 
-    console.log( 'leapPos:', leapPos );
-
  //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
- //                          -( ev._y / window.innerHeight )  * 2 + 1, 0.5 );
-
- //var mouseVector = new THREE.Vector3( leapX, LeapY, 0 );
+ //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
 
  //  console.log( 'mouseVector:', mouseVector );
 
- //var foo = raycaster.setFromCamera( mouseVector, camera );
+ //  //var foo = raycaster.setFromCamera( mouseVector, camera );
 
  // mouseVector.unproject( camera );
  // console.log( 'mv-unProject:', mouseVector );
@@ -161,6 +157,9 @@ function arObjMover() {
         console.log( 'mouseMove-updateData:', updateData );
 
         leapAnimate( updateData );
+
+
+
     }
   };
 
