@@ -100,7 +100,6 @@ function evCanvas( ev ) {
 function arObjMover() {
   var tool = this;
   this.down = false;
-  var testLoc = [ 0, 0 , 0 ];
 
   this.mousedown = function( ev ) {
     tool.down = true;
@@ -110,10 +109,12 @@ function arObjMover() {
   raycaster.setFromCamera( mouseVector, camera );
   var intersects = raycaster.intersectObjects( scene.children );
 
+  console.log( 'w.innerW, H:', window.innerWidth, window.innerWidth );
+  console.log( 'mouse down:', ev.x, ev.y );
+
   if ( intersects.length > 0 ) {
     console.log( 'intersects:', intersects );
     selectState = true;
-    handSphere.position.fromArray( testLoc );
     }
   };
 
