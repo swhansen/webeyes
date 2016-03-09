@@ -107,10 +107,6 @@ function arObjMover() {
 
   console.log( 'mouse down:', ev.x, ev.y );
 
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
-    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
-    console.log( 'LeapX-Y:', leapX, leapY );
-
   var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
   raycaster.setFromCamera( mouseVector, camera );
@@ -125,25 +121,31 @@ function arObjMover() {
 
   this.mousemove = function( ev ) {
     if ( tool.down && selectState ) {
-    console.log( 'moving object:', ev.x, ev.y );
+  //  console.log( 'moving object:', ev.x, ev.y );
 
-    var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
-                            -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
+    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
+    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
+    console.log( 'LeapX-Y:', leapX, leapY );
 
-console.log( 'mouseVector:', mouseVector );
+    var leapPos = [ leapX, LeapY, 0 ];
 
-    //var foo = raycaster.setFromCamera( mouseVector, camera );
+ //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
+ //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
 
-   mouseVector.unproject( camera );
-   console.log( 'mv-unProject:', mouseVector );
+ //  console.log( 'mouseVector:', mouseVector );
 
-   var dir = mouseVector.sub( camera.position ).normalize();
-   console.log( 'dir:', dir );
+ //  //var foo = raycaster.setFromCamera( mouseVector, camera );
 
-   var distance = -camera.position.z / dir.z;
-   console.log( 'distance:', distance );
+ // mouseVector.unproject( camera );
+ // console.log( 'mv-unProject:', mouseVector );
 
-   var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
+ // var dir = mouseVector.sub( camera.position ).normalize();
+ // console.log( 'dir:', dir );
+
+ // var distance = -camera.position.z / dir.z;
+ // console.log( 'distance:', distance );
+
+ // var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
 
     //var ray = new THREE.Ray( camera.position, mouseVector.subSelf( camera.position ).normalize() );
 //console.log( 'ray:', ray );
@@ -151,12 +153,12 @@ console.log( 'mouseVector:', mouseVector );
         var updateData = {};
         updateData.operation = 'move';
         updateData.visible = handSphere.visible;
-        updateData.position = pos;
+        updateData.position = leapPos;
         updateData.color = handSphere.material.color;
         updateData.name = 'handSphere';
         updateData.originRtcId = userContext.rtcId;
 
-console.log( 'mouseMove-updateData:', updateData );
+        console.log( 'mouseMove-updateData:', updateData );
 
   //  leapAnimate( updateData );
 
