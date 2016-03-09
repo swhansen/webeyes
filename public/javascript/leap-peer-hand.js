@@ -121,9 +121,9 @@ function arObjMover() {
       var leapVector = new THREE.Vector3();
   //  console.log( 'moving object:', ev.x, ev.y );
 
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
+    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) + 270;
     //var leapY = -(( ev._y / window.innerHeight * 2 - 1 ) * 270) - 130;
-    var leapY = ( ev._y / window.innerHeight * 2 - 1) + 270;
+    var leapY = -( ev._y / window.innerHeight * 2 - 1) + 270;
 
   leapVector.set( leapX, leapY, 30 );
   leapVector.unproject( camera );
@@ -209,7 +209,7 @@ function arObjMover() {
               data.color.b );
     handSphere.visible = data.visible;
 
-    console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
+   // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
   }
 
 // convert the three object into screen coordinates
