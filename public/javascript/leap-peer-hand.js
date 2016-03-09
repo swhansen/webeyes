@@ -123,7 +123,7 @@ function arObjMover() {
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 270;
     console.log( 'LeapX-Y:', leapX, leapY );
 
-    var leapPos = [ leapX, leapY, 100 ];
+    var leapPos = [ leapY, leapX, 100 ];
 
  //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
  //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
