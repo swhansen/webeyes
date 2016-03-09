@@ -123,7 +123,7 @@ function arObjMover() {
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) ;
     //var leapY = -(( ev._y / window.innerHeight * 2 - 1 ) * 270) - 130;
-    var leapY = -( ev._y / window.innerHeight * 2 + 1) - window.innerHeight - 270 ;
+    var leapY = -( ev._y / window.innerHeight * 2 + 1) - window.innerHeight - 500 ;
 
   leapVector.set( leapX, leapY, 30 );
   leapVector.unproject( camera );
