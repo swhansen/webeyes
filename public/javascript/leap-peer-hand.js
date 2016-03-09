@@ -117,15 +117,25 @@ function arObjMover() {
 
   this.mousemove = function( ev ) {
     if ( tool.down && selectState ) {
+
+      var leapVector = new THREE.Vector3();
   //  console.log( 'moving object:', ev.x, ev.y );
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 270;
     //var leapY = -(( ev._y / window.innerHeight * 2 - 1 ) * 270) - 130;
     var leapY = ( ev._y / window.innerHeight * 2 - 1) + 270;
 
-    console.log( 'LeapX-Y:', leapX, leapY );
+  leapVector.set( leapX, leapY, 30 );
+  leapVector.unproject( camera );
+  var dir = leapVector.sub( camera.position ).normalize();
 
-    var leapPos = [ 50, leapX, leapY ];
+  var distance = - camera.position.z / dir.z;
+
+  var leapPos = camera.position.clone().add( dir.multiplyScalar( distance ) );
+
+    console.log( 'leapPos:', leapPos );
+
+   // var leapPos = [ 50, leapX, leapY ];
 
  //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
  //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
