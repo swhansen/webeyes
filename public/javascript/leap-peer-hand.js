@@ -133,9 +133,9 @@ function arObjMover() {
 
 // var leapPos = camera.position.clone().add( dir.multiplyScalar( distance ) );
 
-var leapPos = [ leapX, leapY, 0 ];
+var leapVector.set( leapX, leapY, 0 );
 
-    console.log( 'leapPos:', leapPos );
+    console.log( 'leapPos:', leapVector );
 
    // var leapPos = [ 50, leapX, leapY ];
 
@@ -163,7 +163,7 @@ var leapPos = [ leapX, leapY, 0 ];
         var updateData = {};
         updateData.operation = 'move';
         updateData.visible = handSphere.visible;
-        updateData.position = leapPos;
+        updateData.position = leapVector;
         updateData.color = handSphere.material.color;
         updateData.name = 'handSphere';
         updateData.originRtcId = userContext.rtcId;
