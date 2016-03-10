@@ -117,7 +117,7 @@ function arObjMover() {
   };
 
   this.mousemove = function( ev ) {
-    if ( tool.down && selectState ) {
+    if (  selectState ) {
   //  console.log( 'moving object:', ev.x, ev.y );
 
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
@@ -152,8 +152,8 @@ function arObjMover() {
 
   this.mouseup = function( ev ) {
       console.log( 'up:', ev.x, ev.y );
-     // tool.down = false;
-//selectState = false;
+      tool.down = false;
+      selectState = false;
     };
   }
 
