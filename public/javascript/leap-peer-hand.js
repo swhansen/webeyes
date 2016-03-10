@@ -129,7 +129,7 @@ function arObjMover() {
     var normalizedSphere = [];
     normalizedSphere[0] = ev._x / window.innerWidth;
     normalizedSphere[1] = ev._y / window.innerHeight;
-    normalizedSphere[2] = 0.5
+    normalizedSphere[2] = 0.5;
 
     handSphere.material.color.setRGB(
               normalizedSphere[0],
@@ -197,8 +197,8 @@ function arObjMover() {
 
 
 
-var sessionId = socketServer.sessionid;
-      socketServer.emit( 'leapSphere', handSphere, sessionId );
+//var sessionId = socketServer.sessionid;
+//      socketServer.emit( 'leapSphere', handSphere, sessionId );
 
 
 
