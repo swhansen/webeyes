@@ -111,20 +111,18 @@ function arObjMover() {
   var intersects = raycaster.intersectObjects( scene.children );
 
   if ( intersects.length > 0 ) {
-    console.log( 'intersects:', intersects );
-    selectState = true;
-    }
-  };
+//   console.log( 'intersects:', intersects );
+//   selectState = true;
+//   }
+// };
 
-  this.mousemove = function( ev ) {
-    if ( tool.down && selectState ) {
-  //  console.log( 'moving object:', ev.x, ev.y );
+// this.mousemove = function( ev ) {
+//   if ( tool.down && selectState ) {
+// //  console.log( 'moving object:', ev.x, ev.y );
 
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-    var leapY = -( ev._y / window.innerHeight * 2 - 1) * 278.5;
-
-   var leapPos = [ leapX, leapY, 0 ];
-
+  var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+  var leapY = -( ev._y / window.innerHeight * 2 - 1) * 278.5;
+  var leapPos = [ leapX, leapY, 0 ];
 
 // normalize to set color
 
@@ -138,41 +136,16 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
-  //  console.log( 'mx, w.inner, leapX:', ev._x, window.innerWidth, leapX);
+    var updateData = {};
+    updateData.operation = 'move';
+    updateData.visible = handSphere.visible;
+    updateData.position = leapPos;
+    updateData.color = handSphere.material.color;
+    updateData.name = 'handSphere';
+    updateData.originRtcId = userContext.rtcId
+    console.log( 'mouseMove-updateData:', updateData );
 
-//  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
- //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
-
- //  console.log( 'mouseVector:', mouseVector );
-
- //  //var foo = raycaster.setFromCamera( mouseVector, camera );
-
- // mouseVector.unproject( camera );
- // console.log( 'mv-unProject:', mouseVector );
-
- // var dir = mouseVector.sub( camera.position ).normalize();
- // console.log( 'dir:', dir );
-
- // var distance = -camera.position.z / dir.z;
- // console.log( 'distance:', distance );
-
- // var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
-
-    //var ray = new THREE.Ray( camera.position, mouseVector.subSelf( camera.position ).normalize() );
-//console.log( 'ray:', ray );
-
-        var updateData = {};
-        updateData.operation = 'move';
-        updateData.visible = handSphere.visible;
-        updateData.position = leapPos;
-        updateData.color = handSphere.material.color;
-        updateData.name = 'handSphere';
-        updateData.originRtcId = userContext.rtcId;
-
-        console.log( 'mouseMove-updateData:', updateData );
-
-
-        leapAnimate( updateData );
+    leapAnimate( updateData );
     }
   };
 
