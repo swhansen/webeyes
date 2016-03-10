@@ -126,15 +126,9 @@ function arObjMover() {
 
     var leapY = ( 400 + 52) / ( window.innerWidth ) * ev._y;
 
-    var mouseVector = new THREE.Vector3( leapX, leapY, 0 );
-    mouseVector.unproject( camera );
-    var dir = mouseVector.sub( camera.position ).normalize();
-    var distance = -camera.position.z / dir.z;
-    pos = camera.position.clone().add( dir.multiplyScalar( 0.3 ) );
+   // var leapPos = [ leapX, leapY, 0 ];
 
-    console.log( 'LeapX-Y:', leapX, leapY );
-
-    var leapPos = [ leapX, leapY, 0 ];
+    var leapPos = [ 50, 50, 0 ];
 
  //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
  //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
@@ -160,7 +154,7 @@ function arObjMover() {
         var updateData = {};
         updateData.operation = 'move';
         updateData.visible = handSphere.visible;
-        updateData.position = pos;
+        updateData.position = leapPos;
         updateData.color = handSphere.material.color;
         updateData.name = 'handSphere';
         updateData.originRtcId = userContext.rtcId;
