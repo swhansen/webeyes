@@ -87,11 +87,7 @@ function loadAr( participantState ) {
   setupArInteractionEvents( participantState );
    }
 
-// Recieve socket.io  AR object info from peers
-
   function receiveArObject( data ) {
-
-    console.log( 'receiveArObject:', data );
 
     switch ( data.operation ) {
       case 'moveObject':
@@ -135,7 +131,6 @@ function loadAr( participantState ) {
 
         var tempObj = scene.getObjectByName( data.name );
         tempObj.userData.isAnimated = data.isAnimated;
-
       break;
 
       case 'hideSelectedObject':
@@ -143,20 +138,10 @@ function loadAr( participantState ) {
       break;
 
       case  'toggleIot':
-
-        console.log( 'at toggleIOT:', data );
-
-        hueSetLightState( data.iotDeviceId, data.isOn  );
-
+      //  hueSetLightState( data.iotDeviceId, data.isOn  );
         hueSetLightStateXY( data.iotDeviceId, data.isOn, [ 0.5, 0.5 ], 100 );
-
-
         arObject = scene.getObjectByName( data.name );
-
-         console.log( 'toggleIot arObject:', arObject );
-
          arObject.material.opacity = data.arObjectOpacity;
-
       break;
   }
 }
@@ -631,12 +616,10 @@ $( '#ar-canvas' ).longpress( function( event ) {
   },
 
 function( e ) {
-    console.log( 'You released before longpress duration' );
     return false;
 }, 750 );
 
 function addNewArObjectToWorld( d ) {
-    console.log( 'longpress-call addNewArbject:', arShareData );
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
@@ -666,8 +649,6 @@ function addNewArObjectToWorld( d ) {
     newArObj.isUserCreated = true;
     newArObj.objectType = 'bagel';
 
-    console.log( 'sending newArObj:', newArObj );
-
     emitArObject( newArObj );
   }
 
@@ -680,8 +661,6 @@ function addNewArObjectToWorld( d ) {
     newArObj.id = arUserCreatedObject.id;
     newArObj.createdBy = userContext.rtcId;
 
-    console.log( 'sending newArObj:', newArObj );
-
     emitArObject( newArObj );
   }
 
@@ -692,7 +671,7 @@ function addNewArObjectToWorld( d ) {
     event.preventDefault();
 
     var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+                            - ( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
     projector.unprojectVector( vector, cameraDriver );
     vector.sub( cameraDriver.position );
@@ -717,9 +696,6 @@ function addNewArObjectToWorld( d ) {
             }
 
         hueSetLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
-
-       // var lightState = getHueLightState( selectedObject.userData.iotDeviceId );
-       // console.log('light state bri:', lightState.state.bri);
 
         arShareData.operation = 'toggleIot';
         arShareData.isOn = selectedObject.userData.isOn;
@@ -763,8 +739,6 @@ function addNewArObjectToWorld( d ) {
     if ( intersects[0].object.name === 'sheep' ) {
        isAnimateSheep = !isAnimateSheep;
 
-      console.log( 'its a sheep:', isAnimateSheep );
-
     // only change the color when animation is stopped
 
        if ( !isAnimateSheep ) {
@@ -785,7 +759,6 @@ function addNewArObjectToWorld( d ) {
     }
 
     if ( intersects[0].object.name === 'swordGuy' ) {
-      console.log( 'Selected swordGuy' );
       isAnimateSwordGuy = !isAnimateSwordGuy;
 
       arShareData.animate = isAnimateSwordGuy;
@@ -809,8 +782,6 @@ function addNewArObjectToWorld( d ) {
       arShareData.position = intersects[0].object.position;
       arShareData.rotation = intersects[0].object.rotation;
       arShareData.color = intersects[0].object.material.color;
-
-      console.log( 'clicked-arShareData:', arShareData );
 
       emitArObject( arShareData );
     }

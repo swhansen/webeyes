@@ -78,6 +78,11 @@ document.body.appendChild( iotZoneId );
       socketServer.emit( 'iotControl', data, sessionId );
     }
 
+    socketServer.on( 'leapSphere', function( data ) {
+  //console.log( 'handSphere - data:', data );
+    animateSphere( data );
+      } );
+
 //
 // gross gesture detection
 //
@@ -187,6 +192,18 @@ document.body.appendChild( iotZoneId );
     scene.add( mesh );
   }
 
+  function updateSphere( data ) {
+
+    handSphere.position.fromArray( data.position );
+    handSphere.material.color.setRGB(
+              data.color.r,
+              data.color.g,
+              data.color.b );
+    handSphere.visible = data.visible;
+  }
+
+
+
 function updateHueText( palmCenter, selectedHueDevice ) {
 
   hueDeviceId.innerHTML = 'hue IOT - ' + selectedHueDevice;
@@ -246,8 +263,6 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
               normalizedPalmSphere[2] * 255 );
 
     if ( setLightState === 'setLight' && inChooseState ) {
-
-//{ deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
 
         var hueObjData = {};
         hueObjData.deviceID = selectedHueDevice;

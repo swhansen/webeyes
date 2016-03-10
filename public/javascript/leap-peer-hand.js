@@ -142,10 +142,12 @@ function arObjMover() {
     updateData.position = leapPos;
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
-    updateData.originRtcId = userContext.rtcId
-    console.log( 'mouseMove-updateData:', updateData );
+    updateData.originRtcId = userContext.rtcId;
 
     leapAnimate( updateData );
+
+// broadcast the sphere data to others
+
     }
   };
 
@@ -153,6 +155,12 @@ function arObjMover() {
       console.log( 'up:', ev.x, ev.y );
       tool.down = false;
       selectState = false;
+
+//update sphere to be invisible;
+
+// broadcast hueStateChange to others
+
+
     };
   }
 
@@ -184,6 +192,9 @@ function arObjMover() {
               data.color.g,
               data.color.b );
     handSphere.visible = data.visible;
+
+    var sessionId = socketServer.sessionid;
+      socketServer.emit( 'leapSphere', data, sessionId );
 
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
   }
