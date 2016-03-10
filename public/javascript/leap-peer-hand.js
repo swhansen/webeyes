@@ -126,7 +126,7 @@ function arObjMover() {
 
     //var leapY = -( 400 + 52) / ( window.innerWidth ) * ev._y;
 
-    console.log( 'mx, w.inner, leapX:', ex._x, window.innerWidth, leapX)
+    console.log( 'mx, w.inner, leapX:', ev._x, window.innerWidth, leapX)
 
    var leapPos = [ leapX, leapY, 0 ];
 
