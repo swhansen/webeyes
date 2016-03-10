@@ -238,7 +238,7 @@ function leapAnimate( data ) {
  // var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
  // console.log( 'obj Screen Coord:', sphereScreenCoord.x, sphereScreenCoord.y );
 
-   controls.update();
+//controls.update();
  }
 
 //  function leapAnimate( data ) {
