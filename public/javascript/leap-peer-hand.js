@@ -45,8 +45,8 @@ socketServer.on( 'leapSphere', function( data ) {
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
 
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.maxDistance = 1000;
+    //controls = new THREE.OrbitControls( camera, renderer.domElement );
+    //controls.maxDistance = 1000;
 
     var selectState = false;
 
