@@ -12,7 +12,7 @@ function initLeapPeerHand() {
 //  } );
 
 socketServer.on( 'leapSphere', function( data ) {
-  console.log( 'handSphere - data:', data );
+  //console.log( 'handSphere - data:', data );
     leapAnimate( data );
       } );
 
@@ -120,17 +120,19 @@ function arObjMover() {
     if ( tool.down && selectState ) {
   //  console.log( 'moving object:', ev.x, ev.y );
 
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 100;
-    var leapY = -( ev._y / window.innerHeight * 2 + 1) * 100;
+    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+    var leapY = -( ev._y / window.innerHeight * 2 + 1) * 278.5;
 
 
     //var leapY = -( 400 + 52) / ( window.innerWidth ) * ev._y;
+
+    console.log( 'mx, w.inner, leapX:', ex._x, window.innerWidth, leapX)
 
    var leapPos = [ leapX, leapY, 0 ];
 
 
 
- //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
+; //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
  //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
 
  //  console.log( 'mouseVector:', mouseVector );
@@ -202,7 +204,7 @@ function arObjMover() {
               data.color.b );
     handSphere.visible = data.visible;
 
-    console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
+   // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
   }
 
 // convert the three object into screen coordinates
