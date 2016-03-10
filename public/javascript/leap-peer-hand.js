@@ -130,7 +130,7 @@ function arObjMover() {
     mouseVector.unproject( camera );
     var dir = mouseVector.sub( camera.position ).normalize();
     var distance = -camera.position.z / dir.z;
-    pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
+    pos = camera.position.clone().add( dir.multiplyScalar( 0.5 ) );
 
     console.log( 'LeapX-Y:', leapX, leapY );
 
