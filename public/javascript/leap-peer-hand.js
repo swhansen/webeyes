@@ -123,16 +123,24 @@ function arObjMover() {
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1) * 278.5;
 
-
-    //var leapY = -( 400 + 52) / ( window.innerWidth ) * ev._y;
-
-    console.log( 'mx, w.inner, leapX:', ev._x, window.innerWidth, leapX)
-
    var leapPos = [ leapX, leapY, 0 ];
 
 
+// normalize to set color
 
-; //  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
+    var normalizedSphere = [];
+    normalizedSphere[0] = ev._x / window.innerWidth;
+    normalizedSphere[1] = ev._y / window.innerHeight;
+    normalizedSphere[2] = 0.5
+
+    handSphere.material.color.setRGB(
+              normalizedSphere[0],
+              normalizedSphere[1],
+              normalizedSphere[2] );
+
+  //  console.log( 'mx, w.inner, leapX:', ev._x, window.innerWidth, leapX);
+
+//  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth )  * 2 - 1,
  //                          -( ev._y / window.innerHeight )  * 2 + 1, 1.0 );
 
  //  console.log( 'mouseVector:', mouseVector );
