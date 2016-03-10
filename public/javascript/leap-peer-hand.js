@@ -193,8 +193,16 @@ function arObjMover() {
               data.color.b );
     handSphere.visible = data.visible;
 
-    var sessionId = socketServer.sessionid;
-      socketServer.emit( 'leapSphere', data, sessionId );
+
+
+
+
+var sessionId = socketServer.sessionid;
+      socketServer.emit( 'leapSphere', handSphere, sessionId );
+
+
+
+
 
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
   }

@@ -192,7 +192,7 @@ document.body.appendChild( iotZoneId );
     scene.add( mesh );
   }
 
-  function updateSphere( data ) {
+  function animateSphere( data ) {
 
     handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
