@@ -111,25 +111,26 @@ function arObjMover() {
   var intersects = raycaster.intersectObjects( scene.children );
 
   if ( intersects.length > 0 ) {
-//   console.log( 'intersects:', intersects );
-//   selectState = true;
-//   }
-// };
+    console.log( 'intersects:', intersects );
+    selectState = true;
+    }
+  };
 
-// this.mousemove = function( ev ) {
-//   if ( tool.down && selectState ) {
-// //  console.log( 'moving object:', ev.x, ev.y );
+  this.mousemove = function( ev ) {
+    if ( tool.down && selectState ) {
+  //  console.log( 'moving object:', ev.x, ev.y );
 
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
   var leapY = -( ev._y / window.innerHeight * 2 - 1) * 278.5;
-  var leapPos = [ leapX, leapY, 0 ];
+
+   var leapPos = [ leapX, leapY, 0 ];
 
 // normalize to set color
 
     var normalizedSphere = [];
     normalizedSphere[0] = ev._x / window.innerWidth;
     normalizedSphere[1] = ev._y / window.innerHeight;
-    normalizedSphere[2] = 0.5;
+    normalizedSphere[2] = 0.5
 
     handSphere.material.color.setRGB(
               normalizedSphere[0],
@@ -142,12 +143,10 @@ function arObjMover() {
     updateData.position = leapPos;
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
-    updateData.originRtcId = userContext.rtcId;
+    updateData.originRtcId = userContext.rtcId
+    console.log( 'mouseMove-updateData:', updateData );
 
     leapAnimate( updateData );
-
-// broadcast the sphere data to
-
     }
   };
 
@@ -155,12 +154,6 @@ function arObjMover() {
       console.log( 'up:', ev.x, ev.y );
       tool.down = false;
       selectState = false;
-
-//update sphere to be invisible;
-
-// broadcast hueStateChange to others
-
-
     };
   }
 
