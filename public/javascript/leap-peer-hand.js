@@ -146,7 +146,7 @@ function arObjMover() {
 
     leapAnimate( updateData );
 
-// broadcast the sphere data to others
+// broadcast the sphere data to
 
     }
   };
@@ -192,17 +192,6 @@ function arObjMover() {
               data.color.g,
               data.color.b );
     handSphere.visible = data.visible;
-
-
-
-
-
-//var sessionId = socketServer.sessionid;
-//      socketServer.emit( 'leapSphere', handSphere, sessionId );
-
-
-
-
 
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
   }

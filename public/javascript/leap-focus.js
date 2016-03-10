@@ -78,11 +78,6 @@ document.body.appendChild( iotZoneId );
       socketServer.emit( 'iotControl', data, sessionId );
     }
 
-    socketServer.on( 'leapSphere', function( data ) {
-  //console.log( 'handSphere - data:', data );
-    animateSphere( data );
-      } );
-
 //
 // gross gesture detection
 //
@@ -191,18 +186,6 @@ document.body.appendChild( iotZoneId );
     mesh.scale.set( bone.width, bone.width, bone.length );
     scene.add( mesh );
   }
-
-  function animateSphere( data ) {
-
-    handSphere.position.fromArray( data.position );
-    handSphere.material.color.setRGB(
-              data.color.r,
-              data.color.g,
-              data.color.b );
-    handSphere.visible = data.visible;
-  }
-
-
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
