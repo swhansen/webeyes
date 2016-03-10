@@ -130,7 +130,7 @@ function arObjMover() {
     var normalizedSphere = [];
     normalizedSphere[0] = ev._x / window.innerWidth;
     normalizedSphere[1] = ev._y / window.innerHeight;
-    normalizedSphere[2] = 0.5
+    normalizedSphere[2] = 0.5;
 
     handSphere.material.color.setRGB(
               normalizedSphere[0],
@@ -143,7 +143,7 @@ function arObjMover() {
     updateData.position = leapPos;
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
-    updateData.originRtcId = userContext.rtcId
+    updateData.originRtcId = userContext.rtcId;
     console.log( 'mouseMove-updateData:', updateData );
 
     leapAnimate( updateData );
@@ -152,8 +152,8 @@ function arObjMover() {
 
   this.mouseup = function( ev ) {
       console.log( 'up:', ev.x, ev.y );
-      tool.down = false;
-      selectState = false;
+     // tool.down = false;
+//selectState = false;
     };
   }
 
