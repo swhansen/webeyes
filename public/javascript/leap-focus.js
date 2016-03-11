@@ -249,10 +249,11 @@ if ( data.originRtcId !== userContext.rtcId) {
               data.color.g,
               data.color.b );
   peerSphere.visible = data.visible;
-  if ( data.setHueDtate ) {
+
+  if ( data.setHueState ) {
 
 
-var hueXY = getXYPointFromRGB(
+  var hueXY = getXYPointFromRGB(
               data.r * 255,
               data.b * 255,
               data.g * 255 );
@@ -289,7 +290,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         hueObjData.hueXYState = [ hueXY.x, hueXY.y ];
         hueObjData.bri = 100;
 
-        console.log( 'at updateHandSphere emitIOT:', hueObjData );
+    //    console.log( 'at updateHandSphere emitIOT:', hueObjData );
 
         emitIOT( hueObjData );
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
