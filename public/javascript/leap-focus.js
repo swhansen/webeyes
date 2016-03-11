@@ -254,9 +254,9 @@ if ( data.originRtcId !== userContext.rtcId) {
 
 
   var hueXY = getXYPointFromRGB(
-              data.r * 255,
-              data.b * 255,
-              data.g * 255 );
+              data.color[0],
+              data.color[1],
+              data.color[2] );
 
     hueSetLightStateXY( data.selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
   }
