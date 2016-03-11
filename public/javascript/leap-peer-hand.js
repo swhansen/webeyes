@@ -112,12 +112,13 @@ function arObjMover() {
 
   if ( intersects.length > 0 ) {
     console.log( 'intersects:', intersects );
+    var selection = intersects[0].object;
     selectState = true;
     }
   };
 
   this.mousemove = function( ev ) {
-    if (  selectState ) {
+    if (  selection ) {
   //  console.log( 'moving object:', ev.x, ev.y );
 
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
