@@ -148,8 +148,6 @@ function arObjMover() {
 
     leapAnimate( updateData );
 
-
-
     // load up data object
     //  var sessionId = socketServer.sessionid;
     //  socketServer.emit( 'leapSphere', data, sessionId );
@@ -163,7 +161,18 @@ function arObjMover() {
       tool.down = false;
       selectState = false;
 
-// call hueState
+var updateData = {};
+    updateData.operation = 'move';
+    updateData.visible = handSphere.visible;
+    updateData.position = leapPos;
+    updateData.color = handSphere.material.color;
+    updateData.name = 'handSphere';
+    updateData.originRtcId = userContext.rtcId;
+    updateData.setHueState = true;
+
+
+
+      leapAnimate( data );
 
     };
   }

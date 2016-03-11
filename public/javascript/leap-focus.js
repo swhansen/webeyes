@@ -249,14 +249,22 @@ if ( data.originRtcId !== userContext.rtcId) {
               data.color.g,
               data.color.b );
   peerSphere.visible = data.visible;
+  if ( data.setHueDtate ) {
+
+
+var hueXY = getXYPointFromRGB(
+              data.r * 255,
+              data.b * 255,
+              data.g * 255 );
+
+    hueSetLightStateXY( data.selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
+  }
  }
 }
 
 function updateHandSphere( palmCenter, radius, interactionBox ) {
 
   handSphere.position.fromArray( palmCenter );
-
-  console.log( 'palmCenter:', palmCenter );
 
 // normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
@@ -312,7 +320,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         palmSphereData.color = handSphere.material.color;
         palmSphereData.name = 'handSphere';
         palmSphereData.originRtcId = userContext.rtcId;
-        //palmSphereData.interactionBox = interactionBox;
+        palmSphereData.deviceId = selectedHueDevice;
         emitLeapSphere( palmSphereData );
   }
 
