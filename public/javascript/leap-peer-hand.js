@@ -161,7 +161,22 @@ function arObjMover() {
       tool.down = false;
       selectState = false;
 
-var updateData = {};
+      var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+  var leapY = -( ev._y / window.innerHeight * 2 - 1) * 278.5;
+
+   var leapPos = [ leapX, leapY, 0 ];
+
+   var normalizedSphere = [];
+    normalizedSphere[0] = ev._x / window.innerWidth;
+    normalizedSphere[1] = ev._y / window.innerHeight;
+    normalizedSphere[2] = 0.5;
+
+    handSphere.material.color.setRGB(
+              normalizedSphere[0],
+              normalizedSphere[1],
+              normalizedSphere[2] );
+
+    var updateData = {};
     updateData.operation = 'move';
     updateData.visible = handSphere.visible;
     updateData.position = leapPos;
