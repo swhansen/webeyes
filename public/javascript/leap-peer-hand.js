@@ -152,7 +152,6 @@ function arObjMover() {
     //  var sessionId = socketServer.sessionid;
     //  socketServer.emit( 'leapSphere', data, sessionId );
 
-
     }
   };
 
