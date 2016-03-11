@@ -170,7 +170,7 @@ var updateData = {};
     updateData.originRtcId = userContext.rtcId;
     updateData.setHueState = true;
 
-
+console.log( 'peer mouseup:' updateData );
 
       leapAnimate( updateData );
 
