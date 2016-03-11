@@ -153,7 +153,10 @@ function arObjMover() {
   this.mouseup = function( ev ) {
       console.log( 'up:', ev.x, ev.y );
       tool.down = false;
-      //selectState = false;
+      selectState = false;
+
+// call hueState
+
     };
   }
 
