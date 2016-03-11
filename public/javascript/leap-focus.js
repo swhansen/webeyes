@@ -241,6 +241,8 @@ function findPinchingFingerType( hand ){
 
 function updatePeerSphere( data ) {
 
+  console.log( 'updatePeerSphere:', data );
+
 if ( data.originRtcId !== userContext.rtcId) {
 
   peerSphere.position.fromArray( data.position );
