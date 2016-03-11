@@ -262,7 +262,7 @@ if ( data.originRtcId !== userContext.rtcId) {
 //              data.color[1],
 //              data.color[2] );
 
-    hueSetLightStateXY( selectedHueDevice, true, [ 0.5, 0.5 ], 100 );
+    hueSetLightStateXY( 1, true, [ 0.5, 0.5 ], 100 );
   }
  }
 }
