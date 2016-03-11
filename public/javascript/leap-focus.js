@@ -254,6 +254,8 @@ if ( data.originRtcId !== userContext.rtcId) {
 
   if ( data.setHueState ) {
 
+    console.log( 'setHueState:', data.setHueState );
+
 
 //  var hueXY = getXYPointFromRGB(
 //              data.color[0],
