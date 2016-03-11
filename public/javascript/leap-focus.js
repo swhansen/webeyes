@@ -260,6 +260,7 @@ if ( data.originRtcId !== userContext.rtcId) {
               data.color[2] );
 
     hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
+    iotLightOn.play();
   }
  }
 }
