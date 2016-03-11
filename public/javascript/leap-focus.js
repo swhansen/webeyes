@@ -244,10 +244,12 @@ function updatePeerSphere( data ) {
 if ( data.originRtcId !== userContext.rtcId) {
 
   peerSphere.position.fromArray( data.position );
-  peerSphere.material.color.setRGB(
-              data.color.r,
-              data.color.g,
-              data.color.b );
+  peerSphere.material.color = data.color;
+
+//.setRGB(
+//            data.color.r,
+//            data.color.g,
+//            data.color.b );
   peerSphere.visible = data.visible;
 
   if ( data.setHueState ) {
