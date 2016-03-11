@@ -112,7 +112,6 @@ function arObjMover() {
 
   if ( intersects.length > 0 ) {
     console.log( 'intersects:', intersects );
-    var selection = intersects[0].object;
     selectState = true;
     }
   };
