@@ -172,7 +172,7 @@ var updateData = {};
 
 
 
-      leapAnimate( data );
+      leapAnimate( updateData );
 
     };
   }
