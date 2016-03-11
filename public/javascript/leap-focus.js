@@ -78,6 +78,14 @@ document.body.appendChild( iotZoneId );
       socketServer.emit( 'iotControl', data, sessionId );
     }
 
+    socketServer.on( 'leapSphere', function( data ) {
+  //console.log( 'handSphere - data:', data );
+    updatePeerSphere( data );
+      } );
+
+
+
+
 //
 // gross gesture detection
 //
@@ -123,6 +131,15 @@ document.body.appendChild( iotZoneId );
     var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
+
+    var peerSphereGeometry = new THREE.SphereGeometry( 40, 16, 16 );
+    var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
+    var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
+    peerSphere.position.set( 0.0, 0.0, 0.0 );
+    peerSphere.name = 'peerSphere';
+    peerSphere.visible = false;
+    scene.add( peerSphere );
+
 
 // hue IOT device ID text
 
@@ -202,9 +219,7 @@ function updateHueText( palmCenter, selectedHueDevice ) {
 
 function updateIotZone() {
   selectedIotZone++;
-
   if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1; }
-
   iotZoneId.innerHTML = 'IOT Zone - ' + selectedIotZone;
 }
 
@@ -222,6 +237,19 @@ function findPinchingFingerType( hand ){
         }
     }
     return pincher;
+}
+
+function updatePeerSphere( data ) {
+
+if ( data.originRtcId !== userContext.rtcId) {
+
+  peerSphere.position.fromArray( data.position );
+  peerSphere.material.color.setRGB(
+              data.color.r,
+              data.color.g,
+              data.color.b );
+  peerSphere.visible = data.visible;
+ }
 }
 
 function updateHandSphere( palmCenter, radius, interactionBox ) {

@@ -144,9 +144,17 @@ function arObjMover() {
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
     updateData.originRtcId = userContext.rtcId;
-    console.log( 'mouseMove-updateData:', updateData );
+ //   console.log( 'mouseMove-updateData:', updateData );
 
     leapAnimate( updateData );
+
+
+
+    // load up data object
+    //  var sessionId = socketServer.sessionid;
+    //  socketServer.emit( 'leapSphere', data, sessionId );
+
+
     }
   };
 
@@ -190,6 +198,10 @@ function arObjMover() {
     handSphere.visible = data.visible;
 
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
+
+
+   var sessionId = socketServer.sessionid;
+      socketServer.emit( 'leapSphere', data, sessionId );
   }
 
 // convert the three object into screen coordinates
