@@ -187,7 +187,8 @@ function arObjMover() {
 
 console.log( 'peer mouseup:', updateData );
 
-      leapAnimate( updateData );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'leapSphere', data, sessionId );
 
     };
   }
