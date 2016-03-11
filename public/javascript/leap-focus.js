@@ -253,12 +253,12 @@ if ( data.originRtcId !== userContext.rtcId) {
   if ( data.setHueState ) {
 
 
-  var hueXY = getXYPointFromRGB(
-              data.color[0],
-              data.color[1],
-              data.color[2] );
+//  var hueXY = getXYPointFromRGB(
+//              data.color[0],
+//              data.color[1],
+//              data.color[2] );
 
-    hueSetLightStateXY( data.selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
+    hueSetLightStateXY( data.selectedHueDevice, true, [ 0.5, 0.5 ], 100 );
   }
  }
 }
