@@ -241,8 +241,6 @@ function findPinchingFingerType( hand ){
 
 function updatePeerSphere( data ) {
 
-  console.log( 'updatePeerSphere:', data );
-
 if ( data.originRtcId !== userContext.rtcId) {
 
   peerSphere.position.fromArray( data.position );
@@ -253,9 +251,6 @@ if ( data.originRtcId !== userContext.rtcId) {
   peerSphere.visible = data.visible;
 
   if ( data.setHueState ) {
-
-    console.log( 'setHueState:', data.setHueState );
-
 
  var hueXY = getXYPointFromRGB(
               data.color[0],

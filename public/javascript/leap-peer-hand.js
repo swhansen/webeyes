@@ -117,11 +117,11 @@ function arObjMover() {
   };
 
   this.mousemove = function( ev ) {
-    if (  selectState ) {
+    if ( selectState ) {
   //  console.log( 'moving object:', ev.x, ev.y );
 
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-  var leapY = -( ev._y / window.innerHeight * 2 - 1) * 278.5;
+  var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
 
    var leapPos = [ leapX, leapY, 0 ];
 
@@ -161,7 +161,7 @@ function arObjMover() {
       selectState = false;
 
       var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-  var leapY = -( ev._y / window.innerHeight * 2 - 1) * 278.5;
+  var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
 
    var leapPos = [ leapX, leapY, 0 ];
 
@@ -184,7 +184,7 @@ function arObjMover() {
     updateData.originRtcId = userContext.rtcId;
     updateData.setHueState = true;
 
-console.log( 'peer mouseup:', updateData );
+//console.log( 'peer mouseup:', updateData );
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', updateData, sessionId );
