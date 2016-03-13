@@ -262,14 +262,18 @@ if ( data.originRtcId !== userContext.rtcId) {
  }
 }
 
-function updateHandSphere( palmCenter, radius, interactionBox ) {
+function updateHandSphere( data ) {
 
-  handSphere.position.fromArray( palmCenter );
+  data.palmCenter;
+  data.sphereRadius;
+  data.interactionBox;
+
+  handSphere.position.fromArray( data.palmCenter );
 
 // normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
 
-  var normalizedPalmSphere = interactionBox.normalizePoint( palmCenter, true );
+  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.palmCenter, true );
 
   handSphere.material.color.setRGB(
               normalizedPalmSphere[0],
@@ -316,7 +320,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         var palmSphereData = {};
         palmSphereData.operation = 'move';
         palmSphereData.visible = handSphere.visible;
-        palmSphereData.position = palmCenter;
+        palmSphereData.position = data.palmCenter;
         palmSphereData.color = handSphere.material.color;
         palmSphereData.name = 'handSphere';
         palmSphereData.originRtcId = userContext.rtcId;
@@ -329,6 +333,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
 
     var countBones = 0;
     var countArms = 0;
+    var sphereData = {};
 
   //  scene.remove( hueDeviceText );
     scene.remove( handSphere );
@@ -336,6 +341,10 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
+
+      sphereData.palmCenter = hand.sphereCenter;
+      sphereData.sphereRadius = hand.sphereRadius;
+      sphereData.interactionBox = frame.interactionBox
 
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
