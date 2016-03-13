@@ -344,7 +344,7 @@ function updateHandSphere( data ) {
 
       sphereData.palmCenter = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
-      sphereData.interactionBox = frame.interactionBox
+      sphereData.interactionBox = frame.interactionBox;
 
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
@@ -365,16 +365,16 @@ function updateHandSphere( data ) {
       if ( hand.grabStrength > 0.2 && hand.grabStrength < 0.8 ) {
           setLightState = 'adjustLight';
           inChooseState = true;
-          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
+          updateHandSphere( sphereData );
         }
       if ( hand.grabStrength === 0 && inChooseState) {
           setLightState = 'setLight';
-          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
+          updateHandSphere( sphereData );
           inChooseState = false;
       }
       if ( hand.grabStrength === 1 && inChooseState) {
           setLightState = 'offLight';
-          updateHandSphere( hand.sphereCenter, hand.sphereRadius, frame.interactionBox );
+          updateHandSphere( sphereData );
           inChooseState = false;
       }
 
