@@ -111,19 +111,16 @@ function arObjMover() {
   var intersects = raycaster.intersectObjects( scene.children );
 
   if ( intersects.length > 0 ) {
-    console.log( 'intersects:', intersects );
     selectState = true;
     }
   };
 
   this.mousemove = function( ev ) {
     if ( selectState ) {
-  //  console.log( 'moving object:', ev.x, ev.y );
 
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
   var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
-
-   var spherePos = [ leapX, leapY, 0 ];
+  var spherePos = [ leapX, leapY, 0 ];
 
 // normalize to set color
 
