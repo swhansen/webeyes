@@ -83,9 +83,6 @@ document.body.appendChild( iotZoneId );
     updatePeerSphere( data );
       } );
 
-
-
-
 //
 // gross gesture detection
 //

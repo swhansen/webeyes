@@ -123,7 +123,7 @@ function arObjMover() {
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
   var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
 
-   var leapPos = [ leapX, leapY, 0 ];
+   var spherePos = [ leapX, leapY, 0 ];
 
 // normalize to set color
 
@@ -132,6 +132,8 @@ function arObjMover() {
     normalizedSphere[1] = ev._y / window.innerHeight;
     normalizedSphere[2] = 0.5;
 
+    // rgb (0-1)
+
     handSphere.material.color.setRGB(
               normalizedSphere[0],
               normalizedSphere[1],
@@ -139,31 +141,30 @@ function arObjMover() {
 
     var updateData = {};
     updateData.operation = 'move';
+    update.peerMove = true;
     updateData.visible = handSphere.visible;
-    updateData.position = leapPos;
+    updateData.position = spherePos;
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
     updateData.originRtcId = userContext.rtcId;
- //   console.log( 'mouseMove-updateData:', updateData );
 
     leapAnimate( updateData );
-
-    // load up data object
-    //  var sessionId = socketServer.sessionid;
-    //  socketServer.emit( 'leapSphere', data, sessionId );
 
     }
   };
 
   this.mouseup = function( ev ) {
-      console.log( 'up:', ev.x, ev.y );
-      tool.down = false;
-      selectState = false;
+  console.log( 'up:', ev.x, ev.y );
+  tool.down = false;
+  selectState = false;
+  handSphere.visible = false;
 
-      var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+  var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
   var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
 
-   var leapPos = [ leapX, leapY, 0 ];
+   var spherePos = [ leapX, leapY, 0 ];
+
+   // rgb (0-1)
 
    var normalizedSphere = [];
     normalizedSphere[0] = ev._x / window.innerWidth;
@@ -176,9 +177,10 @@ function arObjMover() {
               normalizedSphere[2] );
 
     var updateData = {};
-    updateData.operation = 'move';
+    updateData.operation = 'stop';
+    updateDate.peerMove = true;
     updateData.visible = handSphere.visible;
-    updateData.position = leapPos;
+    updateData.position = spherePos;
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
     updateData.originRtcId = userContext.rtcId;
@@ -222,7 +224,6 @@ function arObjMover() {
     handSphere.visible = data.visible;
 
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
-
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
