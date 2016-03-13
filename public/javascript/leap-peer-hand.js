@@ -149,7 +149,6 @@ function arObjMover() {
     updateData.originRtcId = userContext.rtcId;
 
     leapAnimate( updateData );
-
     }
   };
 

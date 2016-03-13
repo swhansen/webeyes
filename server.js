@@ -317,7 +317,6 @@ client.on( 'leapShare', function( data, session ) {
 
 client.on( 'leapSphere', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
-   console.log( 'lepaSphere:', data );
     client.broadcast.emit( 'leapSphere', data );
   } );
 
@@ -329,6 +328,7 @@ client.on( 'leapSphere', function( data, session ) {
   client.on( 'drawLine', function( data, session ) {
 
     // build up the colors for  drawing
+
     if ( !( client.id in clients ) ) {
       clients[client.id] = linecolors[Object.keys( clients ).length];
     }
