@@ -321,6 +321,7 @@ function updateHandSphere( palmCenter, radius, interactionBox ) {
         palmSphereData.name = 'handSphere';
         palmSphereData.originRtcId = userContext.rtcId;
         palmSphereData.deviceId = selectedHueDevice;
+
         emitLeapSphere( palmSphereData );
   }
 
