@@ -141,7 +141,7 @@ function arObjMover() {
 
     var updateData = {};
     updateData.operation = 'move';
-    update.peerMove = true;
+    updateData.peerMove = true;
     updateData.visible = handSphere.visible;
     updateData.position = spherePos;
     updateData.color = handSphere.material.color;
