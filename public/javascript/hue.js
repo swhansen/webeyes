@@ -1,6 +1,8 @@
 
 var hueURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
 
+var chuxHueURL = 'http://192.168.1.107/api/52927745603325e730bd719e2a8bf2cb';
+
 //var iotZones = { steve: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b',
 //              chuck: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b' };
 
