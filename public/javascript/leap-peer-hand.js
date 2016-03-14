@@ -185,10 +185,12 @@ function arObjMover() {
     updateData.source = 'peer';
     updateData.setHueState = true;
 
+    leapAnimate( updateData );
+
 //console.log( 'peer mouseup:', updateData );
 
-      var sessionId = socketServer.sessionid;
-      socketServer.emit( 'leapSphere', updateData, sessionId );
+ //     var sessionId = socketServer.sessionid;
+ //     socketServer.emit( 'leapSphere', updateData, sessionId );
     };
   }
 
@@ -214,6 +216,8 @@ function arObjMover() {
 
   function updateLeapSphere( data ) {
 
+    if ( data.source === 'hand' ) {
+
     handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
               data.color.r,
@@ -221,10 +225,28 @@ function arObjMover() {
               data.color.b );
     handSphere.visible = data.visible;
 
+  } else  if ( data.cource === 'peer' ) {
+
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
+
+
+handSphere.position.fromArray( data.position );
+    handSphere.material.color.setRGB(
+              data.color.r,
+              data.color.g,
+              data.color.b );
+    handSphere.visible = data.visible;
+
+    data.source = 'peer';
+
+
+
+
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
+
+    }
   }
 
 // convert the three object into screen coordinates

@@ -362,10 +362,6 @@ var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
 }
 
 
-
-
-
-
   function leapAnimate( frame ) {
 
     var countBones = 0;
