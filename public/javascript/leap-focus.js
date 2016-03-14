@@ -229,28 +229,6 @@ function findPinchingFingerType( hand ){
     return pincher;
 }
 
-function updatePeerSphere( data ) {
-
-if ( data.originRtcId !== userContext.rtcId) {
-
-  peerSphere.position.fromArray( data.position );
-  peerSphere.material.color = data.color;
-  peerSphere.visible = data.visible;
-
-  if ( data.setHueState ) {
-
-  var hueXY = getXYPointFromRGB(
-              data.color[0],
-              data.color[1],
-              data.color[2] );
-
-    hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
-    iotLightOn.play();
-  }
-}
-}
-
-
 function normalizePoint( position, interactionBox ) {
   var vec = [];
     vec[0] = ( position[0] - interactionBox.center[0]) / interactionBox.size[0] + 0.5;
@@ -296,16 +274,11 @@ function updateHandSphere( data ) {
 
   handSphere.position.fromArray( data.position );
 
-// normalize Leap Palm
-// need for RGB color space - threejs wants rgb (0-1)
+// normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
 
 //  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
 
-//var normalizedPalmSphere = (data.position - data.interactionBoxSize[0]) / (2 * data.interactionBoxSize );
-
 var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
-
-console.log( 'normalizedPalmSphere:', normalizedPalmSphere );
 
  //handSphere.material.color.setRGB(
  //            normalizedPalmSphere[0],
