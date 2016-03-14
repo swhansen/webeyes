@@ -335,7 +335,7 @@ var normalizedPalmSphere = (data.position - data.interactionBoxSize[0]) / (2 * d
         data.visible = handSphere.visible;
      //   data.position = handSphere.position;
         data.color = handSphere.material.color;
-        data.interactionBoxSize = data.interactionBox.size;
+    //    data.interactionBoxSize = data.interactionBox.size;
         data.name = 'handSphere';
         data.originRtcId = userContext.rtcId;
         data.deviceId = selectedHueDevice;
@@ -364,7 +364,7 @@ var normalizedPalmSphere = (data.position - data.interactionBoxSize[0]) / (2 * d
 
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
-      sphereData.interactionBox = frame.interactionBox;
+      sphereData.interactionBoxSize = frame.interactionBox.size;
       sphereData.source = 'hand';
 
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
