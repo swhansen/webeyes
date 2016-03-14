@@ -356,6 +356,7 @@ var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
         data.name = 'handSphere';
         data.originRtcId = userContext.rtcId;
         data.deviceId = selectedHueDevice;
+        data.source = 'hand';
 
         emitLeapSphere( data );
   }
