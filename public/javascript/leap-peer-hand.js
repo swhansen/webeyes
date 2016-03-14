@@ -114,6 +114,7 @@ function arObjMover() {
 
   if ( intersects.length > 0 ) {
     selectState = true;
+    handSphere.visible = true;
     }
   };
 
@@ -176,7 +177,7 @@ function arObjMover() {
 
     var updateData = {};
     updateData.operation = 'stop';
-    updateData.visible = handSphere.visible;
+    updateData.visible = false;
     updateData.position = spherePos;
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
