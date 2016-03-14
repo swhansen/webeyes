@@ -272,7 +272,7 @@ if ( data.source === 'peer' ) {
         iotLightOn.play();
       }
 
-    } else { if ( ignoreHand !=== true )   {
+    } else { if ( ignoreHand !==true )   {
 
   handSphere.position.fromArray( data.position );
 
