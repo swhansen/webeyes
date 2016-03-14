@@ -23,7 +23,7 @@ socketServer.on( 'leapSphere', function( data ) {
     leapFull.style.position   = 'absolute';
     leapFull.style.top        = '0px';
     leapFull.style.left       = '0px';
-    leapFull.style.zIndex = 10;
+    leapFull.style.zIndex = 300;
 
     leapFull.addEventListener( 'mousedown', evCanvas, false );
     leapFull.addEventListener( 'mousemove', evCanvas, false );
@@ -93,14 +93,20 @@ function evCanvas( ev ) {
   }
 
   var func = tool[ ev.type ];
+
   if ( func ) {
     func( ev );
   }
+
 }
 
 function arObjMover() {
   var tool = this;
   this.down = false;
+
+  this.foo = function(ev) {
+    console.log('foooooooooo');
+  };
 
   this.mousedown = function( ev ) {
     tool.down = true;
@@ -158,7 +164,7 @@ function arObjMover() {
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
   var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
 
-   var spherePos = [ leapX, leapY, 0 ];
+  var spherePos = [ leapX, leapY, 0 ];
 
    // rgb (0-1)
 
@@ -190,6 +196,8 @@ function arObjMover() {
   }
 
   var tool = new arObjMover();
+
+  tool.foo;
 
 //------------------------
 
