@@ -270,24 +270,24 @@ function updateHandSphere( data ) {
 //      // make sure to update the call from socket for peersphere
 //      remote peer source
 
-console.log( 'updateHandDSphere:', data );
+//console.log( 'updateHandDSphere:', data );
 
-  if ( data.source === 'peer ') {
+  if ( data.source === 'peer') {
 
     handSphere.position.fromArray( data.position );
     handSphere.material.color = data.color;
     handSphere.visible = data.visible;
 
-        if ( data.setHueState ) {
+    if ( data.setHueState ) {
 
-          var hueXY = getXYPointFromRGB(
-                      data.color[0],
-                      data.color[1],
-                      data.color[2] );
+      var hueXY = getXYPointFromRGB(
+                  data.color[0],
+                  data.color[1],
+                  data.color[2] );
 
-            hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
-            iotLightOn.play();
-          }
+        hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
+        iotLightOn.play();
+      }
     }
 
 //  data from the local hand
