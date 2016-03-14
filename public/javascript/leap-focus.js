@@ -250,6 +250,27 @@ if ( data.originRtcId !== userContext.rtcId) {
 }
 }
 
+
+
+
+function normalizePoint( position, interactionBox ) {
+  var vec = [];
+    vec[0] = ( position[0] - interactionBox.center[0]) / interactionBox.size[0] + 0.5;
+    vec[1] = ( position[1] - interactionBox.center[1]) / interactionBox.size[1] + 0.5;
+    vec[2] = ( position[2] - interactionBox.center[2]) / interactionBox.size[2] + 0.5;
+
+
+// if (clamp) {
+//   vec[0] = Math.min(Math.max(vec[0], 0), 1);
+//   vec[1] = Math.min(Math.max(vec[1], 0), 1);
+//   vec[2] = Math.min(Math.max(vec[2], 0), 1);
+// }
+  return vec;
+}
+
+
+
+
 function updateHandSphere( data ) {
 
 //      // make sure to update the call from socket for peersphere
@@ -292,20 +313,7 @@ var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
 
 
 
-function normalizePoint( position, interactionBox ) {
-  var vec = [];
-    vec[0] = ( position[0] - interactionBox.center[0]) / interactionBox.size[0] + 0.5;
-    vec[1] = ( position[1] - interactionBox.center[1]) / interactionBox.size[1] + 0.5;
-    vec[2] = ( position[2] - interactionBox.center[2]) / interactionBox.size[2] + 0.5;
 
-
-// if (clamp) {
-//   vec[0] = Math.min(Math.max(vec[0], 0), 1);
-//   vec[1] = Math.min(Math.max(vec[1], 0), 1);
-//   vec[2] = Math.min(Math.max(vec[2], 0), 1);
-// }
-  return vec;
-}
 
   handSphere.material.color.setRGB(
               normalizedPalmSphere[0],
