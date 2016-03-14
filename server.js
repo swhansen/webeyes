@@ -316,8 +316,8 @@ client.on( 'leapShare', function( data, session ) {
   } );
 
 client.on( 'leapSphere', function( data, session ) {
-   // client.emit( 'arObjectShare ', data );
-    client.broadcast.emit( 'leapSphere', data );
+    client.emit( 'arObjectShare ', data );
+   // client.broadcast.emit( 'leapSphere', data );
   } );
 
   client.on( 'toggleCompass', function( data, session ) {
