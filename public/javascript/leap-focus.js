@@ -305,6 +305,8 @@ function updateHandSphere( data ) {
 
 var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
 
+console.log( 'normalizedPalmSphere:', normalizedPalmSphere );
+
   handSphere.material.color.setRGB(
               normalizedPalmSphere[0],
               normalizedPalmSphere[1],
