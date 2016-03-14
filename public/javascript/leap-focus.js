@@ -248,6 +248,15 @@ function updateHandSphere( data ) {
 //      // make sure to update the call from socket for peersphere
 //      remote peer source
 
+var ignoreHand = false;
+
+if ( data.source === 'peer' ) {
+    ignoreHand = true;
+  } else {
+    ignoreHand = false;
+  }
+
+
 //console.log( 'updateHandDSphere:', data );
 
   if ( data.source === 'peer') {
@@ -267,9 +276,7 @@ function updateHandSphere( data ) {
         iotLightOn.play();
       }
 
-      return;
-
-    } else { if (data.source === 'hand' ) {
+    } else { if ( ignoreHand === false )   {
 
   handSphere.position.fromArray( data.position );
 

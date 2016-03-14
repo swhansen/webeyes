@@ -140,13 +140,14 @@ function arObjMover() {
               normalizedSphere[2] );
 
     var updateData = {};
+    updateData.name = 'handSphere';
     updateData.operation = 'move';
+    updateData.originRtcId = userContext.rtcId;
     updateData.visible = handSphere.visible;
     updateData.position = spherePos;
     updateData.color = handSphere.material.color;
-    updateData.name = 'handSphere';
     updateData.source = 'peer';
-    updateData.originRtcId = userContext.rtcId;
+    updateData.setHueState = false;
 
     leapAnimate( updateData );
     }
@@ -176,12 +177,12 @@ function arObjMover() {
               normalizedSphere[2] );
 
     var updateData = {};
+    updateData.name = 'handSphere';
     updateData.operation = 'stop';
+    updateData.originRtcId = userContext.rtcId;
     updateData.visible = false;
     updateData.position = spherePos;
     updateData.color = handSphere.material.color;
-    updateData.name = 'handSphere';
-    updateData.originRtcId = userContext.rtcId;
     updateData.source = 'peer';
     updateData.setHueState = true;
 
