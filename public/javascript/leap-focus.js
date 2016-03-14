@@ -279,7 +279,9 @@ function updateHandSphere( data ) {
 //          }
 //  }
 //
-//
+//  data from the local hand
+
+if ( data.source === 'hand' ) {
 
   handSphere.position.fromArray( data.position );
 
@@ -342,6 +344,12 @@ function updateHandSphere( data ) {
 
         emitLeapSphere( data );
   }
+}
+
+
+
+
+
 
   function leapAnimate( frame ) {
 
