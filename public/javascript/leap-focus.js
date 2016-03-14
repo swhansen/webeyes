@@ -245,17 +245,13 @@ function normalizePoint( position, interactionBox ) {
 
 function updateHandSphere( data ) {
 
-//      // make sure to update the call from socket for peersphere
-//      remote peer source
+// avoid rendering the hand generated sphere when peer broadcast
 
 var ignoreHand = false;
 
 if ( data.source === 'peer' ) {
     ignoreHand = true;
-  } else {
-    ignoreHand = false;
   }
-
 
 //console.log( 'updateHandDSphere:', data );
 
@@ -276,7 +272,7 @@ if ( data.source === 'peer' ) {
         iotLightOn.play();
       }
 
-    } else { if ( ignoreHand === false )   {
+    } else { if ( ignoreHand !=== true )   {
 
   handSphere.position.fromArray( data.position );
 
