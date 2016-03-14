@@ -286,7 +286,26 @@ if ( data.source === 'hand' ) {
 
 //  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
 
-var normalizedPalmSphere = (data.position - data.interactionBoxSize[0]) / (2 * data.interactionBoxSize );
+//var normalizedPalmSphere = (data.position - data.interactionBoxSize[0]) / (2 * data.interactionBoxSize );
+
+var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
+
+
+
+function normalizePoint( position, interactionBox ) {
+  var vec = vec3.fromValues(
+    (( data.position[0] - data.interactionBox.center[0]) / data.interactionBox.size[0]) + 0.5,
+    (( data.position[1] - data.interactionBox.center[1]) / data.interactionBox.size[1]) + 0.5,
+    (( data.position[2] - data.interactionBox.center[2]) / data.interactionBox.size[2]) + 0.5
+  );
+
+// if (clamp) {
+//   vec[0] = Math.min(Math.max(vec[0], 0), 1);
+//   vec[1] = Math.min(Math.max(vec[1], 0), 1);
+//   vec[2] = Math.min(Math.max(vec[2], 0), 1);
+// }
+  return vec;
+}
 
   handSphere.material.color.setRGB(
               normalizedPalmSphere[0],
@@ -364,7 +383,7 @@ var normalizedPalmSphere = (data.position - data.interactionBoxSize[0]) / (2 * d
 
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
-      sphereData.interactionBoxSize = frame.interactionBox.size;
+      sphereData.interactionBox = frame.interactionBox;
       sphereData.source = 'hand';
 
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
