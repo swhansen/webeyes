@@ -307,10 +307,14 @@ var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
 
 console.log( 'normalizedPalmSphere:', normalizedPalmSphere );
 
-  handSphere.material.color.setRGB(
-              normalizedPalmSphere[0],
-              normalizedPalmSphere[1],
-              normalizedPalmSphere[2] );
+ //handSphere.material.color.setRGB(
+ //            normalizedPalmSphere[0],
+ //            normalizedPalmSphere[1],
+ //            normalizedPalmSphere[2] );
+
+  handSphere.material.color.r = normalizedPalmSphere[0];
+  handSphere.material.color.g = normalizedPalmSphere[1];
+  handSphere.material.color.b = normalizedPalmSphere[2];
 
   var hueXY = getXYPointFromRGB(
               normalizedPalmSphere[0] * 255,
