@@ -259,9 +259,9 @@ console.log( 'updateHandDSphere:', data );
 
   if ( data.source === 'peer ') {
 
-    peerSphere.position.fromArray( data.position );
-    peerSphere.material.color = data.color;
-    peerSphere.visible = data.visible;
+    handSphere.position.fromArray( data.position );
+    handSphere.material.color = data.color;
+    handSphere.visible = data.visible;
 
         if ( data.setHueState ) {
 
