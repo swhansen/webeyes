@@ -288,7 +288,7 @@ function updateHandSphere( data ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
       }
-    } else {
+    } else { if (data.source === 'hand' ) {
 
 //  data from the local hand
 
@@ -359,6 +359,8 @@ var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
         data.source = 'hand';
 
         emitLeapSphere( data );
+
+    }
   }
 }
 
