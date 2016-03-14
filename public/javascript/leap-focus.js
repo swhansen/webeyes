@@ -253,7 +253,9 @@ if ( data.originRtcId !== userContext.rtcId) {
 function updateHandSphere( data ) {
 
 //      // make sure to update the call from socket for peersphere
-//remote peer source
+//      remote peer source
+
+console.log( 'updateHandDSphere:', data );
 
   if ( data.source === 'peer ') {
 
