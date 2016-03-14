@@ -80,7 +80,7 @@ document.body.appendChild( iotZoneId );
 
     socketServer.on( 'leapSphere', function( data ) {
   //console.log( 'handSphere - data:', data );
-    updatePeerSphere( data );
+    updateHandSphere( data );
       } );
 
 //
@@ -247,38 +247,32 @@ if ( data.originRtcId !== userContext.rtcId) {
     hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
     iotLightOn.play();
   }
- }
+
 }
 
 function updateHandSphere( data ) {
 
 //      // make sure to update the call from socket for peersphere
-//
-//  if ( data.source = 'hand' ) {
-//
-//    position
-//    color
-//    light state
-//    set hue.....
-//
-//  } else  if ( data.source = 'peer ')
-//
-//    peerSphere.position.fromArray( data.position );
-//    peerSphere.material.color = data.color;
-//    peerSphere.visible = data.visible;
-//
-//        if ( data.setHueState ) {
-//
-//          var hueXY = getXYPointFromRGB(
-//                      data.color[0],
-//                      data.color[1],
-//                      data.color[2] );
-//
-//            hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
-//            iotLightOn.play();
-//          }
-//  }
-//
+//remote peer source
+
+  if ( data.source === 'peer ') {
+
+    peerSphere.position.fromArray( data.position );
+    peerSphere.material.color = data.color;
+    peerSphere.visible = data.visible;
+
+        if ( data.setHueState ) {
+
+          var hueXY = getXYPointFromRGB(
+                      data.color[0],
+                      data.color[1],
+                      data.color[2] );
+
+            hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
+            iotLightOn.play();
+          }
+    }
+
 //  data from the local hand
 
 if ( data.source === 'hand' ) {
