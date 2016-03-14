@@ -104,10 +104,6 @@ function arObjMover() {
   var tool = this;
   this.down = false;
 
-  this.foo = function(ev) {
-    console.log('foooooooooo');
-  };
-
   this.mousedown = function( ev ) {
     tool.down = true;
 
@@ -144,11 +140,11 @@ function arObjMover() {
 
     var updateData = {};
     updateData.operation = 'move';
-    updateData.peerMove = true;
     updateData.visible = handSphere.visible;
     updateData.position = spherePos;
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
+    updateData.source = 'peer';
     updateData.originRtcId = userContext.rtcId;
 
     leapAnimate( updateData );
@@ -180,12 +176,12 @@ function arObjMover() {
 
     var updateData = {};
     updateData.operation = 'stop';
-    updateData.peerMove = true;
     updateData.visible = handSphere.visible;
     updateData.position = spherePos;
     updateData.color = handSphere.material.color;
     updateData.name = 'handSphere';
     updateData.originRtcId = userContext.rtcId;
+    updateData.source = 'peer';
     updateData.setHueState = true;
 
 //console.log( 'peer mouseup:', updateData );
@@ -196,8 +192,6 @@ function arObjMover() {
   }
 
   var tool = new arObjMover();
-
-  tool.foo;
 
 //------------------------
 
