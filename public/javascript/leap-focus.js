@@ -288,11 +288,11 @@ function updateHandSphere( data ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
       }
-    }
+    } else {
 
 //  data from the local hand
 
-if ( data.source === 'hand' ) {
+//if ( data.source === 'hand' ) {
 
   handSphere.position.fromArray( data.position );
 

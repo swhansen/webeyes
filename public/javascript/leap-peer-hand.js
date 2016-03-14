@@ -231,7 +231,7 @@ function arObjMover() {
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
 
 
-handSphere.position.fromArray( data.position );
+    handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
               data.color.r,
               data.color.g,
@@ -239,10 +239,6 @@ handSphere.position.fromArray( data.position );
     handSphere.visible = data.visible;
 
     data.source = 'peer';
-
-
-
-
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
