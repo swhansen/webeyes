@@ -284,7 +284,9 @@ if ( data.source === 'hand' ) {
 // normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
 
-  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
+//  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
+
+var normalizedPalmSphere = (data.position - data.interactionBoxSize[0]) / (2 * data.interactionBoxSize );
 
   handSphere.material.color.setRGB(
               normalizedPalmSphere[0],
@@ -333,7 +335,7 @@ if ( data.source === 'hand' ) {
         data.visible = handSphere.visible;
      //   data.position = handSphere.position;
         data.color = handSphere.material.color;
-        data.interactionBox = data.interactionBox;
+        data.interactionBoxSize = data.interactionBox.size;
         data.name = 'handSphere';
         data.originRtcId = userContext.rtcId;
         data.deviceId = selectedHueDevice;
