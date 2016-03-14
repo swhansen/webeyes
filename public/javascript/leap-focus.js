@@ -205,13 +205,6 @@ function updateHueText( palmCenter, selectedHueDevice ) {
 
   hueDeviceId.innerHTML = 'hue IOT - ' + selectedHueDevice;
 
- // setIOTText( selectedHueDevice );
-//  hueDeviceText.position.fromArray( palmCenter );
-//  hueDeviceText.translateX( -100.0 );
-//  hueDeviceText.translateY( -100.0 );
-//  hueDeviceText.translateZ( 50.0 );
-//  scene.add( hueDeviceText );
-//  hueDeviceText.visible = true;
 }
 
 function updateIotZone() {
@@ -259,12 +252,41 @@ if ( data.originRtcId !== userContext.rtcId) {
 
 function updateHandSphere( data ) {
 
-  handSphere.position.fromArray( data.palmCenter );
+//      // make sure to update the call from socket for peersphere
+//
+//  if ( data.source = 'hand' ) {
+//
+//    position
+//    color
+//    light state
+//    set hue.....
+//
+//  } else  if ( data.source = 'peer ')
+//
+//    peerSphere.position.fromArray( data.position );
+//    peerSphere.material.color = data.color;
+//    peerSphere.visible = data.visible;
+//
+//        if ( data.setHueState ) {
+//
+//          var hueXY = getXYPointFromRGB(
+//                      data.color[0],
+//                      data.color[1],
+//                      data.color[2] );
+//
+//            hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
+//            iotLightOn.play();
+//          }
+//  }
+//
+//
+
+  handSphere.position.fromArray( data.position );
 
 // normalize Leap Palm
 // need for RGB color space - threejs wants rgb (0-1)
 
-  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.palmCenter, true );
+  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
 
   handSphere.material.color.setRGB(
               normalizedPalmSphere[0],
@@ -311,7 +333,7 @@ function updateHandSphere( data ) {
        // var palmSphereData = {};
         data.operation = 'move';
         data.visible = handSphere.visible;
-        data.position = data.palmCenter;
+        data.position = hansSphere.position;
         data.color = handSphere.material.color;
         data.interactionBox = data.interactionBox;
         data.name = 'handSphere';
@@ -334,9 +356,10 @@ function updateHandSphere( data ) {
 
     for ( var hand of frame.hands ) {
 
-      sphereData.palmCenter = hand.sphereCenter;
+      sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
       sphereData.interactionBox = frame.interactionBox;
+      sphereData.source = 'hand';
 
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
