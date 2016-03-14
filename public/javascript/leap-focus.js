@@ -247,7 +247,7 @@ if ( data.originRtcId !== userContext.rtcId) {
     hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
     iotLightOn.play();
   }
-
+}
 }
 
 function updateHandSphere( data ) {
