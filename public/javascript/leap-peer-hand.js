@@ -230,7 +230,6 @@ function arObjMover() {
 
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
 
-
     handSphere.position.fromArray( data.position );
     handSphere.material.color.setRGB(
               data.color.r,
