@@ -293,11 +293,11 @@ var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
 
 
 function normalizePoint( position, interactionBox ) {
-  var vec = vec3.fromValues(
-    (( data.position[0] - data.interactionBox.center[0]) / data.interactionBox.size[0]) + 0.5,
-    (( data.position[1] - data.interactionBox.center[1]) / data.interactionBox.size[1]) + 0.5,
-    (( data.position[2] - data.interactionBox.center[2]) / data.interactionBox.size[2]) + 0.5
-  );
+  var vec = [];
+    vec[0] = ( position[0] - interactionBox.center[0]) / interactionBox.size[0] + 0.5;
+    vec[1] = ( position[1] - interactionBox.center[1]) / interactionBox.size[1] + 0.5;
+    vec[2] = ( position[2] - interactionBox.center[2]) / interactionBox.size[2] + 0.5;
+
 
 // if (clamp) {
 //   vec[0] = Math.min(Math.max(vec[0], 0), 1);
