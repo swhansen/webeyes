@@ -224,8 +224,9 @@ function arObjMover() {
               data.color.g,
               data.color.b );
     handSphere.visible = data.visible;
+  }
 
-  } else  if ( data.cource === 'peer' ) {
+   if ( data.source === 'peer' ) {
 
    // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
 
