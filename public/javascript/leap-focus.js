@@ -242,16 +242,11 @@ if ( data.originRtcId !== userContext.rtcId) {
 
   peerSphere.position.fromArray( data.position );
   peerSphere.material.color = data.color;
-
-//.setRGB(
-//            data.color.r,
-//            data.color.g,
-//            data.color.b );
   peerSphere.visible = data.visible;
 
   if ( data.setHueState ) {
 
- var hueXY = getXYPointFromRGB(
+  var hueXY = getXYPointFromRGB(
               data.color[0],
               data.color[1],
               data.color[2] );
@@ -263,10 +258,6 @@ if ( data.originRtcId !== userContext.rtcId) {
 }
 
 function updateHandSphere( data ) {
-
-  data.palmCenter;
-  data.sphereRadius;
-  data.interactionBox;
 
   handSphere.position.fromArray( data.palmCenter );
 
@@ -317,16 +308,17 @@ function updateHandSphere( data ) {
 
 // broadcast the handSphere for peer intereaction
 
-        var palmSphereData = {};
-        palmSphereData.operation = 'move';
-        palmSphereData.visible = handSphere.visible;
-        palmSphereData.position = data.palmCenter;
-        palmSphereData.color = handSphere.material.color;
-        palmSphereData.name = 'handSphere';
-        palmSphereData.originRtcId = userContext.rtcId;
-        palmSphereData.deviceId = selectedHueDevice;
+       // var palmSphereData = {};
+        data.operation = 'move';
+        data.visible = handSphere.visible;
+        data.position = data.palmCenter;
+        data.color = handSphere.material.color;
+        data.interactionBox = data.interactionBox;
+        data.name = 'handSphere';
+        data.originRtcId = userContext.rtcId;
+        data.deviceId = selectedHueDevice;
 
-        emitLeapSphere( palmSphereData );
+        emitLeapSphere( data );
   }
 
   function leapAnimate( frame ) {
