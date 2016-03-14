@@ -333,7 +333,7 @@ function updateHandSphere( data ) {
        // var palmSphereData = {};
         data.operation = 'move';
         data.visible = handSphere.visible;
-        data.position = handSphere.position;
+     //   data.position = handSphere.position;
         data.color = handSphere.material.color;
         data.interactionBox = data.interactionBox;
         data.name = 'handSphere';
