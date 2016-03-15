@@ -263,6 +263,8 @@ if ( data.source === 'peer' ) {
     handSphere.material.color = data.color;
     handSphere.visible = data.visible;
 
+    console.log( 'handSphere:', handSphere );
+
     if ( data.setHueState ) {
 
       var hueXY = getXYPointFromRGB(
