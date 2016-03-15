@@ -147,9 +147,9 @@ function arObjMover() {
              // normalizedSphere[1],
              // normalizedSphere[2] );
 
-  peerSphere.material.color.r = normalizedSphere[0];
-  peerSphere.material.color.g = normalizedSphere[1];
-  peerSphere.material.color.b = normalizedSphere[2];
+  //peerSphere.material.color.r = normalizedSphere[0];
+  //peerSphere.material.color.g = normalizedSphere[1];
+  //peerSphere.material.color.b = normalizedSphere[2];
 
     var updateData = {};
     updateData.name = 'peerSphere';
@@ -157,7 +157,7 @@ function arObjMover() {
     updateData.originRtcId = userContext.rtcId;
     updateData.visible = peerSphere.visible;
     updateData.position = spherePos;
-    updateData.color = peerSphere.material.color;
+    updateData.color = normalizedSphere;
     updateData.source = 'peer';
     updateData.setHueState = false;
 
