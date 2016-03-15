@@ -166,6 +166,7 @@ function arObjMover() {
   tool.down = false;
   selectState = false;
   handSphere.visible = false;
+  peerSphere.visible = false;
 
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
   var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
