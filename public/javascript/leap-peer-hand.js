@@ -237,7 +237,7 @@ function arObjMover() {
       socketServer.emit( 'leapSphere', data, sessionId );
     }
 
-    if ( ignoreHandSphere !==true) {
+    if ( ignoreHandSphere === false ) {
 
       handSphere.position.fromArray( data.position );
       handSphere.material.color.setRGB(
