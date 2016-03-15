@@ -233,7 +233,7 @@ function arObjMover() {
 
    if ( data.source === 'peer' ) {
 
-      handSphere.position.fromArray( data.position );
+      peerSphere.position.fromArray( data.position );
       handSphere.material.color.setRGB(
                 data.color.r,
                 data.color.g,
