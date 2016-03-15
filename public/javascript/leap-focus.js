@@ -247,10 +247,10 @@ function updateHandSphere( data ) {
 
 // avoid rendering the hand generated sphere when peer broadcast
 
-var ignoreHand = false;
+var ignoreHandSphere = false;
 
 if ( data.source === 'peer' ) {
-    ignoreHand = true;
+    ignoreHandSphere = true;
   }
 
 //console.log( 'updateHandDSphere:', data );
@@ -272,7 +272,7 @@ if ( data.source === 'peer' ) {
         iotLightOn.play();
       }
 
-    } else { if ( ignoreHand !==true )   {
+    } else { if ( ignoreHandSphere !==true )   {
 
   handSphere.position.fromArray( data.position );
 

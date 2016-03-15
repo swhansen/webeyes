@@ -217,32 +217,34 @@ function arObjMover() {
 
   function updateLeapSphere( data ) {
 
-    if ( data.source === 'hand' ) {
+    var ignoreHandSphere = false;
 
-    handSphere.position.fromArray( data.position );
-    handSphere.material.color.setRGB(
-              data.color.r,
-              data.color.g,
-              data.color.b );
-    handSphere.visible = data.visible;
-  }
+    if (data.source === 'peer' ) {
+      ignoreHandSphere = true;
+    }
 
    if ( data.source === 'peer' ) {
 
-   // console.log('screen from three:', ThreeToScreenPosition( handSphere, camera ) );
-
-    handSphere.position.fromArray( data.position );
-    handSphere.material.color.setRGB(
-              data.color.r,
-              data.color.g,
-              data.color.b );
-    handSphere.visible = data.visible;
-
-    data.source = 'peer';
+      handSphere.position.fromArray( data.position );
+      handSphere.material.color.setRGB(
+                data.color.r,
+                data.color.g,
+                data.color.b );
+      handSphere.visible = data.visible;
+      //data.source = 'peer';
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
+    }
 
+    if ( ignoreHandSphere !==true) {
+
+      handSphere.position.fromArray( data.position );
+      handSphere.material.color.setRGB(
+                data.color.r,
+                data.color.g,
+                data.color.b );
+      handSphere.visible = data.visible;
     }
   }
 
