@@ -238,7 +238,7 @@ function arObjMover() {
                 data.color.r,
                 data.color.g,
                 data.color.b );
-      handSphere.visible = data.visible;
+      handSphere.visible = false;
       //data.source = 'peer';
 
    var sessionId = socketServer.sessionid;
