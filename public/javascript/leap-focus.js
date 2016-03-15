@@ -274,6 +274,7 @@ if ( data.source === 'peer' ) {
 
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
+        peerSphere.visible = false;
       }
 
     } else { if ( ignoreHandSphere !==true )   {
