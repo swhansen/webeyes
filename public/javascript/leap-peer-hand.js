@@ -60,6 +60,14 @@ socketServer.on( 'leapSphere', function( data ) {
     handSphere.userData.rtiId = userContext.rtcId;
     scene.add( handSphere );
 
+    var peerSphereGeometry = new THREE.SphereGeometry( 40, 16, 16 );
+    var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
+    var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
+    peerSphere.position.set( 0.0, 0.0, 0.0 );
+    peerSphere.name = 'peerSphere';
+    peerSphere.visible = false;
+    scene.add( peerSphere );
+
   //  var testGeometry = new THREE.SphereGeometry( 20, 16, 16 );
   //  var testMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
   //  var testSphere = new THREE.Mesh( testGeometry, testMaterial );
@@ -225,12 +233,13 @@ function arObjMover() {
 
    if ( data.source === 'peer' ) {
 
-      handSphere.position.fromArray( data.position );
-      handSphere.material.color.setRGB(
+      peerSphere.position.fromArray( data.position );
+      peerSphere.material.color.setRGB(
                 data.color.r,
                 data.color.g,
                 data.color.b );
-      handSphere.visible = data.visible;
+      peerSphere.visible = data.visible;
+      handSphere.visible = false;
       //data.source = 'peer';
 
    var sessionId = socketServer.sessionid;
@@ -244,7 +253,7 @@ function arObjMover() {
                 data.color.r,
                 data.color.g,
                 data.color.b );
-      handSphere.visible = data.visible;
+      handSphere.visible = true;
     }
   }
 
