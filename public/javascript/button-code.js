@@ -94,7 +94,7 @@ $( '#codeDialogModal' ).dialog( {
  $( '#codeDialogButton' ).click( function() {
   swal({
     title: 'Button Code',
-    text: 'Input your Super Secret UI Mode Code',
+    text: 'Input your Super Secret Code',
     type: 'input',
     showCancelButton: true,
     closeOnCancel: true,

@@ -1,10 +1,14 @@
 
-var hueURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
+var steveURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
 
 var chuxHueURL = 'http://192.168.1.107/api/52927745603325e730bd719e2a8bf2cb';
 
-//var iotZones = { steve: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b',
-//              chuck: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b' };
+var iotZones = { steve: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b',
+                 chuck: 'http://192.168.1.107/api/52927745603325e730bd719e2a8bf2cb' };
+
+// var hueURL = steveURL;
+
+var hueURL = iotZones.steve;
 
 var hueLightState;
 var hueLightList;
@@ -137,7 +141,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
     var XYPoint = function( x, y ) {
         this.x = x;
         this.y = y;
-    }
+    };
 
     Red = new XYPoint( 0.675, 0.322 ),
     Lime = new XYPoint( 0.4091, 0.518 ),
@@ -151,7 +155,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
      */
     hexToRed = function( hex ) {
         return parseInt( hex.substring( 0, 2 ), 16 );
-    }
+    };
 
     /**
      * Parses a valid hex color string and returns the Green RGB integer value.
@@ -161,7 +165,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
      */
     hexToGreen = function( hex ) {
         return parseInt( hex.substring( 2, 4 ), 16 );
-    }
+    };
 
     /**
      * Parses a valid hex color string and returns the Blue RGB integer value.
@@ -171,7 +175,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
      */
     hexToBlue = function( hex ) {
         return parseInt( hex.substring( 4, 6 ), 16 );
-    }
+    };
 
     /**
      * Converts a valid hex color string to an RGB array.
@@ -182,7 +186,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
     hexToRGB = function( h ) {
         var rgb = [ hexToRed( h ), hexToGreen( h ), hexToBlue( h ) ];
         return rgb;
-    }
+    };
 
     /**
      * Converts an RGB component to a hex string.
@@ -193,7 +197,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
     componentToHex = function( c ) {
         var hex = c.toString( 16 );
         return hex.length == 1 ? '0' + hex : hex;
-    }
+    };
 
     /**
      * Converts RGB color components to a valid hex color string.
@@ -205,7 +209,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
      */
     rgbToHex = function( r, g, b ) {
         return componentToHex( r ) + componentToHex( g ) + componentToHex( b );
-    }
+    };
 
     /**
      * Generates a random number between 'from' and 'to'.
@@ -215,7 +219,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
      */
     randomFromInterval = function( from /* Number */, to /* Number */ ) {
         return Math.floor( Math.random() * ( to - from + 1 ) + from );
-    }
+    };
 
     /**
      * Return a random Integer in the range of 0 to 255, representing an RGB
@@ -225,7 +229,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
      */
     randomRGBValue = function() {
         return randomFromInterval( 0, 255 );
-    }
+    };
 
     /**
      * Returns the cross product of two XYPoints.
@@ -236,7 +240,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
      */
     crossProduct = function( p1, p2 ) {
         return ( p1.x * p2.y - p1.y * p2.x );
-    }
+    };
 
     /**
      * Check if the provided XYPoint can be recreated by a Hue lamp.
@@ -254,7 +258,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
             t = crossProduct( v1, q ) / crossProduct( v1, v2 );
 
         return ( s >= 0.0 ) && ( t >= 0.0 ) && ( s + t <= 1.0 );
-    }
+    };
 
     /**
      * Find the closest point on a line. This point will be reproducible by a Hue lamp.
@@ -278,7 +282,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
         }
 
         return new XYPoint( A.x + AB.x * t, A.y + AB.y * t );
-    }
+    };
 
     getClosestPointToPoint = function( xyPoint ) {
 
@@ -306,7 +310,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
         }
 
         return closestPoint;
-    }
+    };
 
     /**
      * Returns the distance between two XYPoints.
@@ -324,7 +328,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
  // vertical difference
 
         return Math.sqrt( dx * dx + dy * dy );
-    }
+    };
 
     /**
      * Returns an XYPoint object containing the closest available CIE 1931
@@ -362,7 +366,7 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
         }
 
         return new XYPoint( cx, cy );
-    }
+    };
 
     /**
      * Returns a rgb array for given x, y values. Not actually an inverse of
