@@ -122,7 +122,7 @@ function arObjMover() {
 
   if ( intersects.length > 0 ) {
     selectState = true;
-    handSphere.visible = true;
+    handSphere.visible = false;
     }
   };
 
@@ -227,7 +227,7 @@ function arObjMover() {
 
     var ignoreHandSphere = false;
 
-    if (data.source === 'peer' ) {
+    if ( data.source === 'peer' ) {
       ignoreHandSphere = true;
     }
 
@@ -238,7 +238,7 @@ function arObjMover() {
                 data.color.r,
                 data.color.g,
                 data.color.b );
-      peerSphere.visible = data.visible;
+      peerSphere.visible = true;
       handSphere.visible = false;
       //data.source = 'peer';
 
@@ -253,6 +253,7 @@ function arObjMover() {
                 data.color.r,
                 data.color.g,
                 data.color.b );
+      peerSphere = false;
       handSphere.visible = true;
     }
   }
