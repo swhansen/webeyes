@@ -18,6 +18,15 @@ socketServer.on( 'iotControl', function( data ) {
     setHueIotDevice( data );
       } );
 
+function setIotZone( iotCode ) {
+
+  switch ( iotCode ) {
+    case 'iots':
+     hueURL = iotZones.steve;
+    break;
+  }
+}
+
   function setHueIotDevice( data ) {
 
   //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }

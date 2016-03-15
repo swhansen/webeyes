@@ -66,9 +66,6 @@ function usebcode( bcode ) {
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
     messageBar( msgString );
-
-//    // Start the orientation data feed
-
     emitArOrientationData();
 
     break;
@@ -83,6 +80,13 @@ function usebcode( bcode ) {
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'devmeButton' ).style.visibility = 'visible';
     mainCollapsed = true;
+  break;
+
+  case 'iots':
+    setIotZone( iots );
+    msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
+    messageBar( msgString );
+  break;
   }
 }
 
@@ -109,7 +113,7 @@ $( '#codeDialogModal' ).dialog( {
               swal.showInputError('Please Enter Code!');
               return false;
             }
-           else if ( !( _.includes( [ 'devme', 'modme', 'augme' ], inputValue.toLowerCase() ) ) ) {
+           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'iots' ], inputValue.toLowerCase() ) ) ) {
               swal.showInputError( 'Please enter a valid code' );
               return false;
           }
