@@ -122,7 +122,7 @@ function arObjMover() {
 
   if ( intersects.length > 0 ) {
     selectState = true;
-    handSphere.visible = false;
+    handSphere.visible = true;
     }
   };
 
@@ -142,22 +142,18 @@ function arObjMover() {
 
     // rgb (0-1)
 
-   // peerSphere.material.color.setRGB(
-             // normalizedSphere[0],
-             // normalizedSphere[1],
-             // normalizedSphere[2] );
-
-  //peerSphere.material.color.r = normalizedSphere[0];
-  //peerSphere.material.color.g = normalizedSphere[1];
-  //peerSphere.material.color.b = normalizedSphere[2];
+    handSphere.material.color.setRGB(
+              normalizedSphere[0],
+              normalizedSphere[1],
+              normalizedSphere[2] );
 
     var updateData = {};
-    updateData.name = 'peerSphere';
+    updateData.name = 'handSphere';
     updateData.operation = 'move';
     updateData.originRtcId = userContext.rtcId;
-    updateData.visible = peerSphere.visible;
+    updateData.visible = handSphere.visible;
     updateData.position = spherePos;
-    updateData.color = normalizedSphere;
+    updateData.color = handSphere.material.color;
     updateData.source = 'peer';
     updateData.setHueState = false;
 
@@ -169,7 +165,7 @@ function arObjMover() {
   console.log( 'up:', ev.x, ev.y );
   tool.down = false;
   selectState = false;
-  peerSphere.visible = false;
+  handSphere.visible = false;
 
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
   var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
@@ -178,23 +174,23 @@ function arObjMover() {
 
    // rgb (0-1)
 
-   //var normalizedSphere = [];
-   // normalizedSphere[0] = ev._x / window.innerWidth;
-   // normalizedSphere[1] = ev._y / window.innerHeight;
-   // normalizedSphere[2] = 0.5;
-//
-   // peerSphere.material.color.setRGB(
-   //           normalizedSphere[0],
-   //           normalizedSphere[1],
-   //           normalizedSphere[2] );
+   var normalizedSphere = [];
+    normalizedSphere[0] = ev._x / window.innerWidth;
+    normalizedSphere[1] = ev._y / window.innerHeight;
+    normalizedSphere[2] = 0.5;
+
+    handSphere.material.color.setRGB(
+              normalizedSphere[0],
+              normalizedSphere[1],
+              normalizedSphere[2] );
 
     var updateData = {};
-    updateData.name = 'peerSphere';
+    updateData.name = 'handSphere';
     updateData.operation = 'stop';
     updateData.originRtcId = userContext.rtcId;
     updateData.visible = false;
     updateData.position = spherePos;
-  //  updateData.color = peerSphere.material.color;
+    updateData.color = handSphere.material.color;
     updateData.source = 'peer';
     updateData.setHueState = true;
 
@@ -231,26 +227,23 @@ function arObjMover() {
 
     var ignoreHandSphere = false;
 
-    if ( data.source === 'peer' ) {
+    if (data.source === 'peer' ) {
       ignoreHandSphere = true;
     }
 
    if ( data.source === 'peer' ) {
 
-      peerSphere.position.fromArray( data.position );
-      peerSphere.material.color.setRGB(
+      handSphere.position.fromArray( data.position );
+      handSphere.material.color.setRGB(
                 data.color.r,
                 data.color.g,
                 data.color.b );
-      peerSphere.visible = true;
-      handSphere.visible = false;
+      handSphere.visible = data.visible;
       //data.source = 'peer';
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
     }
-
-// render the handSphere
 
     if ( ignoreHandSphere === false ) {
 
@@ -259,8 +252,7 @@ function arObjMover() {
                 data.color.r,
                 data.color.g,
                 data.color.b );
-      peerSphere = false;
-      handSphere.visible = true;
+      handSphere.visible = data.visible;
     }
   }
 
