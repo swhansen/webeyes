@@ -65,7 +65,7 @@ socketServer.on( 'leapSphere', function( data ) {
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.position.set( 0.0, 0.0, 0.0 );
     peerSphere.name = 'peerSphere';
-    peerSphere.visible = false;
+    peerSphere.visible = true;
     scene.add( peerSphere );
 
   //  var testGeometry = new THREE.SphereGeometry( 20, 16, 16 );
