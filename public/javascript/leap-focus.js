@@ -280,6 +280,8 @@ if ( data.source === 'peer' ) {
 
   handSphere.position.fromArray( data.position );
 
+  console.log( 'handSphere-hand:', handSphere;)
+
 // normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
 
 //  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
