@@ -142,18 +142,18 @@ function arObjMover() {
 
     // rgb (0-1)
 
-    handSphere.material.color.setRGB(
+    peerSphere.material.color.setRGB(
               normalizedSphere[0],
               normalizedSphere[1],
               normalizedSphere[2] );
 
     var updateData = {};
-    updateData.name = 'handSphere';
+    updateData.name = 'peerSphere';
     updateData.operation = 'move';
     updateData.originRtcId = userContext.rtcId;
-    updateData.visible = handSphere.visible;
+    updateData.visible = peerSphere.visible;
     updateData.position = spherePos;
-    updateData.color = handSphere.material.color;
+    updateData.color = peerSphere.material.color;
     updateData.source = 'peer';
     updateData.setHueState = false;
 
@@ -165,7 +165,7 @@ function arObjMover() {
   console.log( 'up:', ev.x, ev.y );
   tool.down = false;
   selectState = false;
-  handSphere.visible = false;
+  peerSphere.visible = false;
 
   var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
   var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
@@ -179,18 +179,18 @@ function arObjMover() {
     normalizedSphere[1] = ev._y / window.innerHeight;
     normalizedSphere[2] = 0.5;
 
-    handSphere.material.color.setRGB(
+    peerSphere.material.color.setRGB(
               normalizedSphere[0],
               normalizedSphere[1],
               normalizedSphere[2] );
 
     var updateData = {};
-    updateData.name = 'handSphere';
+    updateData.name = 'peerSphere';
     updateData.operation = 'stop';
     updateData.originRtcId = userContext.rtcId;
     updateData.visible = false;
     updateData.position = spherePos;
-    updateData.color = handSphere.material.color;
+    updateData.color = peerSphere.material.color;
     updateData.source = 'peer';
     updateData.setHueState = true;
 
@@ -245,6 +245,8 @@ function arObjMover() {
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
     }
+
+// render the handSphere
 
     if ( ignoreHandSphere === false ) {
 
