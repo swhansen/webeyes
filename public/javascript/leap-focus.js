@@ -277,9 +277,9 @@ if ( data.source === 'peer' ) {
       var normalizedSphere = normalizePoint( data.position );
 
       var hueXY = getXYPointFromRGB(
-                  normalizedSphere.color[0],
-                  normalizedSphere.color[1],
-                  normalizedSphere.color[2] );
+                  normalizedSphere[0],
+                  normalizedSphere[1],
+                  normalizedSphere[2] );
 
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
