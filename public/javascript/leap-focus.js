@@ -13,12 +13,12 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 //var iotZoneId = document.getElementById( 'hueZoneId' );
 //var iotDeviceId = document.getElementById( 'hueDeviceId' );
 
-
-$( 'div#iotZoneId' ).text( 'IOT Zone: Steve');
+$( '#iotDeviceId' ).html( 'foo' ).fadeIn( 500 );
+$( '#iotZoneId' ).html( 'bar') ;
 
 //$( '#iotZoneId' ).html( 'test-1' ).fadeIn( 500 );
 
-$( 'div#iotDeviceId' ).text( 'IOT ID: 1' );
+//$( 'div#iotDeviceId' ).text( 'IOT ID: 1' );
 
 
 
