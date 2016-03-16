@@ -215,7 +215,7 @@ $( 'div#iotDeviceId' ).text( 'IOT ID: 1' );
     scene.add( mesh );
   }
 
-function updateHueText( palmCenter, selectedHueDevice ) {
+function updateHueText( selectedHueDevice ) {
 
   var val = 'IOT Device:' + selectedHueDevice;
 
@@ -402,7 +402,7 @@ var normalizedPalmSphere = normalizePoint( data.position );
                 if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
             firstClick = false;
           }
-        updateHueText( hand.sphereCenter, selectedHueDevice );
+        updateHueText( selectedHueDevice );
       }
     }
 
