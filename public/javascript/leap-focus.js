@@ -274,7 +274,7 @@ if ( data.source === 'peer' ) {
 
     if ( data.setHueState ) {
 
-      var normalizedSphere = normalizePoint( data.position, data.interactionBox );
+      var normalizedSphere = normalizePoint( data.position );
 
       var hueXY = getXYPointFromRGB(
                   normalizedSphere.color[0],
