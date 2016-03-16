@@ -121,7 +121,7 @@ function arObjMover() {
 
   if ( intersects.length > 0 ) {
     selectState = true;
-    handSphere.visible = true;
+    handSphere.visible = false;
     }
   };
 

@@ -404,7 +404,7 @@ var normalizedPalmSphere = normalizePoint( data.position );
       }
     }
 
-      if ( hand.grabStrength > 0.2 && hand.grabStrength < 0.8 ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 ) {
           setLightState = 'adjustLight';
           inChooseState = true;
           updateHandSphere( sphereData );
