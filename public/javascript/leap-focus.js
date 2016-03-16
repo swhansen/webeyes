@@ -267,10 +267,12 @@ if ( data.source === 'peer' ) {
 
     if ( data.setHueState ) {
 
+      var normalizedSphere = normalizePoint( data.position, data.interactionBox );
+
       var hueXY = getXYPointFromRGB(
-                  data.color[0],
-                  data.color[1],
-                  data.color[2] );
+                  normalizedSphere.color[0],
+                  normalizedSphere.color[1],
+                  normalizedSphere.color[2] );
 
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
@@ -281,11 +283,7 @@ if ( data.source === 'peer' ) {
 
   handSphere.position.fromArray( data.position );
 
-  console.log( 'handSphere-hand:', handSphere );
-
 // normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
-
-//  var normalizedPalmSphere = data.interactionBox.normalizePoint( data.position, true );
 
 var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
 
