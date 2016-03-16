@@ -63,7 +63,7 @@ socketServer.on( 'leapSphere', function( data ) {
     var peerSphereGeometry = new THREE.SphereGeometry( 40, 16, 16 );
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
-    peerSphere.position.set( 0.0, 0.0, 0.0 );
+    //peerSphere.position.set( 0.0, 0.0, 0.0 );
     peerSphere.name = 'peerSphere';
     peerSphere.visible = true;
     scene.add( peerSphere );
@@ -178,18 +178,18 @@ function arObjMover() {
     normalizedSphere[1] = ev._y / window.innerHeight;
     normalizedSphere[2] = 0.5;
 
-    handSphere.material.color.setRGB(
+    peerSphere.material.color.setRGB(
               normalizedSphere[0],
               normalizedSphere[1],
               normalizedSphere[2] );
 
     var updateData = {};
-    updateData.name = 'handSphere';
+    updateData.name = 'peerSphere';
     updateData.operation = 'stop';
     updateData.originRtcId = userContext.rtcId;
     updateData.visible = false;
     updateData.position = spherePos;
-    updateData.color = handSphere.material.color;
+    updateData.color = peerSphere.material.color;
     updateData.source = 'peer';
     updateData.setHueState = true;
 
