@@ -119,7 +119,7 @@ $( '#codeDialogModal' ).dialog( {
               swal.showInputError('Please Enter Code!');
               return false;
             }
-           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'iots' ], inputValue.toLowerCase() ) ) ) {
+           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'iots', 'iotc' ], inputValue.toLowerCase() ) ) ) {
               swal.showInputError( 'Please enter a valid code' );
               return false;
           }
