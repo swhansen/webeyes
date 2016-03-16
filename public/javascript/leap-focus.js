@@ -217,7 +217,7 @@ $( 'div#iotDeviceId' ).text( 'IOT ID: 1' );
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-  $( '#iotDeviceId' ).html( 'IOT Device:' ).fadeIn( 500 );
+  $( '#iotDeviceId' ).html( 'IOT Device:' + selectedHueDevice ).fadeIn( 500 );
 
  // $( 'div#iotDeviceId' ).text('IOT Device:' + selectedHueDevice);
 
