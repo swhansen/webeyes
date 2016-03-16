@@ -10,7 +10,7 @@ var iotZones = { steve: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b',
 
 
 var iotZoneId = document.getElementById( 'iotZoneId' );
-var iotDeviceId = document.getElementById( 'iotDeviceId' );
+var iotDeviceId = document.getElementById( 'iotDeviceID' );
 
 var hueURL = iotZones.steve;
 
