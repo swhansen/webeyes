@@ -144,6 +144,8 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
+    peerSphere.visible = true;
+
     var updateData = {};
     updateData.name = 'handSphere';
     updateData.operation = 'move';
@@ -161,8 +163,11 @@ function arObjMover() {
   this.mouseup = function( ev ) {
     console.log( 'up:', ev.x, ev.y );
     tool.down = false;
+
+
     selectState = false;
     handSphere.visible = false;
+  // peerSphere.visible = false;
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
