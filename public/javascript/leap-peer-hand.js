@@ -129,20 +129,18 @@ function arObjMover() {
   this.mousemove = function( ev ) {
     if ( selectState ) {
 
-  var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-  var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
-  var spherePos = [ leapX, leapY, 0 ];
+    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+    var spherePos = [ leapX, leapY, 0 ];
 
-// normalize to set color
+// normalize to set color rgb (0-1)
 
     var normalizedSphere = [];
     normalizedSphere[0] = ev._x / window.innerWidth;
     normalizedSphere[1] = ev._y / window.innerHeight;
     normalizedSphere[2] = 0.5;
 
-    // rgb (0-1)
-
-    handSphere.material.color.setRGB(
+    palmSphere.material.color.setRGB(
               normalizedSphere[0],
               normalizedSphere[1],
               normalizedSphere[2] );
@@ -153,7 +151,7 @@ function arObjMover() {
     updateData.originRtcId = userContext.rtcId;
     updateData.visible = handSphere.visible;
     updateData.position = spherePos;
-    updateData.color = handSphere.material.color;
+    updateData.color = palmSphere.material.color;
     updateData.source = 'peer';
     updateData.setHueState = false;
 
