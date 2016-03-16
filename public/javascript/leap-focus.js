@@ -10,6 +10,9 @@ var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
+var iotZoneId = document.getElementById( 'hueZoneId' );
+var iotDeviceId = document.getElementById( 'hueDeviceId' );
+
 //var hueDeviceId = document.createElement('div');
 //hueDeviceId.style.position = 'absolute';
 //hueDeviceId.style.backgroundColor = 'gray';
@@ -205,7 +208,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-  hueDeviceId.innerHTML = 'hue IOT - ' + selectedHueDevice;
+  iotDeviceId.innerHTML = 'hue IOT - ' + selectedHueDevice;
 
 }
 
