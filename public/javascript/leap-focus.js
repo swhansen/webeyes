@@ -10,8 +10,8 @@ var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
-var iotZoneId = document.getElementById( 'hueZoneId' );
-var iotDeviceId = document.getElementById( 'hueDeviceId' );
+//var iotZoneId = document.getElementById( 'hueZoneId' );
+//var iotDeviceId = document.getElementById( 'hueDeviceId' );
 
 
 $( 'div#iotZoneId' ).text('IOT Zone: Steve');
