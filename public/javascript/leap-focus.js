@@ -231,11 +231,16 @@ function findPinchingFingerType( hand ){
     return pincher;
 }
 
-function normalizePoint( position, interactionBox ) {
-  var vec = [];
-    vec[0] = ( position[0] - interactionBox.center[0]) / interactionBox.size[0] + 0.5;
-    vec[1] = ( position[1] - interactionBox.center[1]) / interactionBox.size[1] + 0.5;
-    vec[2] = ( position[2] - interactionBox.center[2]) / interactionBox.size[2] + 0.5;
+function normalizePoint( position ) {
+//  var vec = [];
+//    vec[0] = ( position[0] - interactionBox.center[0]) / interactionBox.size[0] + 0.5;
+//    vec[1] = ( position[1] - interactionBox.center[1]) / interactionBox.size[1] + 0.5;
+//    vec[2] = ( position[2] - interactionBox.center[2]) / interactionBox.size[2] + 0.5;
+
+    var vec = [];
+    vec[0] = ( position[0] - 0) / 278.491 + 0.5;
+    vec[1] = ( position[1] - 236.7) / 278.491 + 0.5;
+    vec[2] = ( position[2] - 0) / 278.491 + 0.5;
 
 // if (clamp) {
 //   vec[0] = Math.min(Math.max(vec[0], 0), 1);
@@ -287,16 +292,16 @@ if ( data.source === 'peer' ) {
 
 // normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
 
-//var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
+var normalizedPalmSphere = normalizePoint( data.position );
 
- //handSphere.material.color.setRGB(
- //            normalizedPalmSphere[0],
- //            normalizedPalmSphere[1],
- //            normalizedPalmSphere[2] );
+ handSphere.material.color.setRGB(
+             normalizedPalmSphere[0],
+             normalizedPalmSphere[1],
+             normalizedPalmSphere[2] );
 
-  handSphere.material.color.r = data.color[0] * 254;
-  handSphere.material.color.g = data.color[1] * 254;
-  handSphere.material.color.b = data.color[2] * 254;
+  handSphere.material.color.r = normalizedPalmSphere[0];
+  handSphere.material.color.g = normalizedPalmSphere[1];
+  handSphere.material.color.b = normalizedPalmSphere[2];
 
   var hueXY = getXYPointFromRGB(
               normalizedPalmSphere[0] * 255,
