@@ -14,8 +14,8 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 //var iotDeviceId = document.getElementById( 'hueDeviceId' );
 
 
-$( 'div#iotZoneId' ).text('IOT Zone: Steve');
-$( 'div#iotDeviceId' ).text('IOT ID: 1');
+$( 'div#iotZoneId' ).text( 'IOT Zone: Steve');
+$( 'div#iotDeviceId' ).text( 'IOT ID: 1' );
 
 
 
@@ -214,7 +214,9 @@ $( 'div#iotDeviceId' ).text('IOT ID: 1');
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-  $( 'div#iotDeviceId' ).text('IOT Device:' + selectedHueDevice);
+  $( '#iotDeviceId' ).html( 'IOT Device:' + selectedHueDevice ).fadeIn( 500 );
+
+ // $( 'div#iotDeviceId' ).text('IOT Device:' + selectedHueDevice);
 
 }
 
