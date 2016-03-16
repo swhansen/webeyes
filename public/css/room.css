@@ -8,7 +8,7 @@
 
 
 #iotDeviceId {
-position: absolute;
+position: fixed;
 background-color: gray;
 top: 60px;
 left: 20px;
@@ -22,7 +22,7 @@ width:200px;
 }
 
 #iotZoneID {
-position: absolute;
+position: fixed;
 background-color: gray;
 width: 100px;
 height: 100px;
