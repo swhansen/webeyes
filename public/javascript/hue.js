@@ -28,7 +28,6 @@ function setIotZone( iotCode ) {
     case 'iots':
      hueURL = iotZones.steve;
      $( '#iotZoneId' ).html( 'IOT Zone: Steve' );
-   //  iotZoneId.innerHTML = 'IOT Zone - ' + 'Steve';
     break;
     case 'iotc':
       hueURL =  iotZones.chuck;
