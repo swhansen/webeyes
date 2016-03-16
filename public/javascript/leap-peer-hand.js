@@ -63,7 +63,6 @@ socketServer.on( 'leapSphere', function( data ) {
     var peerSphereGeometry = new THREE.SphereGeometry( 40, 16, 16 );
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
-    //peerSphere.position.set( 0.0, 0.0, 0.0 );
     peerSphere.name = 'peerSphere';
     peerSphere.visible = false;
     scene.add( peerSphere );
@@ -162,20 +161,21 @@ function arObjMover() {
   };
 
   this.mouseup = function( ev ) {
-  console.log( 'up:', ev.x, ev.y );
-  tool.down = false;
-  selectState = false;
-  handSphere.visible = false;
-  peerSphere.visible = false;
+    console.log( 'up:', ev.x, ev.y );
+    tool.down = false;
 
-  var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-  var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
 
-  var spherePos = [ leapX, leapY, 0 ];
+    selectState = false;
+    handSphere.visible = false;
+  // peerSphere.visible = false;
+
+    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+    var spherePos = [ leapX, leapY, 0 ];
 
    // rgb (0-1)
 
-   var normalizedSphere = [];
+    var normalizedSphere = [];
     normalizedSphere[0] = ev._x / window.innerWidth;
     normalizedSphere[1] = ev._y / window.innerHeight;
     normalizedSphere[2] = 0.5;
@@ -184,8 +184,6 @@ function arObjMover() {
               normalizedSphere[0],
               normalizedSphere[1],
               normalizedSphere[2] );
-
-    peerSphere.visible = false;
 
     var updateData = {};
     updateData.name = 'peerSphere';
@@ -241,6 +239,7 @@ function arObjMover() {
                 data.color.r,
                 data.color.g,
                 data.color.b );
+      peerSphere.visible = data.visible;
       handSphere.visible = false;
       //data.source = 'peer';
 
