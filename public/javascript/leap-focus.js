@@ -16,6 +16,9 @@ var iotDeviceId = document.getElementById( 'hueDeviceId' );
 iotDeviceId.innerHTML = 'hue IOT- 1';
 iotZoneId.innerHTML = 'IOT Zone-1';
 
+$( 'div#iotZoneId' ).text('IOT Zone: Steve');
+$( 'div#iotDeviceId' ).text('IOT ID: 1');
+
 
 
 //var hueDeviceId = document.createElement('div');
@@ -214,6 +217,8 @@ iotZoneId.innerHTML = 'IOT Zone-1';
 function updateHueText( palmCenter, selectedHueDevice ) {
 
   iotDeviceId.innerHTML = 'hue IOT - ' + selectedHueDevice;
+
+  $( 'div#iotDeviceId' ).text('IOT Device:' + selectedHueDevice);
 
 }
 
