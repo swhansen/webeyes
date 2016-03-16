@@ -216,6 +216,7 @@ $( 'div#iotDeviceId' ).text( 'IOT ID: 1' );
   }
 
 function updateHueText( selectedHueDevice ) {
+  console.log( 'updateHueText:', selectedHueDevice );
 
   var val = 'IOT Device:' + selectedHueDevice;
 
