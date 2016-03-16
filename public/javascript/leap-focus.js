@@ -214,8 +214,6 @@ $( 'div#iotDeviceId' ).text('IOT ID: 1');
 
 function updateHueText( palmCenter, selectedHueDevice ) {
 
-  iotDeviceId.innerHTML = 'hue IOT - ' + selectedHueDevice;
-
   $( 'div#iotDeviceId' ).text('IOT Device:' + selectedHueDevice);
 
 }
