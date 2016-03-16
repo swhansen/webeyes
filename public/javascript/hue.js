@@ -27,12 +27,12 @@ function setIotZone( iotCode ) {
   switch ( iotCode ) {
     case 'iots':
      hueURL = iotZones.steve;
-     $( 'div#iotZoneId' ).text( 'IOT Zone: Steve' );
+     $( '#iotZoneId' ).html( 'IOT Zone: Steve' );
    //  iotZoneId.innerHTML = 'IOT Zone - ' + 'Steve';
     break;
     case 'iotc':
       hueURL =  iotZones.chuck;
-      $( 'div#iotZoneId' ).text( 'IOT Zone Chuck' );
+      $( '#iotZoneId' ).html( 'IOT Zone Chuck' );
     break;
   }
 }
