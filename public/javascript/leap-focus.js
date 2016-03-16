@@ -15,6 +15,9 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
 
 $( 'div#iotZoneId' ).text( 'IOT Zone: Steve');
+
+//$( '#iotZoneId' ).html( 'test-1' ).fadeIn( 500 );
+
 $( 'div#iotDeviceId' ).text( 'IOT ID: 1' );
 
 
