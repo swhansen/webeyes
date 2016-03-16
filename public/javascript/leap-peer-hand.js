@@ -164,7 +164,6 @@ function arObjMover() {
     console.log( 'up:', ev.x, ev.y );
     tool.down = false;
 
-
     selectState = false;
     handSphere.visible = false;
     peerSphere.visible = false;
@@ -228,7 +227,7 @@ function arObjMover() {
 
     var ignoreHandSphere = false;
 
-    if (data.source === 'peer' ) {
+    if ( data.source === 'peer' ) {
       ignoreHandSphere = true;
     }
 

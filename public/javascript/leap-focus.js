@@ -93,10 +93,12 @@ document.body.appendChild( iotZoneId );
           updateIotZone();
           console.log( 'screenTap:', gesture.position );
         break;
-        case 'keyTap':
-          updateIotZone();
-          console.log( 'keyTap:', gesture.position );
-        break;
+
+  //      case 'keyTap':
+  //        updateIotZone();
+  //        console.log( 'keyTap:', gesture.position );
+  //      break;
+
         case 'swipe':
           hueSetAllLightsXY( false );
         break;
@@ -263,7 +265,7 @@ if ( data.source === 'peer' ) {
     peerSphere.material.color = data.color;
     peerSphere.visible = true;
 
-    console.log( 'handSphere:', peerSphere );
+ //   console.log( 'handSphere:', peerSphere );
 
     if ( data.setHueState ) {
 
@@ -285,16 +287,16 @@ if ( data.source === 'peer' ) {
 
 // normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
 
-var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
+//var normalizedPalmSphere = normalizePoint( data.position, data.interactionBox );
 
  //handSphere.material.color.setRGB(
  //            normalizedPalmSphere[0],
  //            normalizedPalmSphere[1],
  //            normalizedPalmSphere[2] );
 
-  handSphere.material.color.r = normalizedPalmSphere[0];
-  handSphere.material.color.g = normalizedPalmSphere[1];
-  handSphere.material.color.b = normalizedPalmSphere[2];
+  handSphere.material.color.r = data.color[0] * 254;
+  handSphere.material.color.g = data.color[1] * 254;
+  handSphere.material.color.b = data.color[2] * 254;
 
   var hueXY = getXYPointFromRGB(
               normalizedPalmSphere[0] * 255,

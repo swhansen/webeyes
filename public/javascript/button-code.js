@@ -87,6 +87,12 @@ function usebcode( bcode ) {
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
   break;
+
+  case 'iotc':
+    setIotZone( 'iots' );
+    msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
+    messageBar( msgString );
+  break;
   }
 }
 
