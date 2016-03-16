@@ -140,7 +140,7 @@ function arObjMover() {
     normalizedSphere[1] = ev._y / window.innerHeight;
     normalizedSphere[2] = 0.5;
 
-    palmSphere.material.color.setRGB(
+    peerSphere.material.color.setRGB(
               normalizedSphere[0],
               normalizedSphere[1],
               normalizedSphere[2] );
@@ -149,9 +149,9 @@ function arObjMover() {
     updateData.name = 'handSphere';
     updateData.operation = 'move';
     updateData.originRtcId = userContext.rtcId;
-    updateData.visible = handSphere.visible;
+    updateData.visible = peerSphere.visible;
     updateData.position = spherePos;
-    updateData.color = palmSphere.material.color;
+    updateData.color = peerSphere.material.color;
     updateData.source = 'peer';
     updateData.setHueState = false;
 
