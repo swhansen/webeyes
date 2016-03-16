@@ -65,7 +65,7 @@ socketServer.on( 'leapSphere', function( data ) {
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     //peerSphere.position.set( 0.0, 0.0, 0.0 );
     peerSphere.name = 'peerSphere';
-    peerSphere.visible = true;
+    peerSphere.visible = false;
     scene.add( peerSphere );
 
   //  var testGeometry = new THREE.SphereGeometry( 20, 16, 16 );
@@ -145,6 +145,8 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
+    peerSphere.visible = true;
+
     var updateData = {};
     updateData.name = 'handSphere';
     updateData.operation = 'move';
@@ -182,6 +184,8 @@ function arObjMover() {
               normalizedSphere[0],
               normalizedSphere[1],
               normalizedSphere[2] );
+
+    peerSphere.visible = false;
 
     var updateData = {};
     updateData.name = 'peerSphere';
