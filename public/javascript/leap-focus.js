@@ -137,6 +137,9 @@ function findPinchingFingerType( hand ){
     return pincher;
 }
 
+
+// normalize given position and leap interaction box
+
 function normalizePoint( position ) {
 //  var vec = [];
 //    vec[0] = ( position[0] - interactionBox.center[0]) / interactionBox.size[0] + 0.5;
@@ -171,7 +174,7 @@ if ( data.source === 'peer' ) {
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color = data.color;
     peerSphere.visible = true;
-    handSphere.visible = false;
+    scene.remove( handSphere );
 
     if ( data.setHueState ) {
 

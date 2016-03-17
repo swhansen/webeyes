@@ -228,7 +228,7 @@ function arObjMover() {
                 data.color.g,
                 data.color.b );
       peerSphere.visible = data.visible;
-      handSphere.visible = false;
+      scene.remove( handSphere );
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
