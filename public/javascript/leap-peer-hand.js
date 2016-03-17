@@ -123,9 +123,13 @@ function arObjMover() {
     selectState = true;
     handSphere.visible = false;
     }
-  };
 
-  this.mousemove = function( ev ) {
+
+
+
+  //};
+
+ // this.mousemove = function( ev ) {
     if ( selectState ) {
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;

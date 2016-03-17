@@ -13,8 +13,8 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 //var iotZoneId = document.getElementById( 'hueZoneId' );
 //var iotDeviceId = document.getElementById( 'hueDeviceId' );
 
-$( '#iotDeviceId' ).html( 'IOT ID: 1' ).fadeIn( 500 );
-$( '#iotZoneId' ).html( 'IOT Zone: Steve').fadeIn( 500 ) ;
+//$( '#iotDeviceId' ).html( 'IOT ID: 1' ).fadeIn( 500 );
+//$( '#iotZoneId' ).html( 'IOT Zone: Steve').fadeIn( 500 ) ;
 
 //$( '#iotZoneId' ).html( 'test-1' ).fadeIn( 500 );
 
@@ -216,14 +216,8 @@ $( '#iotZoneId' ).html( 'IOT Zone: Steve').fadeIn( 500 ) ;
   }
 
 function updateHueText( selectedHueDevice ) {
-  console.log( 'updateHueText:', selectedHueDevice );
-
   var val = 'IOT Device:' + selectedHueDevice;
-
-  $( '#iotDeviceId' ).html( val ).fadeIn( 500 );
-
- // $( 'div#iotDeviceId' ).text('IOT Device:' + selectedHueDevice);
-
+  $( '#iotDeviceId' ).html( val );
 }
 
 function updateIotZone() {
