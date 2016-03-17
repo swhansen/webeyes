@@ -1,16 +1,6 @@
 
-var steveURL = 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b';
-
-var chuxHueURL = 'http://192.168.1.107/api/52927745603325e730bd719e2a8bf2cb';
-
 var iotZones = { steve: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b',
                  chuck: 'http://192.168.1.107/api/52927745603325e730bd719e2a8bf2cb' };
-
-// var hueURL = steveURL;
-
-
-//var iotZoneId = document.getElementById( 'iotZoneId' );
-//var iotDeviceId = document.getElementById( 'iotDeviceID' );
 
 var hueURL = iotZones.steve;
 
@@ -37,9 +27,6 @@ function setIotZone( iotCode ) {
 }
 
   function setHueIotDevice( data ) {
-
-  //  var data = { deciceId: ('all', int)' state: (true, false, XY: [x,y], bri: (0-100) }
-  console.log( 'hue.on', data );
 
   if ( data.deviceId === 'all' ) {
     hueSetAllLightsXY( data.state, data.XY, data.bri );
@@ -94,11 +81,6 @@ var alertWeg2rtEntry = function( lightNo ) {
     error: function( a, err ) { }
     } );
 };
-
-// var hueLightState = function( data ) {
-//   console.log( 'lightState:', data );
-//   return ( data  );
-// };
 
 // get the state of a specific light
 

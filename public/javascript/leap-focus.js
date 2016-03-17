@@ -26,15 +26,12 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var setLightState;
     var inChooseState = false;
     var selectedHueDevice = 1;
-    var selectedIotZone = 1;
     var iotZones = 3;
     var firstClick = false;
 
     var renderer, scene, camera, controls;
 
     var controller = Leap.loop( { enableGesture:true, background: false }, leapAnimate );
-
-    //controller.connect();
 
     function emitLeap( data ) {
       var sessionId = socketServer.sessionid;
@@ -60,22 +57,9 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
     controller.on( 'gesture', function( gesture ) {
       switch ( gesture.type ) {
-  //    case 'screenTap':
-  //      updateIotZone();
-  //      console.log( 'screenTap:', gesture.position );
-  //    break;
-
-  //      case 'keyTap':
-  //        updateIotZone();
-  //        console.log( 'keyTap:', gesture.position );
-  //      break;
-
         case 'swipe':
           hueSetAllLightsXY( false );
         break;
-      //  case 'circle':
-      //   hueSetAllLights( true );
-      //  break;
       }
       }
     );
@@ -137,12 +121,6 @@ function updateHueText( selectedHueDevice ) {
   $( '#iotDeviceId' ).html( val );
 }
 
-//function updateIotZone() {
-//  selectedIotZone++;
-//  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1; }
-//  iotZoneId.innerHTML = 'IOT Zone - ' + selectedIotZone;
-//}
-
 function findPinchingFingerType( hand ){
     var pincher;
     var closest = 500;
@@ -187,8 +165,6 @@ var ignoreHandSphere = false;
 if ( data.source === 'peer' ) {
     ignoreHandSphere = true;
   }
-
-//console.log( 'updateHandDSphere:', data );
 
   if ( data.source === 'peer') {
 
@@ -241,8 +217,6 @@ var normalizedPalmSphere = normalizePoint( data.position );
         hueObjData.hueXYState = [ hueXY.x, hueXY.y ];
         hueObjData.bri = 100;
 
-    //    console.log( 'at updateHandSphere emitIOT:', hueObjData );
-
         emitIOT( hueObjData );
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         inChooseState = false;
@@ -287,7 +261,6 @@ var normalizedPalmSphere = normalizePoint( data.position );
     var countArms = 0;
     var sphereData = {};
 
-  //  scene.remove( hueDeviceText );
     scene.remove( handSphere );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
@@ -349,4 +322,3 @@ var normalizedPalmSphere = normalizePoint( data.position );
     controls.update();
   }
 }
-

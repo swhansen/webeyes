@@ -5,12 +5,6 @@
 
 function initLeapPeerHand() {
 
-// $( '*' ).filter( function() {
-//    return $( this ).css( 'z-index' ) >= 10;
-//  } ).each( function() {
-//    console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
-//  } );
-
 socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
@@ -23,6 +17,27 @@ socketServer.on( 'leapSphere', function( data ) {
     leapFull.style.top        = '0px';
     leapFull.style.left       = '0px';
     leapFull.style.zIndex = 300;
+
+// General-purpose event handler for mouse events.
+
+function evCanvas( ev ) {
+
+// Firefox
+  if ( ev.layerX || ev.layerX === 0 ) {
+    ev._x = ev.layerX;
+    ev._y = ev.layerY;
+
+// Opera
+  } else if ( ev.offsetX || ev.offsetX === 0 ) {
+    ev._x = ev.offsetX;
+    ev._y = ev.offsetY;
+  }
+  var func = tool[ ev.type ];
+
+  if ( func ) {
+    func( ev );
+  }
+}
 
     leapFull.addEventListener( 'mousedown', evCanvas, false );
     leapFull.addEventListener( 'mousemove', evCanvas, false );
@@ -75,28 +90,6 @@ socketServer.on( 'leapSphere', function( data ) {
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
   }
-
-// The general-purpose event handler for mouse events.
-
-function evCanvas( ev ) {
-
-// Firefox
-  if ( ev.layerX || ev.layerX === 0 ) {
-    ev._x = ev.layerX;
-    ev._y = ev.layerY;
-
-// Opera
-  } else if ( ev.offsetX || ev.offsetX === 0 ) {
-    ev._x = ev.offsetX;
-    ev._y = ev.offsetY;
-  }
-
-  var func = tool[ ev.type ];
-
-  if ( func ) {
-    func( ev );
-  }
-}
 
 function arObjMover() {
   var tool = this;
@@ -199,7 +192,7 @@ function arObjMover() {
     };
   }
 
-  var tool = new arObjMover();
+   var tool = new arObjMover();
 
 //------------------------
 
