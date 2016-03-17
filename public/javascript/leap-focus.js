@@ -10,42 +10,6 @@ var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
-//var iotZoneId = document.getElementById( 'hueZoneId' );
-//var iotDeviceId = document.getElementById( 'hueDeviceId' );
-
-//$( '#iotDeviceId' ).html( 'IOT ID: 1' ).fadeIn( 500 );
-//$( '#iotZoneId' ).html( 'IOT Zone: Steve').fadeIn( 500 ) ;
-
-//$( '#iotZoneId' ).html( 'test-1' ).fadeIn( 500 );
-
-//$( 'div#iotDeviceId' ).text( 'IOT ID: 1' );
-
-
-
-//var hueDeviceId = document.createElement('div');
-//hueDeviceId.style.position = 'absolute';
-//hueDeviceId.style.backgroundColor = 'gray';
-//hueDeviceId.style.width = 100;
-//hueDeviceId.style.height = 100;
-//hueDeviceId.innerHTML = 'hue IOT- 1';
-//hueDeviceId.style.top = 50 + 'px';
-//hueDeviceId.style.left = 20 + 'px';
-//hueDeviceId.style.fontSize = 'x-large';
-//hueDeviceId.zIndex = 200;
-//document.body.appendChild(hueDeviceId);
-//
-//var iotZoneId = document.createElement('div');
-//iotZoneId.style.position = 'absolute';
-//iotZoneId.style.backgroundColor = 'gray';
-//iotZoneId.style.width = 100;
-//iotZoneId.style.height = 100;
-//iotZoneId.innerHTML = 'IOT Zone-1';
-//iotZoneId.style.top = 20 + 'px';
-//iotZoneId.style.left = 20 + 'px';
-//iotZoneId.style.fontSize = 'x-large';
-//iotZoneId.zIndex = 200;
-//document.body.appendChild( iotZoneId );
-
  var leapFull = document.getElementById( 'leapfull' );
 
     leapFull.style.width      = '100%';
@@ -91,20 +55,16 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     }
 
     socketServer.on( 'leapSphere', function( data ) {
-  //console.log( 'handSphere - data:', data );
     updateHandSphere( data );
       } );
 
-//
-// gross gesture detection
-//
 
     controller.on( 'gesture', function( gesture ) {
       switch ( gesture.type ) {
-        case 'screenTap':
-          updateIotZone();
-          console.log( 'screenTap:', gesture.position );
-        break;
+  //    case 'screenTap':
+  //      updateIotZone();
+  //      console.log( 'screenTap:', gesture.position );
+  //    break;
 
   //      case 'keyTap':
   //        updateIotZone();
@@ -151,48 +111,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     peerSphere.visible = false;
     scene.add( peerSphere );
 
-
-// hue IOT device ID text
-
-//  var iotText = 'hue IOT - 1';
-//
-//  var materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
-//  var materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
-//  var materialArray = [ materialFront, materialSide ];
-//
-//  var textGeom = new THREE.TextGeometry( iotText,
-//  {
-//    size: 30, height: 4, curveSegments: 3,
-//    font: "helvetiker", weight: "normal", style: "normal",
-//    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
-//    material: 0, extrudeMaterial: 1
-//  });
-//
-//  var textMaterial = new THREE.MeshFaceMaterial( materialArray );
-//  var hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
-//  hueDeviceText.rotation.y = -Math.PI / 4;
-//
-//  function setIOTText( device, font ) {
-//
-//   iotText = "hue IOT -" + " " + device;
-//
-//   materialFront = new THREE.MeshBasicMaterial( { color: 0x1565C0 } );
-//   materialSide = new THREE.MeshBasicMaterial( { color: 0x90CAF9 } );
-//   materialArray = [ materialFront, materialSide ];
-//
-//   textGeom = new THREE.TextGeometry( iotText,
-//  {
-//    size: 30, height: 4, curveSegments: 3,
-//    font: "helvetiker", weight: "normal", style: "normal",
-//    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
-//    material: 0, extrudeMaterial: 1
-//  });
-
-//    textMaterial = new THREE.MeshFaceMaterial( materialArray );
-//    hueDeviceText = new THREE.Mesh( textGeom, textMaterial );
-//    hueDeviceText.rotation.y = -Math.PI / 4;
-//  }
-
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -220,11 +138,11 @@ function updateHueText( selectedHueDevice ) {
   $( '#iotDeviceId' ).html( val );
 }
 
-function updateIotZone() {
-  selectedIotZone++;
-  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1; }
-  iotZoneId.innerHTML = 'IOT Zone - ' + selectedIotZone;
-}
+//function updateIotZone() {
+//  selectedIotZone++;
+//  if ( selectedIotZone === iotZones + 1 ) { selectedIotZone = 1; }
+//  iotZoneId.innerHTML = 'IOT Zone - ' + selectedIotZone;
+//}
 
 function findPinchingFingerType( hand ){
     var pincher;
@@ -275,22 +193,19 @@ if ( data.source === 'peer' ) {
 
   if ( data.source === 'peer') {
 
-    console.log( 'updateHandSphere:', data );
-
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color = data.color;
     peerSphere.visible = true;
-
- //   console.log( 'handSphere:', peerSphere );
+    handSphere.visible = false;
 
     if ( data.setHueState ) {
 
       var normalizedSphere = normalizePoint( data.position );
 
       var hueXY = getXYPointFromRGB(
-                  normalizedSphere[0],
-                  normalizedSphere[1],
-                  normalizedSphere[2] );
+                  normalizedSphere[0] * 255,
+                  normalizedSphere[1] * 255,
+                  normalizedSphere[2] * 255 );
 
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
@@ -315,9 +230,9 @@ var normalizedPalmSphere = normalizePoint( data.position );
   handSphere.material.color.b = normalizedPalmSphere[2];
 
   var hueXY = getXYPointFromRGB(
-              normalizedPalmSphere[0] * 255,
-              normalizedPalmSphere[1] * 255,
-              normalizedPalmSphere[2] * 255 );
+                normalizedPalmSphere[0] * 255,
+                normalizedPalmSphere[1] * 255,
+                normalizedPalmSphere[2] * 255 );
 
     if ( setLightState === 'setLight' && inChooseState ) {
 

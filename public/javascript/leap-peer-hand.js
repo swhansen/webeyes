@@ -128,8 +128,6 @@ function arObjMover() {
 
      if ( tool.started && selectState ) {
 
- //   if ( selectState ) {
-
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
     var spherePos = [ leapX, leapY, 0 ];
@@ -147,6 +145,7 @@ function arObjMover() {
               normalizedSphere[2] );
 
     peerSphere.visible = true;
+    handSphere.visible = false;
 
     var updateData = {};
     updateData.name = 'handSphere';
@@ -159,8 +158,6 @@ function arObjMover() {
     updateData.setHueState = false;
 
     leapAnimate( updateData );
-
-    //}
 
   }
 };
