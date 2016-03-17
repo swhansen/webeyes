@@ -47,7 +47,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     }
 
    //   controller.on( 'beforeFrameCreated', function( frameData ) {
- //       emitLeap( frameData ); } );
+   //       emitLeap( frameData ); } );
 
     function emitIOT( data ) {
         var sessionId = socketServer.sessionid;
@@ -57,7 +57,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     socketServer.on( 'leapSphere', function( data ) {
     updateHandSphere( data );
       } );
-
 
     controller.on( 'gesture', function( gesture ) {
       switch ( gesture.type ) {

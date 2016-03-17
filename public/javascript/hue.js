@@ -131,7 +131,7 @@ var hueGetAllLights = function() {
     );
   };
 
-hueGetAllLights();
+console.log( 'hue lights:', hueGetAllLights() );
 
 var hueSetAllLightsXY = function( state, xy, bri ) {
   for ( i = 1; i < hueLightListLength + 1; ++i ) {

@@ -33,6 +33,7 @@ socketServer.on( 'leapSphere', function( data ) {
     var boneMeshes = [];
 
     var renderer, scene, camera, controls;
+    var selectState = false;
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
@@ -47,8 +48,6 @@ socketServer.on( 'leapSphere', function( data ) {
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.noRotate = true;
     controls.maxDistance = 1000;
-
-    var selectState = false;
 
     scene = new THREE.Scene();
 
@@ -65,12 +64,6 @@ socketServer.on( 'leapSphere', function( data ) {
     peerSphere.name = 'peerSphere';
     peerSphere.visible = false;
     scene.add( peerSphere );
-
-  //  var testGeometry = new THREE.SphereGeometry( 20, 16, 16 );
-  //  var testMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
-  //  var testSphere = new THREE.Mesh( testGeometry, testMaterial );
-  //  testSphere.position.set( 0.0, 0.0, 0.0 );
-  //  scene.add( testSphere );
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
@@ -202,6 +195,7 @@ function arObjMover() {
 //console.log( 'peer mouseup:', updateData );
 //     var sessionId = socketServer.sessionid;
 //     socketServer.emit( 'leapSphere', updateData, sessionId );
+
     };
   }
 
@@ -281,17 +275,10 @@ function ThreeToScreenPosition( obj, camera ) {
 
 function leapAnimate( data ) {
 
-// get it to (-1 to 1) to match normalized mouse
-// normalizeSphere = ( sphere.x / interactionbox.x) * 2 - 1;
-
-  //scene.remove( handSphere );
   updateLeapSphere( data );
   renderer.render( scene, camera );
+  controls.update();
 
- // var sphereScreenCoord = ThreeToScreenPosition( handSphere, camera );
- // console.log( 'obj Screen Coord:', sphereScreenCoord.x, sphereScreenCoord.y );
-
-controls.update();
  }
 
 //  function leapAnimate( data ) {
