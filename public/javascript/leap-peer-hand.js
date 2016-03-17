@@ -112,7 +112,8 @@ function arObjMover() {
   this.down = false;
 
   this.mousedown = function( ev ) {
-    tool.down = true;
+    ev.preventDefault();
+    tool.started = true;
 
   var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
@@ -124,13 +125,16 @@ function arObjMover() {
     handSphere.visible = false;
     }
 
+  };
+
+  this.mousemove = function( ev ) {
+
+     if ( tool.started && selectState ) {
+    //  data.x = Math.round( ev._x );
+    //  data.y = Math.round( ev._y );
 
 
-
-  //};
-
- // this.mousemove = function( ev ) {
-    if ( selectState ) {
+ //   if ( selectState ) {
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
@@ -161,8 +165,9 @@ function arObjMover() {
     updateData.setHueState = false;
 
     leapAnimate( updateData );
-    }
-  };
+    //}
+  }
+};
 
   this.mouseup = function( ev ) {
     console.log( 'up:', ev.x, ev.y );
