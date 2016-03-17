@@ -12,7 +12,6 @@ function initLeapPeerHand() {
 //  } );
 
 socketServer.on( 'leapSphere', function( data ) {
-  //console.log( 'handSphere - data:', data );
     leapAnimate( data );
       } );
 
@@ -104,7 +103,6 @@ function evCanvas( ev ) {
   if ( func ) {
     func( ev );
   }
-
 }
 
 function arObjMover() {
@@ -115,24 +113,20 @@ function arObjMover() {
     ev.preventDefault();
     tool.started = true;
 
-  var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
+    var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
                             -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
-  raycaster.setFromCamera( mouseVector, camera );
-  var intersects = raycaster.intersectObjects( scene.children );
+    raycaster.setFromCamera( mouseVector, camera );
+    var intersects = raycaster.intersectObjects( scene.children );
 
-  if ( intersects.length > 0 ) {
-    selectState = true;
-    handSphere.visible = false;
+    if ( intersects.length > 0 ) {
+      selectState = true;
+      handSphere.visible = false;
     }
-
   };
 
   this.mousemove = function( ev ) {
 
      if ( tool.started && selectState ) {
-    //  data.x = Math.round( ev._x );
-    //  data.y = Math.round( ev._y );
-
 
  //   if ( selectState ) {
 
@@ -165,7 +159,9 @@ function arObjMover() {
     updateData.setHueState = false;
 
     leapAnimate( updateData );
+
     //}
+
   }
 };
 
@@ -204,11 +200,11 @@ function arObjMover() {
     updateData.setHueState = true;
 
     leapAnimate( updateData );
+    tool.started = false;
 
 //console.log( 'peer mouseup:', updateData );
-
- //     var sessionId = socketServer.sessionid;
- //     socketServer.emit( 'leapSphere', updateData, sessionId );
+//     var sessionId = socketServer.sessionid;
+//     socketServer.emit( 'leapSphere', updateData, sessionId );
     };
   }
 
@@ -249,7 +245,6 @@ function arObjMover() {
                 data.color.b );
       peerSphere.visible = data.visible;
       handSphere.visible = false;
-      //data.source = 'peer';
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
