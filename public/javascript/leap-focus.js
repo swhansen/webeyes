@@ -286,17 +286,20 @@ var normalizedPalmSphere = normalizePoint( data.position );
       if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 ) {
           setLightState = 'adjustLight';
           inChooseState = true;
+          sphereData.inChooseState = true;
           updateHandSphere( sphereData );
         }
       if ( hand.grabStrength === 0 && inChooseState) {
           setLightState = 'setLight';
-          updateHandSphere( sphereData );
           inChooseState = false;
+          sphereData.inChooseState = false;
+          updateHandSphere( sphereData );
       }
       if ( hand.grabStrength === 1 && inChooseState) {
           setLightState = 'offLight';
-          updateHandSphere( sphereData );
           inChooseState = false;
+          sphereData.inChooseState = false;
+          updateHandSphere( sphereData );
       }
 
       for ( var finger of hand.fingers ) {

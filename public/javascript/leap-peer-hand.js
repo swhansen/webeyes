@@ -234,6 +234,9 @@ function updatePeerSphere( data ) {
 
 function updateHandSphere( data ) {
 
+ if ( data.inChooseState === false ) {
+  scene.remove( handSphere );
+ }
   scene.add( handSphere );
 
   handSphere.position.fromArray( data.position );
@@ -244,7 +247,6 @@ function updateHandSphere( data ) {
   handSphere.visible = data.visible;
 
 }
-
 
 function ThreeToScreenPosition( obj, camera ) {
     var vector = new THREE.Vector3();
