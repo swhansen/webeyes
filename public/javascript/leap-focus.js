@@ -30,7 +30,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var firstClick = false;
     var peerData = false;
     var handState = {
-      inChooseState : false,
+      inChooseState: false,
       iotSelectEligible: false
     };
 
@@ -257,7 +257,6 @@ function updateHandSphere( data ) {
 
   function leapAnimate( frame ) {
 
- console.log( 'handState:', handState);
     var countBones = 0;
     var countArms = 0;
     var sphereData = {};
@@ -269,7 +268,7 @@ function updateHandSphere( data ) {
     scene.remove( peerSphere );
 
     for ( var hand of frame.hands ) {
-      if ( handState.iotSelectEligible === false && hand.gripStength < 0.05 ) {
+      if ( handState.iotSelectEligible === false && hand.grabStength < 0.05 ) {
       handState.iotSelectEligible = true;
       console.log( 'handState:', handState);
     }
