@@ -160,7 +160,7 @@ function arObjMover() {
     updateData.source = 'peer';
     updateData.setHueState = false;
 
-    updatePeerSphere( updateData );
+    leapAnimate( updateData );
   }
 };
 
@@ -274,7 +274,7 @@ function ThreeToScreenPosition( obj, camera ) {
 function leapAnimate( data ) {
 
   scene.remove( handSphere );
-  //scene.remove( peerSphere );
+  scene.remove( peerSphere );
 
 
   updatePeerSphere( data );
