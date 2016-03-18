@@ -193,7 +193,7 @@ function updateHandSphere( data ) {
 
 // normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
 
-var normalizedPalmSphere = normalizePoint( data.position );
+  var normalizedPalmSphere = normalizePoint( data.position );
 
  handSphere.material.color.setRGB(
              normalizedPalmSphere[0],
@@ -220,20 +220,20 @@ var normalizedPalmSphere = normalizePoint( data.position );
         emitIOT( hueObjData );
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         inChooseState = false;
-        handSphere.visible = false;
+      //  handSphere.visible = false;
         iotLightOn.play();
           }
 
     if ( data.setLightState === 'offLight' ) {
           hueSetLightStateXY( selectedHueDevice, false, [ hueXY.x, hueXY.y ], 100 );
           inChooseState = false;
-          handSphere.visible = false;
+      //    handSphere.visible = false;
           iotLightOff.play();
     }
 
     if ( data.setLightState === 'adjustLight' ) {
         inChooseState = true;
-        handSphere.visible = true;
+      //  handSphere.visible = true;
         scene.add( handSphere );
     }
 
@@ -242,7 +242,7 @@ var normalizedPalmSphere = normalizePoint( data.position );
        // var palmSphereData = {};
         data.operation = 'move';
         data.inChooseState = inChooseState;
-        data.visible = handSphere.visible;
+     //   data.visible = handSphere.visible;
      //   data.position = handSphere.position;
         data.color = handSphere.material.color;
     //    data.interactionBoxSize = data.interactionBox.size;

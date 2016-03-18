@@ -244,7 +244,6 @@ function updateHandSphere( data ) {
                 data.color.g,
                 data.color.b );
   handSphere.visible = data.visible;
-
 }
 
 function ThreeToScreenPosition( obj, camera ) {
@@ -271,7 +270,6 @@ function leapAnimate( data ) {
   scene.remove( handSphere );
   scene.remove( peerSphere );
 
-  //updateLeapSphere( data );
 
  // updatePeerSphere( data );
   updateHandSphere( data );
