@@ -270,11 +270,11 @@ function updateHandSphere( data ) {
     for ( var hand of frame.hands ) {
       if ( handState.iotSelectEligible === false && hand.gripStength > 0.05 ) {
       handState.iotSelectEligible = true;
-      console.log( 'handState:', hand State)
+      console.log( 'handState:', handState);
     }
   }
 
-    for ( var hand of frame.hands ) {
+    for ( hand of frame.hands ) {
 
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
