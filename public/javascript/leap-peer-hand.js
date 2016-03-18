@@ -108,6 +108,8 @@ function arObjMover() {
     if ( intersects.length > 0 ) {
       peerSelected = true;
 
+      console.log( 'intersected:', intersects );
+
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
