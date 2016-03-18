@@ -185,7 +185,9 @@ function updatePeerSpheer( data ) {
 
 function updateHandSphere( data ) {
 
-  scene.add( handSphere );
+  if ( data.inChooseState === true ) {
+   scene.add( handSphere );
+ }
 
   handSphere.position.fromArray( data.position );
 
@@ -259,6 +261,8 @@ var normalizedPalmSphere = normalizePoint( data.position );
 
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+
+    scene.remove( handSphere );
 
     for ( var hand of frame.hands ) {
 
