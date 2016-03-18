@@ -6,7 +6,7 @@
 function initLeapPeerHand() {
 
 socketServer.on( 'leapSphere', function( data ) {
-    leapHandSphere( data );
+    leapAnimate( data );
       } );
 
  var leapFull = document.getElementById( 'leappane' );
@@ -273,10 +273,10 @@ function leapAnimate( data ) {
 
   //updateLeapSphere( data );
 
-  updatePeerSphere( data );
-//  updateHandSphere( data );
+ // updatePeerSphere( data );
+  updateHandSphere( data );
 
-  requestAnimationFrame( leapAnimate );
+  //requestAnimationFrame( leapAnimate );
 
   renderer.render( scene, camera );
   controls.update();
