@@ -152,7 +152,7 @@ function arObjMover() {
               normalizedSphere[2] );
 
     updateData.name = 'handSphere';
-    updateData.operation = 'move';
+    updateData.operation = 'mouseMove';
     updateData.originRtcId = userContext.rtcId;
     updateData.visible = true;
     updateData.position = spherePos;
@@ -195,7 +195,8 @@ function arObjMover() {
     updateData.source = 'peer';
     updateData.setHueState = true;
 
-    updatePeerSphere( updateData );
+    //updatePeerSphere( updateData );
+    leapAnimate( updateData );
     tool.started = false;
 
     };
@@ -223,7 +224,7 @@ var tool = new arObjMover();
 
 function updatePeerSphere( data ) {
 
-  if ( data.operation === 'move' ) {
+  if ( data.operation === 'mouseMove' ) {
     scene.add( peerSphere );
     scene.remove( handSphere );
     peerSelected = true;
