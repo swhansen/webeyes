@@ -238,7 +238,7 @@ function updatePeerSphere( data ) {
       socketServer.emit( 'leapSphere', data, sessionId );
   }
 
-  if (date.operation === 'mouseUp' ) {
+  if (data.operation === 'mouseUp' ) {
     scene.remove( peerSphere );
   }
 }
