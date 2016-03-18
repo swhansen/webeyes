@@ -225,6 +225,7 @@ function updatePeerSphere( data ) {
   if ( data.operation === 'move' ) {
     scene.add( peerSphere );
     scene.remove( handSphere );
+    peerSelected = true;
 
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color.setRGB(
@@ -239,12 +240,15 @@ function updatePeerSphere( data ) {
 
   else if ( data.operation === 'mouseUp' ) {
      scene.remove( peerSphere );
+
+     var sessionId = socketServer.sessionid;
+      socketServer.emit( 'leapSphere', data, sessionId );
     }
 }
 
 function updateHandSphere( data ) {
 
- if ( data.inChooseState === true ) {
+ if ( data.inChooseState === true && !== peerSelected ) {
   scene.add( handSphere );
  }
 
@@ -253,7 +257,7 @@ function updateHandSphere( data ) {
                 data.color.r,
                 data.color.g,
                 data.color.b );
-  handSphere.visible = data.visible;
+ // handSphere.visible = data.visible;
 }
 
 function ThreeToScreenPosition( obj, camera ) {
