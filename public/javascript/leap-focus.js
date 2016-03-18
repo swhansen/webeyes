@@ -259,6 +259,7 @@ function updateHandSphere( data ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     scene.remove( handSphere );
+    scenr.remove( peerSphere );
 
     for ( var hand of frame.hands ) {
 
