@@ -52,7 +52,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     }
 
     socketServer.on( 'leapSphere', function( data ) {
-    updateHandSphere( data );
+    updatePeerSphere( data );
       } );
 
     controller.on( 'gesture', function( gesture ) {
@@ -159,7 +159,7 @@ function normalizePoint( position ) {
   return vec;
 }
 
-function updatePeerSpheer( data ) {
+function updatePeerSphere( data ) {
 
     scene.add( peerSphere );
     scene.remove( handSphere );
