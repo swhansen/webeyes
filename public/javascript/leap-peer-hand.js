@@ -186,7 +186,7 @@ function arObjMover() {
               normalizedSphere[2] );
 
     updateData.name = 'peerSphere';
-    updateData.operation = 'stop';
+    updateData.operation = 'mouseUp';
     updateData.originRtcId = userContext.rtcId;
     updateData.visible = false;
     updateData.position = spherePos;
@@ -236,7 +236,11 @@ function updatePeerSphere( data ) {
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
-}
+  }
+
+  if (date.operation === 'mouseUp' ) {
+    scene.remove( peerSphere );
+  }
 }
 
 function updateHandSphere( data ) {
