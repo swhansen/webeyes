@@ -53,12 +53,13 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     }
 
     socketServer.on( 'leapSphere', function( data ) {
-      if ( data.name === 'peerSphere' && data.operation === 'move') {
+
+      if( data.operation === 'mouseDown' ) {
         peerData = true;
-      }
-      if ( data.operation === 'mouseUp' ) {
+      }if( data.operation === 'mouseup' ) {
         peerData = false;
       }
+
       updatePeerSphere( data );
       } );
 
