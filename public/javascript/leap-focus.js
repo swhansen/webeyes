@@ -209,8 +209,8 @@ var normalizedPalmSphere = normalizePoint( data.position );
                 normalizedPalmSphere[1] * 255,
                 normalizedPalmSphere[2] * 255 );
 
-  //  if ( setLightState === 'setLight' && inChooseState ) {
-    if ( data.setHueState = true ) {
+    if ( data.setLightState === 'setLight' && data.inChooseState ) {
+
 
         var hueObjData = {};
         hueObjData.deviceID = selectedHueDevice;
@@ -225,14 +225,14 @@ var normalizedPalmSphere = normalizePoint( data.position );
         iotLightOn.play();
           }
 
-    if ( setLightState === 'offLight' && inChooseState ) {
+    if ( data.setLightState === 'offLight' && data.inChooseState ) {
           hueSetLightStateXY( selectedHueDevice, false, [ hueXY.x, hueXY.y ], 100 );
           inChooseState = false;
           handSphere.visible = false;
           iotLightOff.play();
     }
 
-    if ( setLightState === 'adjustLight' ) {
+    if ( data.setLightState === 'adjustLight' ) {
         inChooseState = true;
         handSphere.visible = true;
         scene.add( handSphere );
@@ -290,13 +290,17 @@ var normalizedPalmSphere = normalizePoint( data.position );
 
       if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 ) {
           setLightState = 'adjustLight';
+
           inChooseState = true;
+
+          sphereData.setLightState = 'adjustLight' ;
           sphereData.inChooseState = true;
           updateHandSphere( sphereData );
         }
       if ( hand.grabStrength === 0 && inChooseState) {
           setLightState = 'setLight';
           inChooseState = false;
+          sphereData.setLightState = 'setLight' ;
           sphereData.inChooseState = false;
           sphereData.setHueState = true;
           updateHandSphere( sphereData );
@@ -304,6 +308,7 @@ var normalizedPalmSphere = normalizePoint( data.position );
       if ( hand.grabStrength === 1 && inChooseState) {
           setLightState = 'offLight';
           inChooseState = false;
+          sphereData.setLightState = 'offLight' ;
           sphereData.inChooseState = false;
           sphereData.setHueState = false;
           updateHandSphere( sphereData );
