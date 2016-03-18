@@ -231,7 +231,7 @@ function updatePeerSphere( data ) {
                 data.color.g,
                 data.color.b );
       peerSphere.visible = data.visible;
-      scene.remove( handSphere );
+
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
@@ -274,7 +274,7 @@ function ThreeToScreenPosition( obj, camera ) {
 function leapAnimate( data ) {
 
   scene.remove( handSphere );
-  scene.remove( peerSphere );
+  //scene.remove( peerSphere );
 
 
   updatePeerSphere( data );
