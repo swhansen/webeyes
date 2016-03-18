@@ -168,6 +168,7 @@ function arObjMover() {
     console.log( 'up:', ev.x, ev.y );
     tool.down = false;
     peerSelected = false;
+    scene.remove( peerSphere );
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
@@ -236,9 +237,8 @@ function updatePeerSphere( data ) {
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
-  }
 
-  else if ( data.operation === 'mouseUp' ) {
+  } else if ( data.operation === 'mouseUp' ) {
      scene.remove( peerSphere );
 
      var sessionId = socketServer.sessionid;
@@ -248,7 +248,7 @@ function updatePeerSphere( data ) {
 
 function updateHandSphere( data ) {
 
- if ( data.inChooseState === true &&  peerSelected === false) {
+ if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
  }
 
