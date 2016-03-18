@@ -116,7 +116,7 @@ function arObjMover() {
     var spherePos = [ leapX, leapY, 0 ];
 
     updateData.name = 'peerSphere';
-    updateData.operation = 'start';
+    updateData.operation = 'mouseDown';
     updateData.originRtcId = userContext.rtcId;
     updateData.visible = peerSphere.visible;
     updateData.position = spherePos;
