@@ -108,6 +108,7 @@ function arObjMover() {
     if ( intersects.length > 0 ) {
       peerSelected = true;
 
+
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
     var spherePos = [ leapX, leapY, 0 ];
@@ -219,6 +220,8 @@ var tool = new arObjMover();
 
 function updatePeerSphere( data ) {
 
+  If ( data.operation === move ) {
+
   peerSphere.position.fromArray( data.position );
   peerSphere.material.color.setRGB(
                 data.color.r,
@@ -229,6 +232,7 @@ function updatePeerSphere( data ) {
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
+}
 }
 
 
