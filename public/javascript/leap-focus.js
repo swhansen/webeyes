@@ -257,6 +257,7 @@ function updateHandSphere( data ) {
 
   function leapAnimate( frame ) {
 
+ console.log( 'handState:', handState);
     var countBones = 0;
     var countArms = 0;
     var sphereData = {};
