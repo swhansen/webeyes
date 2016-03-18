@@ -48,7 +48,7 @@ function evCanvas( ev ) {
     var boneMeshes = [];
 
     var renderer, scene, camera, controls;
-    var selectState = false;
+    var peerSelected = false;
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
@@ -85,15 +85,16 @@ function evCanvas( ev ) {
     scene.add( light );
     scene.add( aLight );
 
-  function onWindowResize() {
+function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
-  }
+}
 
 function arObjMover() {
   var tool = this;
   this.down = false;
+  var updateData = {};
 
   this.mousedown = function( ev ) {
     ev.preventDefault();
@@ -105,14 +106,31 @@ function arObjMover() {
     var intersects = raycaster.intersectObjects( scene.children );
 
     if ( intersects.length > 0 ) {
-      selectState = true;
-      handSphere.visible = false;
+      peerSelected = true;
+
+    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+    var spherePos = [ leapX, leapY, 0 ];
+
+    updateData.name = 'peerSphere';
+    updateData.operation = 'start';
+    updateData.originRtcId = userContext.rtcId;
+    updateData.visible = peerSphere.visible;
+    updateData.position = spherePos;
+    //updateData.color = peerSphere.material.color;
+    updateData.source = 'peer';
+    updateData.setHueState = false;
+
+    scene.remove( handSphere );
+
+    updatePeerSphere( updateData );
+
     }
   };
 
   this.mousemove = function( ev ) {
 
-     if ( tool.started && selectState ) {
+  if ( tool.started && peerSelected ) {
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
@@ -130,31 +148,23 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
-    peerSphere.visible = true;
-    handSphere.visible = false;
-
-    var updateData = {};
     updateData.name = 'handSphere';
     updateData.operation = 'move';
     updateData.originRtcId = userContext.rtcId;
-    updateData.visible = peerSphere.visible;
+    updateData.visible = true;
     updateData.position = spherePos;
     updateData.color = peerSphere.material.color;
     updateData.source = 'peer';
     updateData.setHueState = false;
 
-    leapAnimate( updateData );
-
+    updatePeerSphere( updateData );
   }
 };
 
   this.mouseup = function( ev ) {
     console.log( 'up:', ev.x, ev.y );
     tool.down = false;
-
-    selectState = false;
-    handSphere.visible = false;
-    peerSphere.visible = false;
+    peerSelected = false;
 
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
@@ -172,7 +182,6 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
-    var updateData = {};
     updateData.name = 'peerSphere';
     updateData.operation = 'stop';
     updateData.originRtcId = userContext.rtcId;
@@ -182,17 +191,13 @@ function arObjMover() {
     updateData.source = 'peer';
     updateData.setHueState = true;
 
-    leapAnimate( updateData );
+    updatePeerSphere( updateData );
     tool.started = false;
-
-//console.log( 'peer mouseup:', updateData );
-//     var sessionId = socketServer.sessionid;
-//     socketServer.emit( 'leapSphere', updateData, sessionId );
 
     };
   }
 
-   var tool = new arObjMover();
+var tool = new arObjMover();
 
 //------------------------
 
@@ -212,18 +217,10 @@ function arObjMover() {
 //     scene.add( mesh );
 // }
 
-  function updateLeapSphere( data ) {
+function updatePeerSphere( data ) {
 
-    var ignoreHandSphere = false;
-
-    if ( data.source === 'peer' ) {
-      ignoreHandSphere = true;
-    }
-
-   if ( data.source === 'peer' ) {
-
-      peerSphere.position.fromArray( data.position );
-      peerSphere.material.color.setRGB(
+  peerSphere.position.fromArray( data.position );
+  peerSphere.material.color.setRGB(
                 data.color.r,
                 data.color.g,
                 data.color.b );
@@ -232,20 +229,22 @@ function arObjMover() {
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
-    }
+}
 
-    if ( ignoreHandSphere === false ) {
 
-      handSphere.position.fromArray( data.position );
-      handSphere.material.color.setRGB(
+function updateHandSphere( data ) {
+
+  scene.add( handSphere );
+
+  handSphere.position.fromArray( data.position );
+  handSphere.material.color.setRGB(
                 data.color.r,
                 data.color.g,
                 data.color.b );
-      handSphere.visible = data.visible;
-    }
-  }
+  handSphere.visible = data.visible;
 
-// convert the three object into screen coordinates
+}
+
 
 function ThreeToScreenPosition( obj, camera ) {
     var vector = new THREE.Vector3();
@@ -268,7 +267,16 @@ function ThreeToScreenPosition( obj, camera ) {
 
 function leapAnimate( data ) {
 
-  updateLeapSphere( data );
+  scene.remove( handSphere );
+  scene.remove( peerSphere );
+
+  //updateLeapSphere( data );
+
+  updatePeerSphere( data );
+  updateHandSphere( data );
+
+  requestAnimationFrame( leapAnimate );
+
   renderer.render( scene, camera );
   controls.update();
 

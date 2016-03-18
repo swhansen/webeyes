@@ -159,22 +159,14 @@ function normalizePoint( position ) {
   return vec;
 }
 
-function updateHandSphere( data ) {
+function updatePeerSpheer( data ) {
 
-// avoid rendering the hand generated sphere when peer broadcast
-
-var ignoreHandSphere = false;
-
-if ( data.source === 'peer' ) {
-    ignoreHandSphere = true;
-  }
-
-  if ( data.source === 'peer') {
+    scene.add( peerSphere );
+    scene.remove( handSphere );
 
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color = data.color;
     peerSphere.visible = true;
-    scene.remove( handSphere );
 
     if ( data.setHueState ) {
 
@@ -187,10 +179,13 @@ if ( data.source === 'peer' ) {
 
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
-        peerSphere.visible = false;
+        scene.remove( peerSphere );
       }
+}
 
-    } else { if ( ignoreHandSphere !==true )   {
+function updateHandSphere( data ) {
+
+  scene.add( handSphere );
 
   handSphere.position.fromArray( data.position );
 
@@ -254,8 +249,6 @@ var normalizedPalmSphere = normalizePoint( data.position );
         data.source = 'hand';
 
         emitLeapSphere( data );
-    }
-  }
 }
 
   function leapAnimate( frame ) {
@@ -264,7 +257,6 @@ var normalizedPalmSphere = normalizePoint( data.position );
     var countArms = 0;
     var sphereData = {};
 
-    scene.remove( handSphere );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
