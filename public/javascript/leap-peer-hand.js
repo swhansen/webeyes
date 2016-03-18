@@ -233,13 +233,14 @@ function updatePeerSphere( data ) {
                 data.color.b );
       peerSphere.visible = data.visible;
 
-
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
   }
 
-  if (data.operation === 'mouseUp' ) {
-    scene.remove( peerSphere );
+  else if {
+    ( data.operation === 'mouseUp' ) {
+     scene.remove( peerSphere );
+    }
   }
 }
 
