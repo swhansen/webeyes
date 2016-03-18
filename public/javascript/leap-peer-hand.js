@@ -250,7 +250,6 @@ function updateHandSphere( data ) {
 
  if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
- }
 
   handSphere.position.fromArray( data.position );
   handSphere.material.color.setRGB(
@@ -258,6 +257,12 @@ function updateHandSphere( data ) {
                 data.color.g,
                 data.color.b );
  // handSphere.visible = data.visible;
+
+}
+
+if ( data.mouseUp ) {
+  scene.remove( handSphere );
+}
 }
 
 function ThreeToScreenPosition( obj, camera ) {
