@@ -161,7 +161,7 @@ function normalizePoint( position ) {
 
 function updatePeerSphere( data ) {
 
-    scene.add( peerSphere );
+   // scene.add( peerSphere );
     scene.remove( handSphere );
 
     peerSphere.position.fromArray( data.position );
