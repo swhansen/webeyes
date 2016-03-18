@@ -267,8 +267,12 @@ function updateHandSphere( data ) {
     for ( var hand of frame.hands ) {
       if ( hand.grabStrength === 0 ) {
         handState.iotSelectEligible = true;
+      }
+      if  ( hand.grabStrength === 0 && handState.inChooseState ) {
+        handState.iotSelectEligible = false;
+      }
     }
-  }
+
 
     for ( hand of frame.hands ) {
 
@@ -297,14 +301,12 @@ function updateHandSphere( data ) {
 
           sphereData.setLightState = 'adjustLight' ;
           handState.inChooseState = true;
-        //  sphereData.inChooseState = true;
 
           updateHandSphere( sphereData );
         }
       if ( hand.grabStrength === 0 && handState.inChooseState && handState.iotSelectEligible) {
 
           sphereData.setLightState = 'setLight' ;
-         // sphereData.inChooseState = false;
           handState.iotSelectEligible = false;
           handState.inChooseState = false;
 
@@ -313,7 +315,6 @@ function updateHandSphere( data ) {
       if ( hand.grabStrength === 1 && handState.inChooseState && handState.iotSelectEligible) {
 
           sphereData.setLightState = 'offLight' ;
-        //  sphereData.inChooseState = false;
           handState.iotSelectEligible = false;
           handState.inChooseState = false;
 
