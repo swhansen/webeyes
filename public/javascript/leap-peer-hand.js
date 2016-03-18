@@ -224,7 +224,7 @@ function updatePeerSphere( data ) {
 
   if ( data.operation === 'move' ) {
     scene.add( peerSphere );
-    scene.remone( handSphere );
+    scene.remove( handSphere );
 
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color.setRGB(
