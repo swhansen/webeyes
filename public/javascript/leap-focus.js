@@ -28,6 +28,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var selectedHueDevice = 1;
     var iotZones = 3;
     var firstClick = false;
+    var peerData = false;
 
     var renderer, scene, camera, controls;
 
@@ -52,7 +53,13 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     }
 
     socketServer.on( 'leapSphere', function( data ) {
-    updatePeerSphere( data );
+      if ( data.name === 'peerSphere' && data.operation === 'move') {
+        peerData = true;
+      }
+      if ( data.operation === 'mouseUp' ) {
+        peerData = false;
+      }
+      updatePeerSphere( data );
       } );
 
     controller.on( 'gesture', function( gesture ) {
@@ -185,7 +192,7 @@ function updatePeerSphere( data ) {
 
 function updateHandSphere( data ) {
 
-  if ( inChooseState === true ) {
+  if ( inChooseState === true && peerData === false ) {
    scene.add( handSphere );
  }
 
