@@ -234,10 +234,9 @@ function updatePeerSphere( data ) {
 
 function updateHandSphere( data ) {
 
- if ( data.inChooseState === false ) {
-  scene.remove( handSphere );
- }
+ if ( data.inChooseState === true ) {
   scene.add( handSphere );
+ }
 
   handSphere.position.fromArray( data.position );
   handSphere.material.color.setRGB(
