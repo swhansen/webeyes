@@ -220,7 +220,8 @@ var tool = new arObjMover();
 
 function updatePeerSphere( data ) {
 
-  if ( data.operation === move ) {
+  if ( data.operation === 'move' ) {
+    scene.add( peerSphere );
 
   peerSphere.position.fromArray( data.position );
   peerSphere.material.color.setRGB(
@@ -234,7 +235,6 @@ function updatePeerSphere( data ) {
       socketServer.emit( 'leapSphere', data, sessionId );
 }
 }
-
 
 function updateHandSphere( data ) {
 
