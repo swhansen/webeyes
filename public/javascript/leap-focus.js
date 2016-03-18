@@ -209,7 +209,10 @@ var normalizedPalmSphere = normalizePoint( data.position );
                 normalizedPalmSphere[1] * 255,
                 normalizedPalmSphere[2] * 255 );
 
-    if ( data.setLightState === 'setLight' && data.inChooseState ) {
+
+// turn light on
+
+    if ( data.setLightState === 'setLight' ) {
 
 
         var hueObjData = {};
@@ -225,7 +228,7 @@ var normalizedPalmSphere = normalizePoint( data.position );
         iotLightOn.play();
           }
 
-    if ( data.setLightState === 'offLight' && data.inChooseState ) {
+    if ( data.setLightState === 'offLight' ) {
           hueSetLightStateXY( selectedHueDevice, false, [ hueXY.x, hueXY.y ], 100 );
           inChooseState = false;
           handSphere.visible = false;
