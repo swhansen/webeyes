@@ -220,7 +220,7 @@ var tool = new arObjMover();
 
 function updatePeerSphere( data ) {
 
-  If ( data.operation === move ) {
+  if ( data.operation === move ) {
 
   peerSphere.position.fromArray( data.position );
   peerSphere.material.color.setRGB(
