@@ -195,7 +195,6 @@ function arObjMover() {
     updateData.source = 'peer';
     updateData.setHueState = true;
 
-    //updatePeerSphere( updateData );
     leapAnimate( updateData );
     tool.started = false;
 
