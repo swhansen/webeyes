@@ -241,6 +241,7 @@ var normalizedPalmSphere = normalizePoint( data.position );
 
        // var palmSphereData = {};
         data.operation = 'move';
+        data.inChooseState = inChooseState;
         data.visible = handSphere.visible;
      //   data.position = handSphere.position;
         data.color = handSphere.material.color;
