@@ -32,7 +32,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var handState = {
       inChooseState : false,
       iotSelectEligible: false
-    }
+    };
 
     var renderer, scene, camera, controls;
 
@@ -268,13 +268,13 @@ function updateHandSphere( data ) {
     scene.remove( peerSphere );
 
 
-    if( hand.gripStrength = 0 ) {
-
-    }
-
     for ( var hand of frame.hands ) {
+      if( hand.gripStength === 0 ) {
       handState.iotSelectEligible = true;
     }
+  }
+
+    for ( var hand of frame.hands ) {
 
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
