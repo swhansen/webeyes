@@ -209,7 +209,8 @@ var normalizedPalmSphere = normalizePoint( data.position );
                 normalizedPalmSphere[1] * 255,
                 normalizedPalmSphere[2] * 255 );
 
-    if ( setLightState === 'setLight' && inChooseState ) {
+  //  if ( setLightState === 'setLight' && inChooseState ) {
+    if ( data.setHueState = true ) {
 
         var hueObjData = {};
         hueObjData.deviceID = selectedHueDevice;
@@ -297,12 +298,14 @@ var normalizedPalmSphere = normalizePoint( data.position );
           setLightState = 'setLight';
           inChooseState = false;
           sphereData.inChooseState = false;
+          sphereData.setHueState = true;
           updateHandSphere( sphereData );
       }
       if ( hand.grabStrength === 1 && inChooseState) {
           setLightState = 'offLight';
           inChooseState = false;
           sphereData.inChooseState = false;
+          sphereData.setHueState = false;
           updateHandSphere( sphereData );
       }
 
