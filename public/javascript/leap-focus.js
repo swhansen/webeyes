@@ -311,6 +311,7 @@ function updateHandSphere( data ) {
       if ( hand.grabStrength === 1 && handState.inChooseState && handState.iotSelectEligible) {
 
           sphereData.setLightState = 'offLight' ;
+        //  sphereData.inChooseState = false;
           handState.iotSelectEligible = false;
           handState.inChooseState = false;
 
