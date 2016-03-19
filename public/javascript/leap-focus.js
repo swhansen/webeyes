@@ -264,11 +264,14 @@ function updateHandSphere( data ) {
     scene.remove( handSphere );
     scene.remove( peerSphere );
 
-    if (frame.hands < 0 ) {
-      handState.iotSelectEligible = true;
-    }
+for ( var hand of frame.hands ) {
 
-    for ( var hand of frame.hands ) {
+if ( hand.grabStrength === 0 && handState.inChooseState === true ) {
+  handState.iotSelectEligible = true;
+}
+}
+
+    for (  hand of frame.hands ) {
       if ( hand.grabStrength === 0 ) {
         handState.iotSelectEligible = true;
     }
