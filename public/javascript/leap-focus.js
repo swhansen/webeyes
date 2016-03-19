@@ -266,7 +266,7 @@ function updateHandSphere( data ) {
 
 for ( var hand of frame.hands ) {
 
-if ( hand.grabStrength === 0 && handState.inChooseState === true ) {
+if ( hand.grabStrength === 0 && handState.inChooseState === true && handState.iotSelectEligible === false; ) {
   handState.iotSelectEligible = true;
 }
 }
