@@ -297,7 +297,6 @@ function updateHandSphere( data ) {
 
           sphereData.setLightState = 'adjustLight' ;
           handState.inChooseState = true;
-          handState.iotSelectEligible = false;
 
           updateHandSphere( sphereData );
         }
