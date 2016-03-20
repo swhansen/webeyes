@@ -92,6 +92,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
 
+
     var peerSphereGeometry = new THREE.SphereGeometry( 40, 16, 16 );
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
@@ -192,7 +193,7 @@ function updatePeerSphere( data ) {
 function updateHandSphere( data ) {
 
 // if ( handState.inChooseState === true ) {
-//  scene.add( handSphere );
+  scene.add( handSphere );
 //}
 
   handSphere.position.fromArray( data.position );
@@ -261,7 +262,7 @@ function updateHandSphere( data ) {
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
-   // scene.remove( handSphere );
+    scene.remove( handSphere );
     scene.remove( peerSphere );
 
 // for ( var hand of frame.hands ) {
@@ -278,7 +279,6 @@ function updateHandSphere( data ) {
 //  }
 
     for ( var hand of frame.hands ) {
-
 
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
