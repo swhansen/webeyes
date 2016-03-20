@@ -191,9 +191,9 @@ function updatePeerSphere( data ) {
 
 function updateHandSphere( data ) {
 
-  if ( handState.inChooseState === true ) {
-   scene.add( handSphere );
- }
+// if ( handState.inChooseState === true ) {
+//  scene.add( handSphere );
+//}
 
   handSphere.position.fromArray( data.position );
 
@@ -264,12 +264,12 @@ function updateHandSphere( data ) {
    // scene.remove( handSphere );
     scene.remove( peerSphere );
 
-for ( var hand of frame.hands ) {
-//
-  if ( hand.grabStrength === 0 && handState.inChooseState === false ) {
-      handState.iotSelectEligible = true;
-  }
-}
+// for ( var hand of frame.hands ) {
+// //
+//   if ( hand.grabStrength === 0 && handState.inChooseState === false ) {
+//       handState.iotSelectEligible = true;
+//   }
+// }
 
 //for (  var hand of frame.hands ) {
 //    if ( hand.grabStrength === 0 && handState.inChooseState ) {
@@ -277,7 +277,7 @@ for ( var hand of frame.hands ) {
 //    }
 //  }
 
-    for ( hand of frame.hands ) {
+    for ( var hand of frame.hands ) {
 
 
       sphereData.position = hand.sphereCenter;
@@ -303,13 +303,12 @@ for ( var hand of frame.hands ) {
 
 
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.iotSelectEligible  ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95  ) {
 
           sphereData.setLightState = 'adjustLight' ;
 
           handState.inChooseState = true;
-          handState.iotSelectEligible = false;
-
+       //   handState.iotSelectEligible = false;
 
           updateHandSphere( sphereData );
         }
@@ -317,7 +316,7 @@ for ( var hand of frame.hands ) {
 
           sphereData.setLightState = 'setLight' ;
           handState.inChooseState = false;
-          handState.iotSelectEligible = false;
+     //     handState.iotSelectEligible = false;
 
           updateHandSphere( sphereData );
       }
@@ -326,7 +325,7 @@ for ( var hand of frame.hands ) {
           sphereData.setLightState = 'offLight' ;
         //  sphereData.inChooseState = false;
           handState.inChooseState = false;
-          handState.iotSelectEligible = false;
+     //     handState.iotSelectEligible = false;
 
           updateHandSphere( sphereData );
       }
