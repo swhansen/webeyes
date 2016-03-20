@@ -308,7 +308,7 @@ if ( handState.inChooseState === true ) {
           updateHandSphere( sphereData );
         }
 
-if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 handState.iotSelectEligible === false ) {
+if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.iotSelectEligible === false ) {
 
   sphereData.setLightState = 'adjustLight' ;
           handState.inChooseState = true;
