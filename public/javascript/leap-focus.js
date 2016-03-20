@@ -191,7 +191,7 @@ function updatePeerSphere( data ) {
 
 function updateHandSphere( data ) {
 
-  if ( data.inChooseState === true ) {
+  if ( handState.inChooseState === true ) {
    scene.add( handSphere );
  }
 
