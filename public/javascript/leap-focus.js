@@ -191,7 +191,7 @@ function updatePeerSphere( data ) {
 
 function updateHandSphere( data ) {
 
-  if ( handState.inChooseState === true ) {
+  if ( data.inChooseState === true ) {
    scene.add( handSphere );
  }
 
@@ -309,6 +309,7 @@ for (  var hand of frame.hands ) {
           sphereData.setLightState = 'adjustLight' ;
           handState.inChooseState = true;
           handState.iotSelectEligible = false;
+          sphereData.inChooseState = true;
 
           updateHandSphere( sphereData );
         }
