@@ -300,22 +300,13 @@ if ( handState.inChooseState === true ) {
       }
     }
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.iotSelectEligible === true ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95  ) {
 
           sphereData.setLightState = 'adjustLight' ;
           handState.inChooseState = true;
-          handState.iotSelectEligible = false;
+       //   handState.iotSelectEligible = false;
           updateHandSphere( sphereData );
         }
-
-if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.iotSelectEligible === false ) {
-
-  sphereData.setLightState = 'adjustLight' ;
-          handState.inChooseState = true;
-          updateHandSphere( sphereData );
-        }
-
-
 
       if ( hand.grabStrength === 0 && handState.inChooseState ) {
 
