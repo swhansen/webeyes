@@ -268,15 +268,14 @@ for ( var hand of frame.hands ) {
 //
   if ( hand.grabStrength === 0 && handState.inChooseState === false && handState.iotSelectEligible === false ) {
       handState.iotSelectEligible = true;
-      handState.inChooseState = false;
   }
 }
 
-for (  var hand of frame.hands ) {
-    if ( hand.grabStrength === 0 && handState.inChooseState ) {
-        handState.iotSelectEligible = true;
-    }
-  }
+//for (  var hand of frame.hands ) {
+//    if ( hand.grabStrength === 0 && handState.inChooseState ) {
+//        handState.iotSelectEligible = true;
+//    }
+//  }
 
     for ( hand of frame.hands ) {
 
@@ -304,16 +303,17 @@ for (  var hand of frame.hands ) {
 
 
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.iotSelectEligible ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95  ) {
 
           sphereData.setLightState = 'adjustLight' ;
+
           handState.inChooseState = true;
           handState.iotSelectEligible = false;
-          sphereData.inChooseState = true;
+
 
           updateHandSphere( sphereData );
         }
-      if ( hand.grabStrength === 0 && handState.inChooseState && handState.iotSelectEligible ) {
+      if ( hand.grabStrength === 0 && handState.inChooseState ) {
 
           sphereData.setLightState = 'setLight' ;
           handState.inChooseState = false;
@@ -321,7 +321,7 @@ for (  var hand of frame.hands ) {
 
           updateHandSphere( sphereData );
       }
-      if ( hand.grabStrength === 1 && handState.inChooseState && handState.iotSelectEligible) {
+      if ( hand.grabStrength === 1 && handState.inChooseState && ) {
 
           sphereData.setLightState = 'offLight' ;
         //  sphereData.inChooseState = false;
