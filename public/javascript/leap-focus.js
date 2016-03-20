@@ -321,7 +321,7 @@ for ( var hand of frame.hands ) {
 
           updateHandSphere( sphereData );
       }
-      if ( hand.grabStrength === 1 && handState.inChooseState && ) {
+      if ( hand.grabStrength === 1 && handState.inChooseState ) {
 
           sphereData.setLightState = 'offLight' ;
         //  sphereData.inChooseState = false;
