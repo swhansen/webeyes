@@ -233,9 +233,9 @@ function updateHandSphere( data ) {
           iotLightOff.play();
     }
 
-    if ( data.setLightState === 'adjustLight' ) {
-        scene.add( handSphere );
-    }
+  //  if ( data.setLightState === 'adjustLight' ) {
+  //      scene.add( handSphere );
+  //  }
 
 // broadcast the handSphere for peer intereaction
 
