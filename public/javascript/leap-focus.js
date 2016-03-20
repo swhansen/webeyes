@@ -268,7 +268,7 @@ for ( var hand of frame.hands ) {
 //
   if ( hand.grabStrength === 0 && handState.inChooseState === false && handState.iotSelectEligible === false ) {
       handState.iotSelectEligible = true;
-    //  handState.inChooseState = false;
+      handState.inChooseState = false;
   }
 }
 
