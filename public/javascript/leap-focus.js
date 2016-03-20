@@ -168,7 +168,7 @@ function normalizePoint( position ) {
 function updatePeerSphere( data ) {
 
     scene.add( peerSphere );
-   // scene.remove( handSphere );
+    scene.remove( handSphere );
 
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color = data.color;
@@ -261,7 +261,7 @@ function updateHandSphere( data ) {
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
-    scene.remove( handSphere );
+   // scene.remove( handSphere );
     scene.remove( peerSphere );
 
 for ( var hand of frame.hands ) {
