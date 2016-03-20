@@ -265,12 +265,12 @@ if ( handState.inChooseState === true ) {
     scene.remove( handSphere );
     scene.remove( peerSphere );
 
-// for ( var hand of frame.hands ) {
+ for ( var hand of frame.hands ) {
 // //
-//   if ( hand.grabStrength === 0 && handState.inChooseState === false ) {
-//       handState.iotSelectEligible = true;
-//   }
-// }
+   if ( hand.grabStrength === 0 ) {
+       handState.iotSelectEligible = true;
+   }
+ }
 
 //for (  var hand of frame.hands ) {
 //    if ( hand.grabStrength === 0 && handState.inChooseState ) {
