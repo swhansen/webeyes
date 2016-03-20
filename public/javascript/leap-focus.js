@@ -168,7 +168,7 @@ function normalizePoint( position ) {
 function updatePeerSphere( data ) {
 
     scene.add( peerSphere );
-    scene.remove( handSphere );
+   // scene.remove( handSphere );
 
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color = data.color;
