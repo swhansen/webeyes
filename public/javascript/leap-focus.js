@@ -303,7 +303,7 @@ for ( var hand of frame.hands ) {
 
 
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95  ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.iotSelectEligible  ) {
 
           sphereData.setLightState = 'adjustLight' ;
 
