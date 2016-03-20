@@ -266,9 +266,9 @@ function updateHandSphere( data ) {
 
 for ( var hand of frame.hands ) {
 //
-  if ( hand.grabStrength === 0 && handState.inChooseState === true && handState.iotSelectEligible === false ) {
+  if ( hand.grabStrength === 0 && handState.inChooseState === false && handState.iotSelectEligible === false ) {
       handState.iotSelectEligible = true;
-//handState.inChooseState = false;
+    //  handState.inChooseState = false;
   }
 }
 
@@ -315,8 +315,8 @@ for (  var hand of frame.hands ) {
       if ( hand.grabStrength === 0 && handState.inChooseState && handState.iotSelectEligible ) {
 
           sphereData.setLightState = 'setLight' ;
-          handState.iotSelectEligible = false;
           handState.inChooseState = false;
+          handState.iotSelectEligible = false;
 
           updateHandSphere( sphereData );
       }
@@ -324,8 +324,8 @@ for (  var hand of frame.hands ) {
 
           sphereData.setLightState = 'offLight' ;
         //  sphereData.inChooseState = false;
-          handState.iotSelectEligible = false;
           handState.inChooseState = false;
+          handState.iotSelectEligible = false;
 
           updateHandSphere( sphereData );
       }
