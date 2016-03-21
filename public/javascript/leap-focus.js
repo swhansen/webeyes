@@ -172,9 +172,13 @@ function updatePeerSphere( data ) {
   if ( data.operation === 'mouseMove' ) {
     scene.add( peerSphere );
     scene.remove( handSphere );
-  }
 
-    peerSphere.position.fromArray( data.position );
+
+   // peerSphere.position.fromArray( data.position );
+    peerSphere.position.x = data.position[0];
+    peerSphere.position.y = data.position[1];
+    peerSphere.position.z = data.position[2];
+
     peerSphere.material.color = data.color;
     peerSphere.visible = true;
 
@@ -194,6 +198,7 @@ function updatePeerSphere( data ) {
         handState.inChooseState = false;
         handState.iotSelectEligible = false;
       }
+    }
 }
 
 function onHandFound() {
@@ -274,6 +279,7 @@ if ( handState.inChooseState === true ) {
 
     scene.remove( handSphere );
     scene.remove( peerSphere );
+
 
 // make the hand eligable
 
