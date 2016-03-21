@@ -39,7 +39,8 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
     var renderer, scene, camera, controls;
 
-    var controller = Leap.loop( { enableGesture:true, background: false }, leapAnimate ).use('handEntry').on('handFound', function(){ console.log('hand found'); } );
+    var controller = Leap.loop( { enableGesture:true, background: false },
+       leapAnimate ).use('handEntry').on('handFound', onHandFound() );
 
 
     function emitLeap( data ) {
@@ -192,6 +193,12 @@ function updatePeerSphere( data ) {
         iotLightOn.play();
         scene.remove( peerSphere );
       }
+}
+
+function onHandFound() {
+  console.log( 'onHandFound' );
+  handState.inChooseState = false;
+  handState.iotSelectEligible = false;
 }
 
 function updateHandSphere( data ) {
