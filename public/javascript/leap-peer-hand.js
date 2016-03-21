@@ -253,7 +253,8 @@ if ( data.operation === 'mouseDown' ) {
                 data.color.r,
                 data.color.g,
                 data.color.b );
-      peerSphere.visible = data.visible;
+    peerSphere.visible = data.visible;
+    peerSphere.operation = 'mouseDown';
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
