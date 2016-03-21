@@ -266,8 +266,6 @@ if ( handState.inChooseState === true ) {
     scene.remove( peerSphere );
 
 
-
-
  for ( var hand of frame.hands ) {
    if ( hand.grabStrength === 0  && handState.iotSelectEligible === false ) {
        handState.iotSelectEligible = true;
@@ -304,7 +302,7 @@ if ( handState.inChooseState === true ) {
     }
 
 //
-//   set the choose state if grab and eligible and choose is false
+//   move to the chooseState from selectEligible on the first grab
 
       if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95
             && handState.inChooseState === false
@@ -314,18 +312,19 @@ if ( handState.inChooseState === true ) {
           handState.iotSelectEligible = false;
         }
 
+// three possible hand states
 
-if ( handState.inChooseState ) {
+    if ( handState.inChooseState ) {
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 ) {//&& handState.inChooseState ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 ) {      //&& handState.inChooseState ) {
 
           sphereData.setLightState = 'adjustLight' ;
           //        handState.inChooseState = true;
           //         handState.iotSelectEligible = false;
-         updateHandSphere( sphereData );
+          updateHandSphere( sphereData );
         }
 
-      if ( hand.grabStrength === 0  ){//&&  handState.inChooseState ) {
+      if ( hand.grabStrength === 0  ) {        //&&  handState.inChooseState ) {
 
           sphereData.setLightState = 'setLight' ;
           handState.inChooseState = false;
@@ -333,11 +332,11 @@ if ( handState.inChooseState ) {
           updateHandSphere( sphereData );
       }
 
-      if ( hand.grabStrength === 1 ) {//} && handState.inChooseState ) {
+      if ( hand.grabStrength === 1 ) {        //} && handState.inChooseState ) {
 
           sphereData.setLightState = 'offLight' ;
           handState.inChooseState = false;
-     //     handState.iotSelectEligible = false;
+          handState.iotSelectEligible = false;
           updateHandSphere( sphereData );
       }
     }
