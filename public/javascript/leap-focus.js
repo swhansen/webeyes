@@ -99,7 +99,8 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.position.set( 0.0, 0.0, 0.0 );
     peerSphere.name = 'peerSphere';
-    scene.add( peerSphere );
+
+   // scene.add( peerSphere );
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
