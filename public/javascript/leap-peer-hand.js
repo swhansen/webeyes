@@ -166,6 +166,9 @@ function arObjMover() {
   this.mouseup = function( ev ) {
     console.log( 'up:', ev.x, ev.y );
     tool.down = false;
+
+  if ( tool.started && peerSelected ) {
+
     peerSelected = false;
     scene.remove( peerSphere );
 
@@ -197,8 +200,9 @@ function arObjMover() {
     leapAnimate( updateData );
     tool.started = false;
 
-    };
-  }
+    }
+  };
+}
 
 var tool = new arObjMover();
 
