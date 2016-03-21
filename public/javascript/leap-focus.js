@@ -39,7 +39,8 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
     var renderer, scene, camera, controls;
 
-    var controller = Leap.loop( { enableGesture:true, background: false }, leapAnimate );
+    var controller = Leap.loop( { enableGesture:true, background: false }, leapAnimate ).use('handEntry').on('handFound', function(){ console.log('hand found'); } );
+
 
     function emitLeap( data ) {
       var sessionId = socketServer.sessionid;
