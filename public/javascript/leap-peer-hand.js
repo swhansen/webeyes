@@ -115,12 +115,13 @@ function arObjMover() {
     var spherePos = [ leapX, leapY, 0 ];
 
  //   updateData.name = 'peerSphere';
+ //   updateData.originRtcId = userContext.rtcId;
+ //   updateData.visible = peerSphere.visible;
+ //   updateData.color = peerSphere.material.color;
+ //   updateData.source = 'peer';
+
     updateData.operation = 'mouseDown';
-//    updateData.originRtcId = userContext.rtcId;
-//    updateData.visible = peerSphere.visible;
     updateData.position = spherePos;
-    //updateData.color = peerSphere.material.color;
-//    updateData.source = 'peer';
     updateData.setHueState = false;
 
     scene.remove( handSphere );
@@ -189,17 +190,17 @@ function arObjMover() {
               normalizedSphere[2] );
 
 //    updateData.name = 'peerSphere';
-    updateData.operation = 'mouseUp';
 //    updateData.originRtcId = userContext.rtcId;
 //    updateData.visible = false;
+//    updateData.source = 'peer';
+
+    updateData.operation = 'mouseUp';
     updateData.position = spherePos;
     updateData.color = peerSphere.material.color;
-//    updateData.source = 'peer';
     updateData.setHueState = true;
 
     leapAnimate( updateData );
     tool.started = false;
-
     }
   };
 }
@@ -229,10 +230,12 @@ function updatePeerSphere( data ) {
 if ( data.operation === 'mouseDown' ) {
 
     peerSphere.position.fromArray( data.position );
+
    //peerSphere.material.color.setRGB(
    //            data.color.r,
    //            data.color.g,
    //            data.color.b );
+
       peerSphere.visible = data.visible;
 
     scene.add( peerSphere );

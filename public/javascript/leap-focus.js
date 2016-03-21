@@ -99,7 +99,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.position.set( 0.0, 0.0, 0.0 );
     peerSphere.name = 'peerSphere';
-    peerSphere.visible = false;
     scene.add( peerSphere );
 
   function onWindowResize() {
@@ -170,21 +169,22 @@ function updatePeerSphere( data ) {
 
   if ( data.operation === 'mouseDown' ) {
     scene.remove( handSphere );
+    handState.inChooseState = false;
     }
 
   if ( data.operation === 'mouseMove' ) {
     scene.add( peerSphere );
-    handState.inChooseState = false;
-
     scene.remove( handSphere );
 
    // peerSphere.position.fromArray( data.position );
+
     peerSphere.position.x = data.position[0];
     peerSphere.position.y = data.position[1];
     peerSphere.position.z = data.position[2];
 
+    // 0-1
+
     peerSphere.material.color = data.color;
-    peerSphere.visible = true;
     }
 
   if ( data.operation === 'mouseUp' ) {
@@ -327,7 +327,7 @@ if ( handState.inChooseState === true ) {
 
     if ( handState.inChooseState ) {
 
-      if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
+      if ( hand.grabStrength > 0.005 && hand.grabStrength < 0.995 ) {
           sphereData.setLightState = 'adjustLight' ;
           updateHandSphere( sphereData );
         }
