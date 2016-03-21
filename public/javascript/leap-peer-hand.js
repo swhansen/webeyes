@@ -107,12 +107,12 @@ function arObjMover() {
 
     if ( intersects.length > 0 ) {
       peerSelected = true;
+      scene.remove( handSphere );
 
-      console.log( 'intersected:', intersects );
-
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
-    var spherePos = [ leapX, leapY, 0 ];
+      var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+      var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+      var spherePos = [ leapX, leapY, 0 ];
+      peerSphere.position.fromArray( spherePos );
 
  //   updateData.name = 'peerSphere';
  //   updateData.originRtcId = userContext.rtcId;
@@ -120,13 +120,16 @@ function arObjMover() {
  //   updateData.color = peerSphere.material.color;
  //   updateData.source = 'peer';
 
-    updateData.operation = 'mouseDown';
-    updateData.position = spherePos;
-    updateData.setHueState = false;
 
-    scene.remove( handSphere );
+  scene.add( peerSphere );
+  //  scene.remove( handSphere );
+  //  peerSelected = true;
 
-    updatePeerSphere( updateData );
+      updateData.operation = 'mouseDown';
+      updateData.position = spherePos;
+      updateData.setHueState = false;
+
+      updatePeerSphere( updateData );
     }
   };
 
@@ -230,7 +233,7 @@ function updatePeerSphere( data ) {
 
 if ( data.operation === 'mouseDown' ) {
 
-    peerSphere.position.fromArray( data.position );
+  //  peerSphere.position.fromArray( data.position );
 
    //peerSphere.material.color.setRGB(
    //            data.color.r,
@@ -239,9 +242,9 @@ if ( data.operation === 'mouseDown' ) {
 
   //peerSphere.visible = data.visible;
 
-    scene.add( peerSphere );
-    scene.remove( handSphere );
-    peerSelected = true;
+  //  scene.add( peerSphere );
+  //  scene.remove( handSphere );
+  //  peerSelected = true;
   }
 
   if ( data.operation === 'mouseMove' ) {
