@@ -223,7 +223,7 @@ var tool = new arObjMover();
 function updatePeerSphere( data ) {
 
   if ( data.operation === 'mouseMove' ) {
-    scene.add( peerSphere );
+//    scene.add( peerSphere );
     scene.remove( handSphere );
     peerSelected = true;
 
@@ -284,7 +284,7 @@ function ThreeToScreenPosition( obj, camera ) {
 function leapAnimate( data ) {
 
   scene.remove( handSphere );
-  scene.remove( peerSphere );
+//  scene.remove( peerSphere );
 
   updatePeerSphere( data );
   updateHandSphere( data );
