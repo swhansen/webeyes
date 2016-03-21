@@ -91,6 +91,14 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
+
+
+
+
+
+
+
+
 function arObjMover() {
   var tool = this;
   this.down = false;
@@ -114,13 +122,13 @@ function arObjMover() {
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
     var spherePos = [ leapX, leapY, 0 ];
 
-    updateData.name = 'peerSphere';
+ //   updateData.name = 'peerSphere';
     updateData.operation = 'mouseDown';
-    updateData.originRtcId = userContext.rtcId;
-    updateData.visible = peerSphere.visible;
+//    updateData.originRtcId = userContext.rtcId;
+//    updateData.visible = peerSphere.visible;
     updateData.position = spherePos;
     //updateData.color = peerSphere.material.color;
-    updateData.source = 'peer';
+//    updateData.source = 'peer';
     updateData.setHueState = false;
 
     scene.remove( handSphere );
@@ -150,13 +158,13 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
-    updateData.name = 'handSphere';
+  //  updateData.name = 'handSphere';
     updateData.operation = 'mouseMove';
-    updateData.originRtcId = userContext.rtcId;
-    updateData.visible = true;
+ //   updateData.originRtcId = userContext.rtcId;
+ //   updateData.visible = true;
     updateData.position = spherePos;
     updateData.color = peerSphere.material.color;
-    updateData.source = 'peer';
+ //   updateData.source = 'peer';
     updateData.setHueState = false;
 
     leapAnimate( updateData );
@@ -188,13 +196,13 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
-    updateData.name = 'peerSphere';
+//    updateData.name = 'peerSphere';
     updateData.operation = 'mouseUp';
-    updateData.originRtcId = userContext.rtcId;
-    updateData.visible = false;
+//    updateData.originRtcId = userContext.rtcId;
+//    updateData.visible = false;
     updateData.position = spherePos;
     updateData.color = peerSphere.material.color;
-    updateData.source = 'peer';
+//    updateData.source = 'peer';
     updateData.setHueState = true;
 
     leapAnimate( updateData );
