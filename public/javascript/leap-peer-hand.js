@@ -240,11 +240,9 @@ if ( data.operation === 'mouseDown' ) {
     peerSelected = true;
   }
 
-
   if ( data.operation === 'mouseMove' ) {
     scene.add( peerSphere );
     scene.remove( handSphere );
- //   peerSelected = true;
 
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color.setRGB(
@@ -256,7 +254,6 @@ if ( data.operation === 'mouseDown' ) {
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
     }
-
 
    if ( data.operation === 'mouseUp' ) {
      scene.remove( peerSphere );

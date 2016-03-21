@@ -168,11 +168,12 @@ function normalizePoint( position ) {
 
 function updatePeerSphere( data ) {
 
-  console.log( 'updatePeerSphere:', data );
+  if ( data.operation === 'mouseDown' ) {
+    scene.remove( handSphere );
+    }
 
   if ( data.operation === 'mouseMove' ) {
     scene.add( peerSphere );
-
     handState.inChooseState = false;
 
     scene.remove( handSphere );
@@ -186,15 +187,15 @@ function updatePeerSphere( data ) {
     peerSphere.visible = true;
     }
 
-if ( data.operation === 'mouseUp' ) {
-  if ( data.setHueState ) {
+  if ( data.operation === 'mouseUp' ) {
+    if ( data.setHueState ) {
 
       var normalizedSphere = normalizePoint( data.position );
       var hueXY = getXYPointFromRGB(
                   normalizedSphere[0] * 255,
                   normalizedSphere[1] * 255,
                   normalizedSphere[2] * 255 );
-        hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
+        hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
 
         handState.inChooseState = false;
@@ -253,17 +254,13 @@ if ( handState.inChooseState === true ) {
           scene.remove( peerSphere );
     }
 
-  //  if ( data.setLightState === 'adjustLight' ) {
-  //      scene.add( handSphere );
-  //  }
-
 // broadcast the handSphere for peer intereaction
 
        // var palmSphereData = {};
+    //    data.interactionBoxSize = data.interactionBox.size;
         data.operation = 'move';
         data.inChooseState = handState.inChooseState;
         data.color = handSphere.material.color;
-    //    data.interactionBoxSize = data.interactionBox.size;
         data.name = 'handSphere';
         data.originRtcId = userContext.rtcId;
         data.deviceId = selectedHueDevice;
