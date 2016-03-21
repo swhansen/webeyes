@@ -32,7 +32,11 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
     var handState = {
       inChooseState: false,
-      iotSelectEligible: false
+      iotSelectEligible: false,
+      reset: function() {
+        this.inChooseState = false;
+        this.iotSelectEligible = false;
+      }
     };
 
     var renderer, scene, camera, controls;
@@ -189,8 +193,10 @@ function updatePeerSphere( data ) {
         iotLightOn.play();
         scene.remove( peerSphere );
 
-        inChooseState: false;
-        iotSelectEligible: false;
+handState.reset;
+
+        //handDState.inChooseState false;
+        //handState.iotSelectEligible false;
       }
 }
 
@@ -321,7 +327,7 @@ if ( handState.inChooseState === true ) {
 
     if ( handState.inChooseState ) {
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 ) {
+      if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
 
           sphereData.setLightState = 'adjustLight' ;
           updateHandSphere( sphereData );
