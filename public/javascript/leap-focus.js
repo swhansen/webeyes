@@ -33,6 +33,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var handState = {
       inChooseState: false,
       iotSelectEligible: false,
+      inPeerState: false
     };
 
     var renderer, scene, camera, controls;

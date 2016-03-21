@@ -222,10 +222,25 @@ var tool = new arObjMover();
 
 function updatePeerSphere( data ) {
 
-  if ( data.operation === 'mouseMove' ) {
-//    scene.add( peerSphere );
+if ( data.operation === 'mouseDown' ) {
+
+    peerSphere.position.fromArray( data.position );
+   //peerSphere.material.color.setRGB(
+   //            data.color.r,
+   //            data.color.g,
+   //            data.color.b );
+      peerSphere.visible = data.visible;
+
+    scene.add( peerSphere );
     scene.remove( handSphere );
     peerSelected = true;
+  }
+
+
+  if ( data.operation === 'mouseMove' ) {
+    scene.add( peerSphere );
+    scene.remove( handSphere );
+ //   peerSelected = true;
 
     peerSphere.position.fromArray( data.position );
     peerSphere.material.color.setRGB(
@@ -236,8 +251,10 @@ function updatePeerSphere( data ) {
 
    var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
+    }
 
-  } else if ( data.operation === 'mouseUp' ) {
+
+   if ( data.operation === 'mouseUp' ) {
      scene.remove( peerSphere );
 
       var sessionId = socketServer.sessionid;
@@ -257,9 +274,9 @@ function updateHandSphere( data ) {
                 data.color.b );
   }
 
- // if ( data.inChooseState === false ) {
- // scene.remove( handSphere );
- // }
+  if ( data.inChooseState === false ) {
+  scene.remove( handSphere );
+  }
 }
 
 function ThreeToScreenPosition( obj, camera ) {
