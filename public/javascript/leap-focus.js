@@ -245,7 +245,7 @@ if ( handState.inChooseState === true ) {
 
        // var palmSphereData = {};
         data.operation = 'move';
-  //      data.inChooseState = handState.inChooseState;
+        data.inChooseState = handState.inChooseState;
         data.color = handSphere.material.color;
     //    data.interactionBoxSize = data.interactionBox.size;
         data.name = 'handSphere';
