@@ -240,7 +240,7 @@ function updatePeerSphere( data ) {
   } else if ( data.operation === 'mouseUp' ) {
      scene.remove( peerSphere );
 
-     var sessionId = socketServer.sessionid;
+      var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
     }
 }

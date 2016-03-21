@@ -30,8 +30,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var firstClick = false;
     var peerData = false;
 
-// initial and nominal state
-
     var handState = {
       inChooseState: false,
       iotSelectEligible: false
@@ -41,7 +39,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
     var controller = Leap.loop( { enableGesture:true, background: false },
        leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); });
-
 
     function emitLeap( data ) {
       var sessionId = socketServer.sessionid;
@@ -62,7 +59,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     }
 
     socketServer.on( 'peerSphere', function( data ) {
-
       updatePeerSphere( data );
       } );
 
@@ -192,6 +188,9 @@ function updatePeerSphere( data ) {
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
         scene.remove( peerSphere );
+
+        inChooseState: false;
+        iotSelectEligible: false;
       }
 }
 
