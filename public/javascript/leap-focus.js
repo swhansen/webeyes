@@ -282,6 +282,16 @@ if ( handState.inChooseState === true ) {
    if ( hand.grabStrength === 0  && handState.iotSelectEligible === false ) {
        handState.iotSelectEligible = true;
    }
+
+//   move to the chooseState from selectEligible on the first grab
+
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 &&
+          handState.inChooseState === false &&
+          handState.iotSelectEligible === true ) {
+
+          handState.inChooseState = true;
+          handState.iotSelectEligible = false;
+        }
  }
 
     for ( hand of frame.hands ) {
@@ -306,17 +316,6 @@ if ( handState.inChooseState === true ) {
         updateHueText( selectedHueDevice );
       }
     }
-
-//
-//   move to the chooseState from selectEligible on the first grab
-
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 &&
-            handState.inChooseState === false &&
-           handState.iotSelectEligible === true ) {
-
-          handState.inChooseState = true;
-          handState.iotSelectEligible = false;
-        }
 
 // three possible hand states
 

@@ -286,7 +286,6 @@ function leapAnimate( data ) {
   scene.remove( handSphere );
   scene.remove( peerSphere );
 
-
   updatePeerSphere( data );
   updateHandSphere( data );
 
