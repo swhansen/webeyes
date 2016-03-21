@@ -193,7 +193,7 @@ function updatePeerSphere( data ) {
         iotLightOn.play();
         scene.remove( peerSphere );
 
-handState.reset;
+        handState.reset;
 
         //handDState.inChooseState false;
         //handState.iotSelectEligible false;
@@ -201,9 +201,11 @@ handState.reset;
 }
 
 function onHandFound() {
+  handState.reset;
   console.log( 'onHandFound' );
-  handState.inChooseState = false;
-  handState.iotSelectEligible = false;
+
+//  handState.inChooseState = false;
+//  handState.iotSelectEligible = false;
 }
 
 function updateHandSphere( data ) {
@@ -336,16 +338,20 @@ if ( handState.inChooseState === true ) {
       if ( hand.grabStrength === 0  ) {
 
           sphereData.setLightState = 'setLight' ;
-          handState.inChooseState = false;
-          handState.iotSelectEligible = false;
+          handState.reset;
+
+          //handState.inChooseState = false;
+          //handState.iotSelectEligible = false;
           updateHandSphere( sphereData );
       }
 
       if ( hand.grabStrength === 1 ) {
 
+         handState.reset;
+
           sphereData.setLightState = 'offLight' ;
-          handState.inChooseState = false;
-          handState.iotSelectEligible = false;
+       //   handState.inChooseState = false;
+       //   handState.iotSelectEligible = false;
           updateHandSphere( sphereData );
       }
     }
