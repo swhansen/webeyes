@@ -59,7 +59,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
       socketServer.emit( 'iotControl', data, sessionId );
     }
 
-    socketServer.on( 'leapSphere', function( data ) {
+    socketServer.on( 'peerSphere', function( data ) {
 
       updatePeerSphere( data );
       } );

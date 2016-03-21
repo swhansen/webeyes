@@ -235,13 +235,13 @@ function updatePeerSphere( data ) {
       peerSphere.visible = data.visible;
 
    var sessionId = socketServer.sessionid;
-      socketServer.emit( 'leapSphere', data, sessionId );
+      socketServer.emit( 'peerSphere', data, sessionId );
 
   } else if ( data.operation === 'mouseUp' ) {
      scene.remove( peerSphere );
 
      var sessionId = socketServer.sessionid;
-      socketServer.emit( 'leapSphere', data, sessionId );
+      socketServer.emit( 'peerSphere', data, sessionId );
     }
 }
 
