@@ -179,57 +179,32 @@ function updatePeerSphere( data ) {
 
     scene.remove( handSphere );
 
-
    // peerSphere.position.fromArray( data.position );
     peerSphere.position.x = data.position[0];
     peerSphere.position.y = data.position[1];
     peerSphere.position.z = data.position[2];
 
     peerSphere.material.color = data.color;
-    //peerSphere.material.color.r = data.color[0];
-    //peerSphere.material.color.g = data.color[1];
-    //peerSphere.material.color.b = data.color[2];
     peerSphere.visible = true;
-
-  // if ( data.setHueState ) {
-
-  //   var normalizedSphere = normalizePoint( data.position );
-
-  //   var hueXY = getXYPointFromRGB(
-  //               normalizedSphere[0] * 255,
-  //               normalizedSphere[1] * 255,
-  //               normalizedSphere[2] * 255 );
-
-  //     hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
-  //     iotLightOn.play();
-  //   //  scene.remove( peerSphere );
-
-  //     handState.inChooseState = false;
-  //     handState.iotSelectEligible = false;
-  //   }
     }
 
 if ( data.operation === 'mouseUp' ) {
-
   if ( data.setHueState ) {
 
       var normalizedSphere = normalizePoint( data.position );
-
       var hueXY = getXYPointFromRGB(
                   normalizedSphere[0] * 255,
                   normalizedSphere[1] * 255,
                   normalizedSphere[2] * 255 );
-
         hueSetLightStateXY( 1, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
-      //  scene.remove( peerSphere );
 
         handState.inChooseState = false;
         handState.iotSelectEligible = false;
       }
 
-scene.remove( peerSphere );
-}
+    scene.remove( peerSphere );
+  }
 
 }
 
