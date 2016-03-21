@@ -325,7 +325,7 @@ if ( handState.inChooseState ) {
          updateHandSphere( sphereData );
         }
 
-      if ( hand.grabStrength === 0 && handState.inChooseState ) {
+      if ( hand.grabStrength === 0  ){//&&  handState.inChooseState ) {
 
           sphereData.setLightState = 'setLight' ;
           handState.inChooseState = false;
@@ -333,7 +333,7 @@ if ( handState.inChooseState ) {
           updateHandSphere( sphereData );
       }
 
-      if ( hand.grabStrength === 1 && handState.inChooseState ) {
+      if ( hand.grabStrength === 1 ) {//} && handState.inChooseState ) {
 
           sphereData.setLightState = 'offLight' ;
           handState.inChooseState = false;
