@@ -110,7 +110,6 @@ function arObjMover() {
 
       console.log( 'intersected:', intersects );
 
-
     var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
     var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
     var spherePos = [ leapX, leapY, 0 ];
@@ -248,7 +247,7 @@ function updatePeerSphere( data ) {
 
 function updateHandSphere( data ) {
 
- if ( data.inChooseState === true &&  peerSelected === false ) {
+  if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
 
   handSphere.position.fromArray( data.position );
@@ -256,13 +255,11 @@ function updateHandSphere( data ) {
                 data.color.r,
                 data.color.g,
                 data.color.b );
- // handSphere.visible = data.visible;
+  }
 
-}
-
-if ( data.mouseUp ) {
+  if ( data.inChooseState === false ) {
   scene.remove( handSphere );
-}
+  }
 }
 
 function ThreeToScreenPosition( obj, camera ) {
