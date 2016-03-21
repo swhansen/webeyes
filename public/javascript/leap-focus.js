@@ -170,8 +170,13 @@ function normalizePoint( position ) {
 
 function updatePeerSphere( data ) {
 
+  console.log( 'updatePeerSphere:', data );
+
   if ( data.operation === 'mouseMove' ) {
     scene.add( peerSphere );
+
+    handState.inChooseState = false;
+
     scene.remove( handSphere );
 
 
