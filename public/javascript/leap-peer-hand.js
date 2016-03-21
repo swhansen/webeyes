@@ -108,11 +108,12 @@ function arObjMover() {
     if ( intersects.length > 0 ) {
       peerSelected = true;
       scene.remove( handSphere );
+      scene.add( peerSphere );
 
       var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
       var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
-      peerSphere.position.fromArray( spherePos );
+      peerSphere.position.fromArray( sphere );
 
  //   updateData.name = 'peerSphere';
  //   updateData.originRtcId = userContext.rtcId;
@@ -120,16 +121,14 @@ function arObjMover() {
  //   updateData.color = peerSphere.material.color;
  //   updateData.source = 'peer';
 
-
-  scene.add( peerSphere );
-  //  scene.remove( handSphere );
-  //  peerSelected = true;
-
       updateData.operation = 'mouseDown';
       updateData.position = spherePos;
       updateData.setHueState = false;
 
       updatePeerSphere( updateData );
+
+   // scene.remove( handSphere );
+   // peerSelected = true;
     }
   };
 
