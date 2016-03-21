@@ -77,8 +77,8 @@ function evCanvas( ev ) {
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.name = 'peerSphere';
-    peerSphere.visible = false;
-    scene.add( peerSphere );
+    //peerSphere.visible = false;
+    //scene.add( peerSphere );
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
@@ -152,8 +152,9 @@ function arObjMover() {
 
 //  updateData.name = 'handSphere';
 //   updateData.originRtcId = userContext.rtcId;
-//   updateData.visible = true;
 //   updateData.source = 'peer';
+
+   updateData.visible = true;
 
     updateData.operation = 'mouseMove';
     updateData.position = spherePos;
@@ -236,7 +237,7 @@ if ( data.operation === 'mouseDown' ) {
    //            data.color.g,
    //            data.color.b );
 
-      peerSphere.visible = data.visible;
+  //peerSphere.visible = data.visible;
 
     scene.add( peerSphere );
     scene.remove( handSphere );
