@@ -94,7 +94,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
 
-
     var peerSphereGeometry = new THREE.SphereGeometry( 40, 16, 16 );
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
@@ -145,7 +144,6 @@ function findPinchingFingerType( hand ){
     }
     return pincher;
 }
-
 
 // normalize given position and leap interaction box
 
@@ -202,10 +200,8 @@ if ( data.operation === 'mouseUp' ) {
         handState.inChooseState = false;
         handState.iotSelectEligible = false;
       }
-
     scene.remove( peerSphere );
   }
-
 }
 
 function onHandFound() {

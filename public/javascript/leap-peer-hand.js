@@ -91,14 +91,6 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-
-
-
-
-
-
-
-
 function arObjMover() {
   var tool = this;
   this.down = false;
@@ -134,7 +126,6 @@ function arObjMover() {
     scene.remove( handSphere );
 
     updatePeerSphere( updateData );
-
     }
   };
 
@@ -158,13 +149,14 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
-  //  updateData.name = 'handSphere';
+//  updateData.name = 'handSphere';
+//   updateData.originRtcId = userContext.rtcId;
+//   updateData.visible = true;
+//   updateData.source = 'peer';
+
     updateData.operation = 'mouseMove';
- //   updateData.originRtcId = userContext.rtcId;
- //   updateData.visible = true;
     updateData.position = spherePos;
     updateData.color = peerSphere.material.color;
- //   updateData.source = 'peer';
     updateData.setHueState = false;
 
     leapAnimate( updateData );
