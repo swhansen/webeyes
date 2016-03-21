@@ -33,10 +33,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var handState = {
       inChooseState: false,
       iotSelectEligible: false,
-      reset: function() {
-        this.inChooseState = false;
-        this.iotSelectEligible = false;
-      }
     };
 
     var renderer, scene, camera, controls;
@@ -193,19 +189,13 @@ function updatePeerSphere( data ) {
         iotLightOn.play();
         scene.remove( peerSphere );
 
-        handState.reset;
-
-        //handDState.inChooseState false;
-        //handState.iotSelectEligible false;
+        handDState.inChooseState = false;
+        handState.iotSelectEligible = false;
       }
 }
 
 function onHandFound() {
-  handState.reset;
-  console.log( 'onHandFound' );
-
-//  handState.inChooseState = false;
-//  handState.iotSelectEligible = false;
+ handState.inChooseState = false;  handState.iotSelectEligible = false;
 }
 
 function updateHandSphere( data ) {
@@ -330,32 +320,24 @@ if ( handState.inChooseState === true ) {
     if ( handState.inChooseState ) {
 
       if ( hand.grabStrength > 0.1 && hand.grabStrength < 0.9 ) {
-
           sphereData.setLightState = 'adjustLight' ;
           updateHandSphere( sphereData );
         }
 
       if ( hand.grabStrength === 0  ) {
-
           sphereData.setLightState = 'setLight' ;
-          handState.reset;
-
-          //handState.inChooseState = false;
-          //handState.iotSelectEligible = false;
+          handState.inChooseState = false;
+          handState.iotSelectEligible = false;
           updateHandSphere( sphereData );
       }
 
       if ( hand.grabStrength === 1 ) {
-
-         handState.reset;
-
           sphereData.setLightState = 'offLight' ;
-       //   handState.inChooseState = false;
-       //   handState.iotSelectEligible = false;
+          handState.inChooseState = false;
+          handState.iotSelectEligible = false;
           updateHandSphere( sphereData );
       }
     }
-
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
