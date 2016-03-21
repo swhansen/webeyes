@@ -185,7 +185,10 @@ function updatePeerSphere( data ) {
     peerSphere.position.y = data.position[1];
     peerSphere.position.z = data.position[2];
 
-    peerSphere.material.color = data.color;
+   // peerSphere.material.color = data.color;
+    peerSphere.material.color.r = data.color[0];
+    peerSphere.material.color.g = data.color[1];
+    peerSphere.material.color.b = data.color[2];
     peerSphere.visible = true;
 
     if ( data.setHueState ) {
@@ -253,6 +256,7 @@ if ( handState.inChooseState === true ) {
     if ( data.setLightState === 'offLight' ) {
           hueSetLightStateXY( selectedHueDevice, false, [ hueXY.x, hueXY.y ], 100 );
           iotLightOff.play();
+          scene.remove( peerSphere );
     }
 
   //  if ( data.setLightState === 'adjustLight' ) {
@@ -284,7 +288,7 @@ if ( handState.inChooseState === true ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     scene.remove( handSphere );
-    scene.remove( peerSphere );
+  //  scene.remove( peerSphere );
 
 
 // make the hand eligable
