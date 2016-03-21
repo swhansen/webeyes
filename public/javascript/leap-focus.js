@@ -300,23 +300,24 @@ if ( handState.inChooseState === true ) {
       }
     }
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.inChooseState === false && handState.iotSelectEligible === true ) {
+//
+//   set the choose state if grab and eligible
 
-      //    sphereData.setLightState = 'adjustLight' ;
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95
+            && handState.inChooseState === false
+            && handState.iotSelectEligible === true ) {
+
           handState.inChooseState = true;
           handState.iotSelectEligible = false;
-      //   updateHandSphere( sphereData );
         }
 
-if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.inChooseState ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.inChooseState ) {
 
           sphereData.setLightState = 'adjustLight' ;
-  //        handState.inChooseState = true;
-   //       handState.iotSelectEligible = false;
+          //        handState.inChooseState = true;
+          //         handState.iotSelectEligible = false;
          updateHandSphere( sphereData );
         }
-
-
 
       if ( hand.grabStrength === 0 && handState.inChooseState ) {
 
@@ -329,7 +330,6 @@ if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 && handState.inChooseS
       if ( hand.grabStrength === 1 && handState.inChooseState ) {
 
           sphereData.setLightState = 'offLight' ;
-        //  sphereData.inChooseState = false;
           handState.inChooseState = false;
      //     handState.iotSelectEligible = false;
           updateHandSphere( sphereData );
