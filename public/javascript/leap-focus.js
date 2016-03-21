@@ -29,6 +29,9 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var iotZones = 3;
     var firstClick = false;
     var peerData = false;
+
+// initial and nominal state
+
     var handState = {
       inChooseState: false,
       iotSelectEligible: false
@@ -266,17 +269,13 @@ if ( handState.inChooseState === true ) {
     scene.remove( peerSphere );
 
 
+// make the hand eligable
+
  for ( var hand of frame.hands ) {
    if ( hand.grabStrength === 0  && handState.iotSelectEligible === false ) {
        handState.iotSelectEligible = true;
    }
  }
-
-//for (  var hand of frame.hands ) {
-//    if ( hand.grabStrength === 0 && handState.inChooseState ) {
-//        handState.iotSelectEligible = true;
-//    }
-//  }
 
     for ( var hand of frame.hands ) {
 
@@ -304,9 +303,9 @@ if ( handState.inChooseState === true ) {
 //
 //   move to the chooseState from selectEligible on the first grab
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95
-            && handState.inChooseState === false
-            && handState.iotSelectEligible === true ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 &&
+            handState.inChooseState === false &&
+           handState.iotSelectEligible === true ) {
 
           handState.inChooseState = true;
           handState.iotSelectEligible = false;
@@ -316,15 +315,13 @@ if ( handState.inChooseState === true ) {
 
     if ( handState.inChooseState ) {
 
-      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 ) {      //&& handState.inChooseState ) {
+      if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 ) {
 
           sphereData.setLightState = 'adjustLight' ;
-          //        handState.inChooseState = true;
-          //         handState.iotSelectEligible = false;
           updateHandSphere( sphereData );
         }
 
-      if ( hand.grabStrength === 0  ) {        //&&  handState.inChooseState ) {
+      if ( hand.grabStrength === 0  ) {
 
           sphereData.setLightState = 'setLight' ;
           handState.inChooseState = false;
@@ -332,7 +329,7 @@ if ( handState.inChooseState === true ) {
           updateHandSphere( sphereData );
       }
 
-      if ( hand.grabStrength === 1 ) {        //} && handState.inChooseState ) {
+      if ( hand.grabStrength === 1 ) {
 
           sphereData.setLightState = 'offLight' ;
           handState.inChooseState = false;
