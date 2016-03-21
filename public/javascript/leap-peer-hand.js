@@ -257,9 +257,9 @@ function updateHandSphere( data ) {
                 data.color.b );
   }
 
-  if ( data.inChooseState === false ) {
-  scene.remove( handSphere );
-  }
+ // if ( data.inChooseState === false ) {
+ // scene.remove( handSphere );
+ // }
 }
 
 function ThreeToScreenPosition( obj, camera ) {

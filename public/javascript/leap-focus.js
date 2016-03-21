@@ -40,7 +40,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var renderer, scene, camera, controls;
 
     var controller = Leap.loop( { enableGesture:true, background: false },
-       leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); })
+       leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); });
 
 
     function emitLeap( data ) {
@@ -213,21 +213,21 @@ if ( handState.inChooseState === true ) {
 
   var normalizedPalmSphere = normalizePoint( data.position );
 
- handSphere.material.color.setRGB(
+  handSphere.material.color.setRGB(
              normalizedPalmSphere[0],
              normalizedPalmSphere[1],
              normalizedPalmSphere[2] );
 
-  handSphere.material.color.r = normalizedPalmSphere[0];
-  handSphere.material.color.g = normalizedPalmSphere[1];
-  handSphere.material.color.b = normalizedPalmSphere[2];
+    handSphere.material.color.r = normalizedPalmSphere[0];
+    handSphere.material.color.g = normalizedPalmSphere[1];
+    handSphere.material.color.b = normalizedPalmSphere[2];
 
-  var hueXY = getXYPointFromRGB(
+    var hueXY = getXYPointFromRGB(
                 normalizedPalmSphere[0] * 255,
                 normalizedPalmSphere[1] * 255,
                 normalizedPalmSphere[2] * 255 );
 
-    if ( data.setLightState === 'setLight' ) {
+      if ( data.setLightState === 'setLight' ) {
 
         var hueObjData = {};
         hueObjData.deviceID = selectedHueDevice;
@@ -285,7 +285,7 @@ if ( handState.inChooseState === true ) {
    }
  }
 
-    for ( var hand of frame.hands ) {
+    for ( hand of frame.hands ) {
 
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
