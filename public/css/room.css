@@ -250,11 +250,12 @@ width: 1000px;
     width: 1020px;
     height: 960px;
     position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    position: absolute;
+    height: 200px;
+    width: 400px;
+    margin: -100px 0 0 -200px;
+    top: 50%;
+    left: 50%;
     z-index:15;
     }
 
