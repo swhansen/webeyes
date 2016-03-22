@@ -11,13 +11,18 @@ var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
  var leapFull = document.getElementById( 'leapfull' );
+ //var leapCanvas = document.getElementById( '')
+ document.getElementById( 'leapFull' ).className = 'canvascenter';
 
     leapFull.style.width      = '100%';
     leapFull.style.height     = '100%';
-    leapFull.style.position   = 'absolute';
-    leapFull.style.top        = '0px';
-    leapFull.style.left       = '0px';
-    leapFull.style.zIndex = 10;
+
+
+
+   // leapFull.style.position   = 'absolute';
+  //  leapFull.style.top        = '0px';
+  //  leapFull.style.left       = '0px';
+  //  leapFull.style.zIndex = 10;
 
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
@@ -257,8 +262,8 @@ if ( handState.inChooseState === true ) {
 
 // broadcast the handSphere for peer intereaction
 
-       // var palmSphereData = {};
-    //    data.interactionBoxSize = data.interactionBox.size;
+// var palmSphereData = {};
+//    data.interactionBoxSize = data.interactionBox.size;
         data.operation = 'move';
         data.inChooseState = handState.inChooseState;
         data.color = handSphere.material.color;
@@ -266,6 +271,9 @@ if ( handState.inChooseState === true ) {
         data.originRtcId = userContext.rtcId;
         data.deviceId = selectedHueDevice;
         data.source = 'hand';
+
+    //    data.sphereRadius = hand.sphereRadius;
+    //    data.interactionBox = frame.interactionBox;
 
         emitLeapSphere( data );
 }
@@ -328,6 +336,7 @@ if ( hand.type == 'left' ) {
     }
   }
 
+// control light with right hand only
 // three possible hand states
 
 if ( hand.type == 'right' ) {
