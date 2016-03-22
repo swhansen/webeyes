@@ -115,12 +115,6 @@ function arObjMover() {
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.fromArray( spherePos );
 
- //   updateData.name = 'peerSphere';
- //   updateData.originRtcId = userContext.rtcId;
- //   updateData.visible = peerSphere.visible;
- //   updateData.color = peerSphere.material.color;
- //   updateData.source = 'peer';
-
       data.operation = 'mouseDown';
       data.position = spherePos;
       data.setHueState = false;
@@ -155,12 +149,6 @@ function arObjMover() {
                 normalizedSphere[0],
                 normalizedSphere[1],
                 normalizedSphere[2] );
-
-//  updateData.name = 'handSphere';
-//   updateData.originRtcId = userContext.rtcId;
-//   updateData.source = 'peer';
-
-     // updateData.visible = true;
 
       data.operation = 'mouseMove';
       data.position = spherePos;
@@ -201,11 +189,6 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
-//    updateData.name = 'peerSphere';
-//    updateData.originRtcId = userContext.rtcId;
-//    updateData.visible = false;
-//    updateData.source = 'peer';
-
     data.operation = 'mouseUp';
     data.position = spherePos;
     data.color = peerSphere.material.color;
@@ -245,42 +228,15 @@ function updatePeerSphere( data ) {
 
 if ( data.operation === 'mouseDown' ) {
 
-  //  peerSphere.position.fromArray( data.position );
-
-   //peerSphere.material.color.setRGB(
-   //            data.color.r,
-   //            data.color.g,
-   //            data.color.b );
-
-  //peerSphere.visible = data.visible;
-
-  //  scene.add( peerSphere );
-  //  scene.remove( handSphere );
-  //  peerSelected = true;
   }
 
   if ( data.operation === 'mouseMove' ) {
- //   scene.add( peerSphere );
-  //  scene.remove( handSphere );
 
- //   peerSphere.position.fromArray( data.position );
- //   peerSphere.material.color.setRGB(
- //               data.color.r,
- //               data.color.g,
- //               data.color.b );
- //   peerSphere.visible = data.visible;
- //   peerSphere.operation = 'mouseDown';
-
- //  var sessionId = socketServer.sessionid;
-  //    socketServer.emit( 'peerSphere', data, sessionId );
     }
 
- // if ( data.operation === 'mouseUp' ) {
- //   scene.remove( peerSphere );
+  if ( data.operation === 'mouseUp' ) {
 
- //    var sessionId = socketServer.sessionid;
- //    socketServer.emit( 'peerSphere', data, sessionId );
- //  }
+  }
 }
 
 function updateHandSphere( data ) {
