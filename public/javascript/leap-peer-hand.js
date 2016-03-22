@@ -171,7 +171,7 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-    //  leapAnimate( updateData );
+      leapAnimate( data );
   }
 };
 
@@ -210,7 +210,7 @@ function arObjMover() {
     data.color = peerSphere.material.color;
     data.setHueState = true;
 
-    leapAnimate( data );
+ //   leapAnimate( data );
 
  var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
