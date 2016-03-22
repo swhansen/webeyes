@@ -210,7 +210,7 @@ function arObjMover() {
     data.color = peerSphere.material.color;
     data.setHueState = true;
 
- //   leapAnimate( updateData );
+    leapAnimate( data );
 
  var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
