@@ -11,8 +11,11 @@ var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
  var leapFull = document.getElementById( 'leappane' );
- var leapCanvas = document.getElementById( 'leapfull')
+ var leapCanvas = document.getElementById( 'leapfull');
  document.getElementById( 'leappane' ).className = 'canvascenter';
+
+ leapFull.style.visibility = 'visible';
+ leapCanvas.style.visibility = 'visible';
 
  //   leapFull.style.width      = '100%';
  //   leapFull.style.height     = '100%';
@@ -22,7 +25,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
    // leapFull.style.position   = 'absolute';
   //  leapFull.style.top        = '0px';
   //  leapFull.style.left       = '0px';
-  //  leapFull.style.zIndex = 10;
+    leapFull.style.zIndex = 10;
 
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
