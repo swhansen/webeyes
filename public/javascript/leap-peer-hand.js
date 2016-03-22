@@ -121,11 +121,14 @@ function arObjMover() {
  //   updateData.color = peerSphere.material.color;
  //   updateData.source = 'peer';
 
-      updateData.operation = 'mouseDown';
-      updateData.position = spherePos;
-      updateData.setHueState = false;
+      data.operation = 'mouseDown';
+      data.position = spherePos;
+      data.setHueState = false;
 
-      updatePeerSphere( updateData );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'peerSphere', data, sessionId );
+
+     // updatePeerSphere( updateData );
     }
   };
 
