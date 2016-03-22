@@ -10,9 +10,9 @@ var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
- var leapFull = document.getElementById( 'leapfull' );
- //var leapCanvas = document.getElementById( '')
- document.getElementById( 'leapfull' ).className = 'canvascenter';
+ var leapFull = document.getElementById( 'leappanel' );
+ var leapCanvas = document.getElementById( 'leapfull')
+ document.getElementById( 'leappane' ).className = 'canvascenter';
 
     leapFull.style.width      = '100%';
     leapFull.style.height     = '100%';
