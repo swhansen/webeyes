@@ -15,10 +15,10 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
  document.getElementById( 'leappane' ).className = 'leapCenter';
 
 
-// leapCanvas.style.width = '100%';
-// leapCanvas.style.height = '100%';
-// leapCanvas.width =  leapCanvas.offsetWidth;
-// leapCanvas.height = leapCanvas.offsetHeight;
+ leapCanvas.style.width = '100%';
+ leapCanvas.style.height = '100%';
+ leapCanvas.width =  leapCanvas.offsetWidth;
+ leapCanvas.height = leapCanvas.offsetHeight;
 
  leapFull.style.visibility = 'visible';
  leapCanvas.style.visibility = 'visible';
@@ -203,11 +203,22 @@ function updatePeerSphere( data ) {
   if ( data.operation === 'mouseUp' ) {
     if ( data.setHueState ) {
 
-      var normalizedSphere = normalizePoint( data.position );
-      var hueXY = getXYPointFromRGB(
-                  normalizedSphere[0] * 255,
-                  normalizedSphere[1] * 255,
-                  normalizedSphere[2] * 255 );
+    //  var normalizedSphere = normalizePoint( data.position );
+    // var hueXY = getXYPointFromRGB(
+    //             normalizedSphere[0] * 255,
+    //             normalizedSphere[1] * 255,
+    //             normalizedSphere[2] * 255 );
+
+var hueXY = getXYPointFromRGB(
+                  data.color[0] * 255,
+                  data.color[1] * 255,
+                  data.color[2] * 255 );
+
+
+
+
+
+
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
 
