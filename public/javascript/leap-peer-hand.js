@@ -1,7 +1,8 @@
-//
-// Implements a peer side Leap hand based on raw tracking JSON data from
-// a socket.io broadcast sent by leap-focus
-//
+
+// Implements peer side Leap hand interaction
+//  - listens to  leapShare ( Leap frame data JSON )
+//  - listens to leapSphere for leap hand sphere
+//  - emits peerSphere to leapFocus for peer IOT  change
 
 function initLeapPeerHand() {
 
@@ -18,10 +19,19 @@ socketServer.on( 'leapSphere', function( data ) {
     leapFull.style.left       = '0px';
     leapFull.style.zIndex = 300;
 
-// General-purpose event handler for mouse events.
+    leapFull.addEventListener( 'mousedown', evCanvas, false );
+    leapFull.addEventListener( 'mousemove', evCanvas, false );
+    leapFull.addEventListener( 'mouseup', evCanvas, false );
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}
+
+// General-purpose event handler for mouse events
 
 function evCanvas( ev ) {
-
 // Firefox
   if ( ev.layerX || ev.layerX === 0 ) {
     ev._x = ev.layerX;
@@ -38,10 +48,6 @@ function evCanvas( ev ) {
     func( ev );
   }
 }
-
-    leapFull.addEventListener( 'mousedown', evCanvas, false );
-    leapFull.addEventListener( 'mousemove', evCanvas, false );
-    leapFull.addEventListener( 'mouseup', evCanvas, false );
 
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
@@ -77,6 +83,7 @@ function evCanvas( ev ) {
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.name = 'peerSphere';
+
     //peerSphere.visible = false;
     //scene.add( peerSphere );
 
@@ -85,11 +92,6 @@ function evCanvas( ev ) {
     scene.add( light );
     scene.add( aLight );
 
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-}
 
 function arObjMover() {
   var tool = this;
@@ -133,7 +135,6 @@ function arObjMover() {
       var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
       var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
-     // peerSphere.position.fromArray( spherePos );
       peerSphere.position.x = leapX;
       peerSphere.position.y = leapY;
       peerSphere.position.z = 0;
@@ -226,17 +227,11 @@ var tool = new arObjMover();
 
 function updatePeerSphere( data ) {
 
-if ( data.operation === 'mouseDown' ) {
+if ( data.operation === 'mouseDown' ) {}
 
-  }
+  if ( data.operation === 'mouseMove' ) {}
 
-  if ( data.operation === 'mouseMove' ) {
-
-    }
-
-  if ( data.operation === 'mouseUp' ) {
-
-  }
+  if ( data.operation === 'mouseUp' ) {}
 }
 
 function updateHandSphere( data ) {
@@ -278,16 +273,12 @@ function ThreeToScreenPosition( obj, camera ) {
 function leapAnimate( data ) {
 
   scene.remove( handSphere );
-//  scene.remove( peerSphere );
 
   updatePeerSphere( data );
   updateHandSphere( data );
 
-  //requestAnimationFrame( leapAnimate );
-
   renderer.render( scene, camera );
   controls.update();
-
  }
 
 //  function leapAnimate( data ) {
