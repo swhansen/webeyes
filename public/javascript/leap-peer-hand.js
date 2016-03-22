@@ -128,7 +128,7 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-     // updatePeerSphere( updateData );
+// updatePeerSphere( updateData );
     }
   };
 
@@ -139,7 +139,7 @@ function arObjMover() {
       var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
       var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
-     // peerSphere.position.fromArray( spherePos );
+// peerSphere.position.fromArray( spherePos );
       peerSphere.position.x = leapX;
       peerSphere.position.y = leapY;
       peerSphere.position.z = 0;
@@ -160,16 +160,17 @@ function arObjMover() {
 //   updateData.originRtcId = userContext.rtcId;
 //   updateData.source = 'peer';
 
-     // updateData.visible = true;
+// updateData.visible = true;
 
       data.operation = 'mouseMove';
       data.position = spherePos;
       data.color = peerSphere.material.color;
       data.setHueState = false;
 
-
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
+
+      // note: need to fire animate
 
       leapAnimate( data );
   }
@@ -210,7 +211,7 @@ function arObjMover() {
     data.color = peerSphere.material.color;
     data.setHueState = true;
 
- //   leapAnimate( data );
+//   leapAnimate( data );
 
  var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
@@ -295,8 +296,8 @@ function updateHandSphere( data ) {
   }
 
   if ( data.inChooseState === false ) {
-  scene.remove( handSphere );
-  }
+        scene.remove( handSphere );
+    }
 }
 
 function ThreeToScreenPosition( obj, camera ) {
