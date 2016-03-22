@@ -165,7 +165,7 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-      leapAnimate( updateData );
+    //  leapAnimate( updateData );
   }
 };
 
