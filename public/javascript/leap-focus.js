@@ -308,6 +308,7 @@ if ( handState.inChooseState === true ) {
       sphereData.interactionBox = frame.interactionBox;
       sphereData.source = 'hand';
 
+// increment IOT deviceId with left hand only
 
 if ( hand.type == 'left' ) {
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
@@ -329,6 +330,7 @@ if ( hand.type == 'left' ) {
 
 // three possible hand states
 
+if ( hand.type == 'right' ) {
     if ( handState.inChooseState ) {
 
       if ( hand.grabStrength > 0.005 && hand.grabStrength < 0.995 ) {
@@ -350,6 +352,7 @@ if ( hand.type == 'left' ) {
           updateHandSphere( sphereData );
       }
     }
+  }
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
