@@ -199,12 +199,16 @@ function arObjMover() {
 //    updateData.visible = false;
 //    updateData.source = 'peer';
 
-    updateData.operation = 'mouseUp';
-    updateData.position = spherePos;
-    updateData.color = peerSphere.material.color;
-    updateData.setHueState = true;
+    data.operation = 'mouseUp';
+    data.position = spherePos;
+    data.color = peerSphere.material.color;
+    data.setHueState = true;
 
-    leapAnimate( updateData );
+ //   leapAnimate( updateData );
+
+ var sessionId = socketServer.sessionid;
+      socketServer.emit( 'peerSphere', data, sessionId );
+
     tool.started = false;
     }
   };
@@ -264,12 +268,12 @@ if ( data.operation === 'mouseDown' ) {
   //    socketServer.emit( 'peerSphere', data, sessionId );
     }
 
-   if ( data.operation === 'mouseUp' ) {
-     scene.remove( peerSphere );
+ // if ( data.operation === 'mouseUp' ) {
+ //   scene.remove( peerSphere );
 
-      var sessionId = socketServer.sessionid;
-      socketServer.emit( 'peerSphere', data, sessionId );
-    }
+ //    var sessionId = socketServer.sessionid;
+ //    socketServer.emit( 'peerSphere', data, sessionId );
+ //  }
 }
 
 function updateHandSphere( data ) {
