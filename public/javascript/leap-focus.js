@@ -308,6 +308,8 @@ if ( handState.inChooseState === true ) {
       sphereData.interactionBox = frame.interactionBox;
       sphereData.source = 'hand';
 
+
+if ( hand.type == 'left' ) {
       if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
       if ( hand.pinchStrength === 1 && hand.grabStrength < 0.3 ) {
@@ -323,6 +325,7 @@ if ( handState.inChooseState === true ) {
         updateHueText( selectedHueDevice );
       }
     }
+  }
 
 // three possible hand states
 
