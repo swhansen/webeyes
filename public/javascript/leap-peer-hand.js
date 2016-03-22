@@ -217,6 +217,7 @@ function arObjMover() {
       socketServer.emit( 'peerSphere', data, sessionId );
 
     tool.started = false;
+    scene.remove( peerSphere );
     }
   };
 }
