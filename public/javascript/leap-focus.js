@@ -20,8 +20,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
  //   leapFull.style.width      = '100%';
  //   leapFull.style.height     = '100%';
 
-
-
    // leapFull.style.position   = 'absolute';
   //  leapFull.style.top        = '0px';
   //  leapFull.style.left       = '0px';

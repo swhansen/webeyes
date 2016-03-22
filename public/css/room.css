@@ -34,20 +34,6 @@
   z-index:  20;
 }
 
-#leapfull {
-  position:absolute;
-  left:0;
-  width:100%;
-  min-height:100%;
-  z-index: 3;
-}
-
-#leappane {
-  position:absolute;
-  left:0;
-  width:100%;
-  min-height:100%;
-  z-index: 3;
 }
 
 #message-bar-container {
