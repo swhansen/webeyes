@@ -126,44 +126,46 @@ function arObjMover() {
       updateData.setHueState = false;
 
       updatePeerSphere( updateData );
-
-   // scene.remove( handSphere );
-   // peerSelected = true;
     }
   };
 
   this.mousemove = function( ev ) {
 
-  if ( tool.started && peerSelected ) {
+    if ( tool.started && peerSelected ) {
 
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
-    var spherePos = [ leapX, leapY, 0 ];
+      var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
+      var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+      var spherePos = [ leapX, leapY, 0 ];
+      peerSphere.position.fromArray( spherePos );
 
 // normalize to set color rgb (0-1)
 
-    var normalizedSphere = [];
-    normalizedSphere[0] = ev._x / window.innerWidth;
-    normalizedSphere[1] = ev._y / window.innerHeight;
-    normalizedSphere[2] = 0.5;
+      var normalizedSphere = [];
+      normalizedSphere[0] = ev._x / window.innerWidth;
+      normalizedSphere[1] = ev._y / window.innerHeight;
+      normalizedSphere[2] = 0.5;
 
-    peerSphere.material.color.setRGB(
-              normalizedSphere[0],
-              normalizedSphere[1],
-              normalizedSphere[2] );
+      peerSphere.material.color.setRGB(
+                normalizedSphere[0],
+                normalizedSphere[1],
+                normalizedSphere[2] );
 
 //  updateData.name = 'handSphere';
 //   updateData.originRtcId = userContext.rtcId;
 //   updateData.source = 'peer';
 
-   updateData.visible = true;
+     // updateData.visible = true;
 
-    updateData.operation = 'mouseMove';
-    updateData.position = spherePos;
-    updateData.color = peerSphere.material.color;
-    updateData.setHueState = false;
+      data.operation = 'mouseMove';
+      data.position = spherePos;
+      data.color = peerSphere.material.color;
+      data.setHueState = false;
 
-    leapAnimate( updateData );
+
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'peerSphere', data, sessionId );
+
+      leapAnimate( updateData );
   }
 };
 
@@ -247,19 +249,19 @@ if ( data.operation === 'mouseDown' ) {
   }
 
   if ( data.operation === 'mouseMove' ) {
-    scene.add( peerSphere );
-    scene.remove( handSphere );
+ //   scene.add( peerSphere );
+  //  scene.remove( handSphere );
 
-    peerSphere.position.fromArray( data.position );
-    peerSphere.material.color.setRGB(
-                data.color.r,
-                data.color.g,
-                data.color.b );
-    peerSphere.visible = data.visible;
-    peerSphere.operation = 'mouseDown';
+ //   peerSphere.position.fromArray( data.position );
+ //   peerSphere.material.color.setRGB(
+ //               data.color.r,
+ //               data.color.g,
+ //               data.color.b );
+ //   peerSphere.visible = data.visible;
+ //   peerSphere.operation = 'mouseDown';
 
-   var sessionId = socketServer.sessionid;
-      socketServer.emit( 'peerSphere', data, sessionId );
+ //  var sessionId = socketServer.sessionid;
+  //    socketServer.emit( 'peerSphere', data, sessionId );
     }
 
    if ( data.operation === 'mouseUp' ) {
