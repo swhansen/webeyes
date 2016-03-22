@@ -115,12 +115,20 @@ function arObjMover() {
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.fromArray( spherePos );
 
+ //   updateData.name = 'peerSphere';
+ //   updateData.originRtcId = userContext.rtcId;
+ //   updateData.visible = peerSphere.visible;
+ //   updateData.color = peerSphere.material.color;
+ //   updateData.source = 'peer';
+
       data.operation = 'mouseDown';
       data.position = spherePos;
       data.setHueState = false;
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
+
+     // updatePeerSphere( updateData );
     }
   };
 
@@ -131,7 +139,7 @@ function arObjMover() {
       var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
       var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
-
+     // peerSphere.position.fromArray( spherePos );
       peerSphere.position.x = leapX;
       peerSphere.position.y = leapY;
       peerSphere.position.z = 0;
@@ -147,6 +155,12 @@ function arObjMover() {
                 normalizedSphere[0],
                 normalizedSphere[1],
                 normalizedSphere[2] );
+
+//  updateData.name = 'handSphere';
+//   updateData.originRtcId = userContext.rtcId;
+//   updateData.source = 'peer';
+
+     // updateData.visible = true;
 
       data.operation = 'mouseMove';
       data.position = spherePos;
@@ -187,18 +201,22 @@ function arObjMover() {
               normalizedSphere[1],
               normalizedSphere[2] );
 
+//    updateData.name = 'peerSphere';
+//    updateData.originRtcId = userContext.rtcId;
+//    updateData.visible = false;
+//    updateData.source = 'peer';
+
     data.operation = 'mouseUp';
     data.position = spherePos;
     data.color = peerSphere.material.color;
     data.setHueState = true;
 
-//   leapAnimate( data );
+ //   leapAnimate( data );
 
  var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
     tool.started = false;
-    scene.remove( peerSphere );
     }
   };
 }
@@ -226,11 +244,43 @@ var tool = new arObjMover();
 function updatePeerSphere( data ) {
 
 if ( data.operation === 'mouseDown' ) {
+
+  //  peerSphere.position.fromArray( data.position );
+
+   //peerSphere.material.color.setRGB(
+   //            data.color.r,
+   //            data.color.g,
+   //            data.color.b );
+
+  //peerSphere.visible = data.visible;
+
+  //  scene.add( peerSphere );
+  //  scene.remove( handSphere );
+  //  peerSelected = true;
   }
 
   if ( data.operation === 'mouseMove' ) {
-  leapAnimate( data );
-  }
+ //   scene.add( peerSphere );
+  //  scene.remove( handSphere );
+
+ //   peerSphere.position.fromArray( data.position );
+ //   peerSphere.material.color.setRGB(
+ //               data.color.r,
+ //               data.color.g,
+ //               data.color.b );
+ //   peerSphere.visible = data.visible;
+ //   peerSphere.operation = 'mouseDown';
+
+ //  var sessionId = socketServer.sessionid;
+  //    socketServer.emit( 'peerSphere', data, sessionId );
+    }
+
+ // if ( data.operation === 'mouseUp' ) {
+ //   scene.remove( peerSphere );
+
+ //    var sessionId = socketServer.sessionid;
+ //    socketServer.emit( 'peerSphere', data, sessionId );
+ //  }
 }
 
 function updateHandSphere( data ) {
@@ -247,7 +297,7 @@ function updateHandSphere( data ) {
 
   if ( data.inChooseState === false ) {
         scene.remove( handSphere );
-    }
+  }
 }
 
 function ThreeToScreenPosition( obj, camera ) {
