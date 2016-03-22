@@ -139,7 +139,10 @@ function arObjMover() {
       var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
       var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
-      peerSphere.position.fromArray( spherePos );
+     // peerSphere.position.fromArray( spherePos );
+      peerSphere.position.x = leapX;
+      peerSphere.position.y = leapY;
+      peerSphere.position.z = 0;
 
 // normalize to set color rgb (0-1)
 
