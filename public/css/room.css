@@ -34,6 +34,20 @@
   z-index:  20;
 }
 
+#leapfull {
+  position:absolute;
+  left:0;
+  width:100%;
+  min-height:100%;
+  z-index: 3;
+}
+
+#leappane {
+  position:absolute;
+  left:0;
+  width:100%;
+  min-height:100%;
+  z-index: 3;
 }
 
 #message-bar-container {
@@ -230,8 +244,9 @@ width: 1000px;
     margin: auto;
     z-index:25;
     visibility: hidden;
+}
 
-}.leapcenter {
+.leapcenter {
     width: 1020px;
     height: 760px;
     position: absolute;

@@ -12,7 +12,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
  var leapFull = document.getElementById( 'leappane' );
  var leapCanvas = document.getElementById( 'leapfull');
- document.getElementById( 'leappane' ).className = 'canvascenter';
+ document.getElementById( 'leappane' ).className = 'leapCenter';
 
  leapFull.style.visibility = 'visible';
  leapCanvas.style.visibility = 'visible';
