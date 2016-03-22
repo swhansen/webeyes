@@ -207,7 +207,7 @@ function updatePeerSphere( data ) {
 var normalizedSphere = [];
                 normalizedSphere[0] = data.position[0] / window.innerWidth;
                 normalizedSphere[1] = data.position[1] / window.innerHeight;
-                normalizedSphere[2] = 0;
+                normalizedSphere[2] = .5;
 
      var hueXY = getXYPointFromRGB(
                  normalizedSphere[0] * 255,
