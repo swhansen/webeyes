@@ -203,19 +203,11 @@ function updatePeerSphere( data ) {
   if ( data.operation === 'mouseUp' ) {
     if ( data.setHueState ) {
 
-     //var normalizedSphere = normalizePoint( data.position );
-var normalizedSphere = [];
-                normalizedSphere[0] = data.position[0] / window.innerWidth;
-                normalizedSphere[1] = data.position[1] / window.innerHeight;
-                normalizedSphere[2] = .5;
-
-     var hueXY = getXYPointFromRGB(
-                 normalizedSphere[0] * 255,
-                 normalizedSphere[1] * 255,
-                 normalizedSphere[2] * 255 );
-
-
-
+      var normalizedSphere = normalizePoint( data.position );
+      var hueXY = getXYPointFromRGB(
+                  data.color[0] * 255,
+                  data.color[1] * 255,
+                  data.color[2] * 255 );
 
 
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
