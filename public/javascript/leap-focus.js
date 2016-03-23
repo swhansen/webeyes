@@ -230,7 +230,13 @@ if ( handState.inChooseState === true ) {
   scene.add( handSphere );
 }
 
-  handSphere.position.fromArray( data.position );
+  //handSphere.position.fromArray( data.position );
+  handSphere.position.x = data[0];
+  handSphere.position.y = data[1];
+  handSphere.position.z = data[2];
+
+
+
 
 // normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
 
@@ -343,10 +349,9 @@ if ( hand.type == 'left' ) {
    //  updateHueText( selectedHueDevice );
    //}
    //
-if ( hand.grabStrength < 0.2 ) { firstClick = true; }
-  if ( hand.grabStrength === 1  ) {
-
-  if ( firstClick === true ) {
+  if ( hand.grabStrength < 0.2 ) { firstClick = true; }
+    if ( hand.grabStrength === 1  ) {
+       if ( firstClick === true ) {
              selectedHueDevice++;
              iotIncrement.play();
              if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
