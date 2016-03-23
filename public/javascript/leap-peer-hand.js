@@ -7,6 +7,7 @@
 function initLeapPeerHand() {
 
 socketServer.on( 'leapSphere', function( data ) {
+
     leapAnimate( data );
       } );
 
@@ -241,6 +242,10 @@ if ( data.operation === 'mouseDown' ) {}
 }
 
 function updateHandSphere( data ) {
+
+
+  setDomMouseEvent( 'leapfull', 'auto' );
+  setDomMouseEvent( 'canvas0', 'none' );
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
