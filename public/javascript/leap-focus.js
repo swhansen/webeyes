@@ -12,7 +12,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
  var leapFull = document.getElementById( 'leappane' );
  var leapCanvas = document.getElementById( 'leapfull');
- document.getElementById( 'leappane' ).className = 'leapCenter';
+ document.getElementById( 'leappane' ).className = 'leapcenter';
 
 
  leapCanvas.style.width = '100%';
@@ -230,13 +230,10 @@ if ( handState.inChooseState === true ) {
   scene.add( handSphere );
 }
 
-  //handSphere.position.fromArray( data.position );
-  handSphere.position.x = data[0];
-  handSphere.position.y = data[1] + 500.00;
-  handSphere.position.z = data[2];
-
-
-
+  handSphere.position.fromArray( data.position );
+  // handSphere.position.x = data[0];
+  // handSphere.position.y = data[1];
+  // handSphere.position.z = data[2];
 
 // normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
 
