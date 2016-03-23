@@ -89,7 +89,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
-    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
+    camera = new THREE.PerspectiveCamera( 40, leapFuss.width / leapFull.height, 1, 5000 );
     camera.position.set( -500, 500, 500 );
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
@@ -204,11 +204,15 @@ function updatePeerSphere( data ) {
   if ( data.operation === 'mouseUp' ) {
     if ( data.setHueState ) {
 
+      console.log( 'updatePeerSphere-up:', data );
+
       var normalizedSphere = normalizePoint( data.position );
       var hueXY = getXYPointFromRGB(
                   normalizedSphere[0] * 255,
                   normalizedSphere[1] * 255,
                   normalizedSphere[2] * 255 );
+
+      console.log( 'updatePeerSphere-up XY:', hueXY );
 
 
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
@@ -255,6 +259,9 @@ if ( handState.inChooseState === true ) {
                 normalizedPalmSphere[2] * 255 );
 
       if ( data.setLightState === 'setLight' ) {
+
+        console.log( 'updateHandSphere-up:', data );
+        console.log( 'updateHandSphere-up XY:', hueXY);
 
         var hueObjData = {};
         hueObjData.deviceID = selectedHueDevice;

@@ -1,5 +1,5 @@
-var canvas     = document.getElementById( 'canvas0' );
 var canvasPane = document.getElementById( 'canvaspane' );
+var canvas     = document.getElementById( 'canvas0' );
 var context    = canvas.getContext( '2d' );
 var data       = {};
 var points     = [];
