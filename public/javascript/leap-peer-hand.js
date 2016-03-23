@@ -29,9 +29,9 @@ socketServer.on( 'leapSphere', function( data ) {
   leapFull.addEventListener( 'mouseup', evCanvas, false );
 
 function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = leapFull.innerWidth / leapFull.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( leapFull.innerWidth, leapFull.innerHeight );
 }
 
 // General-purpose event handler for mouse events
@@ -64,9 +64,9 @@ function evCanvas( ev ) {
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( leapFull.innerWidth, leapFull.innerHeight );
 
-    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
+    camera = new THREE.PerspectiveCamera( 40, leapFull.innerWidth / leapFull.innerHeight, 1, 5000 );
     camera.position.set( -500, 500, 500 );
 
     var raycaster = new THREE.Raycaster();
@@ -107,8 +107,8 @@ function arObjMover() {
     ev.preventDefault();
     tool.started = true;
 
-    var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
-                            -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
+    var mouseVector = new THREE.Vector3( ( ev._x / leapFull.innerWidth ) * 2 - 1,
+                            -( ev._y / leapFull.innerHeight ) * 2 + 1, 0.5 );
     raycaster.setFromCamera( mouseVector, camera );
     var intersects = raycaster.intersectObjects( scene.children );
 
@@ -117,8 +117,8 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-      var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-      var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+      var leapX = ( ev._x / leapFull.innerWidth * 2 - 1 ) * 278.5;
+      var leapY = -( ev._y / leapFull.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.fromArray( spherePos );
 
@@ -137,8 +137,8 @@ function arObjMover() {
 
     if ( tool.started && peerSelected ) {
 
-      var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-      var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+      var leapX = ( ev._x / leapFull.innerWidth * 2 - 1 ) * 278.5;
+      var leapY = -( ev._y / leapFull.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.x = leapX;
       peerSphere.position.y = leapY;
@@ -179,15 +179,15 @@ function arObjMover() {
     peerSelected = false;
     scene.remove( peerSphere );
 
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+    var leapX = ( ev._x / leapFull.innerWidth * 2 - 1 ) * 278.5;
+    var leapY = -( ev._y / leapFull.innerHeight * 2 - 1 ) * 278.5;
     var spherePos = [ leapX, leapY, 0 ];
 
    // rgb (0-1)
 
     var normalizedSphere = [];
-    normalizedSphere[0] = ev._x / window.innerWidth;
-    normalizedSphere[1] = ev._y / window.innerHeight;
+    normalizedSphere[0] = ev._x / leapFull.innerWidth;
+    normalizedSphere[1] = ev._y / leapFull.innerHeight;
     normalizedSphere[2] = 0.5;
 
     peerSphere.material.color.setRGB(
