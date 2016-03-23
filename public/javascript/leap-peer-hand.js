@@ -17,7 +17,7 @@ socketServer.on( 'leapSphere', function( data ) {
     leapFull.style.position   = 'absolute';
     leapFull.style.top        = '0px';
     leapFull.style.left       = '0px';
-    leapFull.style.zIndex = 10;
+    leapFull.style.zIndex = 100;
 
     leapFull.addEventListener( 'mousedown', evCanvas, false );
     leapFull.addEventListener( 'mousemove', evCanvas, false );
