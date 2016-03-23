@@ -259,9 +259,6 @@ width: 1000px;
     z-index:15;
   }
 
-#canvas0 {
-}
-
 #box0 {
   z-index:2;
   -webkit-box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.75);

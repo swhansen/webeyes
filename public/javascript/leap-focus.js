@@ -10,18 +10,18 @@ var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
- var leapFull = document.getElementById( 'leappane' );
- var leapCanvas = document.getElementById( 'leapfull');
+ var leapPane = document.getElementById( 'leappane' );
+ var leapFull = document.getElementById( 'leapfull');
  document.getElementById( 'leappane' ).className = 'leapcenter';
 
 
- leapCanvas.style.width = '100%';
- leapCanvas.style.height = '100%';
- leapCanvas.width =  leapCanvas.offsetWidth;
- leapCanvas.height = leapCanvas.offsetHeight;
+ leapPane.style.width = '100%';
+ leapPane.style.height = '100%';
+ leapPane.width =  leapCanvas.offsetWidth;
+ leapPane.height = leapCanvas.offsetHeight;
 
  leapFull.style.visibility = 'visible';
- leapCanvas.style.visibility = 'visible';
+ leapPane.style.visibility = 'visible';
 
  //   leapFull.style.width      = '100%';
  //   leapFull.style.height     = '100%';
