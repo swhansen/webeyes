@@ -232,7 +232,7 @@ if ( handState.inChooseState === true ) {
 
   //handSphere.position.fromArray( data.position );
   handSphere.position.x = data[0];
-  handSphere.position.y = data[1] + 200.00;
+  handSphere.position.y = data[1] + 500.00;
   handSphere.position.z = data[2];
 
 
