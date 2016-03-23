@@ -60,7 +60,6 @@ function evCanvas( ev ) {
 
     var renderer, scene, camera, controls;
     var peerSelected = false;
-    var lastHandSphereColor;
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
@@ -147,9 +146,9 @@ function arObjMover() {
 // normalize to set color rgb (0-1)
 
       var normalizedSphere = [];
-      normalizedSphere[0] = ev._x / window.innerWidth;
-      normalizedSphere[1] = ev._y / window.innerHeight;
-      normalizedSphere[2] = 0.5;
+      normalizedSphere[0] = leapX;
+      normalizedSphere[1] = leapY;
+      normalizedSphere[2] = 0.0;
 
       peerSphere.material.color.setRGB(
                 normalizedSphere[0],
@@ -188,7 +187,7 @@ function arObjMover() {
     var normalizedSphere = [];
     normalizedSphere[0] = ev._x / window.innerWidth;
     normalizedSphere[1] = ev._y / window.innerHeight;
-    normalizedSphere[2] = lastHandSphereColor[2];
+    normalizedSphere[2] = 0.5;
 
     peerSphere.material.color.setRGB(
               normalizedSphere[0],
@@ -246,8 +245,6 @@ function updateHandSphere( data ) {
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
-
-  lastHandSphereColor = data.color;
 
   handSphere.position.fromArray( data.position );
   handSphere.material.color.setRGB(
