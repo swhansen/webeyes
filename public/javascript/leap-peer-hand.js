@@ -10,14 +10,26 @@ socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
 
- var leapFull = document.getElementById( 'leappane' );
+ var leapPane = document.getElementById( 'leappane' );
+ var leapFull = document.getElementById( 'leapfull');
+ document.getElementById( 'leappane' ).className = 'leapcenter';
 
-    leapFull.style.width      = '100%';
-    leapFull.style.height     = '100%';
-    leapFull.style.position   = 'absolute';
-    leapFull.style.top        = '0px';
-    leapFull.style.left       = '0px';
-    leapFull.style.zIndex = 100;
+
+ //leapFull.style.width = '100%';
+ //leapFull.style.height = '100%';
+ leapFull.width =  leapPane.offsetWidth;
+ leapFull.height = leapPane.offsetHeight;
+
+ leapFull.style.visibility = 'visible';
+ leapPane.style.visibility = 'visible';
+
+  leapFull.style.zIndex = 10;
+
+
+
+
+
+
 
     leapFull.addEventListener( 'mousedown', evCanvas, false );
     leapFull.addEventListener( 'mousemove', evCanvas, false );
