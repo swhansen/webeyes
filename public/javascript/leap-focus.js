@@ -205,9 +205,9 @@ function updatePeerSphere( data ) {
 
       var normalizedSphere = normalizePoint( data.position );
       var hueXY = getXYPointFromRGB(
-                  data.color[0] * 255,
-                  data.color[1] * 255,
-                  data.color[2] * 255 );
+                  normalizedSphere[0] * 255,
+                  normalizedSphere[1] * 255,
+                  normalizedSphere[2] * 255 );
 
 
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
@@ -328,21 +328,32 @@ if ( handState.inChooseState === true ) {
 // increment IOT deviceId with left hand only
 
 if ( hand.type == 'left' ) {
-      if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
+   //if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
 
-      if ( hand.pinchStrength === 1 && hand.grabStrength < 0.3 ) {
+   //if ( hand.pinchStrength === 1 && hand.grabStrength < 0.3 ) {
 
-        var pinchFinger = findPinchingFingerType( hand );
-          if ( pinchFinger.type === 1 ) {
-            if ( firstClick === true ) {
-                selectedHueDevice++;
-                iotIncrement.play();
-                if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
-            firstClick = false;
-          }
-        updateHueText( selectedHueDevice );
-      }
-    }
+   //  var pinchFinger = findPinchingFingerType( hand );
+   //    if ( pinchFinger.type === 1 ) {
+   //      if ( firstClick === true ) {
+   //          selectedHueDevice++;
+   //          iotIncrement.play();
+   //          if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
+   //      firstClick = false;
+   //    }
+   //  updateHueText( selectedHueDevice );
+   //}
+   //
+if ( hand.grabStrength < 0.2 ) { firstClick = true; }
+  if ( hand.grabStrength === 1  ) {
+
+  if ( firstClick === true ) {
+             selectedHueDevice++;
+             iotIncrement.play();
+             if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
+         firstClick = false;
+       }
+     updateHueText( selectedHueDevice );
+   }
   }
 
 // control light with right hand only
