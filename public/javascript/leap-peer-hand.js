@@ -7,14 +7,12 @@
 function initLeapPeerHand() {
 
 socketServer.on( 'leapSphere', function( data ) {
-
     leapAnimate( data );
       } );
 
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull');
  document.getElementById( 'leappane' ).className = 'leapcenter';
-
 
  //leapFull.style.width = '100%';
  //leapFull.style.height = '100%';
@@ -26,9 +24,9 @@ socketServer.on( 'leapSphere', function( data ) {
 
   leapFull.style.zIndex = 10;
 
-    leapFull.addEventListener( 'mousedown', evCanvas, false );
-    leapFull.addEventListener( 'mousemove', evCanvas, false );
-    leapFull.addEventListener( 'mouseup', evCanvas, false );
+  leapFull.addEventListener( 'mousedown', evCanvas, false );
+  leapFull.addEventListener( 'mousemove', evCanvas, false );
+  leapFull.addEventListener( 'mouseup', evCanvas, false );
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -62,6 +60,7 @@ function evCanvas( ev ) {
 
     var renderer, scene, camera, controls;
     var peerSelected = false;
+    var lastHandSphereColor;
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
@@ -98,7 +97,6 @@ function evCanvas( ev ) {
     var aLight = new THREE.AmbientLight( 0x333333 );
     scene.add( light );
     scene.add( aLight );
-
 
 function arObjMover() {
   var tool = this;
@@ -190,7 +188,7 @@ function arObjMover() {
     var normalizedSphere = [];
     normalizedSphere[0] = ev._x / window.innerWidth;
     normalizedSphere[1] = ev._y / window.innerHeight;
-    normalizedSphere[2] = 0.5;
+    normalizedSphere[2] = lastHandSphereColor[2];
 
     peerSphere.material.color.setRGB(
               normalizedSphere[0],
@@ -236,19 +234,20 @@ function updatePeerSphere( data ) {
 
 if ( data.operation === 'mouseDown' ) {}
 
-  if ( data.operation === 'mouseMove' ) {}
+if ( data.operation === 'mouseMove' ) {}
 
-  if ( data.operation === 'mouseUp' ) {}
+if ( data.operation === 'mouseUp' ) {}
 }
 
 function updateHandSphere( data ) {
-
 
   setDomMouseEvent( 'leapfull', 'auto' );
   setDomMouseEvent( 'canvas0', 'none' );
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
+
+  lastHandSphereColor = data.color;
 
   handSphere.position.fromArray( data.position );
   handSphere.material.color.setRGB(

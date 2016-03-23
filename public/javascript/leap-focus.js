@@ -14,7 +14,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
  var leapFull = document.getElementById( 'leapfull');
  document.getElementById( 'leappane' ).className = 'leapcenter';
 
-
  //leapFull.style.width = '100%';
  //leapFull.style.height = '100%';
  leapFull.width =  leapPane.offsetWidth;
@@ -24,13 +23,6 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
  leapPane.style.visibility = 'visible';
 
   leapFull.style.zIndex = 10;
-
- //   leapFull.style.width      = '100%';
- //   leapFull.style.height     = '100%';
-
-   // leapFull.style.position   = 'absolute';
-  //  leapFull.style.top        = '0px';
-  //  leapFull.style.left       = '0px';
 
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
@@ -280,9 +272,6 @@ if ( handState.inChooseState === true ) {
           scene.remove( peerSphere );
     }
 
-// broadcast the handSphere for peer intereaction
-
-// var palmSphereData = {};
 //    data.interactionBoxSize = data.interactionBox.size;
         data.operation = 'move';
         data.inChooseState = handState.inChooseState;
@@ -339,10 +328,9 @@ if ( handState.inChooseState === true ) {
 // increment IOT deviceId with left hand only
 
 if ( hand.type == 'left' ) {
+
    //if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
-
    //if ( hand.pinchStrength === 1 && hand.grabStrength < 0.3 ) {
-
    //  var pinchFinger = findPinchingFingerType( hand );
    //    if ( pinchFinger.type === 1 ) {
    //      if ( firstClick === true ) {
@@ -353,7 +341,7 @@ if ( hand.type == 'left' ) {
    //    }
    //  updateHueText( selectedHueDevice );
    //}
-   //
+
   if ( hand.grabStrength < 0.2 ) { firstClick = true; }
     if ( hand.grabStrength === 1  ) {
        if ( firstClick === true ) {
