@@ -17,8 +17,8 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
  leapPane.style.width = '100%';
  leapPane.style.height = '100%';
- leapPane.width =  leapCanvas.offsetWidth;
- leapPane.height = leapCanvas.offsetHeight;
+ leapPane.width =  leapPane.offsetWidth;
+ leapPane.height = leapPane.offsetHeight;
 
  leapFull.style.visibility = 'visible';
  leapPane.style.visibility = 'visible';
