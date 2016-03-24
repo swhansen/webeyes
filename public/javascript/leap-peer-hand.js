@@ -18,8 +18,8 @@ socketServer.on( 'leapSphere', function( data ) {
 
  //leapFull.style.width = '100%';
  //leapFull.style.height = '100%';
- leapFull.width =  leapPane.offsetWidth;
- leapFull.height = leapPane.offsetHeight;
+// leapFull.width =  leapPane.offsetWidth;
+// leapFull.height = leapPane.offsetHeight;
 
  leapFull.style.visibility = 'visible';
  leapPane.style.visibility = 'visible';
