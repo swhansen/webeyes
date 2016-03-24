@@ -109,8 +109,8 @@ function arObjMover() {
     ev.preventDefault();
     tool.started = true;
 
-    var mouseVector = new THREE.Vector3( ( ev._x / window.innerWidth ) * 2 - 1,
-                            -( ev._y / window.innerHeight ) * 2 + 1, 0.5 );
+    var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
+                            -( ev._y / box0Height ) * 2 + 1, 0.5 );
     raycaster.setFromCamera( mouseVector, camera );
     var intersects = raycaster.intersectObjects( scene.children );
 
