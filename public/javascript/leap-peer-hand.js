@@ -14,8 +14,8 @@ socketServer.on( 'leapSphere', function( data ) {
  var leapFull = document.getElementById( 'leapfull');
  document.getElementById( 'leappane' ).className = 'leapcenter';
 
- leapFull.style.width = '100%';
- leapFull.style.height = '100%';
+// leapFull.style.width = '100%';
+// leapFull.style.height = '100%';
 
  leapFull.width =  leapFull.offsetWidth;
  leapFull.height = leapFull.offsetHeight;
