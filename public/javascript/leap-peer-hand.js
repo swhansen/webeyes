@@ -20,11 +20,10 @@ socketServer.on( 'leapSphere', function( data ) {
 // leapFull.style.width = '100%';
 // leapFull.style.height = '100%';
 
-// leapFull.width =  leapPane.offsetWidth;
-// leapFull.height = leapPane.offsetHeight;
+ leapFull.width =  leapPane.offsetWidth;/ leapFull.height = leapPane.offsetHeight;
 
-// leapFull.style.visibility = 'visible';
-// leapPane.style.visibility = 'visible';
+ leapFull.style.visibility = 'visible';
+ leapPane.style.visibility = 'visible';
 
   leapFull.style.zIndex = 10;
 
@@ -70,7 +69,7 @@ function evCanvas( ev ) {
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
-    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
+    camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     camera.position.set( -500, 500, 500 );
 
     var raycaster = new THREE.Raycaster();
