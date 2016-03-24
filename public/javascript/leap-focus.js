@@ -115,7 +115,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
    // renderer.setSize( window.innerWidth, window.innerHeight );
-    renderer.setSize( viewPortRect.width, viewPortRect.width );
+    renderer.setSize( viewPortRect.width, viewPortRect.height );
   }
 
   function addMesh( meshes ) {
