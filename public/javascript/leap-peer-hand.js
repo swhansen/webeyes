@@ -119,8 +119,8 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-      var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-      var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+      var leapX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
+      var leapY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.fromArray( spherePos );
 
@@ -139,8 +139,8 @@ function arObjMover() {
 
     if ( tool.started && peerSelected ) {
 
-      var leapX = ( ev._x  / window.innerWidth * 2 - 1 ) * 278.5;
-      var leapY = -( ev._y  / window.innerHeight * 2 - 1 ) * 278.5;
+      var leapX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var leapY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.x = leapX;
       peerSphere.position.y = leapY;
@@ -149,8 +149,8 @@ function arObjMover() {
 // normalize to set color rgb (0-1)
 
       var normalizedSphere = [];
-      normalizedSphere[0] = ev._x  / window.innerWidth;
-      normalizedSphere[1] = ev._y  / window.innerHeight;
+      normalizedSphere[0] = ev._x  / box0Width;
+      normalizedSphere[1] = ev._y  / box0Height;
       normalizedSphere[2] = 0.5;
 
       peerSphere.material.color.setRGB(
@@ -181,15 +181,15 @@ function arObjMover() {
     peerSelected = false;
     scene.remove( peerSphere );
 
-    var leapX = ( ev._x / window.innerWidth * 2 - 1 ) * 278.5;
-    var leapY = -( ev._y / window.innerHeight * 2 - 1 ) * 278.5;
+    var leapX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
+    var leapY = -( ev._y / box0Width * 2 - 1 ) * 278.5;
     var spherePos = [ leapX, leapY, 0 ];
 
    // rgb (0-1)
 
     var normalizedSphere = [];
-    normalizedSphere[0] = ev._x / window.innerWidth;
-    normalizedSphere[1] = ev._y / window.innerHeight;
+    normalizedSphere[0] = ev._x / box0Width;
+    normalizedSphere[1] = ev._y / box0Width;
     normalizedSphere[2] = 0.5;
 
     peerSphere.material.color.setRGB(
