@@ -202,11 +202,11 @@ function updatePeerSphere( data ) {
 
       console.log( 'updatePeerSphere-up:', data );
 
-      var normalizedSphere = normalizePoint( data.position );
+    //  var normalizedSphere = normalizePoint( data.position );
       var hueXY = getXYPointFromRGB(
-                  normalizedSphere[0] * 255,
-                  normalizedSphere[1] * 255,
-                  normalizedSphere[2] * 255 );
+                  data.color[0] * 255,
+                  data.color[1] * 255,
+                  data.color[2] * 255 );
 
       console.log( 'updatePeerSphere-up XY:', hueXY );
 
