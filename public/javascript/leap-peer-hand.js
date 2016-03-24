@@ -1,4 +1,3 @@
-
 // Implements peer side Leap hand interaction
 //  - listens to  leapShare ( Leap frame data JSON )
 //  - listens to leapSphere for leap hand sphere
@@ -10,16 +9,15 @@ socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
 
+ var boxRect = leapfull.getBoundingClientRect();
+ console.log( 'boxRect:', boxRect );
+
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull');
  document.getElementById( 'leappane' ).className = 'leapcenter';
 
- boxRect = leapfull.getBoundingClientRect();
- console.log( 'boxRect:', boxRect );
-
-// leapFull.style.width = '100%';
-// leapFull.style.height = '100%';
-
+ //leapFull.style.width = '100%';
+ //leapFull.style.height = '100%';
  leapFull.width =  leapPane.offsetWidth;
  leapFull.height = leapPane.offsetHeight;
 
