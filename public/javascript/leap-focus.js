@@ -202,7 +202,7 @@ function updatePeerSphere( data ) {
 
       console.log( 'updatePeerSphere-up:', data );
 
-      var normalizedSphere = normalizePoint( data.position );
+    //  var normalizedSphere = normalizePoint( data.position );
 
 // SHOULD BE normalize on box0 width and Height
 
