@@ -212,6 +212,8 @@ function arObjMover() {
     data.color = peerSphere.material.color;
     data.setHueState = true;
 
+    console.log( 'peer data:', data );
+
     leapAnimate( data );
 
  var sessionId = socketServer.sessionid;
