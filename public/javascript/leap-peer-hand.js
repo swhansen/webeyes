@@ -142,7 +142,7 @@ function arObjMover() {
     if ( tool.started && peerSelected ) {
 
       var leapX = ( ( ev._x - boxRect.left ) / window.innerWidth * 2 - 1 ) * 278.5;
-      var leapY = -( ev._y  - boxRect.top ) / window.innerHeight * 2 - 1 ) * 278.5;
+      var leapY = -( (ev._y  - boxRect.top ) / window.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.x = leapX;
       peerSphere.position.y = leapY;
