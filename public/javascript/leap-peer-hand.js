@@ -13,7 +13,7 @@ socketServer.on( 'leapSphere', function( data ) {
  console.log( 'boxRect:', boxRect );
 
  var leapPane = document.getElementById( 'leappane' );
- var leapFull = document.getElementById( 'leapfull');
+ var leapFull = document.getElementById( 'leapfull' );
  document.getElementById( 'leappane' ).className = 'leapcenter';
 
  //leapFull.style.width = '100%';
