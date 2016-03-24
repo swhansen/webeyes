@@ -17,11 +17,11 @@ socketServer.on( 'leapSphere', function( data ) {
 // leapFull.style.width = '100%';
 // leapFull.style.height = '100%';
 
- leapFull.width =  leapFull.offsetWidth;
- leapFull.height = leapFull.offsetHeight;
+// leapFull.width =  leapFull.offsetWidth;
+// leapFull.height = leapFull.offsetHeight;
 
- leapFull.style.visibility = 'visible';
- leapPane.style.visibility = 'visible';
+// leapFull.style.visibility = 'visible';
+// leapPane.style.visibility = 'visible';
 
   leapFull.style.zIndex = 10;
 
