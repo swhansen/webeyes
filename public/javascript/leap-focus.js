@@ -6,7 +6,6 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
-
 var viewPortRect = leapfull.getBoundingClientRect();
  console.log( 'boxRect:', viewPortRect );
 
@@ -83,7 +82,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( leapFull.width, leapFull.height );
+    renderer.setSize( window.innerWidth, window.innerHeight );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     camera.position.set( 0, 500, 500 );
