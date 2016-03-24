@@ -160,7 +160,7 @@ function arObjMover() {
 
       data.operation = 'mouseMove';
       data.position = spherePos;
-      data.color = peerSphere.material.color;
+      data.color = normalizedRGB;
       data.setHueState = false;
 
       var sessionId = socketServer.sessionid;
