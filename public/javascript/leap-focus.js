@@ -6,6 +6,10 @@ function leapFocus() {
 //   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 // } );
 
+
+var viewPortRect = leapfull.getBoundingClientRect();
+ console.log( 'boxRect:', boxRect );
+
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
@@ -110,7 +114,8 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+   // renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( viewPortRect.width, viewPortRect.width );
   }
 
   function addMesh( meshes ) {
