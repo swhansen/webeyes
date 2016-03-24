@@ -66,17 +66,17 @@ function evCanvas( ev ) {
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( box0Width, box0Height );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     camera.position.set( 0, 500, 500 );
 
-    var raycaster = new THREE.Raycaster();
-    var projector = new THREE.Projector();
-
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.noRotate = true;
     controls.maxDistance = 1000;
+
+    var raycaster = new THREE.Raycaster();
+    var projector = new THREE.Projector();
 
     scene = new THREE.Scene();
 
