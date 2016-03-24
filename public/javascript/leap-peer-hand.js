@@ -148,15 +148,15 @@ function arObjMover() {
 
 // normalize to set color rgb (0-1)
 
-      var normalizedSphere = [];
-      normalizedSphere[0] = ev._x  / box0Width;
-      normalizedSphere[1] = ev._y  / box0Height;
-      normalizedSphere[2] = lastHandSphereColor.b;
+      var normalizedRGB = [];
+      normalizedRGB[0] = ev._x  / box0Width;
+      normalizedRGB[1] = ev._y  / box0Height;
+      normalizedRGB[2] = lastHandSphereColor.b;
 
       peerSphere.material.color.setRGB(
-                normalizedSphere[0],
-                normalizedSphere[1],
-                normalizedSphere[2] );
+                normalizedRGB[0],
+                normalizedRGB[1],
+                normalizedRGB[2] );
 
       data.operation = 'mouseMove';
       data.position = spherePos;
@@ -187,15 +187,15 @@ function arObjMover() {
 
    // rgb (0-1)
 
-    var normalizedSphere = [];
-    normalizedSphere[0] = ev._x / box0Width;
-    normalizedSphere[1] = ev._y / box0Width;
-    normalizedSphere[2] = lastHandSphereColor.b;
+    var normalizedRGB = [];
+    normalizedRGB[0] = ev._x / box0Width;
+    normalizedRGB[1] = ev._y / box0Width;
+    normalizedRGB[2] = lastHandSphereColor.b;
 
     peerSphere.material.color.setRGB(
-              normalizedSphere[0],
-              normalizedSphere[1],
-              normalizedSphere[2] );
+              normalizedRGB[0],
+              normalizedRGB[1],
+              normalizedRGB[2] );
 
     data.operation = 'mouseUp';
     data.position = spherePos;
