@@ -112,7 +112,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
    // scene.add( peerSphere );
 
   function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = viewPortRect.width / viewPortRect.width;
     camera.updateProjectionMatrix();
    // renderer.setSize( window.innerWidth, window.innerHeight );
     renderer.setSize( viewPortRect.width, viewPortRect.width );
