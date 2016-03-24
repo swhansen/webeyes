@@ -182,7 +182,7 @@ function arObjMover() {
     scene.remove( peerSphere );
 
     var leapX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
-    var leapY = -( ev._y / bbox0Width * 2 - 1 ) * 278.5;
+    var leapY = -( ev._y / box0Width * 2 - 1 ) * 278.5;
     var spherePos = [ leapX, leapY, 0 ];
 
    // rgb (0-1)
