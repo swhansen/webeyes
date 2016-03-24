@@ -119,9 +119,12 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-      var leapX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
-      var leapY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
-      var spherePos = [ leapX, leapY, 0 ];
+//var mouseSphereNormX = ev._x / box0Width;
+//var mouseSphereNormY = ev._y / box0Height;
+
+      var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
+      var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.fromArray( spherePos );
 
       var normalizedRGB = [];
@@ -141,7 +144,6 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-     // updatePeerSphere( updateData );
     }
   };
 
@@ -149,11 +151,11 @@ function arObjMover() {
 
     if ( tool.started && peerSelected ) {
 
-      var leapX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
-      var leapY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
-      var spherePos = [ leapX, leapY, 0 ];
-      peerSphere.position.x = leapX;
-      peerSphere.position.y = leapY;
+      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
+      var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
+      peerSphere.position.x = mouseSphereX;
+      peerSphere.position.y = mouseSphereY;
       peerSphere.position.z = 0;
 
 // normalize to set color rgb (0-1)
@@ -191,9 +193,9 @@ function arObjMover() {
     peerSelected = false;
     scene.remove( peerSphere );
 
-    var leapX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
-    var leapY = -( ev._y / box0Width * 2 - 1 ) * 278.5;
-    var spherePos = [ leapX, leapY, 0 ];
+    var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
+    var mouseSphereY = -( ev._y / box0Width * 2 - 1 ) * 278.5;
+    var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
 
    // rgb (0-1)
 
@@ -211,8 +213,6 @@ function arObjMover() {
     data.position = spherePos;
     data.color = normalizedRGB;
     data.setHueState = true;
-
-    console.log( 'peer data:', data );
 
     leapAnimate( data );
 

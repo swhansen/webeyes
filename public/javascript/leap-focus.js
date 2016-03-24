@@ -7,7 +7,7 @@ function leapFocus() {
 // } );
 
 var viewPortRect = leapfull.getBoundingClientRect();
- console.log( 'boxRect:', viewPortRect );
+// console.log( 'boxRect:', viewPortRect );
 
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
@@ -108,13 +108,10 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     peerSphere.position.set( 0.0, 0.0, 0.0 );
     peerSphere.name = 'peerSphere';
 
-   // scene.add( peerSphere );
-
   function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = box0Width / box0Height;
     camera.updateProjectionMatrix();
-   // renderer.setSize( window.innerWidth, window.innerHeight );
-    renderer.setSize( viewPortRect.width, viewPortRect.height );
+    renderer.setSize( box0Width, box0Height );
   }
 
   function addMesh( meshes ) {
@@ -186,13 +183,9 @@ function updatePeerSphere( data ) {
     scene.add( peerSphere );
     scene.remove( handSphere );
 
-   // peerSphere.position.fromArray( data.position );
-
     peerSphere.position.x = data.position[0];
     peerSphere.position.y = data.position[1];
     peerSphere.position.z = data.position[2];
-
-    // 0-1
 
     peerSphere.material.color = data.color;
     }
@@ -200,24 +193,10 @@ function updatePeerSphere( data ) {
   if ( data.operation === 'mouseUp' ) {
     if ( data.setHueState ) {
 
-      console.log( 'updatePeerSphere-up:', data );
-
-    //  var normalizedSphere = normalizePoint( data.position );
-
-// SHOULD BE normalize on box0 width and Height
-
       var hueXY = getXYPointFromRGB(
-
                   data.color[0] * 255,
                   data.color[1] * 255,
                   data.color[2] * 255 );
-
-                //normalizedSphere[0] * 255,
-                //normalizedSphere[1] * 255,
-                //normalizedSphere[2] * 255 );
-
-      console.log( 'updatePeerSphere-up XY:', hueXY );
-
 
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
@@ -263,9 +242,6 @@ if ( handState.inChooseState === true ) {
                 normalizedPalmSphere[2] * 255 );
 
       if ( data.setLightState === 'setLight' ) {
-
-        console.log( 'updateHandSphere-up:', data );
-        console.log( 'updateHandSphere-up XY:', hueXY);
 
         var hueObjData = {};
         hueObjData.deviceID = selectedHueDevice;
