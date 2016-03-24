@@ -151,7 +151,7 @@ function arObjMover() {
       var normalizedSphere = [];
       normalizedSphere[0] = ev._x  / box0Width;
       normalizedSphere[1] = ev._y  / box0Height;
-      normalizedSphere[2] = 0.5;
+      normalizedSphere[2] = lastHandSphereColor.b;
 
       peerSphere.material.color.setRGB(
                 normalizedSphere[0],
@@ -182,7 +182,7 @@ function arObjMover() {
     scene.remove( peerSphere );
 
     var leapX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
-    var leapY = -( ev._y / box0Width * 2 - 1 ) * 278.5;
+    var leapY = -( ev._y / bbox0Width * 2 - 1 ) * 278.5;
     var spherePos = [ leapX, leapY, 0 ];
 
    // rgb (0-1)
@@ -190,7 +190,7 @@ function arObjMover() {
     var normalizedSphere = [];
     normalizedSphere[0] = ev._x / box0Width;
     normalizedSphere[1] = ev._y / box0Width;
-    normalizedSphere[2] = 0.5;
+    normalizedSphere[2] = lastHandSphereColor.b;
 
     peerSphere.material.color.setRGB(
               normalizedSphere[0],
