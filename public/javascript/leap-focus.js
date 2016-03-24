@@ -83,9 +83,9 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( viewPortRect.width, viewPortRect.height );
 
-    camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
+    camera = new THREE.PerspectiveCamera( 40, viewPortRect.width / viewPortRect.height, 1, 5000 );
     camera.position.set( 0, 500, 500 );
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
