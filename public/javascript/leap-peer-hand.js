@@ -16,7 +16,6 @@ socketServer.on( 'leapSphere', function( data ) {
  var leapFull = document.getElementById( 'leapfull' );
  document.getElementById( 'leappane' ).className = 'leapcenter';
 
-
  //leapFull.style.width = '100%';
  //leapFull.style.height = '100%';
  leapFull.width =  leapPane.offsetWidth;
@@ -150,8 +149,8 @@ function arObjMover() {
 // normalize to set color rgb (0-1)
 
       var normalizedSphere = [];
-      normalizedSphere[0] = leapX;
-      normalizedSphere[1] = leapY;
+      normalizedSphere[0] = ev._x  / window.innerWidth;
+      normalizedSphere[1] = ev._y  / window.innerHeight;
       normalizedSphere[2] = 0.5;
 
       peerSphere.material.color.setRGB(
