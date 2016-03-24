@@ -15,12 +15,12 @@ socketServer.on( 'leapSphere', function( data ) {
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull' );
  document.getElementById( 'leappane' ).className = 'leapcenter';
- document.getElementById( 'leapfull' ).className = 'leapcenter';
+
 
  //leapFull.style.width = '100%';
  //leapFull.style.height = '100%';
- //leapFull.width =  leapPane.offsetWidth;
- //leapFull.height = leapPane.offsetHeight;
+ leapFull.width =  leapPane.offsetWidth;
+ leapFull.height = leapPane.offsetHeight;
 
  leapFull.style.visibility = 'visible';
  leapPane.style.visibility = 'visible';
@@ -70,7 +70,7 @@ function evCanvas( ev ) {
     renderer.setSize( window.innerWidth, window.innerHeight );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
-    camera.position.set( -500, 500, 500 );
+    camera.position.set( 0, 500, 500 );
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
@@ -140,8 +140,8 @@ function arObjMover() {
 
     if ( tool.started && peerSelected ) {
 
-      var leapX = ( ( ev._x - boxRect.left ) / window.innerWidth * 2 - 1 ) * 278.5;
-      var leapY = -( (ev._y  - boxRect.top ) / window.innerHeight * 2 - 1 ) * 278.5;
+      var leapX = ( ev._x  / window.innerWidth * 2 - 1 ) * 278.5;
+      var leapY = -( ev._y  / window.innerHeight * 2 - 1 ) * 278.5;
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.x = leapX;
       peerSphere.position.y = leapY;
