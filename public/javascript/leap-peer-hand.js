@@ -209,7 +209,7 @@ function arObjMover() {
 
     data.operation = 'mouseUp';
     data.position = spherePos;
-    data.color = peerSphere.material.color;
+    data.color = normalizedRGB;
     data.setHueState = true;
 
     console.log( 'peer data:', data );
