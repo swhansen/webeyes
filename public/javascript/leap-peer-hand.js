@@ -124,6 +124,16 @@ function arObjMover() {
       var spherePos = [ leapX, leapY, 0 ];
       peerSphere.position.fromArray( spherePos );
 
+      var normalizedRGB = [];
+      normalizedRGB[0] = ev._x  / box0Width;
+      normalizedRGB[1] = ev._y  / box0Height;
+      normalizedRGB[2] = lastHandSphereColor.b;
+
+      peerSphere.material.color.setRGB(
+                normalizedRGB[0],
+                normalizedRGB[1],
+                normalizedRGB[2] );
+
       data.operation = 'mouseDown';
       data.position = spherePos;
       data.setHueState = false;
@@ -160,7 +170,7 @@ function arObjMover() {
 
       data.operation = 'mouseMove';
       data.position = spherePos;
-      data.color = normalizedRGB;
+      data.color = peerSphere.material.color;
       data.setHueState = false;
 
       var sessionId = socketServer.sessionid;
