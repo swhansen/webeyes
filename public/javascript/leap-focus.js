@@ -156,7 +156,7 @@ function findPinchingFingerType( hand ){
 
 // normalize given position and leap interaction box
 
-function normalizePoint( position ) {
+function normalizeLeapPoint( position ) {
 //  var vec = [];
 //    vec[0] = ( position[0] - interactionBox.center[0]) / interactionBox.size[0] + 0.5;
 //    vec[1] = ( position[1] - interactionBox.center[1]) / interactionBox.size[1] + 0.5;
@@ -202,11 +202,19 @@ function updatePeerSphere( data ) {
 
       console.log( 'updatePeerSphere-up:', data );
 
-    //  var normalizedSphere = normalizePoint( data.position );
+      var normalizedSphere = normalizePoint( data.position );
+
+// SHOULD BE normalize on box0 width and Height
+
       var hueXY = getXYPointFromRGB(
-                  data.r * 255,
-                  data.g * 255,
-                  data.b * 255 );
+
+                  data.position[0] / boxWidth * 255,
+                  data.position[1] / boxHeight * 255,
+                  data.position[2] / data.color.b * 255 );
+
+                //normalizedSphere[0] * 255,
+                //normalizedSphere[1] * 255,
+                //normalizedSphere[2] * 255 );
 
       console.log( 'updatePeerSphere-up XY:', hueXY );
 
@@ -238,7 +246,7 @@ if ( handState.inChooseState === true ) {
 
 // normalize Leap Palm for for RGB color space - threejs wants rgb (0-1)
 
-  var normalizedPalmSphere = normalizePoint( data.position );
+  var normalizedPalmSphere = normalizeLeapPoint( data.position );
 
   handSphere.material.color.setRGB(
              normalizedPalmSphere[0],
