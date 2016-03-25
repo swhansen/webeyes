@@ -10,7 +10,6 @@ socketServer.on( 'leapSphere', function( data ) {
       } );
 
  var boxRect = leapfull.getBoundingClientRect();
- console.log( 'boxRect:', boxRect );
 
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull' );
@@ -63,6 +62,7 @@ function evCanvas( ev ) {
     var renderer, scene, camera, controls;
     var peerSelected = false;
     var lastHandSphereColor;
+    var interactionBox;
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
@@ -119,8 +119,8 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-//var mouseSphereNormX = ev._x / box0Width;
-//var mouseSphereNormY = ev._y / box0Height;
+var mouseSphereNormX = ev._x / box0Width;
+var mouseSphereNormY = ev._y / box0Height;
 
       var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
@@ -151,8 +151,8 @@ function arObjMover() {
 
     if ( tool.started && peerSelected ) {
 
-      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
-      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
+      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * interactionBox[0];
+      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * interactionBox[1];
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
@@ -185,7 +185,6 @@ function arObjMover() {
 };
 
   this.mouseup = function( ev ) {
-    console.log( 'up:', ev.x, ev.y );
     tool.down = false;
 
   if ( tool.started && peerSelected ) {
@@ -257,6 +256,7 @@ function updateHandSphere( data ) {
 
   setDomMouseEvent( 'leapfull', 'auto' );
   setDomMouseEvent( 'canvas0', 'none' );
+  interactionBox = data.interactionBox;
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );

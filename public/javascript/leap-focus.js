@@ -7,7 +7,6 @@ function leapFocus() {
 // } );
 
 var viewPortRect = leapfull.getBoundingClientRect();
-// console.log( 'boxRect:', viewPortRect );
 
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
