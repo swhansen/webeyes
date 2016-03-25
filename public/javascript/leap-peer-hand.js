@@ -9,9 +9,6 @@ socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
 
- var boxRect = leapfull.getBoundingClientRect();
- console.log( 'boxRect:', boxRect );
-
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull' );
  document.getElementById( 'leappane' ).className = 'canvascenter';

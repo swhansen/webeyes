@@ -24,7 +24,6 @@ function usebcode( bcode ) {
   switch ( bcode )
   {
    case 'modme':
-  // modmeState = true;
    userContext.modMeState = true;
    $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
       uiStructure = data;
