@@ -9,8 +9,6 @@ socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
 
- var boxRect = leapfull.getBoundingClientRect();
-
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull' );
  document.getElementById( 'leappane' ).className = 'leapcenter';
@@ -118,6 +116,9 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
+//var mouseSphereNormX = ev._x / box0Width;
+//var mouseSphereNormY = ev._y / box0Height;
+
       var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
@@ -139,6 +140,7 @@ function arObjMover() {
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
+
     }
   };
 
@@ -146,8 +148,8 @@ function arObjMover() {
 
     if ( tool.started && peerSelected ) {
 
-      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.491;
-      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.491;
+      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
@@ -173,11 +175,14 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
+      // note: need to fire animate
+
       leapAnimate( data );
   }
 };
 
   this.mouseup = function( ev ) {
+    console.log( 'up:', ev.x, ev.y );
     tool.down = false;
 
   if ( tool.started && peerSelected ) {
