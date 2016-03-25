@@ -24,6 +24,7 @@ var thisBox;
 
 function setDomMouseEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
+  console.log( 'pointerEvents:', dimId, document.getElementById( domId ).style.pointerEvents );
 }
 
 //
