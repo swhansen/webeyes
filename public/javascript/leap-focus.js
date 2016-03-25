@@ -260,7 +260,6 @@ if ( handState.inChooseState === true ) {
           scene.remove( peerSphere );
     }
 
-//    data.interactionBoxSize = data.interactionBox.size;
         data.operation = 'move';
         data.inChooseState = handState.inChooseState;
         data.color = handSphere.material.color;
@@ -268,9 +267,6 @@ if ( handState.inChooseState === true ) {
         data.originRtcId = userContext.rtcId;
         data.deviceId = selectedHueDevice;
         data.source = 'hand';
-
-    //    data.sphereRadius = hand.sphereRadius;
-    //    data.interactionBox = frame.interactionBox;
 
         emitLeapSphere( data );
 }
@@ -344,8 +340,6 @@ if ( hand.type == 'left' ) {
 
 if ( hand.type == 'right' ) {
     if ( handState.inChooseState ) {
-
-      sphereData.interactionBox = hands.interactionBox;
 
       if ( hand.grabStrength > 0.005 && hand.grabStrength < 0.995 ) {
           sphereData.setLightState = 'adjustLight' ;

@@ -62,7 +62,6 @@ function evCanvas( ev ) {
     var renderer, scene, camera, controls;
     var peerSelected = false;
     var lastHandSphereColor;
-    var interactionBox;
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
@@ -119,9 +118,6 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-var mouseSphereNormX = ev._x / box0Width;
-var mouseSphereNormY = ev._y / box0Height;
-
       var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
@@ -143,7 +139,6 @@ var mouseSphereNormY = ev._y / box0Height;
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
-
     }
   };
 
@@ -151,8 +146,8 @@ var mouseSphereNormY = ev._y / box0Height;
 
     if ( tool.started && peerSelected ) {
 
-      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * interactionBox.size[0];
-      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * interactionBox.size[1];
+      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.491;
+      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.491;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
@@ -177,8 +172,6 @@ var mouseSphereNormY = ev._y / box0Height;
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
-
-      // note: need to fire animate
 
       leapAnimate( data );
   }
@@ -256,8 +249,6 @@ function updateHandSphere( data ) {
 
   setDomMouseEvent( 'leapfull', 'auto' );
   setDomMouseEvent( 'canvas0', 'none' );
-
-  console.log('IB:', data.interactionBox );
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
