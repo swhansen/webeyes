@@ -285,8 +285,6 @@ if ( handState.inChooseState === true ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     scene.remove( handSphere );
-  //  scene.remove( peerSphere );
-
 
 // make the hand eligable
 
@@ -310,7 +308,6 @@ if ( handState.inChooseState === true ) {
 
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
-      sphereData.interactionBox = frame.interactionBox;
       sphereData.source = 'hand';
 
 // increment IOT deviceId with left hand only
@@ -347,6 +344,8 @@ if ( hand.type == 'left' ) {
 
 if ( hand.type == 'right' ) {
     if ( handState.inChooseState ) {
+
+      sphereData.interactionBox = frame.interactionBox;
 
       if ( hand.grabStrength > 0.005 && hand.grabStrength < 0.995 ) {
           sphereData.setLightState = 'adjustLight' ;

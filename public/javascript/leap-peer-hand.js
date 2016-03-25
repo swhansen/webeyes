@@ -256,7 +256,8 @@ function updateHandSphere( data ) {
 
   setDomMouseEvent( 'leapfull', 'auto' );
   setDomMouseEvent( 'canvas0', 'none' );
-  interactionBox = data.interactionBox;
+
+  console.log('IB:', data.interactionBox );
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
