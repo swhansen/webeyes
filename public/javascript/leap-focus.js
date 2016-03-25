@@ -345,7 +345,7 @@ if ( hand.type == 'left' ) {
 if ( hand.type == 'right' ) {
     if ( handState.inChooseState ) {
 
-      sphereData.interactionBox = frame.interactionBox;
+      sphereData.interactionBox = frame.hands.interactionBox;
 
       if ( hand.grabStrength > 0.005 && hand.grabStrength < 0.995 ) {
           sphereData.setLightState = 'adjustLight' ;
