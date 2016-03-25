@@ -1,7 +1,7 @@
 
 // canvas playground for experimental stuff
 
-var utilCanvas = document.getElementById('util-canvas');
+var utilCanvas = document.getElementById('utilcanvas');
 var ctx = utilCanvas.getContext('2d');
 var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
@@ -23,8 +23,8 @@ function initUtil() {
   box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
-  document.getElementById('utilcanvaspane').offsetHeight = box0Height;
-  document.getElementById('utilcanvaspane').offsetWidth = box0Width;
+//  document.getElementById('utilcanvaspane').offsetHeight = box0Height;
+//  document.getElementById('utilcanvaspane').offsetWidth = box0Width;
 }
 
 function drawDoc1() {

@@ -32,6 +32,14 @@ var userContext = {
   browserVideoDevices: ''
 };
 
+var layerArray = {
+  fullpage: auto,
+  canvas0: none,
+  utilcanvas: none,
+  arcanvas: none,
+  leapfull: nonee
+};
+
 easyrtc.dontAddCloseButtons( false );
 
 // Footer Messages

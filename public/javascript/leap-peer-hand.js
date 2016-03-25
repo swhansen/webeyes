@@ -216,10 +216,13 @@ function arObjMover() {
 
     leapAnimate( data );
 
- var sessionId = socketServer.sessionid;
+    var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
     tool.started = false;
+
+    setDomMouseEvent( 'leapfull', 'none' );
+    setDomMouseEvent( 'canvas0', 'auto' );
     }
   };
 }

@@ -37,16 +37,6 @@ $( '#sticky-draw' ).click( function() {
     $( fcn.sideBar ).fadeOut( 2 );
   } );
 
-//drawUI();
-
- // buildSideMenu( 'draw' );
-
-//$( '#drawButton' ).trigger( 'click' );
-
-//$( uiStructure.structure['draw'].sideBar ).fadeIn( 5 );
-
-  //$( uiStructure.structure.draw.sideBar ).fadeIn( 5 );
-
   setDomMouseEvent( 'canvas0', 'auto' );
   setDomMouseEvent( 'arcanvaspane', 'none' );
 

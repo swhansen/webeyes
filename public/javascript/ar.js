@@ -165,7 +165,7 @@ function setUpArLayer( participantState ) {
   var step = 0;
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
-  var ar0 = document.getElementById( 'ar-canvas' );
+  var ar0 = document.getElementById( 'arcanvas' );
   var mouseVector;
 
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
@@ -561,7 +561,7 @@ function setupArInteractionEvents( participantState ) {
   var cameraDriver;
   var arShareData = {};
 
-  var ar0 = document.getElementById( 'ar-canvas' );
+  var ar0 = document.getElementById( 'arcanvas' );
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
   offsetY = rect.top;
@@ -589,7 +589,7 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-$( '#ar-canvas' ).longpress( function( event ) {
+$( '#arcanvas' ).longpress( function( event ) {
 
   event.preventDefault();
 
