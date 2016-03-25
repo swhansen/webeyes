@@ -151,8 +151,8 @@ var mouseSphereNormY = ev._y / box0Height;
 
     if ( tool.started && peerSelected ) {
 
-      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * interactionBox[0];
-      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * interactionBox[1];
+      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * interactionBox.size[0];
+      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * interactionBox.size[1];
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
