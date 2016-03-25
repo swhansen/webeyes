@@ -9,6 +9,9 @@ socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
 
+ var boxRect = leapfull.getBoundingClientRect();
+ console.log( 'boxRect:', boxRect );
+
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull' );
  document.getElementById( 'leappane' ).className = 'leapcenter';
@@ -69,7 +72,7 @@ function evCanvas( ev ) {
     camera.position.set( 0, 500, 500 );
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.enableRotate = false;
+    controls.noRotate = true;
     controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
@@ -116,8 +119,8 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-//var mouseSphereNormX = ev._x / box0Width;
-//var mouseSphereNormY = ev._y / box0Height;
+//var mouseSphereNormX = ec._x / box0Width;
+//var mouseSphereNormY = ec._x / box0Width;
 
       var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
