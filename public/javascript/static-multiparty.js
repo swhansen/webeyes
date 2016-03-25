@@ -33,11 +33,11 @@ var userContext = {
 };
 
 var layerArray = {
-  fullpage: auto,
-  canvas0: none,
-  utilcanvas: none,
-  arcanvas: none,
-  leapfull: nonee
+  fullpage: 'auto',
+  canvas0: 'none',
+  utilcanvas: 'none',
+  arcanvas: 'none',
+  leapfull: 'none'
 };
 
 easyrtc.dontAddCloseButtons( false );
