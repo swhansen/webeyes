@@ -58,8 +58,11 @@ var theCSSprop = document.getElementById( key ).style.zIndex;
 console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
 console.log( 'domZindex:', getDomZindex( layerList ) );
 
-var $el = $('#main-ui-container');
-var zIndex = $el.css('zIndex');
+//var $el = $('#main-ui-container');
+//var zIndex = $el.css('zIndex');
+
+var el = document.getElementById('arcanvaspane');
+var zIndex = el.style.zIndex;
 console.log( 'zindex:', zIndex );
 
 //

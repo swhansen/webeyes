@@ -34,10 +34,10 @@ var userContext = {
 
 var layerList = [
   'fullpage',
-  'canvas0',
-  'utilcanvas',
-  'arcanvas',
-  'leapfull'
+  'canvaspane',
+  'utilcanvaspane',
+  'arcanvaspane',
+  'leappane'
 ];
 
 easyrtc.dontAddCloseButtons( false );
