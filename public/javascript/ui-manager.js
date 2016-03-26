@@ -34,7 +34,7 @@ function getDomPointerStatus( list ) {
     return obj;
 }
 
-console.log( 'domPointerStatus:', getDomPointerStatus( layerList ) );
+
 
 function getDomZindex( list ) {
 var obj = {};
@@ -48,40 +48,19 @@ var theCSSprop = document.getElementById( key ).style.zIndex;
 //
 //  //var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
 //
-  obj[ key ] = document.getElementById( key ).style.zIndex;
+  obj[ key ] = theCSSprop;
   } );
 
 
   return obj;
 }
 
-
-function getStyle(el,styleProp)
-{
-    var x = document.getElementById(el);
-
-    if (window.getComputedStyle)
-    {
-        var y = document.defaultView.getComputedStyle(x,null).getPropertyValue(styleProp);
-    }
-    else if (x.currentStyle)
-    {
-        var y = x.currentStyle[styleProp];
-    }
-
-    return y;
-}
-
-var zInd = getStyle ( "fullpage" , "zIndex" );
-console.log( 'test z-index:', zInd );
-
-
-
-
-
-
 console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
 console.log( 'domZindex:', getDomZindex( layerList ) );
+
+var $el = $('#main-ui-container');
+var zIndex = $el.css('zIndex');
+console.log( 'zindex:', zIndex );
 
 //
 // Sticky menus
