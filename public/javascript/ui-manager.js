@@ -34,26 +34,16 @@ function getDomPointerStatus( list ) {
     return obj;
 }
 
-
-
 function getDomZindex( list ) {
-var obj = {};
-_.forEach( list, function( key ) {
-//
-//  var elem = document.getElementById( key );
+  var obj = {};
+  _.forEach( list, function( key ) {
 
-var elem = document.getElementById( key );
-var theCSSprop = window.getComputedStyle(elem,null).getPropertyValue("z-index");
-//
 
-//
- // var theCSSprop = elem.css( 'z-index' );
-//
-//  //var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
-//
-  obj[ key ] = theCSSprop;
+  var elem = document.getElementById( key );
+  var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'z-index' );
+
+    obj[ key ] = theCSSprop;
   } );
-
 
   return obj;
 }
@@ -61,12 +51,6 @@ var theCSSprop = window.getComputedStyle(elem,null).getPropertyValue("z-index");
 console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
 console.log( 'domZindex:', getDomZindex( layerList ) );
 
-//var $el = $('#main-ui-container');
-//var zIndex = $el.css('zIndex');
-
-var el = document.getElementById( 'main-ui-container' );
-var zIndex = el.style.zIndex;
-console.log( 'zindex:', zIndex );
 
 //
 // Sticky menus

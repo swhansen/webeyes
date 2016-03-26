@@ -37,7 +37,10 @@ var layerList = [
   'canvaspane',
   'utilcanvaspane',
   'arcanvaspane',
-  'leappane'
+  'leappane',
+  "sticky-ui-container",
+  "main-ui-container",
+  "codeDialogModal"
 ];
 
 easyrtc.dontAddCloseButtons( false );
