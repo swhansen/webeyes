@@ -48,8 +48,8 @@ function getDomZindex( list ) {
   return obj;
 }
 
-console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
-console.log( 'domZindex:', getDomZindex( layerList ) );
+//console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
+//console.log( 'domZindex:', getDomZindex( layerList ) );
 
 
 //
