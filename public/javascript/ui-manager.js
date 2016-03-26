@@ -27,6 +27,15 @@ function setDomMouseEvent( domId, mode ) {
   console.log( 'pointerEvents:', domId, document.getElementById( domId ).style.pointerEvents );
 }
 
+function getLayerMouseMode( obj ) {
+
+  _.forEach( obj, function( value, key ) {
+    console.log( key, value );
+  } );
+}
+
+getLayerMouseMode( layerArray );
+
 //
 // Sticky menus
 //
