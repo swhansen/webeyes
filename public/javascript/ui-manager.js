@@ -44,7 +44,7 @@ _.forEach( list, function( key ) {
 
   //var theCSSprop = document.getElementById( key ).style.zIndex;
 
-  var theCSSprop = elem.css( 'z-index' );
+  var theCSSprop = $( key ).css( 'z-index' );
 
   //var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
 
