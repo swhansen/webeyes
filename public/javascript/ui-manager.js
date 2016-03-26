@@ -29,8 +29,9 @@ function setDomMouseEvent( domId, mode ) {
 
 function getLayerMouseMode( obj ) {
 
-  _.forEach( obj, function( value, key ) {
+ var layerMouseStatus = _.forEach( obj, function( value, key ) {
     console.log( key, value );
+    return layerMouseStatus;
   } );
 }
 
