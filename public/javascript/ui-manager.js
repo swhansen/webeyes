@@ -31,8 +31,8 @@ function getLayerMouseMode( obj ) {
 
  var layerMouseStatus = _.forEach( obj, function( value, key ) {
    // console.log( key, value );
-    return layerMouseStatus;
   } );
+    return layerMouseStatus;
 }
 
 var foo = getLayerMouseMode( layerArray );
