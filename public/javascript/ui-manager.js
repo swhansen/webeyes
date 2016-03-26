@@ -37,7 +37,7 @@ function getDomPointerStatus( list ) {
 console.log( 'domPointerStatus:', getDomPointerStatus( layerList ) );
 
 function getDomZindex( list ) {
-var obj;
+var obj = {};
 _.forEach( list, function( key ) {
 
   var elem = document.getElementById( key );
