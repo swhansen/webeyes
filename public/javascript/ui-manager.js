@@ -29,13 +29,13 @@ function setDomPointerEvent( domId, mode ) {
 function getDomPointerStatus( list ) {
   var foo = {};
 
-_( list ).forEach( function( key ) {
+//_( list ).forEach( function( key ) {
+//    foo.key = document.getElementById( key ).style.pointerEvents;
+//  } );
+
+ _.forEach( list , function( key ) {
     foo.key = document.getElementById( key ).style.pointerEvents;
   } );
-
-//  var layerMouseStatus = _.forEach( list , function( key ) {
-//    foo.key = document.getElementById( key ).style.pointerEvents
-//  } );
     return foo;
 }
 
