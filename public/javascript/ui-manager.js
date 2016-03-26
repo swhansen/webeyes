@@ -26,15 +26,20 @@ function setDomPointerEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
 }
 
-function getDomPointerStatus() {
+function getDomPointerStatus( list ) {
   var foo = {};
-  var layerMouseStatus = _.forEach( layerList , function( key ) {
+
+_( list ).forEach( function( key ) {
     foo.key = document.getElementById( key ).style.pointerEvents;
   } );
+
+//  var layerMouseStatus = _.forEach( list , function( key ) {
+//    foo.key = document.getElementById( key ).style.pointerEvents
+//  } );
     return foo;
 }
 
-var bar = getDomPointerStatus();
+var bar = getDomPointerStatus( layerList );
 console.log( 'bar:', bar );
 
 //
