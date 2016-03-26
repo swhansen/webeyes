@@ -42,8 +42,6 @@ _.forEach( list, function( key ) {
 //
 //  var elem = document.getElementById( key );
 
-
-document.getElementById( id ).style.zIndex = 2;
 var elem = document.getElementById( key );
 var theCSSprop = window.getComputedStyle(elem,null).getPropertyValue("z-index");
 //
