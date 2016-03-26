@@ -32,12 +32,12 @@ var userContext = {
   browserVideoDevices: ''
 };
 
-var layerArray = [
-  fullpage,
-  canvas0,
-  utilcanvas,
-  arcanvas,
-  leapfull,
+var layerList = [
+  'fullpage',
+  'canvas0',
+  'utilcanvas',
+  'arcanvas',
+  'leapfull'
 ];
 
 easyrtc.dontAddCloseButtons( false );

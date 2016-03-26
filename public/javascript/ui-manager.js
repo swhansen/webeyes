@@ -29,12 +29,13 @@ function setDomPointerEvent( domId, mode ) {
 function getDomPointerStatus() {
   var foo = {};
   var layerMouseStatus = _.forEach( layerList , function( key ) {
-    foo.key = document.getElementById( key ).style.pointerEvents
+    foo.key = document.getElementById( key ).style.pointerEvents;
   } );
     return foo;
 }
 
-getDomPointerStatus();
+var bar = getDomPointerStatus();
+console.log( 'bar:', bar );
 
 //
 // Sticky menus
