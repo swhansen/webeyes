@@ -220,6 +220,7 @@ function arObjMover() {
 
     setDomPointerEvent( 'leapfull', 'none' );
     setDomPointerEvent( 'canvas0', 'auto' );
+    console.log( 'peer exit domZindex:', getDomZindex( layerList ) );
     }
   };
 }
@@ -257,6 +258,7 @@ function updateHandSphere( data ) {
 
   setDomPointerEvent( 'leapfull', 'auto' );
   setDomPointerEvent( 'canvas0', 'none' );
+  console.log( 'peerenter  domZindex:', getDomZindex( layerList ) );
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
