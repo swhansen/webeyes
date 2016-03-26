@@ -40,15 +40,15 @@ function getDomZindex( list ) {
 var obj = {};
 _.forEach( list, function( key ) {
 //
-  var elem = document.getElementById( key );
+//  var elem = document.getElementById( key );
 //
-//  //var theCSSprop = document.getElementById( key ).style.zIndex;
+var theCSSprop = document.getElementById( key ).style.zIndex;
 //
-  var theCSSprop = elem.css( 'z-index' );
+ // var theCSSprop = elem.css( 'z-index' );
 //
 //  //var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
 //
-  obj[ elem.id ] = theCSSprop;
+  obj[ key.id ] = theCSSprop;
   } );
 
 
