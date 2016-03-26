@@ -27,20 +27,25 @@ function setDomPointerEvent( domId, mode ) {
 }
 
 function getDomPointerStatus( list ) {
-  var foo = {};
-
-//_( list ).forEach( function( key ) {
-//    foo.key = document.getElementById( key ).style.pointerEvents;
-//  } );
-
- _.forEach( list , function( key ) {
-    foo[ key ] = document.getElementById( key ).style.pointerEvents;
+  var obj = {};
+ _.forEach( list, function( key ) {
+    obj[ key ] = document.getElementById( key ).style.pointerEvents;
   } );
-    return foo;
+    return obj;
 }
 
-var bar = getDomPointerStatus( layerList );
-console.log( 'bar:', bar );
+console.log( 'domPointerStatus:', getDomPointerStatus( layerList ) );
+
+function getDomZindex( list ) {
+var obj;
+_.forEach( list, function( key ) {
+  obj[ key ] = document.getElementById( key ).style.zIndex;
+} );
+  return obj;
+}
+
+console.log( 'domZindex:', getDomZindex( layerList ) );
+
 
 //
 // Sticky menus
