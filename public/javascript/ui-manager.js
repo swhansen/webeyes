@@ -52,20 +52,33 @@ var theCSSprop = document.getElementById( key ).style.zIndex;
   } );
 
 
-//$( '*' ).filter( function() {
-//   return $( this ).css( 'z-index' ) >= 10;
-// } ).each( function() {
-//  // console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
-//
-//var foo = document.getElementById( this );
-//var bla = foo.getAttribute( 'id' );
-//
-//  obj[ $( bla ) ] = $( this ).css( 'z-index' );
-//
-// } );
-
   return obj;
 }
+
+
+function getStyle(el,styleProp)
+{
+    var x = document.getElementById(el);
+
+    if (window.getComputedStyle)
+    {
+        var y = document.defaultView.getComputedStyle(x,null).getPropertyValue(styleProp);
+    }
+    else if (x.currentStyle)
+    {
+        var y = x.currentStyle[styleProp];
+    }
+
+    return y;
+}
+
+var zInd = getStyle ( "fullpage" , "zIndex" );
+console.log( 'test z-index:', zInd );
+
+
+
+
+
 
 console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
 console.log( 'domZindex:', getDomZindex( layerList ) );
