@@ -42,7 +42,9 @@ _.forEach( list, function( key ) {
 
   var elem = document.getElementById( key );
 
-  var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
+  var theCSSprop = document.getElementById( key ).style.zIndex;
+
+  //var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
 
   obj[ key ] = theCSSprop;
   } );
