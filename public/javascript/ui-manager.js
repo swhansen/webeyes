@@ -39,13 +39,17 @@ console.log( 'domPointerStatus:', getDomPointerStatus( layerList ) );
 function getDomZindex( list ) {
 var obj;
 _.forEach( list, function( key ) {
-  obj[ key ] = document.getElementById( key ).style.zIndex;
-} );
+
+  var elem = document.getElementById( key );
+
+  var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
+
+  obj[ key ] = theCSSprop;
+  } );
   return obj;
 }
 
 console.log( 'domZindex:', getDomZindex( layerList ) );
-
 
 //
 // Sticky menus
