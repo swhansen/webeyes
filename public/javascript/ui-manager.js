@@ -30,12 +30,13 @@ function setDomMouseEvent( domId, mode ) {
 function getLayerMouseMode( obj ) {
 
  var layerMouseStatus = _.forEach( obj, function( value, key ) {
-    console.log( key, value );
+   // console.log( key, value );
     return layerMouseStatus;
   } );
 }
 
-getLayerMouseMode( layerArray );
+var foo = getLayerMouseMode( layerArray );
+console.log( 'foo:', foo );
 
 //
 // Sticky menus
