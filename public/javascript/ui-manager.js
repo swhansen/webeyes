@@ -61,7 +61,7 @@ console.log( 'domZindex:', getDomZindex( layerList ) );
 //var $el = $('#main-ui-container');
 //var zIndex = $el.css('zIndex');
 
-var el = document.getElementById('arcanvaspane');
+var el = document.getElementById('main-ui-container');
 var zIndex = el.style.zIndex;
 console.log( 'zindex:', zIndex );
 
