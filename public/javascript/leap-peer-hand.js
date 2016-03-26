@@ -220,7 +220,6 @@ function arObjMover() {
 
     setDomPointerEvent( 'leappane', 'none' );
     setDomPointerEvent( 'canvaspane', 'auto' );
-    console.log( 'up-domPointerMode:', getDomPointerStatus( layerList ) );
     }
   };
 }
@@ -258,9 +257,6 @@ function updateHandSphere( data ) {
 
   setDomPointerEvent( 'leappane', 'auto' );
   setDomPointerEvent( 'canvaspane', 'none' );
-  console.log( 'in-domPointerMode:', getDomPointerStatus( layerList ) );
-
-  console.log( 'Hand-domPointerMode:', getDomPointerStatus( layerList ) );
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );

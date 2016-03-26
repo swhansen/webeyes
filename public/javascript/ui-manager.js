@@ -26,7 +26,15 @@ function setDomPointerEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
 }
 
-function getDomPointerStatus( list ) {
+function setLayerPointerExclusive( layer ){
+
+  _.forEach( layerList, function( key ) {
+     document.getElementById( key ).style.pointerEvents = 'none';
+    } );
+  document.getElementById( layer ).style.pointerEvents = 'auto';
+}
+
+function getLayerPointerStatus( list ) {
   var obj = {};
  _.forEach( list, function( key ) {
     obj[ key ] = document.getElementById( key ).style.pointerEvents;
@@ -34,23 +42,23 @@ function getDomPointerStatus( list ) {
     return obj;
 }
 
-function getDomZindex( list ) {
+function getLayerZindexStatus( list ) {
   var obj = {};
   _.forEach( list, function( key ) {
-
-
-  var elem = document.getElementById( key );
-  var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'z-index' );
-
+    var elem = document.getElementById( key );
+    var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'z-index' );
     obj[ key ] = theCSSprop;
   } );
-
   return obj;
 }
 
 //console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
 //console.log( 'domZindex:', getDomZindex( layerList ) );
 
+setLayerPointerExclusive( 'canvaspane');
+console.log( 'canvas - PointerMode:', getDomPointerStatus( layerList ) );
+setLayerPointerExclusive( 'fullpage');
+console.log( 'fullpage - PointerMode:', getDomPointerStatus( layerList ) );
 
 //
 // Sticky menus
