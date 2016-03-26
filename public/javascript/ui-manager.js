@@ -36,35 +36,38 @@ function getDomPointerStatus( list ) {
 
 console.log( 'domPointerStatus:', getDomPointerStatus( layerList ) );
 
-function getDomZindex() {
+function getDomZindex( list ) {
 var obj = {};
-//_.forEach( list, function( key ) {
+_.forEach( list, function( key ) {
 //
-//  var elem = document.getElementById( key );
+  var elem = document.getElementById( key );
 //
 //  //var theCSSprop = document.getElementById( key ).style.zIndex;
 //
-//  var theCSSprop = $( key ).css( 'z-index' );
+  var theCSSprop = $( key ).css( 'z-index' );
 //
 //  //var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
 //
-//  obj[ key ] = theCSSprop;
-//  } );
+  obj[ elem.id ] = theCSSprop;
+  } );
 
 
-$( '*' ).filter( function() {
-   return $( this ).css( 'z-index' ) >= 10;
- } ).each( function() {
-  // console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
-
-  obj[ $( this ) ] = $( this ).css( 'z-index' );
-
- } );
+//$( '*' ).filter( function() {
+//   return $( this ).css( 'z-index' ) >= 10;
+// } ).each( function() {
+//  // console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+//
+//var foo = document.getElementById( this );
+//var bla = foo.getAttribute( 'id' );
+//
+//  obj[ $( bla ) ] = $( this ).css( 'z-index' );
+//
+// } );
 
   return obj;
 }
 
-console.log( 'domZindex:', getDomZindex() );
+console.log( 'domZindex:', getDomZindex( layerList ) );
 
 //
 // Sticky menus
