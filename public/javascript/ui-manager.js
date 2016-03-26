@@ -34,7 +34,7 @@ function getDomPointerStatus( list ) {
 //  } );
 
  _.forEach( list , function( key ) {
-    foo.key = document.getElementById( key ).style.pointerEvents;
+    foo[ key ] = document.getElementById( key ).style.pointerEvents;
   } );
     return foo;
 }
