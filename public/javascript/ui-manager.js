@@ -48,7 +48,7 @@ var theCSSprop = document.getElementById( key ).style.zIndex;
 //
 //  //var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'zIndex' );
 //
-  obj[ key.id ] = theCSSprop;
+  obj[ key ] = document.getElementById( key ).style.zIndex;
   } );
 
 
@@ -67,6 +67,7 @@ var theCSSprop = document.getElementById( key ).style.zIndex;
   return obj;
 }
 
+console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
 console.log( 'domZindex:', getDomZindex( layerList ) );
 
 //
