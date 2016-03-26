@@ -43,7 +43,7 @@ _.forEach( list, function( key ) {
 //  var elem = document.getElementById( key );
 
 var elem = document.getElementById( key );
-var theCSSprop = window.getComputedStyle(elem,null).getPropertyValue("height");
+var theCSSprop = window.getComputedStyle(elem,null).getPropertyValue("zIndex");
 //
 
 //
