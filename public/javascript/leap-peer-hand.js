@@ -218,8 +218,8 @@ function arObjMover() {
 
     tool.started = false;
 
-    setDomMouseEvent( 'leapfull', 'none' );
-    setDomMouseEvent( 'canvas0', 'auto' );
+    setDomPointerEvent( 'leapfull', 'none' );
+    setDomPointerEvent( 'canvas0', 'auto' );
     }
   };
 }
@@ -255,8 +255,8 @@ if ( data.operation === 'mouseUp' ) {}
 
 function updateHandSphere( data ) {
 
-  setDomMouseEvent( 'leapfull', 'auto' );
-  setDomMouseEvent( 'canvas0', 'none' );
+  setDomPointerEvent( 'leapfull', 'auto' );
+  setDomPointerEvent( 'canvas0', 'none' );
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );

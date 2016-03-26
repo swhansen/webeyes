@@ -22,21 +22,19 @@ $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
 var videoMuteData = {};
 var thisBox;
 
-function setDomMouseEvent( domId, mode ) {
+function setDomPointerEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
-  console.log( 'pointerEvents:', domId, document.getElementById( domId ).style.pointerEvents );
 }
 
-function getLayerMouseMode( obj ) {
-
- var layerMouseStatus = _.forEach( obj, function( value, key ) {
-   // console.log( key, value );
+function getDomPointerStatus() {
+  var foo = {};
+  var layerMouseStatus = _.forEach( layerList , function( key ) {
+    foo.key = document.getElementById( key ).style.pointerEvents
   } );
-    return layerMouseStatus;
+    return foo;
 }
 
-var foo = getLayerMouseMode( layerArray );
-console.log( 'foo:', foo );
+getDomPointerStatus();
 
 //
 // Sticky menus
@@ -49,8 +47,8 @@ $( '#sticky-draw' ).click( function() {
     $( fcn.sideBar ).fadeOut( 2 );
   } );
 
-  setDomMouseEvent( 'canvas0', 'auto' );
-  setDomMouseEvent( 'arcanvaspane', 'none' );
+  setDomPointerEvent( 'canvas0', 'auto' );
+  setDomPointerEvent( 'arcanvaspane', 'none' );
 
   messageBar( 'Draw Layer is in Focus' );
  } );
@@ -63,8 +61,8 @@ $( function() {
        $( fcn.sideBar ).fadeOut( 2 );
       } );
 
-     setDomMouseEvent( 'canvas0', 'none' );
-     setDomMouseEvent( 'arcanvaspane', 'auto' );
+     setDomPointerEvent( 'canvas0', 'none' );
+     setDomPointerEvent( 'arcanvaspane', 'auto' );
      messageBar( 'AR Layer is in Focus' );
   } );
 } );
@@ -155,9 +153,9 @@ $( function() {
   $( '#drawButton' ).click( function() {
       buildSideMenu( 'draw' );
       userContext.uiState = 'draw';
-      setDomMouseEvent( 'arcanvaspane', 'none' );
-      setDomMouseEvent( 'canvas0', 'auto' );
-      setDomMouseEvent( 'arcanvaspane', 'none' );
+      setDomPointerEvent( 'arcanvaspane', 'none' );
+      setDomPointerEvent( 'canvas0', 'auto' );
+      setDomPointerEvent( 'arcanvaspane', 'none' );
     }
   );
 } );
@@ -166,8 +164,8 @@ $( function() {
   $( '#modmeButton' ).click( function() {
       buildSideMenu( 'modme' );
       userContext.modMeState = true;
-      setDomMouseEvent( 'canvas0', 'none' );
-      setDomMouseEvent( 'arcanvaspane', 'none' );
+      setDomPointerEvent( 'canvas0', 'none' );
+      setDomPointerEvent( 'arcanvaspane', 'none' );
     }
   );
 } );
@@ -182,8 +180,8 @@ $( function() {
       loadAr( userContext.participantState );
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
-      setDomMouseEvent( 'canvas0', 'none' );
-      setDomMouseEvent( 'arcanvaspane', 'auto' );
+      setDomPointerEvent( 'canvas0', 'none' );
+      setDomPointerEvent( 'arcanvaspane', 'auto' );
     }
   );
 } );
@@ -222,11 +220,11 @@ $( function() {
       if ( $( this ).attr( 'class' ) === 'moderator-swap' ) {
         this.src = this.src.replace( 'img/focus-moderator-off.png', 'img/focus-moderator.png' );
         modSwitch = true;
-        setDomMouseEvent( 'canvas0', 'none' );
+        setDomPointerEvent( 'canvas0', 'none' );
       } else {
         this.src = this.src.replace( 'img/focus-moderator.png', 'img/focus-moderator-off.png' );
         modSwitch = false;
-        setDomMouseEvent( 'canvas0', 'auto' );
+        setDomPointerEvent( 'canvas0', 'auto' );
       }
       $( this ).toggleClass( 'on' );
     } );

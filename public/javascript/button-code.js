@@ -16,7 +16,7 @@ $( function() {
   } );
 
 modmeUI();
-setDomMouseEvent('canvas0', 'none');
+setDomPointerEvent('canvas0', 'none');
 }
 
 function usebcode( bcode ) {
