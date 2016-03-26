@@ -1,10 +1,10 @@
 function leapFocus() {
 
-//$( '*' ).filter( function() {
-//   return $( this ).css( 'z-index' ) >= 10;
-// } ).each( function() {
-//   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
-// } );
+$( '*' ).filter( function() {
+   return $( this ).css( 'z-index' ) >= 10;
+ } ).each( function() {
+   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+ } );
 
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
