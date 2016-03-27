@@ -55,10 +55,10 @@ function getLayerZindexStatus( list ) {
 //console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
 //console.log( 'domZindex:', getDomZindex( layerList ) );
 
-setLayerPointerExclusive( 'canvaspane');
-console.log( 'canvas - PointerMode:', getDomPointerStatus( layerList ) );
-setLayerPointerExclusive( 'fullpage');
-console.log( 'fullpage - PointerMode:', getDomPointerStatus( layerList ) );
+setLayerPointerExclusive( 'canvaspane' );
+console.log( 'canvas - PointerMode:', getLayerPointerStatus( layerList ) );
+setLayerPointerExclusive( 'fullpage' );
+console.log( 'fullpage - PointerMode:', getLayerPointerStatus( layerList ) );
 
 //
 // Sticky menus
