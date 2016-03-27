@@ -27,7 +27,6 @@ function setDomPointerEvent( domId, mode ) {
 }
 
 function setLayerPointerExclusive( layer ){
-
   _.forEach( layerList, function( key ) {
      document.getElementById( key ).style.pointerEvents = 'none';
     } );
@@ -52,13 +51,12 @@ function getLayerZindexStatus( list ) {
   return obj;
 }
 
-//console.log( 'domPointerMode:', getDomPointerStatus( layerList ) );
-//console.log( 'domZindex:', getDomZindex( layerList ) );
+console.log( 'Layer z-index:', getLayerZindexStatus( layerList ) );
 
-setLayerPointerExclusive( 'canvaspane' );
-console.log( 'canvas - PointerMode:', getLayerPointerStatus( layerList ) );
-setLayerPointerExclusive( 'fullpage' );
-console.log( 'fullpage - PointerMode:', getLayerPointerStatus( layerList ) );
+// setLayerPointerExclusive( 'canvaspane' );
+// console.log( 'canvas - PointerMode:', getLayerPointerStatus( layerList ) );
+// setLayerPointerExclusive( 'fullpage' );
+// console.log( 'fullpage - PointerMode:', getLayerPointerStatus( layerList ) );
 
 //
 // Sticky menus
