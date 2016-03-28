@@ -69,8 +69,8 @@ function getLayerZindexStatus( list ) {
 captureLayerPointerState( layerList );
 console.log( 'pointerState:', layerPointerState );
 setLayerPointerState();
-//console.log( 'layerPointerState:', layerPointerState );
-//console.log( 'pointerState- reset:', getLayerPointerStatus( layerList ) );
+console.log( 'layerPointerState:', layerPointerState );
+console.log( 'pointerState- reset:', getLayerPointerStatus( layerList ) );
 
 console.log( 'Layer z-index:', getLayerZindexStatus( layerList ) );
 
