@@ -48,8 +48,8 @@ function captureLayerPointerState( list ) {
 }
 
 function setLayerPointerState() {
-  _.forEach( layerPointerState, function( key ) {
-      document.getElementById( key ).style.pointerEvents = key;
+  _.forEach( layerPointerState, function( value, key ) {
+      document.getElementById( key ).style.pointerEvents = key.value;
   } );
 }
 
@@ -69,8 +69,8 @@ function getLayerZindexStatus( list ) {
 captureLayerPointerState( layerList );
 console.log( 'pointerState:', layerPointerState );
 setLayerPointerState();
-console.log( 'layerPointerState:', layerPointerState );
-console.log( 'pointerState- reset:', getLayerPointerStatus( layerList ) );
+//console.log( 'layerPointerState:', layerPointerState );
+//console.log( 'pointerState- reset:', getLayerPointerStatus( layerList ) );
 
 console.log( 'Layer z-index:', getLayerZindexStatus( layerList ) );
 
