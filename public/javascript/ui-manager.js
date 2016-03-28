@@ -69,10 +69,10 @@ function getLayersZindexStatus() {
  console.log( 'pointerState:', layerPointerState );
 
  setDomPointerEvent( 'fullpage', 'auto' );
- console.log( 'pointerStatus:', getLayersPointerStatus();
+ console.log( 'pointerStatus:', getLayersPointerStatus() );
 
   setLayersPointerFromState();
-  console.log( 'pointerStatus:', getLayersPointerStatus();
+  console.log( 'pointerStatus:', getLayersPointerStatus() );
 
 
 
