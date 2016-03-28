@@ -32,6 +32,8 @@ var userContext = {
   browserVideoDevices: ''
 };
 
+// the layer list
+
 var layerList = [
   'fullpage',
   'box0',
@@ -40,6 +42,8 @@ var layerList = [
   'arcanvaspane',
   'leappane'
 ];
+
+// stae of the pointers for the layers
 
 var layerPointerState = {};
 

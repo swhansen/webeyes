@@ -31,33 +31,33 @@ function setLayerPointerExclusive( layer ){
      document.getElementById( key ).style.pointerEvents = 'none';
     } );
   document.getElementById( layer ).style.pointerEvents = 'auto';
+  captureLayerPointerState();
+
 }
 
-function getLayerPointerStatus( list ) {
+function getLayersPointerStatus() {
   var obj = {};
- _.forEach( list, function( key ) {
+ _.forEach( layerList, function( key ) {
     obj[ key ] = document.getElementById( key ).style.pointerEvents;
   } );
     return obj;
 }
 
-function captureLayerPointerState( list ) {
-  _.forEach( list, function( key ) {
+function captureLayerPointerState() {
+  _.forEach( layerList, function( key ) {
     layerPointerState[ key ] = document.getElementById( key ).style.pointerEvents;
   } );
 }
 
-function setLayerPointerState() {
+function setLayersPointerFromState() {
   _.forEach( layerPointerState, function( value, key ) {
       document.getElementById( key ).style.pointerEvents = key.value;
   } );
 }
 
-
-
-function getLayerZindexStatus( list ) {
+function getLayersZindexStatus() {
   var obj = {};
-  _.forEach( list, function( key ) {
+  _.forEach( layerList, function( key ) {
     var elem = document.getElementById( key );
     var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'z-index' );
     obj[ key ] = theCSSprop;
@@ -68,16 +68,16 @@ function getLayerZindexStatus( list ) {
 
 captureLayerPointerState( layerList );
 console.log( 'pointerState:', layerPointerState );
-setLayerPointerState();
+setLayersPointerFromState();
 console.log( 'layerPointerState:', layerPointerState );
-console.log( 'pointerState- reset:', getLayerPointerStatus( layerList ) );
+console.log( 'pointerState- reset:', getLayersPointerStatus() );
 
-console.log( 'Layer z-index:', getLayerZindexStatus( layerList ) );
+console.log( 'Layer z-index:', getLayersZindexStatus() );
 
 // setLayerPointerExclusive( 'canvaspane' );
-// console.log( 'canvas - PointerMode:', getLayerPointerStatus( layerList ) );
+// console.log( 'canvas - PointerMode:', getLayersPointerStatus() );
 // setLayerPointerExclusive( 'fullpage' );
-// console.log( 'fullpage - PointerMode:', getLayerPointerStatus( layerList ) );
+// console.log( 'fullpage - PointerMode:', getLayersPointerStatus() );
 
 //
 // Sticky menus
