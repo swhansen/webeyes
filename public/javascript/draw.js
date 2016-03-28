@@ -264,13 +264,6 @@ function initDraw() {
 
   canvas.style.pointerEvents = 'none';
 
-  // list the z-factors
-
- //$( '*' ).filter( function() {
- //  return $( this ).css( 'z-index' ) >= 10;
- //} ).each( function() {
- //  console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
- //} );
 }
 
 function clearDrawCanvas() {

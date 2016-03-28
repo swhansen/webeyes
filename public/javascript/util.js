@@ -23,8 +23,6 @@ function initUtil() {
   box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
-//  document.getElementById('utilcanvaspane').offsetHeight = box0Height;
-//  document.getElementById('utilcanvaspane').offsetWidth = box0Width;
 }
 
 function drawDoc1() {

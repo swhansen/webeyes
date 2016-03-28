@@ -41,6 +41,12 @@ function getLayerPointerStatus( list ) {
     return obj;
 }
 
+function captureLayerPointerState( list ) {
+  _.forEach( list, function( key )  {
+    layerPointerState.key = document.getElementById( key ).style.pointerEvents;
+  } );
+}
+
 function getLayerZindexStatus( list ) {
   var obj = {};
   _.forEach( list, function( key ) {
@@ -50,6 +56,11 @@ function getLayerZindexStatus( list ) {
   } );
   return obj;
 }
+
+
+captureLayerPointerState( layerList );
+console.log( 'pointerState:', layerPointerState );
+
 
 console.log( 'Layer z-index:', getLayerZindexStatus( layerList ) );
 
