@@ -43,7 +43,7 @@ function getLayerPointerStatus( list ) {
 
 function captureLayerPointerState( list ) {
   _.forEach( list, function( key )  {
-    layerPointerState.key = document.getElementById( key ).style.pointerEvents;
+    layerPointerState[ key ] = document.getElementById( key ).style.pointerEvents;
   } );
 }
 
