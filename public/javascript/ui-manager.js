@@ -32,7 +32,6 @@ function setLayerPointerExclusive( layer ){
     } );
   document.getElementById( layer ).style.pointerEvents = 'auto';
   captureLayerPointerState();
-
 }
 
 function getLayersPointerStatus() {
@@ -66,13 +65,23 @@ function getLayersZindexStatus() {
 }
 
 
-captureLayerPointerState( layerList );
-console.log( 'pointerState:', layerPointerState );
-setLayersPointerFromState();
-console.log( 'layerPointerState:', layerPointerState );
-console.log( 'pointerState- reset:', getLayersPointerStatus() );
+ captureLayerPointerState( layerList );
+ console.log( 'pointerState:', layerPointerState );
 
-console.log( 'Layer z-index:', getLayersZindexStatus() );
+ setDomPointerEvent( 'fullpage', 'auto' );
+ console.log( 'pointerStatus:', getLayersPointerStatus();
+
+  setLayersPointerFromState();
+  console.log( 'pointerStatus:', getLayersPointerStatus();
+
+
+
+// //setLayersPointerFromState();
+// setLayerPointerExclusive( 'utilcanvaspane');
+// console.log( 'set to canvas pane - layerPointerState:', layerPointerState );
+// console.log( 'pointerState- getLayersPointerStatus:', getLayersPointerStatus() );
+//
+// console.log( 'Layer z-index:', getLayersZindexStatus() );
 
 // setLayerPointerExclusive( 'canvaspane' );
 // console.log( 'canvas - PointerMode:', getLayersPointerStatus() );
