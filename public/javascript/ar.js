@@ -195,6 +195,12 @@ function setUpArLayer( participantState ) {
   renderer.setClearColor( 0x000000, 0 );
 
   orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElement );
+
+
+  mouseControls = new THREE.OrbitControls( orbitDrivenCamera );
+
+
+
  // orbitCameraControls.addEventListener( 'change', connectToOrbitController );
 
 
@@ -557,7 +563,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   function connectToOrbitController() {
     console.log( 'at connectToOrbitController');
 
-    orbitCameraControls.update();
+    mouseControls.update();
     animateArObjects();
     renderer.render( scene, orbitDrivenCamera );
     requestAnimationFrame( connectToOrbitController );
