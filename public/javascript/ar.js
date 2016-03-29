@@ -506,6 +506,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
   orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera );
+  orbitCameraControls.addEventListener( 'change', connectToOrbitController() );
 
   arConnectionController( participantState );
 
@@ -552,7 +553,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
 
   function connectToOrbitController() {
-    orbitCameraControls.update();
+   // orbitCameraControls.update();
     animateArObjects();
     renderer.render( scene, orbitDrivenCamera );
     requestAnimationFrame( connectToOrbitController );
