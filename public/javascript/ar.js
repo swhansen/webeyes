@@ -473,11 +473,12 @@ function arConnectionController( participantState ) {
 //    focus - device sensors
 //    peer - broadcast feed sensors
 
-//if ( participantState 'focus && useContext.mode === 'vr' ) {
-//  orbitDrivenCamera.lookat( scene.position )
-//  connectToOrbitController();
-//}
+if ( participantState === 'focus' && useContext.mode === 'vr' ) {
 
+  console.log( 'arConnectionController:', participantState, userContext );
+  orbitDrivenCamera.lookat( scene.position );
+  connectToOrbitController();
+}
 
   if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
@@ -551,7 +552,7 @@ function arConnectionController( participantState ) {
   function connectToOrbitController() {
     orbitDrivenCamera.update();
     animateArObjects();
-    renderer.render( scene, orbitDrivenCameraCamera );
+    renderer.render( scene, orbitDrivenCamera );
     requestAnimationFrame( connectToOrbitController );
   }
 
