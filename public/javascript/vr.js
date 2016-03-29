@@ -21,7 +21,7 @@ var mixer;
 function loadVr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var orbitCameraControls, orbitDrivenCamera;
+  var orbitCameraControls, orbitDrivenCamera, controls, camera;
   var knot;
 
   clock.start();
