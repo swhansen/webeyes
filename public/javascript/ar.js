@@ -80,7 +80,7 @@ function removeUserCreatedArObjects() {
 function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var orbitControls, orbitDrivenCamera;
+  var orbitCameraControls, orbitDrivenCamera;
   var knot;
 
   clock.start();
@@ -205,10 +205,10 @@ function setUpArLayer( participantState ) {
 
 
 //  orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
- orbitCameraControls.enableDamping = true;
- orbitCameraControls.dampingFactor = 0.25;
- orbitCameraControls.enableZoom = false;
- orbitCameraControls.maxDistance = 1000;
+//orbitCameraControls.enableDamping = true;
+//orbitCameraControls.dampingFactor = 0.25;
+//orbitCameraControls.enableZoom = false;
+//orbitCameraControls.maxDistance = 1000;
 
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
