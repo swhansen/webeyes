@@ -516,7 +516,6 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
 
-
   arConnectionController( participantState );
 
   function animateArObjects() {
