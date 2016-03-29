@@ -189,6 +189,7 @@ function setUpArLayer( participantState ) {
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   orbitDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  orbitDrivenCamera.position.set( 0, 500, 500 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
