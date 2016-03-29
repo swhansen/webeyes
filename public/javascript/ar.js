@@ -505,7 +505,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  orbitCameraControls = new new THREE.OrbitControls( orbitDrivenCamera );
+  orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera );
 
   arConnectionController( participantState );
 
