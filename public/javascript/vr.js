@@ -61,7 +61,7 @@ function setUpArLayer( participantState ) {
  // broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-  camera.position.set( 10, 10, 10 );
+  camera.position.set( 1, 1, 1 );
 
   renderer = new THREE.WebGLRenderer( { canvas: arcanvas, alpha: true } );
   renderer.setSize( box0Width, box0Width );
@@ -69,7 +69,7 @@ function setUpArLayer( participantState ) {
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-  controls.maxDistance = 2000;
+  controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
 
 
