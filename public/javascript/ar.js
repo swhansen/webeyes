@@ -195,14 +195,14 @@ function setUpArLayer( participantState ) {
   renderer.setClearColor( 0x000000, 0 );
 
   orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElement );
-  orbitCameraControls.addEventListener( 'change', connectToOrbitController );
+ // orbitCameraControls.addEventListener( 'change', connectToOrbitController );
 
 
 //  orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
-// orbitControls.enableDamping = true;
-// orbitControls.dampingFactor = 0.25;
-// orbitControls.enableZoom = false;
-// orbitControls.maxDistance = 1000;
+ orbitCameraControls.enableDamping = true;
+ orbitCameraControls.dampingFactor = 0.25;
+ orbitCameraControls.enableZoom = false;
+ orbitCameraControls.maxDistance = 1000;
 
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
