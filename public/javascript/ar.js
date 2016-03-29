@@ -189,16 +189,16 @@ function setUpArLayer( participantState ) {
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   var orbitDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
+  renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
+  renderer.setSize( box0Width, box0Width );
+  renderer.setClearColor( 0x000000, 0 );
+
   var orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
   orbitControls.enableDamping = true;
   orbitControls.dampingFactor = 0.25;
   orbitControls.enableZoom = false;
+  orbitControls.maxDistance = 1000;
 
-  controls.maxDistance = 1000;
-
-  renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
-  renderer.setSize( box0Width, box0Width );
-  renderer.setClearColor( 0x000000, 0 );
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
