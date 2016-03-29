@@ -245,7 +245,7 @@ $( function() {
       userContext.uiState = 'vr';
       userContext.mode = 'vr';
 
-      loadAr( userContext.participantState );
+      loadVr( userContext.participantState );
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );

@@ -85,7 +85,7 @@ function loadAr( participantState ) {
 
   clock.start();
   setUpArLayer( participantState );
-  //setupArInteractionEvents( participantState );
+  setupArInteractionEvents( participantState );
    }
 
   function receiveArObject( data ) {
@@ -564,7 +564,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   function connectToOrbitController() {
     console.log( 'at connectToOrbitController');
 
-    renderer.render( scene, camera );
+    renderer.render( scene, amera );
     controls.update();
    // animateArObjects();
     requestAnimationFrame( connectToOrbitController );
