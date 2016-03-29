@@ -187,11 +187,14 @@ function setUpArLayer( participantState ) {
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  var orbitDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+
+  var orbitControls = new THREE.OrbitControls( orbitDrivenCameraCamera, renderer.domElememnt );
+
+  controls.maxDistance = 1000;
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
-
   renderer.setSize( box0Width, box0Width );
-
   renderer.setClearColor( 0x000000, 0 );
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
@@ -467,6 +470,11 @@ function arConnectionController( participantState ) {
 //    focus - device sensors
 //    peer - broadcast feed sensors
 
+//if ( participantState === 'vr' ) {
+//  orbitDrivenCamera.lookat( scene.position )
+// connectToVRSensors()
+
+
   if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
@@ -539,14 +547,14 @@ function arConnectionController( participantState ) {
     animateArObjects();
     renderer.render( scene, sensorDrivenCamera );
     requestAnimationFrame( connectToDeviceSensors );
-  }
+    }
 
   function connectToBroadcastSensors() {
     broadcastCameraControls.update();
     animateArObjects();
     renderer.render( scene, broadcastDrivenCamera );
     requestAnimationFrame( connectToBroadcastSensors );
-  }
+    }
     arConnectionController( participantState );
 
   }
@@ -570,6 +578,10 @@ function setupArInteractionEvents( participantState ) {
   var viewHeight = ar0.height;
 
   var projector = new THREE.Projector();
+
+  //  if ( participantState === 'vr' ) {
+  //    cameraDriver = orbitControls;
+  // }
 
     if ( participantState === 'focus' ) {
       cameraDriver = sensorDrivenCamera;

@@ -1,5 +1,5 @@
 // Implements peer side Leap hand interaction
-//  - listens to  leapShare ( Leap frame data JSON )
+//  - listens to  leapShare ( Leap frame data JSON
 //  - listens to leapSphere for leap hand sphere
 //  - emits peerSphere to leapFocus for peer IOT  change
 
@@ -36,6 +36,7 @@ function onWindowResize() {
 // General-purpose event handler for mouse events
 
 function evCanvas( ev ) {
+
 // Firefox
   if ( ev.layerX || ev.layerX === 0 ) {
     ev._x = ev.layerX;
@@ -68,7 +69,6 @@ function evCanvas( ev ) {
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     camera.position.set( 0, 500, 500 );
 
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.noRotate = true;
     controls.maxDistance = 1000;
 
