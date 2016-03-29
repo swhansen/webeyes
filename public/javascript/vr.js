@@ -69,7 +69,7 @@ function setUpArLayer( participantState ) {
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-  controls.maxDistance = 5000;
+ // controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
 
 
