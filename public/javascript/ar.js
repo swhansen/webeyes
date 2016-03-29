@@ -197,15 +197,6 @@ function setUpArLayer( participantState ) {
   orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera );
   orbitCameraControls.addEventListener( 'change', render );
 
-  function animate() {
-
-  requestAnimationFrame( animate );
-  orbitCameraControls.update();
-}
-
-function render() {
-  renderer.render( scene, orbitDrivenCamera );
-}
 
 //  orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
 // orbitControls.enableDamping = true;
@@ -490,7 +481,7 @@ function arConnectionController( participantState ) {
 if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
-  orbitDrivenCamera.lookAt( scene.position );
+  //orbitDrivenCamera.lookAt( scene.position );
   connectToOrbitController();
 }
 
