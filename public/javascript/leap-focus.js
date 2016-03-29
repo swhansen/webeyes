@@ -84,7 +84,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     camera.position.set( 0, 500, 500 );
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.enableRotate = false;
+    //controls.enableRotate = false;
     controls.maxDistance = 1000;
 
     scene = new THREE.Scene();
