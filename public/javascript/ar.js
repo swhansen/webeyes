@@ -476,7 +476,7 @@ function arConnectionController( participantState ) {
 if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
-  orbitControls.lookat( scene.position );
+ // orbitControls.lookat( scene.position );
   connectToOrbitController();
 }
 
