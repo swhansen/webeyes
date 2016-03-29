@@ -189,7 +189,7 @@ function setUpArLayer( participantState ) {
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   var orbitDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-  var orbitControls = new THREE.OrbitControls( orbitDrivenCameraCamera, renderer.domElememnt );
+  var orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
   orbitControls.enableDamping = true;
   orbitControls.dampingFactor = 0.25;
   orbitControls.enableZoom = false;
