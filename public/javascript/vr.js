@@ -13,6 +13,9 @@ var lamp;
 var arUserCreatedObject;
 var mixer;
 
+var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
+  var orbitCameraControls, orbitDrivenCamera, controls, camera;
+  var knot;
 
 //
 // ----------  Main Loader  --------------------------
@@ -20,9 +23,7 @@ var mixer;
 
 function loadVr( participantState ) {
 
-  var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var orbitCameraControls, orbitDrivenCamera, controls, camera;
-  var knot;
+
 
   clock.start();
   animate();
