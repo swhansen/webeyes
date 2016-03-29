@@ -25,7 +25,7 @@ function loadVr( participantState ) {
 
   //clock.start();
   setUpArLayer( participantState );
-  render();
+  animate();
  // setupArInteractionEvents( participantState );
    }
 
@@ -55,8 +55,8 @@ function setUpArLayer( participantState ) {
 
   scene = new THREE.Scene();
 
-  sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+ // sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+ // broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
@@ -297,12 +297,12 @@ function setUpArLayer( participantState ) {
 
 }
 
-//function animate() {
-//        requestAnimationFrame( animate );
-//       controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
+function animate() {
+        requestAnimationFrame( animate );
+       controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
        // stats.update();
-      //  render();
-//      }
+        render();
+      }
 
 function render() {
   renderer.render( scene, camera );
