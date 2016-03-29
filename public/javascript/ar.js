@@ -477,7 +477,7 @@ function arConnectionController( participantState ) {
 if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
-  //orbitCameraControls.lookat( scene.position );
+  orbitDrivenCamera.lookAt( scene.position );
   connectToOrbitController();
 }
 
@@ -551,9 +551,8 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
     }
   }
 
-
   function connectToOrbitController() {
-console.log( 'at connectToOrbitController');
+    console.log( 'at connectToOrbitController');
 
     orbitCameraControls.update();
     animateArObjects();
