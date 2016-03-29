@@ -195,7 +195,7 @@ function setUpArLayer( participantState ) {
   renderer.setClearColor( 0x000000, 0 );
 
   orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera );
-  orbitCameraControls.addEventListener( 'change', render );
+  orbitCameraControls.addEventListener( 'change', connectToOrbitController );
 
 
 //  orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
