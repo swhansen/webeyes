@@ -557,7 +557,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
     console.log( 'at connectToOrbitController');
 
     orbitCameraControls.update();
-    animateArObjects();
+   // animateArObjects();
     renderer.render( scene, orbitDrivenCamera );
     requestAnimationFrame( connectToOrbitController );
   }
