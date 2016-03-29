@@ -189,15 +189,15 @@ function setUpArLayer( participantState ) {
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  orbitDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-  orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElement );
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-  orbitCameraControls.maxDistance = 2000;
+  controls.maxDistance = 2000;
 
 
  // mouseControls = new THREE.MouseControls( orbitDrivenCamera );
@@ -490,7 +490,7 @@ function arConnectionController( participantState ) {
 if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
-  //orbitDrivenCamera.lookAt( scene.position )
+  //camera.lookAt( scene.position )
   connectToOrbitController();
 }
 
@@ -564,9 +564,9 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   function connectToOrbitController() {
     console.log( 'at connectToOrbitController');
 
-    orbitCameraControls.update();
-    animateArObjects();
-    renderer.render( scene, orbitDrivenCamera );
+    renderer.render( scene, camera );
+    controls.update();
+   // animateArObjects();
     requestAnimationFrame( connectToOrbitController );
   }
 
@@ -609,7 +609,7 @@ function setupArInteractionEvents( participantState ) {
   var projector = new THREE.Projector();
 
     if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-      cameraDriver = orbitDrivenCamera;
+      cameraDriver = camera;
    }
 
     if ( participantState === 'focus' ) {
