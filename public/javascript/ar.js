@@ -194,11 +194,11 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-   orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
-  orbitControls.enableDamping = true;
-  orbitControls.dampingFactor = 0.25;
-  orbitControls.enableZoom = false;
-  orbitControls.maxDistance = 1000;
+//  orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
+// orbitControls.enableDamping = true;
+// orbitControls.dampingFactor = 0.25;
+// orbitControls.enableZoom = false;
+// orbitControls.maxDistance = 1000;
 
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
@@ -477,7 +477,7 @@ function arConnectionController( participantState ) {
 if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
- // orbitControls.lookat( scene.position );
+  orbitameraControls.lookat( scene.position );
   connectToOrbitController();
 }
 
@@ -504,6 +504,8 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+
+  orbitCameraControls = new new THREE.OrbitControls( orbitDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -550,7 +552,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
 
   function connectToOrbitController() {
-    orbitControls.update();
+    orbitCameraControls.update();
     animateArObjects();
     renderer.render( scene, orbitDrivenCamera );
     requestAnimationFrame( connectToOrbitController );
