@@ -26,7 +26,7 @@ function setDomPointerEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
 }
 
-function setLayerPointerExclusive( layer ){
+function setLayerPointerExclusive( layer ) {
   _.forEach( layerList, function( key ) {
      document.getElementById( key ).style.pointerEvents = 'none';
     } );
@@ -63,7 +63,6 @@ function getLayersZindexStatus() {
   } );
   return obj;
 }
-
 
  captureLayerPointerState( layerList );
  console.log( 'pointerState:', layerPointerState );
@@ -228,6 +227,23 @@ $( function() {
       userContext.participantState = 'focus';
       userContext.modMeState = true;
       userContext.uiState = 'ar';
+
+      loadAr( userContext.participantState );
+
+      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+      setDomPointerEvent( 'canvas0', 'none' );
+      setDomPointerEvent( 'arcanvaspane', 'auto' );
+    }
+  );
+} );
+
+$( function() {
+  $( '#vrMainButton' ).click( function() {
+      buildSideMenu( 'augme' );
+      userContext.participantState = 'focus';
+      userContext.modMeState = true;
+      userContext.uiState = 'vr';
+      userContext.mode = 'vr';
 
       loadAr( userContext.participantState );
 

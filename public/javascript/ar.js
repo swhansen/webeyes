@@ -190,6 +190,9 @@ function setUpArLayer( participantState ) {
   var orbitDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   var orbitControls = new THREE.OrbitControls( orbitDrivenCameraCamera, renderer.domElememnt );
+  orbitControls.enableDamping = true;
+  orbitControls.dampingFactor = 0.25;
+  orbitControls.enableZoom = false;
 
   controls.maxDistance = 1000;
 
@@ -470,9 +473,10 @@ function arConnectionController( participantState ) {
 //    focus - device sensors
 //    peer - broadcast feed sensors
 
-//if ( participantState === 'vr' ) {
+//if ( participantState 'focus && useContext.mode === 'vr' ) {
 //  orbitDrivenCamera.lookat( scene.position )
-// connectToVRSensors()
+//  connectToOrbitController();
+//}
 
 
   if ( participantState === 'focus' ) {
@@ -542,6 +546,15 @@ function arConnectionController( participantState ) {
     }
   }
 
+
+
+  function connectToOrbitController() {
+    orbitDrivenCamera.update();
+    animateArObjects();
+    renderer.render( scene, orbitDrivenCameraCamera );
+    requestAnimationFrame( connectToOrbitController );
+  }
+
   function connectToDeviceSensors() {
     sensorCameraControls.update();
     animateArObjects();
@@ -555,6 +568,7 @@ function arConnectionController( participantState ) {
     renderer.render( scene, broadcastDrivenCamera );
     requestAnimationFrame( connectToBroadcastSensors );
     }
+
     arConnectionController( participantState );
 
   }

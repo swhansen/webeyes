@@ -81,6 +81,18 @@
             "desc": "AR code functions",
             "initState": "none",
             "baseZ": "20"
+        },
+        "vrgme": {
+            "mainButton": "#vrMainButton",
+            "sideBar": "#aug-ui-container",
+            "buttons": [
+                "#shareaug",
+                "#clearaug"
+            ],
+            "renderElement": "arcanvaspane",
+            "desc": "VR code functions",
+            "initState": "none",
+            "baseZ": "20"
         }
     }
   }

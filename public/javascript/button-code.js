@@ -37,6 +37,18 @@ function usebcode( bcode ) {
     mainCollapsed = true;
     break;
 
+  case 'vrme':
+    userContext.participantState = 'focus';
+    userContext.mode = 'vr';
+    userContext.uistate = 'vr';
+    userContext.modMeState = true;
+    document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
+    document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
+    document.getElementById( 'arMainButton' ).style.visibility = 'visible';
+    document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
+    mainCollapsed = true;
+    break;
+
     case 'augme':
    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
@@ -118,7 +130,7 @@ $( '#codeDialogModal' ).dialog( {
               swal.showInputError('Please Enter Code!');
               return false;
             }
-           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'iots', 'iotc' ], inputValue.toLowerCase() ) ) ) {
+           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc' ], inputValue.toLowerCase() ) ) ) {
               swal.showInputError( 'Please enter a valid code' );
               return false;
           }
