@@ -23,11 +23,9 @@ var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
 
 function loadVr( participantState ) {
 
-
-
-  clock.start();
-  animate();
+  //clock.start();
   setUpArLayer( participantState );
+  animate();
  // setupArInteractionEvents( participantState );
    }
 
@@ -293,8 +291,6 @@ function setUpArLayer( participantState ) {
 
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
-
-animate();
 
 
 }
