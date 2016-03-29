@@ -194,6 +194,9 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
+  orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera );
+  orbitCameraControls.addEventListener( 'change', arConnectionController( 'focus' ) );
+
 //  orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
 // orbitControls.enableDamping = true;
 // orbitControls.dampingFactor = 0.25;
@@ -505,8 +508,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera );
-  orbitCameraControls.addEventListener( 'change', connectToOrbitController() );
+
 
   arConnectionController( participantState );
 
