@@ -66,8 +66,8 @@ function setUpArLayer( participantState ) {
   controls = new THREE.OrbitControls( camera, renderer.domElement );
 
   controls.maxDistance = 2000;
-
-  animate();
+  controls.addEventListener( 'change', render );
+  //animate();
 
 
 
@@ -297,12 +297,12 @@ function setUpArLayer( participantState ) {
 
 }
 
-function animate() {
-        requestAnimationFrame( animate );
-       controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
+//function animate() {
+//        requestAnimationFrame( animate );
+//       controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
        // stats.update();
       //  render();
-      }
+//      }
 
 function render() {
   renderer.render( scene, camera );
