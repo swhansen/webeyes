@@ -473,7 +473,7 @@ function arConnectionController( participantState ) {
 //    focus - device sensors
 //    peer - broadcast feed sensors
 
-if ( participantState === 'focus' && useContext.mode === 'vr' ) {
+if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
   orbitDrivenCamera.lookat( scene.position );
