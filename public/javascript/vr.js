@@ -47,6 +47,8 @@ function setUpArLayer( participantState ) {
   arCanvas.style.visibility = 'visible';
   ar0.style.visibility = 'visible';
 
+  arcanvas.style.zIndex = 30;
+
   //arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   //arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
@@ -59,15 +61,17 @@ function setUpArLayer( participantState ) {
  // broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-  renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
+  camera.position.set( 0, 500, 500 );
+
+  renderer = new THREE.WebGLRenderer( { canvas: arcanvas, alpha: true } );
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
 
   controls.maxDistance = 2000;
-  controls.addEventListener( 'change', render );
-  //animate();
+  //controls.addEventListener( 'change', render );
+
 
 
 
@@ -293,7 +297,7 @@ function setUpArLayer( participantState ) {
 
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
-
+animate();
 
 }
 
