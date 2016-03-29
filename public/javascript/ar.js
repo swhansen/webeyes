@@ -197,7 +197,7 @@ function setUpArLayer( participantState ) {
   orbitCameraControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElement );
 
 
-  mouseControls = new THREE.OrbitControls( orbitDrivenCamera );
+  mouseControls = new THREE.MouseControls( orbitDrivenCamera );
 
 
 
