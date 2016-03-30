@@ -550,7 +550,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   function connectToVrController() {
     console.log( 'at connectToOrbitController');
 
-    renderer.render( scene, amera );
+    renderer.render( scene, camera );
     controls.update();
    // animateArObjects();
     requestAnimationFrame( connectToVrController );
