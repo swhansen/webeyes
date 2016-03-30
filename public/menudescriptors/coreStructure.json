@@ -65,14 +65,5 @@
             "initState": "none",
             "baseZ": "20"
             } ,
-        "vrme": {
-            "mainButton": "#vrMainButton",
-            "sideBar": "",
-            "buttons": [],
-            "renderElement": "arcanvaspane",
-            "desc": "VR code functions",
-            "initState": "none",
-            "baseZ": "20"
-        }
     }
   }

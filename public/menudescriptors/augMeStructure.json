@@ -82,7 +82,7 @@
             "initState": "none",
             "baseZ": "20"
         },
-        "vrgme": {
+        "vrme": {
             "mainButton": "#vrMainButton",
             "sideBar": "#aug-ui-container",
             "buttons": [
