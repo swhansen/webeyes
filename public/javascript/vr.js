@@ -64,7 +64,7 @@ function setUpArLayer( participantState ) {
  // broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-  camera.position.set( 1, 1, 1 );
+  camera.position.set( 0, 0, 0 );
 
   renderer = new THREE.WebGLRenderer( { canvas: arcanvas, alpha: true } );
   renderer.setSize( box0Width, box0Width );
