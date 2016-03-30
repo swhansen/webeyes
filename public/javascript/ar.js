@@ -488,7 +488,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   connectToVrController();
 }
 
-  if ( participantState === 'focus' ) {
+  if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
