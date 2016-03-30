@@ -64,7 +64,7 @@ function setUpArLayer( participantState ) {
  // broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-  camera.position.set( 1, 1, 1 );
+  camera.position.set( 0, 0, 00 );
 
   renderer = new THREE.WebGLRenderer( { canvas: arcanvas, alpha: true } );
   renderer.setSize( box0Width, box0Width );
@@ -73,6 +73,7 @@ function setUpArLayer( participantState ) {
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.enabled = true;
   controls.autoRoate = true;
+  controls.rotateSpeed = 5.0
 
  // controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
@@ -104,12 +105,12 @@ function setUpArLayer( participantState ) {
   sphereU = new THREE.Mesh( geometrySphere, materialO );
   sphereD = new THREE.Mesh( geometrySphere, materialO );
 
-  sphereN.position.set( 0.0, 0.0, 6.0 );
-  sphereS.position.set( 0.0, 0.0, -6.0 );
-  sphereE.position.set( 6.0, 0.0, 0.0 );
-  sphereW.position.set( -6.0, 0.0, 0.0 );
-  sphereU.position.set( 0.0, 6.0, 0.0 );
-  sphereD.position.set( 0.0, -6.0, 0.0 );
+  sphereN.position.set( 0.0, 0.0, 16.0 );
+  sphereS.position.set( 0.0, 0.0, -16.0 );
+  sphereE.position.set( 16.0, 0.0, 0.0 );
+  sphereW.position.set( -16.0, 0.0, 0.0 );
+  sphereU.position.set( 0.0, 16.0, 0.0 );
+  sphereD.position.set( 0.0, -16.0, 0.0 );
 
   scene.add( sphereN );
   scene.add( sphereS );
