@@ -72,7 +72,6 @@ function setUpArLayer( participantState ) {
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.enabled = true;
-  controls.autoRoate = true;
 
  // controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
@@ -300,8 +299,8 @@ function setUpArLayer( participantState ) {
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
 
-//  arSelectObjectArray.push( cube2 );
- // arSelectObjectArray.push( knot );
+  arSelectObjectArray.push( cube2 );
+  arSelectObjectArray.push( knot );
 
 
 
