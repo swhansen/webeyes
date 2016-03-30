@@ -64,13 +64,13 @@ function setUpArLayer( participantState ) {
  // broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-  camera.position.set( 10, 10, 10 );
+  camera.position.set( 1, 1, 1 );
 
   renderer = new THREE.WebGLRenderer( { canvas: arcanvas, alpha: true } );
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-  controls = new THREE.OrbitControls( camera, arcanvas );
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.enabled = true;
  // controls.autoRoate = true;
   controls.rotateSpeed = 5.0;
@@ -105,12 +105,12 @@ function setUpArLayer( participantState ) {
   sphereU = new THREE.Mesh( geometrySphere, materialO );
   sphereD = new THREE.Mesh( geometrySphere, materialO );
 
-  sphereN.position.set( 0.0, 0.0, 100.0 );
-  sphereS.position.set( 0.0, 0.0, -100.0 );
-  sphereE.position.set( 100.0, 0.0, 0.0 );
-  sphereW.position.set( -100.0, 0.0, 0.0 );
-  sphereU.position.set( 0.0, 100.0, 0.0 );
-  sphereD.position.set( 0.0, -100.0, 0.0 );
+  sphereN.position.set( 0.0, 0.0, 40.0 );
+  sphereS.position.set( 0.0, 0.0, -40.0 );
+  sphereE.position.set( 40.0, 0.0, 0.0 );
+  sphereW.position.set( -40.0, 0.0, 0.0 );
+  sphereU.position.set( 0.0, 40.0, 0.0 );
+  sphereD.position.set( 0.0, -40.0, 0.0 );
 
   scene.add( sphereN );
   scene.add( sphereS );
@@ -312,7 +312,7 @@ animate();
 
 function animate() {
       requestAnimationFrame( animate );
-       //controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
+       controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
        // stats.update();
         render();
       }
