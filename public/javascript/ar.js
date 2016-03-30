@@ -80,7 +80,7 @@ function removeUserCreatedArObjects() {
 function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var orbitCameraControls, orbitDrivenCamera;
+  var camera, controls;
   var knot;
 
   clock.start();
@@ -195,18 +195,12 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-  controls = new THREE.OrbitControls( camera, renderer.domElement );
+  controls = new THREE.vrControls( camera );
 
-  controls.maxDistance = 2000;
-
+  //controls.maxDistance = 2000;
 
  // mouseControls = new THREE.MouseControls( orbitDrivenCamera );
-
-
-
  // orbitCameraControls.addEventListener( 'change', connectToOrbitController );
-
-
 //  orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
 //orbitCameraControls.enableDamping = true;
 //orbitCameraControls.dampingFactor = 0.25;
@@ -491,7 +485,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
   //camera.lookAt( scene.position )
-  connectToOrbitController();
+  connectToVrController();
 }
 
   if ( participantState === 'focus' ) {
@@ -561,13 +555,13 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
     }
   }
 
-  function connectToOrbitController() {
+  function connectToVrController() {
     console.log( 'at connectToOrbitController');
 
     renderer.render( scene, amera );
     controls.update();
    // animateArObjects();
-    requestAnimationFrame( connectToOrbitController );
+    requestAnimationFrame( connectToVrController );
   }
 
   function connectToDeviceSensors() {
