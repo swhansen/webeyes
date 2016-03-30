@@ -25,7 +25,7 @@ function loadVr( participantState ) {
 
   //clock.start();
   setUpArLayer( participantState );
-  //animate();
+  animate();
  // setupArInteractionEvents( participantState );
    }
 
@@ -74,7 +74,7 @@ function setUpArLayer( participantState ) {
   controls.enable = true;
 
  // controls.maxDistance = 5000;
-  controls.addEventListener( 'change', render );
+  //controls.addEventListener( 'change', render );
   controls.rotateSpeed = 5.0;
   controls.autoRotate = true;
 
@@ -295,7 +295,7 @@ function createSwordGuy( geometry, materials, x, y, z, s ) {
 
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
-//animate();
+animate();
 
 }
 
@@ -307,6 +307,5 @@ function animate() {
       }
 
 function render() {
-  controls.update();
   renderer.render( scene, camera );
 }
