@@ -74,7 +74,7 @@ function setUpArLayer( participantState ) {
   controls.enabled = true;
 
  // controls.maxDistance = 5000;
-  //controls.addEventListener( 'change', render );
+  controls.addEventListener( 'change', render );
   //controls.rotateSpeed = 5.0;
   //controls.autoRotate = true;
 
