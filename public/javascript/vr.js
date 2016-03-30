@@ -70,7 +70,7 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-  controls = new THREE.FirstPersonControls( camera, renderer.domElement );
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.enabled = true;
 
  // controls.maxDistance = 5000;
