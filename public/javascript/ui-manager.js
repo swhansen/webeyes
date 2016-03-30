@@ -227,6 +227,7 @@ $( function() {
       userContext.participantState = 'focus';
       userContext.modMeState = true;
       userContext.uiState = 'ar';
+      userContext.mode = 'ar';
 
       loadAr( userContext.participantState );
 
