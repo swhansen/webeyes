@@ -64,7 +64,7 @@ function setUpArLayer( participantState ) {
  // broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
-  camera.position.set( 0, 0, 00 );
+  camera.position.set( 1, 1, 1 );
 
   renderer = new THREE.WebGLRenderer( { canvas: arcanvas, alpha: true } );
   renderer.setSize( box0Width, box0Width );
@@ -83,7 +83,7 @@ function setUpArLayer( participantState ) {
 
  // var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
  // var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
-  var geometrySphere = new THREE.SphereGeometry( 40, 16, 16 );
+  var geometrySphere = new THREE.SphereGeometry( 20, 16, 16 );
  // var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 
   var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
