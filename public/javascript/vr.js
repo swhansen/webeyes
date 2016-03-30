@@ -75,6 +75,7 @@ function setUpArLayer( participantState ) {
 
  // controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
+  controls.rotateSpeed = 2.0
 
 
 
