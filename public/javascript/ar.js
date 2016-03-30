@@ -195,18 +195,9 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-  controls = new THREE.vrControls( camera );
-
-  //controls.maxDistance = 2000;
-
- // mouseControls = new THREE.MouseControls( orbitDrivenCamera );
- // orbitCameraControls.addEventListener( 'change', connectToOrbitController );
-//  orbitControls = new THREE.OrbitControls( orbitDrivenCamera, renderer.domElememnt );
-//orbitCameraControls.enableDamping = true;
-//orbitCameraControls.dampingFactor = 0.25;
-//orbitCameraControls.enableZoom = false;
-//orbitCameraControls.maxDistance = 1000;
-
+  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+    controls = new THREE.vrControls( camera );
+  }
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
@@ -481,9 +472,10 @@ function arConnectionController( participantState ) {
 //    focus - device sensors
 //    peer - broadcast feed sensors
 
+  console.log( 'arConnectionController:', participantState, userContext );
+
 if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
-  console.log( 'arConnectionController:', participantState, userContext );
   //camera.lookAt( scene.position )
   connectToVrController();
 }
