@@ -80,7 +80,7 @@ function removeUserCreatedArObjects() {
 function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var vrCamera, vrCameraControls;
+  var vrDrivenCamera, vrDrivenCameraControls;
   var knot;
 
   clock.start();
@@ -189,7 +189,7 @@ function setUpArLayer( participantState ) {
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  vrCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
@@ -501,7 +501,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrCameraControls = new WEBEYES.MouseControls( vrCamera );
+  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
 
   arConnectionController( participantState );
@@ -549,8 +549,8 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
       function connectToVrController() {
 
-        renderer.render( scene, vrCamera );
-        vrCameraControls.update();
+        renderer.render( scene, vrDrivenCamera );
+        vrDrivenCameraControls.update();
        // animateArObjects();
         requestAnimationFrame( connectToVrController );
       }
@@ -594,7 +594,7 @@ function setupArInteractionEvents( participantState ) {
   var projector = new THREE.Projector();
 
     if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-      cameraDriver = vrCamera;
+      cameraDriver = vrDrivenCamera;
    }
 
     if ( participantState === 'focus' ) {
