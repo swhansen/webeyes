@@ -300,8 +300,8 @@ function setUpArLayer( participantState ) {
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
 
-  arSelectObjectArray.push( cube2 );
-  arSelectObjectArray.push( knot );
+//  arSelectObjectArray.push( cube2 );
+ // arSelectObjectArray.push( knot );
 
 
 
