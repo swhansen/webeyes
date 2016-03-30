@@ -70,13 +70,13 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-  controls = new THREE.OrbitControls( camera, renderer.domElement );
-  controls.enable = true;
+  controls = new THREE.MouseControls( camera, renderer.domElement );
+  controls.enabled = true;
 
  // controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
-  controls.rotateSpeed = 5.0;
-  controls.autoRotate = true;
+  //controls.rotateSpeed = 5.0;
+  //controls.autoRotate = true;
 
 
 
