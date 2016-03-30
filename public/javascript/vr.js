@@ -73,7 +73,7 @@ function setUpArLayer( participantState ) {
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.enabled = true;
  // controls.autoRoate = true;
-  controls.rotateSpeed = 5.0;
+ // controls.rotateSpeed = 5.0;
 
  // controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
@@ -105,12 +105,12 @@ function setUpArLayer( participantState ) {
   sphereU = new THREE.Mesh( geometrySphere, materialO );
   sphereD = new THREE.Mesh( geometrySphere, materialO );
 
-  sphereN.position.set( 0.0, 0.0, 40.0 );
-  sphereS.position.set( 0.0, 0.0, -40.0 );
-  sphereE.position.set( 40.0, 0.0, 0.0 );
-  sphereW.position.set( -40.0, 0.0, 0.0 );
-  sphereU.position.set( 0.0, 40.0, 0.0 );
-  sphereD.position.set( 0.0, -40.0, 0.0 );
+  sphereN.position.set( 0.0, 0.0, 100.0 );
+  sphereS.position.set( 0.0, 0.0, -100.0 );
+  sphereE.position.set( 100.0, 0.0, 0.0 );
+  sphereW.position.set( -100.0, 0.0, 0.0 );
+  sphereU.position.set( 0.0, 100.0, 0.0 );
+  sphereD.position.set( 0.0, -100.0, 0.0 );
 
   scene.add( sphereN );
   scene.add( sphereS );
