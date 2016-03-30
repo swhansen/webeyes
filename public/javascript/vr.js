@@ -105,12 +105,12 @@ function setUpArLayer( participantState ) {
   sphereU = new THREE.Mesh( geometrySphere, materialO );
   sphereD = new THREE.Mesh( geometrySphere, materialO );
 
-  sphereN.position.set( 0.0, 0.0, 200.0 );
-  sphereS.position.set( 0.0, 0.0, -200.0 );
-  sphereE.position.set( 200.0, 0.0, 0.0 );
-  sphereW.position.set( -200.0, 0.0, 0.0 );
-  sphereU.position.set( 0.0, 200.0, 0.0 );
-  sphereD.position.set( 0.0, -200.0, 0.0 );
+  sphereN.position.set( 0.0, 0.0, 100.0 );
+  sphereS.position.set( 0.0, 0.0, -100.0 );
+  sphereE.position.set( 100.0, 0.0, 0.0 );
+  sphereW.position.set( -100.0, 0.0, 0.0 );
+  sphereU.position.set( 0.0, 100.0, 0.0 );
+  sphereD.position.set( 0.0, -100.0, 0.0 );
 
   scene.add( sphereN );
   scene.add( sphereS );
@@ -312,7 +312,7 @@ animate();
 
 function animate() {
       requestAnimationFrame( animate );
-       controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
+       //controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
        // stats.update();
         render();
       }
