@@ -64,6 +64,19 @@
             "desc": "special code input",
             "initState": "none",
             "baseZ": "20"
+            } ,
+        "vrme": {
+            "mainButton": "#vrMainButton",
+            "sideBar": "#aug-ui-container",
+            "buttons": [
+                "#shareaug",
+                "#clearaug"
+            ],
+            "renderElement": "arcanvaspane",
+            "desc": "VR code functions",
+            "initState": "none",
+            "baseZ": "20"
+        }
         }
     }
   }
