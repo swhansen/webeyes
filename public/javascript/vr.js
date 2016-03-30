@@ -71,7 +71,7 @@ function setUpArLayer( participantState ) {
   renderer.setClearColor( 0x000000, 0 );
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
-  controls.enabled = true;
+  controls.enable = true;
 
  // controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
@@ -79,10 +79,10 @@ function setUpArLayer( participantState ) {
 
 
 
- // var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
- // var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
-  var geometrySphere = new THREE.SphereGeometry( 1, 16, 16 );
- // var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
+  var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
+  var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
+  var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
+  var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 
   var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
   var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
@@ -90,11 +90,11 @@ function setUpArLayer( participantState ) {
   var materialO = new THREE.MeshLambertMaterial( { color: 'red' } );
   var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
 
-//  var cube1 = new THREE.Mesh( geometryCube1, material1 );
-//  var cube2 = new THREE.Mesh( geometryCube2, material2 );
+  var cube1 = new THREE.Mesh( geometryCube1, material1 );
+  var cube2 = new THREE.Mesh( geometryCube2, material2 );
   var sphere = new THREE.Mesh( geometrySphere, material3 );
-//  var knot = new THREE.Mesh( geometryKnot, materialKnot );
-//  knot.userData.isSelectable = true;
+  var knot = new THREE.Mesh( geometryKnot, materialKnot );
+  knot.userData.isSelectable = true;
 
   sphereN = new THREE.Mesh( geometrySphere, materialO );
   sphereS = new THREE.Mesh( geometrySphere, materialO );
@@ -117,65 +117,65 @@ function setUpArLayer( participantState ) {
   scene.add( sphereU );
   scene.add( sphereD );
 
-// lampSphere = new THREE.Mesh( geometrySphere, materialO );
-// lampSphere.position.set( -19.0, 16.0, 8.0 );
-// scene.add( lampSphere );
+  lampSphere = new THREE.Mesh( geometrySphere, materialO );
+  lampSphere.position.set( -19.0, 16.0, 8.0 );
+  scene.add( lampSphere );
 
-// cube1.position.set( 0.0, 0.0,  -4.0 );
-// cube2.position.set( -2.0, 0.0, -6.0 );
-// sphere.position.set( 1.2, -0.2, -4.0 );
-// knot.position.set( 0.5, 0.22, -5.0 );
+  cube1.position.set( 0.0, 0.0,  -4.0 );
+  cube2.position.set( -2.0, 0.0, -6.0 );
+  sphere.position.set( 1.2, -0.2, -4.0 );
+  knot.position.set( 0.5, 0.22, -5.0 );
 
-// cube2.rotateZ = 10.00;
+  cube2.rotateZ = 10.00;
 
-// var loader = new THREE.JSONLoader();
+  var loader = new THREE.JSONLoader();
 
-// loader.load( '../armodels/sheep3.json', function( model ) {
-//   var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+  loader.load( '../armodels/sheep3.json', function( model ) {
+    var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
 
-//    sheep = new THREE.Mesh( model, material );
-//    sheep.scale.set( 0.1, 0.1, 0.1 );
-//    sheep.position.set( -2.0, -0.4, 0.0 );
-//    sheep.rotation.x = Math.PI / 2;
-//    sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
-//    sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
-//    sheep.name = 'sheep';
-//    sheep.userData.isSelectable = true;
-//    scene.add( sheep );
-//    arSelectObjectArray.push( sheep );
-//
-//    flyingPig = new THREE.Mesh( model, material );
-//    flyingPig.scale.set( 0.1, 0.1, 0.1 );
-//    flyingPig.position.set( 0.9, 0.9, 0.9 );
-//    flyingPig.rotation.x = Math.PI / 2;
-//    flyingPig.rotation.y = ( Math.PI / 2 ) * 0.5;
-//    flyingPig.rotation.z = ( Math.PI / 2 ) * 0.3;
-//    flyingPig.name = 'flyingPig';
-//    scene.add( flyingPig );
+    sheep = new THREE.Mesh( model, material );
+    sheep.scale.set( 0.1, 0.1, 0.1 );
+    sheep.position.set( -2.0, -0.4, 0.0 );
+    sheep.rotation.x = Math.PI / 2;
+    sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
+    sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
+    sheep.name = 'sheep';
+    sheep.userData.isSelectable = true;
+    scene.add( sheep );
+    arSelectObjectArray.push( sheep );
+
+    flyingPig = new THREE.Mesh( model, material );
+    flyingPig.scale.set( 0.1, 0.1, 0.1 );
+    flyingPig.position.set( 0.9, 0.9, 0.9 );
+    flyingPig.rotation.x = Math.PI / 2;
+    flyingPig.rotation.y = ( Math.PI / 2 ) * 0.5;
+    flyingPig.rotation.z = ( Math.PI / 2 ) * 0.3;
+    flyingPig.name = 'flyingPig';
+    scene.add( flyingPig );
 
 // note: position of child(flyingPig) is relative to pivotPoint
 
-//   pivotPoint = new THREE.Object3D();
-//   pivotPoint.position.set( -6.75, 4.0, 2.0 );
-//   scene.add( pivotPoint );
-//   pivotPoint.add( flyingPig );
-//
-//  } );
+   pivotPoint = new THREE.Object3D();
+   pivotPoint.position.set( -6.75, 4.0, 2.0 );
+   scene.add( pivotPoint );
+   pivotPoint.add( flyingPig );
 
-//  loader.load( '../armodels/lamp2.json', function( model ) {
-//    var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
-//
-//    lamp = new THREE.Mesh( model, material );
-//    lamp.scale.set( 4.0, 4.0, 4.0 );
-//    lamp.position.set( -6.75, 4.0, 2.0 );
-//
-//    //lamp.rotation.x = Math.PI / 2;
-//    //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
-//    //lamp.rotation.z = ( Math.PI / 2 ) * 0.3;
-//
-//    lamp.name = 'lamp';
-//    scene.add( lamp );
-//    } );
+  } );
+
+  loader.load( '../armodels/lamp2.json', function( model ) {
+    var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
+
+    lamp = new THREE.Mesh( model, material );
+    lamp.scale.set( 4.0, 4.0, 4.0 );
+    lamp.position.set( -6.75, 4.0, 2.0 );
+
+    //lamp.rotation.x = Math.PI / 2;
+    //lamp.rotation.y = ( Math.PI / 2 ) * 0.5;
+    //lamp.rotation.z = ( Math.PI / 2 ) * 0.3;
+
+    lamp.name = 'lamp';
+    scene.add( lamp );
+    } );
 
 // Sword guy
 
@@ -227,89 +227,86 @@ function setUpArLayer( participantState ) {
 
 // hue light control objects
 
-//  var hueGeometrySphere = new THREE.SphereGeometry( 0.3, 16, 16 );
-//
-//  hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
-//    color: 0xff00ff,
-//    shininess: 66,
-//    opacity:0.5,
-//    transparent: true
-//    } );
-//
-//  hueLightmaterial2 = new THREE.MeshPhongMaterial ( {
-//    color: 0xff00ff,
-//    shininess: 66,
-//    opacity:0.5,
-//    transparent: true
-//    } );
-//
-//  hueLightmaterial3 = new THREE.MeshPhongMaterial ( {
-//    color: 0xff00ff,
-//    shininess: 66,
-//    opacity:0.5,
-//    transparent: true
-//    } );
-//
-//  hueLight1 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial1 );
-//  hueLight2 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial2 );
-//  hueLight3 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial3 );
-//
-//  hueLight1.position.set( -0.809, -0.737, -5.227 );
-//  hueLight2.position.set( 1.077, 1.606, -5.17 );
-//  hueLight3.position.set( -2.785, 1.606, -5.17 );
-//
-//  hueLight1.userData.isSelectable = true;
-//  hueLight2.userData.isSelectable = true;
-//  hueLight3.userData.isSelectable = true;
-//
-//  hueLight1.name = 'hueLight1';
-//  hueLight2.name = 'hueLight2';
-//  hueLight3.name = 'hueLight3';
-//
-//  hueLight1.userData.isIot = true;
-//  hueLight2.userData.isIot = true;
-//  hueLight3.userData.isIot = true;
-//
-//  hueLight1.userData.iotDeviceId = 1;
-//  hueLight2.userData.iotDeviceId = 2;
-//  hueLight3.userData.iotDeviceId = 3;
-//
-//  hueLight1.userData.isOn = false;
-//  hueLight2.userData.isOn = false;
-//  hueLight3.userData.isOn = false;
-//
-//  scene.add( hueLight1 );
-//  scene.add( hueLight2 );
-//  scene.add( hueLight3 );
-//
-//  arSelectObjectArray.push( hueLight1 );
-//  arSelectObjectArray.push( hueLight2 );
-//  arSelectObjectArray.push( hueLight3 );
-//
-//      // end hue light objects
-//
-//  scene.add( cube2 );
-//  scene.add( sphere );
-//  scene.add( knot );
-//
-//  cube1.name = 'cube1';
-//  cube2.name = 'cube2';
-//  knot.name = 'knot';
+  var hueGeometrySphere = new THREE.SphereGeometry( 0.3, 16, 16 );
+
+  hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
+    color: 0xff00ff,
+    shininess: 66,
+    opacity:0.5,
+    transparent: true
+} );
+
+  hueLightmaterial2 = new THREE.MeshPhongMaterial ( {
+    color: 0xff00ff,
+    shininess: 66,
+    opacity:0.5,
+    transparent: true
+} );
+
+  hueLightmaterial3 = new THREE.MeshPhongMaterial ( {
+    color: 0xff00ff,
+    shininess: 66,
+    opacity:0.5,
+    transparent: true
+} );
+
+  hueLight1 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial1 );
+  hueLight2 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial2 );
+  hueLight3 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial3 );
+
+  hueLight1.position.set( -0.809, -0.737, -5.227 );
+  hueLight2.position.set( 1.077, 1.606, -5.17 );
+  hueLight3.position.set( -2.785, 1.606, -5.17 );
+
+  hueLight1.userData.isSelectable = true;
+  hueLight2.userData.isSelectable = true;
+  hueLight3.userData.isSelectable = true;
+
+  hueLight1.name = 'hueLight1';
+  hueLight2.name = 'hueLight2';
+  hueLight3.name = 'hueLight3';
+
+  hueLight1.userData.isIot = true;
+  hueLight2.userData.isIot = true;
+  hueLight3.userData.isIot = true;
+
+  hueLight1.userData.iotDeviceId = 1;
+  hueLight2.userData.iotDeviceId = 2;
+  hueLight3.userData.iotDeviceId = 3;
+
+  hueLight1.userData.isOn = false;
+  hueLight2.userData.isOn = false;
+  hueLight3.userData.isOn = false;
+
+  scene.add( hueLight1 );
+  scene.add( hueLight2 );
+  scene.add( hueLight3 );
+
+  arSelectObjectArray.push( hueLight1 );
+  arSelectObjectArray.push( hueLight2 );
+  arSelectObjectArray.push( hueLight3 );
+
+// end hue light objects
+
+  scene.add( cube2 );
+  scene.add( sphere );
+  scene.add( knot );
+
+  cube1.name = 'cube1';
+  cube2.name = 'cube2';
+  knot.name = 'knot';
 
   var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( light );
 
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
-
-
-
 animate();
 
 }
 
 function animate() {
-      requestAnimationFrame( animate );
+        requestAnimationFrame( animate );
        controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
        // stats.update();
         render();
