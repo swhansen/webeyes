@@ -195,9 +195,9 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-    controls = new WEBEYES.MouseControls( camera );
-  }
+//  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+//    controls = new WEBEYES.MouseControls( camera );
+//  }
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
@@ -504,6 +504,9 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
+  controls = new WEBEYES.MouseControls( camera );
+
+
   arConnectionController( participantState );
 
   function animateArObjects() {
@@ -547,28 +550,28 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
     }
   }
 
-  function connectToVrController() {
-    console.log( 'at connectToOrbitController');
+      function connectToVrController() {
+        console.log( 'at connectVrController');
 
-    renderer.render( scene, camera );
-    controls.update();
-   // animateArObjects();
-    requestAnimationFrame( connectToVrController );
-  }
+        renderer.render( scene, camera );
+        controls.update();
+       // animateArObjects();
+        requestAnimationFrame( connectToVrController );
+      }
 
-  function connectToDeviceSensors() {
-    sensorCameraControls.update();
-    animateArObjects();
-    renderer.render( scene, sensorDrivenCamera );
-    requestAnimationFrame( connectToDeviceSensors );
-    }
+      function connectToDeviceSensors() {
+        sensorCameraControls.update();
+        animateArObjects();
+        renderer.render( scene, sensorDrivenCamera );
+        requestAnimationFrame( connectToDeviceSensors );
+        }
 
-  function connectToBroadcastSensors() {
-    broadcastCameraControls.update();
-    animateArObjects();
-    renderer.render( scene, broadcastDrivenCamera );
-    requestAnimationFrame( connectToBroadcastSensors );
-    }
+      function connectToBroadcastSensors() {
+        broadcastCameraControls.update();
+        animateArObjects();
+        renderer.render( scene, broadcastDrivenCamera );
+        requestAnimationFrame( connectToBroadcastSensors );
+        }
 
     arConnectionController( participantState );
 
