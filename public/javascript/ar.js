@@ -80,7 +80,7 @@ function removeUserCreatedArObjects() {
 function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var camera, vrCameraControls;
+  var vrCamera, vrCameraControls;
   var knot;
 
   clock.start();
@@ -189,15 +189,12 @@ function setUpArLayer( participantState ) {
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  vrCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-//  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-//    vrCameraControls = new WEBEYES.MouseControls( camera );
-//  }
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
@@ -504,7 +501,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrCameraControls = new WEBEYES.MouseControls( camera );
+  vrCameraControls = new WEBEYES.MouseControls( vrCamera );
 
 
   arConnectionController( participantState );
@@ -551,9 +548,8 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   }
 
       function connectToVrController() {
-        console.log( 'at connectVrController');
 
-        renderer.render( scene, camera );
+        renderer.render( scene, vrCamera );
         vrCameraControls.update();
        // animateArObjects();
         requestAnimationFrame( connectToVrController );
@@ -598,7 +594,7 @@ function setupArInteractionEvents( participantState ) {
   var projector = new THREE.Projector();
 
     if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-      cameraDriver = camera;
+      cameraDriver = vrCamera;
    }
 
     if ( participantState === 'focus' ) {
