@@ -196,7 +196,7 @@ function setUpArLayer( participantState ) {
   renderer.setClearColor( 0x000000, 0 );
 
   if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-    controls = new THREE.vrControls( camera );
+    controls = new WEBEYES.MouseControls( camera );
   }
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
