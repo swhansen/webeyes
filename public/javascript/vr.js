@@ -25,7 +25,7 @@ function loadVr( participantState ) {
 
   //clock.start();
   setUpArLayer( participantState );
-  animate();
+  //animate();
  // setupArInteractionEvents( participantState );
    }
 
