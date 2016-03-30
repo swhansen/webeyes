@@ -49,6 +49,9 @@ function setUpArLayer( participantState ) {
 
   arcanvas.style.zIndex = 30;
 
+  setDomPointerEvent( 'canvas0', 'none' );
+  setDomPointerEvent( 'arcanvaspane', 'auto' );
+
   //arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   //arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
@@ -68,6 +71,7 @@ function setUpArLayer( participantState ) {
   renderer.setClearColor( 0x000000, 0 );
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
+  controls.enabled = true;
 
  // controls.maxDistance = 5000;
   //controls.addEventListener( 'change', render );
