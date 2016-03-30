@@ -80,7 +80,7 @@ function removeUserCreatedArObjects() {
 function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var camera, controls;
+  var camera, vrControls;
   var knot;
 
   clock.start();
@@ -196,7 +196,7 @@ function setUpArLayer( participantState ) {
   renderer.setClearColor( 0x000000, 0 );
 
 //  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-//    controls = new WEBEYES.MouseControls( camera );
+//    vrControls = new WEBEYES.MouseControls( camera );
 //  }
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
@@ -504,7 +504,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  controls = new WEBEYES.MouseControls( camera );
+  vrControls = new WEBEYES.MouseControls( camera );
 
 
   arConnectionController( participantState );
@@ -554,7 +554,7 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
         console.log( 'at connectVrController');
 
         renderer.render( scene, camera );
-        controls.update();
+        vrControls.update();
        // animateArObjects();
         requestAnimationFrame( connectToVrController );
       }
