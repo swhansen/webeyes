@@ -80,6 +80,6 @@ document.addEventListener( 'mouseup', onMouseUp, false );
 
   };
 
-  document.addEventListener( 'mousemove', onMouseMove, false );
+  document.addEventListener( 'mousemove', onMouseDown, false );
 
 };
