@@ -83,9 +83,9 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     camera.position.set( 0, 500, 500 );
 
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
+   // controls = new THREE.OrbitControls( camera, renderer.domElement );
     //controls.enableRotate = false;
-    controls.maxDistance = 1000;
+    //controls.maxDistance = 1000;
 
     scene = new THREE.Scene();
 
@@ -374,6 +374,6 @@ if ( hand.type == 'right' ) {
     }
 
     renderer.render( scene, camera );
-    controls.update();
+    //controls.update();
   }
 }
