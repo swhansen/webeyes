@@ -721,7 +721,9 @@ function addNewArObjectToWorld( d ) {
 
 // Select an object
 
-  ar0.addEventListener( 'click', function( event ) {
+$( '#arcanvas' ).click( function( event ) {
+
+  //ar0.addEventListener( 'click', function( event ) {
 
     console.log( 'click:', cameraDriver, event );
 
