@@ -32,6 +32,8 @@ WEBEYES.MouseControls = function ( object ) {
 
     if ( scope.enabled === false ) return;
 
+    if ( moveState === false ) return;
+
     if ( moveState ) {
 
     var orientation = scope.orientation;
