@@ -208,7 +208,6 @@ function setUpArLayer( participantState ) {
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
 
-
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
   var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
@@ -512,6 +511,7 @@ function arConnectionController( participantState ) {
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator
 //  - broadcast for all peers
+//  - mouse for VR mode
 
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
@@ -621,12 +621,11 @@ function setupArInteractionEvents( participantState ) {
 
     if ( participantState === 'focus' && userContext.mode === 'vr' ) {
       cameraDriver = vrDrivenCamera;
-   }
-
+    }
     if ( participantState === 'focus' ) {
       cameraDriver = sensorDrivenCamera;
-    } else if ( participantState === 'peer' ) {
-      cameraDriver = broadcastDrivenCamera;
+      } else if ( participantState === 'peer' ) {
+         cameraDriver = broadcastDrivenCamera;
     }
 
   function toggleArAnimation( arObject ) {
