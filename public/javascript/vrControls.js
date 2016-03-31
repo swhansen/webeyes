@@ -43,7 +43,7 @@ WEBEYES.MouseControls = function ( object ) {
 
     orientation.y += movementX * 0.005;
     orientation.x += movementY * 0.005;
-    orientation.x = Math.max( - PI_2, Math.min( PI_2, orientation.x ) );
+    orientation.x = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
 
     console.log( 'orientation:', orientation.x, orientation.y );
 
@@ -77,8 +77,9 @@ WEBEYES.MouseControls = function ( object ) {
 
   };
 
-  document.addEventListener( 'mousemove', onMouseDown, false );
+  document.addEventListener( 'mousemove', onMouseMove, false );
   document.addEventListener( 'mouseup', onMouseUp, false );
+  document.addEventListener( 'mouseDown', onMouseDown, false );
 
 
 };
