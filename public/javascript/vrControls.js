@@ -17,6 +17,8 @@ WEBEYES.MouseControls = function ( object ) {
   var xVector = new THREE.Vector3( 1, 0, 0 );
   var yVector = new THREE.Vector3( 0, 1, 0 );
 
+  var mouseDown = false;
+
 
   var onMouseDown = function( event ) {
 
@@ -37,6 +39,8 @@ WEBEYES.MouseControls = function ( object ) {
 
   var onMouseMove = function( event ) {
 
+
+
     if ( scope.enabled === false ) return;
 
     if ( mouseDown === true ) {
@@ -47,6 +51,7 @@ WEBEYES.MouseControls = function ( object ) {
     orientation.y += movementX * 0.005;
     orientation.x += movementY * 0.005;
     orientation.x = Math.max( - PI_2, Math.min( PI_2, orientation.x ) );
+    console.log( 'vrC-down:', orientation.x, orientation.y );
   }
 };
 
