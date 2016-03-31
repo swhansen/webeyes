@@ -484,6 +484,7 @@ function arConnectionController( participantState ) {
   console.log( 'arConnectionController:', participantState, userContext );
 
   if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+    vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
     }
 
@@ -518,7 +519,6 @@ function arConnectionController( participantState ) {
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
-
 
   arConnectionController( participantState );
 
