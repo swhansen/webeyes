@@ -56,6 +56,16 @@ function emitArOrientationData() {
   } );
 }
 
+
+//  function emitVrOrientationData( data ) {
+//    vrDeviceOrientation.alpha = data.alpha;
+//    vrDeviceOrientation.beta = data.beta;
+//    vrDeviceOrientation.gamma = data.gamma;
+//    var sessionId = socketServer.sessionid;
+//    socketServer.emit( 'arOrientation', vrDeviceOrientation, sessionId );
+//
+//  }
+
 socketServer.on( 'toggleCompass', function( data ) {
   orientationAr( data );
   } );
@@ -471,11 +481,14 @@ function arConnectionController( participantState ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
 
-if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+    connectToVrController();
+    }
 
-  //camera.lookAt( scene.position )
-  connectToVrController();
-}
+//  if ( participantState === 'peer' && userContext.mode === 'vr' ) {
+//    broadcastDrivenCamera.lookAt( scene.position );
+//    connectToBroadcastSensors();
+//  }
 
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
@@ -548,10 +561,9 @@ if ( participantState === 'focus' && userContext.mode === 'vr' ) {
   }
 
       function connectToVrController() {
-
         renderer.render( scene, vrDrivenCamera );
         vrDrivenCameraControls.update();
-       // animateArObjects();
+        animateArObjects();
         requestAnimationFrame( connectToVrController );
       }
 
