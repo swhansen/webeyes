@@ -19,15 +19,17 @@ WEBEYES.MouseControls = function ( object ) {
   var mouseDown = false;
 
   var onMouseDown = function( event ) {
-      mouseDown = true;
-      console.log( 'clicked down:', mouseDown );
-      document.addEventListener( 'mousemove', onMouseMove, false );
-    }
 
+    if ( scope.enabled === false ) return;
+
+    mouseDown = true;
+    //document.addEventListener( 'mousemove', onMouseMove, false );
+    }
 
   var onMouseMove = function ( event ) {
     if ( scope.enabled === false ) return;
-    if ( mouseDown === false ) return;
+  //  if ( mouseDown === false ) return;
+
     if ( mouseDown ) {
 
     var orientation = scope.orientation;
@@ -38,15 +40,11 @@ WEBEYES.MouseControls = function ( object ) {
     orientation.y += movementX * 0.005;
     orientation.x += movementY * 0.005;
     orientation.x = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
-
-    console.log( 'orientation:', orientation.x, orientation.y );
     }
   };
 
-
   var onMouseUp = function( event ) {
       mouseDown = false;
-      console.log( 'clicked up:', mouseDown );
     }
 
   this.enabled = true;
