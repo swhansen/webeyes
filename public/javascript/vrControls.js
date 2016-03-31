@@ -16,14 +16,13 @@ WEBEYES.MouseControls = function ( object ) {
   var xVector = new THREE.Vector3( 1, 0, 0 );
   var yVector = new THREE.Vector3( 0, 1, 0 );
 
-  moveState = false;
+  var mouseDown = false;
 
 
   var onMouseDown = function( event ) {
 
-      moveState = true;
-      console.log( 'clicked down:', moveState );
-
+      mouseDown = true;
+      console.log( 'clicked down:', mouseDown );
 
     }
 
@@ -32,9 +31,9 @@ WEBEYES.MouseControls = function ( object ) {
 
     if ( scope.enabled === false ) return;
 
-    if ( moveState === false ) return;
+    if ( mouseDown === false ) return;
 
-    if ( moveState ) {
+    if ( mouseDown ) {
 
     var orientation = scope.orientation;
 
@@ -52,8 +51,8 @@ WEBEYES.MouseControls = function ( object ) {
 
 
   var onMouseUp = function( event ) {
-      moveState = false;
-      console.log( 'clicked up:', moveState );
+      mouseDown = false;
+      console.log( 'clicked up:', mouseDown );
     }
 
 
