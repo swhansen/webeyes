@@ -23,6 +23,7 @@ WEBEYES.MouseControls = function ( object ) {
 
       mouseDown = true;
       console.log( 'clicked down:', mouseDown );
+      document.addEventListener( 'mousemove', onMouseMove, false );
 
     }
 
@@ -53,6 +54,8 @@ WEBEYES.MouseControls = function ( object ) {
   var onMouseUp = function( event ) {
       mouseDown = false;
       console.log( 'clicked up:', mouseDown );
+
+      document.removeEventListener( 'mousemove', onMouseMove, false );
     }
 
 
@@ -76,6 +79,6 @@ WEBEYES.MouseControls = function ( object ) {
 
   document.addEventListener( 'mousemove', onMouseDown, false );
   document.addEventListener( 'mouseup', onMouseUp, false );
-    document.addEventListener( 'mousemove', onMouseMove, false );
+
 
 };
