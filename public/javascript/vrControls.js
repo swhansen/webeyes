@@ -13,30 +13,60 @@ WEBEYES.MouseControls = function ( object ) {
     y: new THREE.Quaternion()
   };
   var object = object;
+  var moveState = false;
   var xVector = new THREE.Vector3( 1, 0, 0 );
   var yVector = new THREE.Vector3( 0, 1, 0 );
 
-  var onMouseMove = function ( event ) {
+
+  var onMouseDown = function( event ) {
+
+    mouseDown = true;
 
     if ( scope.enabled === false ) return;
 
     var orientation = scope.orientation;
-
     var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
     var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
-
     orientation.y += movementX * 0.005;
     orientation.x += movementY * 0.005;
-
     orientation.x = Math.max( - PI_2, Math.min( PI_2, orientation.x ) );
 
+    document.addEventListener( 'mousemove', onMouseMove, false );
+    document.addEventListener( 'mouseup', onMouseUp, false );
   };
+
+  var onMouseMove = function( event ) {
+
+    if ( scope.enabled === false ) return;
+
+    if ( mouseDown === true ) {
+
+    var orientation = scope.orientation;
+    var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+    var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+    orientation.y += movementX * 0.005;
+    orientation.x += movementY * 0.005;
+    orientation.x = Math.max( - PI_2, Math.min( PI_2, orientation.x ) );
+  }
+};
+
+var onMouseUp = function( event ) {
+
+  if ( mouseDown === true ) {
+
+    document.removeEventListener( 'mousemove', onMouseMove, false );
+    document.removeEventListener( 'mouseup', onMouseUp, false );
+    scope.dispatchEvent( endEvent );
+    mouseDown = false;
+  }
+};
+
 
   this.enabled = true;
 
   this.orientation = {
     x: 0,
-    y: 0,
+    y: 0
   };
 
   this.update = function() {
@@ -45,11 +75,11 @@ WEBEYES.MouseControls = function ( object ) {
 
     mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
     mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
-    object.quaternion.copy(mouseQuat.y).multiply(mouseQuat.x)
+    object.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
     return;
 
   };
 
-  document.addEventListener( 'mousemove', onMouseMove, false );
+  document.addEventListener( 'mousedown', onMouseDown, false );
 
 };
