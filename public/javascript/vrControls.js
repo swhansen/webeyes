@@ -30,20 +30,18 @@ WEBEYES.MouseControls = function ( object ) {
     orientation.x = Math.max( - PI_2, Math.min( PI_2, orientation.x ) );
 
     document.addEventListener( 'mouseup', onMouseUp, false );
+    document.addEventListener( 'mousedown', onMouseDown, false );
 
   };
 
 
-var onMouseUp = function( event ) {
-
-
+  var onMouseUp = function( event ) {
       console.log( 'clicked up:')
-
     }
 
-
-
-
+  var onMouseDown = function( event ) {
+      console.log( 'clicked down:')
+    }
 
 
 
