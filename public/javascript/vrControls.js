@@ -49,8 +49,9 @@ document.addEventListener( 'mouseup', onMouseUp, false );
     orientation.x += movementY * 0.005;
     orientation.x = Math.max( - PI_2, Math.min( PI_2, orientation.x ) );
 
+    console.log( 'orientation:', orientation.x, orientation.y );
 
-}
+    }
   };
 
 
