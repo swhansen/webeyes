@@ -27,7 +27,6 @@ WEBEYES.MouseControls = function ( object ) {
 
     orientation.y += movementX * 0.005;
     orientation.x += movementY * 0.005;
-
     orientation.x = Math.max( - PI_2, Math.min( PI_2, orientation.x ) );
 
   };

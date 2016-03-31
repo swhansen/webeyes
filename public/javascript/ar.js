@@ -517,7 +517,7 @@ function arConnectionController( participantState ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrDrivenCameraControls = new THREE.OrbitControls( vrDrivenCamera );
+  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
 
   arConnectionController( participantState );
