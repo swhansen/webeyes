@@ -603,8 +603,6 @@ function setupArInteractionEvents( participantState ) {
 
   console.log( 'at setupArInteractionEvents:', participantState );
 
-   setDomPointerEvent( 'canvas0', 'none' );
-      setDomPointerEvent( 'arcanvaspane', 'auto' );
 
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
