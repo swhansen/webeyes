@@ -29,7 +29,23 @@ WEBEYES.MouseControls = function ( object ) {
     orientation.x += movementY * 0.005;
     orientation.x = Math.max( - PI_2, Math.min( PI_2, orientation.x ) );
 
+    document.addEventListener( 'mouseup', onMouseUp, false );
+
   };
+
+
+var onMouseUp = function( event ) {
+
+
+      console.log( 'clicked up:')
+
+    }
+
+
+
+
+
+
 
   this.enabled = true;
 
