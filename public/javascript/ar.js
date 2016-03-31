@@ -57,6 +57,9 @@ function emitArOrientationData() {
 }
 
 
+
+
+
 //  function emitVrOrientationData( data ) {
 //    vrDeviceOrientation.alpha = data.alpha;
 //    vrDeviceOrientation.beta = data.beta;
@@ -485,10 +488,10 @@ function arConnectionController( participantState ) {
     connectToVrController();
     }
 
-  if ( participantState === 'peer' && userContext.mode === 'vr' ) {
-    broadcastDrivenCamera.lookAt( scene.position );
-    connectToBroadcastSensors();
-  }
+//if ( participantState === 'peer' && userContext.mode === 'vr' ) {
+//  broadcastDrivenCamera.lookAt( scene.position );
+//  connectToBroadcastSensors();
+//}
 
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
@@ -565,6 +568,16 @@ function arConnectionController( participantState ) {
         vrDrivenCameraControls.update();
         animateArObjects();
         requestAnimationFrame( connectToVrController );
+
+// broadcast
+// alpha beta gamma
+
+data.alpha = vrDrivenCamera.x;
+data.beta = vrDrivenCamera.y;
+data.gamma = vrDrivenCamera.z;
+
+        var sessionId = socketServer.sessionid;
+  socketServer.emit( 'arOrientation', data, sessionId );
       }
 
       function connectToDeviceSensors() {
