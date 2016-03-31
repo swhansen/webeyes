@@ -79,7 +79,7 @@ WEBEYES.MouseControls = function ( object ) {
 
   document.addEventListener( 'mousemove', onMouseMove, false );
   document.addEventListener( 'mouseup', onMouseUp, false );
-  document.addEventListener( 'mouseDown', onMouseDown, false );
+  document.addEventListener( 'mousedown', onMouseDown, false );
 
 
 };
