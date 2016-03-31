@@ -25,8 +25,8 @@ WEBEYES.MouseControls = function ( object ) {
       moveState = true;
       console.log( 'clicked down:', moveState );
 
-document.addEventListener( 'mouseup', onMouseUp, false );
-    document.addEventListener( 'mousedown', onMouseDown, false );
+    document.addEventListener( 'mouseup', onMouseUp, false );
+    document.addEventListener( 'mousemove', onMouseMove, false );
 
 
 
