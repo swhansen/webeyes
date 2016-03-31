@@ -19,16 +19,10 @@ WEBEYES.MouseControls = function ( object ) {
   moveState = false;
 
 
-
   var onMouseDown = function( event ) {
 
       moveState = true;
       console.log( 'clicked down:', moveState );
-
-    document.addEventListener( 'mouseup', onMouseUp, false );
-    document.addEventListener( 'mousemove', onMouseMove, false );
-
-
 
 
     }
@@ -38,7 +32,7 @@ WEBEYES.MouseControls = function ( object ) {
 
     if ( scope.enabled === false ) return;
 
-    if ( moveState === true ) {
+    if ( moveState ) {
 
     var orientation = scope.orientation;
 
@@ -61,8 +55,6 @@ WEBEYES.MouseControls = function ( object ) {
     }
 
 
-
-
   this.enabled = true;
 
   this.orientation = {
@@ -82,5 +74,7 @@ WEBEYES.MouseControls = function ( object ) {
   };
 
   document.addEventListener( 'mousemove', onMouseDown, false );
+  document.addEventListener( 'mouseup', onMouseUp, false );
+    document.addEventListener( 'mousemove', onMouseMove, false );
 
 };
