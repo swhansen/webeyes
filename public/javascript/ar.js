@@ -601,6 +601,8 @@ function arConnectionController( participantState ) {
 
 function setupArInteractionEvents( participantState ) {
 
+  console.log( 'at setupArInteractionEvents:', participantState );
+
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arObjectShare', data, sessionId );
@@ -718,6 +720,8 @@ function addNewArObjectToWorld( d ) {
 // Select an object
 
   ar0.addEventListener( 'click', function( event ) {
+
+    console.log( 'click:', cameraDriver, event );
 
     event.preventDefault();
 
