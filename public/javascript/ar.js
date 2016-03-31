@@ -517,7 +517,7 @@ function arConnectionController( participantState ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+  vrDrivenCameraControls = new THREE.OrbitControls( vrDrivenCamera );
 
 
   arConnectionController( participantState );
@@ -572,12 +572,13 @@ function arConnectionController( participantState ) {
 // broadcast
 // alpha beta gamma
 
-data.alpha = vrDrivenCamera.x;
-data.beta = vrDrivenCamera.y;
-data.gamma = vrDrivenCamera.z;
+//      data.alpha = vrDrivenCamera.x;
+//      data.beta = vrDrivenCamera.y;
+//      data.gamma = vrDrivenCamera.z;
+//
+//        var sessionId = socketServer.sessionid;
+//      socketServer.emit( 'arOrientation', data, sessionId );
 
-        var sessionId = socketServer.sessionid;
-  socketServer.emit( 'arOrientation', data, sessionId );
       }
 
       function connectToDeviceSensors() {

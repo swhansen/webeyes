@@ -173,13 +173,6 @@ $( function() {
 
     userContext.isLeap = true;
 
-// Focus the Leap initiator
-
-  //  var sessionId = socketServer.sessionid;
-  //      socketServer.emit( 'focus', userContext.rtcId, sessionId );
-
-// Load Leap locally
-
     leapFocus();
 
   // Tell everyone to initialize Leap
@@ -249,8 +242,8 @@ $( function() {
       loadAr( userContext.participantState );
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
-      setDomPointerEvent( 'canvas0', 'none' );
-      setDomPointerEvent( 'arcanvaspane', 'auto' );
+     // setDomPointerEvent( 'canvas0', 'none' );
+     // setDomPointerEvent( 'arcanvaspane', 'auto' );
     }
   );
 } );
