@@ -18,22 +18,16 @@ WEBEYES.MouseControls = function ( object ) {
 
   var mouseDown = false;
 
-
   var onMouseDown = function( event ) {
-
       mouseDown = true;
       console.log( 'clicked down:', mouseDown );
       document.addEventListener( 'mousemove', onMouseMove, false );
-
     }
 
 
   var onMouseMove = function ( event ) {
-
     if ( scope.enabled === false ) return;
-
     if ( mouseDown === false ) return;
-
     if ( mouseDown ) {
 
     var orientation = scope.orientation;
@@ -46,7 +40,6 @@ WEBEYES.MouseControls = function ( object ) {
     orientation.x = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
 
     console.log( 'orientation:', orientation.x, orientation.y );
-
     }
   };
 
@@ -54,10 +47,7 @@ WEBEYES.MouseControls = function ( object ) {
   var onMouseUp = function( event ) {
       mouseDown = false;
       console.log( 'clicked up:', mouseDown );
-
-      document.removeEventListener( 'mousemove', onMouseMove, false );
     }
-
 
   this.enabled = true;
 
@@ -80,6 +70,4 @@ WEBEYES.MouseControls = function ( object ) {
   document.addEventListener( 'mousemove', onMouseMove, false );
   document.addEventListener( 'mouseup', onMouseUp, false );
   document.addEventListener( 'mousedown', onMouseDown, false );
-
-
 };
