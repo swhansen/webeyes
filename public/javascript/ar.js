@@ -56,10 +56,6 @@ function emitArOrientationData() {
   } );
 }
 
-
-
-
-
 //  function emitVrOrientationData( data ) {
 //    vrDeviceOrientation.alpha = data.alpha;
 //    vrDeviceOrientation.beta = data.beta;
@@ -152,7 +148,6 @@ function loadAr( participantState ) {
       break;
 
       case  'toggleIot':
-      //  hueSetLightState( data.iotDeviceId, data.isOn  );
         hueSetLightStateXY( data.iotDeviceId, data.isOn, [ 0.5, 0.5 ], 100 );
         arObject = scene.getObjectByName( data.name );
          arObject.material.opacity = data.arObjectOpacity;
@@ -345,6 +340,10 @@ function setUpArLayer( participantState ) {
         scene.add( helper );
 
         var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
+
+        var clipMorpher = THREE.AnimationClip;
+        clipMorpher.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
+
         var clipBones = geometry.animations[0];
 
         mixer = new THREE.AnimationMixer( swordGuyMesh );
@@ -488,11 +487,6 @@ function arConnectionController( participantState ) {
     connectToVrController();
     }
 
-//if ( participantState === 'peer' && userContext.mode === 'vr' ) {
-//  broadcastDrivenCamera.lookAt( scene.position );
-//  connectToBroadcastSensors();
-//}
-
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
@@ -518,7 +512,7 @@ function arConnectionController( participantState ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+  vrDrivenCameraControls = new WEBEYES.OrbitControls( vrDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -602,7 +596,6 @@ function arConnectionController( participantState ) {
 function setupArInteractionEvents( participantState ) {
 
   console.log( 'at setupArInteractionEvents:', participantState );
-
 
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
@@ -731,7 +724,7 @@ $( '#arcanvas' ).click( function( event ) {
     event.preventDefault();
 
     var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            - ( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
     projector.unprojectVector( vector, cameraDriver );
     vector.sub( cameraDriver.position );
