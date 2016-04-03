@@ -339,7 +339,7 @@ function setUpArLayer( participantState ) {
         helper.visible = false;
         scene.add( helper );
 
-        var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
+     //   var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
 
         var clipMorpher = THREE.AnimationClip;
         clipMorpher.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
@@ -493,15 +493,16 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
+    }
 
-    } else if ( participantState === 'peer' ) {
+    if ( participantState === 'peer' ) {
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-    }
   }
+}
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator
@@ -512,7 +513,7 @@ function arConnectionController( participantState ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrDrivenCameraControls = new THREE.PointerLockControls( vrDrivenCamera );
+  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -775,7 +776,6 @@ $( '#arcanvas' ).click( function( event ) {
         arShareData.operation = 'animateSelectedObject';
         arShareData.id = selectedObject.userData.iotDeviceId;
         arShareData.isAnimated = selectedObject.userData.isAnimated;
-       // arShareData.name = selectedObject.name;
 
         emitArObject( arShareData );
 

@@ -8,6 +8,7 @@ WEBEYES.MouseControls = function( object ) {
     y: new THREE.Quaternion()
   };
 
+  //this.object = object;
   var xVector = new THREE.Vector3( 1, 0, 0 );
   var yVector = new THREE.Vector3( 0, 1, 0 );
 

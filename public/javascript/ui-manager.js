@@ -74,7 +74,6 @@ function getLayersZindexStatus() {
   console.log( 'pointerStatus:', getLayersPointerStatus() );
 
 
-
 // //setLayersPointerFromState();
 // setLayerPointerExclusive( 'utilcanvaspane');
 // console.log( 'set to canvas pane - layerPointerState:', layerPointerState );
