@@ -487,6 +487,11 @@ function arConnectionController( participantState ) {
     connectToVrController();
     }
 
+    if ( participantState === 'peer' && userContext.mode === 'vr' ) {
+    broadcastDrivenCamera.lookAt( scene.position );
+    connectToBroadcastSensors();
+    }
+
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
@@ -495,7 +500,7 @@ function arConnectionController( participantState ) {
       } );
     }
 
-    if ( participantState === 'peer' ) {
+    if ( participantState === 'peer' && userContext.mode ==='ar' ) {
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
