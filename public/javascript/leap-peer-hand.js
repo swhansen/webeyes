@@ -27,11 +27,11 @@ socketServer.on( 'leapSphere', function( data ) {
   leapFull.addEventListener( 'mousemove', evCanvas, false );
   leapFull.addEventListener( 'mouseup', evCanvas, false );
 
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-}
+//  function onWindowResize() {
+//      camera.aspect = window.innerWidth / window.innerHeight;
+//      camera.updateProjectionMatrix();
+//      renderer.setSize( window.innerWidth, window.innerHeight );
+//  }
 
 // General-purpose event handler for mouse events
 

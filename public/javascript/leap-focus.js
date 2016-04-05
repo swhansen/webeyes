@@ -105,11 +105,11 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     peerSphere.position.set( 0.0, 0.0, 0.0 );
     peerSphere.name = 'peerSphere';
 
-  function onWindowResize() {
-    camera.aspect = box0Width / box0Height;
-    camera.updateProjectionMatrix();
-    renderer.setSize( box0Width, box0Height );
-  }
+  //  function onWindowResize() {
+  //    camera.aspect = box0Width / box0Height;
+  //    camera.updateProjectionMatrix();
+  //    renderer.setSize( box0Width, box0Height );
+  //  }
 
   function addMesh( meshes ) {
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
