@@ -621,9 +621,9 @@ function setupArInteractionEvents( participantState ) {
 
   var projector = new THREE.Projector();
 
-    if ( userContext.mode === 'vr' ) {
-      cameraDriver = vrDrivenCamera;
-    }
+ //   if ( userContext.mode === 'vr' ) {
+ //     cameraDriver = vrDrivenCamera;
+ //   }
     if ( participantState === 'focus' ) {
       cameraDriver = sensorDrivenCamera;
       } else if ( participantState === 'peer' ) {
