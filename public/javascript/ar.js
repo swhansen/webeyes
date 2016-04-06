@@ -492,7 +492,7 @@ function arConnectionController( participantState ) {
  //   connectToBroadcastSensors();
  //   }
 
-  if ( participantState === 'focus' ) {
+  if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
