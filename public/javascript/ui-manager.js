@@ -273,7 +273,9 @@ $( function() {
     emitArOrientationData();
 
     document.getElementById( 'sticky-ar' ).style.display = 'visible';
-}
+  }
+);
+  } );
 
 //
 // Moderator Toggle
