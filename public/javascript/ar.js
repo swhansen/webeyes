@@ -492,14 +492,14 @@ function arConnectionController( participantState ) {
   //  connectToBroadcastSensors();
   //  }
 
-  if ( participantState === 'focus' && userContext.mode === 'ar' ) {
+  if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
 
-    } else if ( participantState === 'peer' && userContext.mode === 'ar' ) {
+    } else if ( participantState === 'peer' ) {
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
