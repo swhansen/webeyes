@@ -247,8 +247,6 @@ $( function() {
   );
 } );
 
-
-
 function shareAr() {
 
     userContext.participantState = 'peer';
