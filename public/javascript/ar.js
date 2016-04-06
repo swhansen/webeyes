@@ -498,16 +498,15 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-    }
 
-    if ( participantState === 'peer' && userContext.mode === 'ar' ) {
+    } else if ( participantState === 'peer' && userContext.mode === 'ar' ) {
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
-      } );
-  }
-}
+        } );
+      }
+    }
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator
@@ -563,39 +562,28 @@ function arConnectionController( participantState ) {
     }
   }
 
-      function connectToVrController() {
-        renderer.render( scene, vrDrivenCamera );
-        vrDrivenCameraControls.update();
-        animateArObjects();
-        requestAnimationFrame( connectToVrController );
+ function connectToVrController() {
+   renderer.render( scene, vrDrivenCamera );
+   vrDrivenCameraControls.update();
+   animateArObjects();
+   requestAnimationFrame( connectToVrController );
+ }
 
-// broadcast
-// alpha beta gamma
+ function connectToDeviceSensors() {
+   sensorCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, sensorDrivenCamera );
+   requestAnimationFrame( connectToDeviceSensors );
+   }
 
-//      data.alpha = vrDrivenCamera.x;
-//      data.beta = vrDrivenCamera.y;
-//      data.gamma = vrDrivenCamera.z;
-//
-//        var sessionId = socketServer.sessionid;
-//      socketServer.emit( 'arOrientation', data, sessionId );
+ function connectToBroadcastSensors() {
+   broadcastCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, broadcastDrivenCamera );
+   requestAnimationFrame( connectToBroadcastSensors );
+   }
 
-      }
-
-      function connectToDeviceSensors() {
-        sensorCameraControls.update();
-        animateArObjects();
-        renderer.render( scene, sensorDrivenCamera );
-        requestAnimationFrame( connectToDeviceSensors );
-        }
-
-      function connectToBroadcastSensors() {
-        broadcastCameraControls.update();
-        animateArObjects();
-        renderer.render( scene, broadcastDrivenCamera );
-        requestAnimationFrame( connectToBroadcastSensors );
-        }
-
-    arConnectionController( participantState );
+  arConnectionController( participantState );
 
   }
 
@@ -624,6 +612,7 @@ function setupArInteractionEvents( participantState ) {
  //   if ( userContext.mode === 'vr' ) {
  //     cameraDriver = vrDrivenCamera;
  //   }
+
     if ( participantState === 'focus' ) {
       cameraDriver = sensorDrivenCamera;
       } else if ( participantState === 'peer' ) {
