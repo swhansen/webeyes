@@ -247,7 +247,10 @@ $( function() {
   );
 } );
 
-function shareAr() {
+//function shareAr() {
+
+  $( function() {
+    $( '#shareaug' ).click( function() {
 
     userContext.participantState = 'peer';
     userContext.modMeState = true;
