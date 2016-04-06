@@ -487,10 +487,10 @@ function arConnectionController( participantState ) {
     connectToVrController();
     }
 
-    if ( participantState === 'peer' && userContext.mode === 'vr' ) {
-    broadcastDrivenCamera.lookAt( scene.position );
-    connectToBroadcastSensors();
-    }
+ //   if ( participantState === 'peer' && userContext.mode === 'vr' ) {
+ //   broadcastDrivenCamera.lookAt( scene.position );
+ //   connectToBroadcastSensors();
+ //   }
 
   if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
