@@ -197,7 +197,7 @@ function setUpArLayer( participantState ) {
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+ // vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
@@ -482,9 +482,9 @@ function arConnectionController( participantState ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
 
-  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-    vrDrivenCamera.lookAt( scene.position );
-    connectToVrController();
+ // if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+ //   vrDrivenCamera.lookAt( scene.position );
+ //   connectToVrController();
     }
 
   //  if ( participantState === 'peer' && userContext.mode === 'vr' ) {
@@ -517,7 +517,7 @@ function arConnectionController( participantState ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+ // vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -562,12 +562,12 @@ function arConnectionController( participantState ) {
     }
   }
 
- function connectToVrController() {
-   renderer.render( scene, vrDrivenCamera );
-   vrDrivenCameraControls.update();
-   animateArObjects();
-   requestAnimationFrame( connectToVrController );
- }
+//function connectToVrController() {
+//  renderer.render( scene, vrDrivenCamera );
+//  vrDrivenCameraControls.update();
+//  animateArObjects();
+//  requestAnimationFrame( connectToVrController );
+//}
 
  function connectToDeviceSensors() {
    sensorCameraControls.update();
