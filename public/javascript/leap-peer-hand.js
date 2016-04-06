@@ -69,8 +69,8 @@ function evCanvas( ev ) {
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     camera.position.set( 0, 500, 500 );
 
-    controls.noRotate = true;
-    controls.maxDistance = 1000;
+    //controls.noRotate = true;
+    //controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
@@ -302,7 +302,7 @@ function leapAnimate( data ) {
   updateHandSphere( data );
 
   renderer.render( scene, camera );
-  controls.update();
+  //controls.update();
  }
 
 //  function leapAnimate( data ) {
