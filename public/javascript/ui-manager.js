@@ -256,9 +256,9 @@ $( function() {
   //  userContext.modMeState = true;
 
 // Focus the AR initiator (modme)
-alert( userContext );
+alert( userContext.mode );
 
-    if ( userContext.mode == 'vr' ) {
+   // if ( userContext.mode == 'vr' ) {
 
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
@@ -277,7 +277,7 @@ alert( userContext );
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
-      }
+      //}
     }
   );
 } );
