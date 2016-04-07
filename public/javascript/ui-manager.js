@@ -9,7 +9,7 @@
 //  buttons: button list in the layer menu
 //
 
-function initUiManager();
+function initUiManager() {
 
 var uiStructure = {};
 var mainCollapsed = true;
