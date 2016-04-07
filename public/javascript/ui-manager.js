@@ -250,30 +250,33 @@ $( function() {
   $( function() {
     $( '#shareaug' ).click( function() {
 
-    userContext.participantState = 'peer';   // ???????
+  //  userContext.participantState = 'peer';   // ???????
   //  userContext.modMeState = true;
 
 // Focus the AR initiator (modme)
 
+    if ( userContext.mode === 'vr' ) {
+
+      var sessionId = socketServer.sessionid;
+          socketServer.emit( 'focus', userContext.rtcId, sessionId );
+
+    // Tell everyone to initialize AR
+
     var sessionId = socketServer.sessionid;
-        socketServer.emit( 'focus', userContext.rtcId, sessionId );
+          socketServer.emit( 'utility', 'arClientInit', sessionId );
 
-  // Tell everyone to initialize AR
+      var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
+      messageBar( msgString );
 
-  var sessionId = socketServer.sessionid;
-        socketServer.emit( 'utility', 'arClientInit', sessionId );
+      // Start the orientation data feed
 
-    var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
-    messageBar( msgString );
+      emitArOrientationData();
 
-    // Start the orientation data feed
-
-    emitArOrientationData();
-
-    document.getElementById( 'sticky-ar' ).style.display = 'visible';
-  }
-);
-  } );
+      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+      }
+    }
+  );
+} );
 
 //
 // Moderator Toggle
