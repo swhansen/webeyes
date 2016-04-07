@@ -247,13 +247,11 @@ $( function() {
   );
 } );
 
-//function shareAr() {
-
   $( function() {
     $( '#shareaug' ).click( function() {
 
-    userContext.participantState = 'peer';
-    userContext.modMeState = true;
+    userContext.participantState = 'peer';   // ???????
+  //  userContext.modMeState = true;
 
 // Focus the AR initiator (modme)
 
