@@ -256,9 +256,9 @@ $( function() {
   //  userContext.modMeState = true;
 
 // Focus the AR initiator (modme)
-alert( userContext.mode );
+//alert( userContext.mode );
 
-   // if ( userContext.mode == 'vr' ) {
+   // if ( userContext.mode == 'ar' ) {
 
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
