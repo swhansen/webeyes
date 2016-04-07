@@ -9,6 +9,8 @@
 //  buttons: button list in the layer menu
 //
 
+function initUiManager();
+
 var uiStructure = {};
 var mainCollapsed = true;
 var modSwitch = false;
@@ -538,3 +540,5 @@ $( function() {
     }
   } ) ;
 } );
+
+}

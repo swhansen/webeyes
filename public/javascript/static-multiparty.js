@@ -1136,6 +1136,7 @@ setBrowserDetails();
 
 initDraw();
 initUtil();
+initUiManager();
 messageBar( 'User Session Initialized' );
 
 }
