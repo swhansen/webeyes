@@ -11,7 +11,7 @@
 
 function initUiManager() {
 
-var uiStructure = {};
+// var uiStructure = {};
 var mainCollapsed = true;
 var modSwitch = false;
 

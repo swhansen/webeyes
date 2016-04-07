@@ -13,6 +13,9 @@ var compassToggle = false;
 socketServer = io.connect( '/' );
 /*jshint +W020 */
 
+
+var uiStructure = {};
+
 // Container for User Context
 
 var userContext = {
