@@ -39,14 +39,29 @@ function usebcode( bcode ) {
 
   case 'vrme':
     userContext.participantState = 'focus';
-    userContext.mode = 'vr';
-    userContext.uistate = 'vr';
+    userContext.mode = 'ar';
+    userContext.uistate = 'ar';
     userContext.modMeState = true;
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'arMainButton' ).style.visibility = 'visible';
     document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
     mainCollapsed = true;
+
+// Focus the AR initiator (modme)
+
+    var sessionId = socketServer.sessionid;
+        socketServer.emit( 'focus', userContext.rtcId, sessionId );
+
+// Tell everyone to initialize AR
+
+// var sessionId = socketServer.sessionid;
+//        socketServer.emit( 'utility', 'arClientInit', sessionId );
+
+    var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
+    messageBar( msgString );
+  //  emitArOrientationData();
+
     break;
 
     case 'augme':
