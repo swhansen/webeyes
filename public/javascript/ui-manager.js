@@ -263,30 +263,29 @@ $( function() {
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-    // Tell everyone to initialize AR
+      // Tell everyone to initialize AR
 
-    var sessionId = socketServer.sessionid;
+      var sessionId = socketServer.sessionid;
           socketServer.emit( 'utility', 'arClientInit', sessionId );
 
-      var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
-      messageBar( msgString );
+        var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
+        messageBar( msgString );
 
       // Start the orientation data feed
 
-      emitArOrientationData();
+        emitArOrientationData();
 
-      document.getElementById( 'sticky-ar' ).style.display = 'visible';
-
+        document.getElementById( 'sticky-ar' ).style.display = 'visible';
       }
 
-      if ( userContext.mode === 'vr' ) {
+    if ( userContext.mode === 'vr' ) {
 
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-    // Tell everyone to initialize AR
+      // Tell everyone to initialize AR
 
-    var sessionId = socketServer.sessionid;
+      var sessionId = socketServer.sessionid;
           socketServer.emit( 'utility', 'arClientInit', sessionId );
 
       var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
@@ -294,7 +293,7 @@ $( function() {
 
       // Start the orientation data feed
 
-      emitArOrientationData();
+      // emitArOrientationData();
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
       }
