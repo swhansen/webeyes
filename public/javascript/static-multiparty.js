@@ -597,7 +597,7 @@ function expandThumb( whichBox ) {
     updateMuteImage( false );
     handleWindowResize();
 
-    if ( userContext.modMeState === true && modSwitch === true ) {
+    if ( userContext.modMeState === true ) {
       console.log( 'modMeState:', userContext.modMeState );
       var rtcidToExpand = _( connectList )
       .filter( function( connectList ) { return connectList.boxno == whichBox; } )
