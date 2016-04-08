@@ -38,6 +38,14 @@ function usebcode( bcode ) {
     break;
 
   case 'vrme':
+
+    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
+      uiStructure = data;
+    } );
+    for ( button in uiStructure.structure ) {
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
+    }
+
     userContext.participantState = 'focus';
     userContext.mode = 'ar';
     userContext.uistate = 'ar';
