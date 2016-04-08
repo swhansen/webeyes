@@ -493,23 +493,22 @@ function arConnectionController( participantState ) {
   if ( participantState === 'focus' && userContext.mode === 'vr' ) {
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
-    }
 
+    } else if ( participantState === 'peer' ) {
 
+      socketServer.on( 'vrMouseMovement', function( orientation ) {
 
-// insert following  peer logic
-//add broadcast for VR based orientation
-//
-//  or   adjust logic
-// see #shareaug and mod emitArOrientatuondata
+        var mouseQuat = {
+        x: new THREE.Quaternion(),
+        y: new THREE.Quaternion()
+        };
 
-
-
-
- //   if ( participantState === 'peer' && userContext.mode === 'vr' ) {
- //   broadcastDrivenCamera.lookAt( scene.position );
- //   connectToBroadcastSensors();
- //   }
+        mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
+        mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
+        vrDrivenCamera.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
+        vrDrivenCamera.lookAt( scene.position );
+        } );
+         }
 
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
@@ -588,6 +587,15 @@ function arConnectionController( participantState ) {
    requestAnimationFrame( connectToVrController );
  }
 
+// function connectToVrBroadcast() {
+//   renderer.render( scene, vrDrivenCamera );
+//   vrDrivenCameraControls.update();
+//   animateArObjects();
+//   requestAnimationFrame( connectToVrController );
+// }
+
+
+
  function connectToDeviceSensors() {
    sensorCameraControls.update();
    animateArObjects();
@@ -605,6 +613,11 @@ function arConnectionController( participantState ) {
   arConnectionController( participantState );
 
   }
+
+
+
+
+
 
 function setupArInteractionEvents( participantState ) {
 

@@ -297,6 +297,11 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'arOrientation', data );
   } );
 
+  client.on( 'vrMouseMovment', function( data, session ) {
+    client.broadcast.emit( 'vrMouseMovement', data );
+  } );
+
+
   client.on( 'arObjectShare', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
     client.broadcast.emit( 'arObjectShare', data );
