@@ -258,7 +258,7 @@ $( function() {
 // Focus the AR initiator (modme)
 //alert( userContext.mode );
 
-   // if ( userContext.mode == 'ar' ) {
+    if ( userContext.mode === 'ar' ) {
 
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
@@ -277,7 +277,27 @@ $( function() {
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
-      //}
+      }
+
+      if ( userContext.mode === 'vr' ) {
+
+      var sessionId = socketServer.sessionid;
+          socketServer.emit( 'focus', userContext.rtcId, sessionId );
+
+    // Tell everyone to initialize AR
+
+    var sessionId = socketServer.sessionid;
+          socketServer.emit( 'utility', 'arClientInit', sessionId );
+
+      var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
+      messageBar( msgString );
+
+      // Start the orientation data feed
+
+      emitArOrientationData();
+
+      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+      }
     }
   );
 } );
