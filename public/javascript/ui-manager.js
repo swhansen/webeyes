@@ -245,6 +245,9 @@ $( function() {
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
+
+      setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' ) {
+
     }
   );
 } );

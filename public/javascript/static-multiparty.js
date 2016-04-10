@@ -32,7 +32,8 @@ var userContext = {
   orientation: false,
   mobile: false,
   browserType: '',
-  browserVideoDevices: ''
+  browserVideoDevices: '',
+  test: ''
 };
 
 // the layer list
@@ -51,6 +52,27 @@ var layerList = [
 var layerPointerState = {};
 
 easyrtc.dontAddCloseButtons( false );
+
+function setPeerUserContext( rtcId, param, state ) {
+  var data = {};
+  data.rtcId = rtcId;
+  data.param = param;
+  data.state = state;
+
+  var sessionId = socketServer.sessionid;
+  socketServer.emit( 'userContext', data, sessionId );
+}
+
+socketServer.on( 'userContext', function( data ) {
+  if ( data.rtcId !== userContext.rtcId ) {
+    var p = data.param;
+  userContext[ p ] = data.state;
+
+  console.log( 'userContext at multiparty- data:', data );
+  console.log( 'userContext at multiparty:', userContext );
+
+  }
+} );
 
 // Footer Messages
 
@@ -597,7 +619,7 @@ function expandThumb( whichBox ) {
     updateMuteImage( false );
     handleWindowResize();
 
-    if ( userContext.modMeState === true ) {
+    if ( userContext.modMeState === true && modSwitch === true ) {
       console.log( 'modMeState:', userContext.modMeState );
       var rtcidToExpand = _( connectList )
       .filter( function( connectList ) { return connectList.boxno == whichBox; } )

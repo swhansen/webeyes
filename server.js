@@ -301,6 +301,11 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'vrMouseMovement', data );
   } );
 
+  client.on( 'userContext', function (data, session ) {
+    client.broadcast.emit( 'userContext', data );
+  }
+    );
+
 
   client.on( 'arObjectShare', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
