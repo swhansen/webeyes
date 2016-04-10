@@ -246,7 +246,7 @@ $( function() {
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
-      setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' ) {
+      setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' );
 
     }
   );
