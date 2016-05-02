@@ -56,15 +56,6 @@ function emitArOrientationData() {
   } );
 }
 
-//  function emitVrOrientationData( data ) {
-//    vrDeviceOrientation.alpha = data.alpha;
-//    vrDeviceOrientation.beta = data.beta;
-//    vrDeviceOrientation.gamma = data.gamma;
-//    var sessionId = socketServer.sessionid;
-//    socketServer.emit( 'arOrientation', vrDeviceOrientation, sessionId );
-//
-//  }
-
 socketServer.on( 'toggleCompass', function( data ) {
   orientationAr( data );
   } );
@@ -89,7 +80,6 @@ function removeUserCreatedArObjects() {
 function loadAr( participantState ) {
 
   var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var vrDrivenCamera, vrDrivenCameraControls;
   var knot;
 
   clock.start();
@@ -97,7 +87,11 @@ function loadAr( participantState ) {
   setupArInteractionEvents( participantState );
    }
 
+// Recieve socket.io  AR object info from peers
+
   function receiveArObject( data ) {
+
+    console.log( 'receiveArObject:', data );
 
     switch ( data.operation ) {
       case 'moveObject':
@@ -141,6 +135,7 @@ function loadAr( participantState ) {
 
         var tempObj = scene.getObjectByName( data.name );
         tempObj.userData.isAnimated = data.isAnimated;
+
       break;
 
       case 'hideSelectedObject':
@@ -148,9 +143,16 @@ function loadAr( participantState ) {
       break;
 
       case  'toggleIot':
-        hueSetLightStateXY( data.iotDeviceId, data.isOn, [ 0.5, 0.5 ], 100 );
-        arObject = scene.getObjectByName( data.name );
+
+        console.log( 'at toggleIOT:', data );
+
+        setHueLightState( data.iotDeviceId, data.isOn  );
+
+         arObject = scene.getObjectByName( data.name );
+
+         console.log( 'toggleIot arObject:', arObject );
          arObject.material.opacity = data.arObjectOpacity;
+
       break;
   }
 }
@@ -174,7 +176,7 @@ function setUpArLayer( participantState ) {
   var step = 0;
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
-  var ar0 = document.getElementById( 'arcanvas' );
+  var ar0 = document.getElementById( 'ar-canvas' );
   var mouseVector;
 
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
@@ -185,7 +187,6 @@ function setUpArLayer( participantState ) {
   ar0.height = ar0.offsetHeight;
 
   arCanvas.style.visibility = 'visible';
-  ar0.style.visibility = 'visible';
 
   //arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   //arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
@@ -197,15 +198,12 @@ function setUpArLayer( participantState ) {
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
-  renderer.setSize( box0Width, box0Width );
-  renderer.setClearColor( 0x000000, 0 );
 
-//
-// AR world model
-//
+  renderer.setSize( box0Width, box0Width );
+
+  renderer.setClearColor( 0x000000, 0 );
 
   var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
@@ -343,11 +341,7 @@ function setUpArLayer( participantState ) {
         helper.visible = false;
         scene.add( helper );
 
-     //   var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
-
-        var clipMorpher = THREE.AnimationClip;
-        clipMorpher.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
-
+        var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
         var clipBones = geometry.animations[0];
 
         mixer = new THREE.AnimationMixer( swordGuyMesh );
@@ -478,39 +472,13 @@ function setUpArLayer( participantState ) {
 //box.position.set( 2.0, 0.0, 0.1 );
 //scene.add( box );
 
-//
-// ... end AR world model
-//
-
 function arConnectionController( participantState ) {
 
 //   Based on participantState(focus or peer)
 //    focus - device sensors
 //    peer - broadcast feed sensors
 
-  console.log( 'arConnectionController:', participantState, userContext );
-
-  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-    vrDrivenCamera.lookAt( scene.position );
-    connectToVrController();
-
-    } else if ( participantState === 'peer' ) {
-
-      socketServer.on( 'vrMouseMovement', function( orientation ) {
-
-        var mouseQuat = {
-        x: new THREE.Quaternion(),
-        y: new THREE.Quaternion()
-        };
-
-        mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
-        mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
-        vrDrivenCamera.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
-        vrDrivenCamera.lookAt( scene.position );
-        } );
-         }
-
-  if ( participantState === 'focus' && userContext.mode === 'ar' ) {
+  if ( participantState === 'focus' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -522,20 +490,17 @@ function arConnectionController( participantState ) {
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
-        } );
-      }
+      } );
+    }
   }
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator
 //  - broadcast for all peers
-//  - mouse for VR mode
 
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
-
-  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -580,48 +545,24 @@ function arConnectionController( participantState ) {
     }
   }
 
- function connectToVrController() {
-   renderer.render( scene, vrDrivenCamera );
-   vrDrivenCameraControls.update();
-   animateArObjects();
-   requestAnimationFrame( connectToVrController );
- }
+  function connectToDeviceSensors() {
+    sensorCameraControls.update();
+    animateArObjects();
+    renderer.render( scene, sensorDrivenCamera );
+    requestAnimationFrame( connectToDeviceSensors );
+  }
 
-// function connectToVrBroadcast() {
-//   renderer.render( scene, vrDrivenCamera );
-//   vrDrivenCameraControls.update();
-//   animateArObjects();
-//   requestAnimationFrame( connectToVrController );
-// }
-
-
-
- function connectToDeviceSensors() {
-   sensorCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, sensorDrivenCamera );
-   requestAnimationFrame( connectToDeviceSensors );
-   }
-
- function connectToBroadcastSensors() {
-   broadcastCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, broadcastDrivenCamera );
-   requestAnimationFrame( connectToBroadcastSensors );
-   }
-
-  arConnectionController( participantState );
+  function connectToBroadcastSensors() {
+    broadcastCameraControls.update();
+    animateArObjects();
+    renderer.render( scene, broadcastDrivenCamera );
+    requestAnimationFrame( connectToBroadcastSensors );
+  }
+    arConnectionController( participantState );
 
   }
 
-
-
-
-
-
 function setupArInteractionEvents( participantState ) {
-
-  console.log( 'at setupArInteractionEvents:', participantState );
 
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
@@ -631,7 +572,7 @@ function setupArInteractionEvents( participantState ) {
   var cameraDriver;
   var arShareData = {};
 
-  var ar0 = document.getElementById( 'arcanvas' );
+  var ar0 = document.getElementById( 'ar-canvas' );
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
   offsetY = rect.top;
@@ -641,14 +582,10 @@ function setupArInteractionEvents( participantState ) {
 
   var projector = new THREE.Projector();
 
- //   if ( userContext.mode === 'vr' ) {
- //     cameraDriver = vrDrivenCamera;
- //   }
-
     if ( participantState === 'focus' ) {
       cameraDriver = sensorDrivenCamera;
-      } else if ( participantState === 'peer' ) {
-         cameraDriver = broadcastDrivenCamera;
+    } else if ( participantState === 'peer' ) {
+      cameraDriver = broadcastDrivenCamera;
     }
 
   function toggleArAnimation( arObject ) {
@@ -663,7 +600,7 @@ function setupArInteractionEvents( participantState ) {
 // Place an object with a long click
 //
 
-$( '#arcanvas' ).longpress( function( event ) {
+$( '#ar-canvas' ).longpress( function( event ) {
 
   event.preventDefault();
 
@@ -690,10 +627,12 @@ $( '#arcanvas' ).longpress( function( event ) {
   },
 
 function( e ) {
+    console.log( 'You released before longpress duration' );
     return false;
 }, 750 );
 
 function addNewArObjectToWorld( d ) {
+    console.log( 'longpress-call addNewArbject:', arShareData );
     var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
     var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
     var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
@@ -723,6 +662,8 @@ function addNewArObjectToWorld( d ) {
     newArObj.isUserCreated = true;
     newArObj.objectType = 'bagel';
 
+    console.log( 'sending newArObj:', newArObj );
+
     emitArObject( newArObj );
   }
 
@@ -735,16 +676,14 @@ function addNewArObjectToWorld( d ) {
     newArObj.id = arUserCreatedObject.id;
     newArObj.createdBy = userContext.rtcId;
 
+    console.log( 'sending newArObj:', newArObj );
+
     emitArObject( newArObj );
   }
 
 // Select an object
 
-//$( '#arcanvas' ).click( function( event ) {
-
   ar0.addEventListener( 'click', function( event ) {
-
-    console.log( 'click:', cameraDriver, event );
 
     event.preventDefault();
 
@@ -773,7 +712,10 @@ function addNewArObjectToWorld( d ) {
               selectedObject.material.opacity = 0.5;
             }
 
-        hueSetLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
+        setHueLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
+
+       // var lightState = getHueLightState( selectedObject.userData.iotDeviceId );
+       // console.log('light state bri:', lightState.state.bri);
 
         arShareData.operation = 'toggleIot';
         arShareData.isOn = selectedObject.userData.isOn;
@@ -800,6 +742,7 @@ function addNewArObjectToWorld( d ) {
         arShareData.operation = 'animateSelectedObject';
         arShareData.id = selectedObject.userData.iotDeviceId;
         arShareData.isAnimated = selectedObject.userData.isAnimated;
+       // arShareData.name = selectedObject.name;
 
         emitArObject( arShareData );
 
@@ -815,6 +758,8 @@ function addNewArObjectToWorld( d ) {
 
     if ( intersects[0].object.name === 'sheep' ) {
        isAnimateSheep = !isAnimateSheep;
+
+      console.log( 'its a sheep:', isAnimateSheep );
 
     // only change the color when animation is stopped
 
@@ -836,6 +781,7 @@ function addNewArObjectToWorld( d ) {
     }
 
     if ( intersects[0].object.name === 'swordGuy' ) {
+      console.log( 'Selected swordGuy' );
       isAnimateSwordGuy = !isAnimateSwordGuy;
 
       arShareData.animate = isAnimateSwordGuy;
@@ -859,6 +805,8 @@ function addNewArObjectToWorld( d ) {
       arShareData.position = intersects[0].object.position;
       arShareData.rotation = intersects[0].object.rotation;
       arShareData.color = intersects[0].object.material.color;
+
+      console.log( 'clicked-arShareData:', arShareData );
 
       emitArObject( arShareData );
     }
