@@ -29,6 +29,8 @@ setPeerUserContext( 'all', 'modMeState', false );
 
 // insert rets and checks for self rtcid
 
+userContext.modMeState = true;
+
 
 
    userContext.modMeState = true;
@@ -47,6 +49,8 @@ setPeerUserContext( 'all', 'modMeState', false );
   case 'vrme':
 
   setPeerUserContext( 'all', 'modMeState', false );
+
+  userContext.modMeState = true;
 
     $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
@@ -84,6 +88,8 @@ setPeerUserContext( 'all', 'modMeState', false );
     case 'augme':
 
     setPeerUserContext( 'all', 'modMeState', false );
+
+    userContext.modMeState = true;
 
 
    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
