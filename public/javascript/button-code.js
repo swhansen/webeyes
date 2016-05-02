@@ -31,8 +31,6 @@ setPeerUserContext( 'all', 'modMeState', false );
 
 userContext.modMeState = true;
 
-
-
    userContext.modMeState = true;
    $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
       uiStructure = data;
@@ -50,7 +48,7 @@ userContext.modMeState = true;
 
   setPeerUserContext( 'all', 'modMeState', false );
 
-  userContext.modMeState = true;
+  //userContext.modMeState = true;
 
     $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
@@ -89,8 +87,7 @@ userContext.modMeState = true;
 
     setPeerUserContext( 'all', 'modMeState', false );
 
-    userContext.modMeState = true;
-
+   // userContext.modMeState = true;
 
    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
