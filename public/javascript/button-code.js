@@ -25,7 +25,7 @@ function usebcode( bcode ) {
   {
    case 'modme':
 
-setPeerUserContext( 'all', modMeState, false );
+setPeerUserContext( 'all', 'modMeState', false );
 
 // insert rets and checks for self rtcid
 

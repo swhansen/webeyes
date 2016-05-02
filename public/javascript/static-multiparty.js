@@ -6,7 +6,7 @@ var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS + 1;
 var layout;
 var connectList = [];
-var modmeState = false;
+//var modmeState = false;
 var compassToggle = false;
 
 /*jshint -W020 */
