@@ -46,6 +46,8 @@ setPeerUserContext( 'all', 'modMeState', false );
 
   case 'vrme':
 
+  setPeerUserContext( 'all', 'modMeState', false );
+
     $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
     } );
@@ -80,6 +82,10 @@ setPeerUserContext( 'all', 'modMeState', false );
     break;
 
     case 'augme':
+
+    setPeerUserContext( 'all', 'modMeState', false );
+
+
    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
     } );
