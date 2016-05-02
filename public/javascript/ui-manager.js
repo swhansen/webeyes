@@ -228,6 +228,8 @@ $( function() {
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
+
+      setPeerUserContext( userContext.rtcId, 'test', 'from-AR-Button' );
     }
   );
 } );
@@ -279,6 +281,8 @@ $( function() {
         emitArOrientationData();
 
         document.getElementById( 'sticky-ar' ).style.display = 'visible';
+
+        setPeerUserContext( userContext.rtcId, 'test', 'from-Context-Button:ar' );
       }
 
     if ( userContext.mode === 'vr' ) {
@@ -299,6 +303,8 @@ $( function() {
       // emitArOrientationData();
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
+
+      setPeerUserContext( userContext.rtcId, 'test', 'from-Context-Button:vr' );
       }
     }
   );

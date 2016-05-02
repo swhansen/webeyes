@@ -25,6 +25,12 @@ function usebcode( bcode ) {
   {
    case 'modme':
 
+setPeerUserContext( 'all', modMeState, false );
+
+// insert rets and checks for self rtcid
+
+
+
    userContext.modMeState = true;
    $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
       uiStructure = data;

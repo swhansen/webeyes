@@ -63,16 +63,31 @@ function setPeerUserContext( rtcId, param, state ) {
   socketServer.emit( 'userContext', data, sessionId );
 }
 
+// set a userContect param from a remote
+
 socketServer.on( 'userContext', function( data ) {
-  if ( data.rtcId !== userContext.rtcId ) {
+
+if ( data.rtcId == 'all' ) {
     var p = data.param;
-  userContext[ p ] = data.state;
+    userContext[ p ] = data.state;
 
-  console.log( 'userContext at multiparty- data:', data );
-  console.log( 'userContext at multiparty:', userContext );
-
+    console.log( 'userContext at multiparty- data:', data );
+    console.log( 'userContext at multiparty:', userContext );
   }
+
+
+// if ( data.rtcId !== userContext.rtcId ) {
+//   var p = data.param;
+//   userContext[ p ] = data.state;
+
+//   console.log( 'userContext at multiparty- data:', data );
+//   console.log( 'userContext at multiparty:', userContext );
+//  }
 } );
+
+
+
+
 
 // Footer Messages
 
@@ -619,7 +634,7 @@ function expandThumb( whichBox ) {
     updateMuteImage( false );
     handleWindowResize();
 
-    if ( userContext.modMeState === true && modSwitch === true ) {
+    if ( userContext.modMeState === true ) {
       console.log( 'modMeState:', userContext.modMeState );
       var rtcidToExpand = _( connectList )
       .filter( function( connectList ) { return connectList.boxno == whichBox; } )
