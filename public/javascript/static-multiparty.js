@@ -47,11 +47,15 @@ var layerList = [
   'leappane'
 ];
 
-// stae of the pointers for the layers
+// state of the pointers for the layers
 
 var layerPointerState = {};
 
 easyrtc.dontAddCloseButtons( false );
+
+function setDomPointerEvent( domId, mode ) {
+  document.getElementById( domId ).style.pointerEvents = mode;
+}
 
 function setPeerUserContext( rtcId, param, state ) {
   var data = {};
@@ -84,10 +88,6 @@ if ( data.rtcId == 'all' ) {
 //   console.log( 'userContext at multiparty:', userContext );
 //  }
 } );
-
-
-
-
 
 // Footer Messages
 

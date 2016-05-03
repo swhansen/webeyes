@@ -614,11 +614,6 @@ function arConnectionController( participantState ) {
 
   }
 
-
-
-
-
-
 function setupArInteractionEvents( participantState ) {
 
   console.log( 'at setupArInteractionEvents:', participantState );

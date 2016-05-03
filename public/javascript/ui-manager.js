@@ -24,9 +24,9 @@ $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
 var videoMuteData = {};
 var thisBox;
 
-function setDomPointerEvent( domId, mode ) {
-  document.getElementById( domId ).style.pointerEvents = mode;
-}
+//function setDomPointerEvent( domId, mode ) {
+//  document.getElementById( domId ).style.pointerEvents = mode;
+//}
 
 function setLayerPointerExclusive( layer ) {
   _.forEach( layerList, function( key ) {
