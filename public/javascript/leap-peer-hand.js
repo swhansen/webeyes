@@ -256,8 +256,11 @@ if ( data.operation === 'mouseUp' ) {}
 
 function updateHandSphere( data ) {
 
-  setDomPointerEvent( 'leappane', 'auto' );
-  setDomPointerEvent( 'canvaspane', 'none' );
+ // setDomPointerEvent( 'leappane', 'auto' );
+ // setDomPointerEvent( 'canvaspane', 'none' );
+
+  document.getElementById( 'leappane' ).style.pointerEvents = 'auto';
+  document.getElementById( 'canvaspane' ).style.pointerEvents = 'none';
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
   scene.add( handSphere );
