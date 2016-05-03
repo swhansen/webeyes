@@ -633,7 +633,7 @@ function setupArInteractionEvents( participantState ) {
 
   //setDomPointerEvent( 'arcanvaspane', 'auto' );
 
-  document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
+  document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
 
   var ar0 = document.getElementById( 'arcanvas' );
   var rect = ar0.getBoundingClientRect();
