@@ -631,6 +631,8 @@ function setupArInteractionEvents( participantState ) {
   var cameraDriver;
   var arShareData = {};
 
+  setDomPointerEvent( 'arcanvaspane', 'auto' );
+
   var ar0 = document.getElementById( 'arcanvas' );
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
