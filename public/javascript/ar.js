@@ -594,8 +594,6 @@ function arConnectionController( participantState ) {
 //   requestAnimationFrame( connectToVrController );
 // }
 
-
-
  function connectToDeviceSensors() {
    sensorCameraControls.update();
    animateArObjects();
@@ -629,6 +627,7 @@ function setupArInteractionEvents( participantState ) {
   //setDomPointerEvent( 'arcanvaspane', 'auto' );
 
   document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
+  document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
 
   var ar0 = document.getElementById( 'arcanvas' );
   var rect = ar0.getBoundingClientRect();
