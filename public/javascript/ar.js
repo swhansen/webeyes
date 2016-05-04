@@ -630,6 +630,9 @@ function setupArInteractionEvents( participantState ) {
   document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
 
   var ar0 = document.getElementById( 'arcanvas' );
+
+console.log( 'ar0', ar0 );
+
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
   offsetY = rect.top;
@@ -862,6 +865,6 @@ function addNewArObjectToWorld( d ) {
     }
   }
 
-  }, false );
+  }, true );
 
 }
