@@ -745,7 +745,7 @@ function addNewArObjectToWorld( d ) {
 
 //$( '#arcanvas' ).click( function( event ) {
 
-  var apane = document.getElementById( arcanvas );
+  var apane = document.getElementById( 'arcanvas' );
   apane.addEventListener( 'mousedown', onMouseDown, false );
   console.log( 'arcanvas:', apane );
 
