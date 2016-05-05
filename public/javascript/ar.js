@@ -666,6 +666,8 @@ console.log( 'ar0', ar0 );
 
 $( '#arcanvas' ).longpress( function( event ) {
 
+  console.log( 'longpress' );
+
   event.preventDefault();
 
   var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
@@ -743,7 +745,11 @@ function addNewArObjectToWorld( d ) {
 
 //$( '#arcanvas' ).click( function( event ) {
 
-  ar0.addEventListener( 'click', function( event ) {
+  ar0.addEventListener( 'mousedown', onMouseDown, false );
+
+  //ar0.addEventListener( 'click', function( event ) {
+
+function onMouseDown( event ) {
 
     console.log( 'click:', cameraDriver, event );
 
@@ -865,6 +871,6 @@ function addNewArObjectToWorld( d ) {
     }
   }
 
-  }, true );
+  }
 
 }
