@@ -616,6 +616,16 @@ function setupArInteractionEvents( participantState ) {
 
   console.log( 'at setupArInteractionEvents:', participantState );
 
+
+ var apane = document.getElementById( 'arcanvas' );
+  apane.addEventListener( 'mousedown', onMouseDown, false );
+  console.log( 'arcanvas:', apane );
+
+
+
+
+
+
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arObjectShare', data, sessionId );
@@ -745,9 +755,7 @@ function addNewArObjectToWorld( d ) {
 
 //$( '#arcanvas' ).click( function( event ) {
 
-  var apane = document.getElementById( 'arcanvas' );
-  apane.addEventListener( 'mousedown', onMouseDown, false );
-  console.log( 'arcanvas:', apane );
+
 
   //ar0.addEventListener( 'click', function( event ) {
 
