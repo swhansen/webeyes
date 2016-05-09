@@ -65,6 +65,9 @@ userContext.modMeState = true;
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'arMainButton' ).style.visibility = 'visible';
     document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
+
+    document.getElementById( 'canvas0' ).style.pointerEvents = 'none';
+
     mainCollapsed = true;
 
 // Focus the AR initiator (modme)
