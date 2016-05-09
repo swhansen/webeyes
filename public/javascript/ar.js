@@ -615,10 +615,11 @@ function arConnectionController( participantState ) {
 function setupArInteractionEvents( participantState ) {
 
   console.log( 'at setupArInteractionEvents:', participantState );
+  console.log( 'at setupArInteractionEvents- object array:', arSelectObjectArray );
 
 
  var apane = document.getElementById( 'arcanvas' );
-  apane.addEventListener( 'mousedown', onMouseDown, false );
+  apane.addEventListener( 'pointerdown', onMouseDown, false );
   console.log( 'arcanvas:', apane );
 
 
