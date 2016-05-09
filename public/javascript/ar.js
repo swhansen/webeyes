@@ -619,7 +619,7 @@ function setupArInteractionEvents( participantState ) {
 
 
  var apane = document.getElementById( 'arcanvas' );
-  apane.addEventListener( 'pointerdown', onMouseDown, false );
+  apane.addEventListener( 'pointerdown', onArSelect, false );
   console.log( 'arcanvas:', apane );
 
 
@@ -760,7 +760,7 @@ function addNewArObjectToWorld( d ) {
 
   //ar0.addEventListener( 'click', function( event ) {
 
-function onMouseDown( event ) {
+function onArSelect( event ) {
 
     console.log( 'click:', cameraDriver, event );
 
