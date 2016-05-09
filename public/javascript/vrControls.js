@@ -65,7 +65,7 @@ WEBEYES.MouseControls = function( object ) {
     return;
   };
 
-  document.addEventListener( 'mousemove', onMouseMove, false );
-  document.addEventListener( 'mouseup', onMouseUp, false );
-  document.addEventListener( 'mousedown', onMouseDown, false );
+ // document.addEventListener( 'mousemove', onMouseMove, false );
+ // document.addEventListener( 'mouseup', onMouseUp, false );
+ // document.addEventListener( 'mousedown', onMouseDown, false );
 };

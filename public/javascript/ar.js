@@ -622,11 +622,6 @@ function setupArInteractionEvents( participantState ) {
   apane.addEventListener( 'pointerdown', onArSelect, false );
   console.log( 'arcanvas:', apane );
 
-
-
-
-
-
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arObjectShare', data, sessionId );
