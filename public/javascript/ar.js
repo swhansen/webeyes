@@ -490,25 +490,25 @@ function arConnectionController( participantState ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
 
-//  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-//    vrDrivenCamera.lookAt( scene.position );
-//    connectToVrController();
-//
-//    } else if ( participantState === 'peer' ) {
-//
-//      socketServer.on( 'vrMouseMovement', function( orientation ) {
-//
-//        var mouseQuat = {
-//        x: new THREE.Quaternion(),
-//        y: new THREE.Quaternion()
-//        };
-//
-//        mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
-//        mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
-//        vrDrivenCamera.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
-//        vrDrivenCamera.lookAt( scene.position );
-//        } );
-//         }
+  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+    vrDrivenCamera.lookAt( scene.position );
+    connectToVrController();
+
+    } else if ( participantState === 'peer' ) {
+
+      socketServer.on( 'vrMouseMovement', function( orientation ) {
+
+        var mouseQuat = {
+        x: new THREE.Quaternion(),
+        y: new THREE.Quaternion()
+        };
+
+        mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
+        mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
+        vrDrivenCamera.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
+        vrDrivenCamera.lookAt( scene.position );
+        } );
+         }
 
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
@@ -535,7 +535,7 @@ function arConnectionController( participantState ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
- // vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -580,12 +580,12 @@ function arConnectionController( participantState ) {
     }
   }
 
-//function connectToVrController() {
-//  renderer.render( scene, vrDrivenCamera );
-//  vrDrivenCameraControls.update();
-//  animateArObjects();
-//  requestAnimationFrame( connectToVrController );
-//}
+ function connectToVrController() {
+   renderer.render( scene, vrDrivenCamera );
+   vrDrivenCameraControls.update();
+   animateArObjects();
+   requestAnimationFrame( connectToVrController );
+ }
 
 // function connectToVrBroadcast() {
 //   renderer.render( scene, vrDrivenCamera );
@@ -670,92 +670,92 @@ console.log( 'ar0', ar0 );
 // Place an object with a long click
 //
 
-$( '#arcanvas' ).longpress( function( event ) {
-
-  console.log( 'longpress' );
-
-  event.preventDefault();
-
-  var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-
-  mouse3D.unproject( cameraDriver );
-  var dir = mouse3D.sub( cameraDriver.position ).normalize();
-  var raycaster = new THREE.Raycaster( cameraDriver.position, mouse3D );
-
-  var scale = 4.0;
-
-  var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
-
-      arShareData.operation = 'newObject';
-      arShareData.x = pos.x;
-      arShareData.y = pos.y;
-      arShareData.z = pos.z;
-
-// add the object locally and tell everyone else
-
-  addNewArObjectToWorld( arShareData );
-  return false;
-  },
-
-function( e ) {
-    return false;
-}, 750 );
-
-function addNewArObjectToWorld( d ) {
-    var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-    var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-    var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
-
-    arUserCreatedObject.position.set( d.x, d.y, d.z );
-    arUserCreatedObject.userData.id = arUserCreatedObject.id;
-    arUserCreatedObject.userData.objectType =  'bagel';
-    arUserCreatedObject.name = arUserCreatedObject.id;
-    arUserCreatedObject.userData.isAnimated = false;
-    arUserCreatedObject.userData.isUserCreated = true;
-    arUserCreatedObject.userData.isSelectable = true;
-    arUserCreatedObject.userData.createdBy = userContext.rtcId;
-
-    scene.add( arUserCreatedObject );
-    arSelectObjectArray.push( arUserCreatedObject );
-
-// push the new object to peers
-
-    var newArObj = {};
-    newArObj.operation = 'newObject';
-    newArObj.x = d.x;
-    newArObj.y = d.y;
-    newArObj.z = d.z;
-    newArObj.id = arUserCreatedObject.id;
-    newArObj.createdBy = userContext.rtcId;
-    newArObj.isSelectable = true;
-    newArObj.isUserCreated = true;
-    newArObj.objectType = 'bagel';
-
-    emitArObject( newArObj );
-  }
-
-  function pushNewArObject( d ) {
-    var newArObj = {};
-    newArObj.operation = 'newObject';
-    newArObj.x = d.x;
-    newArObj.y = d.y;
-    newArObj.z = d.z;
-    newArObj.id = arUserCreatedObject.id;
-    newArObj.createdBy = userContext.rtcId;
-
-    emitArObject( newArObj );
-  }
-
+//  $( '#arcanvas' ).longpress( function( event ) {
+//
+//    console.log( 'longpress' );
+//
+//    event.preventDefault();
+//
+//    var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+//                              -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+//
+//    mouse3D.unproject( cameraDriver );
+//    var dir = mouse3D.sub( cameraDriver.position ).normalize();
+//    var raycaster = new THREE.Raycaster( cameraDriver.position, mouse3D );
+//
+//    var scale = 4.0;
+//
+//    var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
+//
+//        arShareData.operation = 'newObject';
+//        arShareData.x = pos.x;
+//        arShareData.y = pos.y;
+//        arShareData.z = pos.z;
+//
+//  // add the object locally and tell everyone else
+//
+//    addNewArObjectToWorld( arShareData );
+//    return false;
+//    },
+//
+//  function( e ) {
+//      return false;
+//  }, 750 );
+//
+//  function addNewArObjectToWorld( d ) {
+//      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+//      var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+//      var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+//
+//      arUserCreatedObject.position.set( d.x, d.y, d.z );
+//      arUserCreatedObject.userData.id = arUserCreatedObject.id;
+//      arUserCreatedObject.userData.objectType =  'bagel';
+//      arUserCreatedObject.name = arUserCreatedObject.id;
+//      arUserCreatedObject.userData.isAnimated = false;
+//      arUserCreatedObject.userData.isUserCreated = true;
+//      arUserCreatedObject.userData.isSelectable = true;
+//      arUserCreatedObject.userData.createdBy = userContext.rtcId;
+//
+//      scene.add( arUserCreatedObject );
+//      arSelectObjectArray.push( arUserCreatedObject );
+//
+//  // push the new object to peers
+//
+//      var newArObj = {};
+//      newArObj.operation = 'newObject';
+//      newArObj.x = d.x;
+//      newArObj.y = d.y;
+//      newArObj.z = d.z;
+//      newArObj.id = arUserCreatedObject.id;
+//      newArObj.createdBy = userContext.rtcId;
+//      newArObj.isSelectable = true;
+//      newArObj.isUserCreated = true;
+//      newArObj.objectType = 'bagel';
+//
+//      emitArObject( newArObj );
+//    }
+//
+//    function pushNewArObject( d ) {
+//      var newArObj = {};
+//      newArObj.operation = 'newObject';
+//      newArObj.x = d.x;
+//      newArObj.y = d.y;
+//      newArObj.z = d.z;
+//      newArObj.id = arUserCreatedObject.id;
+//      newArObj.createdBy = userContext.rtcId;
+//
+//      emitArObject( newArObj );
+//    }
+//
 // Select an object
 
 //$( '#arcanvas' ).click( function( event ) {
 
 
 
-  //ar0.addEventListener( 'click', function( event ) {
+  ar0.addEventListener( 'click', function( event ) {
 
-function onArSelect( event ) {
+//function onArSelect( event ) {
 
     console.log( 'click:', cameraDriver, event );
 
@@ -877,6 +877,6 @@ function onArSelect( event ) {
     }
   }
 
-  }
+  }, false );
 
 }
