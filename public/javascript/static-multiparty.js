@@ -20,7 +20,7 @@ socketServer = io.connect( '/' );
 //$( '#arcanvas' ).click( function() { alert( 'clicked'); } );
 //document.addEventListener( 'mousedown', function() { alert( 'clicked' ), false );
 
-document.getElementById("arcanvaspane").addEventListener( 'click', function() { alert( 'clicked' ); } );
+document.getElementById( arcanvaspane ).addEventListener( 'click', function() { alert( 'clicked' ); } );
 
 var uiStructure = {};
 
