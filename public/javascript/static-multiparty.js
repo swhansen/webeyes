@@ -20,7 +20,9 @@ socketServer = io.connect( '/' );
 //$( '#arcanvas' ).click( function() { alert( 'clicked'); } );
 //document.addEventListener( 'mousedown', function() { alert( 'clicked' ), false );
 
-var frob = document.getElementById( 'arcanvaspane' );
+var frob = document.getElementById( 'arcanvas' );
+console.log( frob );
+
 
 frob.addEventListener( 'click', function() { alert( 'clicked' ); } );
 
