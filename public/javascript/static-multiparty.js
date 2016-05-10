@@ -20,10 +20,12 @@ socketServer = io.connect( '/' );
 //$( '#arcanvas' ).click( function() { alert( 'clicked'); } );
 //document.addEventListener( 'mousedown', function() { alert( 'clicked' ), false );
 
-//document.getElementById( 'arcanvaspane' ).addEventListener( 'click', function() { alert( 'clicked' ); } );
+var frob = document.getElementById( 'arcanvaspane' );
 
-document.addEventListener("click", function(){
-    document.getElementById("arcanvaspane").innerHTML = "Hello World!"; });
+frob.addEventListener( 'click', function() { alert( 'clicked' ); } );
+
+//frob.addEventListener("click", function(){ alert( 'clicked' ); } );
+
 
 var uiStructure = {};
 
