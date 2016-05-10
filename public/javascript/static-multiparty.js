@@ -13,23 +13,6 @@ var compassToggle = false;
 socketServer = io.connect( '/' );
 /*jshint +W020 */
 
-
-
-//document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
-//document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
-//$( '#arcanvas' ).click( function() { alert( 'clicked'); } );
-//document.addEventListener( 'mousedown', function() { alert( 'clicked' ), false );
-
-
-var x = document.getElementById("arcanvaspane");
-console.log( x );
-
-
-x.addEventListener( 'click', function() { alert( 'clicked' ); } );
-
-//frob.addEventListener("click", function(){ alert( 'clicked' ); } );
-
-
 var uiStructure = {};
 
 // Container for User Context
