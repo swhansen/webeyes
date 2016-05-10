@@ -23,7 +23,7 @@ socketServer = io.connect( '/' );
 //document.getElementById( 'arcanvaspane' ).addEventListener( 'click', function() { alert( 'clicked' ); } );
 
 document.addEventListener("click", function(){
-    document.getElementById("arcanvaspane").innerHTML = "Hello World!";
+    document.getElementById("arcanvaspane").innerHTML = "Hello World!"; });
 
 var uiStructure = {};
 
