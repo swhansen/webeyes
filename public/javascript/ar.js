@@ -92,9 +92,9 @@ function loadAr( participantState ) {
   var vrDrivenCamera, vrDrivenCameraControls;
   var knot;
 
-document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
-document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
-$( '#arcanvas' ).click( function() { alert( 'clicked') } );
+//document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
+//document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
+//$( '#arcanvas' ).click( function() { alert( 'clicked'); } );
   clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
