@@ -15,8 +15,8 @@ socketServer = io.connect( '/' );
 
 
 
-document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
-document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
+//document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
+//document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
 //$( '#arcanvas' ).click( function() { alert( 'clicked'); } );
 //document.addEventListener( 'mousedown', function() { alert( 'clicked' ), false );
 
