@@ -490,25 +490,25 @@ function arConnectionController( participantState ) {
 
   console.log( 'arConnectionController:', participantState, userContext );
 
-  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
-    vrDrivenCamera.lookAt( scene.position );
-    connectToVrController();
-
-    } else if ( participantState === 'peer' ) {
-
-      socketServer.on( 'vrMouseMovement', function( orientation ) {
-
-        var mouseQuat = {
-        x: new THREE.Quaternion(),
-        y: new THREE.Quaternion()
-        };
-
-        mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
-        mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
-        vrDrivenCamera.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
-        vrDrivenCamera.lookAt( scene.position );
-        } );
-         }
+//  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+//    vrDrivenCamera.lookAt( scene.position );
+//    connectToVrController();
+//
+//    } else if ( participantState === 'peer' ) {
+//
+//      socketServer.on( 'vrMouseMovement', function( orientation ) {
+//
+//        var mouseQuat = {
+//        x: new THREE.Quaternion(),
+//        y: new THREE.Quaternion()
+//        };
+//
+//        mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
+//        mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
+//        vrDrivenCamera.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
+//        vrDrivenCamera.lookAt( scene.position );
+//        } );
+//         }
 
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
@@ -535,7 +535,7 @@ function arConnectionController( participantState ) {
 
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+ // vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -580,12 +580,12 @@ function arConnectionController( participantState ) {
     }
   }
 
- function connectToVrController() {
-   renderer.render( scene, vrDrivenCamera );
-   vrDrivenCameraControls.update();
-   animateArObjects();
-   requestAnimationFrame( connectToVrController );
- }
+//function connectToVrController() {
+//  renderer.render( scene, vrDrivenCamera );
+//  vrDrivenCameraControls.update();
+//  animateArObjects();
+//  requestAnimationFrame( connectToVrController );
+//}
 
 // function connectToVrBroadcast() {
 //   renderer.render( scene, vrDrivenCamera );
