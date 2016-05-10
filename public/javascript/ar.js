@@ -617,10 +617,9 @@ function setupArInteractionEvents( participantState ) {
   console.log( 'at setupArInteractionEvents:', participantState );
   console.log( 'at setupArInteractionEvents- object array:', arSelectObjectArray );
 
-
- var apane = document.getElementById( 'arcanvas' );
-  apane.addEventListener( 'pointerdown', onArSelect, false );
-  console.log( 'arcanvas:', apane );
+// var apane = document.getElementById( 'arcanvas' );
+//  apane.addEventListener( 'pointerdown', onArSelect, false );
+//  console.log( 'arcanvas:', apane );
 
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
