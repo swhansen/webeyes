@@ -92,11 +92,14 @@ function loadAr( participantState ) {
   var vrDrivenCamera, vrDrivenCameraControls;
   var knot;
 
-var x = document.getElementById("arcanvaspane");
+var x = document.getElementById( 'arcanvaspane' );
 console.log( x );
 
 
-x.addEventListener( 'click', function() { alert( 'clicked' ); } );
+x.addEventListener( 'click', isClicked );
+
+function isClicked() { alert( 'click...click'); };
+
 
 //frob.addEventListener("click", function(){ alert( 'clicked' ); } );
 
