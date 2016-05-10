@@ -14,6 +14,14 @@ socketServer = io.connect( '/' );
 /*jshint +W020 */
 
 
+
+document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
+document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
+//$( '#arcanvas' ).click( function() { alert( 'clicked'); } );
+//document.addEventListener( 'mousedown', function() { alert( 'clicked' ), false );
+
+document.getElementById("arcanvaspane").addEventListener( 'click', function() { alert( 'clicked' ); } );
+
 var uiStructure = {};
 
 // Container for User Context
