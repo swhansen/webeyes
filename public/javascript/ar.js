@@ -749,133 +749,134 @@ console.log( 'ar0', ar0 );
 // Select an object
 
 //$( '#arcanvas' ).click( function( event ) {
+$( '#arcanvas' ).click( function() { console.log( 'clicked') } );
 
 
 
-  ar0.addEventListener( 'click', function( event ) {
-
-//function onArSelect( event ) {
-
-    console.log( 'click:', cameraDriver, event );
-
-    event.preventDefault();
-
-    var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-                            -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-
-    projector.unprojectVector( vector, cameraDriver );
-    vector.sub( cameraDriver.position );
-    vector.normalize();
-    var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
-    var intersects = rayCaster.intersectObjects( arSelectObjectArray );
-
-    var selectedObject = intersects[0].object ;
-
-// IOT Lights
-
-    if ( intersects.length > 0 ) {
-
-      if ( selectedObject.userData.isIot === true ) {
-
-        if ( selectedObject.userData.isOn === false ) {
-              selectedObject.userData.isOn = true;
-              selectedObject.material.opacity = 0.1;
-              } else {
-              selectedObject.userData.isOn = false;
-              selectedObject.material.opacity = 0.5;
-            }
-
-        hueSetLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
-
-        arShareData.operation = 'toggleIot';
-        arShareData.isOn = selectedObject.userData.isOn;
-        arShareData.iotDeviceId = selectedObject.userData.iotDeviceId;
-        arShareData.arObjectOpacity = selectedObject.material.opacity;
-        arShareData.name = selectedObject.name;
-
-        emitArObject( arShareData );
-        return;
-      }
-
-// User created objects
-
-      if ( selectedObject.userData.isUserCreated === true ) {
-
-     //     toggleArAnimation( selectedObject );
-
-       if ( selectedObject.userData.isAnimated === false ) {
-         selectedObject.userData.isAnimated = true;
-         } else {
-         selectedObject.userData.isAnimated = false;
-       }
-
-        arShareData.operation = 'animateSelectedObject';
-        arShareData.id = selectedObject.userData.iotDeviceId;
-        arShareData.isAnimated = selectedObject.userData.isAnimated;
-
-        emitArObject( arShareData );
-
-        return;
-      }
-
-      // Special Cases - Hardwired
-
-    if ( intersects[0].object.name === 'knot' ) {
-        isAnimateKnot = !isAnimateKnot;
-        return;
-    }
-
-    if ( intersects[0].object.name === 'sheep' ) {
-       isAnimateSheep = !isAnimateSheep;
-
-    // only change the color when animation is stopped
-
-       if ( !isAnimateSheep ) {
-        intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-       }
-
-         arShareData.animate = isAnimateSheep;
-         arShareData.operation = 'animateSelectedObject';
-         arShareData.name = intersects[0].object.name;
-         arShareData.x = intersects[0].object.position.x;
-         arShareData.y = intersects[0].object.position.y;
-         arShareData.z = intersects[0].object.position.z;
-         arShareData.position = intersects[0].object.position;
-         arShareData.rotation = intersects[0].object.rotation;
-         arShareData.color = intersects[0].object.material.color;
-
-         emitArObject( arShareData );
-    }
-
-    if ( intersects[0].object.name === 'swordGuy' ) {
-      isAnimateSwordGuy = !isAnimateSwordGuy;
-
-      arShareData.animate = isAnimateSwordGuy;
-      arShareData.operation = 'animateSelectedObject';
-      arShareData.name = intersects[0].object.name;
-
-      emitArObject( arShareData );
-    }
-
-    if ( intersects[0].object.name === 'cube2' ) {
-      intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-      intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
-
-     // intersects[0].object.rotation.y += Math.PI / 180.0 * 45.0;
-
-      arShareData.operation = 'moveObject';
-      arShareData.name = intersects[0].object.name;
-      arShareData.x = intersects[0].object.position.x;
-      arShareData.y = intersects[0].object.position.y;
-      arShareData.z = intersects[0].object.position.z;
-      arShareData.position = intersects[0].object.position;
-      arShareData.rotation = intersects[0].object.rotation;
-      arShareData.color = intersects[0].object.material.color;
-
-      emitArObject( arShareData );
-    }
-  }
-
-  }, false );
+//  // ar0.addEventListener( 'click', function( event ) {
+//
+// //function onArSelect( event ) {
+//
+//     console.log( 'click:', cameraDriver, event );
+//
+//     event.preventDefault();
+//
+//     var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+//                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+//
+//     projector.unprojectVector( vector, cameraDriver );
+//     vector.sub( cameraDriver.position );
+//     vector.normalize();
+//     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
+//     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
+//
+//     var selectedObject = intersects[0].object ;
+//
+// // IOT Lights
+//
+//     if ( intersects.length > 0 ) {
+//
+//       if ( selectedObject.userData.isIot === true ) {
+//
+//         if ( selectedObject.userData.isOn === false ) {
+//               selectedObject.userData.isOn = true;
+//               selectedObject.material.opacity = 0.1;
+//               } else {
+//               selectedObject.userData.isOn = false;
+//               selectedObject.material.opacity = 0.5;
+//             }
+//
+//         hueSetLightState( selectedObject.userData.iotDeviceId, selectedObject.userData.isOn );
+//
+//         arShareData.operation = 'toggleIot';
+//         arShareData.isOn = selectedObject.userData.isOn;
+//         arShareData.iotDeviceId = selectedObject.userData.iotDeviceId;
+//         arShareData.arObjectOpacity = selectedObject.material.opacity;
+//         arShareData.name = selectedObject.name;
+//
+//         emitArObject( arShareData );
+//         return;
+//       }
+//
+// // User created objects
+//
+//       if ( selectedObject.userData.isUserCreated === true ) {
+//
+//      //     toggleArAnimation( selectedObject );
+//
+//        if ( selectedObject.userData.isAnimated === false ) {
+//          selectedObject.userData.isAnimated = true;
+//          } else {
+//          selectedObject.userData.isAnimated = false;
+//        }
+//
+//         arShareData.operation = 'animateSelectedObject';
+//         arShareData.id = selectedObject.userData.iotDeviceId;
+//         arShareData.isAnimated = selectedObject.userData.isAnimated;
+//
+//         emitArObject( arShareData );
+//
+//         return;
+//       }
+//
+//       // Special Cases - Hardwired
+//
+//     if ( intersects[0].object.name === 'knot' ) {
+//         isAnimateKnot = !isAnimateKnot;
+//         return;
+//     }
+//
+//     if ( intersects[0].object.name === 'sheep' ) {
+//        isAnimateSheep = !isAnimateSheep;
+//
+//     // only change the color when animation is stopped
+//
+//        if ( !isAnimateSheep ) {
+//         intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+//        }
+//
+//          arShareData.animate = isAnimateSheep;
+//          arShareData.operation = 'animateSelectedObject';
+//          arShareData.name = intersects[0].object.name;
+//          arShareData.x = intersects[0].object.position.x;
+//          arShareData.y = intersects[0].object.position.y;
+//          arShareData.z = intersects[0].object.position.z;
+//          arShareData.position = intersects[0].object.position;
+//          arShareData.rotation = intersects[0].object.rotation;
+//          arShareData.color = intersects[0].object.material.color;
+//
+//          emitArObject( arShareData );
+//     }
+//
+//     if ( intersects[0].object.name === 'swordGuy' ) {
+//       isAnimateSwordGuy = !isAnimateSwordGuy;
+//
+//       arShareData.animate = isAnimateSwordGuy;
+//       arShareData.operation = 'animateSelectedObject';
+//       arShareData.name = intersects[0].object.name;
+//
+//       emitArObject( arShareData );
+//     }
+//
+//     if ( intersects[0].object.name === 'cube2' ) {
+//       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+//       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
+//
+//      // intersects[0].object.rotation.y += Math.PI / 180.0 * 45.0;
+//
+//       arShareData.operation = 'moveObject';
+//       arShareData.name = intersects[0].object.name;
+//       arShareData.x = intersects[0].object.position.x;
+//       arShareData.y = intersects[0].object.position.y;
+//       arShareData.z = intersects[0].object.position.z;
+//       arShareData.position = intersects[0].object.position;
+//       arShareData.rotation = intersects[0].object.rotation;
+//       arShareData.color = intersects[0].object.material.color;
+//
+//       emitArObject( arShareData );
+//     }
+//   }
+//
+//   }, false );
 
 }
