@@ -617,8 +617,8 @@ function setupArInteractionEvents( participantState ) {
   console.log( 'at setupArInteractionEvents:', participantState );
   console.log( 'at setupArInteractionEvents- object array:', arSelectObjectArray );
 
-//var arCanvas = document.getElementById( 'arcanvaspane' );
-//  var ar0 = document.getElementById( 'arcanvas' );
+var arCanvas = document.getElementById( 'arcanvaspane' );
+var ar0 = document.getElementById( 'arcanvas' );
 
 setDomPointerEvent( 'arcanvas', 'auto' );
 setDomPointerEvent( 'arcanvaspane', 'auto' );
