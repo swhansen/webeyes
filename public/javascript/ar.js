@@ -622,7 +622,7 @@ document.getElementById( 'arcanvas' ).style.display = 'visible';
 document.getElementById( 'arcanvas' ).style.zIndex = '200';
 
 $( function() {
-  $( '#arcanvaspane' ).click( function() {
+  $( '#arcanvas' ).click( function() {
       console.log( 'click....click' );
     }
   );
