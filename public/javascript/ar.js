@@ -630,7 +630,7 @@ arCanvas.style.zIndex = '200';
 arCanvas.style.zIndex = '200';
 
 $( function() {
-  $( '#arcanvaspane' ).click( function() {
+  $( '#arcanvas' ).click( function() {
       console.log( 'click....click' );
     }
   );
