@@ -617,13 +617,10 @@ function setupArInteractionEvents( participantState ) {
   console.log( 'at setupArInteractionEvents:', participantState );
   console.log( 'at setupArInteractionEvents- object array:', arSelectObjectArray );
 
-// var apane = document.getElementById( 'arcanvas' );
-//  apane.addEventListener( 'pointerdown', onArSelect, false );
-//  console.log( 'arcanvas:', apane );
+setDomPointerEvent( 'arcanvas', 'auto' );
+document.getElementById( 'arcanvas' ).style.display = 'visible';
+document.getElementById( 'arcanvas' ).style.zIndex = '200';
 
-setDomPointerEvent( 'arcanvaspane', 'auto' );
-document.getElementById( 'arcanvaspane' ).style.display = 'visible';
-//document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
 $( function() {
   $( '#arcanvaspane' ).click( function() {
       console.log( 'click....click' );
