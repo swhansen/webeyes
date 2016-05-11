@@ -92,16 +92,22 @@ function loadAr( participantState ) {
   var vrDrivenCamera, vrDrivenCameraControls;
   var knot;
 
-var x = document.getElementById( 'arcanvaspane' );
-console.log( x );
+//var x = document.getElementById( 'arcanvaspane' );
+//console.log( x );
+//
+//
+//x.addEventListener( 'mousedown', isClicked);
+//
+//function isClicked() { console.log( 'click...click'); };
+setDomPointerEvent( 'arcanvaspane', 'auto' );
+document.getElementById( 'arcanvaspane' ).style.display = 'visible';
+$( function() {
+  $( '#arcanvaspane' ).click( function() {
+      alert('click....click');
+    }
+  );
+} );
 
-
-x.addEventListener( 'click', isClicked );
-
-function isClicked() { alert( 'click...click'); };
-
-
-//frob.addEventListener("click", function(){ alert( 'clicked' ); } );
 
   clock.start();
   setUpArLayer( participantState );
