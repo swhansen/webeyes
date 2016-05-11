@@ -617,12 +617,17 @@ function setupArInteractionEvents( participantState ) {
   console.log( 'at setupArInteractionEvents:', participantState );
   console.log( 'at setupArInteractionEvents- object array:', arSelectObjectArray );
 
+//var arCanvas = document.getElementById( 'arcanvaspane' );
+//  var ar0 = document.getElementById( 'arcanvas' );
+
 setDomPointerEvent( 'arcanvas', 'auto' );
 setDomPointerEvent( 'arcanvaspane', 'auto' );
-document.getElementById( 'arcanvas' ).style.display = 'visible';
-document.getElementById( 'arcanvaspane' ).style.display = 'visible';
-document.getElementById( 'arcanvas' ).style.zIndex = '200';
-document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
+
+ar0.offsetWidth.style.display = 'visible';
+ar0.style.display = 'visible';
+
+arCanvas.offsetWidth.style.zIndex = '200';
+arCanvas.style.zIndex = '200';
 
 $( function() {
   $( '#arcanvaspane' ).click( function() {
@@ -638,15 +643,6 @@ $( function() {
 
   var cameraDriver;
   var arShareData = {};
-
-  //setDomPointerEvent( 'arcanvaspane', 'auto' );
-
-  document.getElementById( 'arcanvas' ).style.pointerEvents = 'auto';
-  document.getElementById( 'arcanvaspane' ).style.pointerEvents = 'auto';
-
-  var ar0 = document.getElementById( 'arcanvas' );
-
-console.log( 'ar0', ar0 );
 
   var rect = ar0.getBoundingClientRect();
   offsetX = rect.left;
