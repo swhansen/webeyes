@@ -99,14 +99,7 @@ function loadAr( participantState ) {
 //x.addEventListener( 'mousedown', isClicked);
 //
 //function isClicked() { console.log( 'click...click'); };
-setDomPointerEvent( 'arcanvaspane', 'auto' );
-document.getElementById( 'arcanvaspane' ).style.display = 'visible';
-$( function() {
-  $( '#arcanvaspane' ).click( function() {
-      alert('click....click');
-    }
-  );
-} );
+
 
 
   clock.start();
@@ -637,6 +630,16 @@ function setupArInteractionEvents( participantState ) {
 // var apane = document.getElementById( 'arcanvas' );
 //  apane.addEventListener( 'pointerdown', onArSelect, false );
 //  console.log( 'arcanvas:', apane );
+
+setDomPointerEvent( 'arcanvaspane', 'auto' );
+document.getElementById( 'arcanvaspane' ).style.display = 'visible';
+document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
+$( function() {
+  $( '#arcanvaspane' ).click( function() {
+      console.log( 'click....click' );
+    }
+  );
+} );
 
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
