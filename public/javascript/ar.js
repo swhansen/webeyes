@@ -618,11 +618,14 @@ function setupArInteractionEvents( participantState ) {
   console.log( 'at setupArInteractionEvents- object array:', arSelectObjectArray );
 
 setDomPointerEvent( 'arcanvas', 'auto' );
+setDomPointerEvent( 'arcanvaspane', 'auto' );
 document.getElementById( 'arcanvas' ).style.display = 'visible';
+document.getElementById( 'arcanvaspane' ).style.display = 'visible';
 document.getElementById( 'arcanvas' ).style.zIndex = '200';
+document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
 
 $( function() {
-  $( '#arcanvas' ).click( function() {
+  $( '#arcanvaspane' ).click( function() {
       console.log( 'click....click' );
     }
   );
