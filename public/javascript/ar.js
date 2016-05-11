@@ -623,10 +623,10 @@ var ar0 = document.getElementById( 'arcanvas' );
 setDomPointerEvent( 'arcanvas', 'auto' );
 setDomPointerEvent( 'arcanvaspane', 'auto' );
 
-ar0.offsetWidth.style.display = 'visible';
+ar0.style.display = 'visible';
 ar0.style.display = 'visible';
 
-arCanvas.offsetWidth.style.zIndex = '200';
+arCanvas.style.zIndex = '200';
 arCanvas.style.zIndex = '200';
 
 $( function() {
