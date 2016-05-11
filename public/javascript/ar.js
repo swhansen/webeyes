@@ -92,16 +92,6 @@ function loadAr( participantState ) {
   var vrDrivenCamera, vrDrivenCameraControls;
   var knot;
 
-//var x = document.getElementById( 'arcanvaspane' );
-//console.log( x );
-//
-//
-//x.addEventListener( 'mousedown', isClicked);
-//
-//function isClicked() { console.log( 'click...click'); };
-
-
-
   clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
@@ -633,7 +623,7 @@ function setupArInteractionEvents( participantState ) {
 
 setDomPointerEvent( 'arcanvaspane', 'auto' );
 document.getElementById( 'arcanvaspane' ).style.display = 'visible';
-document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
+//document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
 $( function() {
   $( '#arcanvaspane' ).click( function() {
       console.log( 'click....click' );
