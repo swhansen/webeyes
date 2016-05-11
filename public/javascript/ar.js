@@ -614,9 +614,6 @@ function arConnectionController( participantState ) {
 
 function setupArInteractionEvents( participantState ) {
 
-  console.log( 'at setupArInteractionEvents:', participantState );
-  console.log( 'at setupArInteractionEvents- object array:', arSelectObjectArray );
-
 var arCanvas = document.getElementById( 'arcanvaspane' );
 var ar0 = document.getElementById( 'arcanvas' );
 
@@ -631,7 +628,6 @@ arCanvas.style.zIndex = '200';
 
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
-      console.log( 'click:', e );
       onArSelect( e );
     }
   );
@@ -676,92 +672,85 @@ $( function() {
 // Place an object with a long click
 //
 
-//  $( '#arcanvas' ).longpress( function( event ) {
-//
-//    console.log( 'longpress' );
-//
-//    event.preventDefault();
-//
-//    var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
-//                              -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-//
-//    mouse3D.unproject( cameraDriver );
-//    var dir = mouse3D.sub( cameraDriver.position ).normalize();
-//    var raycaster = new THREE.Raycaster( cameraDriver.position, mouse3D );
-//
-//    var scale = 4.0;
-//
-//    var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
-//
-//        arShareData.operation = 'newObject';
-//        arShareData.x = pos.x;
-//        arShareData.y = pos.y;
-//        arShareData.z = pos.z;
-//
-//  // add the object locally and tell everyone else
-//
-//    addNewArObjectToWorld( arShareData );
-//    return false;
-//    },
-//
-//  function( e ) {
-//      return false;
-//  }, 750 );
-//
-//  function addNewArObjectToWorld( d ) {
-//      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-//      var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-//      var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
-//
-//      arUserCreatedObject.position.set( d.x, d.y, d.z );
-//      arUserCreatedObject.userData.id = arUserCreatedObject.id;
-//      arUserCreatedObject.userData.objectType =  'bagel';
-//      arUserCreatedObject.name = arUserCreatedObject.id;
-//      arUserCreatedObject.userData.isAnimated = false;
-//      arUserCreatedObject.userData.isUserCreated = true;
-//      arUserCreatedObject.userData.isSelectable = true;
-//      arUserCreatedObject.userData.createdBy = userContext.rtcId;
-//
-//      scene.add( arUserCreatedObject );
-//      arSelectObjectArray.push( arUserCreatedObject );
-//
-//  // push the new object to peers
-//
-//      var newArObj = {};
-//      newArObj.operation = 'newObject';
-//      newArObj.x = d.x;
-//      newArObj.y = d.y;
-//      newArObj.z = d.z;
-//      newArObj.id = arUserCreatedObject.id;
-//      newArObj.createdBy = userContext.rtcId;
-//      newArObj.isSelectable = true;
-//      newArObj.isUserCreated = true;
-//      newArObj.objectType = 'bagel';
-//
-//      emitArObject( newArObj );
-//    }
-//
-//    function pushNewArObject( d ) {
-//      var newArObj = {};
-//      newArObj.operation = 'newObject';
-//      newArObj.x = d.x;
-//      newArObj.y = d.y;
-//      newArObj.z = d.z;
-//      newArObj.id = arUserCreatedObject.id;
-//      newArObj.createdBy = userContext.rtcId;
-//
-//      emitArObject( newArObj );
-//    }
-//
+  $( '#arcanvas' ).longpress( function( event ) {
+
+    console.log( 'longpress' );
+
+    event.preventDefault();
+
+    var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+                              -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
+    mouse3D.unproject( cameraDriver );
+    var dir = mouse3D.sub( cameraDriver.position ).normalize();
+    var raycaster = new THREE.Raycaster( cameraDriver.position, mouse3D );
+
+    var scale = 4.0;
+
+    var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
+
+        arShareData.operation = 'newObject';
+        arShareData.x = pos.x;
+        arShareData.y = pos.y;
+        arShareData.z = pos.z;
+
+  // add the object locally and tell everyone else
+
+    addNewArObjectToWorld( arShareData );
+    return false;
+    },
+
+  function( e ) {
+      return false;
+  }, 750 );
+
+  function addNewArObjectToWorld( d ) {
+      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+      var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+      var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+
+      arUserCreatedObject.position.set( d.x, d.y, d.z );
+      arUserCreatedObject.userData.id = arUserCreatedObject.id;
+      arUserCreatedObject.userData.objectType =  'bagel';
+      arUserCreatedObject.name = arUserCreatedObject.id;
+      arUserCreatedObject.userData.isAnimated = false;
+      arUserCreatedObject.userData.isUserCreated = true;
+      arUserCreatedObject.userData.isSelectable = true;
+      arUserCreatedObject.userData.createdBy = userContext.rtcId;
+
+      scene.add( arUserCreatedObject );
+      arSelectObjectArray.push( arUserCreatedObject );
+
+  // push the new object to peers
+
+      var newArObj = {};
+      newArObj.operation = 'newObject';
+      newArObj.x = d.x;
+      newArObj.y = d.y;
+      newArObj.z = d.z;
+      newArObj.id = arUserCreatedObject.id;
+      newArObj.createdBy = userContext.rtcId;
+      newArObj.isSelectable = true;
+      newArObj.isUserCreated = true;
+      newArObj.objectType = 'bagel';
+
+      emitArObject( newArObj );
+    }
+
+    function pushNewArObject( d ) {
+      var newArObj = {};
+      newArObj.operation = 'newObject';
+      newArObj.x = d.x;
+      newArObj.y = d.y;
+      newArObj.z = d.z;
+      newArObj.id = arUserCreatedObject.id;
+      newArObj.createdBy = userContext.rtcId;
+
+      emitArObject( newArObj );
+    }
+
 // Select an object
 
-//$( '#arcanvas' ).click( function( event ) {
-//$( '#arcanvas' ).click( function() { console.log( 'clicked') } );
-
-
-
-//  // ar0.addEventListener( 'click', function( event ) {
-//
  function onArSelect( event ) {
 
      console.log( 'click:', cameraDriver, event );
@@ -884,6 +873,6 @@ $( function() {
      }
    }
 
-   };
+   }
 
 }
