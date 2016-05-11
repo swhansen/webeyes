@@ -92,6 +92,9 @@ function loadAr( participantState ) {
   var vrDrivenCamera, vrDrivenCameraControls;
   var knot;
 
+  var arCanvas = document.getElementById( 'arcanvaspane' );
+  var ar0 = document.getElementById( 'arcanvas' );
+
   clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
@@ -173,8 +176,8 @@ function setUpArLayer( participantState ) {
 
   var step = 0;
 
-  var arCanvas = document.getElementById( 'arcanvaspane' );
-  var ar0 = document.getElementById( 'arcanvas' );
+ // var arCanvas = document.getElementById( 'arcanvaspane' );
+ // var ar0 = document.getElementById( 'arcanvas' );
   var mouseVector;
 
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
@@ -614,8 +617,8 @@ function arConnectionController( participantState ) {
 
 function setupArInteractionEvents( participantState ) {
 
-var arCanvas = document.getElementById( 'arcanvaspane' );
-var ar0 = document.getElementById( 'arcanvas' );
+// var arCanvas = document.getElementById( 'arcanvaspane' );
+// var ar0 = document.getElementById( 'arcanvas' );
 
 setDomPointerEvent( 'arcanvas', 'auto' );
 setDomPointerEvent( 'arcanvaspane', 'auto' );
@@ -673,8 +676,6 @@ $( function() {
 //
 
   $( '#arcanvas' ).longpress( function( event ) {
-
-    console.log( 'longpress' );
 
     event.preventDefault();
 
@@ -752,8 +753,6 @@ $( function() {
 // Select an object
 
  function onArSelect( event ) {
-
-     console.log( 'click:', cameraDriver, event );
 
      event.preventDefault();
 
