@@ -630,8 +630,8 @@ arCanvas.style.zIndex = '200';
 arCanvas.style.zIndex = '200';
 
 $( function() {
-  $( '#arcanvas' ).click( function() {
-      console.log( 'click....click' );
+  $( '#arcanvas' ).click( function( e ) {
+      console.log( 'click:', e );
     }
   );
 } );
