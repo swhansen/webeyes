@@ -46,8 +46,6 @@ var layerList = [
   'leappane'
 ];
 
-// state of the pointers for the layers
-
 var layerPointerState = {};
 
 easyrtc.dontAddCloseButtons( false );
