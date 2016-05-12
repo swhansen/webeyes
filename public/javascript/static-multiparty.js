@@ -81,7 +81,6 @@ function getLayersZindexStatus() {
   return obj;
 }
 
-
 function moveLayertoTop( layer ) {
 
  _.forEach( layerList, function( key ) {
@@ -92,7 +91,7 @@ function moveLayertoTop( layer ) {
   document.getElementById( layer ).style.zIndex = '100';
 
   console.log( getLayersZindexStatus() );
-};
+}
 
 socketServer.on( 'userContext', function( data ) {
 

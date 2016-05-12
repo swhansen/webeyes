@@ -99,10 +99,10 @@ $( '#sticky-draw' ).click( function() {
     $( fcn.sideBar ).fadeOut( 2 );
   } );
 
- // document.getElementById( 'canvaspane' ).style.zIndex = '50';
- // document.getElementById( 'arcanvaspane' ).style.zIndex = '10';
+  document.getElementById( 'canvaspane' ).style.zIndex = '50';
+  document.getElementById( 'arcanvaspane' ).style.zIndex = '10';
 
-  moveLayertoTop( 'canvaspane' );
+  //moveLayertoTop( 'canvaspane' );
 
   setDomPointerEvent( 'canvas0', 'auto' );
   setDomPointerEvent( 'arcanvaspane', 'none' );
@@ -117,6 +117,9 @@ $( function() {
     _.each( uiStructure.structure, function( fcn ) {
        $( fcn.sideBar ).fadeOut( 2 );
       } );
+
+   document.getElementById( 'canvaspane' ).style.zIndex = '10';
+   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
      setDomPointerEvent( 'canvas0', 'none' );
      setDomPointerEvent( 'arcanvaspane', 'auto' );
