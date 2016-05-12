@@ -99,6 +99,11 @@ $( '#sticky-draw' ).click( function() {
     $( fcn.sideBar ).fadeOut( 2 );
   } );
 
+
+  document.getElementById( 'canvaspane' ).style.zIndex = '100';
+  document.getElementById( 'arcanvasplane' ).style.zIndex = '10';
+
+
   setDomPointerEvent( 'canvas0', 'auto' );
   setDomPointerEvent( 'arcanvaspane', 'none' );
 
