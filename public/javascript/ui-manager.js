@@ -101,7 +101,7 @@ $( '#sticky-draw' ).click( function() {
 
 
   document.getElementById( 'canvaspane' ).style.zIndex = '100';
-  document.getElementById( 'arcanvasplane' ).style.zIndex = '10';
+  document.getElementById( 'arcanvaspane' ).style.zIndex = '10';
 
 
   setDomPointerEvent( 'canvas0', 'auto' );
