@@ -6,7 +6,9 @@ var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS + 1;
 var layout;
 var connectList = [];
+
 //var modmeState = false;
+
 var compassToggle = false;
 
 /*jshint -W020 */
@@ -50,6 +52,9 @@ var layerPointerState = {};
 
 easyrtc.dontAddCloseButtons( false );
 
+
+// Utillity Functions
+
 function setDomPointerEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
 }
@@ -75,6 +80,18 @@ function getLayersZindexStatus() {
   } );
   return obj;
 }
+
+
+function moveLayertoTop( layer ) {
+
+ _.forEach( layerList, function( key ) {
+     document.getElementById( key ).style.zIndex = '10';
+    } );
+
+  document.getElementById( layer ).style.zIndex = '100';
+
+  console.log( getLayersZindexStatus() );
+};
 
 socketServer.on( 'userContext', function( data ) {
 
