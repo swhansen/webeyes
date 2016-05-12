@@ -54,6 +54,8 @@ function setDomPointerEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
 }
 
+// set a userContect param from a remote
+
 function setPeerUserContext( rtcId, param, state ) {
   var data = {};
   data.rtcId = rtcId;
@@ -64,7 +66,15 @@ function setPeerUserContext( rtcId, param, state ) {
   socketServer.emit( 'userContext', data, sessionId );
 }
 
-// set a userContect param from a remote
+function getLayersZindexStatus() {
+  var obj = {};
+  _.forEach( layerList, function( key ) {
+    var elem = document.getElementById( key );
+    var theCSSprop = window.getComputedStyle( elem, null ).getPropertyValue( 'z-index' );
+    obj[ key ] = theCSSprop;
+  } );
+  return obj;
+}
 
 socketServer.on( 'userContext', function( data ) {
 
