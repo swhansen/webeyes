@@ -626,6 +626,8 @@ ar0.style.display = 'visible';
 arCanvas.style.zIndex = '200';
 arCanvas.style.zIndex = '200';
 
+console.log( 'layers at setupint', getLayersZindexStatus(); );
+
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
       onArSelect( e );
