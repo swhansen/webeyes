@@ -102,7 +102,7 @@ $( '#sticky-draw' ).click( function() {
  // document.getElementById( 'canvaspane' ).style.zIndex = '50';
  // document.getElementById( 'arcanvaspane' ).style.zIndex = '10';
 
- moveLayertoTop( 'arcanvaspane' );
+  moveLayertoTop( 'canvaspane' );
 
   setDomPointerEvent( 'canvas0', 'auto' );
   setDomPointerEvent( 'arcanvaspane', 'none' );

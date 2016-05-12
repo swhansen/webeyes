@@ -86,6 +86,7 @@ function moveLayertoTop( layer ) {
 
  _.forEach( layerList, function( key ) {
      document.getElementById( key ).style.zIndex = '10';
+     console.log( key );
     } );
 
   document.getElementById( layer ).style.zIndex = '100';

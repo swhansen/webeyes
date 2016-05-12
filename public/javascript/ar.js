@@ -343,10 +343,10 @@ function setUpArLayer( participantState ) {
        helper.visible = false;
        scene.add( helper );
 
-    //   var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
+       var clipMorpher = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
 
-       var clipMorpher = THREE.AnimationClip;
-       clipMorpher.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
+     //  var clipMorpher = THREE.AnimationClip;
+     //  clipMorpher.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
 
        var clipBones = geometry.animations[0];
 
