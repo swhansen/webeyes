@@ -50,6 +50,7 @@ function emitArOrientationData() {
   arDeviceOrientation.alpha = event.alpha;
   arDeviceOrientation.beta = event.beta;
   arDeviceOrientation.gamma = event.gamma;
+  console.log( 'arDeviceOrientation:' arDeviceOrientation );
 
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'arOrientation', arDeviceOrientation, sessionId );
