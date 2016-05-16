@@ -70,7 +70,8 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
       scope.deviceOrientation = arBroadcastData;
-     // console.log( 'arBroadcastData:', arBroadcastData );
+      console.log( 'arDeviceOrientation broadcast recieve:', arBroadcastData );
+
 });
     scope.enabled = true;
 
