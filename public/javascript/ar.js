@@ -488,7 +488,7 @@ function arConnectionController( participantState ) {
 //    focus - device sensors
 //    peer - broadcast feed sensors
 
-  console.log( 'arConnectionController:', participantState, userContext );
+  //console.log( 'arConnectionController:', participantState, userContext );
 
   if ( participantState === 'focus' && userContext.mode === 'vr' ) {
     vrDrivenCamera.lookAt( scene.position );
