@@ -35,7 +35,7 @@ function orientationAr( data ) {
   }
   if ( userContext.participantState === 'peer' ) {
     socketServer.on( 'arOrientation', function( data ) {
-      console.log( 'arDeviceOrientation broadcast recieve:' data );
+      console.log( 'arDeviceOrientation broadcast recieve:', data );
          document.getElementById( 'compassCube' ).style.webkitTransform =
          document.getElementById( 'compassCube' ).style.transform =
                  'rotateX(' + data.beta + 'deg) ' +
