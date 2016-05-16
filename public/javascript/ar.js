@@ -581,9 +581,9 @@ function arConnectionController( participantState ) {
   }
 
  function connectToVrController() {
-   renderer.render( scene, vrDrivenCamera );
    vrDrivenCameraControls.update();
    animateArObjects();
+   renderer.render( scene, vrDrivenCamera );
    requestAnimationFrame( connectToVrController );
  }
 
