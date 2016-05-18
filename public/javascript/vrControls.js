@@ -12,7 +12,10 @@ WEBEYES.MouseControls = function( object ) {
   var xVector = new THREE.Vector3( 1, 0, 0 );
   var yVector = new THREE.Vector3( 0, 1, 0 );
 
+
  object.rotation.reorder( 'YXZ' );
+
+
 
 var setObjectQuaternion = function () {
 
@@ -37,6 +40,8 @@ var setObjectQuaternion = function () {
     };
 
   }();
+
+
 
 
   var mouseDown = false;
@@ -96,6 +101,9 @@ this.update = function () {
     setObjectQuaternion( object.quaternion, alpha, beta, gamma );
 
   };
+
+
+
 
 // this.update = function() {
 

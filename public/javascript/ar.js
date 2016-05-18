@@ -493,6 +493,7 @@ function arConnectionController( participantState ) {
   if ( participantState === 'focus' && userContext.mode === 'vr' ) {
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
+    console.log( 'participantState:focus, in VR mode' );
 
     } else if ( participantState === 'peer' ) {
 
@@ -585,7 +586,7 @@ function arConnectionController( participantState ) {
    animateArObjects();
    renderer.render( scene, vrDrivenCamera );
    requestAnimationFrame( connectToVrController );
-   //console.log('camera:', vrDrivenCamera );
+ //  //console.log('camera:', vrDrivenCamera );
  }
 
 // function connectToVrBroadcast() {
