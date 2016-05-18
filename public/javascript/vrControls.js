@@ -13,7 +13,7 @@ WEBEYES.MouseControls = function( object ) {
   var yVector = new THREE.Vector3( 0, 1, 0 );
 
 
- object.rotation.reorder( 'XYZ' );
+ object.rotation.reorder( 'YXZ' );
 
 
 
@@ -64,8 +64,8 @@ var setObjectQuaternion = function () {
       var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
       var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
-      orientation.x += movementX * 0.1;
-      orientation.y += movementY * 0.1;
+      orientation.y += movementX * 0.1;
+      orientation.x += movementY * 0.1;
     //  orientation.y = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
       orientation.z = 0.0;
 
@@ -93,8 +93,8 @@ this.update = function () {
 
     if ( scope.enabled === false ) return;
 
-    var alpha = scope.orientation.y ? THREE.Math.degToRad( scope.orientation.y ) : 0; // Z
-    var beta  = scope.orientation.x  ? THREE.Math.degToRad( scope.orientation.x  ) : 0; // X'
+    var alpha = scope.orientation.x ? THREE.Math.degToRad( scope.orientation.x ) : 0; // Z
+    var beta  = scope.orientation.y  ? THREE.Math.degToRad( scope.orientation.y  ) : 0; // X'
     var gamma = scope.orientation.z ? THREE.Math.degToRad( scope.orientation.z ) : 0; // Y''
     //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
