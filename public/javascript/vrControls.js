@@ -35,6 +35,8 @@ WEBEYES.MouseControls = function( object ) {
       orientation.y += movementX * 0.005;
       orientation.x += movementY * 0.005;
       orientation.x = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
+      orientation.z = 0.0;
+
      // console.log( 'orientation', orientation.x, orientation.y );
 
 // emit movement
@@ -55,16 +57,32 @@ WEBEYES.MouseControls = function( object ) {
     y: 0
   };
 
-  this.update = function() {
+this.update = function () {
 
-    if ( this.enabled === false ) { return; }
+    if ( scope.enabled === false ) return;
 
-    mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
-    mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
-    object.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
-   //console.log( 'vrControls:', this.orientation.x, this.orientation.y );
-    return;
+    var alpha = scope.Orientation.y ? THREE.Math.degToRad( scope.Orientation.x ) : 0; // Z
+    var beta  = scope.Orientation.x  ? THREE.Math.degToRad( scope.Orientation.y  ) : 0; // X'
+    var gamma = scope.deviceOrientation.z ? THREE.Math.degToRad( scope.deviceOrientation.z ) : 0; // Y''
+    //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
+
+    setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma );
+
   };
+
+
+
+
+// this.update = function() {
+
+//   if ( this.enabled === false ) { return; }
+
+//   mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
+//   mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
+//   object.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
+//  //console.log( 'vrControls:', this.orientation.x, this.orientation.y );
+//   return;
+// };
 
   document.addEventListener( 'mousemove', onMouseMove, false );
   document.addEventListener( 'mouseup', onMouseUp, false );
