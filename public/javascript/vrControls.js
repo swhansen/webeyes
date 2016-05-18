@@ -13,7 +13,7 @@ WEBEYES.MouseControls = function( object ) {
   var yVector = new THREE.Vector3( 0, 1, 0 );
 
 
- this.object.rotation.reorder( 'YXZ' );
+ object.rotation.reorder( 'YXZ' );
 
 
 
