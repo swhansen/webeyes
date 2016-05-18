@@ -94,10 +94,12 @@ this.update = function () {
     if ( scope.enabled === false ) return;
 
     var alpha = scope.orientation.y ? THREE.Math.degToRad( scope.orientation.y ) : 0; // Z
-    var beta  = scope.orientation.z  ? THREE.Math.degToRad( scope.orientation.z  ) : 0; // X'
+    var beta  = scope.orientation.x  ? THREE.Math.degToRad( scope.orientation.x  ) : 0; // X'
     var gamma = scope.orientation.y ? THREE.Math.degToRad( scope.orientation.y ) : 0; // Y''
-    //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
+    //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation ) : 0; // O
 
+
+gamma = 0.0;
     setObjectQuaternion( object.quaternion, alpha, beta, gamma );
 
   };
