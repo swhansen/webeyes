@@ -13,7 +13,7 @@ WEBEYES.MouseControls = function( object ) {
   var yVector = new THREE.Vector3( 0, 1, 0 );
 
 
- object.rotation.reorder( 'XYZ' );
+ object.rotation.reorder( 'YXZ' );
 
 
 
@@ -64,9 +64,9 @@ var setObjectQuaternion = function () {
       var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
       var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
-      orientation.y += movementX * 0.05;
-      orientation.x += movementY * 0.05;
-      orientation.y = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
+      orientation.y += movementX * 0.1;
+      orientation.x += movementY * 0.1;
+    //  orientation.y = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
       orientation.z = 0.0;
 
      // console.log( 'orientation', orientation.x, orientation.y );
