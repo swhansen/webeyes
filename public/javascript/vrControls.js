@@ -93,7 +93,7 @@ this.update = function () {
     var gamma = scope.orientation.z ? THREE.Math.degToRad( scope.orientation.z ) : 0; // Y''
     //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
-    setObjectQuaternion( object.quaternion, alpha, beta, 0.0 );
+    setObjectQuaternion( object.quaternion, alpha, beta, gamma );
 
   };
 
