@@ -32,10 +32,9 @@ WEBEYES.MouseControls = function( object ) {
       var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
       var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
-      orientation.y += movementX * 0.005;
       orientation.x += movementY * 0.005;
+      orientation.y += movementX * 0.005;
       orientation.x = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
-     // console.log( 'orientation', orientation.x, orientation.y );
 
 // emit movement
 
@@ -62,7 +61,6 @@ WEBEYES.MouseControls = function( object ) {
     mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
     mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
     object.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
-   //console.log( 'vrControls:', this.orientation.x, this.orientation.y );
     return;
   };
 
