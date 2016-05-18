@@ -65,7 +65,7 @@ var setObjectQuaternion = function () {
       var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
       orientation.x += movementX * 0.1;
-      orientation.Y += movementY * 0.1;
+      orientation.y += movementY * 0.1;
     //  orientation.y = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
       orientation.z = 0.0;
 
