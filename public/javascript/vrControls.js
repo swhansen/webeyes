@@ -61,9 +61,9 @@ this.update = function () {
 
     if ( scope.enabled === false ) return;
 
-    var alpha = scope.Orientation.y ? THREE.Math.degToRad( scope.Orientation.x ) : 0; // Z
-    var beta  = scope.Orientation.x  ? THREE.Math.degToRad( scope.Orientation.y  ) : 0; // X'
-    var gamma = scope.deviceOrientation.z ? THREE.Math.degToRad( scope.deviceOrientation.z ) : 0; // Y''
+    var alpha = scope.orientation.y ? THREE.Math.degToRad( scope.orientation.x ) : 0; // Z
+    var beta  = scope.orientation.x  ? THREE.Math.degToRad( scope.orientation.y  ) : 0; // X'
+    var gamma = scope.orientation.z ? THREE.Math.degToRad( scope.orientation.z ) : 0; // Y''
     //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
     setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma );
