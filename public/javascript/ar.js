@@ -654,11 +654,11 @@ $( function() {
 
   var projector = new THREE.Projector();
 
- //   if ( userContext.mode === 'vr' ) {
- //     cameraDriver = vrDrivenCamera;
- //   }
+    if ( userContext.mode === 'vr' && participantState === 'focus' ) {
+      cameraDriver = vrDrivenCamera;
+    }
 
-    if ( participantState === 'focus' ) {
+    if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       cameraDriver = sensorDrivenCamera;
       } else if ( participantState === 'peer' ) {
          cameraDriver = broadcastDrivenCamera;
