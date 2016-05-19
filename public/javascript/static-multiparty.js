@@ -7,6 +7,8 @@ var numVideoOBJS = maxCALLERS + 1;
 var layout;
 var connectList = [];
 
+var WEBEYES = {};
+
 //var modmeState = false;
 
 var compassToggle = false;

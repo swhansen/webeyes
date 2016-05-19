@@ -12,7 +12,6 @@
  * W3C Device Orientation control (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
  */
 
-var WEBEYES = {};
 
 WEBEYES.BroadcastVrControls = function ( object ) {
 
