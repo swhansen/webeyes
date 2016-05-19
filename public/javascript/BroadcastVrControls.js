@@ -30,7 +30,7 @@ var orientation = scope.orientation;
 
   this.connect = function() {
 
-    onScreenOrientationChangeEvent(); // run once on load
+ //   onScreenOrientationChangeEvent(); // run once on load
 
     socketServer.on( 'vrOrientation', function( vrBroadcastData ) {
       scope.orientation = vrBroadcastData;
