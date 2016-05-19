@@ -491,7 +491,7 @@ function arConnectionController( participantState ) {
 
   //console.log( 'arConnectionController:', participantState, userContext );
 
-  if ( vrBroadcastDrivenCamera=== 'focus' && userContext.mode === 'vr' ) {
+  if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
     console.log( 'participantState:', userContext.participantState , 'mode:', userContext.mode );
