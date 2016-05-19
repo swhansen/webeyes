@@ -198,7 +198,7 @@ function setUpArLayer( participantState ) {
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  broadcastVrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
@@ -592,7 +592,7 @@ function arConnectionController( participantState ) {
  //  //console.log('camera:', vrDrivenCamera );
  }
 
- function connectToArBroadcast() {
+ function connectToVArBroadcast() {
    renderer.render( scene, vrDrivenCamera );
    broadcastVrCameraControls.update();
    animateArObjects();
