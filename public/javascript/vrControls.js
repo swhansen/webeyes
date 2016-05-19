@@ -39,7 +39,7 @@ WEBEYES.MouseControls = function( object ) {
 // emit movement
 
       var sessionId = socketServer.sessionid;
-        socketServer.emit( 'vrMouseMovement', orientation, sessionId );
+        socketServer.emit( 'vrOrientation', orientation, sessionId );
     }
   };
 
@@ -61,6 +61,7 @@ WEBEYES.MouseControls = function( object ) {
     mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
     mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
     object.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
+    consoel.log('vr object:', object );
     return;
   };
 
