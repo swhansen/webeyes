@@ -90,6 +90,9 @@ socketServer.on('utility', function(data) {
     case 'arClientInit':
         loadAr( 'peer' );
     break;
+    case 'vrClientInit':
+        loadAr( 'peer' );
+    break;
     case 'leapClientInit':
     // not the leap owner  an not mobile( performance )
     if ( !userContext.isLeap && !userContext.mobile ) {

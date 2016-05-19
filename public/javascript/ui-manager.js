@@ -305,7 +305,7 @@ $( function() {
       // Tell everyone to initialize AR
 
       var sessionId = socketServer.sessionid;
-          socketServer.emit( 'utility', 'arClientInit', sessionId );
+          socketServer.emit( 'utility', 'vrClientInit', sessionId );
 
       var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
       messageBar( msgString );

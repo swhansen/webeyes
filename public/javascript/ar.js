@@ -88,8 +88,10 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
-  var arContainer, sensorDrivenCamera, broadcastDrivenCamera, scene, renderer;
-  var vrDrivenCamera, vrDrivenCameraControls;
+
+  var scene, renderer, arContainer;
+  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
+  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls
   var knot;
 
   clock.start();
@@ -198,7 +200,7 @@ function setUpArLayer( participantState ) {
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  broadcastVrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
@@ -527,7 +529,7 @@ function arConnectionController( participantState ) {
 
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
-  broadcastVrCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -580,11 +582,11 @@ function arConnectionController( participantState ) {
  //  //console.log('camera:', vrDrivenCamera );
  }
 
- function connectToArBroadcast() {
-   renderer.render( scene, vrDrivenCamera );
-   broadcastVrCameraControls.update();
+ function connectToVrBroadcast() {
+   vrBroadcastCameraControls.update();
    animateArObjects();
-   requestAnimationFrame( connectToArBroadcast );
+   renderer.render( scene, vrBroadcastDrivenCamera );
+   requestAnimationFrame( connectToVrBroadcast );
  }
 
  function connectToDeviceSensors() {

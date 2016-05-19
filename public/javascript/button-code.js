@@ -82,7 +82,6 @@ userContext.modMeState = true;
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
     messageBar( msgString );
-  //  emitArOrientationData();
 
     break;
 
