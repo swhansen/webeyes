@@ -248,6 +248,8 @@ $( function() {
       userContext.uiState = 'vr';
       userContext.mode = 'vr';
 
+      console.log( 'VR Main Button', userContext.participantState, userContext.mode );
+
       loadAr( userContext.participantState );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';

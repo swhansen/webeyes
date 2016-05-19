@@ -491,26 +491,14 @@ function arConnectionController( participantState ) {
 
   //console.log( 'arConnectionController:', participantState, userContext );
 
-  if ( participantState === 'focus' && userContext.mode === 'vr' ) {
+  if ( vrBroadcastDrivenCamera=== 'focus' && userContext.mode === 'vr' ) {
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
-    console.log( 'participantState:focus, in VR mode' );
+    console.log( 'participantState:', vrBroadcastDrivenCamera , 'mode:', userContext.mode );
 
     } else if ( participantState === 'peer' ) {
 
-      socketServer.on( 'vrMouseMovement', function( orientation ) {
-
-        var mouseQuat = {
-        x: new THREE.Quaternion(),
-        y: new THREE.Quaternion()
-        };
-
-        mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
-        mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
-        vrDrivenCamera.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
-        vrDrivenCamera.lookAt( scene.position );
-        } );
-         }
+    }
 
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
@@ -657,7 +645,7 @@ $( function() {
 
   var projector = new THREE.Projector();
 
-    if ( userContext.mode === 'vr' && participantState === 'focus' ) {
+    if ( userContext.mode === 'vr' && userContext.participantState === 'focus' ) {
       cameraDriver = vrDrivenCamera
       console.log( 'vr-mode -> focus' );
     }
