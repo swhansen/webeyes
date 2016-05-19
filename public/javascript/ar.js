@@ -527,7 +527,7 @@ function arConnectionController( participantState ) {
 
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
- // broadcastVrCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+  broadcastVrCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   arConnectionController( participantState );
 
@@ -580,12 +580,12 @@ function arConnectionController( participantState ) {
  //  //console.log('camera:', vrDrivenCamera );
  }
 
-// function connectToVArBroadcast() {
-//   renderer.render( scene, vrDrivenCamera );
-//   broadcastVrCameraControls.update();
-//   animateArObjects();
-//   requestAnimationFrame( connectToArBroadcast );
-// }
+ function connectToArBroadcast() {
+   renderer.render( scene, vrDrivenCamera );
+   broadcastVrCameraControls.update();
+   animateArObjects();
+   requestAnimationFrame( connectToArBroadcast );
+ }
 
  function connectToDeviceSensors() {
    sensorCameraControls.update();
@@ -646,7 +646,7 @@ $( function() {
   var projector = new THREE.Projector();
 
     if ( userContext.mode === 'vr' && userContext.participantState === 'focus' ) {
-      cameraDriver = vrDrivenCamera
+      cameraDriver = vrDrivenCamera;
       console.log( 'vr-mode -> focus' );
     }
 

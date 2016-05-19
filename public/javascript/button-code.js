@@ -48,8 +48,6 @@ userContext.modMeState = true;
 
   setPeerUserContext( 'all', 'modMeState', false );
 
-
-
   //userContext.modMeState = true;
 
     $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
