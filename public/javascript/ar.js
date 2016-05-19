@@ -198,6 +198,7 @@ function setUpArLayer( participantState ) {
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  broadcastVrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
@@ -538,6 +539,8 @@ function arConnectionController( participantState ) {
 
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
+  broadcastVrCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+
   arConnectionController( participantState );
 
   function animateArObjects() {
@@ -589,12 +592,12 @@ function arConnectionController( participantState ) {
  //  //console.log('camera:', vrDrivenCamera );
  }
 
-// function connectToVrBroadcast() {
-//   renderer.render( scene, vrDrivenCamera );
-//   vrDrivenCameraControls.update();
-//   animateArObjects();
-//   requestAnimationFrame( connectToVrController );
-// }
+ function connectToArBroadcast() {
+   renderer.render( scene, vrDrivenCamera );
+   broadcastVrCameraControls.update();
+   animateArObjects();
+   requestAnimationFrame( connectToArBroadcast );
+ }
 
  function connectToDeviceSensors() {
    sensorCameraControls.update();
@@ -655,13 +658,16 @@ $( function() {
   var projector = new THREE.Projector();
 
     if ( userContext.mode === 'vr' && participantState === 'focus' ) {
-      cameraDriver = vrDrivenCamera;
+      cameraDriver = vrDrivenCamera
+      console.log( 'vr-mode -> focus' );
     }
 
     if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       cameraDriver = sensorDrivenCamera;
+      console.log( 'ar-mode -> focus' );
       } else if ( participantState === 'peer' ) {
          cameraDriver = broadcastDrivenCamera;
+         console.log( 'ar-mode -> peer' );
     }
 
   function toggleArAnimation( arObject ) {

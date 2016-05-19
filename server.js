@@ -297,8 +297,8 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'arOrientation', data );
   } );
 
-  client.on( 'vrMouseMovment', function( data, session ) {
-    client.broadcast.emit( 'vrMouseMovement', data );
+  client.on( 'vrOrientation', function( data, session ) {
+    client.broadcast.emit( 'vrOrientation', data );
   } );
 
   client.on( 'userContext', function (data, session ) {
