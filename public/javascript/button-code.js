@@ -60,8 +60,8 @@ userContext.modMeState = true;
     }
 
     userContext.participantState = 'focus';
-    userContext.mode = 'ar';
-    userContext.uistate = 'ar';
+    userContext.mode = 'vr';
+    userContext.uistate = 'vr';
     userContext.modMeState = true;
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
