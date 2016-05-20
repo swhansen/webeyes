@@ -33,7 +33,7 @@ var orientation = scope.orientation;
  //   onScreenOrientationChangeEvent(); // run once on load
 
     socketServer.on( 'vrOrientation', function( vrBroadcastData ) {
-      this.orientation = vrBroadcastData;
+      orientation = vrBroadcastData;
       console.log( 'vr orientation broadcast recieve:', scope.orientation );
 
 } );
@@ -54,8 +54,8 @@ var orientation = scope.orientation;
 
     if ( this.enabled === false ) { return; }
 
-    mouseQuat.x.setFromAxisAngle( xVector, this.orientation.x );
-    mouseQuat.y.setFromAxisAngle( yVector, this.orientation.y );
+    mouseQuat.x.setFromAxisAngle( xVector, orientation.x );
+    mouseQuat.y.setFromAxisAngle( yVector, orientation.y );
     object.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
     return;
   };
