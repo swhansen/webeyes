@@ -91,7 +91,7 @@ function loadAr( participantState ) {
 
   var scene, renderer, arContainer;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
-  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls
+  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
   var knot;
 
   clock.start();
@@ -652,10 +652,18 @@ $( function() {
       console.log( 'vr-mode -> focus' );
     }
 
+    if ( userContext.mode === 'vr' && userContext.participantState === 'peer' ) {
+      cameraDriver = vrDrivenCamera;
+      console.log( 'vr-mode -> peer' );
+    }
+
     if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       cameraDriver = sensorDrivenCamera;
       console.log( 'ar-mode -> focus' );
-      } else if ( participantState === 'peer' ) {
+    }
+
+
+    if ( participantState === 'peer' && userContext.mode === 'ar' ) {
          cameraDriver = broadcastDrivenCamera;
          console.log( 'ar-mode -> peer' );
     }
