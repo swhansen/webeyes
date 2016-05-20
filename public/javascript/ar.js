@@ -528,7 +528,7 @@ function arConnectionController( participantState ) {
         } );
       console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
       }
-
+}
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator
@@ -673,7 +673,6 @@ $( function() {
       cameraDriver = sensorDrivenCamera;
       console.log( 'ar-mode -> focus' );
     }
-
 
     if ( participantState === 'peer' && userContext.mode === 'ar' ) {
          cameraDriver = broadcastDrivenCamera;
