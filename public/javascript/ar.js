@@ -520,7 +520,7 @@ function arConnectionController( participantState ) {
       console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
       }
 
-  if ( userContext.participantState === 'peer' && userContext.mode === ar ) {
+  if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -661,22 +661,22 @@ $( function() {
 
     if ( userContext.mode === 'vr' && userContext.participantState === 'focus' ) {
       cameraDriver = vrDrivenCamera;
-      console.log( 'vr-mode -> focus' );
+      console.log( 'setupArInteractionEvents: vr-mode -> focus' );
     }
 
     if ( userContext.mode === 'vr' && userContext.participantState === 'peer' ) {
       cameraDriver = vrBroadcastDrivenCamera;
-      console.log( 'vr-mode -> peer' );
+      console.log( 'setupArInteractionEvents: vr-mode -> peer' );
     }
 
     if ( participantState === 'focus' && userContext.mode === 'ar' ) {
       cameraDriver = sensorDrivenCamera;
-      console.log( 'ar-mode -> focus' );
+      console.log( 'setupArInteractionEvents: ar-mode -> focus' );
     }
 
     if ( participantState === 'peer' && userContext.mode === 'ar' ) {
          cameraDriver = broadcastDrivenCamera;
-         console.log( 'ar-mode -> peer' );
+         console.log( 'setupArInteractionEvents: ar-mode -> peer' );
     }
 
   function toggleArAnimation( arObject ) {
