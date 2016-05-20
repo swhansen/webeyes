@@ -41,6 +41,11 @@ var orientation = scope.orientation;
 
   };
 
+  this.orientation = {
+    x: 0,
+    y: 0
+  };
+
   this.disconnect = function() {
 
     window.removeEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
