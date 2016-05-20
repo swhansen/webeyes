@@ -499,7 +499,7 @@ function arConnectionController( participantState ) {
     socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-    console.log( 'participantState:', userContext.participantState , 'mode:', userContext.mode );
+    console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
@@ -508,24 +508,27 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-      console.log( 'participantState:', userContext.participantState , 'mode:', userContext.mode );
+      console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
     }
 
-  if ( participantState === 'focus' && userContext.mode === 'ar' ) {
+  if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
+      console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
+      }
 
-    } else if ( participantState === 'peer' ) {
+  if ( userContext.participantState === 'peer' && userContext.mode === ar ) {
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
         } );
+      console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
       }
-  }
+
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator
