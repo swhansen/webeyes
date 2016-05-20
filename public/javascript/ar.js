@@ -504,7 +504,7 @@ function arConnectionController( participantState ) {
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
       vrDrivenCamera.lookAt( scene.position );
-      connectToVrController();
+      connectToVrBroadcast();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
