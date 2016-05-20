@@ -662,7 +662,7 @@ $( function() {
     }
 
     if ( userContext.mode === 'vr' && userContext.participantState === 'peer' ) {
-      cameraDriver = vrDrivenCamera;
+      cameraDriver = vrBroadcastDrivenCamera;
       console.log( 'vr-mode -> peer' );
     }
 
