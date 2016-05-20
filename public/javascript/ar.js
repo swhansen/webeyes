@@ -496,10 +496,19 @@ function arConnectionController( participantState ) {
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
+    socketServer.on( 'arObjectShare', function( data ) {
+           receiveArObject( data );
+      } );
     console.log( 'participantState:', userContext.participantState , 'mode:', userContext.mode );
+  }
 
-    } else if ( participantState === 'peer' ) {
-
+    if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
+      vrDrivenCamera.lookAt( scene.position );
+      connectToVrController();
+      socketServer.on( 'arObjectShare', function( data ) {
+           receiveArObject( data );
+      } );
+      console.log( 'participantState:', userContext.participantState , 'mode:', userContext.mode );
     }
 
   if ( participantState === 'focus' && userContext.mode === 'ar' ) {

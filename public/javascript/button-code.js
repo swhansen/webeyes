@@ -47,7 +47,7 @@ userContext.modMeState = true;
   case 'vrme':
 
   setPeerUserContext( 'all', 'modMeState', false );
-  setPeerUserContext( 'all', 'mode', '');
+  setPeerUserContext( 'all', 'mode', 'vr');
   setPeerUserContext( 'all', 'participantState', 'peer' );
 
 
