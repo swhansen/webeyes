@@ -13,7 +13,7 @@
  */
 
 
-WEBEYES.BroadcastVrControls = function ( object ) {
+WEBEYES.BroadcastVrControls = function( object ) {
 
   var scope = this;
   var PI_2 = Math.PI / 2;
@@ -36,7 +36,7 @@ var orientation = scope.orientation;
       scope.orientation = vrBroadcastData;
       console.log( 'vr orientation broadcast recieve:', scope.orientation );
 
-});
+} );
     scope.enabled = true;
 
   };
