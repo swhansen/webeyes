@@ -22,7 +22,7 @@ WEBEYES.BroadcastVrControls = function( object ) {
     y: new THREE.Quaternion()
   };
 
-  //this.object = object;
+  this.object = object;
   var xVector = new THREE.Vector3( 1, 0, 0 );
   var yVector = new THREE.Vector3( 0, 1, 0 );
 
@@ -33,7 +33,7 @@ var orientation = scope.orientation;
  //   onScreenOrientationChangeEvent(); // run once on load
 
     socketServer.on( 'vrOrientation', function( vrBroadcastData ) {
-      orientation = vrBroadcastData;
+      scope.orientation = vrBroadcastData;
       console.log( 'vr orientation broadcast recieve:', scope.orientation );
 
 } );
@@ -54,8 +54,8 @@ var orientation = scope.orientation;
 
     if ( this.enabled === false ) { return; }
 
-    mouseQuat.x.setFromAxisAngle( xVector, orientation.x );
-    mouseQuat.y.setFromAxisAngle( yVector, orientation.y );
+    mouseQuat.x.setFromAxisAngle( xVector, scope.orientation.x );
+    mouseQuat.y.setFromAxisAngle( yVector, scope.orientation.y );
     object.quaternion.copy( mouseQuat.y ).multiply( mouseQuat.x );
     return;
   };
