@@ -218,8 +218,8 @@ width: 1000px;
 }
 
 .canvascenter {
-    width: 1020px;
-    height: 760px;
+    width: 80vw;
+    height: 100vh;
     position: absolute;
     top:0;
     bottom: 0;
