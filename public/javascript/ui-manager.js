@@ -271,9 +271,6 @@ $( function() {
   $( function() {
     $( '#shareaug' ).click( function() {
 
-  //  userContext.participantState = 'peer';   // ???????
-  //  userContext.modMeState = true;
-
 // Focus the AR initiator (modme)
 //alert( userContext.mode );
 
@@ -282,7 +279,7 @@ $( function() {
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-      // Tell everyone to initialize AR
+      // Tell everyone to initialize
 
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'utility', 'arClientInit', sessionId );

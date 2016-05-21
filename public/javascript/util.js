@@ -68,7 +68,7 @@ function emitUtility( data ) {
   socketServer.emit('utility', data, sessionId);
 }
 
-socketServer.on('utility', function(data) {
+socketServer.on( 'utility', function(data) {
   switch ( data ) {
     case 'bullseye':
       drawBullsEye();
@@ -94,7 +94,7 @@ socketServer.on('utility', function(data) {
         loadAr( 'peer' );
     break;
     case 'leapClientInit':
-    // not the leap owner  an not mobile( performance )
+    // not the leap owner and not mobile( performance )
     if ( !userContext.isLeap && !userContext.mobile ) {
         initLeapPeerHand();
       }

@@ -88,7 +88,6 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
-
   var scene, renderer, arContainer;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
   var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
@@ -181,8 +180,8 @@ function setUpArLayer( participantState ) {
 
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
-  ar0.style.width = '100%';
-  ar0.style.height = '100%';
+  //ar0.style.width = '100%';
+  //ar0.style.height = '100%';
   ar0.width = ar0.offsetWidth;
   ar0.height = ar0.offsetHeight;
 
@@ -485,13 +484,16 @@ function setUpArLayer( participantState ) {
 // ... end AR world model
 //
 
+
+
 function arConnectionController( participantState ) {
 
+//   Set up the camera drivers and connection feed
 //   Based on participantState(focus or peer)
 //    focus - device sensors
 //    peer - broadcast feed sensors
-
-  //console.log( 'arConnectionController:', participantState, userContext );
+//    ar - senspr driven
+//    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
     vrDrivenCamera.lookAt( scene.position );
@@ -531,9 +533,9 @@ function arConnectionController( participantState ) {
 }
 
 // Attach the cameras to orientation provider
-//  - sensors for a mobile initiator
+//  - sensors for a mobile initiator ( ar mode )
+//  - mouse x-y ( VR mode )
 //  - broadcast for all peers
-//  - mouse for VR mode
 
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
@@ -620,6 +622,11 @@ function arConnectionController( participantState ) {
   }
 
 function setupArInteractionEvents( participantState ) {
+
+//
+// Establis the user interation with the AR objects
+//  - set the cmeraDriver based on AR/VR and focus/peer
+//
 
 var arCanvas = document.getElementById( 'arcanvaspane' );
 var ar0 = document.getElementById( 'arcanvas' );
