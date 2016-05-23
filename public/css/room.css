@@ -168,7 +168,7 @@ width: 1000px;
 }
 
 #aug-ui-container {
-  z-index=30;
+  z-index=200;
   position: fixed;
   top: 220px;
   right: 10px;
@@ -218,8 +218,8 @@ width: 1000px;
 }
 
 .canvascenter {
-    width: 80vw;
-    height: 100vh;
+    width: 1020px;
+    height: 760px;
     position: absolute;
     top:0;
     bottom: 0;
