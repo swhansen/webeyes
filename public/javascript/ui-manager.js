@@ -233,9 +233,17 @@ $( function() {
 
       loadAr( userContext.participantState );
 
+      document.getElementById( 'canvaspane' ).style.zIndex = '10';
+      document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
+
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
+
+       var msgString = 'User ' + userContext.rtcId + ' has entered AR Mode';
+      messageBar( msgString );
+
+      console.log( 'layers at armainButton', getLayersZindexStatus() );
     }
   );
 } );
@@ -263,6 +271,7 @@ $( function() {
       messageBar( msgString );
 
       setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' );
+      console.log( 'layers at vrmainButton', getLayersZindexStatus() );
 
     }
   );

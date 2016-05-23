@@ -637,8 +637,8 @@ setDomPointerEvent( 'arcanvaspane', 'auto' );
 ar0.style.display = 'visible';
 arCanvas.style.display = 'visible';
 
-ar0.style.zIndex = '100';
-arCanvas.style.zIndex = '100';
+ar0.style.zIndex = '50';
+arCanvas.style.zIndex = '50';
 
 console.log( 'layers at setupint', getLayersZindexStatus() );
 
