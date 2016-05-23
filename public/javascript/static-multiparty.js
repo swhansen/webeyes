@@ -54,7 +54,6 @@ var layerPointerState = {};
 
 easyrtc.dontAddCloseButtons( false );
 
-
 // Utillity Functions
 
 function setDomPointerEvent( domId, mode ) {

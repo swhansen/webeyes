@@ -436,6 +436,8 @@ function setUpArLayer( participantState ) {
   arSelectObjectArray.push( cube2 );
   arSelectObjectArray.push( knot );
 
+  console.log( 'End of AR world build' );
+
 // Orietation plane and axis
 
 // var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
@@ -483,8 +485,6 @@ function setUpArLayer( participantState ) {
 //
 // ... end AR world model
 //
-
-
 
 function arConnectionController( participantState ) {
 
