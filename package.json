@@ -24,20 +24,6 @@
     "socket.io": "0.9.x",
     "bson": "*"
   },
-//  "devDependencies": {
-//    "assert": "^1.1.2",
-//    "chai": "3.3.x",
-//    "grunt": "latest",
-//    "grunt-cafe-mocha": "^0.1.13",
-//    "grunt-contrib-jshint": "^0.11.3",
-//    "grunt-exec": "^0.4.6",
-//    "grunt-link-checker": "^0.1.0",
-//    "js-yaml": "*",
-//    "mocha": "*",
-//    "nodemon": "*",
-//    "precommit-hook": "*",
-//    "zombie": "4.1.x"
-//  },
   "repository": {
     "type": "git",
     "url": "https://github.com/swhansen/webeyes"
