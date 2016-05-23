@@ -104,7 +104,6 @@ if ( data.rtcId == 'all' ) {
     console.log( 'userContext at multiparty:', userContext );
   }
 
-
 // if ( data.rtcId !== userContext.rtcId ) {
 //   var p = data.param;
 //   userContext[ p ] = data.state;

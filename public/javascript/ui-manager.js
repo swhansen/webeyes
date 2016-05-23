@@ -231,6 +231,8 @@ $( function() {
       userContext.uiState = 'ar';
       userContext.mode = 'ar';
 
+      console.log( 'AR Main Button', userContext.participantState, userContext.mode );
+
       loadAr( userContext.participantState );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
@@ -241,7 +243,7 @@ $( function() {
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
        var msgString = 'User ' + userContext.rtcId + ' has entered AR Mode';
-      messageBar( msgString );
+       messageBar( msgString );
 
       console.log( 'layers at armainButton', getLayersZindexStatus() );
     }
@@ -270,9 +272,8 @@ $( function() {
       var msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
       messageBar( msgString );
 
-      setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' );
+  //    setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' );
       console.log( 'layers at vrmainButton', getLayersZindexStatus() );
-
     }
   );
 } );
@@ -285,6 +286,8 @@ $( function() {
 
     if ( userContext.mode === 'ar' ) {
 
+      console.log( 'Sharing AR Session with Peers' );
+
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
@@ -293,7 +296,7 @@ $( function() {
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'utility', 'arClientInit', sessionId );
 
-        var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
+      var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
         messageBar( msgString );
 
       // Start the orientation data feed
@@ -305,6 +308,8 @@ $( function() {
 
     if ( userContext.mode === 'vr' ) {
 
+      console.log( 'Sharing AR Session with Peers' );
+
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
@@ -315,8 +320,6 @@ $( function() {
 
       var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
       messageBar( msgString );
-
-      // Start the orientation data feed
 
       // emitArOrientationData();
 
