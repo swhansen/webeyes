@@ -175,7 +175,7 @@ width: 1000px;
 }
 
 #sticky-ui-container {
-  z-index=100;
+  z-index=200;
   position: fixed;
   top: 450px;
   right: 10px;
