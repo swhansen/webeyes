@@ -191,8 +191,8 @@ function setUpArLayer( participantState ) {
   //arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   //arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
-  var CANVAS_WIDTH = 300,
-      CANVAS_HEIGHT = 300;
+  var CANVAS_WIDTH = ar0.width,
+      CANVAS_HEIGHT = ar0.height;
 
   scene = new THREE.Scene();
 
