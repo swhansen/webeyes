@@ -242,6 +242,8 @@ $( function() {
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
+      setPeerUserContext( 'all', 'mode', 'ar' );
+
        var msgString = 'User ' + userContext.rtcId + ' has entered AR Mode';
        messageBar( msgString );
 
@@ -272,6 +274,8 @@ $( function() {
       var msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
       messageBar( msgString );
 
+      emitMessage( msgString );
+
   //    setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' );
       console.log( 'layers at vrmainButton', getLayersZindexStatus() );
     }
@@ -282,7 +286,6 @@ $( function() {
     $( '#shareaug' ).click( function() {
 
 // Focus the AR initiator (modme)
-//alert( userContext.mode );
 
     if ( userContext.mode === 'ar' ) {
 

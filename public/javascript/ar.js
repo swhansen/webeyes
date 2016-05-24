@@ -88,6 +88,8 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
+  console.log ( 'loadAR-userContext', userContext );
+
   var scene, renderer, arContainer;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
   var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
@@ -501,7 +503,7 @@ function arConnectionController( participantState ) {
     socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-    console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
+    console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
@@ -510,7 +512,7 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-      console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
+      console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
@@ -519,7 +521,7 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-      console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
+      console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
@@ -528,7 +530,7 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
         } );
-      console.log( 'arConnectionController-participantState:', userContext.participantState , 'mode:', userContext.mode );
+      console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
       }
 }
 
