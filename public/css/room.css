@@ -107,7 +107,7 @@ width: 1000px;
 }
 
 #select-video {
-  z-index=30;
+  z-index:30;
   position: fixed;
   top: 150px;
   right: 10px;
@@ -154,28 +154,28 @@ width: 1000px;
 }
 
 #utility-ui-container {
-  z-index=30;
+  z-index:30;
   position: fixed;
   top: 220px;
   right: 10px;
 }
 
 #mod-ui-container {
-  z-index=30;
+  z-index:30;
   position: fixed;
   top: 220px;
   right: 10px;
 }
 
 #aug-ui-container {
-  z-index=200;
+  z-index:200;
   position: fixed;
   top: 220px;
   right: 10px;
 }
 
 #sticky-ui-container {
-  z-index=200;
+  z-index:200;
   position: fixed;
   top: 450px;
   right: 10px;
