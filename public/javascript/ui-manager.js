@@ -304,6 +304,9 @@ $( function() {
         emitArOrientationData();
 
         document.getElementById( 'sticky-ar' ).style.display = 'visible';
+
+        var msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
+       messageBar( msgString );
       }
 
     if ( userContext.mode === 'vr' ) {
@@ -324,6 +327,9 @@ $( function() {
       // emitArOrientationData();
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
+
+      var msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
+       messageBar( msgString );
       }
     }
   );

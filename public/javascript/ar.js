@@ -640,7 +640,7 @@ arCanvas.style.display = 'visible';
 ar0.style.zIndex = '50';
 arCanvas.style.zIndex = '50';
 
-console.log( 'layers at setupint', getLayersZindexStatus() );
+console.log( 'layers at setupinteraction', getLayersZindexStatus() );
 
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
