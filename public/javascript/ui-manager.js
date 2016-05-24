@@ -233,6 +233,8 @@ $( function() {
 
       console.log( 'AR Main Button', userContext.participantState, userContext.mode );
 
+      setPeerUserContext( 'all', 'mode', 'ar' );
+
       loadAr( userContext.participantState );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
@@ -242,10 +244,7 @@ $( function() {
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
-      setPeerUserContext( 'all', 'mode', 'ar' );
-
-       var msgString = 'User ' + userContext.rtcId + ' has entered AR Mode';
-       messageBar( msgString );
+      // inform all the pees of the mode
 
       console.log( 'layers at armainButton', getLayersZindexStatus() );
     }
@@ -262,6 +261,8 @@ $( function() {
 
       console.log( 'VR Main Button', userContext.participantState, userContext.mode );
 
+      setPeerUserContext( 'all', 'mode', 'vr' );
+
       loadAr( userContext.participantState );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
@@ -270,6 +271,8 @@ $( function() {
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
+
+      // inform all the pees of the mode
 
       var msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
       messageBar( msgString );
@@ -298,9 +301,6 @@ $( function() {
 
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'utility', 'arClientInit', sessionId );
-
-      var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
-        messageBar( msgString );
 
       // Start the orientation data feed
 

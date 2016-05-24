@@ -51,8 +51,6 @@ userContext.modMeState = true;
   setPeerUserContext( 'all', 'participantState', 'peer' );
 
 
-  //userContext.modMeState = true;
-
     $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
     } );
@@ -84,7 +82,7 @@ userContext.modMeState = true;
 //        socketServer.emit( 'utility', 'arClientInit', sessionId );
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
-    messageBar( msgString );
+    emitMessage( msgString );
 
     break;
 
@@ -120,7 +118,8 @@ userContext.modMeState = true;
 //        socketServer.emit( 'utility', 'arClientInit', sessionId );
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
-    messageBar( msgString );
+    emitMessage( msgString );
+
     emitArOrientationData();
 
     break;
