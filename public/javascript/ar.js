@@ -97,6 +97,8 @@ function loadAr( participantState ) {
 
   console.log ( 'loadAR-userContext', userContext );
 
+  if ( scene ) { scene = null; };
+
   var scene, renderer, arContainer;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
   var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
