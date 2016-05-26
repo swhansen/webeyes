@@ -50,6 +50,8 @@ userContext.modMeState = true;
   setPeerUserContext( 'all', 'mode', 'vr');
   setPeerUserContext( 'all', 'participantState', 'peer' );
 
+  userContext.modMeState = true;
+
   userContext.participantState = 'focus';
 
     $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
@@ -63,7 +65,6 @@ userContext.modMeState = true;
     //userContext.participantState = 'focus';
     //userContext.mode = 'vr';
     //userContext.uistate = 'vr';
-    //userContext.modMeState = true;
 
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
@@ -91,7 +92,8 @@ userContext.modMeState = true;
       setPeerUserContext( 'all', 'mode', 'ar');
       setPeerUserContext( 'all', 'participantState', 'peer' );
 
-       // userContext.modMeState = true;
+      userContext.modMeState = true;
+      userContext.participantState = 'focus';
 
       $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
           uiStructure = data;
@@ -101,7 +103,6 @@ userContext.modMeState = true;
           $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
         }
 
-      userContext.participantState = 'focus';
       //userContext.mode = 'ar';
       //userContext.modMeState = true;
 
