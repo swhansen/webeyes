@@ -60,15 +60,16 @@ userContext.modMeState = true;
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
 
-    userContext.participantState = 'focus';
-    userContext.mode = 'vr';
-    userContext.uistate = 'vr';
-    userContext.modMeState = true;
+    //userContext.participantState = 'focus';
+    //userContext.mode = 'vr';
+    //userContext.uistate = 'vr';
+    //userContext.modMeState = true;
 
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
-    document.getElementById( 'arMainButton' ).style.visibility = 'visible';
-    document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
+    document.getElementById( 'arMainButton' ).style.visibility = 'hidden';
+    document.getElementById( 'vrMainButton' ).style.visibility = 'visible';
+    document.getElementById( 'sticky-compass' ).style.visibility = 'hidden';
 
     document.getElementById( 'canvas0' ).style.pointerEvents = 'none';
 
@@ -79,7 +80,6 @@ userContext.modMeState = true;
     var sessionId = socketServer.sessionid;
         socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
     emitMessage( msgString );
 
@@ -87,44 +87,44 @@ userContext.modMeState = true;
 
     case 'augme':
 
-  setPeerUserContext( 'all', 'modMeState', false );
-  setPeerUserContext( 'all', 'mode', 'ar');
-  setPeerUserContext( 'all', 'participantState', 'peer' );
+      setPeerUserContext( 'all', 'modMeState', false );
+      setPeerUserContext( 'all', 'mode', 'ar');
+      setPeerUserContext( 'all', 'participantState', 'peer' );
 
-   // userContext.modMeState = true;
+       // userContext.modMeState = true;
 
-   $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
-      uiStructure = data;
-    } );
+      $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
+          uiStructure = data;
+        } );
 
-    for ( button in uiStructure.structure ) {
-      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
-    }
+      for ( button in uiStructure.structure ) {
+          $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
+        }
 
-    userContext.participantState = 'focus';
-    userContext.mode = 'ar';
-    userContext.modMeState = true;
+      userContext.participantState = 'focus';
+      //userContext.mode = 'ar';
+      //userContext.modMeState = true;
 
-    document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
-    document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
-    document.getElementById( 'arMainButton' ).style.visibility = 'visible';
-    document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
-    mainCollapsed = true;
+      document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
+      document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
+      document.getElementById( 'arMainButton' ).style.visibility = 'visible';
+      document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
+      mainCollapsed = true;
 
-// Focus the AR initiator (modme)
+      // Focus the AR initiator (modme)
 
-    var sessionId = socketServer.sessionid;
-        socketServer.emit( 'focus', userContext.rtcId, sessionId );
+      var sessionId = socketServer.sessionid;
+          socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-// Tell everyone to initialize AR
+      // Tell everyone to initialize AR
 
-// var sessionId = socketServer.sessionid;
-//        socketServer.emit( 'utility', 'arClientInit', sessionId );
+        // var sessionId = socketServer.sessionid;
+      //        socketServer.emit( 'utility', 'arClientInit', sessionId );
 
-    var msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
-    emitMessage( msgString );
+      msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
+      emitMessage( msgString );
 
-    emitArOrientationData();
+      emitArOrientationData();
 
     break;
 

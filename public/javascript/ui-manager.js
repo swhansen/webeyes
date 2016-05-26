@@ -332,7 +332,7 @@ $( function() {
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
       msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
-       messageBar( msgString );
+       emitMessage( msgString );
       }
     }
   );

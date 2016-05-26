@@ -190,9 +190,6 @@ function setUpArLayer( participantState ) {
   arCanvas.style.visibility = 'visible';
   ar0.style.visibility = 'visible';
 
-  //arCanvas.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
-  //arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
-
   var CANVAS_WIDTH = 300,
       CANVAS_HEIGHT = 300;
 
@@ -597,7 +594,6 @@ function arConnectionController( participantState ) {
    animateArObjects();
    renderer.render( scene, vrDrivenCamera );
    requestAnimationFrame( connectToVrController );
- //  //console.log('camera:', vrDrivenCamera );
  }
 
  function connectToVrBroadcast() {
