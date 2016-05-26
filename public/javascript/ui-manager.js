@@ -14,6 +14,7 @@ function initUiManager() {
 // var uiStructure = {};
 var mainCollapsed = true;
 var modSwitch = false;
+var msgString;
 
 // initialize the core menu
 
@@ -189,7 +190,7 @@ $( function() {
   var sessionId = socketServer.sessionid;
       socketServer.emit( 'utility', 'leapClientInit', sessionId );
 
-    var msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
+    msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
     messageBar( msgString );
     }
   );
@@ -226,6 +227,7 @@ $( function() {
 $( function() {
   $( '#arMainButton' ).click( function() {
       buildSideMenu( 'augme' );
+
       userContext.participantState = 'focus';
       userContext.modMeState = true;
       userContext.uiState = 'ar';
@@ -254,6 +256,7 @@ $( function() {
 $( function() {
   $( '#vrMainButton' ).click( function() {
       buildSideMenu( 'augme' );
+
       userContext.participantState = 'focus';
       userContext.modMeState = true;
       userContext.uiState = 'vr';
@@ -261,7 +264,7 @@ $( function() {
 
       console.log( 'VR Main Button', userContext.participantState, userContext.mode );
 
-      setPeerUserContext( 'all', 'mode', 'vr' );
+     // setPeerUserContext( 'all', 'mode', 'vr' );
 
       loadAr( userContext.participantState );
 
@@ -274,9 +277,7 @@ $( function() {
 
       // inform all the pees of the mode
 
-      var msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
-      messageBar( msgString );
-
+      msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
       emitMessage( msgString );
 
   //    setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' );
@@ -294,6 +295,8 @@ $( function() {
 
       console.log( 'Sharing AR Session with Peers' );
 
+      // focus the initiator
+
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
@@ -308,8 +311,8 @@ $( function() {
 
         document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
-        var msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
-       messageBar( msgString );
+        msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
+        emitMessage( msgString );
       }
 
     if ( userContext.mode === 'vr' ) {
@@ -324,14 +327,11 @@ $( function() {
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'utility', 'vrClientInit', sessionId );
 
-      var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
-      messageBar( msgString );
-
       // emitArOrientationData();
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
-      var msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
+      msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
        messageBar( msgString );
       }
     }

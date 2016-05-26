@@ -50,10 +50,12 @@ userContext.modMeState = true;
   setPeerUserContext( 'all', 'mode', 'vr');
   setPeerUserContext( 'all', 'participantState', 'peer' );
 
+  userContext.participantState = 'focus';
 
     $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
     } );
+
     for ( button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
@@ -62,6 +64,7 @@ userContext.modMeState = true;
     userContext.mode = 'vr';
     userContext.uistate = 'vr';
     userContext.modMeState = true;
+
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'arMainButton' ).style.visibility = 'visible';
@@ -76,10 +79,6 @@ userContext.modMeState = true;
     var sessionId = socketServer.sessionid;
         socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-// Tell everyone to initialize AR
-
-// var sessionId = socketServer.sessionid;
-//        socketServer.emit( 'utility', 'arClientInit', sessionId );
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
     emitMessage( msgString );
@@ -88,19 +87,26 @@ userContext.modMeState = true;
 
     case 'augme':
 
-    setPeerUserContext( 'all', 'modMeState', false );
+  setPeerUserContext( 'all', 'modMeState', false );
+  setPeerUserContext( 'all', 'mode', 'ar');
+  setPeerUserContext( 'all', 'participantState', 'peer' );
+
+  userContext.participantState = 'focus';
 
    // userContext.modMeState = true;
 
    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
     } );
+
     for ( button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
+
     userContext.participantState = 'focus';
     userContext.mode = 'ar';
     userContext.modMeState = true;
+
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'arMainButton' ).style.visibility = 'visible';
