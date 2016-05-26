@@ -90,7 +90,8 @@ function loadAr( participantState ) {
 
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
-  document.getElementById( 'sticky-ar' ).style.display = 'visible';
+   document.getElementById( 'sticky-ui-container' ).style.zIndex = '50';
+  document.getElementById( 'sticky-ui-container' ).style.display = 'visible';
   setDomPointerEvent( 'canvas0', 'none' );
   setDomPointerEvent( 'arcanvaspane', 'auto' );
 

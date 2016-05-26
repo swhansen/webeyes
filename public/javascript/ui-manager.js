@@ -115,9 +115,9 @@ $( '#sticky-draw' ).click( function() {
 $( function() {
   $( '#sticky-ar' ).click( function() {
 
-    _.each( uiStructure.structure, function( fcn ) {
-       $( fcn.sideBar ).fadeOut( 2 );
-      } );
+  //  _.each( uiStructure.structure, function( fcn ) {
+  //     $( fcn.sideBar ).fadeOut( 2 );
+  //    } );
 
    document.getElementById( 'canvaspane' ).style.zIndex = '10';
    document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
