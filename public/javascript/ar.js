@@ -88,6 +88,12 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
+  document.getElementById( 'canvaspane' ).style.zIndex = '10';
+  document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
+  document.getElementById( 'sticky-ar' ).style.display = 'visible';
+  setDomPointerEvent( 'canvas0', 'none' );
+  setDomPointerEvent( 'arcanvaspane', 'auto' );
+
   console.log ( 'loadAR-userContext', userContext );
 
   var scene, renderer, arContainer;

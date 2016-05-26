@@ -46,25 +46,22 @@ userContext.modMeState = true;
 
   case 'vrme':
 
-  setPeerUserContext( 'all', 'modMeState', false );
-  setPeerUserContext( 'all', 'mode', 'vr');
-  setPeerUserContext( 'all', 'participantState', 'peer' );
+    setPeerUserContext( 'all', 'modMeState', false );
+    setPeerUserContext( 'all', 'mode', 'vr');
+    setPeerUserContext( 'all', 'participantState', 'peer' );
 
-  userContext.modMeState = true;
-
-  userContext.participantState = 'focus';
+    userContext.modMeState = true;
+    userContext.participantState = 'focus';
 
     $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
       uiStructure = data;
     } );
 
+    userContext.uistate = 'vr';
+
     for ( button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
-
-    //userContext.participantState = 'focus';
-    //userContext.mode = 'vr';
-    //userContext.uistate = 'vr';
 
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';

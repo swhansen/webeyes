@@ -240,7 +240,7 @@ $( function() {
       loadAr( userContext.participantState );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
-      document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
+      document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
@@ -269,7 +269,7 @@ $( function() {
       loadAr( userContext.participantState );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
-      document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
+      document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
