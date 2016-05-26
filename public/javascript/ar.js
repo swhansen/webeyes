@@ -490,6 +490,8 @@ function setUpArLayer( participantState ) {
 
 function arConnectionController( participantState ) {
 
+  console.log( 'At arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
+
 //   Set up the camera drivers and connection feed
 //   Based on participantState(focus or peer)
 //    focus - device sensors
@@ -503,7 +505,7 @@ function arConnectionController( participantState ) {
     socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-    console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
+    console.log( 'participantState:', userContext.participantState, 'mode:', userContext.mode );
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
@@ -512,7 +514,7 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-      console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
+      console.log( 'participantState:', userContext.participantState, 'mode:', userContext.mode );
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
@@ -521,7 +523,7 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-      console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
+      console.log( 'participantState:', userContext.participantState, 'mode:', userContext.mode );
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {

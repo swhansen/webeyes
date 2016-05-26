@@ -235,7 +235,7 @@ $( function() {
 
       console.log( 'AR Main Button', userContext.participantState, userContext.mode );
 
-      setPeerUserContext( 'all', 'mode', 'ar' );
+     // setPeerUserContext( 'all', 'mode', 'ar' );
 
       loadAr( userContext.participantState );
 
@@ -297,8 +297,8 @@ $( function() {
 
       // focus the initiator
 
-      var sessionId = socketServer.sessionid;
-          socketServer.emit( 'focus', userContext.rtcId, sessionId );
+    //  var sessionId = socketServer.sessionid;
+    //      socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
       // Tell everyone to initialize
 
@@ -317,10 +317,10 @@ $( function() {
 
     if ( userContext.mode === 'vr' ) {
 
-      console.log( 'Sharing AR Session with Peers' );
+      console.log( 'Sharing VR Session with Peers' );
 
-      var sessionId = socketServer.sessionid;
-          socketServer.emit( 'focus', userContext.rtcId, sessionId );
+     // var sessionId = socketServer.sessionid;
+     //     socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
       // Tell everyone to initialize AR
 

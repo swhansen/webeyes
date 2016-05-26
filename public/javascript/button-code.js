@@ -91,8 +91,6 @@ userContext.modMeState = true;
   setPeerUserContext( 'all', 'mode', 'ar');
   setPeerUserContext( 'all', 'participantState', 'peer' );
 
-  userContext.participantState = 'focus';
-
    // userContext.modMeState = true;
 
    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
