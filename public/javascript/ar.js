@@ -180,6 +180,9 @@ function setUpArLayer( participantState ) {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'arcanvas' );
+  document.getElementById( 'canvaspane' ).style.zIndex = '10';
+      document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
+
   //var mouseVector;
 
   //remove listners, etc
@@ -501,6 +504,8 @@ function setUpArLayer( participantState ) {
 //
 // ... end AR world model
 //
+
+console.log( 'end of AR world Build:', scene, arSelectObjectArray );
 
 function arConnectionController( participantState ) {
 
