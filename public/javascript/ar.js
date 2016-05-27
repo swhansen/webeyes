@@ -100,7 +100,7 @@ function loadAr( participantState ) {
   clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
-   }
+
 
   function receiveArObject( data ) {
 
@@ -924,5 +924,7 @@ $( function() {
    }
 
    }
+ }
+}
 
 }
