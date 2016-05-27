@@ -235,7 +235,7 @@ $( function() {
 
       console.log( 'AR Main Button', userContext.participantState, userContext.mode );
 
-     // setPeerUserContext( 'all', 'mode', 'ar' );
+      setPeerUserContext( 'all', 'mode', 'ar' );
 
       loadAr( userContext.participantState );
 
@@ -264,7 +264,7 @@ $( function() {
 
       console.log( 'VR Main Button', userContext.participantState, userContext.mode );
 
-     // setPeerUserContext( 'all', 'mode', 'vr' );
+      setPeerUserContext( 'all', 'mode', 'vr' );
 
       loadAr( userContext.participantState );
 

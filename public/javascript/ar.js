@@ -187,13 +187,13 @@ function setUpArLayer( participantState ) {
 
   //remove listners, etc
 
-  if ( scene ) { scene = null; }
+//  if ( scene ) { scene = null; }
 
  // if ( renderer ) { renderer = null; }
  // if ( scene ) { scene = null; }
 //
 
-  if ( arSelectObjectArray ) { arSelectObjectArray = []; }
+//  if ( arSelectObjectArray ) { arSelectObjectArray = []; }
 
   var scene, renderer, arContainer;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
