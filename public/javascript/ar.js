@@ -90,7 +90,7 @@ function loadAr( participantState ) {
 
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
-   document.getElementById( 'sticky-ui-container' ).style.zIndex = '50';
+  document.getElementById( 'sticky-ui-container' ).style.zIndex = '50';
   document.getElementById( 'sticky-ui-container' ).style.display = 'visible';
   setDomPointerEvent( 'canvas0', 'none' );
   setDomPointerEvent( 'arcanvaspane', 'auto' );
@@ -181,7 +181,7 @@ function setUpArLayer( participantState ) {
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'arcanvas' );
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
-      document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
+  document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
   //var mouseVector;
 
@@ -214,6 +214,8 @@ function setUpArLayer( participantState ) {
       CANVAS_HEIGHT = 300;
 
   scene = new THREE.Scene();
+
+  console.log( 'At camera setup' );
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
