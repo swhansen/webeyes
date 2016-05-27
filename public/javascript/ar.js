@@ -217,15 +217,11 @@ function setUpArLayer( participantState ) {
 
   console.log( 'At camera setup' );
 
-if ( userContext.mode === 'ar' ) {
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-}
 
-if ( userContext.mode === 'vr' ) {
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-}
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
