@@ -97,13 +97,6 @@ function loadAr( participantState ) {
 
   console.log ( 'loadAR-userContext', userContext );
 
-  if ( scene ) { scene = null; };
-
-  var scene, renderer, arContainer;
-  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
-  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
-  var knot;
-
   clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
@@ -187,7 +180,20 @@ function setUpArLayer( participantState ) {
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'arcanvas' );
-  var mouseVector;
+  //var mouseVector;
+
+  //remove listners, etc
+
+  if ( scene ) { scene = null; }
+  if ( renderer ) { renderer = null; }
+  if ( scene ) { scene = null; }
+
+  if ( arSelectObjectArray ) { arSelectObjectArray = null; }
+
+  var scene, renderer, arContainer;
+  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
+  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
+  var knot;
 
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
