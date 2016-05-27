@@ -88,6 +88,11 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
+   var scene, renderer, arContainer;
+  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
+  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
+  var knot;
+
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
   document.getElementById( 'sticky-ui-container' ).style.zIndex = '50';
@@ -194,11 +199,6 @@ function setUpArLayer( participantState ) {
 //
 
 //  if ( arSelectObjectArray ) { arSelectObjectArray = []; }
-
-  var scene, renderer, arContainer;
-  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
-  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
-  var knot;
 
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
