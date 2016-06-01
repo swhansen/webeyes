@@ -559,7 +559,7 @@ function arConnectionController( participantState ) {
 
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
-  arConnectionController( participantState );
+  //arConnectionController( participantState );
 
   function animateArObjects() {
 
