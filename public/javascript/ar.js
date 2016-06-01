@@ -188,18 +188,6 @@ function setUpArLayer( participantState ) {
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
-  //var mouseVector;
-
-  //remove listners, etc
-
-//  if ( scene ) { scene = null; }
-
- // if ( renderer ) { renderer = null; }
- // if ( scene ) { scene = null; }
-//
-
-//  if ( arSelectObjectArray ) { arSelectObjectArray = []; }
-
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
   ar0.style.width = '100%';
@@ -646,11 +634,10 @@ function arConnectionController( participantState ) {
 
   }
 
-
 function setupArInteractionEvents( participantState ) {
 
 //
-// Establis the user interation with the AR objects
+// Establish the user interation with the AR objects
 //  - set the cmeraDriver based on AR/VR and focus/peer
 //
 
