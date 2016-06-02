@@ -201,6 +201,8 @@ function setUpArLayer( participantState ) {
   var CANVAS_WIDTH = 300,
       CANVAS_HEIGHT = 300;
 
+  if ( arSelectObjectArray ) { arSelectObjectArray = [] };
+
   scene = new THREE.Scene();
 
   console.log( 'At camera setup' );
