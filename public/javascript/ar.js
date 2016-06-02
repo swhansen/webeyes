@@ -213,9 +213,9 @@ function setUpArLayer( participantState ) {
   broadcastDrivenCamera.name = 'sensorDrivenCamera';
 
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  vrDrivenCamera.name = vrDrivenCamera;
+  vrDrivenCamera.name = 'vrDrivenCamera';
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  vrBroadcastDrivenCamera.name = vrBroadcastDrivenCamera;
+  vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
