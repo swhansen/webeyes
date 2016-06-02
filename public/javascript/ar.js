@@ -643,6 +643,9 @@ function setupArInteractionEvents( participantState ) {
 //  - set the cmeraDriver based on AR/VR and focus/peer
 //
 
+      console.log( 'setupInteractionEvents-participantState:', userContext.participantState, 'mode:', userContext.mode );
+
+
 var arCanvas = document.getElementById( 'arcanvaspane' );
 var ar0 = document.getElementById( 'arcanvas' );
 
@@ -691,12 +694,12 @@ $( function() {
       console.log( 'setupArInteractionEvents: vr-mode -> peer' );
     }
 
-    if ( participantState === 'focus' && userContext.mode === 'ar' ) {
+    if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
       cameraDriver = sensorDrivenCamera;
       console.log( 'setupArInteractionEvents: ar-mode -> focus' );
     }
 
-    if ( participantState === 'peer' && userContext.mode === 'ar' ) {
+    if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
          cameraDriver = broadcastDrivenCamera;
          console.log( 'setupArInteractionEvents: ar-mode -> peer' );
     }

@@ -239,7 +239,6 @@ $( function() {
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
 
-
       loadAr( userContext.participantState );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
@@ -301,13 +300,13 @@ $( function() {
       console.log( 'Sharing AR Session with Peers' );
 
 
-      setPeerUserContext( 'all', 'mode', 'ar' );
-      setPeerUserContext( 'all', 'participantState', 'peer' );
+    //  setPeerUserContext( 'all', 'mode', 'ar' );
+    //  setPeerUserContext( 'all', 'participantState', 'peer' );
 
-       userContext.participantState = 'focus';
-      userContext.modMeState = true;
-      userContext.uiState = 'vr';
-      userContext.mode = 'vr';
+   //  userContext.participantState = 'focus';
+   //  userContext.modMeState = true;
+   //  userContext.uiState = 'vr';
+   //  userContext.mode = 'vr';
 
       // focus the initiator
 
