@@ -236,6 +236,9 @@ $( function() {
       console.log( 'AR Main Button', userContext.participantState, userContext.mode );
 
       setPeerUserContext( 'all', 'mode', 'ar' );
+      setPeerUserContext( 'all', 'participantState', 'peer' );
+      userContext.participantState = 'focus';
+
 
       loadAr( userContext.participantState );
 
@@ -265,6 +268,8 @@ $( function() {
       console.log( 'VR Main Button', userContext.participantState, userContext.mode );
 
       setPeerUserContext( 'all', 'mode', 'vr' );
+      setPeerUserContext( 'all', 'participantState', 'peer' );
+      userContext.participantState = 'focus';
 
       loadAr( userContext.participantState );
 
@@ -294,6 +299,15 @@ $( function() {
     if ( userContext.mode === 'ar' ) {
 
       console.log( 'Sharing AR Session with Peers' );
+
+
+      setPeerUserContext( 'all', 'mode', 'ar' );
+      setPeerUserContext( 'all', 'participantState', 'peer' );
+
+       userContext.participantState = 'focus';
+      userContext.modMeState = true;
+      userContext.uiState = 'vr';
+      userContext.mode = 'vr';
 
       // focus the initiator
 
