@@ -201,11 +201,11 @@ function setUpArLayer( participantState ) {
   var CANVAS_WIDTH = 300,
       CANVAS_HEIGHT = 300;
 
-  if ( arSelectObjectArray ) { arSelectObjectArray = [] };
+  if ( arSelectObjectArray ) { arSelectObjectArray = []; }
 
   scene = new THREE.Scene();
 
-  console.log( 'At camera setup' );
+  console.log( 'At camera assignment' );
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   sensorDrivenCamera.name = 'sensorDrivenCamera';
@@ -213,7 +213,9 @@ function setUpArLayer( participantState ) {
   broadcastDrivenCamera.name = 'sensorDrivenCamera';
 
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  vrDrivenCamera.name = vrDrivenCamera;
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  vrBroadcastDrivenCamera.name = vrBroadcastDrivenCamera;
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );

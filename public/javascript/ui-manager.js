@@ -270,7 +270,7 @@ $( function() {
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
 
-      loadAr( userContext.participantState );
+      loadAr( 'focus');
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
       document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
