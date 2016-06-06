@@ -208,9 +208,9 @@ function setUpArLayer( participantState ) {
   console.log( 'At camera assignment' );
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  sensorDrivenCamera.name = 'sensorDrivenCamera';
+  sensorDrivenCamera.name = 'arSensorDrivenCamera';
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  broadcastDrivenCamera.name = 'sensorDrivenCamera';
+  broadcastDrivenCamera.name = 'arBroadcastDrivenCamera';
 
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera.name = 'vrDrivenCamera';
