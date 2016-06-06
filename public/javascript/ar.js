@@ -680,7 +680,7 @@ $( function() {
     socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
-  var cameraDriver = null;
+  var cameraDriver;
   var arShareData = {};
 
   var rect = ar0.getBoundingClientRect();
