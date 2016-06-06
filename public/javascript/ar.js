@@ -88,7 +88,7 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
-   var scene, renderer, arContainer;
+  var scene, renderer, arContainer;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
   var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
   var knot;
@@ -516,6 +516,7 @@ function arConnectionController( participantState ) {
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
+    vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
     socketServer.on( 'arObjectShare', function( data ) {
@@ -525,6 +526,7 @@ function arConnectionController( participantState ) {
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
+      vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
       vrDrivenCamera.lookAt( scene.position );
       connectToVrBroadcast();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -534,6 +536,7 @@ function arConnectionController( participantState ) {
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
+    sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -543,6 +546,7 @@ function arConnectionController( participantState ) {
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
+    broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -557,13 +561,13 @@ function arConnectionController( participantState ) {
 //  - mouse x-y ( VR mode )
 //  - broadcast for all peers
 
-  sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
-
-  broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
-
-  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
-
-  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+//  sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+//
+//  broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+//
+//  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+//
+//  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   //arConnectionController( participantState );
 
@@ -647,7 +651,7 @@ function setupArInteractionEvents( participantState ) {
 //  - set the cmeraDriver based on AR/VR and focus/peer
 //
 
-      console.log( 'setupInteractionEvents-participantState:', userContext.participantState, 'mode:', userContext.mode );
+console.log( 'setupInteractionEvents-participantState:', userContext.participantState, 'mode:', userContext.mode );
 
 
 var arCanvas = document.getElementById( 'arcanvaspane' );
@@ -676,7 +680,7 @@ $( function() {
     socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
-  var cameraDriver;
+  var cameraDriver = null;
   var arShareData = {};
 
   var rect = ar0.getBoundingClientRect();
