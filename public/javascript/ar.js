@@ -17,6 +17,7 @@ var scene, renderer, arContainer;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
   var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
   var knot;
+  var cameraDriver;
 
 function orientationAr( data ) {
 
@@ -554,7 +555,7 @@ function arConnectionController( participantState ) {
       }
 }
 
-// end  arConnectionController
+// end  arConnectionControlle
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator ( ar mode )
@@ -569,7 +570,7 @@ function arConnectionController( participantState ) {
 
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
-  arConnectionController( participantState );
+  //arConnectionController( participantState );
 
   function animateArObjects() {
 
@@ -681,7 +682,7 @@ $( function() {
     socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
-  var cameraDriver;
+  //var cameraDriver;
   var arShareData = {};
 
   var rect = ar0.getBoundingClientRect();
