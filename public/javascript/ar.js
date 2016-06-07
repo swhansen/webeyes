@@ -1,3 +1,4 @@
+
 var arDeviceOrientation = {};
 var arSelectObjectArray = [];
 var isAnimateKnot = false;
@@ -12,6 +13,10 @@ var pivotPoint;
 var lamp;
 var arUserCreatedObject;
 var mixer;
+var scene, renderer, arContainer;
+  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
+  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
+  var knot;
 
 function orientationAr( data ) {
 
@@ -88,10 +93,7 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
-  var scene, renderer, arContainer;
-  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
-  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
-  var knot;
+
 
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
@@ -512,7 +514,7 @@ function arConnectionController( participantState ) {
 //   Based on participantState(focus or peer)
 //    focus - device sensors
 //    peer - broadcast feed sensors
-//    ar - senspr driven
+//    ar - sensor driven
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
