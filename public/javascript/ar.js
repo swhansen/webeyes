@@ -642,9 +642,10 @@ function arConnectionController( participantState ) {
    requestAnimationFrame( connectToBroadcastSensors );
    }
 
- arConnectionController( participantState );
 
   }
+
+ arConnectionController( participantState );
 
 function setupArInteractionEvents( participantState ) {
 
