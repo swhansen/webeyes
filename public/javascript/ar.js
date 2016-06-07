@@ -518,7 +518,6 @@ function arConnectionController( participantState ) {
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
-   // vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
     socketServer.on( 'arObjectShare', function( data ) {
@@ -528,7 +527,6 @@ function arConnectionController( participantState ) {
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
-    //  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
       vrBroadcastDrivenCamera.lookAt( scene.position );
       connectToVrBroadcast();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -538,7 +536,6 @@ function arConnectionController( participantState ) {
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
-  //  sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -548,7 +545,6 @@ function arConnectionController( participantState ) {
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
-  //  broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -557,6 +553,8 @@ function arConnectionController( participantState ) {
       console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
       }
 }
+
+// end  arConnectionController
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator ( ar mode )
@@ -571,7 +569,7 @@ function arConnectionController( participantState ) {
 
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
-  //arConnectionController( participantState );
+  arConnectionController( participantState );
 
   function animateArObjects() {
 
@@ -642,10 +640,11 @@ function arConnectionController( participantState ) {
    requestAnimationFrame( connectToBroadcastSensors );
    }
 
+ arConnectionController( participantState );
 
   }
 
- arConnectionController( participantState );
+  // end setup AR  Layer
 
 function setupArInteractionEvents( participantState ) {
 
