@@ -520,8 +520,9 @@ function arConnectionController( participantState ) {
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
+    cameraDriver = vrDrivenCamera;
     vrDrivenCamera.lookAt( scene.position );
-    requestAnimationFrame( connectToVrController );
+    connectToVrController();
     socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
@@ -529,8 +530,9 @@ function arConnectionController( participantState ) {
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
+      cameraDriver = vrBroadcastDrivenCamera;
       vrBroadcastDrivenCamera.lookAt( scene.position );
-      requestAnimationFrame( connectToVrBroadcast );
+      connectToVrBroadcast();
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
@@ -538,6 +540,7 @@ function arConnectionController( participantState ) {
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
+    cameraDriver = sensorDrivenCamera;
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -547,6 +550,7 @@ function arConnectionController( participantState ) {
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
+    cameraDriver = broadcastDrivenCamera;
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -618,14 +622,14 @@ function arConnectionController( participantState ) {
    vrDrivenCameraControls.update();
    animateArObjects();
    renderer.render( scene, vrDrivenCamera );
-  // requestAnimationFrame( connectToVrController );
+   requestAnimationFrame( connectToVrController );
  }
 
  function connectToVrBroadcast() {
    vrBroadcastCameraControls.update();
    animateArObjects();
    renderer.render( scene, vrBroadcastDrivenCamera );
-  // requestAnimationFrame( connectToVrBroadcast );
+   requestAnimationFrame( connectToVrBroadcast );
  }
 
  function connectToDeviceSensors() {
@@ -646,7 +650,7 @@ function arConnectionController( participantState ) {
 
   }
 
-  // end setup AR  Layer
+  // end setup AR Layer
 
 function setupArInteractionEvents( participantState ) {
 
@@ -695,25 +699,25 @@ $( function() {
 
   projector = new THREE.Projector();
 
-    if ( userContext.mode === 'vr' && userContext.participantState === 'focus' ) {
-      cameraDriver = vrDrivenCamera;
-      console.log( 'set - setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
-    }
+//   if ( userContext.mode === 'vr' && userContext.participantState === 'focus' ) {
+//     cameraDriver = vrDrivenCamera;
+//     console.log( 'set - setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
+//   }
 
-    if ( userContext.mode === 'vr' && userContext.participantState === 'peer' ) {
-      cameraDriver = vrBroadcastDrivenCamera;
-      console.log( ' set -setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
-    }
+//   if ( userContext.mode === 'vr' && userContext.participantState === 'peer' ) {
+//     cameraDriver = vrBroadcastDrivenCamera;
+//     console.log( ' set -setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
+//   }
 
-    if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
-      cameraDriver = sensorDrivenCamera;
-      console.log( 'set - setupArInteractionEvents:',userContext.participantState, 'mode:', userContext.mode );
-    }
+//   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
+//     cameraDriver = sensorDrivenCamera;
+//     console.log( 'set - setupArInteractionEvents:',userContext.participantState, 'mode:', userContext.mode );
+//   }
 
-    if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
-         cameraDriver = broadcastDrivenCamera;
-         console.log( 'set - setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
-    }
+//   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
+//        cameraDriver = broadcastDrivenCamera;
+//        console.log( 'set - setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
+//   }
 
     console.log( 'cameraDriver', cameraDriver );
 
