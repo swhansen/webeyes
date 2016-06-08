@@ -521,7 +521,7 @@ function arConnectionController( participantState ) {
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
     vrDrivenCamera.lookAt( scene.position );
-    connectToVrController();
+    requestAnimationFrame( connectToVrController );
     socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
@@ -530,7 +530,7 @@ function arConnectionController( participantState ) {
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
       vrBroadcastDrivenCamera.lookAt( scene.position );
-      connectToVrBroadcast();
+      requestAnimationFrame( connectToVrBroadcast );
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
@@ -618,14 +618,14 @@ function arConnectionController( participantState ) {
    vrDrivenCameraControls.update();
    animateArObjects();
    renderer.render( scene, vrDrivenCamera );
-   requestAnimationFrame( connectToVrController );
+  // requestAnimationFrame( connectToVrController );
  }
 
  function connectToVrBroadcast() {
    vrBroadcastCameraControls.update();
    animateArObjects();
    renderer.render( scene, vrBroadcastDrivenCamera );
-   requestAnimationFrame( connectToVrBroadcast );
+  // requestAnimationFrame( connectToVrBroadcast );
  }
 
  function connectToDeviceSensors() {
