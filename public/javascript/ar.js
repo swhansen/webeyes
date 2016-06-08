@@ -540,7 +540,7 @@ function arConnectionController( participantState ) {
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
-    cameraDriver = sensorDrivenCamera;
+      cameraDriver = sensorDrivenCamera;
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
       socketServer.on( 'arObjectShare', function( data ) {
@@ -550,7 +550,7 @@ function arConnectionController( participantState ) {
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
-    cameraDriver = broadcastDrivenCamera;
+      cameraDriver = broadcastDrivenCamera;
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
       socketServer.on( 'arObjectShare', function( data ) {
