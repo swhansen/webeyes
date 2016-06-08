@@ -11,13 +11,14 @@ var flyingPig;
 var pigModel;
 var pivotPoint;
 var lamp;
+var knot;
 var arUserCreatedObject;
 var mixer;
 var scene, renderer, arContainer;
-  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
-  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
-  var knot;
-  var cameraDriver;
+var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
+var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
+var projector;
+var cameraDriver;
 
 function orientationAr( data ) {
 
@@ -692,7 +693,7 @@ $( function() {
   var viewWidth = ar0.width;
   var viewHeight = ar0.height;
 
-  var projector = new THREE.Projector();
+  projector = new THREE.Projector();
 
     if ( userContext.mode === 'vr' && userContext.participantState === 'focus' ) {
       cameraDriver = vrDrivenCamera;
