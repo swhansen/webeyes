@@ -149,7 +149,7 @@ function loadAr( participantState ) {
             isAnimateSheep = data.animate;
           }
 
-        if ( data.name === 'swordGuy' ) { isAnimateSwordGuy = data.animate; }
+        if ( data.name === 'swordGuyMesh' ) { isAnimateSwordGuy = data.animate; }
 
         // User Created Objects
 
@@ -603,7 +603,7 @@ function arConnectionController( participantState ) {
     }
 
 // Sword Guy
-    if ( isAnimateSwordGuy === true ) {
+    if ( isAnimateSwordGuy ) {
          mixer.update( dt );
           helper.update();
     }
@@ -919,7 +919,7 @@ $( function() {
        arShareData.operation = 'animateSelectedObject';
        arShareData.name = intersects[0].object.name;
 
-       //animateArObjects();
+       animateArObjects();
 
        emitArObject( arShareData );
      }
