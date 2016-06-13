@@ -347,7 +347,7 @@ function setUpArLayer( participantState ) {
        swordGuyMesh.position.set( x, y - bb.min.y * s, z );
        swordGuyMesh.scale.set( s, s, s );
        swordGuyMesh.rotation.y =  -Math.PI;
-       swordGuyMesh.name = 'swordGuy';
+       swordGuyMesh.name = 'swordGuyMesh';
 
        swordGuyMesh.userData.objectType =  'swordGuyMesh';
        swordGuyMesh.userData.isAnimated = false;
