@@ -906,6 +906,8 @@ $( function() {
           arShareData.rotation = intersects[0].object.rotation;
           arShareData.color = intersects[0].object.material.color;
 
+          animateArObjects();
+
           emitArObject( arShareData );
      }
 
@@ -915,6 +917,8 @@ $( function() {
        arShareData.animate = isAnimateSwordGuy;
        arShareData.operation = 'animateSelectedObject';
        arShareData.name = intersects[0].object.name;
+
+       animateArObjects();
 
        emitArObject( arShareData );
      }
