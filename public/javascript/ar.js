@@ -918,7 +918,7 @@ $( function() {
        arShareData.operation = 'animateSelectedObject';
        arShareData.name = intersects[0].object.name;
 
-       animateArObjects();
+       //animateArObjects();
 
        emitArObject( arShareData );
      }
