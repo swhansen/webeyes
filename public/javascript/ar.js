@@ -911,7 +911,7 @@ $( function() {
           emitArObject( arShareData );
      }
 
-     if ( intersects[0].object.name === 'swordGuy' ) {
+     if ( intersects[0].object.name === 'swordGuyMesh' ) {
        isAnimateSwordGuy = !isAnimateSwordGuy;
 
        arShareData.animate = isAnimateSwordGuy;
