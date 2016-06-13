@@ -95,7 +95,7 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
-
+  $( '#arcanvas' ).click.off;
 
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
@@ -656,7 +656,7 @@ function setupArInteractionEvents( participantState ) {
 
 //
 // Establish the user interation with the AR objects
-//  - set the cmeraDriver based on AR/VR and focus/peer
+//  - set the cameraDriver based on AR/VR and focus/peer
 //
 
 console.log( 'setupInteractionEvents-participantState:', userContext.participantState, 'mode:', userContext.mode );
@@ -673,7 +673,7 @@ arCanvas.style.display = 'visible';
 ar0.style.zIndex = '50';
 arCanvas.style.zIndex = '50';
 
-console.log( 'layers at setupinteraction', getLayersZindexStatus() );
+//console.log( 'layers at setupinteraction', getLayersZindexStatus() );
 
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
