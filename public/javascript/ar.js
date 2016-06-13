@@ -603,7 +603,7 @@ function arConnectionController( participantState ) {
     }
 
 // Sword Guy
-    if ( isAnimateSwordGuy ) {
+    if ( isAnimateSwordGuy === true ) {
          mixer.update( dt );
           helper.update();
     }
