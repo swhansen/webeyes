@@ -851,6 +851,8 @@ $( function() {
          arShareData.arObjectOpacity = selectedObject.material.opacity;
          arShareData.name = selectedObject.name;
 
+         animateArObjects();
+
          emitArObject( arShareData );
          return;
        }
@@ -880,6 +882,8 @@ $( function() {
 
      if ( intersects[0].object.name === 'knot' ) {
          isAnimateKnot = !isAnimateKnot;
+
+         animateArObjects();
          return;
      }
 
