@@ -356,6 +356,7 @@ function setUpArLayer( participantState ) {
        swordGuyMesh.userData.createdBy = 'system';
 
        scene.add( swordGuyMesh );
+       arSelectObjectArray.push( swordGuyMesh );
 
     //   swordGuyMesh.castShadow = true;
     //   swordGuyMesh.receiveShadow = true;
@@ -376,7 +377,6 @@ function setUpArLayer( participantState ) {
        mixer.addAction( new THREE.AnimationAction( clipMorpher ) );
        mixer.addAction( new THREE.AnimationAction( clipBones ) );
 
-       arSelectObjectArray.push( swordGuyMesh );
      }
 
 // hue light control objects
