@@ -826,8 +826,8 @@ $( function() {
      vector.normalize();
      var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
      var intersects = rayCaster.intersectObjects( arSelectObjectArray );
-
      var selectedObject = intersects[0].object ;
+     console.log( 'intersects:', intersects, selectedObject );
 
  // IOT Lights
 
