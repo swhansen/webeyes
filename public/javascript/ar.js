@@ -509,6 +509,8 @@ console.log( 'end of AR world Build:', scene, arSelectObjectArray );
 
 function arConnectionController( participantState ) {
 
+  socket.removeAllListeners( "arObjectShare" );
+
   console.log( 'At arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
 
 //   Set up the camera drivers and connection feed
@@ -903,7 +905,7 @@ $( function() {
           arShareData.rotation = intersects[0].object.rotation;
           arShareData.color = intersects[0].object.material.color;
 
-           animateArObjects();
+          // animateArObjects();
 
           emitArObject( arShareData );
      }
