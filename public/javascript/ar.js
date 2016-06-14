@@ -376,7 +376,6 @@ function setUpArLayer( participantState ) {
        mixer = new THREE.AnimationMixer( swordGuyMesh );
        mixer.addAction( new THREE.AnimationAction( clipMorpher ) );
        mixer.addAction( new THREE.AnimationAction( clipBones ) );
-
      }
 
 // hue light control objects
@@ -560,7 +559,7 @@ function arConnectionController( participantState ) {
       }
 }
 
-// end  arConnectionControlle
+// end  arConnectionController
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator ( ar mode )
@@ -574,8 +573,6 @@ function arConnectionController( participantState ) {
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
-
-  //arConnectionController( participantState );
 
   function animateArObjects() {
 
@@ -603,7 +600,7 @@ function arConnectionController( participantState ) {
     }
 
 // Sword Guy
-    if ( isAnimateSwordGuy ) {
+    if ( isAnimateSwordGuy === true ) {
          mixer.update( dt );
           helper.update();
     }
@@ -687,7 +684,6 @@ $( function() {
     socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
-  //var cameraDriver;
   var arShareData = {};
 
   var rect = ar0.getBoundingClientRect();
@@ -919,7 +915,7 @@ $( function() {
        arShareData.operation = 'animateSelectedObject';
        arShareData.name = intersects[0].object.name;
 
-       animateArObjects();
+       // animateArObjects();
 
        emitArObject( arShareData );
      }

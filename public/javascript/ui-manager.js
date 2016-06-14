@@ -76,7 +76,6 @@ function getLayersZindexStatus() {
 //  setLayersPointerFromState();
 //  console.log( 'pointerStatus:', getLayersPointerStatus() );
 
-
 // //setLayersPointerFromState();
 // setLayerPointerExclusive( 'utilcanvaspane');
 // console.log( 'set to canvas pane - layerPointerState:', layerPointerState );
@@ -239,7 +238,7 @@ $( function() {
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
 
-      loadAr( 'focus');
+      loadAr( 'focus' );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
       document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
@@ -270,7 +269,7 @@ $( function() {
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
 
-      loadAr( 'focus');
+      loadAr( 'focus' );
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
       document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
@@ -296,9 +295,6 @@ $( function() {
 // Focus the AR initiator (modme)
 
     if ( userContext.mode === 'ar' ) {
-
-      console.log( 'Sharing AR Session with Peers' );
-
 
     //  setPeerUserContext( 'all', 'mode', 'ar' );
     //  setPeerUserContext( 'all', 'participantState', 'peer' );
