@@ -185,6 +185,8 @@ function loadAr( participantState ) {
 
 function setUpArLayer( participantState ) {
 
+  scene = null;
+
   var step = 0;
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
