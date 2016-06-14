@@ -53,7 +53,7 @@ userContext.modMeState = true;
     userContext.modMeState = true;
     userContext.participantState = 'focus';
 
-    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
+    $.getJSON( '../menudescriptors/vrMeStructure.json', function( data ) {
       uiStructure = data;
     } );
 

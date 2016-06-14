@@ -70,15 +70,15 @@
             "initState": "none",
             "baseZ": "20"
         },
-        "augme": {
-            "mainButton": "#arMainButton",
+        "vrme": {
+            "mainButton": "#vrMainButton",
             "sideBar": "#aug-ui-container",
             "buttons": [
                 "#shareaug",
                 "#clearaug"
             ],
             "renderElement": "arcanvaspane",
-            "desc": "AR code functions",
+            "desc": "VR code functions",
             "initState": "none",
             "baseZ": "20"
         },
