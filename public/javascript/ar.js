@@ -113,6 +113,8 @@ function loadAr( participantState ) {
 
   function receiveArObject( data ) {
 
+    console.log( 'receiveArObject:', data );
+
     switch ( data.operation ) {
       case 'moveObject':
         var arObject = scene.getObjectByName( data.name );
@@ -164,7 +166,7 @@ function loadAr( participantState ) {
       case  'toggleIot':
         hueSetLightStateXY( data.iotDeviceId, data.isOn, [ 0.5, 0.5 ], 100 );
         arObject = scene.getObjectByName( data.name );
-         arObject.material.opacity = data.arObjectOpacity;
+        arObject.material.opacity = data.arObjectOpacity;
       break;
   }
 }
@@ -511,7 +513,7 @@ console.log( 'end of AR world Build:', scene, arSelectObjectArray );
 
 function arConnectionController( participantState ) {
 
-  socketServer.removeAllListeners( "arObjectShare" );
+  socketServer.removeAllListeners( 'arObjectShare' );
 
   console.log( 'At arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
 
@@ -578,46 +580,46 @@ function arConnectionController( participantState ) {
 
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
- // function animateArObjects() {
-//
- //   var dt = clock.getDelta();
- //   step += dt * 0.5;
-//
- //   sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
- //   sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
-//
- //   knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
-//
- //   if ( isAnimateKnot === true ) {
- //       knot.rotation.y += 0.03;
- //       knot.rotation.z += 0.03;
- //       knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
- //   }
-//
- //   if ( isAnimateSheep === true ) {
- //       sheep.rotation.z += dt * 2;
- //   }
-//
-//// Flying  Pig
- //   if ( flyingPig !== undefined ) {
- //     pivotPoint.rotation.y += dt * 1.0;
- //   }
-//
-//// Sword Guy
- //   if ( isAnimateSwordGuy === true ) {
- //        mixer.update( dt );
- //         helper.update();
- //   }
-//
-//// User Created Objects - as of now only torus
-//
- //   for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
- //       if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
- //             arSelectObjectArray[i].userData.isAnimated === true ) {
- //         arSelectObjectArray[i].rotation.y += dt * 1.0;
- //       }
- //   }
- // }
+  function animateArObjects() {
+
+    var dt = clock.getDelta();
+    step += dt * 0.5;
+
+    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
+    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
+
+    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
+
+    if ( isAnimateKnot === true ) {
+        knot.rotation.y += 0.03;
+        knot.rotation.z += 0.03;
+        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
+    }
+
+    if ( isAnimateSheep === true ) {
+        sheep.rotation.z += dt * 2;
+    }
+
+// Flying  Pig
+    if ( flyingPig !== undefined ) {
+      pivotPoint.rotation.y += dt * 1.0;
+    }
+
+// Sword Guy
+    if ( isAnimateSwordGuy === true ) {
+         mixer.update( dt );
+          helper.update();
+    }
+
+// User Created Objects - as of now only torus
+
+    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
+          arSelectObjectArray[i].rotation.y += dt * 1.0;
+        }
+    }
+  }
 
  function connectToVrController() {
    vrDrivenCameraControls.update();
@@ -814,49 +816,6 @@ $( function() {
 
  function onArSelect( event ) {
 
-
-
-  function animateArObjects() {
-
-    var dt = clock.getDelta();
-    step += dt * 0.5;
-
-    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
-    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
-
-    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
-
-    if ( isAnimateKnot === true ) {
-        knot.rotation.y += 0.03;
-        knot.rotation.z += 0.03;
-        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
-    }
-
-    if ( isAnimateSheep === true ) {
-        sheep.rotation.z += dt * 2;
-    }
-
-// Flying  Pig
-    if ( flyingPig !== undefined ) {
-      pivotPoint.rotation.y += dt * 1.0;
-    }
-
-// Sword Guy
-    if ( isAnimateSwordGuy === true ) {
-         mixer.update( dt );
-          helper.update();
-    }
-
-// User Created Objects - as of now only torus
-
-    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
-        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
-          arSelectObjectArray[i].rotation.y += dt * 1.0;
-        }
-    }
-  }
-
      console.log( 'click:', cameraDriver, event );
 
      event.preventDefault();
@@ -894,7 +853,7 @@ $( function() {
          arShareData.arObjectOpacity = selectedObject.material.opacity;
          arShareData.name = selectedObject.name;
 
-          animateArObjects();
+         // animateArObjects();
 
          emitArObject( arShareData );
          return;
@@ -950,7 +909,7 @@ $( function() {
           arShareData.rotation = intersects[0].object.rotation;
           arShareData.color = intersects[0].object.material.color;
 
-           animateArObjects();
+          // animateArObjects();
 
           emitArObject( arShareData );
      }
@@ -962,7 +921,7 @@ $( function() {
        arShareData.operation = 'animateSelectedObject';
        arShareData.name = intersects[0].object.name;
 
-        animateArObjects();
+       // animateArObjects();
 
        emitArObject( arShareData );
      }
