@@ -509,7 +509,7 @@ console.log( 'end of AR world Build:', scene, arSelectObjectArray );
 
 function arConnectionController( participantState ) {
 
-  socket.removeAllListeners( "arObjectShare" );
+  socketServer.removeAllListeners( "arObjectShare" );
 
   console.log( 'At arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
 
