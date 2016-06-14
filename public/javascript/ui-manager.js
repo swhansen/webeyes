@@ -257,7 +257,7 @@ $( function() {
 
 $( function() {
   $( '#vrMainButton' ).click( function() {
-      buildSideMenu( 'augme' );
+      buildSideMenu( 'vrme' );
 
       userContext.participantState = 'focus';
       userContext.modMeState = true;
