@@ -513,10 +513,6 @@ console.log( 'end of AR world Build:', scene, arSelectObjectArray );
 
 function arConnectionController( participantState ) {
 
-  document.removeEventListener( 'mousemove', onMouseMove, false );
-  document.removeEventListener( 'mouseup', onMouseUp, false );
-  document.removeEventListener( 'mousedown', onMouseDown, false );
-
   socketServer.removeAllListeners( 'arObjectShare' );
 
   console.log( 'At arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
