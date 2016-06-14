@@ -52,6 +52,7 @@ userContext.modMeState = true;
 
     userContext.modMeState = true;
     userContext.participantState = 'focus';
+    //userContext.mode = 'vr';
 
     $.getJSON( '../menudescriptors/vrMeStructure.json', function( data ) {
       uiStructure = data;
@@ -65,7 +66,7 @@ userContext.modMeState = true;
 
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
-    document.getElementById( 'arMainButton' ).style.visibility = 'hidden';
+   // document.getElementById( 'arMainButton' ).style.visibility = 'hidden';
     document.getElementById( 'vrMainButton' ).style.visibility = 'visible';
     document.getElementById( 'sticky-compass' ).style.visibility = 'hidden';
 
