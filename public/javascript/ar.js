@@ -213,7 +213,7 @@ function setUpArLayer( participantState ) {
 
   scene = new THREE.Scene();
 
-  console.log( 'At camera assignment' );
+  console.log( 'entry to setUpArLayer-scene:', scene );
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   sensorDrivenCamera.name = 'arSensorDrivenCamera';
@@ -512,6 +512,10 @@ function setUpArLayer( participantState ) {
 console.log( 'end of AR world Build:', scene, arSelectObjectArray );
 
 function arConnectionController( participantState ) {
+
+  document.removeEventListener( 'mousemove', onMouseMove, false );
+  document.removeEventListener( 'mouseup', onMouseUp, false );
+  document.removeEventListener( 'mousedown', onMouseDown, false );
 
   socketServer.removeAllListeners( 'arObjectShare' );
 

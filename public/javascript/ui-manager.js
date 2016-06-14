@@ -283,8 +283,6 @@ $( function() {
       msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
       emitMessage( msgString );
 
-  //    setPeerUserContext( userContext.rtcId, 'test', 'from-VR-Button' );
-      console.log( 'layers at vrmainButton', getLayersZindexStatus() );
     }
   );
 } );
@@ -295,19 +293,6 @@ $( function() {
 // Focus the AR initiator (modme)
 
     if ( userContext.mode === 'ar' ) {
-
-    //  setPeerUserContext( 'all', 'mode', 'ar' );
-    //  setPeerUserContext( 'all', 'participantState', 'peer' );
-
-   //  userContext.participantState = 'focus';
-   //  userContext.modMeState = true;
-   //  userContext.uiState = 'vr';
-   //  userContext.mode = 'vr';
-
-      // focus the initiator
-
-    //  var sessionId = socketServer.sessionid;
-    //      socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
       // Tell everyone to initialize
 
@@ -328,15 +313,10 @@ $( function() {
 
       console.log( 'Sharing VR Session with Peers' );
 
-     // var sessionId = socketServer.sessionid;
-     //     socketServer.emit( 'focus', userContext.rtcId, sessionId );
-
       // Tell everyone to initialize AR
 
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'utility', 'vrClientInit', sessionId );
-
-      // emitArOrientationData();
 
       document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
