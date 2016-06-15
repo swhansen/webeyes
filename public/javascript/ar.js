@@ -523,13 +523,7 @@ function arConnectionController( participantState ) {
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
-
-  document.removeEventListener( 'mousemove', onMouseMove, false );
-  document.removeEventListener( 'mouseup', onMouseUp, false );
-  document.removeEventListener( 'mousedown', onMouseDown, false );
-
-
-
+    vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
     cameraDriver = vrDrivenCamera;
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
@@ -540,6 +534,7 @@ function arConnectionController( participantState ) {
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
+      vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
       cameraDriver = vrBroadcastDrivenCamera;
       vrBroadcastDrivenCamera.lookAt( scene.position );
       connectToVrBroadcast();
@@ -550,6 +545,7 @@ function arConnectionController( participantState ) {
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
+    sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
       cameraDriver = sensorDrivenCamera;
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
@@ -560,6 +556,7 @@ function arConnectionController( participantState ) {
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
+    vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
       cameraDriver = broadcastDrivenCamera;
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
@@ -577,13 +574,13 @@ function arConnectionController( participantState ) {
 //  - mouse x-y ( VR mode )
 //  - broadcast for all peers
 
-  sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+//sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
 
-  broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+//broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+//vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
-  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+//vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   function animateArObjects() {
 
