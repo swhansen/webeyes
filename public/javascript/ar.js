@@ -224,6 +224,11 @@ function setUpArLayer( participantState ) {
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
 
+ sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+ broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+ vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+ vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
   renderer.setClearColor( 0x000000, 0 );
@@ -524,7 +529,6 @@ function arConnectionController( participantState ) {
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
-//    vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
     cameraDriver = vrDrivenCamera;
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
@@ -535,7 +539,6 @@ function arConnectionController( participantState ) {
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
- //     vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
       cameraDriver = vrBroadcastDrivenCamera;
       vrBroadcastDrivenCamera.lookAt( scene.position );
       connectToVrBroadcast();
@@ -546,7 +549,6 @@ function arConnectionController( participantState ) {
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
- //   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
       cameraDriver = sensorDrivenCamera;
       sensorDrivenCamera.lookAt( scene.position );
       connectToDeviceSensors();
@@ -557,7 +559,6 @@ function arConnectionController( participantState ) {
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
-  //  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
       cameraDriver = broadcastDrivenCamera;
       broadcastDrivenCamera.lookAt( scene.position );
       connectToBroadcastSensors();
@@ -575,10 +576,10 @@ function arConnectionController( participantState ) {
 //  - mouse x-y ( VR mode )
 //  - broadcast for all peers
 
-sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
-broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
-vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
-vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+// sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+// broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+// vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+// vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   function animateArObjects() {
 
