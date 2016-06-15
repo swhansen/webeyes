@@ -24,6 +24,9 @@ socketServer.on( 'leapSphere', function( data ) {
   leapFull.style.zIndex = 60;
   leapPane.style.zIndex = 60;
 
+  moveLayertoTop( 'leappane' );
+  moveLayertoTop( 'leapfull' );
+
   leapFull.addEventListener( 'mousedown', evCanvas, false );
   leapFull.addEventListener( 'mousemove', evCanvas, false );
   leapFull.addEventListener( 'mouseup', evCanvas, false );
