@@ -27,6 +27,8 @@ socketServer.on( 'leapSphere', function( data ) {
   moveLayertoTop( 'leappane' );
   moveLayertoTop( 'leapfull' );
 
+  console.log( 'leap-peer-hand', getLayersZindexStatus() );
+
   leapFull.addEventListener( 'mousedown', evCanvas, false );
   leapFull.addEventListener( 'mousemove', evCanvas, false );
   leapFull.addEventListener( 'mouseup', evCanvas, false );
