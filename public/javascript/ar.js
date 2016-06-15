@@ -14,11 +14,11 @@ var lamp;
 var knot;
 var arUserCreatedObject;
 var mixer;
-var scene, renderer, arContainer;
-var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
-var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
-var projector;
-var cameraDriver;
+// var scene, renderer, arContainer;
+// var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
+// var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
+// var projector;
+// var cameraDriver;
 
 function orientationAr( data ) {
 
@@ -94,6 +94,12 @@ function removeUserCreatedArObjects() {
 //
 
 function loadAr( participantState ) {
+
+ var scene, renderer, arContainer;
+ var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
+ var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
+ var projector;
+ var cameraDriver;
 
   $( '#arcanvas' ).click.off;
 
@@ -224,10 +230,15 @@ function setUpArLayer( participantState ) {
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
 
- sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
- broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
- vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
- vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+// Attach the cameras to orientation provider
+//  - sensors for a mobile initiator ( ar mode )
+//  - mouse x-y ( VR mode )
+//  - broadcast for all peers
+
+  sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+  broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
