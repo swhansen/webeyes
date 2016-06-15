@@ -100,6 +100,9 @@ function loadAr( participantState ) {
  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
  var projector;
  var cameraDriver;
+  isAnimateKnot = false;
+  isAnimateSheep = false;
+  isAnimateSwordGuy = false;
 
   $( '#arcanvas' ).click.off;
 
