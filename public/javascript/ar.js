@@ -104,8 +104,6 @@ function loadAr( participantState ) {
   setDomPointerEvent( 'canvas0', 'none' );
   setDomPointerEvent( 'arcanvaspane', 'auto' );
 
-  console.log ( 'loadAR-userContext', userContext );
-
   clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
@@ -676,8 +674,6 @@ arCanvas.style.display = 'visible';
 ar0.style.zIndex = '50';
 arCanvas.style.zIndex = '50';
 
-//console.log( 'layers at setupinteraction', getLayersZindexStatus() );
-
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
       onArSelect( e );
@@ -700,28 +696,6 @@ $( function() {
   var viewHeight = ar0.height;
 
   projector = new THREE.Projector();
-
-//   if ( userContext.mode === 'vr' && userContext.participantState === 'focus' ) {
-//     cameraDriver = vrDrivenCamera;
-//     console.log( 'set - setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
-//   }
-
-//   if ( userContext.mode === 'vr' && userContext.participantState === 'peer' ) {
-//     cameraDriver = vrBroadcastDrivenCamera;
-//     console.log( ' set -setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
-//   }
-
-//   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
-//     cameraDriver = sensorDrivenCamera;
-//     console.log( 'set - setupArInteractionEvents:',userContext.participantState, 'mode:', userContext.mode );
-//   }
-
-//   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
-//        cameraDriver = broadcastDrivenCamera;
-//        console.log( 'set - setupArInteractionEvents:', userContext.participantState, 'mode:', userContext.mode );
-//   }
-
-    console.log( 'cameraDriver', cameraDriver );
 
   function toggleArAnimation( arObject ) {
     if ( arObject.userData.isAnimated === false ) {
@@ -880,7 +854,7 @@ $( function() {
          return;
        }
 
-       // Special Cases - Hardwired
+    // Special Cases - Hardwired
 
      if ( intersects[0].object.name === 'knot' ) {
          isAnimateKnot = !isAnimateKnot;
@@ -892,8 +866,6 @@ $( function() {
 
      if ( intersects[0].object.name === 'sheep' ) {
         isAnimateSheep = !isAnimateSheep;
-
-     // only change the color when animation is stopped
 
         if ( !isAnimateSheep ) {
          intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );

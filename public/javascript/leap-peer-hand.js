@@ -21,7 +21,7 @@ socketServer.on( 'leapSphere', function( data ) {
  leapFull.style.visibility = 'visible';
  leapPane.style.visibility = 'visible';
 
-  leapFull.style.zIndex = 10;
+  leapFull.style.zIndex = '60';
 
   leapFull.addEventListener( 'mousedown', evCanvas, false );
   leapFull.addEventListener( 'mousemove', evCanvas, false );
