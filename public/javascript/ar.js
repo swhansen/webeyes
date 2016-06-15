@@ -523,6 +523,13 @@ function arConnectionController( participantState ) {
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
+
+  document.removeEventListener( 'mousemove', onMouseMove, false );
+  document.removeEventListener( 'mouseup', onMouseUp, false );
+  document.removeEventListener( 'mousedown', onMouseDown, false );
+
+
+
     cameraDriver = vrDrivenCamera;
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
