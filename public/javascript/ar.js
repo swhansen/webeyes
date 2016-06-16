@@ -242,7 +242,7 @@ function setUpArLayer( participantState ) {
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
 
-if ( typeof vrDrivenCameraControls === "undefined" )  {
+if ( typeof vrBroadcastCameraControls === "undefined" )  {
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
