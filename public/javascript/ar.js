@@ -228,8 +228,8 @@ function setUpArLayer( participantState ) {
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera.name = 'arBroadcastDrivenCamera';
 
-  vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  vrDrivenCamera.name = 'vrDrivenCamera';
+  //vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  //vrDrivenCamera.name = 'vrDrivenCamera';
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
 
@@ -242,8 +242,12 @@ function setUpArLayer( participantState ) {
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
 if ( typeof vrDrivenCameraControls === "undefined" )  {
+  vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  vrDrivenCamera.name = 'vrDrivenCamera';
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+
  // vrDrivenCameraControls.disconnect();
+
   vrDrivenCameraControls.connect();
 }
 
