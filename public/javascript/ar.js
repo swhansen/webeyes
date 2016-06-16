@@ -230,8 +230,8 @@ function setUpArLayer( participantState ) {
 
   //vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   //vrDrivenCamera.name = 'vrDrivenCamera';
-  vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
+  //vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  //vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
 
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator ( ar mode )
@@ -240,6 +240,14 @@ function setUpArLayer( participantState ) {
 
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
+
+
+if ( typeof vrDrivenCameraControls === "undefined" )  {
+  vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
+  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+}
+
 
 if ( typeof vrDrivenCameraControls === "undefined" )  {
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
@@ -251,7 +259,7 @@ if ( typeof vrDrivenCameraControls === "undefined" )  {
   vrDrivenCameraControls.connect();
 }
 
-  vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
+ // vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );
