@@ -241,6 +241,9 @@ function setUpArLayer( participantState ) {
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+
+vrDrivenCameraControls.connect();
+
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
