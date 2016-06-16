@@ -81,9 +81,9 @@ this.disconnect = function() {
     var ar0 = document.getElementById( 'arcanvas' );
     if ( arCanvas.removeEventListener ) {
     console.log( 'disconnect MouseControls' );
-    arCanvas.removeEventListener( 'mousemove', onMouseMove, false );
-    arCanvas.removeEventListener( 'mouseup', onMouseUp, false );
-    arCanvas.removeEventListener( 'mousedown', onMouseDown, false );
+    arCanvas.removeEventListener( 'mousemove', onMouseMove );
+    arCanvas.removeEventListener( 'mouseup', onMouseUp );
+    arCanvas.removeEventListener( 'mousedown', onMouseDown );
   }
 };
 
