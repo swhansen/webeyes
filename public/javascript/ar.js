@@ -242,6 +242,7 @@ function setUpArLayer( participantState ) {
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
 
+  vrDrivenCameraControls.disconnect();
   vrDrivenCameraControls.connect();
 
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
