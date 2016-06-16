@@ -68,18 +68,18 @@ WEBEYES.MouseControls = function( object ) {
     var arCanvas = document.getElementById( 'arcanvaspane' );
     var ar0 = document.getElementById( 'arcanvas' );
 
-    ar0.addEventListener( 'mousemove', onMouseMove, false );
-    ar0.addEventListener( 'mouseup', onMouseUp, false );
-    ar0.addEventListener( 'mousedown', onMouseDown, false );
+    arCanvas.addEventListener( 'mousemove', onMouseMove, false );
+    arCanvas.addEventListener( 'mouseup', onMouseUp, false );
+    arCanvas.addEventListener( 'mousedown', onMouseDown, false );
 };
 
 this.disconnect = function() {
     var arCanvas = document.getElementById( 'arcanvaspane' );
     var ar0 = document.getElementById( 'arcanvas' );
 
-    ar0.removeEventListener( 'mousemove', onMouseMove, false );
-    ar0.removeEventListener( 'mouseup', onMouseUp, false );
-    ar0.removeEventListener( 'mousedown', onMouseDown, false );
+    arCanvas.removeEventListener( 'mousemove', onMouseMove, false );
+    arCanvas.removeEventListener( 'mouseup', onMouseUp, false );
+    arCanvas.removeEventListener( 'mousedown', onMouseDown, false );
 };
 
 };
