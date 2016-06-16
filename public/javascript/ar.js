@@ -241,7 +241,7 @@ function setUpArLayer( participantState ) {
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-if ( !vrDrivenCameraControls )  {
+if ( typeof vrDrivenCameraControls === "undefined" )  {
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
  // vrDrivenCameraControls.disconnect();
   vrDrivenCameraControls.connect();
