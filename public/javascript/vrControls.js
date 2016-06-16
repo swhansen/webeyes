@@ -65,6 +65,8 @@ WEBEYES.MouseControls = function( object ) {
   };
 
   this.connect = function() {
+
+    console.log( 'connect MouseControls' );
     var arCanvas = document.getElementById( 'arcanvaspane' );
     var ar0 = document.getElementById( 'arcanvas' );
 
@@ -75,13 +77,14 @@ WEBEYES.MouseControls = function( object ) {
 
 this.disconnect = function() {
 
-  console.log( 'disconnect MouseControls' );
     var arCanvas = document.getElementById( 'arcanvaspane' );
     var ar0 = document.getElementById( 'arcanvas' );
-
+    if ( arCanvas.removeEventListener ) {
+    console.log( 'disconnect MouseControls' );
     arCanvas.removeEventListener( 'mousemove', onMouseMove, false );
     arCanvas.removeEventListener( 'mouseup', onMouseUp, false );
     arCanvas.removeEventListener( 'mousedown', onMouseDown, false );
+  }
 };
 
 };
