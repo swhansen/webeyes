@@ -107,7 +107,6 @@ function loadAr( participantState ) {
   document.getElementById( 'sticky-ui-container' ).style.display = 'visible';
   setDomPointerEvent( 'canvas0', 'none' );
   setDomPointerEvent( 'arcanvaspane', 'auto' );
-  clock.stop();
   clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
@@ -593,7 +592,6 @@ function arConnectionController( participantState ) {
 
     var dt = clock.getDelta();
     step += dt;
-
 
     var foo = clock.getElapsedTime() - clock.startTime;
 
