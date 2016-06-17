@@ -529,13 +529,9 @@ if ( typeof vrDrivenCameraControls === "undefined" )  {
 // ... end AR world model
 //
 
-console.log( 'end of AR world Build:', scene, arSelectObjectArray );
-
 function arConnectionController( participantState ) {
 
   socketServer.removeAllListeners( 'arObjectShare' );
-
-  console.log( 'At arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
 
 //   Set up the camera drivers and connection feed
 //   Based on participantState(focus or peer)
@@ -551,7 +547,6 @@ function arConnectionController( participantState ) {
     socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-    console.log( 'participantState:', userContext.participantState, 'mode:', userContext.mode );
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
@@ -561,7 +556,6 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-      console.log( 'participantState:', userContext.participantState, 'mode:', userContext.mode );
     }
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
@@ -571,7 +565,6 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
       } );
-      console.log( 'participantState:', userContext.participantState, 'mode:', userContext.mode );
       }
 
   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
@@ -581,7 +574,6 @@ function arConnectionController( participantState ) {
       socketServer.on( 'arObjectShare', function( data ) {
            receiveArObject( data );
         } );
-      console.log( 'arConnectionController-participantState:', userContext.participantState, 'mode:', userContext.mode );
       }
 }
 
@@ -603,17 +595,19 @@ function arConnectionController( participantState ) {
     step += dt;
 
 
-    //var foo = ( clock.elapsedTime - clock.oldTime ) * 1000;
+    var foo = clock.startTime - clock.getElapsedTime;
 
-    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
-    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
-    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
+
+    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
+    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
+
+    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( foo ) ) );
 
     if ( isAnimateKnot === true ) {
         knot.rotation.y += 0.03;
         knot.rotation.z += 0.03;
-        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
+        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( foo ) ) );
     }
 
     if ( isAnimateSheep === true ) {
@@ -681,8 +675,6 @@ function setupArInteractionEvents( participantState ) {
 // Establish the user interation with the AR objects
 //  - set the cameraDriver based on AR/VR and focus/peer
 //
-
-console.log( 'setupInteractionEvents-participantState:', userContext.participantState, 'mode:', userContext.mode );
 
 var arCanvas = document.getElementById( 'arcanvaspane' );
 var ar0 = document.getElementById( 'arcanvas' );
@@ -813,8 +805,6 @@ $( function() {
 // Select an object
 
  function onArSelect( event ) {
-
-     console.log( 'click:', cameraDriver, event );
 
      event.preventDefault();
 
