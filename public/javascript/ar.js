@@ -107,6 +107,7 @@ function loadAr( participantState ) {
   document.getElementById( 'sticky-ui-container' ).style.display = 'visible';
   setDomPointerEvent( 'canvas0', 'none' );
   setDomPointerEvent( 'arcanvaspane', 'auto' );
+
   clock.start();
   setUpArLayer( participantState );
   setupArInteractionEvents( participantState );
@@ -593,18 +594,18 @@ function arConnectionController( participantState ) {
     var dt = clock.getDelta();
     step += dt;
 
-    var foo = clock.getElapsedTime() - clock.startTime;
 
+    //var foo = ( clock.elapsedTime - clock.oldTime ) * 1000;
 
-    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
-    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
+    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
+    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
-    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( foo ) ) );
+    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
 
     if ( isAnimateKnot === true ) {
         knot.rotation.y += 0.03;
         knot.rotation.z += 0.03;
-        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( foo ) ) );
+        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
 
     if ( isAnimateSheep === true ) {
@@ -802,6 +803,8 @@ $( function() {
 // Select an object
 
  function onArSelect( event ) {
+
+     console.log( 'click:', cameraDriver, event );
 
      event.preventDefault();
 
