@@ -603,7 +603,7 @@ function arConnectionController( participantState ) {
     step += dt;
 
 
-    var foo = ( clock.elapsedTime - clock.oldTime ) * 50;
+    var foo = ( clock.elapsedTime - clock.oldTime ) * 1000;
 
     sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
     sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
