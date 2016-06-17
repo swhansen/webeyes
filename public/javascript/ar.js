@@ -365,17 +365,17 @@ function arConnectionController( participantState ) {
   function animateArObjects() {
 
     var dt = clock.getDelta();
-    step += dt * 0.5;
+    step += dt;
 
-    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( += dt ) ) ) ;
-    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( += dt ) ) );
+    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
+    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
 
-    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( += dt ) ) );
+    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( step ) ) );
 
     if ( isAnimateKnot === true ) {
         knot.rotation.y += 0.03;
         knot.rotation.z += 0.03;
-        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( += dt ) ) );
+        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( step ) ) );
     }
 
     if ( isAnimateSheep === true ) {
