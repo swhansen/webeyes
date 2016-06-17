@@ -600,7 +600,7 @@ function arConnectionController( participantState ) {
   function animateArObjects() {
 
     var dt = clock.getDelta();
-    step += dt * 0.5;
+    step += dt;
 
     sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( step ) ) ) ;
     sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( step ) ) );
