@@ -80,7 +80,13 @@
             "renderElement": "arcanvaspane",
             "desc": "VR code functions",
             "initState": "none",
-            "baseZ": "20"
+            "baseZ": "20",
+            "events": [
+                "click",
+                "mousedown",
+                "mouseup",
+                "mousemove"
+            ]
         },
         "leap": {
             "mainButton": "#leapButton",
