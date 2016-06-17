@@ -248,14 +248,10 @@ if ( typeof vrBroadcastCameraControls === "undefined" )  {
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 }
 
-
 if ( typeof vrDrivenCameraControls === "undefined" )  {
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera.name = 'vrDrivenCamera';
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
-
- // vrDrivenCameraControls.disconnect();
-
   vrDrivenCameraControls.connect();
 }
 
@@ -708,6 +704,9 @@ arCanvas.style.display = 'visible';
 
 ar0.style.zIndex = '50';
 arCanvas.style.zIndex = '50';
+
+
+$("#arcanvas").unbind('click');
 
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
