@@ -525,9 +525,7 @@ if ( typeof vrDrivenCameraControls === "undefined" )  {
 //box.position.set( 2.0, 0.0, 0.1 );
 //scene.add( box );
 
-//
 // ... end AR world model
-//
 
 function arConnectionController( participantState ) {
 
