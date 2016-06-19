@@ -34,8 +34,6 @@ var orientation = scope.orientation;
 
     socketServer.on( 'vrOrientation', function( vrBroadcastData ) {
       scope.orientation = vrBroadcastData;
-      console.log( 'vr orientation broadcast recieve:', scope.orientation );
-
 } );
     scope.enabled = true;
 

@@ -12,7 +12,7 @@
  * W3C Device Orientation control (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
  */
 
-WEBEYES.BroadcastOrientationControls = function ( object ) {
+WEBEYES.BroadcastOrientationControls = function( object ) {
 
   var scope = this;
 
@@ -24,13 +24,13 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
   this.deviceOrientation = {};
   this.screenOrientation = 0;
 
-  var onDeviceOrientationChangeEvent = function ( event ) {
+  var onDeviceOrientationChangeEvent = function( event ) {
 
     scope.deviceOrientation = event;
 
   };
 
-  var onScreenOrientationChangeEvent = function () {
+  var onScreenOrientationChangeEvent = function() {
 
     scope.screenOrientation = window.orientation || 0;
 
@@ -68,8 +68,6 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
       scope.deviceOrientation = arBroadcastData;
-    //  console.log( 'arDeviceOrientation broadcast recieve:', arBroadcastData );
-
 });
     scope.enabled = true;
 
@@ -84,7 +82,7 @@ WEBEYES.BroadcastOrientationControls = function ( object ) {
 
   };
 
-  this.update = function () {
+  this.update = function() {
 
     if ( scope.enabled === false ) return;
 

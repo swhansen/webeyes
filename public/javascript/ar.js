@@ -214,15 +214,15 @@ function setUpArLayer( participantState ) {
 
   scene = new THREE.Scene();
 
-  sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  sensorDrivenCamera.name = 'arSensorDrivenCamera';
-  broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
-  broadcastDrivenCamera.name = 'arBroadcastDrivenCamera';
-
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator ( ar mode )
 //  - mouse x-y ( VR mode )
 //  - broadcast for all peers
+
+  sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  sensorDrivenCamera.name = 'arSensorDrivenCamera';
+  broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+  broadcastDrivenCamera.name = 'arBroadcastDrivenCamera';
 
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
@@ -230,20 +230,18 @@ function setUpArLayer( participantState ) {
 
 // Fix for re-entry to VR mode.
 
-if ( typeof vrBroadcastCameraControls === "undefined" )  {
+if ( typeof vrBroadcastCameraControls === "undefined" ) {
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 }
 
-if ( typeof vrDrivenCameraControls === "undefined" )  {
+if ( typeof vrDrivenCameraControls === "undefined" ) {
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera.name = 'vrDrivenCamera';
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
   vrDrivenCameraControls.connect();
 }
-
- // vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
   renderer.setSize( box0Width, box0Width );

@@ -81,6 +81,10 @@ this.disconnect = function() {
     arCanvas.removeEventListener( 'mousemove', onMouseMove );
     arCanvas.removeEventListener( 'mouseup', onMouseUp );
     arCanvas.removeEventListener( 'mousedown', onMouseDown );
+
+    arCanvas.addEventListener( 'touchstart', onMouseDown, false );
+    arCanvas.addEventListener( 'touchmove', onMouseMove, false );
+    arCanvas.addEventListener( 'touchend', onMouseEnd, false );
   }
 };
 

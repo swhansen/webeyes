@@ -232,8 +232,6 @@ $( function() {
       userContext.uiState = 'ar';
       userContext.mode = 'ar';
 
-      console.log( 'AR Main Button', userContext.participantState, userContext.mode );
-
       setPeerUserContext( 'all', 'mode', 'ar' );
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
@@ -248,8 +246,6 @@ $( function() {
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
       // inform all the pees of the mode
-
-      console.log( 'layers at armainButton', getLayersZindexStatus() );
     }
   );
 } );
@@ -262,8 +258,6 @@ $( function() {
       userContext.modMeState = true;
       userContext.uiState = 'vr';
       userContext.mode = 'vr';
-
-      console.log( 'VR Main Button', userContext.participantState, userContext.mode );
 
       setPeerUserContext( 'all', 'mode', 'vr' );
       setPeerUserContext( 'all', 'participantState', 'peer' );
@@ -310,8 +304,6 @@ $( function() {
       }
 
     if ( userContext.mode === 'vr' ) {
-
-      console.log( 'Sharing VR Session with Peers' );
 
       // Tell everyone to initialize AR
 
