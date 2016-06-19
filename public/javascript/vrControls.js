@@ -74,7 +74,7 @@ WEBEYES.MouseControls = function( object ) {
 
     arCanvas.addEventListener( 'touchstart', onMouseDown, false );
     arCanvas.addEventListener( 'touchmove', onMouseMove, false );
-    arCanvas.addEventListener( 'touchend', onMouseEnd, false );
+    arCanvas.addEventListener( 'touchend', onMouseUp, false );
 };
 
 this.disconnect = function() {
