@@ -188,7 +188,7 @@ function loadAr( participantState ) {
 function setUpArLayer( participantState ) {
 
   scene = null;
-  renderer = null;
+  //renderer = null;
 
   var step = 0;
 
