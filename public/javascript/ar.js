@@ -669,8 +669,8 @@ function setupArInteractionEvents( participantState ) {
 //  - set the cameraDriver based on AR/VR and focus/peer
 //
 
-//var arCanvas = document.getElementById( 'arcanvaspane' );
-//var ar0 = document.getElementById( 'arcanvas' );
+var arCanvas = document.getElementById( 'arcanvaspane' );
+var ar0 = document.getElementById( 'arcanvas' );
 
 setDomPointerEvent( 'arcanvas', 'auto' );
 setDomPointerEvent( 'arcanvaspane', 'auto' );
