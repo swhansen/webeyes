@@ -701,8 +701,8 @@ $( function() {
   offsetX = rect.left;
   offsetY = rect.top;
 
-  var viewWidth = ar0.width;
-  var viewHeight = ar0.height;
+  var viewWidth = ar0.offsetWidth;;
+  var viewHeight = ar0.offsetHeight;
 
   projector = new THREE.Projector();
 
