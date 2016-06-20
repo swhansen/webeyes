@@ -19,8 +19,8 @@ function initUtil() {
   utilCanvas.width = utilCanvas.offsetWidth;
   utilCanvas.height = utilCanvas.offsetHeight;
 
-  box0Height = document.getElementById('box0').offsetHeight;
-  box0Width = document.getElementById('box0').offsetWidth;
+  box0Height = document.getElementById('box0').innerHeight;
+  box0Width = document.getElementById('box0').innerWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
 }

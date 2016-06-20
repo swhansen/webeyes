@@ -227,8 +227,7 @@ function setUpArLayer( participantState ) {
   sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
-
-// Fix for re-entry to VR mode.
+// Fix for re-entry to VR mode to prevent multipe handlers, etc
 
 if ( typeof vrBroadcastCameraControls === 'undefined' ) {
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
