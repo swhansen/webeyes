@@ -56,8 +56,8 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
       socketServer.emit( 'leapSphere', data, sessionId );
     }
 
-   //   controller.on( 'beforeFrameCreated', function( frameData ) {
-   //       emitLeap( frameData ); } );
+      controller.on( 'beforeFrameCreated', function( frameData ) {
+          emitLeap( frameData ); } );
 
     function emitIOT( data ) {
         var sessionId = socketServer.sessionid;
@@ -208,7 +208,7 @@ function updatePeerSphere( data ) {
 
 function onHandFound() {
 
-// reset on hand re-entry
+//// reset on hand re-entry
 
  handState.inChooseState = false;  handState.iotSelectEligible = false;
 }
