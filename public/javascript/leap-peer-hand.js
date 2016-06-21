@@ -74,7 +74,7 @@ function evCanvas( ev ) {
     camera.position.set( 0, 500, 500 );
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.noRotate = true;
+    controls.enableRotate = true;
     controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
@@ -339,7 +339,7 @@ function ThreeToScreenPosition( obj, camera ) {
 // ------------------------------------------------------------------------------
   socketServer.on( 'leapShare', function( data ) {
     frame = JSON.parse( data );
-    animateTrackingData( data );
+  //  animateTrackingData( data );
     leapAnimate( frame );
     } );
 
