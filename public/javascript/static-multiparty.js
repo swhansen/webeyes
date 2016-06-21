@@ -19,6 +19,8 @@ socketServer = io.connect( '/' );
 
 var uiStructure = {};
 
+var leapPeerHandAnimate = false;
+
 // Container for User Context
 
 var userContext = {

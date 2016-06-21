@@ -42,8 +42,9 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
     var renderer, scene, camera, controls;
 
-    var controller = Leap.loop( { enableGesture:true, background: false },
+    var controller = Leap.loop( { enableGesture:true, background: false, loopWhileDisconnected: false },
        leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); });
+
 
     function emitLeap( data ) {
       var sessionId = socketServer.sessionid;
@@ -206,6 +207,9 @@ function updatePeerSphere( data ) {
 }
 
 function onHandFound() {
+
+// reset on hand re-entry
+
  handState.inChooseState = false;  handState.iotSelectEligible = false;
 }
 

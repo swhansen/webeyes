@@ -1,7 +1,7 @@
 // Implements peer side Leap hand interaction
-//  - listens to  leapShare ( Leap frame data JSON
+//  - listens to  leapShare ( Leap frame data JSON )
 //  - listens to leapSphere for leap hand sphere
-//  - emits peerSphere to leapFocus for peer IOT  change
+//  - emits peerSphere to leapFocus for peer IOT  position and state change
 
 function initLeapPeerHand() {
 
@@ -120,9 +120,6 @@ function arObjMover() {
       peerSelected = true;
       scene.remove( handSphere );
       scene.add( peerSphere );
-
-//var mouseSphereNormX = ec._x / box0Width;
-//var mouseSphereNormY = ec._x / box0Width;
 
       var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
