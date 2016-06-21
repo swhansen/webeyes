@@ -308,9 +308,9 @@ function ThreeToScreenPosition( obj, camera ) {
 //  controls.update();
 // }
 
-  function leapAnimate( data ) {
+  function leapAnimate( frame ) {
 
-    var frame = new Leap.Frame( data );
+    var frame = new Leap.Frame( frame );
     var countBones = 0;
     var countArms = 0;
 
@@ -332,8 +332,6 @@ function ThreeToScreenPosition( obj, camera ) {
       updateMesh( arm, armMesh );
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
     }
-    updatePeerSphere( data );
-    updateHandSphere( data );
     renderer.render( scene, camera );
     controls.update();
   }
