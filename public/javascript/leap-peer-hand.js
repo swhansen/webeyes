@@ -298,51 +298,49 @@ function ThreeToScreenPosition( obj, camera ) {
     };
 }
 
-function leapAnimate( data ) {
-
-  scene.remove( handSphere );
-
-  updatePeerSphere( data );
-  updateHandSphere( data );
-
-  renderer.render( scene, camera );
-  controls.update();
- }
-
-//  function leapAnimate( data ) {
+//function leapAnimate( data ) {
 //
-//    var frame = new Leap.Frame( data );
-//    var countBones = 0;
-//    var countArms = 0;
+//  scene.remove( handSphere );
 //
-//    scene.remove( handSphere );
-//    armMeshes.forEach( function( item ) { scene.remove( item ); } );
-//    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+//  updatePeerSphere( data );
+//  updateHandSphere( data );
 //
-//    for ( var hand of frame.hands ) {
-//      for ( var finger of hand.fingers ) {
-//        for ( var bone of finger.bones ) {
-//          if ( countBones++ === 0 ) { continue; }
-//          var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
-//          updateMesh( bone, boneMesh );
-//        }
-//      }
-//
-//      var arm = hand.arm;
-//      var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
-//      updateMesh( arm, armMesh );
-//      armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-//    }
-//    renderer.render( scene, camera );
-//    controls.update();
-//  }
+//  renderer.render( scene, camera );
+//  controls.update();
+// }
 
+  function leapAnimate( data ) {
+
+    var frame = new Leap.Frame( data );
+    var countBones = 0;
+    var countArms = 0;
+
+    scene.remove( handSphere );
+    armMeshes.forEach( function( item ) { scene.remove( item ); } );
+    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+
+    for ( var hand of frame.hands ) {
+      for ( var finger of hand.fingers ) {
+        for ( var bone of finger.bones ) {
+          if ( countBones++ === 0 ) { continue; }
+          var boneMesh = boneMeshes [ countBones ] || addMesh( boneMeshes );
+          updateMesh( bone, boneMesh );
+        }
+      }
+
+      var arm = hand.arm;
+      var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
+      updateMesh( arm, armMesh );
+      armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
+    }
+    renderer.render( scene, camera );
+    controls.update();
+  }
 // ------------------------------------------------------------------------------
+  socketServer.on( 'leapShare', function( data ) {
+    frame = JSON.parse( data );
+    animateTrackingData( data );
+    leapAnimate( frame );
+    } );
 
-//  socketServer.on( 'leapShare', function( data ) {
-//    frame = JSON.parse( data );
-
-//    animateTrackingData( data );
-//    leapAnimate( frame );
-//    } );
  }
