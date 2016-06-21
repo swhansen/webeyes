@@ -332,6 +332,8 @@ function ThreeToScreenPosition( obj, camera ) {
       updateMesh( arm, armMesh );
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
     }
+    updatePeerSphere( data );
+    updateHandSphere( data );
     renderer.render( scene, camera );
     controls.update();
   }
