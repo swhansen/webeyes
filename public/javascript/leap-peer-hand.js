@@ -229,21 +229,20 @@ var tool = new arObjMover();
 
 //------------------------
 
-// function addMesh( meshes ) {
-//   var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-//   var material = new THREE.MeshNormalMaterial();
-//   var mesh = new THREE.Mesh( geometry, material );
-//   meshes.push( mesh );
-//   return mesh;
-// }
-
-// function updateMesh( bone, mesh ) {
-//     mesh.position.fromArray( bone.center() );
-//     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
-//     mesh.quaternion.multiply( baseBoneRotation );
-//     mesh.scale.set( bone.width, bone.width, bone.length );
-//     scene.add( mesh );
-// }
+ function addMesh( meshes ) {
+   var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+   var material = new THREE.MeshNormalMaterial();
+   var mesh = new THREE.Mesh( geometry, material );
+   meshes.push( mesh );
+   return mesh;
+ }
+ function updateMesh( bone, mesh ) {
+     mesh.position.fromArray( bone.center() );
+     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
+     mesh.quaternion.multiply( baseBoneRotation );
+     mesh.scale.set( bone.width, bone.width, bone.length );
+     scene.add( mesh );
+ }
 
 function updatePeerSphere( data ) {
 
