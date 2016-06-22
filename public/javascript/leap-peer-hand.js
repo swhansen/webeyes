@@ -337,14 +337,19 @@ function ThreeToScreenPosition( obj, camera ) {
     }
     renderer.render( scene, camera );
     controls.update();
-
- armMeshes.forEach( function( item ) { scene.remove( item ); } );
-    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
-
-
   }
 // ------------------------------------------------------------------------------
   socketServer.on( 'leapShare', function( data ) {
+
+    if ( data === 'remove' ) {
+      armMeshes.forEach( function( item ) { scene.remove( item ); } );
+    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+renderer.render( scene, camera );
+    controls.update();
+    }
+
+
+
     frame = JSON.parse( data );
   //  animateTrackingData( data );
     leapAnimate( frame );
