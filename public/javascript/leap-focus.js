@@ -43,17 +43,16 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var renderer, scene, camera, controls;
 
     var emitIterator = 0;
-    var emitInterval = 10;
+    var emitInterval = 20;
 
     var controller = Leap.loop( { enableGesture:true, background: false, loopWhileDisconnected: false },
        leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); });
 
     function emitLeap( data ) {
-
       emitIterator = emitIterator + 1;
       if ( emitIterator === emitInterval ) {
         emitIterator = 0;
-        if ( data.hands.length ===0 ) {
+        if ( data.hands.length === 0 ) {
           data = 'remove';
           var sessionId = socketServer.sessionid;
           socketServer.emit( 'leapShare', data , sessionId );

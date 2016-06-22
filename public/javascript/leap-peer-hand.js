@@ -74,7 +74,7 @@ function evCanvas( ev ) {
 
 // revers the camera for peer to orient the hands
 
-    camera.position.set( 0, 600, -500 );
+    camera.position.set( 0, 200, -400 );
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.enableRotate = true;
