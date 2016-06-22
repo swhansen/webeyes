@@ -327,6 +327,8 @@ if ( handState.inChooseState === true ) {
 
 if ( hand.type === 'left' ) {
 
+  if ( isIotGrabOn  === true ) {
+
    //if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
    //if ( hand.pinchStrength === 1 && hand.grabStrength < 0.3 ) {
    //  var pinchFinger = findPinchingFingerType( hand );
@@ -351,6 +353,7 @@ if ( hand.type === 'left' ) {
      updateHueText( selectedHueDevice );
    }
   }
+}
 
 // control light with right hand only
 // three possible hand states
