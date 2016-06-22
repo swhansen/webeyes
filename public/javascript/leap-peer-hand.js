@@ -242,6 +242,7 @@ var tool = new arObjMover();
      mesh.quaternion.multiply( baseBoneRotation );
      mesh.scale.set( bone.width, bone.width, bone.length );
      scene.add( mesh );
+     camera.rotate.y = 180 * Math.PI / 180
  }
 
 function updatePeerSphere( data ) {
