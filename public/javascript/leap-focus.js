@@ -97,7 +97,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     renderer.setSize( box0Width, box0Height );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
-    camera.position.set( 0, 500, 500 );
+    camera.position.set( 0, 600, 420 );
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     //controls.enableRotate = false;
