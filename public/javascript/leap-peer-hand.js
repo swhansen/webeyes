@@ -72,6 +72,7 @@ function evCanvas( ev ) {
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     camera.position.set( 0, 500, 500 );
+    camera.rotatation.y = 180 * Math.PI / 180;
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.enableRotate = true;
@@ -242,7 +243,6 @@ var tool = new arObjMover();
      mesh.quaternion.multiply( baseBoneRotation );
      mesh.scale.set( bone.width, bone.width, bone.length );
      scene.add( mesh );
-     camera.rotate.y = 180 * Math.PI / 180
  }
 
 function updatePeerSphere( data ) {
