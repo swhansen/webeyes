@@ -401,7 +401,7 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 
 // hue light control objects
 
-  var hueGeometrySphere = new THREE.SphereGeometry( 0.3, 16, 16 );
+  var hueGeometrySphere = new THREE.SphereGeometry( 0.2, 16, 16 );
 
   hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
     color: 0xff00ff,
@@ -439,7 +439,7 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
   hueLight1.position.set( -0.809, -0.737, -5.227 );
   hueLight2.position.set( 1.077, 1.606, -5.17 );
   hueLight3.position.set( -2.785, 1.606, -5.17 );
-  hueLight3.position.set( -0.809, 1.606, -5.17 );
+  hueLight4.position.set( -0.809, 1.606, -5.17 );
 
   hueLight1.userData.isSelectable = true;
   hueLight2.userData.isSelectable = true;
