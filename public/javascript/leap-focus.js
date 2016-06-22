@@ -59,14 +59,9 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     }
 
     controller.on( 'beforeFrameCreated', function( frameData ) {
-      emitIterator = emitIterator++;
-      console.log( emitIterator );
-      if ( emitIterator === emitInterval ) {
-        emitIterator = 0;
-
         emitLeap( frameData );
       }
-    } );
+    );
 
     function emitIOT( data ) {
         var sessionId = socketServer.sessionid;
