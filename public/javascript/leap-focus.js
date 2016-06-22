@@ -6,6 +6,8 @@ function leapFocus() {
 //  console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 //} );
 
+var isIotGrabOn = false;
+
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
@@ -305,12 +307,11 @@ if ( handState.inChooseState === true ) {
        handState.iotSelectEligible = true;
    }
 
-//   move to the chooseState from selectEligible on the first grab
+//   move to the choose State from selectEligible on the first grab
 
       if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 &&
           handState.inChooseState === false &&
           handState.iotSelectEligible === true ) {
-
           handState.inChooseState = true;
           handState.iotSelectEligible = false;
         }
@@ -355,6 +356,9 @@ if ( hand.type === 'left' ) {
 // three possible hand states
 
 if ( hand.type === 'right' ) {
+
+if ( isIotGrabOn  === true ) {
+
     if ( handState.inChooseState ) {
 
       if ( hand.grabStrength > 0.005 && hand.grabStrength < 0.995 ) {
@@ -377,6 +381,7 @@ if ( hand.type === 'right' ) {
       }
     }
   }
+}
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
