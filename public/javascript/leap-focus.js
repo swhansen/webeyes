@@ -47,16 +47,20 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
 
     function emitLeap( data ) {
+
+      if ( i && ( i % 10 === 0 )) {
+
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
     }
+  }
 
     function emitLeapSphere( data ) {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'leapSphere', data, sessionId );
     }
 
-      controller.on( 'beforeFrameCreated', function( frameData ) {
+    controller.on( 'beforeFrameCreated', function( frameData ) {
           emitLeap( frameData ); } );
 
     function emitIOT( data ) {
