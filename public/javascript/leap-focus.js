@@ -58,7 +58,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
           var sessionId = socketServer.sessionid;
           socketServer.emit( 'leapShare', data , sessionId );
         }
-          if (data.hands.length != 0 ) {
+          if (data.hands.length !== 0 ) {
           var sessionId = socketServer.sessionid;
           socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
         }
@@ -325,7 +325,7 @@ if ( handState.inChooseState === true ) {
 
 // increment IOT deviceId with left hand only
 
-if ( hand.type == 'left' ) {
+if ( hand.type === 'left' ) {
 
    //if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
    //if ( hand.pinchStrength === 1 && hand.grabStrength < 0.3 ) {
@@ -355,7 +355,7 @@ if ( hand.type == 'left' ) {
 // control light with right hand only
 // three possible hand states
 
-if ( hand.type == 'right' ) {
+if ( hand.type === 'right' ) {
     if ( handState.inChooseState ) {
 
       if ( hand.grabStrength > 0.005 && hand.grabStrength < 0.995 ) {
