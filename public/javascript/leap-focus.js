@@ -50,15 +50,9 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
 
 
     function emitLeap( data ) {
-
-      emitIterator = emitIterator++ ;
-      console.log( emitIterator );
-      if ( emitIterator === emitInterval ) {
-        emitIterator = 0;
         var sessionId = socketServer.sessionid;
         socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
     }
-  }
 
     function emitLeapSphere( data ) {
       var sessionId = socketServer.sessionid;
@@ -66,7 +60,12 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     }
 
     controller.on( 'beforeFrameCreated', function( frameData ) {
-          emitLeap( frameData ); } );
+      emitIterator = emitIterator++ ;
+      console.log( emitIterator );
+      if ( emitIterator === emitInterval ) {
+        emitIterator = 0;
+
+          emitLeap( frameData ); } } );
 
     function emitIOT( data ) {
         var sessionId = socketServer.sessionid;
