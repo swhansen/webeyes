@@ -434,7 +434,7 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
   hueLight1 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial1 );
   hueLight2 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial2 );
   hueLight3 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial3 );
-  hueLight4 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial3 );
+  hueLight4 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial4 );
 
   hueLight1.position.set( -0.809, -0.737, -5.227 );
   hueLight2.position.set( 1.077, 1.606, -5.17 );
