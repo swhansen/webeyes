@@ -341,17 +341,15 @@ function ThreeToScreenPosition( obj, camera ) {
 // ------------------------------------------------------------------------------
   socketServer.on( 'leapShare', function( data ) {
 
+// case where hand is remove on focus
+
     if ( data === 'remove' ) {
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
-    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
-renderer.render( scene, camera );
-    controls.update();
+      boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+      renderer.render( scene, camera );
+      controls.update();
     }
-
-
-
     frame = JSON.parse( data );
-  //  animateTrackingData( data );
     leapAnimate( frame );
     } );
 
