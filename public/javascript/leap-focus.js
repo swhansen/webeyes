@@ -53,8 +53,10 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
       emitIterator = emitIterator + 1;
       if ( emitIterator === emitInterval ) {
         emitIterator = 0;
+        if (data.hands.length != 0 ) {
         var sessionId = socketServer.sessionid;
         socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
+      }
       }
     }
 
