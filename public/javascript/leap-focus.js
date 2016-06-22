@@ -56,7 +56,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
         if ( data.hands.length ===0 ) {
           data = 'remove';
           var sessionId = socketServer.sessionid;
-          socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
+          socketServer.emit( 'leapShare', data , sessionId );
         }
           if (data.hands.length != 0 ) {
           var sessionId = socketServer.sessionid;
