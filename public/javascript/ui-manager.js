@@ -128,8 +128,17 @@ $( function() {
 } );
 
 $( function() {
-  $( '#stickyiot' ).click( function() {
-    isIotGrabOn = !isIotGrabOn;
+  $( '#sticky-handiot' ).click( function() {
+
+  if ( isIotGrabOn === true ) {
+   document.getElementById("sticky-handiot").src="handiot.png";
+   isIotGrabOn = false;
+  }
+
+  if ( isIotGrabOn === false ) {
+  document.getElementById("sticky-hansiot").src="hand.png";
+  isIotGrabOn = true;
+  }
   } );
 } );
 
