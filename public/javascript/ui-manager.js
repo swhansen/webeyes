@@ -133,9 +133,7 @@ $( function() {
   if ( isIotGrabOn === true ) {
    document.getElementById( 'sticky-handiot' ).src = 'img/hand.png';
    isIotGrabOn = false;
-  }
-
-  if ( isIotGrabOn === false ) {
+  } else {
   document.getElementById( 'sticky-handiot' ).src = 'img/handiot.png';
   isIotGrabOn = true;
   }
