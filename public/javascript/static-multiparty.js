@@ -9,8 +9,6 @@ var connectList = [];
 
 var WEBEYES = {};
 
-//var modmeState = false;
-
 var compassToggle = false;
 var isIotGrabOn = false;
 

@@ -72,9 +72,9 @@ function evCanvas( ev ) {
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
 
-// revers the camera for peer to orient the hands
+// reverse the camera for peer to orient the hands
 
-    camera.position.set( 0, -1200, -300 );
+    camera.position.set( 0, -1500, -200 );
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.enableRotate = true;
@@ -247,14 +247,14 @@ var tool = new arObjMover();
      scene.add( mesh );
  }
 
-function updatePeerSphere( data ) {
-
-if ( data.operation === 'mouseDown' ) {}
-
-if ( data.operation === 'mouseMove' ) {}
-
-if ( data.operation === 'mouseUp' ) {}
-}
+// function updatePeerSphere( data ) {
+//
+// if ( data.operation === 'mouseDown' ) {}
+//
+// if ( data.operation === 'mouseMove' ) {}
+//
+// if ( data.operation === 'mouseUp' ) {}
+// }
 
 function updateHandSphere( data ) {
 

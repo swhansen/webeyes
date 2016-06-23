@@ -383,7 +383,6 @@ if ( isIotGrabOn  === true ) {
     }
   }
 }
-
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
