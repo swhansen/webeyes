@@ -194,7 +194,7 @@ $( document ).ready( function() {
 $( function() {
   $( '#leapButton' ).click( function() {
     userContext.isLeap = true;
-    document.getElementById( 'sticky-handiot' ).style.display = 'visible';
+    document.getElementById( 'sticky-handiot' ).style.visibility = 'visible';
     leapFocus();
 
   // Tell everyone to initialize Leap
