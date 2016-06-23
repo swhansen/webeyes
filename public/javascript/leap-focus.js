@@ -22,7 +22,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
  leapFull.style.visibility = 'visible';
  leapPane.style.visibility = 'visible';
 
-  leapFull.style.zIndex = 10;
+  leapFull.style.zIndex = 15;
 
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];

@@ -127,16 +127,17 @@ $( function() {
   } );
 } );
 
+// Toggle the leap habd to control IOT
+
 $( function() {
   $( '#sticky-handiot' ).click( function() {
-
-  if ( isIotGrabOn === true ) {
-   document.getElementById( 'sticky-handiot' ).src = 'img/hand.png';
-   isIotGrabOn = false;
-  } else {
-  document.getElementById( 'sticky-handiot' ).src = 'img/handiot.png';
-  isIotGrabOn = true;
-  }
+    if ( isIotGrabOn === true ) {
+      document.getElementById( 'sticky-handiot' ).src = 'img/hand.png';
+      isIotGrabOn = false;
+    } else {
+      document.getElementById( 'sticky-handiot' ).src = 'img/handiot.png';
+      isIotGrabOn = true;
+    }
   } );
 } );
 
