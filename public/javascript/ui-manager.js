@@ -131,12 +131,12 @@ $( function() {
   $( '#sticky-handiot' ).click( function() {
 
   if ( isIotGrabOn === true ) {
-   document.getElementById("sticky-handiot").src="handiot.png";
+   document.getElementById( 'sticky-handiot' ).src = 'handiot.png';
    isIotGrabOn = false;
   }
 
   if ( isIotGrabOn === false ) {
-  document.getElementById("sticky-hansiot").src="hand.png";
+  document.getElementById( 'sticky-handiot' ).src = 'hand.png';
   isIotGrabOn = true;
   }
   } );
