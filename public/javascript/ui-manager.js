@@ -128,6 +128,12 @@ $( function() {
 } );
 
 $( function() {
+  $( '#stickyiot' ).click( function() {
+    isIotGrabOn = !isIotGrabOn;
+  } );
+} );
+
+$( function() {
   $( '#sticky-compass' ).click( function() {
     compassToggle = !compassToggle;
     var data = compassToggle;
