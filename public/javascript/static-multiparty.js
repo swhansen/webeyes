@@ -12,8 +12,7 @@ var WEBEYES = {};
 //var modmeState = false;
 
 var compassToggle = false;
-var isIotGrabOn = false;
-
+var isIotGrabOn = true;
 
 /*jshint -W020 */
 socketServer = io.connect( '/' );
