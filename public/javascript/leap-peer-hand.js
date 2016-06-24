@@ -76,7 +76,7 @@ function evCanvas( ev ) {
 
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.enableRotate = false;
-    controls.enabled= false;
+    controls.enabled= true;
     controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
