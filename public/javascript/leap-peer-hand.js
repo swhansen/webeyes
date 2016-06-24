@@ -303,8 +303,8 @@ function sphereAnimate( data ) {
 //
   scene.remove( handSphere );
 //
-  updatePeerSphere( data );
-//  updateHandSphere( data );
+// updatePeerSphere( data );
+  updateHandSphere( data );
 //
   renderer.render( scene, camera );
   controls.update();
