@@ -74,10 +74,10 @@ function evCanvas( ev ) {
 
     camera.position.set( 0, -600, -100 );
 
-//   controls = new THREE.OrbitControls( camera, renderer.domElement );
-//   controls.enableRotate = false;
-//   controls.enabled= true;
-//   controls.maxDistance = 1000;
+   controls = new THREE.OrbitControls( camera, renderer.domElement );
+   controls.enableRotate = false;
+   controls.enabled= false;
+   controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
