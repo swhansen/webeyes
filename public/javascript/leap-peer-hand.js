@@ -5,6 +5,8 @@
 
 function initLeapPeerHand() {
 
+var leapFrame;
+
 socketServer.on( 'leapSphere', function( data ) {
     leapAnimate( data );
       } );
@@ -308,7 +310,7 @@ function ThreeToScreenPosition( obj, camera ) {
 //  controls.update();
 // }
 
-  function leapAnimate( leapFrame ) {
+  function leapAnimate() {
 
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
@@ -340,14 +342,14 @@ function ThreeToScreenPosition( obj, camera ) {
 
 // case where hand is remove on focus
 
-    if ( data === 'remove' ) {
+    if ( LeapData === 'remove' ) {
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
       boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
       controls.update();
     }
     leapFrame = JSON.parse( leapData );
-    leapAnimate( leapFrame );
+    leapAnimate();
     } );
 
  }
