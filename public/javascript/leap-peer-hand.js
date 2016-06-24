@@ -8,7 +8,7 @@ function initLeapPeerHand() {
 var leapFrame;
 
 socketServer.on( 'leapSphere', function( data ) {
-    leapAnimate( data );
+    sphereAnimate( data );
       } );
 
  var leapPane = document.getElementById( 'leappane' );
@@ -299,16 +299,16 @@ function ThreeToScreenPosition( obj, camera ) {
     };
 }
 
-//function leapAnimate( data ) {
+function sphereAnimate( data ) {
 //
-//  scene.remove( handSphere );
+  scene.remove( handSphere );
 //
-//  updatePeerSphere( data );
+  updatePeerSphere( data );
 //  updateHandSphere( data );
 //
-//  renderer.render( scene, camera );
-//  controls.update();
-// }
+  renderer.render( scene, camera );
+  controls.update();
+ }
 
   function leapAnimate( leapFrame ) {
 
