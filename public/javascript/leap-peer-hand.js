@@ -74,9 +74,9 @@ function evCanvas( ev ) {
 
     camera.position.set( 0, -600, -100 );
 
-//    controls = new THREE.OrbitControls( camera, renderer.domElement );
-//    controls.enableRotate = false;
-//    controls.maxDistance = 1000;
+    controls = new THREE.OrbitControls( camera, renderer.domElement );
+    controls.enableRotate = false;
+    controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
@@ -302,7 +302,7 @@ function sphereAnimate( data ) {
   updateHandSphere( data );
 //
   renderer.render( scene, camera );
-//  controls.update();
+  controls.update();
  }
 
   function leapAnimate( leapFrame ) {
@@ -330,7 +330,7 @@ function sphereAnimate( data ) {
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
     }
     renderer.render( scene, camera );
- //   controls.update();
+    controls.update();
   }
 
 // ------------------------------------------------------------------------------
@@ -343,7 +343,7 @@ function sphereAnimate( data ) {
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
       boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
-//      controls.update();
+      controls.update();
     }
     leapFrame = JSON.parse( leapData );
     leapAnimate( leapFrame );
