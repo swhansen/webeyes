@@ -342,7 +342,7 @@ function ThreeToScreenPosition( obj, camera ) {
 
 // case where hand is remove on focus
 
-    if ( LeapData === 'remove' ) {
+    if ( leapData === 'remove' ) {
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
       boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
