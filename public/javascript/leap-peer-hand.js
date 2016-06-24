@@ -7,10 +7,6 @@ function initLeapPeerHand() {
 
 var leapFrame;
 
-socketServer.on( 'leapSphere', function( data ) {
-    sphereAnimate( data );
-      } );
-
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull' );
  document.getElementById( 'leappane' ).className = 'canvascenter';
@@ -78,9 +74,9 @@ function evCanvas( ev ) {
 
     camera.position.set( 0, -600, -100 );
 
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.enableRotate = true;
-    controls.maxDistance = 1000;
+//    controls = new THREE.OrbitControls( camera, renderer.domElement );
+//    controls.enableRotate = false;
+//    controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
@@ -300,14 +296,13 @@ function ThreeToScreenPosition( obj, camera ) {
 }
 
 function sphereAnimate( data ) {
-//
+
   scene.remove( handSphere );
-//
-// updatePeerSphere( data );
+
   updateHandSphere( data );
 //
   renderer.render( scene, camera );
-  controls.update();
+//  controls.update();
  }
 
   function leapAnimate( leapFrame ) {
@@ -335,9 +330,11 @@ function sphereAnimate( data ) {
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
     }
     renderer.render( scene, camera );
-    controls.update();
+ //   controls.update();
   }
+
 // ------------------------------------------------------------------------------
+
   socketServer.on( 'leapShare', function( leapData ) {
 
 // case where hand is remove on focus
@@ -346,10 +343,14 @@ function sphereAnimate( data ) {
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
       boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
-      controls.update();
+//      controls.update();
     }
     leapFrame = JSON.parse( leapData );
     leapAnimate( leapFrame );
     } );
+
+  socketServer.on( 'leapSphere', function( data ) {
+    sphereAnimate( data );
+      } );
 
  }
