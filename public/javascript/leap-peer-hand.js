@@ -310,7 +310,7 @@ function ThreeToScreenPosition( obj, camera ) {
 //  controls.update();
 // }
 
-  function leapAnimate() {
+  function leapAnimate( leapFrame ) {
 
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
@@ -349,7 +349,7 @@ function ThreeToScreenPosition( obj, camera ) {
       controls.update();
     }
     leapFrame = JSON.parse( leapData );
-    leapAnimate();
+    leapAnimate( leapFrame );
     } );
 
  }
