@@ -344,7 +344,7 @@ function sphereAnimate( data ) {
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
       boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
-      controls.update();
+     // controls.update();
     }
     leapFrame = JSON.parse( leapData );
     leapAnimate( leapFrame );
