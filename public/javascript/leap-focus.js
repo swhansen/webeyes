@@ -48,6 +48,10 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var controller = Leap.loop( { enableGesture:true, background: false, loopWhileDisconnected: false },
        leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); });
 
+// Emit the Leap data to all the Peers
+// - check for existance of hand
+// - emit every N sample cycles
+
     function emitLeap( data ) {
       emitIterator = emitIterator + 1;
       if ( emitIterator === emitInterval ) {

@@ -97,9 +97,6 @@ function evCanvas( ev ) {
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.name = 'peerSphere';
 
-    //peerSphere.visible = false;
-    //scene.add( peerSphere );
-
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
     scene.add( light );
@@ -311,9 +308,9 @@ function ThreeToScreenPosition( obj, camera ) {
 //  controls.update();
 // }
 
-  function leapAnimate( frame ) {
+  function leapAnimate( leapFrame ) {
 
-    var frame = new Leap.Frame( frame );
+    var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
     var countArms = 0;
 
@@ -339,7 +336,7 @@ function ThreeToScreenPosition( obj, camera ) {
     controls.update();
   }
 // ------------------------------------------------------------------------------
-  socketServer.on( 'leapShare', function( data ) {
+  socketServer.on( 'leapShare', function( leapData ) {
 
 // case where hand is remove on focus
 
@@ -349,8 +346,8 @@ function ThreeToScreenPosition( obj, camera ) {
       renderer.render( scene, camera );
       controls.update();
     }
-    frame = JSON.parse( data );
-    leapAnimate( frame );
+    leapFrame = JSON.parse( leapData );
+    leapAnimate( leapFrame );
     } );
 
  }
