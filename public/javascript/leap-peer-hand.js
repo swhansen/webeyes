@@ -303,7 +303,7 @@ function sphereAnimate( data ) {
   updateHandSphere( data );
 //
   renderer.render( scene, camera );
-  controls.update();
+ // controls.update();
  }
 
   function leapAnimate( leapFrame ) {
@@ -331,7 +331,7 @@ function sphereAnimate( data ) {
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
     }
     renderer.render( scene, camera );
-    controls.update();
+    //controls.update();
   }
 
 // ------------------------------------------------------------------------------
