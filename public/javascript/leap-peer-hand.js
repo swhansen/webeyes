@@ -41,13 +41,13 @@ function evCanvas( ev ) {
 
 // Firefox
   if ( ev.layerX || ev.layerX === 0 ) {
-    ev._x = ev.layerX;
-    ev._y = ev.layerY;
+    ev._x = -ev.layerX;
+    ev._y = -ev.layerY;
 
 // Opera
   } else if ( ev.offsetX || ev.offsetX === 0 ) {
-    ev._x = ev.offsetX;
-    ev._y = ev.offsetY;
+    ev._x = -ev.offsetX;
+    ev._y = -ev.offsetY;
   }
   var func = tool[ ev.type ];
 
