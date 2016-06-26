@@ -94,7 +94,7 @@ function initLeapPeerHand() {
   var handSphere = new THREE.Mesh(handGeometry, handMaterial);
   handSphere.name = 'handSphere';
   handSphere.userData.rtiId = userContext.rtcId;
-  scene.add(handSphere);
+  //scene.add(handSphere);
 
   var peerSphereGeometry = new THREE.SphereGeometry(40, 16, 16);
   var peerSphereMaterial = new THREE.MeshLambertMaterial({
@@ -121,8 +121,8 @@ function initLeapPeerHand() {
       tool.started = true;
 
       var mouseVector = new THREE.Vector3((ev._x / box0Width) * 2 - 1, -(ev._y / box0Height) * 2 + 1, 0.5);
-      raycaster.setFromCamera(mouseVector, camera);
-      var intersects = raycaster.intersectObjects(scene.children);
+      raycaster.setFromCamera( mouseVector, camera );
+      var intersects = raycaster.intersectObjects( scene.children );
 
       console.log('sphere select:', intersects);
 
@@ -189,7 +189,7 @@ function initLeapPeerHand() {
 
         // note: need to fire animate
 
-        leapAnimate(data);
+        leapAnimate( data );
       }
     };
 
@@ -315,7 +315,6 @@ function initLeapPeerHand() {
     updateHandSphere(data);
     //
     renderer.render(scene, camera);
-    camera.lookAt(scene.position);
     // controls.update();
   }
 
