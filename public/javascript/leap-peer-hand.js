@@ -315,6 +315,7 @@ function initLeapPeerHand() {
     updateHandSphere(data);
     //
     renderer.render(scene, camera);
+    camera.lookAt(scene.position);
     // controls.update();
   }
 
