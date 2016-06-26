@@ -46,8 +46,8 @@ function evCanvas( ev ) {
 
 // Opera
   } else if ( ev.offsetX || ev.offsetX === 0 ) {
-    ev._x = -ev.offsetX;
-    ev._y = -ev.offsetY;
+    ev._x = ev.offsetX;
+    ev._y = ev.offsetY;
   }
   var func = tool[ ev.type ];
 
@@ -74,10 +74,10 @@ function evCanvas( ev ) {
 
     camera.position.set( 0, -600, -100 );
 
-   controls = new THREE.OrbitControls( camera, renderer.domElement );
-   controls.enableRotate = false;
-   controls.enabled= false;
-   controls.maxDistance = 1000;
+//  controls = new THREE.OrbitControls( camera, renderer.domElement );
+//  controls.enableRotate = false;
+//  controls.enabled= false;
+//  controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
