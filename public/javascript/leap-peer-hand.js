@@ -75,7 +75,7 @@ function initLeapPeerHand() {
 
   // reverse the camera for peer to orient the hands
 
-  camera.position.set(0, -600, -100);
+  camera.position.set( 0, -600, -100 );
 
   //  controls = new THREE.OrbitControls( camera, renderer.domElement );
   //  controls.enableRotate = false;
@@ -115,7 +115,7 @@ function initLeapPeerHand() {
 
     this.mousedown = function(ev) {
 
-      console.log('mousedown:', ev);
+      console.log('mousedown:', ev );
 
       ev.preventDefault();
       tool.started = true;
@@ -126,15 +126,15 @@ function initLeapPeerHand() {
 
       console.log('sphere select:', intersects);
 
-      if (intersects.length === 0) {
+      if ( intersects.length > 0 ) {
         peerSelected = true;
-        scene.remove(handSphere);
-        scene.add(peerSphere);
+        scene.remove( handSphere );
+        scene.add( peerSphere );
 
-        var mouseSphereX = (ev._x / box0Width * 2 - 1) * 278.5;
-        var mouseSphereY = -(ev._y / box0Height * 2 - 1) * 278.5;
-        var spherePos = [mouseSphereX, mouseSphereY, 0];
-        peerSphere.position.fromArray(spherePos);
+        var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
+        var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
+        var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
+        peerSphere.position.fromArray( spherePos );
 
         var normalizedRGB = [];
         normalizedRGB[0] = ev._x / box0Width;
@@ -151,7 +151,7 @@ function initLeapPeerHand() {
         data.setHueState = false;
 
         var sessionId = socketServer.sessionid;
-        socketServer.emit('peerSphere', data, sessionId);
+        socketServer.emit( 'peerSphere', data, sessionId );
 
       }
     };
@@ -160,9 +160,9 @@ function initLeapPeerHand() {
 
       if (tool.started && peerSelected) {
 
-        var mouseSphereX = (ev._x / box0Width * 2 - 1) * 278.5;
-        var mouseSphereY = -(ev._y / box0Height * 2 - 1) * 278.5;
-        var spherePos = [mouseSphereX, mouseSphereY, 0];
+        var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
+        var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
+        var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
         peerSphere.position.x = mouseSphereX;
         peerSphere.position.y = mouseSphereY;
         peerSphere.position.z = 0;
@@ -222,38 +222,20 @@ function initLeapPeerHand() {
         data.color = normalizedRGB;
         data.setHueState = true;
 
-        leapAnimate(data);
+        leapAnimate( data );
 
         var sessionId = socketServer.sessionid;
         socketServer.emit('peerSphere', data, sessionId);
 
         tool.started = false;
 
-        setDomPointerEvent('leappane', 'none');
-        setDomPointerEvent('canvaspane', 'auto');
+        setDomPointerEvent( 'leappane', 'none' );
+        setDomPointerEvent( 'canvaspane', 'auto' );
       }
     };
   }
 
   var tool = new arObjMover();
-
-  //------------------------
-
-  function addMesh(meshes) {
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var material = new THREE.MeshNormalMaterial();
-    var mesh = new THREE.Mesh(geometry, material);
-    meshes.push(mesh);
-    return mesh;
-  }
-
-  function updateMesh(bone, mesh) {
-    mesh.position.fromArray(bone.center());
-    mesh.setRotationFromMatrix((new THREE.Matrix4).fromArray(bone.matrix()));
-    mesh.quaternion.multiply(baseBoneRotation);
-    mesh.scale.set(bone.width, bone.width, bone.length);
-    scene.add(mesh);
-  }
 
   // function updatePeerSphere( data ) {
   //
@@ -264,7 +246,7 @@ function initLeapPeerHand() {
   // if ( data.operation === 'mouseUp' ) {}
   // }
 
-  function updateHandSphere(data) {
+  function updateHandSphere( data ) {
 
     // setDomPointerEvent( 'leappane', 'auto' );
     // setDomPointerEvent( 'canvaspane', 'none' );
@@ -318,17 +300,40 @@ function initLeapPeerHand() {
     // controls.update();
   }
 
-  function leapAnimate(leapFrame) {
+   //------------------------
 
-    var frame = new Leap.Frame(leapFrame);
+  function addMesh(meshes) {
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var material = new THREE.MeshNormalMaterial();
+    var mesh = new THREE.Mesh(geometry, material);
+    meshes.push(mesh);
+    return mesh;
+  }
+
+  function updateMesh(bone, mesh) {
+    mesh.position.fromArray(bone.center());
+    mesh.setRotationFromMatrix((new THREE.Matrix4).fromArray(bone.matrix()));
+    mesh.quaternion.multiply(baseBoneRotation);
+    mesh.scale.set(bone.width, bone.width, bone.length);
+    scene.add(mesh);
+  }
+
+  function leapAnimate( leapFrame ) {
+
+    if ( leapFrame.operation === 'mouseMove') {
+
+      renderer.render( scene, camera );
+    } else {
+
+    var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
     var countArms = 0;
 
-    scene.remove(handSphere);
-    armMeshes.forEach(function(item) {
-      scene.remove(item);
+    scene.remove( handSphere );
+    armMeshes.forEach( function( item ) {
+      scene.remove( item );
     });
-    boneMeshes.forEach(function(item) {
+    boneMeshes.forEach( function( item )  {
       scene.remove(item);
     });
 
@@ -351,6 +356,7 @@ function initLeapPeerHand() {
     renderer.render(scene, camera);
     //controls.update();
   }
+}
 
   // ------------------------------------------------------------------------------
 
@@ -369,12 +375,12 @@ function initLeapPeerHand() {
       // controls.update();
     }
     leapFrame = JSON.parse(leapData);
-    leapAnimate(leapFrame);
+    leapAnimate( leapFrame );
   });
 
-  socketServer.on('leapSphere', function(data) {
-    sphereAnimate(data);
-    camera.lookAt(scene.position);
+  socketServer.on( 'leapSphere', function( data ) {
+    sphereAnimate( data );
+    camera.lookAt( scene.position );
   });
 
 }
