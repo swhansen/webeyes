@@ -126,7 +126,7 @@ function initLeapPeerHand() {
 
       console.log('sphere select:', intersects);
 
-      if (intersects.length > 0) {
+      if (intersects.length === 0) {
         peerSelected = true;
         scene.remove(handSphere);
         scene.add(peerSphere);
