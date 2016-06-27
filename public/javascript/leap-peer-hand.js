@@ -110,6 +110,8 @@ function arObjMover() {
     ev.preventDefault();
     tool.started = true;
 
+    console.log( 'peer mouse down', ev );
+
     var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
                             -( ev._y / box0Height ) * 2 + 1, 0.5 );
     raycaster.setFromCamera( mouseVector, camera );
@@ -184,6 +186,8 @@ function arObjMover() {
 
   this.mouseup = function( ev ) {
     tool.down = false;
+
+    console.log( 'peer mouse up', ev );
 
   if ( tool.started && peerSelected ) {
 
