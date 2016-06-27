@@ -344,14 +344,15 @@ function sphereAnimate( data ) {
 // case where hand is removed on focus side
 
     if ( leapData === 'remove' ) {
+      console.log( ' focus hand remove' );
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
       boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
   //    controls.update();
-    }
+    } else {
     leapFrame = JSON.parse( leapData );
     leapAnimate( leapFrame );
-    } );
+    } } );
 
 // sphere coming in from focus
 
