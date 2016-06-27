@@ -709,5 +709,5 @@ WEBEYES.OrbitControls = function ( object, domElement ) {
 
 };
 
-THREE.OrbitControls.prototype = Object.create( THREE.EventDispatcher.prototype );
-THREE.OrbitControls.prototype.constructor = THREE.OrbitControls;
+WEBEYES.OrbitControls.prototype = Object.create( WEBEYES.EventDispatcher.prototype );
+WEBEYES.OrbitControls.prototype.constructor = WEBEYES.OrbitControls;
