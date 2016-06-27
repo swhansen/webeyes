@@ -205,6 +205,7 @@ function updatePeerSphere( data ) {
     peerSphere.position.z = data.position[2];
 
     peerSphere.material.color = data.color;
+    leapAnimate( data );
     }
 
   if ( data.operation === 'mouseUp' ) {
