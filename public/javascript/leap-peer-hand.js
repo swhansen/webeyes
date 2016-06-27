@@ -74,10 +74,10 @@ function evCanvas( ev ) {
 
     camera.position.set( 0, -600, -100 );
 
-   controls = new THREE.OrbitControls( camera, renderer.domElement );
-   controls.enableRotate = false;
-   controls.enabled= false;
-   controls.maxDistance = 1000;
+//   controls = new THREE.OrbitControls( camera, renderer.domElement );
+//   controls.enableRotate = false;
+//   controls.enabled= false;
+//   controls.maxDistance = 1000;
 
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
@@ -296,6 +296,9 @@ function ThreeToScreenPosition( obj, camera ) {
     };
 }
 
+
+// the focus sphere
+
 function sphereAnimate( data ) {
 
   scene.remove( handSphere );
@@ -338,17 +341,19 @@ function sphereAnimate( data ) {
 
   socketServer.on( 'leapShare', function( leapData ) {
 
-// case where hand is remove on focus
+// case where hand is removed on focus side
 
     if ( leapData === 'remove' ) {
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
       boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
-     // controls.update();
+  //    controls.update();
     }
     leapFrame = JSON.parse( leapData );
     leapAnimate( leapFrame );
     } );
+
+// sphere coming in from focus
 
   socketServer.on( 'leapSphere', function( data ) {
     sphereAnimate( data );
