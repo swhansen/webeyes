@@ -117,7 +117,7 @@ function arObjMover() {
     raycaster.setFromCamera( mouseVector, camera );
     var intersects = raycaster.intersectObjects( scene.children );
 
-    if ( intersects.length > 0 ) {
+ //   if ( intersects.length > 0 ) {
       peerSelected = true;
       scene.remove( handSphere );
       scene.add( peerSphere );
@@ -144,7 +144,7 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-    }
+  //  }
   };
 
   this.mousemove = function( ev ) {
