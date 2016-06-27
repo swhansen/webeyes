@@ -190,6 +190,7 @@ function normalizeLeapPoint( position ) {
 }
 
 function updatePeerSphere( data ) {
+  console.log( 'peer-sphere recieved from peer', data );
 
   if ( data.operation === 'mouseDown' ) {
     scene.remove( handSphere );
@@ -205,7 +206,6 @@ function updatePeerSphere( data ) {
     peerSphere.position.z = data.position[2];
 
     peerSphere.material.color = data.color;
-    leapAnimate( data );
     }
 
   if ( data.operation === 'mouseUp' ) {
@@ -306,6 +306,14 @@ if ( handState.inChooseState === true ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     scene.remove( handSphere );
+
+
+// if (fame.operation === 'mouseMove' ) {
+//
+//
+// }
+
+
 
 // make the hand eligable
 
