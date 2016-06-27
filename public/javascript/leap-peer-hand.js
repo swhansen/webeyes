@@ -144,15 +144,15 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-  //  }
+//    }
   };
 
   this.mousemove = function( ev ) {
 
     if ( tool.started && peerSelected ) {
 
-      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 );
-      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 );
+      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
