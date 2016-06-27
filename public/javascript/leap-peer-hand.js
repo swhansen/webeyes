@@ -74,7 +74,7 @@ function evCanvas( ev ) {
 
     camera.position.set( 0, -600, -100 );
 
-   controls = new THREE.OrbitControls( camera, renderer.domElement );
+   controls = new WEBEYES.OrbitControls( camera, renderer.domElement );
    controls.enableRotate = false;
    controls.enabled= false;
    controls.maxDistance = 1000;
