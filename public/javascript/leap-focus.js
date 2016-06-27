@@ -208,6 +208,9 @@ function updatePeerSphere( data ) {
     }
 
   if ( data.operation === 'mouseUp' ) {
+
+console.log( 'focus mouseup', data );
+
     if ( data.setHueState ) {
 
       var hueXY = getXYPointFromRGB(
@@ -220,6 +223,7 @@ function updatePeerSphere( data ) {
 
         handState.inChooseState = false;
         handState.iotSelectEligible = false;
+        renderer.render( scene, camera );
       }
     scene.remove( peerSphere );
   }
