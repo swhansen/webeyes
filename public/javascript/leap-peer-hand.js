@@ -110,8 +110,6 @@ function arObjMover() {
     ev.preventDefault();
     tool.started = true;
 
-    console.log( 'peer mouse down', ev );
-
     var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
                             -( ev._y / box0Height ) * 2 + 1, 0.5 );
     raycaster.setFromCamera( mouseVector, camera );
@@ -140,6 +138,8 @@ function arObjMover() {
       data.operation = 'mouseDown';
       data.position = spherePos;
       data.setHueState = false;
+
+      console.log( 'peer mouse down', data );
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
