@@ -204,6 +204,7 @@ function updatePeerSphere( data ) {
     break;
 
   case 'mouseMove':
+  console.log( 'peer-sphere recieved from peer - mouseMove', data );
     scene.add( peerSphere );
     scene.remove( handSphere );
 
