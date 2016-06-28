@@ -70,7 +70,7 @@ function evCanvas( ev ) {
     renderer.setSize( box0Width, box0Height );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
-    peerHands = new Three.Object3D();
+    peerHands = new THREE.Object3D();
 
 // reverse the camera for peer to orient the hands
 
