@@ -175,6 +175,8 @@ function arObjMover() {
       data.color = peerSphere.material.color;
       data.setHueState = false;
 
+      console.log( 'peer mouse move', data );
+
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
@@ -216,6 +218,9 @@ function arObjMover() {
     data.setHueState = true;
 
     leapAnimate( data );
+
+      console.log( 'peer mouse up', data );
+
 
     var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );

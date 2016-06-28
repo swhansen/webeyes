@@ -210,6 +210,8 @@ function updatePeerSphere( data ) {
     peerSphere.position.z = data.position[2];
 
     peerSphere.material.color = data.color;
+
+    renderer.render( scene, camera );
     }
 
   if ( data.operation === 'mouseUp' ) {
