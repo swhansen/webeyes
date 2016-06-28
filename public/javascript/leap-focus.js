@@ -221,6 +221,7 @@ function updatePeerSphere( data ) {
   case 'mouseUp':
     console.log( 'peer-sphere recieved from peer - mouseUp', data );
 
+    scene.remove( peerSphere );
     if ( data.setHueState ) {
 
       var hueXY = getXYPointFromRGB(
@@ -237,7 +238,6 @@ function updatePeerSphere( data ) {
       }
       break;
     }
-    scene.remove( peerSphere );
   controls.update();
 }
 
