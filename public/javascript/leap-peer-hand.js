@@ -249,6 +249,7 @@ var tool = new arObjMover();
      mesh.scale.set( bone.width, bone.width, bone.length );
      scene.add( mesh );
      scene.rotation.x = Math.PI;
+     scene.rotation.y = Math.PI;
  }
 
 // function updatePeerSphere( data ) {
