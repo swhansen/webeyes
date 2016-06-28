@@ -250,6 +250,7 @@ var tool = new arObjMover();
      scene.add( mesh );
      scene.rotation.x = Math.PI;
      scene.rotation.y = Math.PI;
+     scene.rotation.z = Math.PI;
  }
 
 // function updatePeerSphere( data ) {
