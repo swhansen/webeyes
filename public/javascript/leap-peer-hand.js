@@ -247,9 +247,9 @@ var tool = new arObjMover();
      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
      mesh.quaternion.multiply( baseBoneRotation );
      mesh.scale.set( bone.width, bone.width, bone.length );
-     mesh.rotation.x = Math.PI;
-     mesh.rotation.y = Math.PI;
-     mesh.rotation.z = Math.PI;
+ //    mesh.rotation.x = Math.PI;
+     mesh.rotateY( 180 * Math.PI ) /180;
+//     mesh.rotation.z = Math.PI;
      scene.add( mesh );
  }
 
