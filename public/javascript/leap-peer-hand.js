@@ -61,6 +61,7 @@ function evCanvas( ev ) {
     var boneMeshes = [];
 
     var renderer, scene, camera, controls;
+    var peerHands;
     var peerSelected = false;
     var lastHandSphereColor;
 
@@ -69,6 +70,7 @@ function evCanvas( ev ) {
     renderer.setSize( box0Width, box0Height );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
+    peerHands = new Three.Object3D();
 
 // reverse the camera for peer to orient the hands
 
@@ -247,12 +249,11 @@ var tool = new arObjMover();
      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
      mesh.quaternion.multiply( baseBoneRotation );
      mesh.scale.set( bone.width, bone.width, bone.length );
-     scene.add( mesh );
-     scene.rotation.x = Math.PI;
+     peerHands.add( mesh );
+     peerHands.rotation.x = Math.PI;
   //   scene.rotation.y = Math.PI / 2;
-     scene.rotation.z = Math.PI;
-
-     scene.position = new THREE.Vector3( 0, -2000, 0 );
+     peerHands.rotation.z = Math.PI;
+     scene.add( peerHands );
  }
 
 // function updatePeerSphere( data ) {
