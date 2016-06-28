@@ -72,7 +72,8 @@ function evCanvas( ev ) {
 
 // reverse the camera for peer to orient the hands
 
-    camera.position.set( 0, 0, -100 );
+   // camera.position.set( 0, -600, -100 );
+    camera.position.set( 0, 600, 420 );
 
    controls = new THREE.OrbitControls( camera, renderer.domElement );
    controls.enableRotate = false;
@@ -246,6 +247,7 @@ var tool = new arObjMover();
      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
      mesh.quaternion.multiply( baseBoneRotation );
      mesh.scale.set( bone.width, bone.width, bone.length );
+     mesh.rotate.y = Math.PI / 2;
      scene.add( mesh );
  }
 
