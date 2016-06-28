@@ -239,6 +239,7 @@ var tool = new arObjMover();
    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
    var material = new THREE.MeshNormalMaterial();
    var mesh = new THREE.Mesh( geometry, material );
+   mesh.rotation.y = Math.PI;
    meshes.push( mesh );
    return mesh;
  }
@@ -247,7 +248,6 @@ var tool = new arObjMover();
      mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
      mesh.quaternion.multiply( baseBoneRotation );
      mesh.scale.set( bone.width, bone.width, bone.length );
-     mesh.rotation.y = Math.PI;
      scene.add( mesh );
  }
 
