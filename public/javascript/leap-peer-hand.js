@@ -252,7 +252,7 @@ var tool = new arObjMover();
   //   scene.rotation.y = Math.PI / 2;
      scene.rotation.z = Math.PI;
 
-     scene.position = new THREE.Vector3( 0, -50, 0 );
+     scene.position = new THREE.Vector3( 0, -200, 0 );
  }
 
 // function updatePeerSphere( data ) {
