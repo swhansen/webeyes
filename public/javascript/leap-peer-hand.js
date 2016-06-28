@@ -56,7 +56,7 @@ function evCanvas( ev ) {
   }
 }
 
-    var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
+    var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, 0 ) );
     var armMeshes = [];
     var boneMeshes = [];
 
@@ -239,7 +239,6 @@ var tool = new arObjMover();
    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
    var material = new THREE.MeshNormalMaterial();
    var mesh = new THREE.Mesh( geometry, material );
-   mesh.rotation.y = Math.PI;
    meshes.push( mesh );
    return mesh;
  }
