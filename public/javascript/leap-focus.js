@@ -193,6 +193,7 @@ function normalizeLeapPoint( position ) {
 
 function updatePeerSphere( data ) {
 
+  console.log( 'peer-sphere recieved from peer', data );
 
   if ( data.operation === 'mouseDown' ) {
 

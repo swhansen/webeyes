@@ -175,7 +175,7 @@ function arObjMover() {
       data.color = peerSphere.material.color;
       data.setHueState = false;
 
-      console.log( 'peer mouse move', data );
+      console.log( 'peer mouseMove', data );
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
