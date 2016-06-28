@@ -229,7 +229,7 @@ function updatePeerSphere( data ) {
       }
     scene.remove( peerSphere );
   }
-  controls.updata();
+  controls.update();
 }
 
 // reset iot stae on hand re-entry
