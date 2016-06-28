@@ -46,7 +46,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var emitInterval = 5;
 
     var controller = Leap.loop( { enableGesture:true, background: false, loopWhileDisconnected: false },
-       leapAnimate ).use( 'handEntry' ).on( 'handFound', function() { onHandFound(); } );
+       leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); });
 
 // Emit the Leap data to all the Peers
 // - check for existance of hand
@@ -221,13 +221,13 @@ function updatePeerSphere( data ) {
   case 'mouseUp':
     console.log( 'peer-sphere recieved from peer - mouseUp', data );
 
-    scene.remove( peerSphere );
     if ( data.setHueState ) {
 
       var hueXY = getXYPointFromRGB(
                   data.color[0] * 255,
                   data.color[1] * 255,
                   data.color[2] * 255 );
+    scene.remove( peerSphere );
 
         hueSetLightStateXY( selectedHueDevice, true, [ hueXY.x, hueXY.y ], 100 );
         iotLightOn.play();
@@ -408,8 +408,5 @@ if ( isIotGrabOn  === true ) {
 
     renderer.render( scene, camera );
     controls.update();
-
-    armMeshes.forEach( function( item ) { scene.remove( item ); } );
-    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
   }
 }
