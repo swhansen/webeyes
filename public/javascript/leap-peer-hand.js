@@ -249,7 +249,7 @@ var tool = new arObjMover();
      mesh.scale.set( bone.width, bone.width, bone.length );
      scene.add( mesh );
      scene.rotation.x = Math.PI;
-  //   scene.rotation.y = Math.PI;
+     scene.rotation.y = Math.PI / 2;
      scene.rotation.z = Math.PI;
  }
 
