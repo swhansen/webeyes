@@ -195,14 +195,15 @@ function updatePeerSphere( data ) {
 
   console.log( 'peer-sphere recieved from peer', data );
 
-  if ( data.operation === 'mouseDown' ) {
+  switch ( data.operation ) {
 
+    case 'mouseDown':
     console.log( 'peer-sphere recieved from peer - mouseDown', data );
     scene.remove( handSphere );
     handState.inChooseState = false;
-    }
+    break;
 
-  if ( data.operation === 'mouseMove' ) {
+  case 'mouseMove':
     scene.add( peerSphere );
     scene.remove( handSphere );
 
@@ -213,9 +214,9 @@ function updatePeerSphere( data ) {
     peerSphere.material.color = data.color;
 
     renderer.render( scene, camera );
-    }
+    break;
 
-  if ( data.operation === 'mouseUp' ) {
+  case 'mouseUp':
     console.log( 'peer-sphere recieved from peer - mouseUp', data );
 
     if ( data.setHueState ) {
@@ -232,8 +233,9 @@ function updatePeerSphere( data ) {
         handState.iotSelectEligible = false;
         renderer.render( scene, camera );
       }
+      break;
+    }
     scene.remove( peerSphere );
-  }
   controls.update();
 }
 
