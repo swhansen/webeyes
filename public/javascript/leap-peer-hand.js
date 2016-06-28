@@ -189,8 +189,6 @@ function arObjMover() {
   this.mouseup = function( ev ) {
     tool.down = false;
 
-    console.log( 'peer mouse up', ev );
-
   if ( tool.started && peerSelected ) {
 
     peerSelected = false;
@@ -217,10 +215,9 @@ function arObjMover() {
     data.color = normalizedRGB;
     data.setHueState = true;
 
-    leapAnimate( data );
+    console.log( 'peer mouse up', data );
 
-      console.log( 'peer mouse up', data );
-
+   // leapAnimate( data );
 
     var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
