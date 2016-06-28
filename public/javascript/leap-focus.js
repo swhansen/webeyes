@@ -190,9 +190,11 @@ function normalizeLeapPoint( position ) {
 }
 
 function updatePeerSphere( data ) {
-  console.log( 'peer-sphere recieved from peer', data );
+
 
   if ( data.operation === 'mouseDown' ) {
+
+    console.log( 'peer-sphere recieved from peer - mouseDown', data );
     scene.remove( handSphere );
     handState.inChooseState = false;
     }
@@ -209,8 +211,7 @@ function updatePeerSphere( data ) {
     }
 
   if ( data.operation === 'mouseUp' ) {
-
-console.log( 'focus mouseup', data );
+    console.log( 'peer-sphere recieved from peer - mouseUp', data );
 
     if ( data.setHueState ) {
 
@@ -228,13 +229,14 @@ console.log( 'focus mouseup', data );
       }
     scene.remove( peerSphere );
   }
+  controls.updata();
 }
 
+// reset iot stae on hand re-entry
+
 function onHandFound() {
-
-//// reset on hand re-entry
-
- handState.inChooseState = false;  handState.iotSelectEligible = false;
+  handState.inChooseState = false;
+  handState.iotSelectEligible = false;
 }
 
 function updateHandSphere( data ) {
@@ -307,14 +309,6 @@ if ( handState.inChooseState === true ) {
 
     scene.remove( handSphere );
 
-
-// if (fame.operation === 'mouseMove' ) {
-//
-//
-// }
-
-
-
 // make the hand eligable
 
  for ( var hand of frame.hands ) {
@@ -322,15 +316,16 @@ if ( handState.inChooseState === true ) {
        handState.iotSelectEligible = true;
    }
 
-//   move to the choose State from selectEligible on the first grab
+      //   move to the choose State from iotSelectEligible on the first grab
 
       if ( hand.grabStrength > 0.05 && hand.grabStrength < 0.95 &&
           handState.inChooseState === false &&
-          handState.iotSelectEligible === true ) {
+          handState.iotSelectEligible === true )
+        {
           handState.inChooseState = true;
           handState.iotSelectEligible = false;
         }
- }
+  }
 
     for ( hand of frame.hands ) {
 
@@ -343,21 +338,8 @@ if ( handState.inChooseState === true ) {
 if ( hand.type === 'left' ) {
 
   if ( isIotGrabOn  === true ) {
+    if ( hand.grabStrength < 0.2 ) { firstClick = true; }
 
-   //if ( hand.pinchStrength < 0.2 ) { firstClick = true; }
-   //if ( hand.pinchStrength === 1 && hand.grabStrength < 0.3 ) {
-   //  var pinchFinger = findPinchingFingerType( hand );
-   //    if ( pinchFinger.type === 1 ) {
-   //      if ( firstClick === true ) {
-   //          selectedHueDevice++;
-   //          iotIncrement.play();
-   //          if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
-   //      firstClick = false;
-   //    }
-   //  updateHueText( selectedHueDevice );
-   //}
-
-  if ( hand.grabStrength < 0.2 ) { firstClick = true; }
     if ( hand.grabStrength === 1  ) {
        if ( firstClick === true ) {
              selectedHueDevice++;
@@ -365,6 +347,7 @@ if ( hand.type === 'left' ) {
              if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
          firstClick = false;
        }
+
      updateHueText( selectedHueDevice );
    }
   }
