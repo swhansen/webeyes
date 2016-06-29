@@ -61,13 +61,11 @@ function emitLeap( data ) {
     emitIterator = emitIterator + 1;
       if ( emitIterator === emitInterval ) {
         emitIterator = 0;
-        else {
-          var sessionId = socketServer.sessionid;
-          socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
+        var sessionId = socketServer.sessionid;
+        socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
         }
       }
       }
-    }
 
     function emitLeapSphere( data ) {
       var sessionId = socketServer.sessionid;
