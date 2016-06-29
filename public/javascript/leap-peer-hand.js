@@ -194,8 +194,8 @@ function arObjMover() {
       socketServer.emit( 'peerSphere', data, sessionId );
 
       // note: need to fire animate
-
-      leapAnimate( data );
+renderer.render( scene, camera );
+    //  leapAnimate( data );
   }
 };
 
