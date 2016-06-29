@@ -258,7 +258,7 @@ var tool = new arObjMover();
     peerHands.rotation.x = -0.8;
     peerHands.rotation.y = Math.PI;
     peerHands.position.set( 0.0, -100.0, 0.0 );
-    peerHands.scale.set( 1.75, 1.75, 1.75 );
+    peerHands.scale.set( 1.5, 1.5, 1.5 );
 
      scene.add( peerHands );
 
@@ -293,7 +293,7 @@ function updateHandSphere( data ) {
 // adjust Y due to hand position
 
   handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y  - 80.0;
+  handSphere.position.y = handSphere.position.y  - 100.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
