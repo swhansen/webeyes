@@ -154,8 +154,10 @@ function arObjMover() {
 
     if ( tool.started && peerSelected ) {
 
-      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5;
-      var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 278.5;
+// reverse the sign since peer hand is reversed
+
+      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 100.5;
+      var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 100.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
@@ -287,6 +289,7 @@ function updateHandSphere( data ) {
 // change orientation due to reverse of hand on peer
 
   handSphere.position.x = handSphere.position.x * -1.0;
+  handSphere.position.y = handSphere.position.y + 350.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
