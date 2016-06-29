@@ -245,17 +245,15 @@ var tool = new arObjMover();
    return mesh;
  }
  function updateMesh( bone, mesh ) {
-     mesh.position.fromArray( bone.center() );
-     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
-     mesh.quaternion.multiply( baseBoneRotation );
-     mesh.scale.set( bone.width, bone.width, bone.length );
-     peerHands.add( mesh );
-     peerHands.rotation.x = -0.8;
-     peerHands.rotation.y = Math.PI;
-   //  peerHands.rotation.z = Math.PI;
- //    peerHands.translateY( 50);
-      peerHands.position.set( 0.0, -700.0, 0.0 );
-      peerHands.scale.set( 1.5, 1.5, 1.5 );
+    mesh.position.fromArray( bone.center() );
+    mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
+    mesh.quaternion.multiply( baseBoneRotation );
+    mesh.scale.set( bone.width, bone.width, bone.length );
+    peerHands.add( mesh );
+    peerHands.rotation.x = -0.8;
+    peerHands.rotation.y = Math.PI;
+    peerHands.position.set( 0.0, -700.0, 0.0 );
+    peerHands.scale.set( 1.5, 1.5, 1.5 );
 
      scene.add( peerHands );
      window.scene = scene;
