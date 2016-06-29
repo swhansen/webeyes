@@ -253,7 +253,7 @@ var tool = new arObjMover();
     peerHands.rotation.x = -0.8;
     peerHands.rotation.y = Math.PI;
     peerHands.position.set( 0.0, -700.0, 0.0 );
-    peerHands.scale.set( 1.5, 1.5, 1.5 );
+    peerHands.scale.set( 1.75, 1.75, 1.75 );
 
      scene.add( peerHands );
      window.scene = scene;
@@ -360,7 +360,8 @@ function sphereAnimate( data ) {
 // case where hand is removed on focus side
 
     if ( leapData === 'remove' ) {
-      console.log( ' focus hand remove' );
+      console.log( 'focus hand remove' );
+      scene.remove( peerHands );
       armMeshes.forEach( function( item ) { scene.remove( item ); } );
       boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
