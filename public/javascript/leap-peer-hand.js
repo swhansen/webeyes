@@ -146,8 +146,6 @@ function arObjMover() {
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
-
-//    }
   };
 
   this.mousemove = function( ev ) {
@@ -290,7 +288,7 @@ function updateHandSphere( data ) {
 // adjust Y due to hand position
 
   handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y + -40.0;
+  handSphere.position.y = handSphere.position.y + -60.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
