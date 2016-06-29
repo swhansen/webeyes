@@ -345,14 +345,10 @@ function sphereAnimate( data ) {
 
     scene.remove( handSphere );
     scene.remove( peerHands );
-    scene.remove( peerHands );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
-
-//      handSphere.sphereRadius = hand.sphereRadius;
-
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
