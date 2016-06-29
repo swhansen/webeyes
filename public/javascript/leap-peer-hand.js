@@ -113,6 +113,7 @@ function arObjMover() {
   this.mousedown = function( ev ) {
     ev.preventDefault();
     tool.started = true;
+    console.log( 'box0Width:', box0Width, 'ex._x:', ev._x );
 
     var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
                             -( ev._y / box0Height ) * 2 + 1, 0.5 );
@@ -121,7 +122,7 @@ function arObjMover() {
 
     console.log( 'intersects', intersects );
 
-    if ( intersects.length > 0 ) {
+  //  if ( intersects.length > 0 ) {
       peerSelected = true;
       scene.remove( handSphere );
       scene.add( peerSphere );
@@ -150,7 +151,7 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-    }
+ //   }
   };
 
   this.mousemove = function( ev ) {
