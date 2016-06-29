@@ -345,7 +345,7 @@ function sphereAnimate( data ) {
 
   function leapAnimate( leapFrame ) {
 
-    if ( leapframe.operation ) {
+    if ( leapFrame.operation ) {
       renderer.render( scene, camera );
     } else {
 
