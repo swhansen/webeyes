@@ -161,7 +161,7 @@ function arObjMover() {
 
 // reverse the sign since peer hand is reversed
 
-      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 278.5;
 
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
@@ -176,10 +176,12 @@ function arObjMover() {
       normalizedRGB[1] = ev._y  / box0Height;
       normalizedRGB[2] = lastHandSphereColor.b;
 
-      peerSphere.material.color.setRGB(
-                normalizedRGB[0],
-                normalizedRGB[1],
-                normalizedRGB[2] );
+     peerSphere.material.color.setHex(0xFF0000);
+
+//     peerSphere.material.color.setRGB(
+//               normalizedRGB[0],
+//               normalizedRGB[1],
+//               normalizedRGB[2] );
 
       data.operation = 'mouseMove';
       data.position = spherePos;
@@ -205,8 +207,8 @@ function arObjMover() {
     peerSelected = false;
     scene.remove( peerSphere );
 
-    var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
-    var mouseSphereY = -( ev._y / box0Width * 2 - 1 ) * 278.5;
+    var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) ;
+    var mouseSphereY = -( ev._y / box0Width * 2 - 1 ) ;
     var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
 
    // rgb (0-1)
