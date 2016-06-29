@@ -251,9 +251,9 @@ var tool = new arObjMover();
      mesh.scale.set( bone.width, bone.width, bone.length );
      peerHands.add( mesh );
      peerHands.rotation.x = Math.PI;
-     scene.rotation.y = Math.PI / 2;
+   //  scene.rotation.y = Math.PI / 2;
      peerHands.rotation.z = Math.PI;
-     peerHands.position = new THREE.Vector3( 0, -2000, 0 );
+     peerHands.translateY( -200 );
      scene.add( peerHands );
  }
 
