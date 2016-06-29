@@ -88,7 +88,7 @@ function evCanvas( ev ) {
 
     scene = new THREE.Scene();
 
-    var handGeometry = new THREE.SphereGeometry( 40, 16, 16 );
+    var handGeometry = new THREE.SphereGeometry( 30, 16, 16 );
     var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
@@ -124,7 +124,7 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-      var mouseSphereX = ( ( ev._x / box0Width * 2 - 1 ) - 300 ) * 278.5;
+      var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.fromArray( spherePos );
@@ -157,7 +157,7 @@ function arObjMover() {
 
 // reverse the sign since peer hand is reversed
 
-      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5 - 200;
       var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 278.5;
 
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
