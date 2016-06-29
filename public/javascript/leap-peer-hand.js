@@ -124,7 +124,7 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-      var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereX = ( ( ev._x / box0Width * 2 - 1 ) - 300 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.fromArray( spherePos );
@@ -293,7 +293,7 @@ function updateHandSphere( data ) {
 // adjust Y due to hand position
 
   handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y  - 100.0;
+  handSphere.position.y = handSphere.position.y  - 150.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
