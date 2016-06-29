@@ -284,12 +284,13 @@ function updateHandSphere( data ) {
 
   lastHandSphereColor = data.color;
 
-  handSphere.position.fromArray( data.position );
+//  handSphere.position.fromArray( data.position );
 
 // change orientation due to reverse of hand on peer
+// adjust Y due to hand position
 
-  handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y + -20.0;
+//  handSphere.position.x = handSphere.position.x * -1.0;
+//  handSphere.position.y = handSphere.position.y + -40.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
@@ -346,6 +347,11 @@ function sphereAnimate( data ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
+
+handSphere.position = hand.sphereCenter;
+      handSphere.sphereRadius = hand.sphereRadius;
+
+
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
