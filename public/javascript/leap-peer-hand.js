@@ -157,7 +157,7 @@ function arObjMover() {
 
 // reverse the sign since peer hand is reversed
 
-      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5 - 200;
+      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 278.5;
 
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
@@ -345,14 +345,13 @@ function sphereAnimate( data ) {
 
     scene.remove( handSphere );
     scene.remove( peerHands );
+    scene.remove( peerHands );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
 
-
-      handSphere.sphereRadius = hand.sphereRadius;
-
+//      handSphere.sphereRadius = hand.sphereRadius;
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
@@ -380,8 +379,8 @@ function sphereAnimate( data ) {
     if ( leapData === 'remove' ) {
       console.log( 'focus hand remove' );
       scene.remove( peerHands );
-      armMeshes.forEach( function( item ) { scene.remove( item ); } );
-      boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+ //     armMeshes.forEach( function( item ) { scene.remove( item ); } );
+ //     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
   //    controls.update();
     } else {
