@@ -75,7 +75,7 @@ function evCanvas( ev ) {
 // reverse the camera for peer to orient the hands
 
    // camera.position.set( 0, -600, -100 );
-    camera.position.set( 0, 0, 420 );
+    camera.position.set( 0, 600, 420 );
 
    controls = new THREE.OrbitControls( camera, renderer.domElement );
    controls.enableRotate = false;
@@ -146,6 +146,8 @@ function arObjMover() {
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
+
+//    }
   };
 
   this.mousemove = function( ev ) {
@@ -257,9 +259,7 @@ var tool = new arObjMover();
 
      scene.add( peerHands );
 
-     if ( threejsDebug ) {
-       window.scene = scene;
-      }
+   //  window.scene = scene;
  }
 
 // function updatePeerSphere( data ) {
@@ -284,13 +284,13 @@ function updateHandSphere( data ) {
 
   lastHandSphereColor = data.color;
 
-  handSphere.position.fromArray( data.position );
+//  handSphere.position.fromArray( data.position );
 
 // change orientation due to reverse of hand on peer
 // adjust Y due to hand position
 
-  handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y + -60.0;
+//  handSphere.position.x = handSphere.position.x * -1.0;
+//  handSphere.position.y = handSphere.position.y + -40.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
@@ -347,6 +347,11 @@ function sphereAnimate( data ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
+
+
+      handSphere.sphereRadius = hand.sphereRadius;
+
+
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
