@@ -283,7 +283,9 @@ function updateHandSphere( data ) {
 
   handSphere.position.fromArray( data.position );
 
-  handSphere.position.multiplyScalar( -1.0 );
+// change orientation due to reverse of hand on peer
+
+  handSphere.position.x = handSphere.position.x * -1.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
