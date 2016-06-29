@@ -285,7 +285,7 @@ function updateHandSphere( data ) {
 
   lastHandSphereColor = data.color;
 
-//  handSphere.position.fromArray( data.positio
+  handSphere.position.fromArray( data.position);
 
 // change orientation due to reverse of hand on peer
 // adjust Y due to hand position
