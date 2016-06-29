@@ -77,6 +77,7 @@ function evCanvas( ev ) {
    // camera.position.set( 0, -600, -100 );
 
     camera.position.set( 0, 0, 420 );
+    camera.lookAt( new THREE.Vector3(0,0,0));
 
    controls = new THREE.OrbitControls( camera, renderer.domElement );
    controls.enableRotate = false;
