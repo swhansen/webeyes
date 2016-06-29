@@ -282,6 +282,9 @@ function updateHandSphere( data ) {
   lastHandSphereColor = data.color;
 
   handSphere.position.fromArray( data.position );
+
+  handSphere.position.multiplyScalar( -1.0 );
+
   handSphere.material.color.setRGB(
                 data.color.r,
                 data.color.g,
@@ -332,6 +335,7 @@ function sphereAnimate( data ) {
     var countArms = 0;
 
     scene.remove( handSphere );
+    scene.remove( peerHands );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
