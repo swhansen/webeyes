@@ -345,6 +345,10 @@ function sphereAnimate( data ) {
 
   function leapAnimate( leapFrame ) {
 
+    if ( leapframe.operation ) {
+      renderer.render( scene, camera );
+    } else {
+
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
     var countArms = 0;
@@ -371,6 +375,7 @@ function sphereAnimate( data ) {
     renderer.render( scene, camera );
     //controls.update();
   }
+}
 
 // ------------------------------------------------------------------------------
 
