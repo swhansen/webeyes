@@ -256,6 +256,7 @@ var tool = new arObjMover();
  //    peerHands.translateY( 50);
       peerHands.position.set( 0.0, 2.0, 0.0 );
      scene.add( peerHands );
+     window.scene = scene;
  }
 
 // function updatePeerSphere( data ) {
