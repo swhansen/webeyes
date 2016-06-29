@@ -119,7 +119,9 @@ function arObjMover() {
     raycaster.setFromCamera( mouseVector, camera );
     var intersects = raycaster.intersectObjects( scene.children );
 
- //   if ( intersects.length > 0 ) {
+    console.log( 'intersects', intersects );
+
+    if ( intersects.length > 0 ) {
       peerSelected = true;
       scene.remove( handSphere );
       scene.add( peerSphere );
@@ -148,7 +150,7 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-//    }
+    }
   };
 
   this.mousemove = function( ev ) {
@@ -157,8 +159,8 @@ function arObjMover() {
 
 // reverse the sign since peer hand is reversed
 
-      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
-      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
+      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 278.5;
 
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
