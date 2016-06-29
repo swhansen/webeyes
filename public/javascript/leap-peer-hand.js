@@ -76,7 +76,7 @@ function evCanvas( ev ) {
 
    // camera.position.set( 0, -600, -100 );
 
-    camera.position.set( 0, 600, 420 );
+    camera.position.set( 0, 0, 420 );
 
    controls = new THREE.OrbitControls( camera, renderer.domElement );
    controls.enableRotate = false;
@@ -157,11 +157,9 @@ function arObjMover() {
 
 // reverse the sign since peer hand is reversed
 
- //     var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5;
- //     var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 278.5;
+      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 278.5;
 
-     var mouseSphereX = -( ev._x  / 278.5  * 2 - 1 ) * box0Width;
-      var mouseSphereY = ( ev._y  / 278.5 * 2 - 1 ) * box0Height;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
@@ -259,7 +257,7 @@ var tool = new arObjMover();
     peerHands.add( mesh );
     peerHands.rotation.x = -0.8;
     peerHands.rotation.y = Math.PI;
-    peerHands.position.set( 0.0, -700.0, 0.0 );
+    peerHands.position.set( 0.0, -100.0, 0.0 );
     peerHands.scale.set( 1.75, 1.75, 1.75 );
 
      scene.add( peerHands );
