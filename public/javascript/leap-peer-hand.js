@@ -250,11 +250,13 @@ var tool = new arObjMover();
      mesh.quaternion.multiply( baseBoneRotation );
      mesh.scale.set( bone.width, bone.width, bone.length );
      peerHands.add( mesh );
-     peerHands.rotation.x = Math.PI;
+     peerHands.rotation.x = -0.8;
    //  scene.rotation.y = Math.PI / 2;
      peerHands.rotation.z = Math.PI;
  //    peerHands.translateY( 50);
-      peerHands.position.set( 0.0, 2.0, 0.0 );
+      peerHands.position.set( 0.0, -700.0, 0.0 );
+      peersHands.scale.set( 1.5, 1.5, 1.5 );
+
      scene.add( peerHands );
      window.scene = scene;
  }
