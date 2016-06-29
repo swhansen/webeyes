@@ -246,6 +246,7 @@ var tool = new arObjMover();
    meshes.push( mesh );
    return mesh;
  }
+
  function updateMesh( bone, mesh ) {
     mesh.position.fromArray( bone.center() );
     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
@@ -259,7 +260,7 @@ var tool = new arObjMover();
 
      scene.add( peerHands );
 
-   //  window.scene = scene;
+     window.scene = scene;
  }
 
 // function updatePeerSphere( data ) {
@@ -284,7 +285,7 @@ function updateHandSphere( data ) {
 
   lastHandSphereColor = data.color;
 
-//  handSphere.position.fromArray( data.position );
+//  handSphere.position.fromArray( data.positio
 
 // change orientation due to reverse of hand on peer
 // adjust Y due to hand position
@@ -328,7 +329,6 @@ function ThreeToScreenPosition( obj, camera ) {
 function sphereAnimate( data ) {
 
   scene.remove( handSphere );
-
   updateHandSphere( data );
 //
   renderer.render( scene, camera );
