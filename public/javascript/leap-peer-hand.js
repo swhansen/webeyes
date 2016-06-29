@@ -75,7 +75,7 @@ function evCanvas( ev ) {
 // reverse the camera for peer to orient the hands
 
    // camera.position.set( 0, -600, -100 );
-    camera.position.set( 0, 600, 420 );
+    camera.position.set( 0, 0, 420 );
 
    controls = new THREE.OrbitControls( camera, renderer.domElement );
    controls.enableRotate = false;
@@ -257,7 +257,9 @@ var tool = new arObjMover();
 
      scene.add( peerHands );
 
-   //  window.scene = scene;
+     if ( threejsDebug ) {
+       window.scene = scene;
+      }
  }
 
 // function updatePeerSphere( data ) {

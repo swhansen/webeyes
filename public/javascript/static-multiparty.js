@@ -18,6 +18,8 @@ socketServer = io.connect( '/' );
 
 var uiStructure = {};
 
+var threejsDebug = true;
+
 var leapPeerHandAnimate = false;
 
 // Container for User Context
