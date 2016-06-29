@@ -254,7 +254,7 @@ var tool = new arObjMover();
    //  scene.rotation.y = Math.PI / 2;
      peerHands.rotation.z = Math.PI;
  //    peerHands.translateY( 50);
-      peerHands.position.set( 0.0, 0.0, 0.0 );
+      peerHands.position.set( 0.0, 2.0, 0.0 );
      scene.add( peerHands );
  }
 
