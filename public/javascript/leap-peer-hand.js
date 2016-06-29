@@ -293,7 +293,7 @@ function updateHandSphere( data ) {
 // adjust Y due to hand position
 
   handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y + -40.0;
+  handSphere.position.y = handSphere.position.y  - 80.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
