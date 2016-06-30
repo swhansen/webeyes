@@ -161,8 +161,8 @@ function arObjMover() {
 
 // reverse the sign since peer hand is reversed
 
-      var mouseSphereX = -( ev._x  / box0Width * 2 - 1 ) * 278.5;
-      var mouseSphereY = ( ev._y  / box0Height * 2 - 1 ) * 278.5;
+      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
+      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
 
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
@@ -196,7 +196,6 @@ function arObjMover() {
       // note: need to fire animate
 renderer.render( scene, camera );
     //  leapAnimate( data );
-    controls.update();
   }
 };
 
