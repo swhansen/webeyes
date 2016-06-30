@@ -196,6 +196,7 @@ function arObjMover() {
       // note: need to fire animate
 renderer.render( scene, camera );
     //  leapAnimate( data );
+    controls.update();
   }
 };
 
