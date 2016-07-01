@@ -205,8 +205,8 @@ renderer.render( scene, camera );
     peerSelected = false;
     scene.remove( peerSphere );
 
-    var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
-    var mouseSphereY = -( ev._y / box0Width * 2 - 1 ) * 278.5;
+     var mouseSphereX = (( ev._x / box0Width * 2 - 1 ) * 278.5 ) + 285.5;
+     var mouseSphereY = -( ( ev._y / box0Width * 2 - 1 ) * 278.5 ) - 278.5;
     var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
 
    // rgb (0-1)
@@ -364,7 +364,6 @@ function sphereAnimate( data ) {
           updateMesh( bone, boneMesh );
         }
       }
-
       var arm = hand.arm;
       var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
       updateMesh( arm, armMesh );
