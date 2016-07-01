@@ -229,7 +229,7 @@ function updatePeerSphere( data ) {
     break;
 
   case 'mouseUp':
-    console.log( 'peer-sphere recieved from peer - mouseUp', data );
+    console.log( 'peer-sphere UP from peer - mouseUp', data );
 
     if ( data.setHueState ) {
 
