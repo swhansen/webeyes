@@ -104,13 +104,12 @@ function evCanvas( ev ) {
     peerSphere.name = 'peerSphere';
 
 
-
-    var testSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
+    var testSphereGeometry = new THREE.SphereGeometry( 10, 16, 16 );
+    var testSphere = new THREE.Mesh( testSphereGeometry, peerSphereMaterial );
     testSphere.name = 'testSphere';
       testSphere.position.x = 0;
       testSphere.position.y = 0;
       testSphere.position.z = 0;
-      testSphere.scale( 10, 10, 10 );
     scene.add(testSphere);
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
