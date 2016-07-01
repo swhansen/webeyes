@@ -344,7 +344,8 @@ function sphereAnimate( data ) {
   function leapAnimate( leapFrame ) {
 
     if ( leapFrame.operation ) {
-      renderer.render( scene, camera );
+  scene.remove( 'mesh' );
+    renderer.render( scene, camera );
     } else {
 
     var frame = new Leap.Frame( leapFrame );
@@ -353,6 +354,7 @@ function sphereAnimate( data ) {
 
     scene.remove( handSphere );
     scene.remove( peerHands );
+    scene.remove( 'mesh' );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
