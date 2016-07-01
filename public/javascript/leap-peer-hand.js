@@ -161,8 +161,8 @@ function arObjMover() {
 
     if ( tool.started === true && peerSelected === true ) {
 
-      var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
-      var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
+      var mouseSphereX = (( ev._x  / box0Width * 2 - 1 ) * 278.5 ) + 278.5;
+      var mouseSphereY = -(( ev._y  / box0Height * 2 - 1 ) * 278.5) + 278.5;
 
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
@@ -208,8 +208,8 @@ renderer.render( scene, camera );
     peerSelected = false;
     scene.remove( peerSphere );
 
-     var mouseSphereX = (( ev._x / box0Width * 2 - 1 ) * 278.5 ) + 285.5;
-     var mouseSphereY = -( ( ev._y / box0Width * 2 - 1 ) * 278.5 ) - 278.5;
+     var mouseSphereX = (( ev._x / box0Width * 2 - 1 ) * 278.5 ) - 285.5;
+     var mouseSphereY = -( ( ev._y / box0Width * 2 - 1 ) * 278.5 ) + 278.5;
     var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
 
    // rgb (0-1)
