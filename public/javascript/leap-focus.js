@@ -225,7 +225,7 @@ function updatePeerSphere( data ) {
     peerSphere.material.color = data.color;
 
     renderer.render( scene, camera );
-   // controls.update();
+    controls.update();
     break;
 
   case 'mouseUp':
