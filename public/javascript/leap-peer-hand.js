@@ -29,7 +29,7 @@ var leapFrame;
   leapFull.addEventListener( 'mousemove', evCanvas, false );
   leapFull.addEventListener( 'mouseup', evCanvas, false );
 
-  var data[];
+  var data = [];
 
 //  function onWindowResize() {
 //      camera.aspect = window.innerWidth / window.innerHeight;
