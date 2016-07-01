@@ -139,8 +139,10 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-      var mouseSphereX = ( ev._x / box0Width + 1 ) * 278.5;
-      var mouseSphereY = -( ev._y / box0Height - 1 ) * 278.5;
+    //  var mouseSphereX = ( ev._x / box0Width + 1 ) * 278.5;
+     // var mouseSphereY = -( ev._y / box0Height - 1 ) * 278.5;
+      var mouseSphereX = 20;
+      var mouseSphereY = 20;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.fromArray( spherePos );
 
