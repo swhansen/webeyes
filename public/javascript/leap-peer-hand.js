@@ -343,10 +343,9 @@ function sphereAnimate( data ) {
 
   function leapAnimate( leapFrame ) {
 
-    if ( leapFrame.operation ) {
-  scene.remove( 'mesh' );
-    renderer.render( scene, camera );
-    } else {
+//  if ( leapFrame.operation ) {
+//  renderer.render( scene, camera );
+//  } else {
 
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
@@ -354,7 +353,6 @@ function sphereAnimate( data ) {
 
     scene.remove( handSphere );
     scene.remove( peerHands );
-    scene.remove( 'mesh' );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
@@ -374,7 +372,7 @@ function sphereAnimate( data ) {
     }
     renderer.render( scene, camera );
     //controls.update();
-  }
+  //}
 }
 
 // ------------------------------------------------------------------------------
