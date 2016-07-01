@@ -48,23 +48,28 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var controller = Leap.loop( { enableGesture:true, background: false, loopWhileDisconnected: false },
        leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); });
 
+    controller.on( 'handlost', function( hand) {
+        var sessionId = socketServer.sessionid;
+    socketServer.emit( 'leapShare', data , sessionId );
+  } );
+
 // Emit the Leap data to all the Peers
 // - check for existance of hand
 // - emit every N sample cycles
 
 function emitLeap( data ) {
- if ( data.hands.length === 0 ) {
-    data = 'remove';
-    var sessionId = socketServer.sessionid;
-    socketServer.emit( 'leapShare', data , sessionId );
-  } else {
+// if ( data.hands.length === 0 ) {
+//    data = 'remove';
+//    var sessionId = socketServer.sessionid;
+//    socketServer.emit( 'leapShare', data , sessionId );
+//  } else {
     emitIterator = emitIterator + 1;
       if ( emitIterator === emitInterval ) {
         emitIterator = 0;
         var sessionId = socketServer.sessionid;
         socketServer.emit( 'leapShare', JSON.stringify( data ), sessionId );
         }
-      }
+    //  }
       }
 
     function emitLeapSphere( data ) {
