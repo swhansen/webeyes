@@ -48,10 +48,12 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var controller = Leap.loop( { enableGesture:true, background: false, loopWhileDisconnected: false },
        leapAnimate ).use('handEntry').on('handFound', function(){ onHandFound(); });
 
-    controller.on( 'handlost', function( hand) {
+    controller.on( 'handLost',
+       function( hand) {
         var sessionId = socketServer.sessionid;
-    socketServer.emit( 'leapShare', data , sessionId );
-  } );
+        socketServer.emit( 'leapShare', 'remove' , sessionId );
+      } );
+
 
 // Emit the Leap data to all the Peers
 // - check for existance of hand
