@@ -43,7 +43,7 @@ function evCanvas( ev ) {
 
 // Firefox
   if ( ev.layerX || ev.layerX === 0 ) {
-    ev._x = -ev.layerX;
+    ev._x = ev.layerX;
     ev._y = -ev.layerY;
 
 // Opera
