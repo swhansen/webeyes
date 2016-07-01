@@ -110,6 +110,7 @@ function evCanvas( ev ) {
       testSphere.position.x = 0;
       testSphere.position.y = 0;
       testSphere.position.z = 0;
+      testSphere.scale( 10, 10, 10 );
     scene.add(testSphere);
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
@@ -139,8 +140,8 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-      var mouseSphereX = ( ev._x / box0Width * 2 - 1 ) * 278.5;
-      var mouseSphereY = -( ev._y / box0Height * 2 - 1 ) * 278.5;
+      var mouseSphereX = ( ev._x / box0Width + 1 ) * 278.5;
+      var mouseSphereY = -( ev._y / box0Height - 1 ) * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.fromArray( spherePos );
 
