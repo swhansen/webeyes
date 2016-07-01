@@ -157,7 +157,7 @@ function arObjMover() {
 
   this.mousemove = function( ev ) {
 
-    if ( tool.started && peerSelected ) {
+    if ( tool.started && peerSelected === true ) {
 
       var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
