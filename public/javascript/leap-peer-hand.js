@@ -29,6 +29,8 @@ var leapFrame;
   leapFull.addEventListener( 'mousemove', evCanvas, false );
   leapFull.addEventListener( 'mouseup', evCanvas, false );
 
+  var data[];
+
 //  function onWindowResize() {
 //      camera.aspect = window.innerWidth / window.innerHeight;
 //      camera.updateProjectionMatrix();
@@ -157,7 +159,7 @@ function arObjMover() {
 
   this.mousemove = function( ev ) {
 
-    if ( tool.started && peerSelected === true ) {
+    if ( tool.started === true && peerSelected === true ) {
 
       var mouseSphereX = ( ev._x  / box0Width * 2 - 1 ) * 278.5;
       var mouseSphereY = -( ev._y  / box0Height * 2 - 1 ) * 278.5;
@@ -188,11 +190,12 @@ function arObjMover() {
 
       console.log( 'peer mouseMove', data );
 
+renderer.render( scene, camera );
+
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
       // note: need to fire animate
-renderer.render( scene, camera );
     //  leapAnimate( data );
   }
 };
