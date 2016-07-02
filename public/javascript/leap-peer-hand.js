@@ -125,22 +125,36 @@ function arObjMover() {
   this.mousedown = function( ev ) {
     ev.preventDefault();
     tool.started = true;
-    console.log( 'box0Width:', box0Width, 'ex._x:', ev._x );
+   // console.log( 'box0Width:', box0Width, 'ex._x:', ev._x );
 
     var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
                             -( ev._y / box0Height ) * 2 + 1, 0.5 );
     raycaster.setFromCamera( mouseVector, camera );
     var intersects = raycaster.intersectObjects( scene.children );
 
-    console.log( 'intersects', intersects );
+  //  console.log( 'intersects', intersects );
 
   //  if ( intersects.length > 0 ) {
       peerSelected = true;
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-     var mouseSphereX = ( ev._x / box0Width + 1 ) * 278.5;
-     var mouseSphereY = -( ev._y / box0Height - 1 ) * 278.5;
+
+  var rect = leapFull.getBoundingClientRect();
+  var offsetX = rect.left;
+  var offsetY = rect.top;
+
+  var viewWidth = leapFull.offsetWidth;
+  var viewHeight = leapFull.offsetHeight;
+
+  console.log( 'offset-XY:', offsetX, offsetY, 'viewWidth-WH:', viewWidth , viewHeight );
+  console.log( 'ev:', ev._x, ev._y );
+
+// var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
+//                              -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+
+     var mouseSphereX = ( ev._x / box0Width - 1 ) * 278.5;
+     var mouseSphereY = -( ev._y / box0Height + 1 ) * 278.5;
 
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.fromArray( spherePos );
@@ -171,8 +185,8 @@ function arObjMover() {
 
     if ( tool.started === true && peerSelected === true ) {
 
-    //  var mouseSphereX = ( ev._x  / box0Width + 1 ) * 278.5;
-    //  var mouseSphereY = ( ev._y  / box0Height + 1 ) * 278.5;
+    //  var mouseSphereX = (( ev._x  / box0Width ) * 2 - 1 ) * 278.5;
+    //  var mouseSphereY = (( ev._y  / box0Height ) * 2 - 1 ) * 278.5;
       var mouseSphereX = 20;
       var mouseSphereY = 20;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
