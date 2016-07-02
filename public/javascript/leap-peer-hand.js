@@ -46,26 +46,6 @@ var leapFrame;
 //      renderer.setSize( window.innerWidth, window.innerHeight );
 //  }
 
-// General-purpose event handler for mouse events
-
-function evCanvas( ev ) {
-
-// Firefox
-  if ( ev.layerX || ev.layerX === 0 ) {
-    ev._x = ev.layerX;
-    ev._y = ev.layerY;
-
-// Opera
-  } else if ( ev.offsetX || ev.offsetX === 0 ) {
-    ev._x = ev.offsetX;
-    ev._y = ev.offsetY;
-  }
-  var func = tool[ ev.type ];
-
-  if ( func ) {
-    func( ev );
-  }
-}
 
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
@@ -126,6 +106,28 @@ function evCanvas( ev ) {
     scene.add( light );
     scene.add( aLight );
 
+
+// General-purpose handler for mouse events
+
+function evCanvas( ev ) {
+
+// Firefox
+  if ( ev.layerX || ev.layerX === 0 ) {
+    ev._x = ev.layerX;
+    ev._y = ev.layerY;
+
+// Opera
+  } else if ( ev.offsetX || ev.offsetX === 0 ) {
+    ev._x = ev.offsetX;
+    ev._y = ev.offsetY;
+  }
+  var func = tool[ ev.type ];
+
+  if ( func ) {
+    func( ev );
+  }
+}
+
 function arObjMover() {
   var tool = this;
   this.down = false;
@@ -135,33 +137,34 @@ function arObjMover() {
   this.mousedown = function( ev ) {
     ev.preventDefault();
     tool.started = true;
-   // console.log( 'box0Width:', box0Width, 'ex._x:', ev._x );
 
-//   var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
-//                           -( ev._y / box0Height ) * 2 + 1, 0.5 );
-//   raycaster.setFromCamera( mouseVector, camera );
-//   var intersects = raycaster.intersectObjects( scene.children );
+    mp.x = (( event.clientX - offsetX ) / viewWidth * 2 - 1) * 278.5;
+    mp.y = -(( event.clientY - offsetY ) / viewHeight * 2 + 1) * 278.5;
 
-  //  console.log( 'intersects', intersects );
 
-    if ( intersects.length > 0 ) {
+   var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
+                           -( ev._y / box0Height ) * 2 + 1, 0.5 );
+   raycaster.setFromCamera( mouseVector, camera );
+   var intersects = raycaster.intersectObjects( scene.children );
+   console.log( 'intersects', intersects );
+
+  //  if ( intersects.length > 0 ) {
       peerSelected = true;
       scene.remove( handSphere );
       scene.add( peerSphere );
 
   console.log( 'mouse-down-ev:', ev._x, ev._y );
 
-  mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
-  mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
+
 
   mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
 
  console.log( 'mousedown-mouse3D:', mouse3D );
 
-     var mouseSphereX = ( ev._x / box0Width - 1 ) * 278.5;
-     var mouseSphereY = -( ev._y / box0Height + 1 ) * 278.5;
+  //   var mouseSphereX = ( ev._x / box0Width - 1 )
+   //  var mouseSphereY = -( ev._y / box0Height + 1 )
 
-      var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
+      var spherePos = [ mp.x, mp.y, 0 ];
       peerSphere.position.fromArray( spherePos );
 
       var normalizedRGB = [];
@@ -185,7 +188,7 @@ function arObjMover() {
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-    }
+   // }
   };
 
   this.mousemove = function( ev ) {
@@ -193,16 +196,16 @@ function arObjMover() {
     if ( tool.started === true && peerSelected === true ) {
 
 
-      mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
-      mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
+      mp.x = (( ev._x - offsetX ) / viewWidth * 2 - 1 ) * 278.5;;
+      mp.y = -(( ev._y - offsetY ) / viewHeight * 2 + 1 ) * 278.5;;
 
      mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
 
 
     //  var mouseSphereX = (( ev._x  / box0Width ) * 2 - 1 ) * 278.5;
     //  var mouseSphereY = (( ev._y  / box0Height ) * 2 - 1 ) * 278.5;
-      var mouseSphereX = mp.x * 278.5;
-      var mouseSphereY = mp.y * 278.5;
+      var mouseSphereX = mp.x;
+      var mouseSphereY = mp.y;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
