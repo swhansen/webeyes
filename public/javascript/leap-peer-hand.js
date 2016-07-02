@@ -127,6 +127,7 @@ function arObjMover() {
   this.down = false;
   var data = {};
   var mp = {};
+  var spherePos;
 
   this.mousedown = function( ev ) {
     ev.preventDefault();
@@ -143,16 +144,14 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
- //     console.log( 'mouse-down-ev:', ev._x, ev._y );
-
       mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
       mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
 
       var mouseSphereX = ( ev._x / box0Width - 1 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height + 1 ) * 278.5;
 
-      var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.fromArray( spherePos );
+
       var normalizedRGB = [];
       normalizedRGB[0] = ev._x  / box0Width;
       normalizedRGB[1] = ev._y  / box0Height;
@@ -162,11 +161,10 @@ function arObjMover() {
                 normalizedRGB[1],
                 normalizedRGB[2] );
 
+      spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       data.operation = 'mouseDown';
       data.position = spherePos;
       data.setHueState = false;
-
-      console.log( 'peer mouse down', data );
 
       renderer.render( scene, camera );
 
@@ -187,7 +185,7 @@ function arObjMover() {
 
       var mouseSphereX = mp.x * 278.5;
       var mouseSphereY = mp.y * 278.5;
-      var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
+      spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
       peerSphere.position.z = 0;
@@ -213,13 +211,11 @@ function arObjMover() {
 
       console.log( 'peer mouseMove', data );
 
-renderer.render( scene, camera );
+      renderer.render( scene, camera );
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
-      // note: need to fire animate
-    //  leapAnimate( data );
   }
 };
 
@@ -233,7 +229,6 @@ renderer.render( scene, camera );
 
      var mouseSphereX = (( ev._x / box0Width * 2 - 1 ) * 278.5 ) - 285.5;
      var mouseSphereY = -( ( ev._y / box0Width * 2 - 1 ) * 278.5 ) + 278.5;
-    var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
 
    // rgb (0-1)
 
@@ -247,6 +242,7 @@ renderer.render( scene, camera );
               normalizedRGB[1],
               normalizedRGB[2] );
 
+    spherePos = [ mouseSphereX, mouseSphereY, 0 ];
     data.operation = 'mouseUp';
     data.position = spherePos;
     data.color = normalizedRGB;
