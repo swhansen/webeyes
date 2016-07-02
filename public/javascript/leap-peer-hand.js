@@ -85,10 +85,7 @@ function evCanvas( ev ) {
 
 // reverse the camera for peer to orient the hands
 
-   // camera.position.set( 0, -600, -100 );
-
     camera.position.set( 0, 0, 420 );
-//    camera.lookAt( new THREE.Vector3(0,0,0));
 
 //   controls = new THREE.OrbitControls( camera, renderer.domElement );
 //   controls.enableRotate = false;
@@ -112,14 +109,13 @@ function evCanvas( ev ) {
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.name = 'peerSphere';
 
-
-    var testSphereGeometry = new THREE.SphereGeometry( 10, 16, 16 );
-    var testSphere = new THREE.Mesh( testSphereGeometry, peerSphereMaterial );
-    testSphere.name = 'testSphere';
-      testSphere.position.x = 0;
-      testSphere.position.y = 0;
-      testSphere.position.z = 0;
-    scene.add(testSphere);
+//    var testSphereGeometry = new THREE.SphereGeometry( 10, 16, 16 );
+//    var testSphere = new THREE.Mesh( testSphereGeometry, peerSphereMaterial );
+//    testSphere.name = 'testSphere';
+//      testSphere.position.x = 0;
+//      testSphere.position.y = 0;
+//      testSphere.position.z = 0;
+//    scene.add(testSphere);
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
@@ -136,7 +132,6 @@ function arObjMover() {
     ev.preventDefault();
     tool.started = true;
 
-
    var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
                            -( ev._y / box0Height ) * 2 + 1, 0.5 );
    raycaster.setFromCamera( mouseVector, camera );
@@ -148,26 +143,20 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-  console.log( 'mouse-down-ev:', ev._x, ev._y );
+ //     console.log( 'mouse-down-ev:', ev._x, ev._y );
 
-  mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
-  mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
+      mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
+      mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
 
-  mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
-
- console.log( 'mousedown-mouse3D:', mouse3D );
-
-     var mouseSphereX = ( ev._x / box0Width - 1 ) * 278.5;
-     var mouseSphereY = -( ev._y / box0Height + 1 ) * 278.5;
+      var mouseSphereX = ( ev._x / box0Width - 1 ) * 278.5;
+      var mouseSphereY = -( ev._y / box0Height + 1 ) * 278.5;
 
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.fromArray( spherePos );
-
       var normalizedRGB = [];
       normalizedRGB[0] = ev._x  / box0Width;
       normalizedRGB[1] = ev._y  / box0Height;
       normalizedRGB[2] = lastHandSphereColor.b;
-
       peerSphere.material.color.setRGB(
                 normalizedRGB[0],
                 normalizedRGB[1],
@@ -183,7 +172,6 @@ function arObjMover() {
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
-
     }
   };
 
@@ -191,17 +179,13 @@ function arObjMover() {
 
     if ( tool.started === true && peerSelected === true ) {
 
-
-      mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
-      mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
-
-     mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
-
+      mouseSphereX = (( ev._x - offsetX ) / viewWidth * 2 - 1) * 278.5;
+      mouseSphereY = -(( ev._y - offsetY ) / viewHeight * 2 + 1) * 278.5;
 
     //  var mouseSphereX = (( ev._x  / box0Width ) * 2 - 1 ) * 278.5;
     //  var mouseSphereY = (( ev._y  / box0Height ) * 2 - 1 ) * 278.5;
-      var mouseSphereX = mp.x * 278.5;
-      var mouseSphereY = mp.y * 278.5;
+    //  var mouseSphereX = mp.x * 278.5;
+    //  var mouseSphereY = mp.y * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
@@ -300,6 +284,9 @@ var tool = new arObjMover();
     mesh.quaternion.multiply( baseBoneRotation );
     mesh.scale.set( bone.width, bone.width, bone.length );
     peerHands.add( mesh );
+
+// rotate the hands to come at the user
+
     peerHands.rotation.x = -0.8;
     peerHands.rotation.y = Math.PI;
     peerHands.position.set( 0.0, -100.0, 0.0 );
@@ -309,15 +296,6 @@ var tool = new arObjMover();
 
      window.scene = scene;
  }
-
-// function updatePeerSphere( data ) {
-//
-// if ( data.operation === 'mouseDown' ) {}
-//
-// if ( data.operation === 'mouseMove' ) {}
-//
-// if ( data.operation === 'mouseUp' ) {}
-// }
 
 function updateHandSphere( data ) {
 
