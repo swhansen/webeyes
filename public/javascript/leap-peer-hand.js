@@ -198,16 +198,16 @@ mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
     if ( tool.started === true && peerSelected === true ) {
 
 
-      mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
-      mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
+      mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
+      mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
 
-      mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
+     mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
 
 
     //  var mouseSphereX = (( ev._x  / box0Width ) * 2 - 1 ) * 278.5;
     //  var mouseSphereY = (( ev._y  / box0Height ) * 2 - 1 ) * 278.5;
-      var mouseSphereX = mp.x;
-      var mouseSphereY = mp.y;
+      var mouseSphereX = mp.x * 278.5;
+      var mouseSphereY = mp.y * 278.5;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
