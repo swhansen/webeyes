@@ -152,8 +152,8 @@ function arObjMover() {
 
  var mp = {};
 
- mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1 );
- mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1 );
+ mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
+ mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
 
 mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
 
