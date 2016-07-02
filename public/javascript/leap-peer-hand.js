@@ -144,24 +144,17 @@ function arObjMover() {
 
   //  console.log( 'intersects', intersects );
 
-  //  if ( intersects.length > 0 ) {
+    if ( intersects.length > 0 ) {
       peerSelected = true;
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-
   console.log( 'mouse-down-ev:', ev._x, ev._y );
 
+  mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
+  mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
 
-
- mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
- mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
-
-mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
-
-
- // mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
- //                             -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
+  mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
 
  console.log( 'mousedown-mouse3D:', mouse3D );
 
@@ -187,10 +180,12 @@ mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
 
       console.log( 'peer mouse down', data );
 
+      renderer.render( scene, camera );
+
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
 
- //   }
+    }
   };
 
   this.mousemove = function( ev ) {
