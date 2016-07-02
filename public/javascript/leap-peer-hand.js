@@ -195,9 +195,8 @@ function arObjMover() {
 
     if ( tool.started === true && peerSelected === true ) {
 
-
-      mp.x = (( ev._x - offsetX ) / viewWidth * 2 - 1 ) * 278.5;;
-      mp.y = -(( ev._y - offsetY ) / viewHeight * 2 + 1 ) * 278.5;;
+      mp.x = (( ev._x - offsetX ) / viewWidth * 2 - 1 ) * 278.5;
+      mp.y = -(( ev._y - offsetY ) / viewHeight * 2 + 1 ) * 278.5;
 
      mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
 
