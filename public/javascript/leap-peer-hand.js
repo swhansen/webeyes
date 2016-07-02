@@ -16,6 +16,15 @@ var leapFrame;
  leapFull.width =  leapPane.offsetWidth;
  leapFull.height = leapPane.offsetHeight;
 
+  var rect = leapFull.getBoundingClientRect();
+  var offsetX = rect.left;
+  var offsetY = rect.top;
+
+  var viewWidth = leapFull.offsetWidth;
+  var viewHeight = leapFull.offsetHeight;
+
+  console.log( 'offset-XY:', offsetX, offsetY, 'viewWidth-WH:', viewWidth , viewHeight );
+
  leapFull.style.visibility = 'visible';
  leapPane.style.visibility = 'visible';
 
@@ -121,6 +130,7 @@ function arObjMover() {
   var tool = this;
   this.down = false;
   var data = {};
+  var mp = {};
 
   this.mousedown = function( ev ) {
     ev.preventDefault();
@@ -140,17 +150,9 @@ function arObjMover() {
       scene.add( peerSphere );
 
 
-  var rect = leapFull.getBoundingClientRect();
-  var offsetX = rect.left;
-  var offsetY = rect.top;
+  console.log( 'mouse-down-ev:', ev._x, ev._y );
 
-  var viewWidth = leapFull.offsetWidth;
-  var viewHeight = leapFull.offsetHeight;
 
-  console.log( 'offset-XY:', offsetX, offsetY, 'viewWidth-WH:', viewWidth , viewHeight );
-  console.log( 'ev:', ev._x, ev._y );
-
- var mp = {};
 
  mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
  mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
@@ -195,10 +197,17 @@ mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
 
     if ( tool.started === true && peerSelected === true ) {
 
+
+      mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
+      mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
+
+      mouse3D = new THREE.Vector3( mp.x, mp.y, 0.5 );
+
+
     //  var mouseSphereX = (( ev._x  / box0Width ) * 2 - 1 ) * 278.5;
     //  var mouseSphereY = (( ev._y  / box0Height ) * 2 - 1 ) * 278.5;
-      var mouseSphereX = 20;
-      var mouseSphereY = 20;
+      var mouseSphereX = mp.x;
+      var mouseSphereY = mp.y;
       var spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       peerSphere.position.x = mouseSphereX;
       peerSphere.position.y = mouseSphereY;
