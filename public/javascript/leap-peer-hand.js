@@ -372,8 +372,8 @@ function sphereAnimate( data ) {
 
 // grab the hand sphere position and radius
 
-    handSphere.position = hand.sphereCenter;
-    handSphere.sphereRadius = hand.sphereRadius;
+//    handSphere.position = hand.sphereCenter;
+//    handSphere.sphereRadius = hand.sphereRadius;
 
 
     scene.remove( handSphere );
@@ -382,6 +382,8 @@ function sphereAnimate( data ) {
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
+      handSphere.position = hand.sphereCenter;
+    handSphere.sphereRadius = hand.sphereRadius;
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
