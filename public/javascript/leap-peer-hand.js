@@ -79,7 +79,7 @@ function evCanvas( ev ) {
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( box0Width, box0Height );
+    renderer.setSize( viewWidth, viewHeight );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     peerHands = new THREE.Object3D();
@@ -134,8 +134,8 @@ function arObjMover() {
     ev.preventDefault();
     tool.started = true;
 
-   var mouseVector = new THREE.Vector3( ( ev._x / box0Width ) * 2 - 1,
-                           -( ev._y / box0Height ) * 2 + 1, 0.5 );
+   var mouseVector = new THREE.Vector3( ( ev._x / viewWidth ) * 2 - 1,
+                           -( ev._y / viewHeight ) * 2 + 1, 0.5 );
    raycaster.setFromCamera( mouseVector, camera );
    var intersects = raycaster.intersectObjects( scene.children );
    console.log( 'intersects', intersects );
