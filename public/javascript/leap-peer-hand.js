@@ -159,7 +159,11 @@ function arObjMover() {
 
       spherePos = [ mouseSphereX, mouseSphereY, 0 ];
 
-      peerSphere.position.fromArray( spherePos );
+    //  peerSphere.position.fromArray( spherePos );
+
+      peerSphere.position.x = mouseSphereX;
+      peerSphere.position.y = mouseSphereY;
+      peerSphere.position.z = 0;
 
       var normalizedRGB = [];
       normalizedRGB[0] = ev._x  / box0Width;
@@ -313,13 +317,13 @@ function updateHandSphere( data ) {
 
   lastHandSphereColor = data.color;
 
-//  handSphere.position.fromArray( data.position);
+  handSphere.position.fromArray( data.position);
 
 // change orientation due to reverse of hand on peer
 // adjust Y due to hand position
 
-//  handSphere.position.x = handSphere.position.x * -1.0;
-//  handSphere.position.y = handSphere.position.y  - 150.0;
+  handSphere.position.x = handSphere.position.x * -1.0;
+  handSphere.position.y = handSphere.position.y  - 150.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
@@ -369,21 +373,12 @@ function sphereAnimate( data ) {
     var countBones = 0;
     var countArms = 0;
 
-
-// grab the hand sphere position and radius
-
-//    handSphere.position = hand.sphereCenter;
-//    handSphere.sphereRadius = hand.sphereRadius;
-
-
     scene.remove( handSphere );
     scene.remove( peerHands );
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
-      handSphere.position = hand.sphereCenter;
-    handSphere.sphereRadius = hand.sphereRadius;
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
