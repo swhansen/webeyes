@@ -215,7 +215,7 @@ function arObjMover() {
       data.color = peerSphere.material.color;
       data.setHueState = false;
 
-      console.log( 'peer mouseMove', data );
+ //     console.log( 'peer mouseMove', data );
 
       renderer.render( scene, camera );
 
@@ -313,13 +313,13 @@ function updateHandSphere( data ) {
 
   lastHandSphereColor = data.color;
 
-  handSphere.position.fromArray( data.position);
+//  handSphere.position.fromArray( data.position);
 
 // change orientation due to reverse of hand on peer
 // adjust Y due to hand position
 
-  handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y  - 150.0;
+//  handSphere.position.x = handSphere.position.x * -1.0;
+//  handSphere.position.y = handSphere.position.y  - 150.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
@@ -372,8 +372,8 @@ function sphereAnimate( data ) {
 
 // grab the hand sphere position and radius
 
-//    handSphere.position = hand.sphereCenter;
-//    handSphere.sphereRadius = hand.sphereRadius;
+    handSphere.position = hand.sphereCenter;
+    handSphere.sphereRadius = hand.sphereRadius;
 
 
     scene.remove( handSphere );
