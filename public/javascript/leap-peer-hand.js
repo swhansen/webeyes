@@ -13,6 +13,7 @@ var leapFrame;
 
  leapFull.style.width = '100%';
  leapFull.style.height = '100%';
+
  leapFull.width =  leapPane.offsetWidth;
  leapFull.height = leapPane.offsetHeight;
 
@@ -144,11 +145,19 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
-      mp.x = ( event.clientX - offsetX ) / viewWidth * 2 - 1;
-      mp.y = -( event.clientY - offsetY ) / viewHeight * 2 + 1;
+      mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
+      mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
 
       var mouseSphereX = ( ev._x / box0Width - 1 ) * 278.5;
       var mouseSphereY = -( ev._y / box0Height + 1 ) * 278.5;
+
+      console.log( 'box0:', box0Width, box0Height );
+      console.log( 'offset:', offsetX, offsetY );
+      console.log( 'viewWidth:', viewWidth, viewHeight );
+
+      console.log( 'mp:', mp.x, mp.y );
+
+      spherePos = [ mouseSphereX, mouseSphereY, 0 ];
 
       peerSphere.position.fromArray( spherePos );
 
@@ -161,7 +170,6 @@ function arObjMover() {
                 normalizedRGB[1],
                 normalizedRGB[2] );
 
-      spherePos = [ mouseSphereX, mouseSphereY, 0 ];
       data.operation = 'mouseDown';
       data.position = spherePos;
       data.setHueState = false;
@@ -180,8 +188,8 @@ function arObjMover() {
       mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
       mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
 
-    //  var mouseSphereX = (( ev._x  / box0Width ) * 2 - 1 ) * 278.5;
-    //  var mouseSphereY = (( ev._y  / box0Height ) * 2 - 1 ) * 278.5;
+    //  var mouseSphereX = ( ev._x  / box0Width ) * 2 - 1 ;
+    //  var mouseSphereY = -( ev._y  / box0Height ) * 2 + 1 ;
 
       var mouseSphereX = mp.x * 278.5;
       var mouseSphereY = mp.y * 278.5;
@@ -196,8 +204,6 @@ function arObjMover() {
       normalizedRGB[0] = ev._x  / box0Width;
       normalizedRGB[1] = ev._y  / box0Height;
       normalizedRGB[2] = lastHandSphereColor.b;
-
-  //   peerSphere.material.color.setHex(0xFF0000);
 
      peerSphere.material.color.setRGB(
                normalizedRGB[0],
@@ -359,13 +365,16 @@ function sphereAnimate( data ) {
 
   function leapAnimate( leapFrame ) {
 
-//  if ( leapFrame.operation ) {
-//  renderer.render( scene, camera );
-//  } else {
-
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
     var countArms = 0;
+
+
+// grab the hand sphere position and radius
+
+//    handSphere.position = hand.sphereCenter;
+//    handSphere.sphereRadius = hand.sphereRadius;
+
 
     scene.remove( handSphere );
     scene.remove( peerHands );
