@@ -44,7 +44,7 @@ var leapFrame;
     var armMeshes = [];
     var boneMeshes = [];
 
-    var renderer, scene, camera, controls;
+    var renderer, leapScene, camera, controls;
     var peerHands;
     var peerSelected = false;
     var lastHandSphereColor;
@@ -68,14 +68,14 @@ var leapFrame;
     var raycaster = new THREE.Raycaster();
     var projector = new THREE.Projector();
 
-    scene = new THREE.Scene();
+    leapScene = new THREE.Scene();
 
     var handGeometry = new THREE.SphereGeometry( 30, 16, 16 );
     var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
     handSphere.userData.rtiId = userContext.rtcId;
-    scene.add( handSphere );
+    leapScene.add( handSphere );
 
     var peerSphereGeometry = new THREE.SphereGeometry( 40, 16, 16 );
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
@@ -88,12 +88,12 @@ var leapFrame;
 //     testSphere.position.x = 0;
 //     testSphere.position.y = 0;
 //     testSphere.position.z = 0;
-//   scene.add(testSphere);
+//   leapScene.add(testSphere);
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
-    scene.add( light );
-    scene.add( aLight );
+    leapScene.add( light );
+    leapScene.add( aLight );
 
 // General-purpose event handler for mouse events
 
@@ -130,13 +130,13 @@ function arObjMover() {
    var mouseVector = new THREE.Vector3( ( ev._x / viewWidth ) * 2 - 1,
                            -( ev._y / viewHeight ) * 2 + 1, 0.5 );
    raycaster.setFromCamera( mouseVector, camera );
-   var intersects = raycaster.intersectObjects( scene.children );
+   var intersects = raycaster.intersectObjects( leapScene.children );
    console.log( 'intersects', intersects );
 
     if ( intersects.length > 0 ) {
       peerSelected = true;
-      scene.remove( handSphere );
-      scene.add( peerSphere );
+      leapScene.remove( handSphere );
+      leapScene.add( peerSphere );
 
       // normalized in canvas
 
@@ -174,7 +174,7 @@ function arObjMover() {
       data.position = spherePos;
       data.setHueState = false;
 
-      renderer.render( scene, camera );
+      renderer.render( leapScene, camera );
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
@@ -219,7 +219,7 @@ function arObjMover() {
 
  //     console.log( 'peer mouseMove', data );
 
-      renderer.render( scene, camera );
+      renderer.render( leapScene, camera );
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
@@ -232,7 +232,7 @@ function arObjMover() {
   if ( tool.started && peerSelected ) {
 
     peerSelected = false;
-    scene.remove( peerSphere );
+    leapScene.remove( peerSphere );
 
      var mouseSphereX = (( ev._x / box0Width * 2 - 1 ) * 278.5 ) - 285.5;
      var mouseSphereY = -( ( ev._y / box0Width * 2 - 1 ) * 278.5 ) + 278.5;
@@ -282,9 +282,9 @@ var tool = new arObjMover();
  }
 
  function updateMesh( bone, mesh ) {
-  scene.remove( peerHands );
-      armMeshes.forEach( function( item ) { scene.remove( item ); } );
-      boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+  leapScene.remove( peerHands );
+      armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+      boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
     mesh.position.fromArray( bone.center() );
     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
     mesh.quaternion.multiply( baseBoneRotation );
@@ -298,9 +298,9 @@ var tool = new arObjMover();
     peerHands.position.set( 0.0, -100.0, 0.0 );
     peerHands.scale.set( 1.5, 1.5, 1.5 );
 
-    scene.add( peerHands );
+    leapScene.add( peerHands );
 
-     window.scene = scene;
+     window.leapScene = leapScene;
  }
 
 function updateHandSphere( data ) {
@@ -312,7 +312,7 @@ function updateHandSphere( data ) {
   document.getElementById( 'canvaspane' ).style.pointerEvents = 'none';
 
   if ( data.inChooseState === true &&  peerSelected === false ) {
-  scene.add( handSphere );
+  leapScene.add( handSphere );
 
   lastHandSphereColor = data.color;
 
@@ -331,7 +331,7 @@ function updateHandSphere( data ) {
   }
 
   if ( data.inChooseState === false ) {
-        scene.remove( handSphere );
+        leapScene.remove( handSphere );
   }
 }
 
@@ -357,9 +357,9 @@ function ThreeToScreenPosition( obj, camera ) {
 // the focus sphere
 
 function sphereAnimate( data ) {
-  scene.remove( handSphere );
+  leapScene.remove( handSphere );
   updateHandSphere( data );
-  renderer.render( scene, camera );
+  renderer.render( leapScene, camera );
  }
 
   function leapAnimate( leapFrame ) {
@@ -368,10 +368,10 @@ function sphereAnimate( data ) {
     var countBones = 0;
     var countArms = 0;
 
-    scene.remove( handSphere );
-    scene.remove( peerHands );
-    armMeshes.forEach( function( item ) { scene.remove( item ); } );
-    boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+    leapScene.remove( handSphere );
+    leapScene.remove( peerHands );
+    armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+    boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
       for ( var finger of hand.fingers ) {
@@ -386,7 +386,7 @@ function sphereAnimate( data ) {
       updateMesh( arm, armMesh );
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
     }
-    renderer.render( scene, camera );
+    renderer.render( leapScene, camera );
 }
 
 // ------------------------------------------------------------------------------
@@ -397,13 +397,13 @@ function sphereAnimate( data ) {
 
     if ( leapData === 'remove' ) {
       console.log( 'focus hand remove' );
-      scene.remove( peerHands );
- //     armMeshes.forEach( function( item ) { scene.remove( item ); } );
- //     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
-      renderer.render( scene, camera );
+      leapScene.remove( peerHands );
+ //     armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+ //     boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+      renderer.render( leapScene, camera );
   //    controls.update();
     } else {
-      scene.remove( peerHands );
+      leapScene.remove( peerHands );
     leapFrame = JSON.parse( leapData );
     leapAnimate( leapFrame );
     } } );
