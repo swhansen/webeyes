@@ -33,6 +33,7 @@ var iotLightOff = new Audio( 'audio/button-47.wav');
     var iotZones = 3;
     var firstClick = false;
     var peerData = false;
+    var hand;
 
     var handState = {
       inChooseState: false,
@@ -331,9 +332,16 @@ if ( handState.inChooseState === true ) {
 
     scene.remove( handSphere );
 
+    for ( hand of frame.hands ) {
+
+      sphereData.position = hand.sphereCenter;
+      sphereData.sphereRadius = hand.sphereRadius;
+      sphereData.source = 'hand';
+    }
+
 // make the hand eligable
 
- for ( var hand of frame.hands ) {
+ for ( hand of frame.hands ) {
    if ( hand.grabStrength === 0  && handState.iotSelectEligible === false ) {
        handState.iotSelectEligible = true;
    }
@@ -350,10 +358,6 @@ if ( handState.inChooseState === true ) {
   }
 
     for ( hand of frame.hands ) {
-
-      sphereData.position = hand.sphereCenter;
-      sphereData.sphereRadius = hand.sphereRadius;
-      sphereData.source = 'hand';
 
 // increment IOT deviceId with left hand only
 
