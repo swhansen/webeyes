@@ -403,8 +403,7 @@ if ( isIotGrabOn  === true ) {
     }
   }
 }
-
-  for ( hand of frame.hands ) {
+for ( hand of frame.hands ) {
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
@@ -412,6 +411,7 @@ if ( isIotGrabOn  === true ) {
           updateMesh( bone, boneMesh );
         }
       }
+    }
 
       var arm = hand.arm;
       var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
@@ -422,5 +422,4 @@ if ( isIotGrabOn  === true ) {
     renderer.render( scene, camera );
     controls.update();
   }
-  }
-}
+
