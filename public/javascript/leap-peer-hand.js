@@ -39,35 +39,6 @@ var leapFrame;
   leapFull.addEventListener( 'mousemove', evCanvas, false );
   leapFull.addEventListener( 'mouseup', evCanvas, false );
 
-  //var data = {};
-
-//  function onWindowResize() {
-//      camera.aspect = window.innerWidth / window.innerHeight;
-//      camera.updateProjectionMatrix();
-//      renderer.setSize( window.innerWidth, window.innerHeight );
-//  }
-
-// General-purpose event handler for mouse events
-
-function evCanvas( ev ) {
-
-// Firefox
-  if ( ev.layerX || ev.layerX === 0 ) {
-    ev._x = ev.layerX;
-    ev._y = ev.layerY;
-
-// Opera
-  } else if ( ev.offsetX || ev.offsetX === 0 ) {
-    ev._x = ev.offsetX;
-    ev._y = ev.offsetY;
-  }
-  var func = tool[ ev.type ];
-
-  if ( func ) {
-    func( ev );
-  }
-}
-
     var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
     var armMeshes = [];
     var boneMeshes = [];
@@ -110,18 +81,39 @@ function evCanvas( ev ) {
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.name = 'peerSphere';
 
-//    var testSphereGeometry = new THREE.SphereGeometry( 10, 16, 16 );
-//    var testSphere = new THREE.Mesh( testSphereGeometry, peerSphereMaterial );
-//    testSphere.name = 'testSphere';
-//      testSphere.position.x = 0;
-//      testSphere.position.y = 0;
-//      testSphere.position.z = 0;
-//    scene.add(testSphere);
+    var testSphereGeometry = new THREE.SphereGeometry( 10, 16, 16 );
+    var testSphere = new THREE.Mesh( testSphereGeometry, peerSphereMaterial );
+    testSphere.name = 'testSphere';
+      testSphere.position.x = 0;
+      testSphere.position.y = 0;
+      testSphere.position.z = 0;
+    scene.add(testSphere);
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
     scene.add( light );
     scene.add( aLight );
+
+// General-purpose event handler for mouse events
+
+function evCanvas( ev ) {
+
+// Firefox
+  if ( ev.layerX || ev.layerX === 0 ) {
+    ev._x = ev.layerX;
+    ev._y = ev.layerY;
+
+// Opera
+  } else if ( ev.offsetX || ev.offsetX === 0 ) {
+    ev._x = ev.offsetX;
+    ev._y = ev.offsetY;
+  }
+  var func = tool[ ev.type ];
+
+  if ( func ) {
+    func( ev );
+  }
+}
 
 function arObjMover() {
   var tool = this;
@@ -145,6 +137,8 @@ function arObjMover() {
       scene.remove( handSphere );
       scene.add( peerSphere );
 
+      // normalized in canvas
+
       mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
       mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
 
@@ -155,7 +149,7 @@ function arObjMover() {
       console.log( 'offset:', offsetX, offsetY );
       console.log( 'viewWidth:', viewWidth, viewHeight );
 
-      console.log( 'mp:', mp.x, mp.y );
+      console.log( 'down-mp:', mp.x, mp.y );
 
       spherePos = [ mouseSphereX, mouseSphereY, 0 ];
 
@@ -192,6 +186,8 @@ function arObjMover() {
       mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
       mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
 
+      console.log( 'move-mp:', mp.x, mp.y );
+
     //  var mouseSphereX = ( ev._x  / box0Width ) * 2 - 1 ;
     //  var mouseSphereY = -( ev._y  / box0Height ) * 2 + 1 ;
 
@@ -225,7 +221,6 @@ function arObjMover() {
 
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
-
   }
 };
 
@@ -259,8 +254,6 @@ function arObjMover() {
     data.setHueState = true;
 
     console.log( 'peer mouse up', data );
-
-   // leapAnimate( data );
 
     var sessionId = socketServer.sessionid;
       socketServer.emit( 'peerSphere', data, sessionId );
@@ -299,9 +292,9 @@ var tool = new arObjMover();
     peerHands.position.set( 0.0, -100.0, 0.0 );
     peerHands.scale.set( 1.5, 1.5, 1.5 );
 
-     scene.add( peerHands );
+    scene.add( peerHands );
 
-     window.scene = scene;
+    // window.scene = scene;
  }
 
 function updateHandSphere( data ) {
@@ -355,16 +348,12 @@ function ThreeToScreenPosition( obj, camera ) {
     };
 }
 
-
 // the focus sphere
 
 function sphereAnimate( data ) {
-
   scene.remove( handSphere );
   updateHandSphere( data );
-//
   renderer.render( scene, camera );
- // controls.update();
  }
 
   function leapAnimate( leapFrame ) {
@@ -392,8 +381,6 @@ function sphereAnimate( data ) {
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
     }
     renderer.render( scene, camera );
-    //controls.update();
-  //}
 }
 
 // ------------------------------------------------------------------------------
