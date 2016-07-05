@@ -326,6 +326,9 @@ if ( handState.inChooseState === true ) {
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
+    var sessionId = socketServer.sessionid;
+        socketServer.emit( 'leapShare', 'remove' , sessionId );
+
     scene.remove( handSphere );
 
 // make the hand eligable
@@ -351,7 +354,6 @@ if ( handState.inChooseState === true ) {
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
       sphereData.source = 'hand';
-    }
 
 // increment IOT deviceId with left hand only
 
@@ -403,7 +405,6 @@ if ( isIotGrabOn  === true ) {
     }
   }
 }
-for ( hand of frame.hands ) {
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
@@ -411,7 +412,6 @@ for ( hand of frame.hands ) {
           updateMesh( bone, boneMesh );
         }
       }
-    }
 
       var arm = hand.arm;
       var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
@@ -422,4 +422,4 @@ for ( hand of frame.hands ) {
     renderer.render( scene, camera );
     controls.update();
   }
-
+}
