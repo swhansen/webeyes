@@ -173,7 +173,7 @@ function buildSideMenu( layer ) {
 // the main menu collapse-expand
 
 $( document ).ready( function() {
-  var t = 1000;
+  var t = 500;
   $( '#layer-menu-button' ).click( function() {
     var button;
     if ( mainCollapsed === true ) {
