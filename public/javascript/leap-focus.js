@@ -347,6 +347,7 @@ if ( handState.inChooseState === true ) {
   }
 
     for ( hand of frame.hands ) {
+
       sphereData.position = hand.sphereCenter;
       sphereData.sphereRadius = hand.sphereRadius;
       sphereData.source = 'hand';
@@ -403,6 +404,7 @@ if ( isIotGrabOn  === true ) {
   }
 }
 
+  for ( hand of frame.hands ) {
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
@@ -415,9 +417,10 @@ if ( isIotGrabOn  === true ) {
       var armMesh = armMeshes [ countArms++ ] || addMesh( armMeshes );
       updateMesh( arm, armMesh );
       armMesh.scale.set( arm.width / 4, arm.width / 2, arm.length );
-    //}
+    }
 
     renderer.render( scene, camera );
     controls.update();
+  }
   }
 }
