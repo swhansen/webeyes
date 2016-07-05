@@ -142,8 +142,11 @@ function arObjMover() {
       mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
       mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
 
-      var mouseSphereX = mp.x * 278.5;
-      var mouseSphereY = mp.y * 278.5;
+    //  var mouseSphereX = mp.x * 278.5;
+    //  var mouseSphereY = mp.y * 278.5;
+
+      var mouseSphereX = mp.x * 278.5 / 2;
+      var mouseSphereY = mp.y * 278.5 / 2;
 
       console.log( 'box0:', box0Width, box0Height );
       console.log( 'offset:', offsetX, offsetY );
