@@ -163,7 +163,7 @@ function buildSideMenu( layer ) {
 
   $( '#layer-menu-button' ).trigger( 'click' );
 
-  $( uiStructure.structure[layer].sideBar ).fadeIn( 5 );
+  $( uiStructure.structure[layer].sideBar ).fadeIn( 3 );
 
   _.each( uiStructure.structure[layer].buttons, function( button ) {
     $( button ).fadeIn( 2000 );

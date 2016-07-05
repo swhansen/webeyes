@@ -395,8 +395,8 @@ function sphereAnimate( data ) {
     if ( leapData === 'remove' ) {
       console.log( 'focus hand remove' );
       scene.remove( peerHands );
- //     armMeshes.forEach( function( item ) { scene.remove( item ); } );
- //     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
+      armMeshes.forEach( function( item ) { scene.remove( item ); } );
+      boneMeshes.forEach( function( item ) { scene.remove( item ); } );
       renderer.render( scene, camera );
   //    controls.update();
     } else {
