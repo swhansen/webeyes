@@ -173,7 +173,7 @@ function buildSideMenu( layer ) {
 // the main menu collapse-expand
 
 $( document ).ready( function() {
-  var t = 1000;
+  var t = 500;
   $( '#layer-menu-button' ).click( function() {
     var button;
     if ( mainCollapsed === true ) {
@@ -196,10 +196,6 @@ $( function() {
     userContext.isLeap = true;
     document.getElementById( 'sticky-handiot' ).style.visibility = 'visible';
     leapFocus();
-
-    for ( button in uiStructure.structure ) {
-      $( uiStructure.structure[button].mainButton ).fadeOut( 200 );
-    }
 
   // Tell everyone to initialize Leap
 
@@ -530,6 +526,11 @@ $( function() {
         emitVideoMute( videoMuteData );
       }
       $( this ).toggleClass( 'on' );
+
+    for ( var button in uiStructure.structure ) {
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
+    }
+
     } );
   } );
 
