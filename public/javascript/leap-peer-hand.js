@@ -282,7 +282,7 @@ var tool = new arObjMover();
  }
 
  function updateMesh( bone, mesh ) {
-  scene.add( peerHands );
+  scene.remove( peerHands );
     mesh.position.fromArray( bone.center() );
     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
     mesh.quaternion.multiply( baseBoneRotation );
