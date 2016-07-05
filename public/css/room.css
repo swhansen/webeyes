@@ -220,7 +220,7 @@ width: 1000px;
 .canvascenter {
     width: 1020px;
     height: 760px;
-    position: relative;
+    position: absolute;
     top:0;
     bottom: 0;
     left: 0;

@@ -197,6 +197,10 @@ $( function() {
     document.getElementById( 'sticky-handiot' ).style.visibility = 'visible';
     leapFocus();
 
+    for ( button in uiStructure.structure ) {
+      $( uiStructure.structure[button].mainButton ).fadeOut( 200 );
+    }
+
   // Tell everyone to initialize Leap
 
   var sessionId = socketServer.sessionid;
