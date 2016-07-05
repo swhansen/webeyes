@@ -14,8 +14,8 @@ var leapFrame;
  leapFull.style.width = '100%';
  leapFull.style.height = '100%';
 
- leapFull.width =  leapPane.offsetWidth;
- leapFull.height = leapPane.offsetHeight;
+// leapFull.width =  leapPane.offsetWidth;
+// leapFull.height = leapPane.offsetHeight;
 
   var rect = leapFull.getBoundingClientRect();
   var offsetX = rect.left;
@@ -142,11 +142,8 @@ function arObjMover() {
       mp.x = ( ev._x - offsetX ) / viewWidth * 2 - 1;
       mp.y = -( ev._y - offsetY ) / viewHeight * 2 + 1;
 
-    //  var mouseSphereX = mp.x * 278.5;
-    //  var mouseSphereY = mp.y * 278.5;
-
-      var mouseSphereX = mp.x;
-      var mouseSphereY = mp.y;
+      var mouseSphereX = mp.x * 278.5;
+      var mouseSphereY = mp.y * 278.5;
 
       console.log( 'box0:', box0Width, box0Height );
       console.log( 'offset:', offsetX, offsetY );
