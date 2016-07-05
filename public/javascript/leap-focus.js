@@ -326,6 +326,9 @@ if ( handState.inChooseState === true ) {
     armMeshes.forEach( function( item ) { scene.remove( item ); } );
     boneMeshes.forEach( function( item ) { scene.remove( item ); } );
 
+    var sessionId = socketServer.sessionid;
+        socketServer.emit( 'leapShare', 'remove' , sessionId );
+
     scene.remove( handSphere );
 
 // make the hand eligable
