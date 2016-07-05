@@ -163,7 +163,7 @@ function buildSideMenu( layer ) {
 
   $( '#layer-menu-button' ).trigger( 'click' );
 
-  $( uiStructure.structure[layer].sideBar ).fadeIn( 3 );
+  $( uiStructure.structure[layer].sideBar ).fadeIn( 5 );
 
   _.each( uiStructure.structure[layer].buttons, function( button ) {
     $( button ).fadeIn( 2000 );
@@ -173,7 +173,7 @@ function buildSideMenu( layer ) {
 // the main menu collapse-expand
 
 $( document ).ready( function() {
-  var t = 500;
+  var t = 1000;
   $( '#layer-menu-button' ).click( function() {
     var button;
     if ( mainCollapsed === true ) {
@@ -196,10 +196,6 @@ $( function() {
     userContext.isLeap = true;
     document.getElementById( 'sticky-handiot' ).style.visibility = 'visible';
     leapFocus();
-
-     for ( button in uiStructure.structure ) {
-      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
-    }
 
   // Tell everyone to initialize Leap
 
