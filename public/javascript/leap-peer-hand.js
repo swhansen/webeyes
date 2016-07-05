@@ -162,7 +162,8 @@ function arObjMover() {
       var normalizedRGB = [];
       normalizedRGB[0] = ev._x  / box0Width;
       normalizedRGB[1] = ev._y  / box0Height;
-      normalizedRGB[2] = lastHandSphereColor.b;
+     // normalizedRGB[2] = lastHandSphereColor.b;
+      normalizedRGB[2] = 0.5;
       peerSphere.material.color.setRGB(
                 normalizedRGB[0],
                 normalizedRGB[1],
@@ -240,7 +241,8 @@ function arObjMover() {
     var normalizedRGB = [];
     normalizedRGB[0] = ev._x / box0Width;
     normalizedRGB[1] = ev._y / box0Width;
-    normalizedRGB[2] = lastHandSphereColor.b;
+  //  normalizedRGB[2] = lastHandSphereColor.b;
+    normalizedRGB[2] = 0.5;
 
     peerSphere.material.color.setRGB(
               normalizedRGB[0],
