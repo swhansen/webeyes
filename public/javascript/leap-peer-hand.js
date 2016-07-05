@@ -294,7 +294,7 @@ var tool = new arObjMover();
 
     scene.add( peerHands );
 
-    // window.scene = scene;
+     window.scene = scene;
  }
 
 function updateHandSphere( data ) {
