@@ -407,9 +407,7 @@ function sphereAnimate( data ) {
 // sphere coming in from focus
 
   socketServer.on( 'leapSphere', function( data ) {
-    scene.remove( handSphere );
-  updateHandSphere( data );
-  renderer.render( scene, camera );
+    sphereAnimate( data );
       } );
 
  }
