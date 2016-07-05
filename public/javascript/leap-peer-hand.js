@@ -10,6 +10,7 @@ var leapFrame;
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull' );
  document.getElementById( 'leappane' ).className = 'canvascenter';
+ document.getElementById( 'leapfull' ).className = 'canvascenter';
 
  leapFull.style.width = '100%';
  leapFull.style.height = '100%';
@@ -406,7 +407,9 @@ function sphereAnimate( data ) {
 // sphere coming in from focus
 
   socketServer.on( 'leapSphere', function( data ) {
-    sphereAnimate( data );
+    scene.remove( handSphere );
+  updateHandSphere( data );
+  renderer.render( scene, camera );
       } );
 
  }
