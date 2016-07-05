@@ -60,6 +60,10 @@ userContext.modMeState = true;
 
     userContext.uistate = 'vr';
 
+    for ( button in uiStructure.structure ) {
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
+    }
+
     document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
     document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
    // document.getElementById( 'arMainButton' ).style.visibility = 'hidden';
