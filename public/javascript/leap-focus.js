@@ -369,7 +369,6 @@ if ( hand.type === 'left' ) {
              if ( selectedHueDevice > 4 ) { selectedHueDevice = 1; }
          firstClick = false;
        }
-
      updateHueText( selectedHueDevice );
    }
   }

@@ -82,13 +82,13 @@ var leapFrame;
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.name = 'peerSphere';
 
-    var testSphereGeometry = new THREE.SphereGeometry( 10, 16, 16 );
-    var testSphere = new THREE.Mesh( testSphereGeometry, peerSphereMaterial );
-    testSphere.name = 'testSphere';
-      testSphere.position.x = 0;
-      testSphere.position.y = 0;
-      testSphere.position.z = 0;
-    scene.add(testSphere);
+//   var testSphereGeometry = new THREE.SphereGeometry( 10, 16, 16 );
+//   var testSphere = new THREE.Mesh( testSphereGeometry, peerSphereMaterial );
+//   testSphere.name = 'testSphere';
+//     testSphere.position.x = 0;
+//     testSphere.position.y = 0;
+//     testSphere.position.z = 0;
+//   scene.add(testSphere);
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );
