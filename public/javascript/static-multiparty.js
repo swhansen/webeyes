@@ -1203,6 +1203,7 @@ setBrowserDetails();
 
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
+  console.log( 'box0:', box0Width, box0Height );
 
 initDraw();
 initUtil();
