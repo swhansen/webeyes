@@ -1201,6 +1201,9 @@ setBrowserDetails();
         }, 20 );
     } );
 
+  box0Height = document.getElementById('box0').offsetHeight;
+  box0Width = document.getElementById('box0').offsetWidth;
+
 initDraw();
 initUtil();
 initUiManager();

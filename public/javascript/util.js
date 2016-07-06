@@ -7,8 +7,8 @@ var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
-var box0Width;
-var box0Height;
+//var box0Width;
+//var box0Height;
 
 function initUtil() {
 
@@ -19,8 +19,8 @@ function initUtil() {
   utilCanvas.width = utilCanvas.offsetWidth;
   utilCanvas.height = utilCanvas.offsetHeight;
 
-  box0Height = document.getElementById('box0').offsetHeight;
-  box0Width = document.getElementById('box0').offsetWidth;
+ // box0Height = document.getElementById('box0').offsetHeight;
+ // box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
 }
