@@ -246,7 +246,7 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 }
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
-  renderer.setSize( box0Width, box0Width );
+  renderer.setSize( ar0.offseHeight, ar0.offsetHeight );
   renderer.setClearColor( 0x000000, 0 );
 
 //
