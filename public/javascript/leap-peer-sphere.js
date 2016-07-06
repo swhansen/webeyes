@@ -4,17 +4,6 @@
 //  Implements Leap Spheres on raw tracking data from socket.io
 //
 
-//var leapPeerWindow = document.getElementById( 'leappane' );
-
-//document.getElementById( 'leapfull' ).className = 'leapcenter';
-
-// var lCanvas = document.getElementById( 'leapcanvas' );
-// var leapctx = lCanvas.getContext( '2d' );
-// lCanvas.style.width = '100%';
-// lCanvas.style.height = '100%';
-// lCanvas.width = lCanvas.offsetWidth;
-// lCanvas.height = lCanvas.offsetHeight;
-
 // list the z-factors
 
 // $( '*' ).filter( function() {
@@ -71,16 +60,6 @@
 // called from focus user through util.js
 
 function initLeapPeerHand() {
-
-//  var lCanvas = document.getElementById( 'leapcanvas' );
-// var leapctx = lCanvas.getContext( '2d' );
-//
-//  document.getElementById( 'leapfull' ).className = 'leapcenter';
-//
-//  lCanvas.style.width = '100%';
-//  lCanvas.style.height = '100%';
-//  lCanvas.width = lCanvas.offsetWidth;
-//  lCanvas.height = lCanvas.offsetHeight;
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(

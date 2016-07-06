@@ -127,7 +127,7 @@ $( function() {
   } );
 } );
 
-// Toggle the leap habd to control IOT
+// Toggle the leap hand to control IOT
 
 $( function() {
   $( '#sticky-handiot' ).click( function() {
@@ -184,7 +184,7 @@ $( document ).ready( function() {
     } else {
       mainCollapsed = true;
       for ( button in uiStructure.structure ) {
-        t = 3000;
+        t = 500;
         $( uiStructure.structure[button].mainButton ).fadeOut( t );
       }
     }
@@ -204,6 +204,12 @@ $( function() {
 
     msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
     messageBar( msgString );
+
+    mainCollapsed = true;
+      for ( button in uiStructure.structure ) {
+        t = 500;
+        $( uiStructure.structure[button].mainButton ).fadeOut( t );
+      }
     }
   );
 } );

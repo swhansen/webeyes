@@ -239,18 +239,6 @@ width: 1000px;
     visibility: hidden;
 }
 
-.leapcenter {
-  width: 1020px;
-  height: 760px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index:15;
-  }
-
   #leappane {
   width: 1020px;
   height: 760px;
