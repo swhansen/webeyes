@@ -186,7 +186,7 @@ width: 1000px;
 #sticky-ui-container {
   z-index:200;
   position: fixed;
-  top: 450px;
+  bottom: 20px;
   right: 10px;
   background-color: gray;
   border-radius: 25px;
