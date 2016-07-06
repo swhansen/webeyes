@@ -296,7 +296,7 @@ var tool = new arObjMover();
     peerHands.rotation.x = -0.8;
     peerHands.rotation.y = Math.PI;
     peerHands.position.set( 0.0, -100.0, 0.0 );
-    peerHands.scale.set( 1.5, 1.5, 1.5 );
+    peerHands.scale.set( 1.0, 1.0, 1.0 );
 
     leapScene.add( peerHands );
 

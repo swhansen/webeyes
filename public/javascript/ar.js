@@ -247,10 +247,11 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 
+// set the renderer based on the device type
+
 if ( userContext.mobile === true) {
   renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
   } else { renderer.setSize( box0Width, box0Width ); }
-
 
 //  renderer.setSize( box0Width, box0Width );
 //  renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
