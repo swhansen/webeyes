@@ -200,7 +200,7 @@ function setUpArLayer( participantState ) {
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
-  document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
+ // document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
   ar0.style.width = '100%';
   ar0.style.height = '100%';
