@@ -6,6 +6,15 @@
     -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
 }
 
+
+.canvasorient {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 #iotZoneId {
   position: fixed;
   top: 10px;
