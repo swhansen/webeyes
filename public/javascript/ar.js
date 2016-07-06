@@ -202,10 +202,10 @@ function setUpArLayer( participantState ) {
 
  // document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
- // ar0.style.width = '100%';
- // ar0.style.height = '100%';
- // ar0.width = ar0.offsetWidth;
-//  ar0.height = ar0.offsetHeight;
+  ar0.style.width = '100%';
+  ar0.style.height = '100%';
+  ar0.width = ar0.offsetWidth;
+  ar0.height = ar0.offsetHeight;
 
   arCanvas.style.visibility = 'visible';
   ar0.style.visibility = 'visible';
@@ -247,8 +247,8 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 
   renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 
-//  renderer.setSize( box0Width, box0Width );
-  renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
+  renderer.setSize( box0Width, box0Width );
+//  renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
 
   renderer.setClearColor( 0x000000, 0 );
 
