@@ -296,7 +296,7 @@ var tool = new arObjMover();
 
     peerHands.rotation.x = -0.8;
     peerHands.rotation.y = Math.PI;
-    peerHands.position.set( 0.0, -200.0, 0.0 );
+    peerHands.position.set( 0.0, -100.0, 0.0 );
     peerHands.scale.set( 1.0, 1.0, 1.0 );
 
     leapScene.add( peerHands );
@@ -365,10 +365,10 @@ function sphereAnimate( data ) {
 
   function leapAnimate( leapFrame ) {
 
-    var sceneArray = peerHands.children;
-    for ( var foo of sceneArray ) {
-      leapScene.remove( foo );
-    }
+//   var sceneArray = peerHands.children;
+//   for ( var foo of sceneArray ) {
+//     leapScene.remove( foo );
+//   }
 
 
 
