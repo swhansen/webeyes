@@ -369,7 +369,6 @@ function sphereAnimate( data ) {
    for ( var foo of sceneArray ) {
      leapScene.remove( foo );
    }
-   scene.remove( peerHands );
 
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
@@ -418,10 +417,14 @@ function sphereAnimate( data ) {
 
   //    controls.update();
 
-    } else {
+      } else {
+        var sceneArray = peerHands.children;
+        for ( var foo of sceneArray ) {
+          peerHands.remove( foo );
+        }
       leapScene.remove( peerHands );
-    leapFrame = JSON.parse( leapData );
-    leapAnimate( leapFrame );
+      leapFrame = JSON.parse( leapData );
+      leapAnimate( leapFrame );
     } } );
 
 // sphere coming in from focus
