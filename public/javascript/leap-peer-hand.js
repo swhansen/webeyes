@@ -413,8 +413,10 @@ function sphereAnimate( data ) {
   socketServer.on( 'leapSphere', function( data ) {
     if ( data.operation === 'move') {
       moveLayertoTop( 'leapane' );
-    }
+      sphereAnimate( data );
+    } else {
     sphereAnimate( data );
+  }
       } );
 
  }
