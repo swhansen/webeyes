@@ -370,8 +370,6 @@ function sphereAnimate( data ) {
      leapScene.remove( foo );
    }
 
-
-
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
     var countArms = 0;
@@ -406,15 +404,19 @@ function sphereAnimate( data ) {
     if ( leapData === 'remove' ) {
       console.log( 'focus hand remove' );
 
- //     var sceneArray = peerHands.children;
- //       for ( var foo of sceneArray ) {
- //         peerHands.remove( foo );
- //       }
-      leapScene.remove( peerHands );
+      var sceneArray = peerHands.children;
+        for ( var foo of sceneArray ) {
+          peerHands.remove( foo );
+        }
+        leapScene.remove( peerHands );
+
  //     armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
  //     boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+
       renderer.render( leapScene, camera );
+
   //    controls.update();
+
     } else {
       leapScene.remove( peerHands );
     leapFrame = JSON.parse( leapData );
