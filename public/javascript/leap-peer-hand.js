@@ -283,14 +283,14 @@ var tool = new arObjMover();
 
  function updateMesh( bone, mesh ) {
   leapScene.remove( peerHands );
-      armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
-      boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+  armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+  boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
 
     mesh.position.fromArray( bone.center() );
     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
     mesh.quaternion.multiply( baseBoneRotation );
     mesh.scale.set( bone.width, bone.width, bone.length );
-    leapScene.add( mesh );
+    peerHands.add( mesh );
 
 // rotate the hands to come at the user
 
@@ -364,6 +364,14 @@ function sphereAnimate( data ) {
  }
 
   function leapAnimate( leapFrame ) {
+
+    var sceneArray = leapScene.children;
+  //  var lastItem = sceneArray( sceneSArray.length - 1 );
+    for ( var foo of sceneArray ) {
+      leapScene.remove( foo );
+    }
+
+
 
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
