@@ -77,7 +77,7 @@ var leapFrame;
     handSphere.userData.rtiId = userContext.rtcId;
     leapScene.add( handSphere );
 
-    var peerSphereGeometry = new THREE.SphereGeometry( 40, 16, 16 );
+    var peerSphereGeometry = new THREE.SphereGeometry( 20, 16, 16 );
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.name = 'peerSphere';
@@ -295,7 +295,7 @@ var tool = new arObjMover();
 
     peerHands.rotation.x = -0.8;
     peerHands.rotation.y = Math.PI;
-    peerHands.position.set( 0.0, -100.0, 0.0 );
+    peerHands.position.set( 0.0, -150.0, 0.0 );
     peerHands.scale.set( 1.0, 1.0, 1.0 );
 
     leapScene.add( peerHands );
