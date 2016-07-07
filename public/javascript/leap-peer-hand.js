@@ -49,6 +49,8 @@ var leapFrame;
     var peerSelected = false;
     var lastHandSphereColor;
 
+    var focusPalm = {};
+
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
     renderer.setSize( viewWidth, viewHeight );
@@ -322,8 +324,12 @@ function updateHandSphere( data ) {
 // change orientation due to reverse of hand on peer
 // adjust Y due to hand position
 
-  handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y  - 175.0;
+ // handSphere.position.x = handSphere.position.x * -1.0;
+ // handSphere.position.y = handSphere.position.y  - 175.0;
+
+  handSphere.position.x = focusPalm.sphereCenter[0];
+  handSphere.position.y = focusPalm.sphereCenter[1];
+  handSphere.position.y = focusPalm.sphereCenter[2];
 
   handSphere.material.color.setRGB(
                 data.color.r,
@@ -370,6 +376,7 @@ function sphereAnimate( data ) {
      leapScene.remove( foo );
    }
 
+
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
     var countArms = 0;
@@ -380,6 +387,11 @@ function sphereAnimate( data ) {
     boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
 
     for ( var hand of frame.hands ) {
+
+      focusPalm.sphereCenter = hand.sphereCenter;
+      focusPalm.sphereRadius = hand.sphereRadius;
+
+
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
           if ( countBones++ === 0 ) { continue; }
