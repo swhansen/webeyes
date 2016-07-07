@@ -369,6 +369,7 @@ function sphereAnimate( data ) {
    for ( var foo of sceneArray ) {
      leapScene.remove( foo );
    }
+   scene.remove( peerHands );
 
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
@@ -408,10 +409,10 @@ function sphereAnimate( data ) {
         for ( var foo of sceneArray ) {
           peerHands.remove( foo );
         }
-        leapScene.remove( peerHands );
+      leapScene.remove( peerHands );
 
- //     armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
- //     boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+      armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+      boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
 
       renderer.render( leapScene, camera );
 
