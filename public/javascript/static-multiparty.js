@@ -50,7 +50,7 @@ var layerList = [
   'canvaspane',
   'utilcanvaspane',
   'arcanvaspane',
-  'leappane'
+  'leappane',
   'textentryBox'
 ];
 
