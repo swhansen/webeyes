@@ -366,7 +366,6 @@ function sphereAnimate( data ) {
   function leapAnimate( leapFrame ) {
 
     var sceneArray = leapScene.children;
-  //  var lastItem = sceneArray( sceneSArray.length - 1 );
     for ( var foo of sceneArray ) {
       leapScene.remove( foo );
     }
@@ -406,6 +405,11 @@ function sphereAnimate( data ) {
 
     if ( leapData === 'remove' ) {
       console.log( 'focus hand remove' );
+
+      var sceneArray = peerHands.children;
+    for ( var foo of sceneArray ) {
+      leapScene.remove( foo );
+    }
       leapScene.remove( peerHands );
  //     armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
  //     boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
