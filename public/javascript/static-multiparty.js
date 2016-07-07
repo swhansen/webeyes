@@ -1201,9 +1201,15 @@ setBrowserDetails();
         }, 20 );
     } );
 
-  box0Height = document.getElementById('box0').offsetHeight;
-  box0Width = document.getElementById('box0').offsetWidth;
-  console.log( 'box0:', box0Width, box0Height );
+  var b0 = document.getElementById( 'box0' );
+
+  var viewHeight = b0.offsetHeight;
+  var viewWidth = b0.offsetWidth;
+
+  var box0rect = b0.getBoundingClientRect();
+  var offsetX = box0rect.left;
+  var offsetY = box0rect.top;
+
 
 initDraw();
 initUtil();

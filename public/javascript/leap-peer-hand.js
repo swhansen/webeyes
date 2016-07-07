@@ -18,12 +18,12 @@ var leapFrame;
 // leapFull.width =  leapPane.offsetWidth;
 // leapFull.height = leapPane.offsetHeight;
 
-  var rect = leapFull.getBoundingClientRect();
-  var offsetX = rect.left;
-  var offsetY = rect.top;
-
-  var viewWidth = leapFull.offsetWidth;
-  var viewHeight = leapFull.offsetHeight;
+//  var rect = leapFull.getBoundingClientRect();
+//  var offsetX = rect.left;
+//  var offsetY = rect.top;
+//
+//  var viewWidth = leapFull.offsetWidth;
+//  var viewHeight = leapFull.offsetHeight;
 
   console.log( 'offset-XY:', offsetX, offsetY, 'viewWidth-WH:', viewWidth , viewHeight );
 
