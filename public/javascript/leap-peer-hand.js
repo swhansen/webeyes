@@ -388,8 +388,12 @@ function sphereAnimate( data ) {
 
     for ( var hand of frame.hands ) {
 
-      focusPalm.sphereCenter = hand.sphereCenter;
+
+      focusPalm.sphereCenter = hand.stabalizedPalmPosition;
       focusPalm.sphereRadius = hand.sphereRadius;
+
+//      focusPalm.sphereCenter = hand.sphereCenter;
+//      focusPalm.sphereRadius = hand.sphereRadius;
 
 
       for ( var finger of hand.fingers ) {
