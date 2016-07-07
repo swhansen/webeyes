@@ -1201,6 +1201,10 @@ setBrowserDetails();
         }, 20 );
     } );
 
+
+  var box0Height = document.getElementById('box0').offsetHeight;
+  var box0Width = document.getElementById('box0').offsetWidth;
+
   var b0 = document.getElementById( 'box0' );
 
   var viewHeight = b0.offsetHeight;
