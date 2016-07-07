@@ -90,10 +90,10 @@ function removeUserCreatedArObjects() {
 
 function loadAr( participantState ) {
 
- var scene, renderer, arContainer;
+ var scene, peerRenderer, peerProjector, arContainer;
  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
- var projector;
+ //var projector;
  var cameraDriver;
   isAnimateKnot = false;
   isAnimateSheep = false;
@@ -191,7 +191,7 @@ function setUpArLayer( participantState ) {
 
 // if ( scene ) { scene.remove };
 
-  renderer = null;
+  peerRenderer = null;
 
   var step = 0;
 
@@ -245,18 +245,18 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
   vrDrivenCameraControls.connect();
 }
 
-  renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
+  peerRenderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
 
 // set the renderer based on the device type
 
 if ( userContext.mobile === true) {
-  renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
-  } else { renderer.setSize( box0Width, box0Width ); }
+  peerRenderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
+  } else { peerRenderer.setSize( box0Width, box0Width ); }
 
 //  renderer.setSize( box0Width, box0Width );
 //  renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
 
-  renderer.setClearColor( 0x000000, 0 );
+  peerRenderer.setClearColor( 0x000000, 0 );
 
 //
 // AR world model
@@ -658,28 +658,28 @@ function arConnectionController( participantState ) {
  function connectToVrController() {
    vrDrivenCameraControls.update();
    animateArObjects();
-   renderer.render( scene, vrDrivenCamera );
+   peerRenderer.render( scene, vrDrivenCamera );
    requestAnimationFrame( connectToVrController );
  }
 
  function connectToVrBroadcast() {
    vrBroadcastCameraControls.update();
    animateArObjects();
-   renderer.render( scene, vrBroadcastDrivenCamera );
+   peerRenderer.render( scene, vrBroadcastDrivenCamera );
    requestAnimationFrame( connectToVrBroadcast );
  }
 
  function connectToDeviceSensors() {
    sensorCameraControls.update();
    animateArObjects();
-   renderer.render( scene, sensorDrivenCamera );
+   peerRenderer.render( scene, sensorDrivenCamera );
    requestAnimationFrame( connectToDeviceSensors );
    }
 
  function connectToBroadcastSensors() {
    broadcastCameraControls.update();
    animateArObjects();
-   renderer.render( scene, broadcastDrivenCamera );
+   peerRenderer.render( scene, broadcastDrivenCamera );
    requestAnimationFrame( connectToBroadcastSensors );
    }
 
@@ -731,7 +731,7 @@ $( function() {
   var viewWidth = ar0.offsetWidth;
   var viewHeight = ar0.offsetHeight;
 
-  projector = new THREE.Projector();
+  peerProjector = new THREE.Projector();
 
   function toggleArAnimation( arObject ) {
     if ( arObject.userData.isAnimated === false ) {
@@ -831,7 +831,7 @@ $( function() {
      var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                              -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
 
-     projector.unprojectVector( vector, cameraDriver );
+     peerProjector.unprojectVector( vector, cameraDriver );
      vector.sub( cameraDriver.position );
      vector.normalize();
      var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
