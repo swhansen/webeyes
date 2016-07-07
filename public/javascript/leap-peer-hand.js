@@ -70,7 +70,7 @@ var leapFrame;
 
     leapScene = new THREE.Scene();
 
-    var handGeometry = new THREE.SphereGeometry( 30, 16, 16 );
+    var handGeometry = new THREE.SphereGeometry( 20, 16, 16 );
     var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
@@ -322,7 +322,7 @@ function updateHandSphere( data ) {
 // adjust Y due to hand position
 
   handSphere.position.x = handSphere.position.x * -1.0;
-  handSphere.position.y = handSphere.position.y  - 150.0;
+  handSphere.position.y = handSphere.position.y  - 175.0;
 
   handSphere.material.color.setRGB(
                 data.color.r,
@@ -411,6 +411,9 @@ function sphereAnimate( data ) {
 // sphere coming in from focus
 
   socketServer.on( 'leapSphere', function( data ) {
+    if ( data.operation === 'move') {
+      moveLayertoTop( 'leapane' );
+    }
     sphereAnimate( data );
       } );
 

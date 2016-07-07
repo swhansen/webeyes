@@ -50,8 +50,7 @@ var layerList = [
   'canvaspane',
   'utilcanvaspane',
   'arcanvaspane',
-  'leappane',
-  'textentryBox'
+  'leappane'
 ];
 
 var layerPointerState = {};
@@ -796,9 +795,6 @@ function sendModeratorText( moderatorMessage ) {
 }
 
 function showTextEntry() {
-
-    moveLayertoTop( 'textentryBox' );
-
     document.getElementById( 'textentryField' ).value = '';
     document.getElementById( 'textentryBox' ).style.display = 'block';
     document.getElementById( 'textEntryButton' ).style.display = 'none';
