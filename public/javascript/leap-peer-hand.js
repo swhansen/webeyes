@@ -285,17 +285,18 @@ var tool = new arObjMover();
   leapScene.remove( peerHands );
       armMeshes.forEach( function( item ) { leapScene.remove( item ); } );
       boneMeshes.forEach( function( item ) { leapScene.remove( item ); } );
+
     mesh.position.fromArray( bone.center() );
     mesh.setRotationFromMatrix( ( new THREE.Matrix4 ).fromArray( bone.matrix() ) );
     mesh.quaternion.multiply( baseBoneRotation );
     mesh.scale.set( bone.width, bone.width, bone.length );
-    peerHands.add( mesh );
+    leapScene.add( mesh );
 
 // rotate the hands to come at the user
 
     peerHands.rotation.x = -0.8;
     peerHands.rotation.y = Math.PI;
-    peerHands.position.set( 0.0, -150.0, 0.0 );
+    peerHands.position.set( 0.0, -200.0, 0.0 );
     peerHands.scale.set( 1.0, 1.0, 1.0 );
 
     leapScene.add( peerHands );
