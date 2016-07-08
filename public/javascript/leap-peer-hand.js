@@ -329,10 +329,12 @@ function updateHandSphere( data ) {
 
  // handSphere.position.x = focusPalm.sphereCenter[0] * -1;
  // handSphere.position.y = focusPalm.sphereCenter[1];
+// with palmSphere -150.0
 //  handSphere.position.z = 0.0;
 
   handSphere.position.x = focusPalm.sphereCenter[0] * -1;
-  handSphere.position.y = focusPalm.sphereCenter[1] - 200.0;
+  handSphere.position.y = focusPalm.sphereCenter[1] - 250.0;
+
   handSphere.position.z = 0.0;
 
   handSphere.material.color.setRGB(
@@ -376,10 +378,9 @@ function sphereAnimate( data ) {
   function leapAnimate( leapFrame ) {
 
    var sceneArray = peerHands.children;
-   for ( var foo of sceneArray ) {
-     leapScene.remove( foo );
+   for ( var child of sceneArray ) {
+     leapScene.remove( child );
    }
-
 
     var frame = new Leap.Frame( leapFrame );
     var countBones = 0;
@@ -392,15 +393,13 @@ function sphereAnimate( data ) {
 
     for ( var hand of frame.hands ) {
 
+// Experiment with stabilized....
+
       focusPalm.sphereCenter = hand.stabilizedPalmPosition;
       focusPalm.sphereRadius = hand.sphereRadius;
 
-      console.log( 'focusPalm.sphereCenter:', focusPalm.sphereCenter );
-
-  //    var bar = hand.sphereCenter;
+  //    focusPalm.sphereRadius = hand.sphereCenter;
   //    focusPalm.sphereRadius = hand.sphereRadius;
-
-//console.log( 'sphereCenter:', bar );
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
