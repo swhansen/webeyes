@@ -400,7 +400,7 @@ function sphereAnimate( data ) {
   //    var bar = hand.sphereCenter;
   //    focusPalm.sphereRadius = hand.sphereRadius;
 
-console.log( 'sphereCenter:', bar );
+//console.log( 'sphereCenter:', bar );
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
