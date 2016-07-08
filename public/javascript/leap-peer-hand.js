@@ -332,7 +332,7 @@ function updateHandSphere( data ) {
 //  handSphere.position.z = 0.0;
 
   handSphere.position.x = focusPalm.sphereCenter[0] * -1;
-  handSphere.position.y = focusPalm.sphereCenter[1] 200.0;
+  handSphere.position.y = focusPalm.sphereCenter[1] - 200.0;
   handSphere.position.z = 0.0;
 
   handSphere.material.color.setRGB(
