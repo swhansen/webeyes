@@ -392,6 +392,8 @@ function sphereAnimate( data ) {
       focusPalm.sphereCenter = hand.stabalizedPalmPosition;
       focusPalm.sphereRadius = hand.sphereRadius;
 
+      console.log( 'focusPalm.sphereCenter:', hand.stabalizedPalmPosition );
+
 //      focusPalm.sphereCenter = hand.sphereCenter;
 //      focusPalm.sphereRadius = hand.sphereRadius;
 
