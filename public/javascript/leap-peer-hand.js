@@ -332,9 +332,7 @@ function updateHandSphere( data ) {
 //  handSphere.position.z = 0.0;
 
   handSphere.position.x = focusPalm.sphereCenter[0] * -1;
-  handSphere.position.y = focusPalm.sphereCenter[1] - 200.00;
-//  handSphere.position.y = focusPalm.sphereCenter[1] - 150.00;
-
+  handSphere.position.y = focusPalm.sphereCenter[1] 200.0;
   handSphere.position.z = 0.0;
 
   handSphere.material.color.setRGB(
@@ -394,10 +392,13 @@ function sphereAnimate( data ) {
 
     for ( var hand of frame.hands ) {
 
-// experiment with stabalized
-//   focusPalm.sphereRadius = hand.sphereRadius;
       focusPalm.sphereCenter = hand.stabilizedPalmPosition;
       focusPalm.sphereRadius = hand.sphereRadius;
+
+      console.log( 'focusPalm.sphereCenter:', focusPalm.sphereCenter );
+
+  //    var bar = hand.sphereCenter;
+  //    focusPalm.sphereRadius = hand.sphereRadius;
 
 console.log( 'sphereCenter:', bar );
 
