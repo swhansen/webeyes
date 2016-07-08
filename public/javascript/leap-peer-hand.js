@@ -393,9 +393,10 @@ function sphereAnimate( data ) {
 
       console.log( 'focusPalm.sphereCenter:', focusPalm.sphereCenter );
 
-//      focusPalm.sphereCenter = hand.sphereCenter;
+      var bar = hand.sphereCenter;
 //      focusPalm.sphereRadius = hand.sphereRadius;
 
+console.log( 'sphereCenter:', bar );
 
       for ( var finger of hand.fingers ) {
         for ( var bone of finger.bones ) {
