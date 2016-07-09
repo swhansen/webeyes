@@ -72,14 +72,14 @@ var leapFrame;
 
     leapScene = new THREE.Scene();
 
-    var handGeometry = new THREE.SphereGeometry( 20, 16, 16 );
+    var handGeometry = new THREE.SphereGeometry( 25, 16, 16 );
     var handMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var handSphere = new THREE.Mesh( handGeometry, handMaterial );
     handSphere.name = 'handSphere';
     handSphere.userData.rtiId = userContext.rtcId;
     leapScene.add( handSphere );
 
-    var peerSphereGeometry = new THREE.SphereGeometry( 20, 16, 16 );
+    var peerSphereGeometry = new THREE.SphereGeometry( 25, 16, 16 );
     var peerSphereMaterial = new THREE.MeshLambertMaterial( { color: 'red' } );
     var peerSphere = new THREE.Mesh( peerSphereGeometry, peerSphereMaterial );
     peerSphere.name = 'peerSphere';
@@ -328,13 +328,12 @@ function updateHandSphere( data ) {
  // handSphere.position.y = handSphere.position.y  - 175.0;
 
  // handSphere.position.x = focusPalm.sphereCenter[0] * -1;
- // handSphere.position.y = focusPalm.sphereCenter[1];
+ // handSphere.position.y = focusPalm.sphereCenter[1] -150.0;
 // with palmSphere -150.0
 //  handSphere.position.z = 0.0;
 
   handSphere.position.x = focusPalm.sphereCenter[0] * -1;
   handSphere.position.y = focusPalm.sphereCenter[1] - 250.0;
-
   handSphere.position.z = 0.0;
 
   handSphere.material.color.setRGB(
