@@ -253,7 +253,7 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 
 // set the renderer based on the device type
 
-if ( userContext.mobile === true) {
+if ( userContext.mobile === true ) {
   renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
   } else { renderer.setSize( box0Width, box0Width ); }
 

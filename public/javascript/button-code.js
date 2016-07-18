@@ -86,6 +86,8 @@ userContext.modMeState = true;
 
     case 'augme':
 
+    console.log( 'userContext:', userContext);
+
       setPeerUserContext( 'all', 'modMeState', false );
       setPeerUserContext( 'all', 'mode', 'ar');
       setPeerUserContext( 'all', 'participantState', 'peer' );
@@ -176,10 +178,17 @@ $( '#codeDialogModal' ).dialog( {
               swal.showInputError('Please Enter Code!');
               return false;
             }
-           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc' ], inputValue.toLowerCase() ) ) ) {
-              swal.showInputError( 'Please enter a valid code' );
+           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc' ],
+              inputValue.toLowerCase() ) ) ) {
+                swal.showInputError( 'Please enter a valid code' );
               return false;
           }
+
+          if ( inputValue.toLowerCase === 'augme' && userContext.arCapable === false ) {
+            console.log( 'code dialog augme NOT Capable');
+          }
+
+
          usebcode( inputValue.toLowerCase() );
          swal.close();
 
