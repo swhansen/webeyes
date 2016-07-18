@@ -8,7 +8,9 @@ var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
 var flyingPig;
+
 //var pigModel;
+
 var pivotPoint;
 var lamp;
 var knot;
@@ -93,7 +95,9 @@ function loadAr() {
  var scene, renderer, projector, arContainer;
  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
+
  //var projector;
+
  var cameraDriver;
   isAnimateKnot = false;
   isAnimateSheep = false;

@@ -244,6 +244,9 @@ $( function() {
 
 $( function() {
   $( '#arMainButton' ).click( function() {
+
+console.log( 'userContext:', userContext);
+
       buildSideMenu( 'augme' );
 
       userContext.participantState = 'focus';
