@@ -8,7 +8,7 @@ var selectedArObject;
 var clock = new THREE.Clock();
 var sheep;
 var flyingPig;
-var pigModel;
+//var pigModel;
 var pivotPoint;
 var lamp;
 var knot;
@@ -88,7 +88,7 @@ function removeUserCreatedArObjects() {
 // ----------  Main Loader  --------------------------
 //
 
-function loadAr( participantState ) {
+function loadAr() {
 
  var scene, renderer, projector, arContainer;
  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
@@ -109,8 +109,8 @@ function loadAr( participantState ) {
   setDomPointerEvent( 'arcanvaspane', 'auto' );
   clock.stop();
   clock.start();
-  setUpArLayer( participantState );
-  setupArInteractionEvents( participantState );
+  setUpArLayer();
+  setupArInteractionEvents();
    }
 
   function receiveArObject( data ) {
@@ -185,7 +185,7 @@ function loadAr( participantState ) {
         }
   }
 
-function setUpArLayer( participantState ) {
+function setUpArLayer() {
 
   scene = null;
 
@@ -552,7 +552,7 @@ if ( userContext.mobile === true) {
 
 // ... end AR world model
 
-function arConnectionController( participantState ) {
+function arConnectionController() {
 
   socketServer.removeAllListeners( 'arObjectShare' );
 
@@ -683,13 +683,13 @@ function arConnectionController( participantState ) {
    requestAnimationFrame( connectToBroadcastSensors );
    }
 
- arConnectionController( participantState );
+ arConnectionController();
 
   }
 
   // end setup AR Layer
 
-function setupArInteractionEvents( participantState ) {
+function setupArInteractionEvents() {
 
 //
 // Establish the user interation with the AR objects
