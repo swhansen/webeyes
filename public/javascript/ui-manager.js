@@ -370,15 +370,6 @@ $( function() {
      } );
   } );
 
- //    if ( $( this ).attr( 'class' ) === 'doc-pub-1' ) {
- //      emitUtility( 'doc-1' );
- //    } else {
- //      clearUtilCanvas();
- //    }
- //    $( this ).toggleClass( 'on' );
- //  } );
- //} );
-
 $( function() {
     $( '.doc-pub-2' ).click( function() {
       emitUtility( 'doc-2' );
@@ -386,14 +377,6 @@ $( function() {
     } );
   } );
 
-//    if ( $( this ).attr( 'class' ) === 'doc-pub-2' ) {
-//      emitUtility( 'doc-2' );
-//    } else {
-//      clearUtilCanvas();
-//    }
-//    $( this ).toggleClass( 'on' );
-//  } );
-//} );
 
 $( function() {
     $( '.arch-swap' ).click( function() {
@@ -402,30 +385,12 @@ $( function() {
     } );
   } );
 
-//      if ( $( this ).attr( 'class' ) === 'arch-swap' ) {
-//        emitUtility( 'arch' );
-//      } else {
-//        clearUtilCanvas();
-//      }
-//      $( this ).toggleClass( 'on' );
-//    } );
-//  } );
-
   $( function() {
     $( '.bullseye-swap' ).click( function() {
       emitUtility( 'bullseye' );
       drawBullsEye();
     } );
   } );
-
- //     if ( $( this ).attr( 'class' ) === 'bullseye-swap' ) {
- //       emitUtility( 'bullseye' );
- //     } else {
- //       clearUtilCanvas();
- //     }
- //     $( this ).toggleClass( 'on' );
- //   } );
- // } );
 
 $( function() {
     $( '#mod-reset' ).click( function() {

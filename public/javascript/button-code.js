@@ -1,10 +1,5 @@
 
-//
-//   Functions for execution of the 'button-code'
-// Button codes are user to invoke functions that are restricted
-//  - invoked through the + main menu button
-//  - pulls in a specific menudescriptor JSON file
-//
+//   Functions for execution of the 'mode-code'
 
 function initModme() {
 
@@ -25,21 +20,21 @@ function useModeCode( modeCode ) {
 
    case 'modme':
 
-  setPeerUserContext( 'all', 'modMeState', false );
+    setPeerUserContext( 'all', 'modMeState', false );
 
     userContext.modMeState = true;
 
-   userContext.modMeState = true;
-   $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
+    userContext.modMeState = true;
+    $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
       uiStructure = data;
-    } );
-    for ( var button in uiStructure.structure ) {
+      } );
+      for ( var button in uiStructure.structure ) {
       t = 1000;
       $( uiStructure.structure[button].mainButton ).fadeOut( t );
-    }
-    document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
-    document.getElementById( 'modmeButton' ).style.visibility = 'visible';
-    mainCollapsed = true;
+      }
+      document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
+      document.getElementById( 'modmeButton' ).style.visibility = 'visible';
+      mainCollapsed = true;
     break;
 
   case 'vrme':
@@ -80,11 +75,9 @@ function useModeCode( modeCode ) {
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
     emitMessage( msgString );
 
-    break;
+  break;
 
-    case 'augme':
-
-    console.log( 'userContext:', userContext);
+  case 'augme':
 
       setPeerUserContext( 'all', 'modMeState', false );
       setPeerUserContext( 'all', 'mode', 'ar');
@@ -101,9 +94,6 @@ function useModeCode( modeCode ) {
           $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
         }
 
-      //userContext.mode = 'ar';
-      //userContext.modMeState = true;
-
       document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
       document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
       document.getElementById( 'arMainButton' ).style.visibility = 'visible';
@@ -115,11 +105,6 @@ function useModeCode( modeCode ) {
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
-      // Tell everyone to initialize AR
-
-        // var sessionId = socketServer.sessionid;
-      //        socketServer.emit( 'utility', 'arClientInit', sessionId );
-
       msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
       emitMessage( msgString );
 
@@ -127,7 +112,7 @@ function useModeCode( modeCode ) {
 
     break;
 
-   case 'devme':
+  case 'devme':
     $.getJSON( '../menudescriptors/devmeStructure.json', function( data ) {
       uiStructure = data;
     } );
