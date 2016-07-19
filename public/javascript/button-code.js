@@ -160,6 +160,7 @@ userContext.modMeState = true;
 $( '#codeDialogModal' ).dialog( {
         autoOpen: false
     } );
+
  $( '#codeDialogButton' ).click( function() {
   swal({
     title: 'Button Code',
@@ -175,10 +176,9 @@ $( '#codeDialogModal' ).dialog( {
           if (inputValue === false) return false;
 
           if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-  //          console.log( 'code dialog augme NOT Capable' );
-            swal.showInputError('Oops... Not AR Capable Device');
-            return false;
-          }
+            swal('Oops... Not an AR Capable Device', 'Use a device', 'error' );
+
+          } else {
 
           if (inputValue === '') {
               swal.showInputError('Please Enter Code!');
@@ -192,6 +192,7 @@ $( '#codeDialogModal' ).dialog( {
 
          usebcode( inputValue.toLowerCase() );
          swal.close();
+       }
 
   } );
 } );
