@@ -19,11 +19,11 @@
         <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
     <script>
     $( document ).ready( function() {
-        $( "#pwform" ).submit( function() {
+        $( "#pwform" ).submit( function( event ) {
             console.log( "password sumbitted" );
 var fields =  $( this ).serializeArray();
 
-     alert(fields[0].value, fields[1].value );
+     alert(fields[0].name, fields[0].value, fields[1].value );
 
 
 
