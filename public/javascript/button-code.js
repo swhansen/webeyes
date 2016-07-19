@@ -174,14 +174,9 @@ $( '#codeDialogModal' ).dialog( {
         function(inputValue){
           if (inputValue === false) return false;
 
-          console.log( 'inputValue, userContext:', inputValue, userContext );
-
            if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
             console.log( 'code dialog augme NOT Capable' );
-            swal.close();
-
-notAr();
-
+            swal.showInputError('Oops... Not AR Capable Device');
           }
 
           if (inputValue === '') {
