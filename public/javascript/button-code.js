@@ -180,10 +180,7 @@ $( '#codeDialogModal' ).dialog( {
             console.log( 'code dialog augme NOT Capable' );
             swal.close();
 
-swal( 'Oops... Not AR Capable Device',
-      'Please use a orientation and location based device',
-      'error'
-   );
+notAr();
 
           }
 
@@ -202,6 +199,14 @@ swal( 'Oops... Not AR Capable Device',
 
   } );
 } );
+
+ function notAr() {
+swal( 'Oops... Not AR Capable Device',
+      'Please use a orientation and location based device',
+      'error'
+   );
+
+ }
 
 // recieving unique rtcID
 
