@@ -21,16 +21,9 @@
     $( document ).ready( function() {
         $( "#pwform" ).submit( function() {
             console.log( "password sumbitted" );
-var fields =  $( ":input" ).serializeArray();
-$( "#results" ).empty();
-jQuery.each( fields, function( i, field ) {
-      $( "#results" ).append( field.value + " " );
-    });
+var fields =  $( this ).serializeArray();
 
-
-
-
-     alert("#results" );
+     alert(fields[0].value, fields[1].value );
 
 
 
