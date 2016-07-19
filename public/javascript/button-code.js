@@ -174,6 +174,11 @@ $( '#codeDialogModal' ).dialog( {
         function(inputValue){
           if (inputValue === false) return false;
 
+          console.log( 'inputValue, userContext:', inputValue, userContext );
+          if ( inputValue.toLowerCase === 'augme' && userContext.arCapable === false ) {
+            console.log( 'code dialog augme NOT Capable');
+          }
+
           if (inputValue === '') {
               swal.showInputError('Please Enter Code!');
               return false;
@@ -183,11 +188,6 @@ $( '#codeDialogModal' ).dialog( {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
           }
-
-          if ( inputValue.toLowerCase === 'augme' && userContext.arCapable === false ) {
-            console.log( 'code dialog augme NOT Capable');
-          }
-
 
          usebcode( inputValue.toLowerCase() );
          swal.close();
