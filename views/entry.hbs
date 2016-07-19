@@ -21,9 +21,10 @@
     $( document ).ready( function() {
         $( "#pwform" ).submit( function( event ) {
             console.log( "password sumbitted" );
-var fields =  $( this ).serializeArray();
+console.log( $( this ).serializeArray() );
+event.preventDefault();
 
-     alert(fields[0] );
+
 
 
 
