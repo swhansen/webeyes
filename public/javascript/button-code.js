@@ -176,11 +176,9 @@ $( '#codeDialogModal' ).dialog( {
           if (inputValue === false) return false;
 
           if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-            swal('Oops... Not an AR Capable Device', 'Use a device', 'error' );
-
+            swal('Oops... Not an AR Capable Device', 'Use a orientation and locacation capable device', 'error' );
           } else {
-
-          if (inputValue === '') {
+            if (inputValue === '') {
               swal.showInputError('Please Enter Code!');
               return false;
             }
@@ -189,7 +187,6 @@ $( '#codeDialogModal' ).dialog( {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
           }
-
          usebcode( inputValue.toLowerCase() );
          swal.close();
        }
