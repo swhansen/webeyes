@@ -19,17 +19,15 @@ modmeUI();
 setDomPointerEvent('canvas0', 'none');
 }
 
-function usebcode( bcode ) {
+function useModeCode( modeCode ) {
   var mainCollapsed;
-  switch ( bcode )
-  {
+  switch ( modeCode ) {
+
    case 'modme':
 
-setPeerUserContext( 'all', 'modMeState', false );
+  setPeerUserContext( 'all', 'modMeState', false );
 
-// insert rets and checks for self rtcid
-
-userContext.modMeState = true;
+    userContext.modMeState = true;
 
    userContext.modMeState = true;
    $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
@@ -187,20 +185,11 @@ $( '#codeDialogModal' ).dialog( {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
           }
-         usebcode( inputValue.toLowerCase() );
+         useModeCode( inputValue.toLowerCase() );
          swal.close();
        }
-
   } );
 } );
-
- function notAr() {
-swal( 'Oops... Not AR Capable Device',
-      'Please use a orientation and location based device',
-      'error'
-   );
-
- }
 
 // recieving unique rtcID
 
