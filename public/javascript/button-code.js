@@ -176,7 +176,7 @@ $( '#codeDialogModal' ).dialog( {
           if (inputValue === false) return false;
 
           if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-            swal('Oops... Not an AR Capable Device', 'Use a orientation and locacation capable device', 'error' );
+            swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
           } else {
             if (inputValue === '') {
               swal.showInputError('Please Enter Code!');
