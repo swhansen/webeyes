@@ -21,15 +21,6 @@
     $( document ).ready( function() {
         $( "#pwform" ).submit( function( event ) {
             console.log( "password sumbitted" );
-console.log( $( this ).serializeArray() );
-event.preventDefault();
-
-
-
-
-
-
-
             var pw = {
                 "pw": $( "input" ).val()
             };
