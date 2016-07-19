@@ -175,7 +175,7 @@ $( '#codeDialogModal' ).dialog( {
           if (inputValue === false) return false;
 
           console.log( 'inputValue, userContext:', inputValue, userContext );
-          if ( inputValue.toLowerCase === 'augme' && userContext.arCapable === false ) {
+          if ( inputValue.toLowerCase == 'augme' && userContext.arCapable == false ) {
             console.log( 'code dialog augme NOT Capable');
           }
 
