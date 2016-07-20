@@ -11,7 +11,6 @@
         <div id="entryformbutton">
         <input type="submit" id="entry-submit" value="Go Collaborate"  />
         </div>
-        <pre id="result">
     </form>
  </div>
  <div class= "about">
@@ -20,32 +19,6 @@
  </p>
  </div>
         <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
-
-    <script>
-
-$.fn.serializeObject = function()
-{
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name] !== undefined) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};
-
-</script>
-
-
-
-
-
     <script>
   //  $( document ).ready( function() {
         $( "#pwform" ).on( "submit",  function( event ) {
@@ -53,7 +26,7 @@ $.fn.serializeObject = function()
 
 //var str = $( "pwform" ).serialize();
 
-$('#result').text(JSON.stringify($('pwform').serializeObject()));
+alert( $( this ).serialize() );
 
 
             var pw = {
