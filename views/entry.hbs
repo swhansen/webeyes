@@ -24,13 +24,7 @@
             console.log( "password sumbitted" );
             var obj = $( this ).serializeObject();
 
-      //  $( '#result' ).text( obj );
-      //      var pw = {
-      //          "pw": $( "input" ).val()
-      //      };
-
             $.post( "/", obj, function( response, status ) {
-               // console.log( "PW:" + JSON.stringify( pw.pw ) + "\nstatus:" + status );
                 if ( response == "logged in" ) {
                     location.reload();
                 } else {
