@@ -29,7 +29,7 @@
             console.log( "password sumbitted" );
 
 //alert( $( '#pwform' ).serializeObject() );
-var obj = JSON.stringify( $( this ).serializeObject() );
+var obj = $( this ).serializeObject();
 alert( obj );
 $( '#result' ).text( obj );
 
