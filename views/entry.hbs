@@ -1,13 +1,12 @@
 <div class = "centerFlex">
 <p id="login-message">Start a New WEG2RT Session</p>
-    <form id ="pwform" action="">
+    <form id ="loginform" action="">
         <label>Password</label>
         <input type="password" name="password" value="password"/><br>
         <label>Room Name (optional)</label>
         <input type="text" name="roomname" value="roomname"/><br>
         <label>User ID (optional)</label>
         <input type="text" name="uid" value="uid"/><br><br>
-
         <div id="entryformbutton">
         <input type="submit" id="entry-submit" value="Go Collaborate"  />
         </div>
@@ -18,10 +17,10 @@
  <a href="/about">What is this all about?</a>
  </p>
  </div>
-        <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="bower/jquery-serialize-object/dist/jquery.serialize-object.min.js"></script>
+    <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower/jquery-serialize-object/dist/jquery.serialize-object.min.js"></script>
     <script>
-        $( "#pwform" ).on( "submit",  function( event ) {
+        $( "#loginform" ).on( "submit",  function( event ) {
             console.log( "password sumbitted" );
             var obj = $( this ).serializeObject();
 
@@ -31,7 +30,7 @@
       //      };
 
             $.post( "/", obj, function( response, status ) {
-                console.log( "PW:" + JSON.stringify( pw.pw ) + "\nstatus:" + status );
+               // console.log( "PW:" + JSON.stringify( pw.pw ) + "\nstatus:" + status );
                 if ( response == "logged in" ) {
                     location.reload();
                 } else {
