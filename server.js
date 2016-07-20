@@ -97,7 +97,7 @@ app.post( '/', function( req, res ) {
     res.send( 'Already logged in.' );
   } else {
     console.log( 'Posted data:' + JSON.stringify( req.body ) );
-    if ( req.body.pw === password ) {
+    if ( req.body.password === password ) {
       loggedIn = true;
       res.send( 'logged in' );
       console.log( 'Logged in' );
