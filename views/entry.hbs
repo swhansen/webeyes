@@ -11,6 +11,9 @@
         <div id="entryformbutton">
         <input type="submit" id="entry-submit" value="Go Collaborate"  />
         </div>
+        <h2>JSON</h2>
+<pre id="result">
+</pre>
     </form>
  </div>
  <div class= "about">
@@ -26,7 +29,10 @@
 
 //var str = $( "pwform" ).serialize();
 
-alert( $( '#pwform' ).serializeObject() );
+//alert( $( '#pwform' ).serializeObject() );
+
+$('#result').text(JSON.stringify($('pwform').serializeObject()));
+        return false;
 
 
             var pw = {
