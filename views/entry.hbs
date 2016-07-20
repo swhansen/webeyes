@@ -23,12 +23,12 @@
     <script>
         $( "#pwform" ).on( "submit",  function( event ) {
             console.log( "password sumbitted" );
-var obj = $( this ).serializeObject();
-$( '#result' ).text( obj );
+            var obj = $( this ).serializeObject();
 
-            var pw = {
-                "pw": $( "input" ).val()
-            };
+      //  $( '#result' ).text( obj );
+      //      var pw = {
+      //          "pw": $( "input" ).val()
+      //      };
 
             $.post( "/", obj, function( response, status ) {
                 console.log( "PW:" + JSON.stringify( pw.pw ) + "\nstatus:" + status );
@@ -40,4 +40,4 @@ $( '#result' ).text( obj );
                 console.log( JSON.stringify( response ) );
             } );
         } );
-        </script>
+    </script>
