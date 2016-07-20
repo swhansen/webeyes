@@ -1,6 +1,8 @@
 <div class = "centerFlex">
 <p id="login-message">Start a New WEG2RT Session</p>
     <form id ="loginform" action="">
+    <pre id="error">
+</pre>
         <label>Password</label>
         <input type="password" name="password" value="password"/><br>
         <label>Room Name (optional)</label>
@@ -17,6 +19,7 @@
  <a href="/about">What is this all about?</a>
  </p>
  </div>
+
     <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower/jquery-serialize-object/dist/jquery.serialize-object.min.js"></script>
     <script>
@@ -28,7 +31,7 @@
                 if ( response == "logged in" ) {
                     location.reload();
                 } else {
-                    $( "body" ).text( response );
+                    $( "error" ).text( response );
                 }
                 console.log( JSON.stringify( response ) );
             } );
