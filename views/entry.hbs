@@ -11,9 +11,6 @@
         <div id="entryformbutton">
         <input type="submit" id="entry-submit" value="Go Collaborate"  />
         </div>
-        <h2>JSON</h2>
-<pre id="result">
-</pre>
     </form>
  </div>
  <div class= "about">
@@ -24,13 +21,9 @@
         <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="bower/jquery-serialize-object/dist/jquery.serialize-object.min.js"></script>
     <script>
-  //  $( document ).ready( function() {
         $( "#pwform" ).on( "submit",  function( event ) {
             console.log( "password sumbitted" );
-
-//alert( $( '#pwform' ).serializeObject() );
 var obj = $( this ).serializeObject();
-alert( obj );
 $( '#result' ).text( obj );
 
             var pw = {
@@ -47,5 +40,4 @@ $( '#result' ).text( obj );
                 console.log( JSON.stringify( response ) );
             } );
         } );
- //   } );
         </script>
