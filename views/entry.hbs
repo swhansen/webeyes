@@ -31,8 +31,9 @@
 //var str = $( "pwform" ).serialize();
 
 //alert( $( '#pwform' ).serializeObject() );
-
-$('#result').text(JSON.stringify($( this ).serializeObject()));
+var obj = JSON.stringify( $( this ).serializeObject() );
+alert( obj );
+$( '#result' ).text( JSON.stringify( $( this ).serializeObject() ) );
         return false;
 
 
