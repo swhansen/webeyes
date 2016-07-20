@@ -2,7 +2,7 @@
 <p id="login-message">Start a New WEG2RT Session</p>
     <form id ="pwform" action="">
         <label>Password</label>
-        <input type="password" name="password" value=""/>
+        <input type="password" name="password" value="password"/>
         <label>Room Name</label>
         <input type="text" name="room-name" value="room-name"/><br><br>
 
@@ -19,8 +19,14 @@
         <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
     <script>
     $( document ).ready( function() {
-        $( "#pwform" ).submit( function( event ) {
+        $( "#pwform" ).on( "submit" ( function( event ) {
             console.log( "password sumbitted" );
+
+//var str = $( "pwform" ).serialize();
+
+console.log( $( this ).serialize() );
+
+
             var pw = {
                 "pw": $( "input" ).val()
             };
