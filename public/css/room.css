@@ -34,7 +34,7 @@
   z-index: 200;
 }
 
-#iotZoneId {
+#roomId {
   position: fixed;
   top: 38px;
   left: 20px;
