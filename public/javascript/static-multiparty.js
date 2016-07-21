@@ -1135,7 +1135,7 @@ setBrowserDetails();
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
-   easyrtc.easyApp( userContext.room, 'box0', [ 'box1', 'box2', 'box3' ],
+   easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
     console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
