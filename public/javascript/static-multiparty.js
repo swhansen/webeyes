@@ -64,9 +64,9 @@ socketServer.on( 'room', function( data ) {
  var sessionId = socketServer.sessionid;
   socketServer.emit( 'room', 'roomreq', sessionId );
 
-var str = "Room Name:" + userContext.room
+var str = "Room Name:" + userContext.room;
 
-  $( '#roomId' ).html( str );
+  $( '#roomId' ).html( 'Room Name' + userContext.room );
 
 var layerPointerState = {};
 
