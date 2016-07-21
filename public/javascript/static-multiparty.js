@@ -58,18 +58,19 @@ var layerList = [
 
 socketServer.on( 'room', function( data ) {
   console.log( 'ROOM communication:', data );
-  //room = data;
-  userContext.room = data;
+updadateRoom( data );
 } );
 
  var sessionId = socketServer.sessionid;
   socketServer.emit( 'room', 'roomreq', sessionId );
 
-var str = "Room Name:" + userContext.room;
+function updateRoom (data) {
+var str = "Room Name:" + data;
 
 console.log('Room Name:', str );
 
   $( '#roomId' ).html( str );
+}
 
 var layerPointerState = {};
 
