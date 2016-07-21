@@ -66,7 +66,7 @@ socketServer.on( 'room', function( data ) {
 
 var str = "Room Name:" + userContext.room;
 
-  $( '#roomId' ).html( 'Room Name' + userContext.room );
+  $( '#roomId' ).text( str );
 
 var layerPointerState = {};
 
