@@ -54,17 +54,17 @@ var layerList = [
   'leappane'
 ];
 
-socketServer.on( 'room', function( data ) {
-  console.log( 'ROOM communication:', data );
+socketServer.on( 'roomnamerequest', function( data ) {
+ // console.log( 'ROOM communication:', data );
   updateRoom( data );
 } );
 
   var sessionId = socketServer.sessionid;
-  socketServer.emit( 'room', 'roomreq', sessionId );
+  socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
 
-function updateRoom (data) {
-  var str = "Room Name:" + data;
-  console.log('Room Name:', str );
+function updateRoom ( data ) {
+  var str = 'Room Name:' + data;
+//  console.log( 'Room Name:', str );
   $( '#roomId' ).html( str );
   }
 

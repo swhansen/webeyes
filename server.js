@@ -343,10 +343,10 @@ client.on( 'peerSphere', function( data, session ) {
     client.broadcast.emit( 'toggleCompass', data );
   } );
 
-  client.on( 'room', function( data, session ) {
+  client.on( 'roomnamerequest', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
-   console.log('SERVER-ROOM:', data );
-    client.emit( 'room', room );
+   //console.log('SERVER-ROOM:', data );
+    client.emit( 'roomnamerequest', room );
   } );
 
   client.on( 'drawLine', function( data, session ) {
