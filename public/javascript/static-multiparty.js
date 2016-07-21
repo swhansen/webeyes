@@ -54,23 +54,19 @@ var layerList = [
   'leappane'
 ];
 
-
-
 socketServer.on( 'room', function( data ) {
   console.log( 'ROOM communication:', data );
   updateRoom( data );
 } );
 
- var sessionId = socketServer.sessionid;
+  var sessionId = socketServer.sessionid;
   socketServer.emit( 'room', 'roomreq', sessionId );
 
 function updateRoom (data) {
-var str = "Room Name:" + data;
-
-console.log('Room Name:', str );
-
+  var str = "Room Name:" + data;
+  console.log('Room Name:', str );
   $( '#roomId' ).html( str );
-}
+  }
 
 var layerPointerState = {};
 
