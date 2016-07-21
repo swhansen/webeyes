@@ -58,7 +58,7 @@ var layerList = [
 
 socketServer.on( 'room', function( data ) {
   console.log( 'ROOM communication:', data );
-  room = data;
+  //room = data;
   userContext.room = data;
 } );
 
@@ -67,7 +67,7 @@ socketServer.on( 'room', function( data ) {
 
 var str = "Room Name:" + userContext.room;
 
-console.log('Room Name:', userContext.room );
+console.log('Room Name:', str );
 
   $( '#roomId' ).html( str );
 
