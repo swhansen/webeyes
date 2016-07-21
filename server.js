@@ -101,9 +101,15 @@ app.post( '/', function( req, res ) {
       loggedIn = true;
       res.send( 'logged in' );
       console.log( 'Logged in' );
-      var easyrtcServer = rtc.listen( app, socketServer, {
-        'apiEnable': 'true'
-      } );
+      var easyrtcServer = rtc.listen(
+            app,
+         //   socketServer, { 'apiEnable': 'true' }
+         socketserver,
+         function( err, rtc ) {
+          rtc.setOption("roomDefaultName", "weg2rt");
+         }
+
+          );
     } else {
       res.send( 'Incorrect password.' );
     }
