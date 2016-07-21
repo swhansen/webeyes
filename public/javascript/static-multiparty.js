@@ -57,12 +57,13 @@ var layerList = [
 socketServer.on( 'roomnamerequest', function( data ) {
  // console.log( 'ROOM communication:', data );
   updateRoom( data );
+  userContext.room = data;
 } );
 
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
 
-function updateRoom ( data ) {
+function updateRoom( data ) {
   var str = 'Room Name:' + data;
 //  console.log( 'Room Name:', str );
   $( '#roomId' ).html( str );
@@ -78,7 +79,7 @@ function setDomPointerEvent( domId, mode ) {
   document.getElementById( domId ).style.pointerEvents = mode;
 }
 
-// set a userContect param from a remote
+// set a userContext param from a remote
 
 function setPeerUserContext( rtcId, param, state ) {
   var data = {};
@@ -1138,8 +1139,8 @@ setBrowserDetails();
  //if ( userContext.mobile) {
  // easyrtc.enableAudio( false );
  // }
-
-   easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
+userC
+   easyrtc.easyApp( userContext.room, 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
     console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );

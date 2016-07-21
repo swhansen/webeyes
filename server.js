@@ -106,7 +106,6 @@ app.post( '/', function( req, res ) {
       var easyrtcServer = rtc.listen(
             app,
             socketServer, { 'apiEnable': 'true' }
-
           );
     } else {
       res.send( 'Incorrect password.' );
@@ -305,7 +304,7 @@ socketServer.sockets.on( 'connection', function( client ) {
     client.broadcast.emit( 'vrOrientation', data );
   } );
 
-  client.on( 'userContext', function (data, session ) {
+  client.on( 'userContext', function ( data, session ) {
     client.broadcast.emit( 'userContext', data );
   }
     );
