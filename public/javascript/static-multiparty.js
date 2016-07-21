@@ -54,13 +54,14 @@ var layerList = [
   'leappane'
 ];
 
- var sessionId = socketServer.sessionid;
-  socketServer.emit( 'room', 'roomreq', sessionId );
 
 
 socketServer.on( 'room', function( data ) {
   console.log( 'ROOM communication:', data );
 } );
+
+ var sessionId = socketServer.sessionid;
+  socketServer.emit( 'room', 'roomreq', sessionId );
 
 var layerPointerState = {};
 
@@ -1133,9 +1134,6 @@ setBrowserDetails();
  // easyrtc.enableAudio( false );
  // }
 
-
-
-
    easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
@@ -1214,8 +1212,6 @@ setBrowserDetails();
   box0Width = document.getElementById( 'box0' ).offsetWidth;
 
 
-
-  console.log( 'box0:', box0Width, box0Height );
 
 initDraw();
 initUtil();

@@ -348,7 +348,7 @@ client.on( 'peerSphere', function( data, session ) {
   client.on( 'room', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
    console.log('SERVER-ROOM:', data );
-    client.broadcast.emit( 'room', data );
+    client.emit( 'room', data );
   } );
 
   client.on( 'drawLine', function( data, session ) {
