@@ -1134,8 +1134,8 @@ setBrowserDetails();
  //initial call of the top-down layout manager
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
-
-   easyrtc.easyApp( userContext.room, 'box0', [ 'box1', 'box2', 'box3' ],
+var r = userContext.room;
+   easyrtc.easyApp( r, 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
     console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
