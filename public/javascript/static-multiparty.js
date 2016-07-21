@@ -39,6 +39,7 @@ var userContext = {
   mobile: false,
   browserType: '',
   browserVideoDevices: '',
+  room: '',
   test: ''
 };
 
@@ -52,6 +53,17 @@ var layerList = [
   'arcanvaspane',
   'leappane'
 ];
+
+ var sessionId = socketServer.sessionid;
+  socketServer.emit( 'room', 'roomreq', sessionId );
+
+
+socketServer.on( 'room', function( data ) {
+
+  console.log( 'ROOM communication:', data );
+}
+
+
 
 var layerPointerState = {};
 

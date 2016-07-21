@@ -345,6 +345,12 @@ client.on( 'peerSphere', function( data, session ) {
     client.broadcast.emit( 'toggleCompass', data );
   } );
 
+  client.on( 'room', function( data, session ) {
+   // client.emit( 'arObjectShare ', data );
+   console.log('SERVER-ROOM:, data );
+    client.broadcast.emit( 'room', 'FOO-BAR' );
+  } );
+
   client.on( 'drawLine', function( data, session ) {
 
     // build up the colors for  drawing
