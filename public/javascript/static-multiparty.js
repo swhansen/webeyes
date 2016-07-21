@@ -58,7 +58,7 @@ var layerList = [
 
 socketServer.on( 'room', function( data ) {
   console.log( 'ROOM communication:', data );
-updadateRoom( data );
+  updateRoom( data );
 } );
 
  var sessionId = socketServer.sessionid;
