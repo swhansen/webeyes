@@ -1135,11 +1135,6 @@ setBrowserDetails();
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
-
- //if ( userContext.mobile) {
- // easyrtc.enableAudio( false );
- // }
-userC
    easyrtc.easyApp( userContext.room, 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
