@@ -60,9 +60,7 @@ var layerList = [
 
 socketServer.on( 'room', function( data ) {
   console.log( 'ROOM communication:', data );
-})
-
-
+} );
 
 var layerPointerState = {};
 
