@@ -13,6 +13,7 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                    'rgba(255, 0, 225, 1)',
                    'rgba(255, 115, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
+var room;
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
@@ -98,6 +99,7 @@ app.post( '/', function( req, res ) {
   } else {
     console.log( 'Posted data:' + JSON.stringify( req.body ) );
     if ( req.body.password === password ) {
+      room = req.body.roomname;
       loggedIn = true;
       res.send( 'logged in' );
       console.log( 'Logged in' );
@@ -348,7 +350,7 @@ client.on( 'peerSphere', function( data, session ) {
   client.on( 'room', function( data, session ) {
    // client.emit( 'arObjectShare ', data );
    console.log('SERVER-ROOM:', data );
-    client.emit( 'room', data );
+    client.emit( 'room', room );
   } );
 
   client.on( 'drawLine', function( data, session ) {
