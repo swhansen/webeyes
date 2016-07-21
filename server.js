@@ -105,11 +105,7 @@ app.post( '/', function( req, res ) {
       console.log( 'Logged in' );
       var easyrtcServer = rtc.listen(
             app,
-         //   socketServer, { 'apiEnable': 'true' }
-         socketserver,
-         function( err, rtc ) {
-          rtc.setOption("roomDefaultName", "weg2rt");
-         }
+            socketServer, { 'apiEnable': 'true' }
 
           );
     } else {
