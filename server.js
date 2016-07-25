@@ -98,6 +98,13 @@ app.post( '/', function( req, res ) {
     res.send( 'Already logged in.' );
   } else {
     console.log( 'Posted data:' + JSON.stringify( req.body ) );
+
+if ( req.body.name === 'steve') {
+  console.log( 'HIT  FROM VR:', req.body.name);
+}
+
+
+
     if ( req.body.password === password ) {
       room = req.body.roomname;
       loggedIn = true;

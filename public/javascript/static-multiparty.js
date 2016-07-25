@@ -1154,24 +1154,6 @@ setBrowserDetails();
            avatar: 'avatar0'
          } );
        }
-
-easyrtc.getRoomList(
-       function(roomList){
-          for(roomName in roomList) {
-             console.log("saw room " + roomName);
-          }
-        },
-        function(errorCode, errorText){
-           easyrtc.showError(errorCode, errorText);
-        }
-   );
-
-
-
-
-
-
-
      }
    );
 
