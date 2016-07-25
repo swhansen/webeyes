@@ -66,7 +66,7 @@ function updateRoom( data ) {
   var str = 'Room Name:' + data;
 //  console.log( 'Room Name:', str );
   $( '#roomId' ).html( str );
-  userContext.room = data
+  userContext.room = data;
   }
 
 var layerPointerState = {};
@@ -1135,7 +1135,7 @@ setBrowserDetails();
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
-  //  easyrtc.joinRoom( userContext.room );
+    easyrtc.joinRoom( userContext.room );
 
    easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
