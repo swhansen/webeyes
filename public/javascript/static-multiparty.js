@@ -1138,7 +1138,7 @@ setBrowserDetails();
 console.log( 'Join Room userContext:', userContext );
 
     var r = userContext.room;
-    easyrtc.joinRoom( r, function(roomname) { console.log('joined room:', roomname )} );
+    easyrtc.joinRoom( r );
 
    easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
