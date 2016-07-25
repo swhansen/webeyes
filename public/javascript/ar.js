@@ -191,11 +191,6 @@ function loadAr() {
 
 function setUpArLayer() {
 
-var obj =
-
-  $.post( "/", { name: 'Steve'} , function( response, status ) {
-            } );
-
   scene = null;
 
 // if ( scene ) { scene.remove };
