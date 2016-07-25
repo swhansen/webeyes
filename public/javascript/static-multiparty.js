@@ -1135,7 +1135,7 @@ setBrowserDetails();
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
-    easyrtc.joinRoom( userContext.room );
+  //  easyrtc.joinRoom( userContext.room );
 
    easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
