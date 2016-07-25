@@ -55,7 +55,7 @@ var layerList = [
 ];
 
 socketServer.on( 'roomnamerequest', function( data ) {
- // console.log( 'ROOM communication:', data );
+  console.log( 'ROOM communication:', data );
   updateRoom( data );
 } );
 
@@ -64,7 +64,7 @@ socketServer.on( 'roomnamerequest', function( data ) {
 
 function updateRoom( data ) {
   var str = 'Room Name:' + data;
-//  console.log( 'Room Name:', str );
+  console.log( 'Room Name:', str );
   $( '#roomId' ).html( str );
   userContext.room = data;
   }
@@ -1135,7 +1135,9 @@ setBrowserDetails();
 
     easyrtc.setRoomOccupantListener( callEverybodyElse );
 
-    easyrtc.joinRoom( 'steve' );
+
+var r = userContext.room;
+    easyrtc.joinRoom( r );
 
    easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
