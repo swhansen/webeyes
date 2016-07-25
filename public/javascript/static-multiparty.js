@@ -1137,6 +1137,17 @@ setBrowserDetails();
 
     easyrtc.joinRoom( userContext.room );
 
+    easyrtc.getRoomList(
+       function(roomList){
+          for(roomName in roomList) {
+             console.log("saw room " + roomName);
+          }
+        },
+        function(errorCode, errorText){
+           easyrtc.showError(errorCode, errorText);
+        }
+   );
+
    easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
@@ -1213,17 +1224,6 @@ setBrowserDetails();
 
   box0Height = document.getElementById( 'box0' ).offsetHeight;
   box0Width = document.getElementById( 'box0' ).offsetWidth;
-
-easyrtc.getRoomList(
-       function(roomList){
-          for(roomName in roomList) {
-             console.log("saw room " + roomName);
-          }
-        },
-        function(errorCode, errorText){
-           easyrtc.showError(errorCode, errorText);
-        }
-   );
 
 initDraw();
 initUtil();
