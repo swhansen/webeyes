@@ -979,15 +979,15 @@ var updateDegree = function(e){
 window.addEventListener('deviceorientation', updateDegree, false);
 
 //  Check event support
-_i = window.setInterval(function(){
-    if(_e !== null && _e.alpha !== null){
+_i = window.setInterval( function() {
+    if(_e !== null && _e.alpha !== null ){
         // Clear interval
-        clearInterval(_i);
+        clearInterval( _i );
         console.log( 'Orientation Enabled' );
         userContext.orientation = true;
-    }else{
+    } else {
         _c++;
-        if(_c === 10){
+        if( _c === 10) {
             // Clear interval
             clearInterval(_i);
             console.log( 'NOT Orientation Enabled' );
@@ -999,8 +999,6 @@ _i = window.setInterval(function(){
 }
 
 setBrowserDetails();
-
-
 
 //function isChromeMobile() {
 //  var mobile = isMobileDevice();
