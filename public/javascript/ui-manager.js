@@ -206,7 +206,7 @@ $( function() {
     messageBar( msgString );
 
     mainCollapsed = true;
-      for ( button in uiStructure.structure ) {
+      for ( var button in uiStructure.structure ) {
         t = 500;
         $( uiStructure.structure[button].mainButton ).fadeOut( t );
       }
@@ -245,8 +245,8 @@ $( function() {
 $( function() {
   $( '#arMainButton' ).click( function() {
     swal( {
-    title: 'AR VR World',
-    text: 'Input your AR or VR Wrld',
+    title: 'AR World',
+    text: 'Input Your VR Wrld',
     type: 'input',
     showCancelButton: true,
     closeOnCancel: true,
@@ -258,19 +258,21 @@ $( function() {
           if ( inputValue === false ) return false;
 
           if ( inputValue === '' ) {
-              swal.showInputError( 'Please Enter Your AR or VR World!' );
+              swal.showInputError( 'Please Enter Your AR World!' );
               return false;
             } else if ( !( _.includes( [ 'steve', 'chuck' ],
               inputValue.toLowerCase() ) ) ) {
-                swal.showInputError( 'Please enter a valid AR/VR World' );
+                swal.showInputError( 'Please enter a valid AR World' );
               return false;
           }
          userContext.arvrWorld = inputValue.toLowerCase();
+         setArWorld();
          swal.close();
-  } );
+   } );
+} );
+} );
 
-    // bring up the modal dialog for AR world models
-
+function setArWorld() {
       buildSideMenu( 'augme' );
 
       userContext.participantState = 'focus';
@@ -292,32 +294,30 @@ $( function() {
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
       // inform all the pees of the mode
-    }
-  );
-} );
+}
 
 $( function() {
   $( '#vrMainButton' ).click( function() {
 
 swal( {
-    title: 'AR VR World',
-    text: 'Input your AR or VR Wrld',
+    title: 'VR World',
+    text: 'Input your VR Wrld',
     type: 'input',
     showCancelButton: true,
     closeOnCancel: true,
     closeOnConfirm: false,
     animation: 'slide-from-top',
-    inputPlaceholder: 'AR VR World'
+    inputPlaceholder: 'VR World'
       },
         function( inputValue ) {
           if ( inputValue === false ) return false;
 
           if ( inputValue === '' ) {
-              swal.showInputError( 'Please Enter Your AR or VR World!' );
+              swal.showInputError( 'Please Enter Your VR World!' );
               return false;
             } else if ( !( _.includes( [ 'steve', 'chuck' ],
               inputValue.toLowerCase() ) ) ) {
-                swal.showInputError( 'Please enter a valid AR/VR World' );
+                swal.showInputError( 'Please enter a valid VR World' );
               return false;
           }
          userContext.arvrWorld = inputValue.toLowerCase();
