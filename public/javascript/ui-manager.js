@@ -254,14 +254,13 @@ $( function() {
     animation: 'slide-from-top',
     inputPlaceholder: 'AR VR World'
       },
-        function(inputValue) {
-          if (inputValue === false ) return false;
+        function( inputValue ) {
+          if ( inputValue === false ) return false;
 
-          if (inputValue === '' ) {
+          if ( inputValue === '' ) {
               swal.showInputError( 'Please Enter Your AR or VR World!' );
               return false;
-            }
-           else  if ( !( _.includes( [ 'steve', 'chuck' ],
+            } else if ( !( _.includes( [ 'steve', 'chuck' ],
               inputValue.toLowerCase() ) ) ) {
                 swal.showInputError( 'Please enter a valid AR/VR World' );
               return false;
@@ -269,7 +268,6 @@ $( function() {
          userContext.arvrWorld = inputValue.toLowerCase();
          swal.close();
   } );
-
 
     // bring up the modal dialog for AR world models
 
@@ -311,14 +309,13 @@ swal( {
     animation: 'slide-from-top',
     inputPlaceholder: 'AR VR World'
       },
-        function(inputValue) {
-          if (inputValue === false ) return false;
+        function( inputValue ) {
+          if ( inputValue === false ) return false;
 
-          if (inputValue === '' ) {
+          if ( inputValue === '' ) {
               swal.showInputError( 'Please Enter Your AR or VR World!' );
               return false;
-            }
-           else  if ( !( _.includes( [ 'steve', 'chuck' ],
+            } else if ( !( _.includes( [ 'steve', 'chuck' ],
               inputValue.toLowerCase() ) ) ) {
                 swal.showInputError( 'Please enter a valid AR/VR World' );
               return false;
@@ -326,6 +323,10 @@ swal( {
          userContext.arvrWorld = inputValue.toLowerCase();
          swal.close();
   } );
+} );
+} );
+
+function setVrWorld() {
 
       buildSideMenu( 'vrme' );
 
@@ -352,9 +353,9 @@ swal( {
       msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
       emitMessage( msgString );
 
-    }
-  );
-} );
+    };
+//  );
+//  } );
 
   $( function() {
     $( '#shareaug' ).click( function() {
@@ -431,7 +432,6 @@ $( function() {
       drawDoc1();
     } );
   } );
-
 
 $( function() {
     $( '.arch-swap' ).click( function() {
@@ -623,6 +623,5 @@ $( function() {
     }
   } ) ;
 } );
-
 
 }
