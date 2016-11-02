@@ -321,6 +321,7 @@ swal( {
               return false;
           }
          userContext.arvrWorld = inputValue.toLowerCase();
+         setVrWorld();
          swal.close();
   } );
 } );
@@ -353,7 +354,8 @@ function setVrWorld() {
       msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
       emitMessage( msgString );
 
-    };
+    }
+
 //  );
 //  } );
 
