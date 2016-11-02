@@ -40,7 +40,8 @@ var userContext = {
   browserType: '',
   browserVideoDevices: '',
   room: '',
-  test: ''
+  test: '',
+  arvrWorld: ''
 };
 
 // the layer list

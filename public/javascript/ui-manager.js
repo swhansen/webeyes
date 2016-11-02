@@ -245,6 +245,38 @@ $( function() {
 $( function() {
   $( '#arMainButton' ).click( function() {
 
+
+
+
+    swal({
+    title: 'AR VR World',
+    text: 'Input your AR or VR Wrld',
+    type: 'input',
+    showCancelButton: true,
+    closeOnCancel: true,
+    closeOnConfirm: false,
+    animation: 'slide-from-top',
+    inputPlaceholder: 'Ar VR World'
+      },
+        function(inputValue){
+          if (inputValue === false) return false;
+
+            if (inputValue === '') {
+              swal.showInputError('Please Enter Your AR or VR World!');
+              return false;
+            }
+           else if ( !( _.includes( [ 'steve', 'chuck' ],
+              inputValue.toLowerCase() ) ) ) {
+                swal.showInputError( 'Please enter a valid AR/VR World' );
+              return false;
+          }
+         userContext.arvrWorld = inputValue.toLowerCase() ;
+         swal.close();
+       }
+  } );
+
+    // bring up the modal dialog for AR world models
+
       buildSideMenu( 'augme' );
 
       userContext.participantState = 'focus';
@@ -568,5 +600,6 @@ $( function() {
     }
   } ) ;
 } );
+
 
 }

@@ -1,0 +1,32 @@
+<div class = "centerFlex">
+<p id="peer-entry">Join the WEG2RT Session</p>
+    <form id ="peerform" action="">
+        <pre id="error"></pre>
+        <div id="entryformbutton">
+        <input type="submit" id="entry-submit" value="I'm In"  />
+        </div>
+    </form>
+ </div>
+ <div class= "about">
+ <p>
+ <a href="/about">What is this all about?</a>
+ </p>
+ </div>
+
+<script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower/jquery-serialize-object/dist/jquery.serialize-object.min.js"></script>
+<script>
+    $( "#peer-entry" ).on( "submit",  function( event ) {
+        console.log( "password sumbitted" );
+        var obj = $( this ).serializeObject();
+
+        $.post( "/", obj, function( response, status ) {
+            if ( response == "logged in" ) {
+                location.reload();
+            } else {
+                $( "#error" ).text( response );
+                }
+            console.log( JSON.stringify( response ) );
+            } );
+        } );
+    </script>
