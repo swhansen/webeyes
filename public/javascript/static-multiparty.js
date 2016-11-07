@@ -56,7 +56,9 @@ userContext.settest( 'This is a Test' );
 //
 function addDimensionalLayer( layer ) {
   console.log( 'In the dimensionalLayer', $.inArray( layer, this.dimensionalLayers) );
+  if($.inArray( layer, this.dimensionalLayers) === -1 ) {
     this.dimensionalLayers.push( layer );
+  }
   }
 
 userContext.addDimensionalLayer( 'fullpage' );
