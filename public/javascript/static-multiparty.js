@@ -51,17 +51,23 @@ function settest( foo ) { this.test = foo; }
 
 userContext.settest( 'This is a Test' );
 
-console.log( 'userContext:', userContext );
+//console.log( 'userContext:', userContext );
 
 //
 function addDimensionalLayer( layer ) {
+
+  if ( !( layer in this.dimensionalLayers ) ) {
   this.dimensionalLayers.push( layer );
+  }
 }
 
 userContext.addDimensionalLayer( 'fullpage' );
 userContext.addDimensionalLayer( 'box0' );
+userContext.addDimensionalLayer( 'canvaspane' );
+userContext.addDimensionalLayer( 'box0' );
+userContext.addDimensionalLayer( 'fullpage' );
 
-console.log( 'userContext:', userContext );
+//console.log( 'userContext:', userContext );
 
 // the layer list
 
@@ -75,6 +81,7 @@ var layerList = [
 ];
 
 socketServer.on( 'roomnamerequest', function( data ) {
+
  // console.log( 'ROOM communication:', data );
   updateRoom( data );
 } );
@@ -84,6 +91,7 @@ socketServer.on( 'roomnamerequest', function( data ) {
 
 function updateRoom( data ) {
   var str = 'Room Name:' + data;
+
  // console.log( 'Room Name:', str );
   $( '#roomId' ).html( str );
   userContext.room = data;
@@ -920,19 +928,19 @@ function appInit() {
 
 var isMobile = {
     Android: function() {
-        return navigator.userAgent.match(/Android/i);
+        return navigator.userAgent.match( /Android/i );
     },
     BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i);
+        return navigator.userAgent.match( /BlackBerry/i );
     },
     iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        return navigator.userAgent.match( /iPhone|iPad|iPod/i );
     },
     Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
+        return navigator.userAgent.match( /Opera Mini/i );
     },
     Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i);
+        return navigator.userAgent.match( /IEMobile/i );
     },
     any: function() {
         return ( isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows() );
@@ -941,15 +949,15 @@ var isMobile = {
 
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
-  if( sUsrAg.indexOf("Chrome") > -1) {
+  if ( sUsrAg.indexOf( "Chrome" ) > -1 ) {
       sBrowser = "Chrome";
-  } else if (sUsrAg.indexOf("Safari") > -1) {
+  } else if ( sUsrAg.indexOf( "Safari" ) > -1 ) {
       sBrowser = "Apple Safari";
-  } else if (sUsrAg.indexOf("Opera") > -1) {
+  } else if ( sUsrAg.indexOf( "Opera" ) > -1 ) {
       sBrowser = "Opera";
-  } else if (sUsrAg.indexOf("Firefox") > -1) {
+  } else if ( sUsrAg.indexOf( "Firefox" ) > -1 ) {
       sBrowser = "Mozilla Firefox";
-  } else if (sUsrAg.indexOf("MSIE") > -1) {
+  } else if ( sUsrAg.indexOf( "MSIE" ) > -1 ) {
       sBrowser = "Microsoft Internet Explorer";
   }
   return sBrowser;
@@ -992,29 +1000,31 @@ var _i = null;
 var _e = null;
 var _c = 0;
 
-var updateDegree = function(e){
+var updateDegree = function( e ) {
     _e = e;
 }
 
-window.addEventListener('deviceorientation', updateDegree, false);
+window.addEventListener( 'deviceorientation', updateDegree, false );
 
 //  Check event support
 _i = window.setInterval( function() {
-    if(_e !== null && _e.alpha !== null ){
+    if ( _e !== null && _e.alpha !== null ) {
+
         // Clear interval
         clearInterval( _i );
         console.log( 'Orientation Enabled' );
         userContext.orientation = true;
     } else {
         _c++;
-        if( _c === 10) {
+        if ( _c === 10 ) {
+
             // Clear interval
-            clearInterval(_i);
+            clearInterval( _i );
             console.log( 'NOT Orientation Enabled' );
             userContext.orientation = false;
         }
     }
-}, 200);
+}, 200 );
 
 }
 
@@ -1077,6 +1087,7 @@ setBrowserDetails();
       console.log( 'easyrtc.getAudioSourceList:', list );
         userContext.browserAudioDevices = list;
       } );
+
 //
 //
 //
@@ -1190,7 +1201,7 @@ console.log( 'Join Room userContext:', userContext );
         var theBox =  theSlot;
         var av = 'avatar0';
 
-        console.log('at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox,'avatar:', av );
+        console.log( 'at setOnCall - rtcid:', easyrtcid, 'theBox:', theBox, 'avatar:', av );
 
        connectList.push( {
         rtcid: easyrtcid,
