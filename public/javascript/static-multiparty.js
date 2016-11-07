@@ -55,6 +55,7 @@ userContext.settest( 'This is a Test' );
 
 //
 function addDimensionalLayer( layer ) {
+  console.log( 'In the dimensionalLayer', $inArray( layer, this.dimensionalLayers) );
     this.dimensionalLayers.push( layer );
   }
 
@@ -62,7 +63,7 @@ userContext.addDimensionalLayer( 'fullpage' );
 userContext.addDimensionalLayer( 'box0' );
 userContext.addDimensionalLayer( 'canvaspane' );
 userContext.addDimensionalLayer( 'box0' );
-userContext.addDimensionalLayer( 'fullpage' );
+userContext.addDimensionalLayer( 'canvaspane' );
 
 console.log( 'userContext:', userContext );
 
