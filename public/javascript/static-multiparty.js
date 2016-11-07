@@ -40,17 +40,21 @@ var userContext = {
   browserType: '',
   browserVideoDevices: '',
   room: '',
-  test: testtest,
-  arvrWorld: ''
+  settest: settest,
+  test: '',
+  arvrWorld: '',
+  dimensionalLayers: ''
 };
 
-function testtest( foo ) { this.test = foo; }
+function settest( foo ) { this.test = foo; }
 
-userContext.test( 'This is a Test' );
+userContext.settest( 'This is a Test' );
 
 console.log( 'userContext:', userContext );
 
-
+//
+// .adddimensionallayer.........
+//
 
 // the layer list
 
