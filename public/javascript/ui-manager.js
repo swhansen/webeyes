@@ -255,7 +255,7 @@ $( function() {
     inputPlaceholder: 'AR VR World'
       },
         function( inputValue ) {
-          if ( inputValue === false ) return false;
+          if ( inputValue === false ) { return false; }
 
           if ( inputValue === '' ) {
               swal.showInputError( 'Please Enter Your AR World!' );
@@ -284,6 +284,8 @@ function setArWorld() {
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
 
+// set a parameter to load specific World
+
       loadAr();
 
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
@@ -310,7 +312,7 @@ swal( {
     inputPlaceholder: 'VR World'
       },
         function( inputValue ) {
-          if ( inputValue === false ) return false;
+          if ( inputValue === false ) { return false; }
 
           if ( inputValue === '' ) {
               swal.showInputError( 'Please Enter Your VR World!' );
@@ -339,6 +341,8 @@ function setVrWorld() {
       setPeerUserContext( 'all', 'mode', 'vr' );
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
+
+// set a parameter to load specific World
 
       loadAr();
 

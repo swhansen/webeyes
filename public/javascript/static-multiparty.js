@@ -40,9 +40,17 @@ var userContext = {
   browserType: '',
   browserVideoDevices: '',
   room: '',
-  test: '',
+  test: testtest,
   arvrWorld: ''
 };
+
+function testtest( foo ) { this.test = foo; }
+
+userContext.test( 'This is a Test' );
+
+console.log( 'userContext:', userContext );
+
+
 
 // the layer list
 
