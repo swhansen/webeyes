@@ -56,8 +56,10 @@ userContext.settest( 'This is a Test' );
 //
 function addDimensionalLayer( layer ) {
 
-  if ( !( layer in this.dimensionalLayers ) ) {
-  this.dimensionalLayers.push( layer );
+  if ( this.dimensionalLayers.indexof( layer ) ) {
+    return;
+    } else {
+    this.dimensionalLayers.push( layer );
   }
 }
 
@@ -67,7 +69,7 @@ userContext.addDimensionalLayer( 'canvaspane' );
 userContext.addDimensionalLayer( 'box0' );
 userContext.addDimensionalLayer( 'fullpage' );
 
-//console.log( 'userContext:', userContext );
+console.log( 'userContext:', userContext );
 
 // the layer list
 
