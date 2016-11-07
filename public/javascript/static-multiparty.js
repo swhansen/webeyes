@@ -40,22 +40,27 @@ var userContext = {
   browserType: '',
   browserVideoDevices: '',
   room: '',
+  settest: settest,
   test: '',
   arvrWorld: '',
-  dimensionalLayers: ''
+  dimensionalLayers: []
 };
 
-userContext.prototype.setTest = function( foo ) { this.test = foo; };
+function settest( foo ) { this.test = foo; }
 
-//function settest( foo )
-
-userContext.setTest( 'This is a Test of prototype' );
+userContext.settest( 'This is a Test' );
 
 console.log( 'userContext:', userContext );
 
 //
-// .adddimensionallayer.........
-//
+function addDimensionalLayer( layer ) {
+  this.dimensionalLayers.push( layer );
+}
+
+userContext.addDimensionalLayer( 'fullpage' );
+userContext.addDimensionalLayer( 'box0' );
+
+console.log( 'userContext:', userContext );
 
 // the layer list
 
