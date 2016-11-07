@@ -40,15 +40,16 @@ var userContext = {
   browserType: '',
   browserVideoDevices: '',
   room: '',
-  settest: settest,
   test: '',
   arvrWorld: '',
   dimensionalLayers: ''
 };
 
-function settest( foo ) { this.test = foo; }
+userContext.prototype.setTest = function( foo ) { this.test = foo; };
 
-userContext.settest( 'This is a Test' );
+//function settest( foo )
+
+userContext.setTest( 'This is a Test of prototype' );
 
 console.log( 'userContext:', userContext );
 
