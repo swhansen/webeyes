@@ -43,6 +43,7 @@ var userContext = {
   settest: settest,
   test: '',
   arvrWorld: '',
+  addDimensionalLayer: addDimensionalLayer,
   dimensionalLayers: []
 };
 
