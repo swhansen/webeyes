@@ -55,7 +55,7 @@ userContext.settest( 'This is a Test' );
 
 //
 function addDimensionalLayer( layer ) {
-  console.log( 'In the dimensionalLayer', $inArray( layer, this.dimensionalLayers) );
+  console.log( 'In the dimensionalLayer', $.inArray( layer, this.dimensionalLayers) );
     this.dimensionalLayers.push( layer );
   }
 
