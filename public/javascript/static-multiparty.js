@@ -56,7 +56,7 @@ userContext.settest( 'This is a Test' );
 //
 function addDimensionalLayer( layer ) {
 
-  if ( this.dimensionalLayers.indexof( layer ) ) {
+  if ( this.dimensionalLayers.indexOf( layer ) ) {
     return;
     } else {
     this.dimensionalLayers.push( layer );
