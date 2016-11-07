@@ -56,7 +56,9 @@ userContext.settest( 'This is a Test' );
 //
 function addDimensionalLayer( layer ) {
 
-  if ( this.dimensionalLayers.indexOf( layer ) ) {
+if ( $.inArray( layer, this.dimensionalLayers ) ) {
+
+//  if ( this.dimensionalLayers.indexOf( layer ) ) {
     return;
     } else {
     this.dimensionalLayers.push( layer );
