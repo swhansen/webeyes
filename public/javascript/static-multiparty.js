@@ -40,36 +40,30 @@ var userContext = {
   browserType: '',
   browserVideoDevices: '',
   room: '',
-  settest: settest,
-  test: '',
   arvrWorld: '',
   addDimensionalLayer: addDimensionalLayer,
   dimensionalLayers: []
 };
 
-function settest( foo ) { this.test = foo; }
-
-userContext.settest( 'This is a Test' );
-
-//console.log( 'userContext:', userContext );
-
-//
 function addDimensionalLayer( layer ) {
-  console.log( 'In the dimensionalLayer', $.inArray( layer, this.dimensionalLayers) );
-  if($.inArray( layer, this.dimensionalLayers) === -1 ) {
+  if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
     this.dimensionalLayers.push( layer );
   }
-  }
+}
 
 userContext.addDimensionalLayer( 'fullpage' );
 userContext.addDimensionalLayer( 'box0' );
 userContext.addDimensionalLayer( 'canvaspane' );
-userContext.addDimensionalLayer( 'box0' );
-userContext.addDimensionalLayer( 'canvaspane' );
-
+//userContext.addDimensionalLayer( 'box0' );
+//userContext.addDimensionalLayer( 'canvaspane' );
 console.log( 'userContext:', userContext );
 
-// the layer list
+( '*' ).filter( function() {
+  return $( this ).css( 'z-index' ) >= 10;
+} ).each( function() {
+  console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+} );
+
 
 var layerList = [
   'fullpage',
