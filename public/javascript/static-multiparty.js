@@ -58,12 +58,16 @@ userContext.addDimensionalLayer( 'canvaspane' );
 //userContext.addDimensionalLayer( 'canvaspane' );
 console.log( 'userContext:', userContext );
 
+
+function getZindexOrder() {
 ( '*' ).filter( function() {
   return $( this ).css( 'z-index' ) >= 10;
 } ).each( function() {
   console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 } );
+}
 
+getZindexOrder();
 
 var layerList = [
   'fullpage',
