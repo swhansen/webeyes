@@ -20,7 +20,7 @@ var uiStructure = {};
 
 var threejsDebug = true;
 
-var   = false;
+var leapPeerHandAnimate = false;
 
 // Container for User Context
 
