@@ -110,8 +110,11 @@ function loadAr() {
 
 var pathToWorld = 'javascript/setup-ar-world.js';
 $.when(
-  $.getScript( 'javascript/setup-ar-world.js' );
-  $.getScript( 'javascript/setup-ar-interaction.js' );
+  $.getScript( 'javascript/setup-ar-world.js' ),
+  $.getScript( 'javascript/setup-ar-interaction.js' ),
+  $.Deferred( function( deferred ) {
+    $( deferred.resolve );
+  })
 ).done( function() {
   setUpArLayer();
   setupArInteractionEvents();
