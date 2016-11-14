@@ -372,7 +372,7 @@ function arConnectionController() {
 //   Set up the camera drivers and connection feed
 //   Based on participantState(focus or peer)
 //    focus - device sensors
-//    peer - broadcast feed sensors
+//    peer - broadcast fed sensors
 //    ar - sensor driven
 //    vr - mouse driven
 

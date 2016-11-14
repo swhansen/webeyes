@@ -64,18 +64,18 @@ var mixer;
 
 // End Orientation AR
 
-function removeUserCreatedArObjects() {
-    for ( var i = 0; i < scene.children.length; i++ ) {
-      if ( scene.children[i].userData.isUserCreated ) {
-        scene.remove( scene.children[i] );
-      }
-    }
-    for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
-      if ( arSelectObjectArray[j].userData.isUserCreated === true ) {
-        arSelectObjectArray.splice( j, 1 );
-      }
-    }
-  }
+// function removeUserCreatedArObjects() {
+//     for ( var i = 0; i < scene.children.length; i++ ) {
+//       if ( scene.children[i].userData.isUserCreated ) {
+//         scene.remove( scene.children[i] );
+//       }
+//     }
+//     for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
+//       if ( arSelectObjectArray[j].userData.isUserCreated === true ) {
+//         arSelectObjectArray.splice( j, 1 );
+//       }
+//     }
+//   }
 
 //
 // ----------  Main AR/VR entry point --------------------------
@@ -86,8 +86,6 @@ function loadAr() {
  var scene, renderer, projector, arContainer;
  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
-
- //var projector;
 
  var cameraDriver;
   isAnimateKnot = false;
@@ -102,6 +100,7 @@ function loadAr() {
   document.getElementById( 'sticky-ui-container' ).style.display = 'visible';
   setDomPointerEvent( 'canvas0', 'none' );
   setDomPointerEvent( 'arcanvaspane', 'auto' );
+
   clock.stop();
   clock.start();
 

@@ -69,3 +69,16 @@ function receiveArObject( data ) {
           arObject.rotation.z = data.rotation._z;
         }
   }
+
+  function removeUserCreatedArObjects() {
+    for ( var i = 0; i < scene.children.length; i++ ) {
+      if ( scene.children[i].userData.isUserCreated ) {
+        scene.remove( scene.children[i] );
+      }
+    }
+    for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
+      if ( arSelectObjectArray[j].userData.isUserCreated === true ) {
+        arSelectObjectArray.splice( j, 1 );
+      }
+    }
+  }
