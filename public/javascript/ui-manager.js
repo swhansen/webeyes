@@ -311,7 +311,7 @@ $( function() {
 
 swal( {
     title: 'VR World',
-    text: 'Input your VR Wrld',
+    text: 'Input your VR World',
     type: 'input',
     showCancelButton: true,
     closeOnCancel: true,
@@ -322,6 +322,8 @@ swal( {
         function( inputValue ) {
           if ( inputValue === false ) { return false; }
 
+
+
           if ( inputValue === '' ) {
               swal.showInputError( 'Please Enter Your VR World!' );
               return false;
@@ -330,15 +332,18 @@ swal( {
                 swal.showInputError( 'Please enter a valid VR World' );
               return false;
           }
-         userContext.arvrWorld = inputValue.toLowerCase();
-         setVrWorld();
+       //  userContext.arvrWorld = inputValue.toLowerCase();
+         setVrWorld( inputValue.toLowerCase() );
          swal.close();
   } );
 } );
+
 } );
 
-function setVrWorld() {
+function setVrWorld( vrWorld ) {
 
+
+      userContext.arvrWorld = vrWorld();
       buildSideMenu( 'vrme' );
 
       userContext.participantState = 'focus';
