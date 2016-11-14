@@ -20,7 +20,7 @@ var uiStructure = {};
 
 var threejsDebug = true;
 
-var leapPeerHandAnimate = false;
+var   = false;
 
 // Container for User Context
 
@@ -74,8 +74,6 @@ var layerList = [
 ];
 
 socketServer.on( 'roomnamerequest', function( data ) {
-
- // console.log( 'ROOM communication:', data );
   updateRoom( data );
 } );
 
@@ -84,8 +82,6 @@ socketServer.on( 'roomnamerequest', function( data ) {
 
 function updateRoom( data ) {
   var str = 'Room Name:' + data;
-
- // console.log( 'Room Name:', str );
   $( '#roomId' ).html( str );
   userContext.room = data;
   }
