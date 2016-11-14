@@ -107,6 +107,8 @@ function loadAr() {
   clock.stop();
   clock.start();
 
+  // load the AR world and interaction
+
   $.when(
     $.getScript( 'javascript/setup-ar-world.js' ),
     $.getScript( 'javascript/setup-ar-interaction.js' ),

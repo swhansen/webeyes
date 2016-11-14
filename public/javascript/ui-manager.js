@@ -254,7 +254,7 @@ $( function() {
   $( '#arMainButton' ).click( function() {
    swal( {
    title: 'AR World',
-   text: 'Input Your VR Wrld',
+   text: 'Input Your VR World',
    type: 'input',
    showCancelButton: true,
    closeOnCancel: true,
