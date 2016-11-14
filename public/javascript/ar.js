@@ -108,10 +108,19 @@ function loadAr() {
   clock.start();
 
 
-//var pathToWorld = 'javascript/setup-ar-world.js'; $.getScript( pathToWorld, function() {
+var pathToWorld = 'javascript/setup-ar-world.js';
+$.when(
+  $.getScript( pathToWorld )
+).done( function() {
+  setUpArLayer();
+  console.log( 'AR world loaded', pathToWorld );
+  } );
+
+
+// $.getScript( pathToWorld, function() {
 //  setUpArLayer();
 //  console.log( 'AR world loaded', pathToWorld );
- // } )
+// } )
 
   setUpArLayer();
   setupArInteractionEvents();
