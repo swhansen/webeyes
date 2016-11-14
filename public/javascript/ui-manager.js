@@ -336,9 +336,9 @@ $( function() {
            }
           userContext.arvrWorld = inputValue.toLowerCase();
           swal.close();
-         // setVrWorld();
+          setVrWorld();
    } );
- setVrWorld();
+ //setVrWorld();
 
 } );
 } );
