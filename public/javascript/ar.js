@@ -9,8 +9,6 @@ var clock = new THREE.Clock();
 var sheep;
 var flyingPig;
 
-//var pigModel;
-
 var pivotPoint;
 var lamp;
 var knot;
@@ -80,7 +78,7 @@ function removeUserCreatedArObjects() {
   }
 
 //
-// ----------  Main Loader  --------------------------
+// ----------  Main AR/VR entry point --------------------------
 //
 
 function loadAr() {
@@ -112,6 +110,7 @@ function loadAr() {
   $.when(
     $.getScript( 'javascript/setup-ar-world.js' ),
     $.getScript( 'javascript/setup-ar-interaction.js' ),
+    $.getScript( 'javascript/ar-object-communication.js' ),
     $.Deferred( function( deferred ) {
       $( deferred.resolve );
     } )
@@ -123,77 +122,77 @@ function loadAr() {
 
 // -------End of LoarAr---------------
 
-  function receiveArObject( data ) {
-
-    switch ( data.operation ) {
-      case 'moveObject':
-        var arObject = scene.getObjectByName( data.name );
-        arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-        arMoveObject( data );
-      break;
-
-      case 'newObject':
-        var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
-        var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-        var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
-
-        arUserCreatedObject.position.set( data.x, data.y, data.z );
-        arUserCreatedObject.name = data.id;
-        scene.add( arUserCreatedObject );
-
-        arUserCreatedObject.userData.id = data.id;
-        arUserCreatedObject.userData.isAnimated = false;
-        arUserCreatedObject.userData.isUserCreated = true;
-        arUserCreatedObject.userData.isSelectable = true;
-        arUserCreatedObject.userData.createdBy = data.createdBy;
-        arUserCreatedObject.userData.objectType = data.objectType;
-
-        arSelectObjectArray.push( arUserCreatedObject );
-      break;
-
-      case 'animateSelectedObject':
-        if ( data.name === 'sheep' ) {
-            arObject = scene.getObjectByName( data.name );
-            arObject.rotation.x = data.rotation._x;
-            arObject.rotation.y = data.rotation._y;
-            arObject.rotation.z = data.rotation._z;
-            arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
-            isAnimateSheep = data.animate;
-          }
-
-        if ( data.name === 'swordGuyMesh' ) { isAnimateSwordGuy = data.animate; }
-
-        // User Created Objects
-
-        var tempObj = scene.getObjectByName( data.name );
-        tempObj.userData.isAnimated = data.isAnimated;
-      break;
-
-      case 'hideSelectedObject':
-
-      break;
-
-      case  'toggleIot':
-        hueSetLightStateXY( data.iotDeviceId, data.isOn, [ 0.5, 0.5 ], 100 );
-        arObject = scene.getObjectByName( data.name );
-        arObject.material.opacity = data.arObjectOpacity;
-      break;
-  }
-}
-
-  function arMoveObject( data ) {
-    var arObject = scene.getObjectByName( data.name );
-      if ( data.position ) {
-          arObject.position.x = data.position.x;
-          arObject.position.y = data.position.y;
-          arObject.position.z = data.position.z;
-        }
-      if ( data.rotation ) {
-          arObject.rotation.x = data.rotation._x;
-          arObject.rotation.y = data.rotation._y;
-          arObject.rotation.z = data.rotation._z;
-        }
-  }
+//   function receiveArObject( data ) {
+//
+//     switch ( data.operation ) {
+//       case 'moveObject':
+//         var arObject = scene.getObjectByName( data.name );
+//         arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+//         arMoveObject( data );
+//       break;
+//
+//       case 'newObject':
+//         var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+//         var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+//         var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+//
+//         arUserCreatedObject.position.set( data.x, data.y, data.z );
+//         arUserCreatedObject.name = data.id;
+//         scene.add( arUserCreatedObject );
+//
+//         arUserCreatedObject.userData.id = data.id;
+//         arUserCreatedObject.userData.isAnimated = false;
+//         arUserCreatedObject.userData.isUserCreated = true;
+//         arUserCreatedObject.userData.isSelectable = true;
+//         arUserCreatedObject.userData.createdBy = data.createdBy;
+//         arUserCreatedObject.userData.objectType = data.objectType;
+//
+//         arSelectObjectArray.push( arUserCreatedObject );
+//       break;
+//
+//       case 'animateSelectedObject':
+//         if ( data.name === 'sheep' ) {
+//             arObject = scene.getObjectByName( data.name );
+//             arObject.rotation.x = data.rotation._x;
+//             arObject.rotation.y = data.rotation._y;
+//             arObject.rotation.z = data.rotation._z;
+//             arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+//             isAnimateSheep = data.animate;
+//           }
+//
+//         if ( data.name === 'swordGuyMesh' ) { isAnimateSwordGuy = data.animate; }
+//
+//         // User Created Objects
+//
+//         var tempObj = scene.getObjectByName( data.name );
+//         tempObj.userData.isAnimated = data.isAnimated;
+//       break;
+//
+//       case 'hideSelectedObject':
+//
+//       break;
+//
+//       case  'toggleIot':
+//         hueSetLightStateXY( data.iotDeviceId, data.isOn, [ 0.5, 0.5 ], 100 );
+//         arObject = scene.getObjectByName( data.name );
+//         arObject.material.opacity = data.arObjectOpacity;
+//       break;
+//   }
+// }
+//
+//   function arMoveObject( data ) {
+//     var arObject = scene.getObjectByName( data.name );
+//       if ( data.position ) {
+//           arObject.position.x = data.position.x;
+//           arObject.position.y = data.position.y;
+//           arObject.position.z = data.position.z;
+//         }
+//       if ( data.rotation ) {
+//           arObject.rotation.x = data.rotation._x;
+//           arObject.rotation.y = data.rotation._y;
+//           arObject.rotation.z = data.rotation._z;
+//         }
+//   }
 
   // ----------------------------------------
 
