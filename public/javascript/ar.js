@@ -558,7 +558,8 @@ function loadAr() {
    //box.position.set( 2.0, 0.0, 0.1 );
    //scene.add( box );
 
- ... end AR world model
+      // end AR world model
+
   function arConnectionController() {
 
     socketServer.removeAllListeners( 'arObjectShare' );
