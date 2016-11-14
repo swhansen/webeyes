@@ -108,8 +108,8 @@ function loadAr() {
   clock.start();
 
 
-var pathToWorld = 'setup-ar-world.js';
-$.getScript( pathToWorld, function() {
+//var pathToWorld = './setup-ar-world.js';
+$.getScript( 'javascript/setup-ar-world.js', function() {
   setUpArLayer();
   console.log( 'AR world loaded', pathToWorld );
   } )
