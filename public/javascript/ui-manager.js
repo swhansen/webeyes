@@ -252,33 +252,32 @@ $( function() {
 
 $( function() {
   $( '#arMainButton' ).click( function() {
-//   swal( {
-//   title: 'AR World',
-//   text: 'Input Your VR Wrld',
-//   type: 'input',
-//   showCancelButton: true,
-//   closeOnCancel: true,
-//   closeOnConfirm: false,
-//   animation: 'slide-from-top',
-//   inputPlaceholder: 'AR VR World'
-//     },
-//       function( inputValue ) {
-//         if ( inputValue === false ) { return false; }
-
-//         if ( inputValue === '' ) {
-//             swal.showInputError( 'Please Enter Your AR World!' );
-//             return false;
-//           if ( !( _.includes( [ 'steve', 'chuck' ],
-//             inputValue.toLowerCase() ) ) ) {
-//               swal.showInputError( 'Please enter a valid AR World' );
-//             return false;
-//         }
-//        userContext.arvrWorld = inputValue.toLowerCase();
-//        setArWorld();
-//        swal.close();
-//  } );
-setArWorld();
-} );
+   swal( {
+   title: 'AR World',
+   text: 'Input Your VR Wrld',
+   type: 'input',
+   showCancelButton: true,
+   closeOnCancel: true,
+   closeOnConfirm: false,
+   animation: 'slide-from-top',
+   inputPlaceholder: 'AR VR World'
+     },
+       function( inputValue ) {
+         if ( inputValue === false ) { return false; }
+         if ( inputValue === '' ) {
+             swal.showInputError( 'Please Enter Your AR World!' );
+             return false;
+           }
+         if ( !( _.includes( [ 'steve', 'chuck' ],
+             inputValue.toLowerCase() ) ) ) {
+               swal.showInputError( 'Please enter a valid AR World' );
+             return false;
+         }
+        userContext.arvrWorld = inputValue.toLowerCase();
+        swal.close();
+        setArWorld();
+    } );
+  } );
 } );
 
 function setArWorld() {
@@ -322,9 +321,6 @@ $( function() {
        },
          function( inputValue ) {
            if ( inputValue === false ) { return false; }
-
-
-
            if ( inputValue === '' ) {
                swal.showInputError( 'Please Enter Your VR World!' );
                return false;
@@ -337,10 +333,8 @@ $( function() {
           userContext.arvrWorld = inputValue.toLowerCase();
           swal.close();
           setVrWorld();
-   } );
- //setVrWorld();
-
-} );
+    } );
+  } );
 } );
 
 function setVrWorld() {
