@@ -67,6 +67,14 @@ function getLayersZindexStatus() {
   return obj;
 }
 
+// list z-indexes
+
+//( '*' ).filter( function() {
+//  return $( this ).css( 'z-index' ) >= 10;
+//} ).each( function() {
+//  console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
+//} );
+
 // captureLayerPointerState( layerList );
 // console.log( 'pointerState:', layerPointerState );
 //
@@ -145,7 +153,7 @@ $( function() {
   $( '#sticky-compass' ).click( function() {
     compassToggle = !compassToggle;
     var data = compassToggle;
-    orientationAr( data );
+    orientationCompass( data );
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'toggleCompass', data, sessionId );
   } );

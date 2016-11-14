@@ -1,4 +1,4 @@
-function orientationAr( data ) {
+function orientationCompass( data ) {
 
   emitArOrientationData();
   document.getElementById( 'compassCube' ).style.zIndex = '99';
@@ -42,5 +42,5 @@ function emitArOrientationData() {
 }
 
 socketServer.on( 'toggleCompass', function( data ) {
-  orientationAr( data );
+  orientationCompass( data );
   } );
