@@ -107,28 +107,19 @@ function loadAr() {
   clock.stop();
   clock.start();
 
-var pathToWorld = 'javascript/setup-ar-world.js';
-$.when(
-  $.getScript( 'javascript/setup-ar-world.js' ),
-  $.getScript( 'javascript/setup-ar-interaction.js' ),
-  $.Deferred( function( deferred ) {
-    $( deferred.resolve );
-  } )
-).done( function() {
-  setUpArLayer();
-  setupArInteractionEvents();
-  } );
+  $.when(
+    $.getScript( 'javascript/setup-ar-world.js' ),
+    $.getScript( 'javascript/setup-ar-interaction.js' ),
+    $.Deferred( function( deferred ) {
+      $( deferred.resolve );
+    } )
+  ).done( function() {
+    setUpArLayer();
+    setupArInteractionEvents();
+    } );
+  }
 
-// $.getScript( pathToWorld, function() {
-//  setUpArLayer();
-//  console.log( 'AR world loaded', pathToWorld );
-// } )
-
-//  setUpArLayer();
-//  setupArInteractionEvents();
-   }
-
-// ----------------------
+// -------End of LoarAr---------------
 
   function receiveArObject( data ) {
 
