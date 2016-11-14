@@ -156,7 +156,7 @@ $( '#codeDialogModal' ).dialog( {
     inputPlaceholder: 'Button Code'
       },
         function(inputValue){
-          if (inputValue === false) return false;
+          if ( inputValue === false ) return false;
 
           if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
             swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );

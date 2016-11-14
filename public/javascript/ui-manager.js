@@ -346,8 +346,6 @@ setVrWorld();
 
 function setVrWorld() {
 
-
-      userContext.arvrWorld = vrWorld();
       buildSideMenu( 'vrme' );
 
       userContext.participantState = 'focus';
