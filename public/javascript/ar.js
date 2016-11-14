@@ -111,6 +111,8 @@ function loadAr() {
 var pathToWorld = 'javascript/setup-ar-world.js';
 $.when(
   $.getScript( pathToWorld )
+
+
 ).done( function() {
   setUpArLayer();
   console.log( 'AR world loaded', pathToWorld );
