@@ -15,8 +15,6 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
 var room;
 
-io.set( 'log level', 1);
-
 var mongoUriString =
   process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
@@ -270,6 +268,8 @@ var webServer = app.listen( port );
 /*jshint -W079 */
 var socketServer = io.listen( webServer );
 /*jshint +W079 */
+
+socketServer.set( 'log level', 1);
 
 // "Bus" Communication
 
