@@ -268,7 +268,7 @@ $( function() {
              swal.showInputError( 'Please Enter Your AR World!' );
              return false;
            }
-         if ( !( _.includes( [ 'steve', 'chuck' ],
+         if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
              inputValue.toLowerCase() ) ) ) {
                swal.showInputError( 'Please enter a valid AR World' );
              return false;
@@ -367,9 +367,6 @@ function setVrWorld() {
       emitMessage( msgString );
 
     }
-
-//  );
-//  } );
 
   $( function() {
     $( '#shareaug' ).click( function() {
