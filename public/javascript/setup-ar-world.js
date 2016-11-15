@@ -1,11 +1,7 @@
 function setUpArLayer() {
 
   scene = null;
-
-// if ( scene ) { scene.remove };
-
   renderer = null;
-
   var step = 0;
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
@@ -445,48 +441,48 @@ function arConnectionController() {
 
 
 
-//  function animateArObjects() {
-//
-//    var dt = clock.getDelta();
-//    step += dt;
-//
-//    var foo = clock.getElapsedTime() - clock.startTime;
-//
-//    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
-//    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
-//
-//    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( foo ) ) );
-//
-//    if ( isAnimateKnot === true ) {
-//        knot.rotation.y += 0.03;
-//        knot.rotation.z += 0.03;
-//        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( foo ) ) );
-//    }
-//
-//    if ( isAnimateSheep === true ) {
-//        sheep.rotation.z += dt * 2;
-//    }
-//
-//// Flying  Pig
-//    if ( flyingPig !== undefined ) {
-//      pivotPoint.rotation.y += dt * 1.0;
-//    }
-//
-//// Sword Guy
-//    if ( isAnimateSwordGuy === true ) {
-//         mixer.update( dt );
-//          helper.update();
-//    }
-//
-//// User Created Objects - as of now only torus
-//
-//    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
-//        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
-//              arSelectObjectArray[i].userData.isAnimated === true ) {
-//          arSelectObjectArray[i].rotation.y += dt * 1.0;
-//        }
-//    }
-//  }
+  function animateArObjects() {
+
+    var dt = clock.getDelta();
+    step += dt;
+
+    var foo = clock.getElapsedTime() - clock.startTime;
+
+    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
+    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
+
+    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( foo ) ) );
+
+    if ( isAnimateKnot === true ) {
+        knot.rotation.y += 0.03;
+        knot.rotation.z += 0.03;
+        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( foo ) ) );
+    }
+
+    if ( isAnimateSheep === true ) {
+        sheep.rotation.z += dt * 2;
+    }
+
+// Flying  Pig
+    if ( flyingPig !== undefined ) {
+      pivotPoint.rotation.y += dt * 1.0;
+    }
+
+// Sword Guy
+    if ( isAnimateSwordGuy === true ) {
+         mixer.update( dt );
+          helper.update();
+    }
+
+// User Created Objects - as of now only torus
+
+    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
+          arSelectObjectArray[i].rotation.y += dt * 1.0;
+        }
+    }
+  }
 
 
 
