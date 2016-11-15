@@ -15,6 +15,8 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
 var room;
 
+io.set( 'log level', 1);
+
 var mongoUriString =
   process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
