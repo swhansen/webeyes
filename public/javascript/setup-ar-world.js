@@ -75,30 +75,20 @@ if ( userContext.mobile === true ) {
 // AR world model
 //
 
-  var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
-  var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
+
+// build the cardinal orientation and trigger elements
+
+
+  var cardinalMat = new THREE.MeshLambertMaterial( { color: 'red' } );
+  var triggerMat = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
   var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
-  var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
 
-  var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
-  var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
-  var material3 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-  var materialO = new THREE.MeshLambertMaterial( { color: 'red' } );
-  var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
-  var materialTrigger = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
-
-  var cube1 = new THREE.Mesh( geometryCube1, material1 );
-  var cube2 = new THREE.Mesh( geometryCube2, material2 );
-  var sphere = new THREE.Mesh( geometrySphere, material3 );
-  var knot = new THREE.Mesh( geometryKnot, materialKnot );
-  knot.userData.isSelectable = true;
-
-  sphereN = new THREE.Mesh( geometrySphere, materialO );
-  sphereS = new THREE.Mesh( geometrySphere, materialO );
-  sphereE = new THREE.Mesh( geometrySphere, materialO );
-  sphereW = new THREE.Mesh( geometrySphere, materialO );
-  sphereU = new THREE.Mesh( geometrySphere, materialO );
-  sphereD = new THREE.Mesh( geometrySphere, materialO );
+  sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
+  sphereS = new THREE.Mesh( geometrySphere, cardinalMat );
+  sphereE = new THREE.Mesh( geometrySphere, cardinalMat );
+  sphereW = new THREE.Mesh( geometrySphere, cardinalMat );
+  sphereU = new THREE.Mesh( geometrySphere, cardinalMat );
+  sphereD = new THREE.Mesh( geometrySphere, cardinalMat );
 
   sphereN.position.set( 0.0, 0.0, 6.0 );
   sphereS.position.set( 0.0, 0.0, -6.0 );
@@ -114,10 +104,29 @@ if ( userContext.mobile === true ) {
   scene.add( sphereU );
   scene.add( sphereD );
 
-  trigger1 = new THREE.Mesh( geometrySphere, materialTrigger );
-  trigger1.position.set( -1.0, 2.0, -6.0 );
+  trigger1 = new THREE.Mesh( geometrySphere, triggerMat );
+  trigger1.position.set( 1.0, 2.0, -4.0 );
   scene.add( trigger1 );
   trigger1.userData.isSelectable = true;
+
+
+
+  var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
+  var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
+  var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
+
+  var material1 = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
+  var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
+  var material3 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+  var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
+  var materialO = new THREE.MeshLambertMaterial( { color: 'red' } );
+
+
+  var cube1 = new THREE.Mesh( geometryCube1, material1 );
+  var cube2 = new THREE.Mesh( geometryCube2, material2 );
+  var sphere = new THREE.Mesh( geometrySphere, material3 );
+  var knot = new THREE.Mesh( geometryKnot, materialKnot );
+  knot.userData.isSelectable = true;
 
 
   lampSphere = new THREE.Mesh( geometrySphere, materialO );
