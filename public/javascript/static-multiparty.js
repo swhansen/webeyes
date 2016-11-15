@@ -911,7 +911,7 @@ function messageListener( easyrtcid, msgType, content ) {
 
 function appInit() {
 
-  easyrtc.enableDebug( true );
+  easyrtc.enableDebug( false );
 
 //   Set userContext for Browser Functions
 
