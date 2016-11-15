@@ -19,6 +19,9 @@ arCanvas.style.zIndex = '50';
 
 $( '#arcanvas' ).unbind( 'click' );
 
+
+
+
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
       onArSelect( e );

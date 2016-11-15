@@ -381,6 +381,10 @@ if ( userContext.mobile === true ) {
 
 // ... end AR world model
 
+
+
+
+
 function arConnectionController() {
 
   socketServer.removeAllListeners( 'arObjectShare' );
