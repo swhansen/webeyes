@@ -85,6 +85,7 @@ if ( userContext.mobile === true ) {
   var material3 = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
   var materialO = new THREE.MeshLambertMaterial( { color: 'red' } );
   var materialKnot = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
+  var materialTrigger = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
 
   var cube1 = new THREE.Mesh( geometryCube1, material1 );
   var cube2 = new THREE.Mesh( geometryCube2, material2 );
@@ -112,6 +113,12 @@ if ( userContext.mobile === true ) {
   scene.add( sphereW );
   scene.add( sphereU );
   scene.add( sphereD );
+
+  trigger1 = new THREE.Mesh( geometrySphere, materialTrigger );
+  trigger1.position.set( -1.0, 2.0, -6.0 );
+  scene.add( trigger1 );
+  trigger1.userData.isSelectable = true;
+
 
   lampSphere = new THREE.Mesh( geometrySphere, materialO );
   lampSphere.position.set( -19.0, 16.0, 8.0 );
@@ -365,53 +372,53 @@ if ( userContext.mobile === true ) {
 
 // ... end AR world model
 
-function arConnectionController() {
-
-  socketServer.removeAllListeners( 'arObjectShare' );
-
-//   Set up the camera drivers and connection feed
-//   Based on participantState(focus or peer)
-//    focus - device sensors
-//    peer - broadcast fed sensors
-//    ar - sensor driven
-//    vr - mouse driven
-
-  if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
-    cameraDriver = vrDrivenCamera;
-    vrDrivenCamera.lookAt( scene.position );
-    connectToVrController();
-    socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObject( data );
-      } );
-  }
-
-    if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
-      cameraDriver = vrBroadcastDrivenCamera;
-      vrBroadcastDrivenCamera.lookAt( scene.position );
-      connectToVrBroadcast();
-      socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObject( data );
-      } );
-    }
-
-  if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
-      cameraDriver = sensorDrivenCamera;
-      sensorDrivenCamera.lookAt( scene.position );
-      connectToDeviceSensors();
-      socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObject( data );
-      } );
-      }
-
-  if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
-      cameraDriver = broadcastDrivenCamera;
-      broadcastDrivenCamera.lookAt( scene.position );
-      connectToBroadcastSensors();
-      socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObject( data );
-        } );
-      }
-}
+// function arConnectionController() {
+//
+//   socketServer.removeAllListeners( 'arObjectShare' );
+//
+// //   Set up the camera drivers and connection feed
+// //   Based on participantState(focus or peer)
+// //    focus - device sensors
+// //    peer - broadcast fed sensors
+// //    ar - sensor driven
+// //    vr - mouse driven
+//
+//   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
+//     cameraDriver = vrDrivenCamera;
+//     vrDrivenCamera.lookAt( scene.position );
+//     connectToVrController();
+//     socketServer.on( 'arObjectShare', function( data ) {
+//            receiveArObject( data );
+//       } );
+//   }
+//
+//     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
+//       cameraDriver = vrBroadcastDrivenCamera;
+//       vrBroadcastDrivenCamera.lookAt( scene.position );
+//       connectToVrBroadcast();
+//       socketServer.on( 'arObjectShare', function( data ) {
+//            receiveArObject( data );
+//       } );
+//     }
+//
+//   if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
+//       cameraDriver = sensorDrivenCamera;
+//       sensorDrivenCamera.lookAt( scene.position );
+//       connectToDeviceSensors();
+//       socketServer.on( 'arObjectShare', function( data ) {
+//            receiveArObject( data );
+//       } );
+//       }
+//
+//   if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
+//       cameraDriver = broadcastDrivenCamera;
+//       broadcastDrivenCamera.lookAt( scene.position );
+//       connectToBroadcastSensors();
+//       socketServer.on( 'arObjectShare', function( data ) {
+//            receiveArObject( data );
+//         } );
+//       }
+// }
 
 // end  arConnectionController
 

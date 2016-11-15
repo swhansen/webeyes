@@ -121,11 +121,11 @@ var inviteDate = new Date();
 var mailInviteDate = inviteDate.toString();
 
 var pleaseJoin = '<p>Please join the session using Chrome, Firefox or Opera at:' +
-  ' </p><h3><a href=\'https://weg2rt.herokuapp.com\' target=\'_blank\'>WEG2RT</a></h3>';
+  ' </p><h3><a href=\'https://weg2rt-staging.herokuapp.com\' target=\'_blank\'>WEG2RT</a></h3>';
 var tableStyle = '<table style=\'border: solid 1px #000; background-color: #666; font-family:verdana, tahoma, sans-serif; color: #fff;\'><tr> <td><h2>';
 
 var mailTextBody = req.body.name +
-  'has invited you to a WEG2RT Session. Join at weg2rt.heroku.com' +
+  'has invited you to a WEG2RT Session. Join at https://weg2rt-staging.heroku.com' +
   req.body.msg;
 
 var mailHtmlBody = tableStyle + req.body.name +

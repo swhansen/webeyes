@@ -108,6 +108,7 @@ function loadAr() {
 
   $.when(
     $.getScript( 'javascript/setup-ar-world.js' ),
+    $.getScript( 'javascript/ar-connection-controller.js' ),
     $.getScript( 'javascript/setup-ar-interaction.js' ),
     $.getScript( 'javascript/ar-object-communication.js' ),
     $.Deferred( function( deferred ) {
