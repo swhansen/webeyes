@@ -26,6 +26,10 @@ $( function() {
   );
 } );
 
+
+
+
+
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arObjectShare', data, sessionId );
