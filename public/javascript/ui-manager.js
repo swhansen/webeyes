@@ -325,7 +325,7 @@ $( function() {
                swal.showInputError( 'Please Enter Your VR World!' );
                return false;
              }
-            if ( !( _.includes( [ 'steve', 'chuck' ],
+            if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
                inputValue.toLowerCase() ) ) ) {
                  swal.showInputError( 'Please enter a valid VR World' );
                return false;
