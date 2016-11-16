@@ -107,7 +107,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   arTrigger1 = new THREE.Mesh( geometrySphere, triggerMat );
   arTrigger1.position.set( 1.0, 2.0, -4.0 );
   arTrigger1.name = 'arTrigger1';
-  sceene.add( arTrigger1 );
+  scene.add( arTrigger1 );
   arTrigger1.userData.isSelectable = true;
   arTrigger1.visible = true;
   arSelectObjectArray.push( arTrigger1 );
