@@ -74,11 +74,11 @@ if ( userContext.mobile === true ) {
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     scene.add( light );
 
-// build the cardinal orientation and trigger elements
+// build the cardinal orientation points
 
   var cardinalMat = new THREE.MeshLambertMaterial( { color: 'red' } );
   var triggerMat = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
-  var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
+  var geometrySphere = new THREE.SphereGeometry( 0.1, 16, 16 );
 
   sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
   sphereS = new THREE.Mesh( geometrySphere, cardinalMat );
@@ -101,13 +101,16 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( sphereU );
   scene.add( sphereD );
 
-  trigger1 = new THREE.Mesh( geometrySphere, triggerMat );
-  trigger1.position.set( 1.0, 2.0, -4.0 );
-  trigger1.name = 'trigger1';
-  scene.add( trigger1 );
-  trigger1.userData.isSelectable = true;
-  trigger1.visible = true;
-  arSelectObjectArray.push( trigger1 );
+
+  // Build the triggers to add ar elements (experimental
+
+  arTrigger1 = new THREE.Mesh( geometrySphere, triggerMat );
+  arTrigger1.position.set( 1.0, 2.0, -4.0 );
+  arTrigger1.name = 'arTrigger1';
+  sceene.add( arTrigger1 );
+  arTrigger1.userData.isSelectable = true;
+  arTrigger1.visible = true;
+  arSelectObjectArray.push( arTrigger1 );
 
 //
 //    var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
