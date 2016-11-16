@@ -107,6 +107,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( trigger1 );
   trigger1.userData.isSelectable = true;
   trigger1.visible = true;
+  arSelectObjectArray.push( trigger1 );
 
 
 //

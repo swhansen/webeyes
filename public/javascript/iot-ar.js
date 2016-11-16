@@ -2,7 +2,7 @@
 function  loadIotAr() {
 
 
-
+console.log( 'At loadIotAR' );
 
     hueLightmaterial2 = new THREE.MeshPhogMterial ( {
       color: 0xff00ff,
