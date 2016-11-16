@@ -1,11 +1,7 @@
 function setUpArLayer() {
 
   scene = null;
-
-// if ( scene ) { scene.remove };
-
   renderer = null;
-
   var step = 0;
 
   var arCanvas = document.getElementById( 'arcanvaspane' );
@@ -350,39 +346,7 @@ if ( userContext.mobile === true ) {
 // axisHelper.position.set( 1.5, -0.35, -5.5 );
 // scene.add( axisHelper );
 
-  // Create spline for "flying pig" trajecory
-
-//var numPoints = 20;
-
-//pigSpline = new THREE.SplineCurve3(
-//[
-//  new THREE.Vector3( 2.0, 0.0, 0.1 ),
-//  new THREE.Vector3( 2.2, 1.0, -0.15 ),
-//  new THREE.Vector3( 2.3, 1.6, -1.0 ),
-//  new THREE.Vector3( 2.2, 1.8, -2.0 ),
-//  new THREE.Vector3( 2.1, 2.0, -4.0 )
-//] );
-
-//var material = new THREE.LineBasicMaterial( { color: 0xff00f0 } );
-
-//  var geometry = new THREE.Geometry();
-//  var splinePoints = pigSpline.getPoints( numPoints );
-
-//  for ( var i = 0; i < splinePoints.length; i++ ) {
-//      geometry.vertices.push( splinePoints[i] );
-//  }
-
-//  var line = new THREE.Line( geometry, material );
-//  scene.add( line );
-
-//r geometryBox = new THREE.BoxGeometry( 0.4, 0.4, 0.4 );
-//  var box = new THREE.Mesh( geometryBox, material1 );
-//box.position.set( 2.0, 0.0, 0.1 );
-//scene.add( box );
-
 // ... end AR world model
-
-
 
 
 
@@ -435,9 +399,7 @@ function arConnectionController() {
 }
 
 
-
-
-//  function animateArObjects() {
+  function animateArObjects() {
 
 //    var dt = clock.getDelta();
 //    step += dt;
@@ -459,57 +421,53 @@ function arConnectionController() {
 //        sheep.rotation.z += dt * 2;
 //    }
 
-// / Flying  Pig
+//  Flying  Pig
 //    if ( flyingPig !== undefined ) {
 //      pivotPoint.rotation.y += dt * 1.0;
 //    }
 
-// / Sword Guy
+//  Sword Guy
 //    if ( isAnimateSwordGuy === true ) {
 //         mixer.update( dt );
 //          helper.update();
 //    }
 
-// / User Created Objects - as of now only torus
+//  User Created Objects - as of now only torus
 
-//    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
-//        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
-//              arSelectObjectArray[i].userData.isAnimated === true ) {
-//          arSelectObjectArray[i].rotation.y += dt * 1.0;
-//        }
-//    }
-//  }
-
-
-
-
+    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
+          arSelectObjectArray[i].rotation.y += dt * 1.0;
+        }
+    }
+  }
 
 
 
  function connectToVrController() {
    vrDrivenCameraControls.update();
-  // animateArObjects();
+   animateArObjects();
    renderer.render( scene, vrDrivenCamera );
    requestAnimationFrame( connectToVrController );
  }
 
  function connectToVrBroadcast() {
    vrBroadcastCameraControls.update();
-  // animateArObjects();
+   animateArObjects();
    renderer.render( scene, vrBroadcastDrivenCamera );
    requestAnimationFrame( connectToVrBroadcast );
  }
 
  function connectToDeviceSensors() {
    sensorCameraControls.update();
-  // animateArObjects();
+   animateArObjects();
    renderer.render( scene, sensorDrivenCamera );
    requestAnimationFrame( connectToDeviceSensors );
    }
 
  function connectToBroadcastSensors() {
    broadcastCameraControls.update();
-  // animateArObjects();
+   animateArObjects();
    renderer.render( scene, broadcastDrivenCamera );
    requestAnimationFrame( connectToBroadcastSensors );
    }
