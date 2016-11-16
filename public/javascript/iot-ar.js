@@ -6,27 +6,27 @@ console.log( 'At loadIotAR' );
 
  var hueGeometrySphere = new THREE.SphereGeometry( 0.2, 16, 16 );
 
-    hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
+  var hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,
       transparent: true
   } );
 
-    hueLightmaterial2 = new THREE.MeshPhogMterial ( {
+  var hueLightmaterial2 = new THREE.MeshPhogMterial ( {
       color: 0xff00ff,
       shininess: 66,      opacity:0.5,
      transparent: true
    } );
 
-    hueLightmaterial3 = new THREE.MeshPhongMaterial ( {
+   var hueLightmaterial3 = new THREE.MeshPhongMaterial ( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,
       transparent: true
   } );
 
-    hueLightmaterial4 = new THREE.MeshPhongMaterial ( {
+  var hueLightmaterial4 = new THREE.MeshPhongMaterial ( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,
