@@ -78,7 +78,6 @@ if ( userContext.mobile === true ) {
 
 // build the cardinal orientation and trigger elements
 
-
   var cardinalMat = new THREE.MeshLambertMaterial( { color: 'red' } );
   var triggerMat = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
   var geometrySphere = new THREE.SphereGeometry( 0.15, 16, 16 );
@@ -438,48 +437,48 @@ function arConnectionController() {
 
 
 
-  function animateArObjects() {
+//  function animateArObjects() {
 
-    var dt = clock.getDelta();
-    step += dt;
+//    var dt = clock.getDelta();
+//    step += dt;
 
-    var foo = clock.getElapsedTime() - clock.startTime;
+//    var foo = clock.getElapsedTime() - clock.startTime;
 
-    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
-    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
+//    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
+//    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
 
-    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( foo ) ) );
+//    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( foo ) ) );
 
-    if ( isAnimateKnot === true ) {
-        knot.rotation.y += 0.03;
-        knot.rotation.z += 0.03;
-        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( foo ) ) );
-    }
+//    if ( isAnimateKnot === true ) {
+//        knot.rotation.y += 0.03;
+//        knot.rotation.z += 0.03;
+//        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( foo ) ) );
+//    }
 
-    if ( isAnimateSheep === true ) {
-        sheep.rotation.z += dt * 2;
-    }
+//    if ( isAnimateSheep === true ) {
+//        sheep.rotation.z += dt * 2;
+//    }
 
-// Flying  Pig
-    if ( flyingPig !== undefined ) {
-      pivotPoint.rotation.y += dt * 1.0;
-    }
+// / Flying  Pig
+//    if ( flyingPig !== undefined ) {
+//      pivotPoint.rotation.y += dt * 1.0;
+//    }
 
-// Sword Guy
-    if ( isAnimateSwordGuy === true ) {
-         mixer.update( dt );
-          helper.update();
-    }
+// / Sword Guy
+//    if ( isAnimateSwordGuy === true ) {
+//         mixer.update( dt );
+//          helper.update();
+//    }
 
-// User Created Objects - as of now only torus
+// / User Created Objects - as of now only torus
 
-    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
-        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
-          arSelectObjectArray[i].rotation.y += dt * 1.0;
-        }
-    }
-  }
+//    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+//        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
+//              arSelectObjectArray[i].userData.isAnimated === true ) {
+//          arSelectObjectArray[i].rotation.y += dt * 1.0;
+//        }
+//    }
+//  }
 
 
 
@@ -489,28 +488,28 @@ function arConnectionController() {
 
  function connectToVrController() {
    vrDrivenCameraControls.update();
-   animateArObjects();
+  // animateArObjects();
    renderer.render( scene, vrDrivenCamera );
    requestAnimationFrame( connectToVrController );
  }
 
  function connectToVrBroadcast() {
    vrBroadcastCameraControls.update();
-   animateArObjects();
+  // animateArObjects();
    renderer.render( scene, vrBroadcastDrivenCamera );
    requestAnimationFrame( connectToVrBroadcast );
  }
 
  function connectToDeviceSensors() {
    sensorCameraControls.update();
-   animateArObjects();
+  // animateArObjects();
    renderer.render( scene, sensorDrivenCamera );
    requestAnimationFrame( connectToDeviceSensors );
    }
 
  function connectToBroadcastSensors() {
    broadcastCameraControls.update();
-   animateArObjects();
+  // animateArObjects();
    renderer.render( scene, broadcastDrivenCamera );
    requestAnimationFrame( connectToBroadcastSensors );
    }
