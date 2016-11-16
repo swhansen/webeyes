@@ -278,6 +278,22 @@ $( function() {
       } );
      }
 
+     if ( intersects[0].object.name === 'arTrigger2' ) {
+      $.when(
+        $.getScript( 'javascript/swordguy-ar.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSwordGuy();
+        arTrigger2.visible = false;
+      } );
+     }
+
+
+
+
+
    }
 
    }

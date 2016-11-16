@@ -77,7 +77,8 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 // build the cardinal orientation points
 
   var cardinalMat = new THREE.MeshLambertMaterial( { color: 'red' } );
-  var triggerMat = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
+  var trigger1Mat = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
+  var trigger2Mat = new THREE.MeshPhongMaterial( { color: 0xff6666 } );
   var geometrySphere = new THREE.SphereGeometry( 0.1, 16, 16 );
 
   sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
@@ -101,16 +102,34 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( sphereU );
   scene.add( sphereD );
 
+  // Build the triggers to add ar elements (experimental)
 
-  // Build the triggers to add ar elements (experimental
+  // IOT
 
-  arTrigger1 = new THREE.Mesh( geometrySphere, triggerMat );
+  arTrigger1 = new THREE.Mesh( geometrySphere, trigger1Mat );
   arTrigger1.position.set( 1.0, 2.0, -4.0 );
   arTrigger1.name = 'arTrigger1';
   scene.add( arTrigger1 );
   arTrigger1.userData.isSelectable = true;
   arTrigger1.visible = true;
   arSelectObjectArray.push( arTrigger1 );
+
+  // Sword Guy
+
+  arTrigger2 = new THREE.Mesh( geometrySphere, triggerMat );
+  arTrigger2.position.set( 1.0, 1.8, -4.0 );
+  arTrigger2.name = 'arTrigger2';
+  scene.add( arTrigger2 );
+  arTrigger2.userData.isSelectable = true;
+  arTrigger2.visible = true;
+  arSelectObjectArray.push( arTrigger2 );
+
+
+
+
+
+
+
 
 //
 //    var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
