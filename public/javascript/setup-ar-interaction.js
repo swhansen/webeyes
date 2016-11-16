@@ -264,7 +264,7 @@ $( function() {
        emitArObject( arShareData );
      }
 
-     if ( intersects[0].object.name === 'trigger1 ') {
+     if ( intersects[0].object.name === 'trigger1' ) {
 
       $.when(
         $.getScript( 'javascript/iot-ar.js' ),
