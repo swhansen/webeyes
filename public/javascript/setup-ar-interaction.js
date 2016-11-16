@@ -264,12 +264,9 @@ $( function() {
        emitArObject( arShareData );
      }
 
-
-    //  IOT Onjects
-
+    //  Load IOT Onjects
 
      if ( intersects[0].object.name === 'arTrigger1' ) {
-
       $.when(
         $.getScript( 'javascript/iot-ar.js' ),
         $.Deferred( function( deferred ) {
@@ -277,11 +274,9 @@ $( function() {
         } )
       ).done( function() {
         loadIotAr();
+        arTrigger1.visible = false;
       } );
      }
-
-
-
 
    }
 
