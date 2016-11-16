@@ -13,9 +13,10 @@ console.log( 'At loadIotAR' );
       transparent: true
   } );
 
-  var hueLightmaterial2 = new THREE.MeshPhogMterial ( {
+  var hueLightmaterial2 = new THREE.MeshPhogMaterial ( {
       color: 0xff00ff,
-      shininess: 66,      opacity:0.5,
+      shininess: 66,
+      opacity:0.5,
      transparent: true
    } );
 
