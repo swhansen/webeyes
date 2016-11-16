@@ -1,4 +1,3 @@
-
 function  loadIotAr() {
 
 
@@ -13,7 +12,7 @@ console.log( 'At loadIotAR' );
       transparent: true
   } );
 
-  var hueLightmaterial2 = new THREE.MeshPhogMaterial ( {
+  var hueLightmaterial2 = new THREE.MeshPhongMaterial ( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,

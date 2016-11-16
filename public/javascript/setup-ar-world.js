@@ -109,7 +109,6 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   trigger1.visible = true;
   arSelectObjectArray.push( trigger1 );
 
-
 //
 //    var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
 //    var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
