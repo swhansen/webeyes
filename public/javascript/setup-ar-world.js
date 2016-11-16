@@ -116,7 +116,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 
   // Sword Guy
 
-  arTrigger2 = new THREE.Mesh( geometrySphere, triggerMat );
+  arTrigger2 = new THREE.Mesh( geometrySphere, trigger2Mat );
   arTrigger2.position.set( 1.0, 1.8, -4.0 );
   arTrigger2.name = 'arTrigger2';
   scene.add( arTrigger2 );
