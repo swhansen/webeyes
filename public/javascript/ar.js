@@ -83,18 +83,18 @@ var mixer;
 
 function loadAr() {
 
- var scene, renderer, projector, arContainer;
+ var scene, renderer, projector, arContainer, cameraDriver;
  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
 
- var cameraDriver;
-  isAnimateKnot = false;
-  isAnimateSheep = false;
-  isAnimateSwordGuy = false;
+// isAnimateKnot = false;
+// isAnimateSheep = false;
+// isAnimateSwordGuy = false;
 
-  var $arcanvaspane =  $( '<div>', {id: 'arcanvaspane', class: 'canvascenter' } );
-  var $arcanvas =  $( '<canvas>', {id: 'arcanvas', class: 'canvasorient' } );
+  // Build the Dimensional Layer
 
+  var $arcanvaspane =  $( '<div>', { id: 'arcanvaspane', class: 'canvascenter' } );
+  var $arcanvas =  $( '<canvas>', { id: 'arcanvas', class: 'canvasorient' } );
   $arcanvaspane.append( $arcanvas );
   $( 'body' ).append( $arcanvaspane );
 

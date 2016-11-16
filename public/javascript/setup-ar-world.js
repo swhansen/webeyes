@@ -106,9 +106,10 @@ if ( userContext.mobile === true ) {
 
   trigger1 = new THREE.Mesh( geometrySphere, triggerMat );
   trigger1.position.set( 1.0, 2.0, -4.0 );
+  trigger1.name = 'trigger1';
   scene.add( trigger1 );
   trigger1.userData.isSelectable = true;
-  trigger1.visible = false;
+  trigger1.visible = true;
 
 
 
