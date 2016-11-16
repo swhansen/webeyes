@@ -71,6 +71,8 @@ if ( userContext.mobile === true ) {
 // AR world model
 //
 
+var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    scene.add( light );
 
 // build the cardinal orientation and trigger elements
 
@@ -324,8 +326,6 @@ if ( userContext.mobile === true ) {
 //    cube2.name = 'cube2';
 //    knot.name = 'knot';
 //
-//    var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-//    scene.add( light );
 //
 //    arSelectObjectArray.push( cube2 );
 //    arSelectObjectArray.push( knot );
