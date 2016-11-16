@@ -263,6 +263,22 @@ $( function() {
 
        emitArObject( arShareData );
      }
+
+     if ( intersects[0].object.name === 'trigger1 ') {
+
+      $.when(
+        $.getScript( 'javascript/iot-ar.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadIotAr();
+      } );
+     }
+
+
+
+
    }
 
    }
