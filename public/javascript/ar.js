@@ -92,6 +92,11 @@ function loadAr() {
   isAnimateSheep = false;
   isAnimateSwordGuy = false;
 
+  var $arcanvaspane =  $( '<div>', {id: 'arcanvaspane', class: 'canvascenter' } );
+  var $arcanvas =  $( '<canvas>', {id: 'arcanvas', class: 'canvasorient' } );
+
+  $( 'body' ).append( $canvasPane, [ $canvas0 ] );
+
   $( '#arcanvas' ).click.off;
 
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
