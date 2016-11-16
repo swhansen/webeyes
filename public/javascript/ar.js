@@ -95,7 +95,7 @@ function loadAr() {
   var $arcanvaspane =  $( '<div>', {id: 'arcanvaspane', class: 'canvascenter' } );
   var $arcanvas =  $( '<canvas>', {id: 'arcanvas', class: 'canvasorient' } );
 
-  $( 'body' ).append( $arcanvaspane, [ $arcanvas ] );
+  $( 'body' ).appendTo( $arcanvaspane, [ $arcanvas ] );
 
   $( '#arcanvas' ).click.off;
 
