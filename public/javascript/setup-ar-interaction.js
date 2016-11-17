@@ -215,10 +215,10 @@ $( function() {
      if ( intersects[0].object.name === 'sheep' ) {
         isAnimateSheep = !isAnimateSheep;
 
-       if ( intersects[0].userData.isAnimated === true ) {
-          intersects[0].userData.isAnimated === false;
+       if ( intersects[0].object.userData.isAnimated === true ) {
+          intersects[0].userData.object.isAnimated === false;
        } else {
-        intersects[0].userData.isAnimated === true;
+        intersects[0].userData.object.isAnimated === true;
        }
 
         if ( !isAnimateSheep ) {
