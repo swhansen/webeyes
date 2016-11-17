@@ -153,9 +153,9 @@ $( function() {
      var selectedObject = intersects[0].object ;
      console.log( 'intersects:', intersects, selectedObject );
 
- // IOT Lights
-
      if ( intersects.length > 0 ) {
+
+ // IOT Lights
 
        if ( selectedObject.userData.isIot === true ) {
 
@@ -214,6 +214,14 @@ $( function() {
 
      if ( intersects[0].object.name === 'sheep' ) {
         isAnimateSheep = !isAnimateSheep;
+
+        if ( intersects[0].object.userData.isAnimated === true ) {
+          intersects[0].object.userData.isAnimated = false;
+          else {
+          intersects[0].object.userData.isAnimated = true;
+          }
+          console.log( 'sheep isAnimated:', intersects[0].object.userData.isAnimated );
+        }
 
         if ( !isAnimateSheep ) {
          intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
