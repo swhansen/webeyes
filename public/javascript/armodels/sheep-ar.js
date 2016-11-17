@@ -10,8 +10,12 @@ function loadSheep() {
      sheep.rotation.x = Math.PI / 2;
      sheep.rotation.y = ( Math.PI / 2 ) * 0.5;
      sheep.rotation.z = ( Math.PI / 2 ) * 0.3;
+
+     sheep.userData.id = sheep.id;
+
      sheep.name = 'sheep';
      sheep.userData.isSelectable = true;
+     sheep.userData.isAnimated = false;
      scene.add( sheep );
      arSelectObjectArray.push( sheep );
     } );

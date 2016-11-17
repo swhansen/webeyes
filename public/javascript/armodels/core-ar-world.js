@@ -477,6 +477,12 @@ function arConnectionController() {
               arSelectObjectArray[i].userData.isAnimated === true ) {
           arSelectObjectArray[i].rotation.y += dt * 1.0;
         }
+
+        else if ( arSelectObjectArray[i].name === 'sheep' ) &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
+              sheep.rotation.z += dt * 2;
+            }
+
     }
   }
 
