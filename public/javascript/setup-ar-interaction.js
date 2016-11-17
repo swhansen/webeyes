@@ -212,7 +212,7 @@ $( function() {
          return;
      }
 
-     if ( selecteObject.name === 'sheep' ) {
+     if ( selectedObject.name === 'sheep' ) {
         if ( selectedObject.userData.isAnimated === false ) {
           selectedObject.userData.isAnimated = true;
           } else {
