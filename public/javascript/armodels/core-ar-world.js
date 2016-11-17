@@ -488,8 +488,6 @@ function arConnectionController() {
   }
 
 
-
-
  function connectToVrController() {
    vrDrivenCameraControls.update();
    animateArObjects();
