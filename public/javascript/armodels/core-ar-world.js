@@ -465,8 +465,6 @@ function arConnectionController() {
 //          helper.update();
 //    }
 
-//  User Created Objects - as of now only torus
-
 
 // Use a case statement
 
@@ -480,6 +478,12 @@ function arConnectionController() {
         if ( arSelectObjectArray[i].name === 'sheep' &&
               arSelectObjectArray[i].userData.isAnimated === true ) {
           arSelectObjectArray[i].rotation.z += dt * 2.0;
+        }
+
+        if ( arSelectObjectArray[i].name === 'swordGuyMesh' &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
+                  mixer.update( dt );
+                  helper.update();
         }
 
     }
