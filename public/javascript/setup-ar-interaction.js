@@ -217,8 +217,10 @@ $( function() {
 
        if ( intersects[0].object.userData.isAnimated === true ) {
           intersects[0].object.userData.isAnimated === false;
-       } else {
-        intersects[0].object.userData.isAnimated === true;
+       } else if {
+        intersects[0].object.userData.isAnimated === false; {
+          intersects[0].object.userData.isAnimated === true;
+        }
        }
 
         if ( !isAnimateSheep ) {
