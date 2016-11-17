@@ -213,7 +213,7 @@ $( function() {
      }
 
      if ( intersects[0].object.name === 'sheep' ) {
-        isAnimateSheep = !isAnimateSheep;
+     //   isAnimateSheep = !isAnimateSheep;
 
         if ( selectedObject.userData.isAnimated === false ) {
           selectedObject.userData.isAnimated = true;

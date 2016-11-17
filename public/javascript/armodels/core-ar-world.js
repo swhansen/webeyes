@@ -471,7 +471,6 @@ function arConnectionController() {
 // Use a case statement
 
 
-
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
         if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
               arSelectObjectArray[i].userData.isAnimated === true ) {

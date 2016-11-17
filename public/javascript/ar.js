@@ -2,7 +2,7 @@
 var arDeviceOrientation = {};
 var arSelectObjectArray = [];
 var isAnimateKnot = false;
-var isAnimateSheep = false;
+// var isAnimateSheep = false;
 var isAnimateSwordGuy = false;
 var selectedArObject;
 var clock = new THREE.Clock();
