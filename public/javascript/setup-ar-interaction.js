@@ -150,7 +150,7 @@ $( function() {
      vector.normalize();
      var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
      var intersects = rayCaster.intersectObjects( arSelectObjectArray );
-     var selectedObject = intersects[0].object ;
+     var selectedObject = intersects[0].object;
      console.log( 'intersects:', intersects, selectedObject );
 
      if ( intersects.length > 0 ) {
@@ -220,13 +220,12 @@ $( function() {
           } else {
           selectedObject.userData.isAnimated = false;
         }
-//        console.log( 'sheep isAnimated:', intersects[0].object.userData.isAnimated );
 
-        if ( !isAnimateSheep ) {
+        if ( !selectedObject.userData.isAnimated ) {
          intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
         }
 
-          arShareData.animate = isAnimateSheep;
+          arShareData.animate = selectedObject.userData.isAnimated;
           arShareData.operation = 'animateSelectedObject';
           arShareData.name = intersects[0].object.name;
           arShareData.x = intersects[0].object.position.x;
