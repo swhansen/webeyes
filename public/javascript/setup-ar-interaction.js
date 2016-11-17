@@ -212,9 +212,7 @@ $( function() {
          return;
      }
 
-     if ( intersects[0].object.name === 'sheep' ) {
-     //   isAnimateSheep = !isAnimateSheep;
-
+     if ( selecteObject.name === 'sheep' ) {
         if ( selectedObject.userData.isAnimated === false ) {
           selectedObject.userData.isAnimated = true;
           } else {
@@ -225,8 +223,8 @@ $( function() {
          intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
         }
 
-          arShareData.animate = selectedObject.userData.isAnimated;
           arShareData.operation = 'animateSelectedObject';
+          arShareData.animate = selectedObject.userData.isAnimated;
           arShareData.name = intersects[0].object.name;
           arShareData.x = intersects[0].object.position.x;
           arShareData.y = intersects[0].object.position.y;
@@ -235,17 +233,22 @@ $( function() {
           arShareData.rotation = intersects[0].object.rotation;
           arShareData.color = intersects[0].object.material.color;
 
-          // animateArObjects();
-
           emitArObject( arShareData );
      }
 
-     if ( intersects[0].object.name === 'swordGuyMesh' ) {
-       isAnimateSwordGuy = !isAnimateSwordGuy;
+     if ( selectedObject.name === 'swordGuyMesh' ) {
 
-       arShareData.animate = isAnimateSwordGuy;
+        if ( selectedObject.userData.isAnimated === false ) {
+          selectedObject.userData.isAnimated = true;
+          } else {
+          selectedObject.userData.isAnimated = false;
+         }
+
+  //     isAnimateSwordGuy = !isAnimateSwordGuy;
+
        arShareData.operation = 'animateSelectedObject';
-       arShareData.name = intersects[0].object.name;
+       arShareData.animate = selectedObject.userData.isAnimated;
+       arShareData.name = selectedObject.name;
 
        // animateArObjects();
 
