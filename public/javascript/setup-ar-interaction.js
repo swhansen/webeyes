@@ -268,7 +268,7 @@ $( function() {
 
      if ( intersects[0].object.name === 'arTrigger1' ) {
       $.when(
-        $.getScript( 'javascript/iot-ar.js' ),
+        $.getScript( 'javascript/armodels/iot-ar.js' ),
         $.Deferred( function( deferred ) {
         $( deferred.resolve );
         } )
@@ -280,12 +280,24 @@ $( function() {
 
      if ( intersects[0].object.name === 'arTrigger2' ) {
       $.when(
-        $.getScript( 'javascript/swordguy-ar.js' ),
+        $.getScript( 'javascript/armodels/swordguy-ar.js' ),
         $.Deferred( function( deferred ) {
         $( deferred.resolve );
         } )
       ).done( function() {
         loadSwordGuy();
+        arTrigger2.visible = false;
+      } );
+     }
+
+     if ( intersects[0].object.name === 'arTrigger3' ) {
+      $.when(
+        $.getScript( 'javascript/armodels/sheep-ar.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSheep();
         arTrigger2.visible = false;
       } );
      }

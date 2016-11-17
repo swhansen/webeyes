@@ -79,6 +79,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   var cardinalMat = new THREE.MeshLambertMaterial( { color: 'red' } );
   var trigger1Mat = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
   var trigger2Mat = new THREE.MeshPhongMaterial( { color: 0xff6666 } );
+  var trigger2Mat = new THREE.MeshPhongMaterial( { color: 0x009933 } );
   var geometrySphere = new THREE.SphereGeometry( 0.1, 16, 16 );
 
   sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
@@ -123,6 +124,16 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   arTrigger2.userData.isSelectable = true;
   arTrigger2.visible = true;
   arSelectObjectArray.push( arTrigger2 );
+
+  //
+
+  arTrigger3 = new THREE.Mesh( geometrySphere, trigger2Mat );
+  arTrigger3.position.set( 1.2, 1.8, -4.0 );
+  arTrigger3.name = 'arTrigger3';
+  scene.add( arTrigger3 );
+  arTrigger3.userData.isSelectable = true;
+  arTrigger3.visible = true;
+  arSelectObjectArray.push( arTrigger3 );
 
 
 

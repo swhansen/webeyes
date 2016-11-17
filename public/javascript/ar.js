@@ -87,6 +87,8 @@ function loadAr() {
  var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls ;
  var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
 
+ var loader = new THREE.JSONLoader();
+
 // isAnimateKnot = false;
 // isAnimateSheep = false;
 // isAnimateSwordGuy = false;
@@ -113,7 +115,7 @@ function loadAr() {
   // load the AR world and interaction
 
   $.when(
-    $.getScript( 'javascript/setup-ar-world.js' ),
+    $.getScript( 'javascript/armodels/core-ar-world.js' ),
     $.getScript( 'javascript/setup-ar-interaction.js' ),
     $.getScript( 'javascript/ar-object-communication.js' ),
     $.Deferred( function( deferred ) {

@@ -1,8 +1,5 @@
 function  loadIotAr() {
 
-
-console.log( 'At loadIotAR' );
-
  var hueGeometrySphere = new THREE.SphereGeometry( 0.2, 16, 16 );
 
   var hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
@@ -77,7 +74,5 @@ console.log( 'At loadIotAR' );
     arSelectObjectArray.push( hueLight2 );
     arSelectObjectArray.push( hueLight3 );
     arSelectObjectArray.push( hueLight4 );
-
-  // end hue light objects
 
 }
