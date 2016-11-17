@@ -215,6 +215,12 @@ $( function() {
      if ( intersects[0].object.name === 'sheep' ) {
         isAnimateSheep = !isAnimateSheep;
 
+       if ( intersects[0].userData.isAnimated === true ) {
+          intersects[0].userData.isAnimated === false;
+       } else {
+        intersects[0].userData.isAnimated === true;
+       }
+
         if ( !isAnimateSheep ) {
          intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
         }
