@@ -220,15 +220,7 @@ $( function() {
           } else {
           selectedObject.userData.isAnimated = false;
         }
-        console.log( 'sheep isAnimated:', intersects[0].object.userData.isAnimated );
-
-  //      if ( intersects[0].object.userData.isAnimated === true ) {
-  //        intersects[0].object.userData.isAnimated = false;
-  //        } else {
-  //        intersects[0].object.userData.isAnimated = true;
-  //        }
-  //        console.log( 'sheep isAnimated:', intersects[0].object.userData.isAnimated );
-  //      }
+//        console.log( 'sheep isAnimated:', intersects[0].object.userData.isAnimated );
 
         if ( !isAnimateSheep ) {
          intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
