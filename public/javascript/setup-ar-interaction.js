@@ -214,6 +214,7 @@ $( function() {
 
      if ( intersects[0].object.name === 'sheep' ) {
         isAnimateSheep = !isAnimateSheep;
+        console.log( 'sheep isAnimated:', intersects[0].object.userData.isAnimated );
 
   //      if ( intersects[0].object.userData.isAnimated === true ) {
   //        intersects[0].object.userData.isAnimated = false;
