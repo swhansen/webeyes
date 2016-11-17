@@ -237,18 +237,11 @@ $( function() {
      }
 
      if ( selectedObject.name === 'swordGuyMesh' ) {
+       isAnimateSwordGuy = !isAnimateSwordGuy;
 
-        if ( selectedObject.userData.isAnimated === false ) {
-          selectedObject.userData.isAnimated = true;
-          } else {
-          selectedObject.userData.isAnimated = false;
-         }
-
-  //     isAnimateSwordGuy = !isAnimateSwordGuy;
-
+       arShareData.animate = isAnimateSwordGuy;
        arShareData.operation = 'animateSelectedObject';
-       arShareData.animate = selectedObject.userData.isAnimated;
-       arShareData.name = selectedObject.name;
+       arShareData.name = intersects[0].object.name;
 
        // animateArObjects();
 
