@@ -223,8 +223,8 @@ $( function() {
          intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
         }
 
-          arShareData.operation = 'animateSelectedObject';
           arShareData.animate = selectedObject.userData.isAnimated;
+          arShareData.operation = 'animateSelectedObject';
           arShareData.name = intersects[0].object.name;
           arShareData.x = intersects[0].object.position.x;
           arShareData.y = intersects[0].object.position.y;
@@ -233,10 +233,12 @@ $( function() {
           arShareData.rotation = intersects[0].object.rotation;
           arShareData.color = intersects[0].object.material.color;
 
+          // animateArObjects();
+
           emitArObject( arShareData );
      }
 
-     if ( selectedObject.name === 'swordGuyMesh' ) {
+     if ( intersects[0].object.name === 'swordGuyMesh' ) {
        isAnimateSwordGuy = !isAnimateSwordGuy;
 
        arShareData.animate = isAnimateSwordGuy;
