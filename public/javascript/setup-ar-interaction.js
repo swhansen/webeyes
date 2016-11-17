@@ -264,7 +264,9 @@ $( function() {
        emitArObject( arShareData );
      }
 
-    //  Load IOT Onjects
+    // Experimental dynamic AR model loads
+
+    //  Load IOT Objects
 
      if ( intersects[0].object.name === 'arTrigger1' ) {
       $.when(
@@ -298,12 +300,9 @@ $( function() {
         } )
       ).done( function() {
         loadSheep();
-        arTrigger2.visible = false;
+        arTrigger3.visible = false;
       } );
      }
-
-
-
 
 
    }
