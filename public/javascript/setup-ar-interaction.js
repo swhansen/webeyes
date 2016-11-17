@@ -194,7 +194,7 @@ $( function() {
         }
 
          arShareData.operation = 'animateSelectedObject';
-      //   arShareData.id = selectedObject.userData.iotDeviceId;
+         arShareData.id = selectedObject.userData.iotDeviceId;
          arShareData.isAnimated = selectedObject.userData.isAnimated;
 
          emitArObject( arShareData );
@@ -214,14 +214,6 @@ $( function() {
 
      if ( intersects[0].object.name === 'sheep' ) {
         isAnimateSheep = !isAnimateSheep;
-
-    //  if ( intersects[0].object.userData.isAnimated === true ) {
-    //     intersects[0].object.userData.isAnimated === false;
-    //  } else if (
-    //   intersects[0].object.userData.isAnimated === false ) {
-    //     intersects[0].object.userData.isAnimated === true;
-    //   }
-       }
 
         if ( !isAnimateSheep ) {
          intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
@@ -272,7 +264,7 @@ $( function() {
        emitArObject( arShareData );
      }
 
-    // Experimental dynamic AR model loads
+    // Experimental dynamic AR  model loads
 
     //  Load IOT Objects
 
@@ -316,3 +308,5 @@ $( function() {
    }
 
    }
+
+}
