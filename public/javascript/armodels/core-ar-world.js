@@ -467,20 +467,20 @@ function arConnectionController() {
 
 //  User Created Objects - as of now only torus
 
-
 // Use a case statement
-
 
 
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
         if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
               arSelectObjectArray[i].userData.isAnimated === true ) {
           arSelectObjectArray[i].rotation.y += dt * 1.0;
+        return;
         }
 
-        else if ( arSelectObjectArray[i].name === 'sheep' ) &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
+        if ( arSelectObjectArray[i].name === 'sheep' ) &&
+              ( arSelectObjectArray[i].userData.isAnimated === true ) {
               sheep.rotation.z += dt * 2;
+        return;
             }
 
     }
