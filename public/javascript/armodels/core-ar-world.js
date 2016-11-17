@@ -474,17 +474,17 @@ function arConnectionController() {
         if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
               arSelectObjectArray[i].userData.isAnimated === true ) {
           arSelectObjectArray[i].rotation.y += dt * 1.0;
-        return;
+ //       return;
         }
 
-        if ( arSelectObjectArray[i].name === 'sheep'  &&
-               arSelectObjectArray[i].userData.isAnimated === true ) {
-            //   isAnimateSheep === true ) {
-          sheep.rotation.z += dt * 2;
-          return;
-            }
-
-    }
+//        if ( arSelectObjectArray[i].name === 'sheep'  &&
+//               arSelectObjectArray[i].userData.isAnimated === true ) {
+//            //   isAnimateSheep === true ) {
+//          sheep.rotation.z += dt * 2;
+//          return;
+//            }
+//
+//    }
   }
 
 
