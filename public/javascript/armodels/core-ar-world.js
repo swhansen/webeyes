@@ -118,7 +118,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   // Sword Guy
 
   arTrigger2 = new THREE.Mesh( geometrySphere, trigger2Mat );
-  arTrigger2.position.set( 1.0, 1.8, -4.0 );
+  arTrigger2.position.set( 1.0, 1.75, -4.0 );
   arTrigger2.name = 'arTrigger2';
   scene.add( arTrigger2 );
   arTrigger2.userData.isSelectable = true;
@@ -128,19 +128,12 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   //
 
   arTrigger3 = new THREE.Mesh( geometrySphere, trigger3Mat );
-  arTrigger3.position.set( 1.2, 1.8, -4.0 );
+  arTrigger3.position.set( 1.2, 1.75, -4.0 );
   arTrigger3.name = 'arTrigger3';
   scene.add( arTrigger3 );
   arTrigger3.userData.isSelectable = true;
   arTrigger3.visible = true;
   arSelectObjectArray.push( arTrigger3 );
-
-
-
-
-
-
-
 
 //
 //    var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
