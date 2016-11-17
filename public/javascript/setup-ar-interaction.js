@@ -215,12 +215,12 @@ $( function() {
      if ( intersects[0].object.name === 'sheep' ) {
         isAnimateSheep = !isAnimateSheep;
 
-       if ( intersects[0].object.userData.isAnimated === true ) {
-          intersects[0].object.userData.isAnimated === false;
-       } else if (
-        intersects[0].object.userData.isAnimated === false ) {
-          intersects[0].object.userData.isAnimated === true;
-        }
+    //  if ( intersects[0].object.userData.isAnimated === true ) {
+    //     intersects[0].object.userData.isAnimated === false;
+    //  } else if (
+    //   intersects[0].object.userData.isAnimated === false ) {
+    //     intersects[0].object.userData.isAnimated === true;
+    //   }
        }
 
         if ( !isAnimateSheep ) {
