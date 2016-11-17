@@ -2,6 +2,8 @@
 
  // Sword guy
 
+    var loader = new THREE.JSONLoader();
+
    loader.load( '../armodels/knight.js', function( geometry, materials ) {
            createSwordGuy( geometry, materials, 0, -15.0, 65.0, 3.0 );
          } );

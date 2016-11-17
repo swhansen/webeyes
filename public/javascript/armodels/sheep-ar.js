@@ -1,5 +1,7 @@
 function loadSheep() {
 
+  var loader = new THREE.JSONLoader();
+
    loader.load( '../armodels/sheep3.json', function( model ) {
      var material = new THREE.MeshPhongMaterial( { color: 0xFF69B4 } );
      sheep = new THREE.Mesh( model, material );
