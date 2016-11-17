@@ -217,8 +217,9 @@ $( function() {
 
         if ( intersects[0].object.userData.isAnimate === false ) {
           intersects[0].object.userData.isAnimate = true;
-        } else {
+        } else if ( intersects[0].object.userData.isAnimate === true ) {
           intersects[0].object.userData.isAnimate = false;
+        }
         }
         console.log( 'sheep isAnimated:', intersects[0].object.userData.isAnimated );
 
