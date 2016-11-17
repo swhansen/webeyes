@@ -194,7 +194,7 @@ $( function() {
         }
 
          arShareData.operation = 'animateSelectedObject';
-         arShareData.id = selectedObject.userData.iotDeviceId;
+      //   arShareData.id = selectedObject.userData.iotDeviceId;
          arShareData.isAnimated = selectedObject.userData.isAnimated;
 
          emitArObject( arShareData );
