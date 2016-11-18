@@ -135,6 +135,144 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   arTrigger3.visible = true;
   arSelectObjectArray.push( arTrigger3 );
 
+  function arConnectionController() {
+
+  socketServer.removeAllListeners( 'arObjectShare' );
+
+//   Set up the camera drivers and connection feed
+//   Based on participantState(focus or peer)
+//    focus - device sensors
+//    peer - broadcast fed sensors
+//    ar - sensor driven
+//    vr - mouse driven
+
+  if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
+    cameraDriver = vrDrivenCamera;
+    vrDrivenCamera.lookAt( scene.position );
+    connectToVrController();
+    socketServer.on( 'arObjectShare', function( data ) {
+           receiveArObject( data );
+      } );
+  }
+
+    if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
+      cameraDriver = vrBroadcastDrivenCamera;
+      vrBroadcastDrivenCamera.lookAt( scene.position );
+      connectToVrBroadcast();
+      socketServer.on( 'arObjectShare', function( data ) {
+           receiveArObject( data );
+      } );
+    }
+
+  if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
+      cameraDriver = sensorDrivenCamera;
+      sensorDrivenCamera.lookAt( scene.position );
+      connectToDeviceSensors();
+      socketServer.on( 'arObjectShare', function( data ) {
+           receiveArObject( data );
+      } );
+      }
+
+  if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
+      cameraDriver = broadcastDrivenCamera;
+      broadcastDrivenCamera.lookAt( scene.position );
+      connectToBroadcastSensors();
+      socketServer.on( 'arObjectShare', function( data ) {
+           receiveArObject( data );
+        } );
+      }
+}
+
+
+  function animateArObjects() {
+
+    var dt = clock.getDelta();
+    step += dt;
+
+//    var foo = clock.getElapsedTime() - clock.startTime;
+
+//    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
+//    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
+
+//    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( foo ) ) );
+
+//    if ( isAnimateKnot === true ) {
+//        knot.rotation.y += 0.03;
+//        knot.rotation.z += 0.03;
+//        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( foo ) ) );
+//    }
+
+//    if ( isAnimateSheep === true ) {
+//        sheep.rotation.z += dt * 2;
+//    }
+
+//  Flying  Pig
+//    if ( flyingPig !== undefined ) {
+//      pivotPoint.rotation.y += dt * 1.0;
+//    }
+
+//  Sword Guy
+//    if ( isAnimateSwordGuy === true ) {
+//         mixer.update( dt );
+//          helper.update();
+//    }
+
+
+// Use a case statement
+
+
+    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
+          arSelectObjectArray[i].rotation.y += dt * 1.0;
+        }
+
+        if ( arSelectObjectArray[i].name === 'sheep' &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
+          arSelectObjectArray[i].rotation.z += dt * 2.0;
+        }
+
+        if ( arSelectObjectArray[i].name === 'swordGuyMesh' &&
+              arSelectObjectArray[i].userData.isAnimated === true ) {
+                  mixer.update( dt );
+                  helper.update();
+        }
+
+    }
+  }
+
+ function connectToVrController() {
+   vrDrivenCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, vrDrivenCamera );
+   requestAnimationFrame( connectToVrController );
+ }
+
+ function connectToVrBroadcast() {
+   vrBroadcastCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, vrBroadcastDrivenCamera );
+   requestAnimationFrame( connectToVrBroadcast );
+ }
+
+ function connectToDeviceSensors() {
+   sensorCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, sensorDrivenCamera );
+   requestAnimationFrame( connectToDeviceSensors );
+   }
+
+ function connectToBroadcastSensors() {
+   broadcastCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, broadcastDrivenCamera );
+   requestAnimationFrame( connectToBroadcastSensors );
+   }
+
+ arConnectionController();
+
+  }
+
 //
 //    var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
 //    var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
@@ -376,140 +514,4 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 
 
 
-function arConnectionController() {
 
-  socketServer.removeAllListeners( 'arObjectShare' );
-
-//   Set up the camera drivers and connection feed
-//   Based on participantState(focus or peer)
-//    focus - device sensors
-//    peer - broadcast fed sensors
-//    ar - sensor driven
-//    vr - mouse driven
-
-  if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
-    cameraDriver = vrDrivenCamera;
-    vrDrivenCamera.lookAt( scene.position );
-    connectToVrController();
-    socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObject( data );
-      } );
-  }
-
-    if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
-      cameraDriver = vrBroadcastDrivenCamera;
-      vrBroadcastDrivenCamera.lookAt( scene.position );
-      connectToVrBroadcast();
-      socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObject( data );
-      } );
-    }
-
-  if ( userContext.participantState === 'focus' && userContext.mode === 'ar' ) {
-      cameraDriver = sensorDrivenCamera;
-      sensorDrivenCamera.lookAt( scene.position );
-      connectToDeviceSensors();
-      socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObject( data );
-      } );
-      }
-
-  if ( userContext.participantState === 'peer' && userContext.mode === 'ar' ) {
-      cameraDriver = broadcastDrivenCamera;
-      broadcastDrivenCamera.lookAt( scene.position );
-      connectToBroadcastSensors();
-      socketServer.on( 'arObjectShare', function( data ) {
-           receiveArObject( data );
-        } );
-      }
-}
-
-
-  function animateArObjects() {
-
-    var dt = clock.getDelta();
-    step += dt;
-
-//    var foo = clock.getElapsedTime() - clock.startTime;
-
-//    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
-//    sphere.position.y = -0.2 + ( 0.9 * Math.abs( Math.sin( foo ) ) );
-
-//    knot.position.y = -0.22 + ( 1.4 * Math.abs( Math.sin( foo ) ) );
-
-//    if ( isAnimateKnot === true ) {
-//        knot.rotation.y += 0.03;
-//        knot.rotation.z += 0.03;
-//        knot.position.z = -5.0 + ( -45.0 * Math.abs( Math.sin( foo ) ) );
-//    }
-
-//    if ( isAnimateSheep === true ) {
-//        sheep.rotation.z += dt * 2;
-//    }
-
-//  Flying  Pig
-//    if ( flyingPig !== undefined ) {
-//      pivotPoint.rotation.y += dt * 1.0;
-//    }
-
-//  Sword Guy
-//    if ( isAnimateSwordGuy === true ) {
-//         mixer.update( dt );
-//          helper.update();
-//    }
-
-
-// Use a case statement
-
-
-    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
-        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
-          arSelectObjectArray[i].rotation.y += dt * 1.0;
-        }
-
-        if ( arSelectObjectArray[i].name === 'sheep' &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
-          arSelectObjectArray[i].rotation.z += dt * 2.0;
-        }
-
-        if ( arSelectObjectArray[i].name === 'swordGuyMesh' &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
-                  mixer.update( dt );
-                  helper.update();
-        }
-
-    }
-  }
-
- function connectToVrController() {
-   vrDrivenCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, vrDrivenCamera );
-   requestAnimationFrame( connectToVrController );
- }
-
- function connectToVrBroadcast() {
-   vrBroadcastCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, vrBroadcastDrivenCamera );
-   requestAnimationFrame( connectToVrBroadcast );
- }
-
- function connectToDeviceSensors() {
-   sensorCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, sensorDrivenCamera );
-   requestAnimationFrame( connectToDeviceSensors );
-   }
-
- function connectToBroadcastSensors() {
-   broadcastCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, broadcastDrivenCamera );
-   requestAnimationFrame( connectToBroadcastSensors );
-   }
-
- arConnectionController();
-
-  }

@@ -33,10 +33,17 @@ function receiveArObject( data ) {
             arObject.rotation.y = data.rotation._y;
             arObject.rotation.z = data.rotation._z;
             arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
+            arObject.userData.isAnimated = data.animate;
             isAnimateSheep = data.animate;
           }
 
-        if ( data.name === 'swordGuyMesh' ) { isAnimateSwordGuy = data.animate; }
+        if ( data.name === 'swordGuyMesh' ) {
+          arObject = scene.getObjectByName( data.name );
+          arObject.userData.isAnimated = data.animate;
+
+        //  isAnimateSwordGuy = data.animate; }
+
+      }
 
         // User Created Objects
 

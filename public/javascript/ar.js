@@ -1,18 +1,19 @@
 
 var arDeviceOrientation = {};
 var arSelectObjectArray = [];
-var isAnimateKnot = false;
+var arUserCreatedObject;
 //var isAnimateSheep = false;
-var isAnimateSwordGuy = false;
 var selectedArObject;
 var clock = new THREE.Clock();
+
+//var isAnimateSwordGuy = false;
+
+var isAnimateKnot = false;
 var sheep;
 var flyingPig;
-
 var pivotPoint;
 var lamp;
 var knot;
-var arUserCreatedObject;
 var mixer;
 
 // function orientationCompass( data ) {

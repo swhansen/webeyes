@@ -286,6 +286,9 @@ $( function() {
       ).done( function() {
         loadIotAr();
         arTrigger1.visible = false;
+
+// Tell all peers to load
+
       } );
      }
 
