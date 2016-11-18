@@ -246,10 +246,13 @@ $( function() {
      }
 
      if ( selectedObject.name === 'cube2' ) {
-       selectedObject.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-       selectedObject.position.x += Math.round( Math.random() ) * 2 - 1;
-
-      intersects[0].object.rotation.y += Math.random();
+      selectedObject.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+      selectedObject.position.x += Math.round( Math.random() ) * 2 - 1;
+      selectedObject.position.y += Math.round( Math.random() ) * 2 - 1;
+      selectedObject.position.z += Math.round( Math.random() ) * 2 - 1;
+      selectedObject.rotation.x += Math.random();
+      selectedObject.rotation.y += Math.random();
+      selectedObject.rotation.z += Math.random();
 
        arShareData.operation = 'moveObject';
        arShareData.name = intersects[0].object.name;
