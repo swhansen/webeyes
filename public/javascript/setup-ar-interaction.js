@@ -306,6 +306,18 @@ $( function() {
       } );
      }
 
+     if ( intersects[0].object.name === 'arTrigger4' ) {
+      $.when(
+        $.getScript( 'javascript/armodels/geometry-ar.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadGeometryAr();
+        arTrigger4.visible = false;
+      } );
+     }
+
 
 
 

@@ -80,6 +80,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   var trigger1Mat = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
   var trigger2Mat = new THREE.MeshPhongMaterial( { color: 0xff6666 } );
   var trigger3Mat = new THREE.MeshPhongMaterial( { color: 0x009933 } );
+  var trigger4Mat = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
   var geometrySphere = new THREE.SphereGeometry( 0.1, 16, 16 );
 
   sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
@@ -134,6 +135,18 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   arTrigger3.userData.isSelectable = true;
   arTrigger3.visible = true;
   arSelectObjectArray.push( arTrigger3 );
+
+  arTrigger4 = new THREE.Mesh( geometrySphere, trigger4Mat );
+  arTrigger4.position.set( 1.2, 2.0, -4.0 );
+  arTrigger4.name = 'arTrigger4';
+  scene.add( arTrigger4 );
+  arTrigger4.userData.isSelectable = true;
+  arTrigger4.visible = true;
+  arSelectObjectArray.push( arTrigger4 );
+
+
+
+
 
   function arConnectionController() {
 
