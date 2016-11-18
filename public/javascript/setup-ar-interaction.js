@@ -21,15 +21,12 @@ $( '#arcanvas' ).unbind( 'click' );
 
 
 
-
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
       onArSelect( e );
     }
   );
 } );
-
-
 
 
 
@@ -185,8 +182,6 @@ $( function() {
 
        if ( selectedObject.userData.isUserCreated === true ) {
 
-      //     toggleArAnimation( selectedObject );
-
         if ( selectedObject.userData.isAnimated === false ) {
           selectedObject.userData.isAnimated = true;
           } else {
@@ -233,8 +228,6 @@ $( function() {
           arShareData.rotation = intersects[0].object.rotation;
           arShareData.color = intersects[0].object.material.color;
 
-          // animateArObjects();
-
           emitArObject( arShareData );
      }
 
@@ -244,20 +237,17 @@ $( function() {
           } else {
           selectedObject.userData.isAnimated = false;
         }
-  //     isAnimateSwordGuy = !isAnimateSwordGuy;
 
        arShareData.operation = 'animateSelectedObject';
        arShareData.animate = selectedObject.userData.isAnimated;
        arShareData.name = intersects[0].object.name;
 
-       // animateArObjects();
-
        emitArObject( arShareData );
      }
 
-     if ( intersects[0].object.name === 'cube2' ) {
-       intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-       intersects[0].object.position.x += Math.round( Math.random() ) * 2 - 1;
+     if ( selectedObject.name === 'cube2' ) {
+       selectedObject.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+       selectedObject.object.position.x += Math.round( Math.random() ) * 2 - 1;
 
       // intersects[0].object.rotation.y += Math.PI / 180.0 * 45.0;
 
@@ -315,6 +305,8 @@ $( function() {
         arTrigger3.visible = false;
       } );
      }
+
+
 
 
    }
