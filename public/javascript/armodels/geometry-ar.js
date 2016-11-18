@@ -13,7 +13,6 @@ function loadGeometryAr() {
 //    var knot = new THREE.Mesh( geometryKnot, materialKnot );
 //    knot.userData.isSelectable = true;
 //
-//
 //    lampSphere = new THREE.Mesh( geometrySphere, materialO );
 //    lampSphere.position.set( -19.0, 16.0, 8.0 );
 //    scene.add( lampSphere );
@@ -31,9 +30,7 @@ function loadGeometryAr() {
     cube2.name = 'cube2';
     cube2.userData.isSelectable = true;
     cube2.userData.isAnimated = false;
-
     arSelectObjectArray.push( cube2 );
-
     scene.add( cube2 );
 
 }

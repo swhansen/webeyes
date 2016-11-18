@@ -247,9 +247,9 @@ $( function() {
 
      if ( selectedObject.name === 'cube2' ) {
        selectedObject.material.color.setRGB( Math.random(), Math.random(), Math.random() );
-       selectedObject.object.position.x += Math.round( Math.random() ) * 2 - 1;
+       selectedObject.position.x += Math.round( Math.random() ) * 2 - 1;
 
-      // intersects[0].object.rotation.y += Math.PI / 180.0 * 45.0;
+      intersects[0].object.rotation.y += Math.random();
 
        arShareData.operation = 'moveObject';
        arShareData.name = intersects[0].object.name;
