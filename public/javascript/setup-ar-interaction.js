@@ -289,8 +289,7 @@ $( function() {
     } } );
 
 //load the model
-
-// call the load function
+ // call the load function
 
 //remove the load threejs icon
 
@@ -298,7 +297,7 @@ $( function() {
 
   if ( intersects[0].object.name === 'arTrigger1' ) {
     data.file = 'ar-load-iot.js';
-    data.modelName = iot;
+    data.modelName = 'iot';
    console.log( 'emitting-trigger1:', data );
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
