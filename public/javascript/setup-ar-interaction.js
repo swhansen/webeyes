@@ -268,15 +268,15 @@ $( function() {
 
     // Experimental dynamic AR  model loads
 
-
  socketServer.on( 'ArDynamicLoadModel', function( data ) {
 
    // data.file
    // data.modelName
+
    var filePath =  'javascript/armodels/' + data.file + '.js';
   console.log( 'filepath:', filePath );
 
-   if (modelName === 'iot' ) {
+   if ( data.modelName === 'iot' ) {
   $.when(
         $.getScript( filePath ),
         $.Deferred( function( deferred ) {
@@ -286,13 +286,13 @@ $( function() {
         loadIotAr();
         arTrigger1.visible = false;
       } );
-    } } );
+    } }
+    );
 
 //load the model
  // call the load function
 
 //remove the load threejs icon
-
   if ( intersects[0].object.name === 'arTrigger1' ) {
     data.file = 'ar-load-iot.js';
     data.modelName = 'iot';
