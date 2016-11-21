@@ -467,4 +467,3 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
       } );
     }
 
-  }
