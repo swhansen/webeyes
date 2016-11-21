@@ -293,12 +293,21 @@ $( function() {
 
 //remove the load threejs icon
 
-
-
   if ( intersects[0].object.name === 'arTrigger1' ) {
     data.file = 'ar-load-iot.js';
     data.modelName = 'iot';
    console.log( 'emitting-trigger1:', data );
+
+   $.when(
+        $.getScript( 'javascript/armodels/ar-load-iot.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadIotAr();
+        arTrigger1.visible = false;
+      } );
+
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
   }
