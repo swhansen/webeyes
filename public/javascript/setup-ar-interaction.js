@@ -293,6 +293,65 @@ $( function() {
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
   }
 
+  if ( intersects[0].object.name === 'arTrigger2' ) {
+    data.file = 'ar-load-swordguy.js';
+    data.modelName = 'swordguy';
+   console.log( 'emitting-trigger2:', data );
+
+   $.when(
+        $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSwordGuy();
+        arTrigger2.visible = false;
+      } );
+
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+  }
+
+  if ( intersects[0].object.name === 'arTrigger3' ) {
+    data.file = 'ar-load-sheep.js';
+    data.modelName = 'sheep';
+   console.log( 'emitting-trigger3:', data );
+
+   $.when(
+        $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSheep();
+        arTrigger3.visible = false;
+      } );
+
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+  }
+
+  if ( intersects[0].object.name === 'arTrigger4' ) {
+    data.file = 'ar-load-geometry.js';
+    data.modelName = 'sheep';
+   console.log( 'emitting-trigger4:', data );
+
+   $.when(
+        $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadGeometry();
+        arTrigger4.visible = false;
+      } );
+
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+  }
+
+
+
 
     //  Load IOT Objects
 
@@ -308,49 +367,44 @@ $( function() {
 //      } );
 //     }
 
-     if ( intersects[0].object.name === 'arTrigger2' ) {
-      $.when(
-        $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadSwordGuy();
-        arTrigger2.visible = false;
-      } );
-     }
+//     if ( intersects[0].object.name === 'arTrigger2' ) {
+//      $.when(
+//        $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
+//        $.Deferred( function( deferred ) {
+//        $( deferred.resolve );
+//        } )
+//      ).done( function() {
+//        loadSwordGuy();
+//        arTrigger2.visible = false;
+//      } );
+//     }
 
-     if ( intersects[0].object.name === 'arTrigger3' ) {
-      $.when(
-        $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadSheep();
-        arTrigger3.visible = false;
-      } );
-     }
+//     if ( intersects[0].object.name === 'arTrigger3' ) {
+//      $.when(
+//        $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
+//        $.Deferred( function( deferred ) {
+//        $( deferred.resolve );
+//        } )
+//      ).done( function() {
+//        loadSheep();
+//        arTrigger3.visible = false;
+//      } );
+//     }
+//
+//     if ( intersects[0].object.name === 'arTrigger4' ) {
+//      $.when(
+//        $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
+//        $.Deferred( function( deferred ) {
+//        $( deferred.resolve );
+//        } )
+//      ).done( function() {
+//        loadGeometryAr();
+//        arTrigger4.visible = false;
+//      } );
+//     }
 
-     if ( intersects[0].object.name === 'arTrigger4' ) {
-      $.when(
-        $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadGeometryAr();
-        arTrigger4.visible = false;
-      } );
-     }
-
-
-
-
-   }
-
-   }
-
+    }
+  }
 }
 
 socketServer.on( 'arDynamicLoadModel', function( data ) {
@@ -358,11 +412,12 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
    // data.file
    // data.modelName
 
-   var filePath =  'javascript/armodels/' + data.file;
+  //var filePath =  'javascript/armodels/' + data.file;
   console.log( 'filepath:', data.modelName, filePath );
 
    if ( data.modelName === 'iot' ) {
-  $.when(
+    var filePath =  'javascript/armodels/' + data.file;
+      $.when(
         $.getScript( filePath ),
         $.Deferred( function( deferred ) {
         $( deferred.resolve );
@@ -371,5 +426,45 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
         loadIotAr();
         arTrigger1.visible = false;
       } );
-    } }
-    );
+    }
+
+    if ( data.modelName === 'swordguy' ) {
+    var filePath =  'javascript/armodels/' + data.file;
+      $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSwordGuy();
+        arTrigger2.visible = false;
+      } );
+    }
+
+    if ( data.modelName === 'sheep' ) {
+    var filePath =  'javascript/armodels/' + data.file;
+      $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSheep();
+        arTrigger3.visible = false;
+      } );
+    }
+
+    if ( data.modelName === 'geometry' ) {
+    var filePath =  'javascript/armodels/' + data.file;
+      $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadGeometry();
+        arTrigger4.visible = false;
+      } );
+    }
+
+  }

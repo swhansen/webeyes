@@ -1,4 +1,4 @@
-function loadGeometryAr() {
+function loadGeometry() {
 
 //    var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
 //    var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
