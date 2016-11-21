@@ -268,26 +268,60 @@ $( function() {
 
     // Experimental dynamic AR  model loads
 
-    //  Load IOT Objects
 
-     if ( intersects[0].object.name === 'arTrigger1' ) {
-      $.when(
-        $.getScript( 'javascript/armodels/iot-ar.js' ),
+ socketServer.on( 'ArDynamicLoadModel', function( data ) {
+
+   // data.file
+   // data.modelName
+   var filePath =  'javascript/armodels/' + data.file + '.js'
+  console.log( 'filepath:', filePath );
+
+   if (modelName) === 'iot' {
+  $.when(
+        $.getScript( filePath ),
         $.Deferred( function( deferred ) {
         $( deferred.resolve );
         } )
       ).done( function() {
         loadIotAr();
         arTrigger1.visible = false;
+      } )
+    }
 
-// Tell all peers to load
+//load the model
 
-      } );
-     }
+// call the load function
+
+//remove the load threejs icon
+
+}
+
+  if ( intersects[0].object.name === 'arTrigger1' ) {
+    data.file = 'ar-load-iot.js'
+    data.modelName = iot
+   console.log( 'emitting-trigger1:', data );
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+  }
+
+
+    //  Load IOT Objects
+
+//     if ( intersects[0].object.name === 'arTrigger1' ) {
+//      $.when(
+//        $.getScript( 'javascript/armodels/ar-load-iot.js' ),
+//        $.Deferred( function( deferred ) {
+//        $( deferred.resolve );
+//        } )
+//      ).done( function() {
+//        loadIotAr();
+//        arTrigger1.visible = false;
+//      } );
+//     }
 
      if ( intersects[0].object.name === 'arTrigger2' ) {
       $.when(
-        $.getScript( 'javascript/armodels/swordguy-ar.js' ),
+        $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
         $.Deferred( function( deferred ) {
         $( deferred.resolve );
         } )
@@ -299,7 +333,7 @@ $( function() {
 
      if ( intersects[0].object.name === 'arTrigger3' ) {
       $.when(
-        $.getScript( 'javascript/armodels/sheep-ar.js' ),
+        $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
         $.Deferred( function( deferred ) {
         $( deferred.resolve );
         } )
@@ -311,7 +345,7 @@ $( function() {
 
      if ( intersects[0].object.name === 'arTrigger4' ) {
       $.when(
-        $.getScript( 'javascript/armodels/geometry-ar.js' ),
+        $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
         $.Deferred( function( deferred ) {
         $( deferred.resolve );
         } )

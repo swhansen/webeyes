@@ -275,6 +275,11 @@ socketServer.set( 'log level', 1);
 
 socketServer.sockets.on( 'connection', function( client ) {
 
+  client.on( 'arDynamicLoadModel', function( data, session ) {
+    //client.emit( 'utility', data );
+    client.broadcast.emit( 'arDynamicLoadModel', data );
+  } );
+
   client.on( 'utility', function( data, session ) {
     //client.emit( 'utility', data );
     client.broadcast.emit( 'utility', data );

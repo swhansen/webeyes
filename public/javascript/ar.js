@@ -90,10 +90,6 @@ function loadAr() {
 
  var loader = new THREE.JSONLoader();
 
-// isAnimateKnot = false;
-// isAnimateSheep = false;
-// isAnimateSwordGuy = false;
-
   // Build the Dimensional Layer
 
   var $arcanvaspane =  $( '<div>', { id: 'arcanvaspane', class: 'canvascenter' } );
@@ -116,7 +112,7 @@ function loadAr() {
   // load the AR world and interaction
 
   $.when(
-    $.getScript( 'javascript/armodels/core-ar-world.js' ),
+    $.getScript( 'javascript/armodels/ar-load-core.js' ),
     $.getScript( 'javascript/setup-ar-interaction.js' ),
     $.getScript( 'javascript/ar-object-communication.js' ),
     $.Deferred( function( deferred ) {
