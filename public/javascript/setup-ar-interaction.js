@@ -268,26 +268,7 @@ $( function() {
 
     // Experimental dynamic AR  model loads
 
- socketServer.on( 'ArDynamicLoadModel', function( data ) {
 
-   // data.file
-   // data.modelName
-
-   var filePath =  'javascript/armodels/' + data.file + '.js';
-  console.log( 'filepath:', filePath );
-
-   if ( data.modelName === 'iot' ) {
-  $.when(
-        $.getScript( filePath ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadIotAr();
-        arTrigger1.visible = false;
-      } );
-    } }
-    );
 
 //load the model
  // call the load function
@@ -371,3 +352,24 @@ $( function() {
    }
 
 }
+
+socketServer.on( 'ArDynamicLoadModel', function( data ) {
+
+   // data.file
+   // data.modelName
+
+   var filePath =  'javascript/armodels/' + data.file;
+  console.log( 'filepath:', filePath );
+
+   if ( data.modelName === 'iot' ) {
+  $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadIotAr();
+        arTrigger1.visible = false;
+      } );
+    } }
+    );
