@@ -350,7 +350,11 @@ $( function() {
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
   }
 
+ }
 
+  }
+
+}
 
 
     //  Load IOT Objects
@@ -403,9 +407,7 @@ $( function() {
 //      } );
 //     }
 
-    }
-  }
-}
+
 
 socketServer.on( 'arDynamicLoadModel', function( data ) {
 
@@ -466,4 +468,5 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
         arTrigger4.visible = false;
       } );
     }
+  } );
 
