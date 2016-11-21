@@ -286,8 +286,7 @@ $( function() {
         loadIotAr();
         arTrigger1.visible = false;
       } );
-    }
-  } );
+    } } );
 
 //load the model
 
