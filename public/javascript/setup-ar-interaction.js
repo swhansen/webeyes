@@ -353,13 +353,13 @@ $( function() {
 
 }
 
-socketServer.on( 'ArDynamicLoadModel', function( data ) {
+socketServer.on( 'arDynamicLoadModel', function( data ) {
 
    // data.file
    // data.modelName
 
    var filePath =  'javascript/armodels/' + data.file;
-  console.log( 'filepath:', filePath );
+  console.log( 'filepath:', data.modelName, filePath );
 
    if ( data.modelName === 'iot' ) {
   $.when(
