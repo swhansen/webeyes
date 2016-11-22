@@ -19,16 +19,12 @@ arCanvas.style.zIndex = '50';
 
 $( '#arcanvas' ).unbind( 'click' );
 
-
-
 $( function() {
   $( '#arcanvas' ).click( function( e ) {
       onArSelect( e );
     }
   );
 } );
-
-
 
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
@@ -133,7 +129,7 @@ $( function() {
       emitArObject( newArObj );
     }
 
-// Select an AR object  with a single click
+// Select an AR object with a single click
 
  function onArSelect( event ) {
 
@@ -187,7 +183,6 @@ $( function() {
           } else {
           selectedObject.userData.isAnimated = false;
         }
-
          arShareData.operation = 'animateSelectedObject';
          arShareData.id = selectedObject.userData.iotDeviceId;
          arShareData.isAnimated = selectedObject.userData.isAnimated;
@@ -197,7 +192,7 @@ $( function() {
          return;
        }
 
-    // Special Cases - Hardwired
+    // Special Cases - Hardwired by name
 
      if ( intersects[0].object.name === 'knot' ) {
          isAnimateKnot = !isAnimateKnot;
@@ -227,6 +222,7 @@ $( function() {
           arShareData.position = intersects[0].object.position;
           arShareData.rotation = intersects[0].object.rotation;
           arShareData.color = intersects[0].object.material.color;
+          arShareData.isAnimated = selectedObject.userData.isAnimated;
 
           emitArObject( arShareData );
      }
@@ -268,16 +264,9 @@ $( function() {
 
     // Experimental dynamic AR  model loads
 
-
-
-//load the model
- // call the load function
-
-//remove the load threejs icon
-  if ( intersects[0].object.name === 'arTrigger1' ) {
+  if ( selectedObject.name === 'arTrigger1' ) {
     data.file = 'ar-load-iot.js';
     data.modelName = 'iot';
-   console.log( 'emitting-trigger1:', data );
 
    $.when(
         $.getScript( 'javascript/armodels/ar-load-iot.js' ),
@@ -293,10 +282,9 @@ $( function() {
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
   }
 
-  if ( intersects[0].object.name === 'arTrigger2' ) {
+  if ( selectedObject.name === 'arTrigger2' ) {
     data.file = 'ar-load-swordguy.js';
     data.modelName = 'swordguy';
-   console.log( 'emitting-trigger2:', data );
 
    $.when(
         $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
@@ -312,10 +300,9 @@ $( function() {
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
   }
 
-  if ( intersects[0].object.name === 'arTrigger3' ) {
+  if ( selectedObject.name === 'arTrigger3' ) {
     data.file = 'ar-load-sheep.js';
     data.modelName = 'sheep';
-   console.log( 'emitting-trigger3:', data );
 
    $.when(
         $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
@@ -331,10 +318,9 @@ $( function() {
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
   }
 
-  if ( intersects[0].object.name === 'arTrigger4' ) {
+  if ( selectedObject.name === 'arTrigger4' ) {
     data.file = 'ar-load-geometry.js';
-    data.modelName = 'sheep';
-   console.log( 'emitting-trigger4:', data );
+    data.modelName = 'geometry';
 
    $.when(
         $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
@@ -349,73 +335,11 @@ $( function() {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
   }
-
  }
-
-  }
-
+}
 }
 
-
-    //  Load IOT Objects
-
-//     if ( intersects[0].object.name === 'arTrigger1' ) {
-//      $.when(
-//        $.getScript( 'javascript/armodels/ar-load-iot.js' ),
-//        $.Deferred( function( deferred ) {
-//        $( deferred.resolve );
-//        } )
-//      ).done( function() {
-//        loadIotAr();
-//        arTrigger1.visible = false;
-//      } );
-//     }
-
-//     if ( intersects[0].object.name === 'arTrigger2' ) {
-//      $.when(
-//        $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
-//        $.Deferred( function( deferred ) {
-//        $( deferred.resolve );
-//        } )
-//      ).done( function() {
-//        loadSwordGuy();
-//        arTrigger2.visible = false;
-//      } );
-//     }
-
-//     if ( intersects[0].object.name === 'arTrigger3' ) {
-//      $.when(
-//        $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
-//        $.Deferred( function( deferred ) {
-//        $( deferred.resolve );
-//        } )
-//      ).done( function() {
-//        loadSheep();
-//        arTrigger3.visible = false;
-//      } );
-//     }
-//
-//     if ( intersects[0].object.name === 'arTrigger4' ) {
-//      $.when(
-//        $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
-//        $.Deferred( function( deferred ) {
-//        $( deferred.resolve );
-//        } )
-//      ).done( function() {
-//        loadGeometryAr();
-//        arTrigger4.visible = false;
-//      } );
-//     }
-
-
-
 socketServer.on( 'arDynamicLoadModel', function( data ) {
-
-   // data.file
-   // data.modelName
-
-  //var filePath =  'javascript/armodels/' + data.file;
-  console.log( 'filepath:', data.modelName, filePath );
 
    if ( data.modelName === 'iot' ) {
     var filePath =  'javascript/armodels/' + data.file;
@@ -426,6 +350,8 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
         } )
       ).done( function() {
         loadIotAr();
+        var modMessage = userContext.rtcId + 'added AR Model' + data.modelName ;
+        emitMessage( modMessage );
         arTrigger1.visible = false;
       } );
     }
