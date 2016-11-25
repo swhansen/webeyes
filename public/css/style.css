@@ -12,6 +12,16 @@ body {
     font-family: Sans-Serif;
 }
 
+svg {
+  position: fixed;
+  bottom: 20;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  max-width: 600px;
+  border-radius: 125px 125px 0 0;
+}
+
 .centerFlex {
     font-family: Optima;
     font-style: normal;
