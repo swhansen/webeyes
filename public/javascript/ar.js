@@ -92,12 +92,12 @@ function loadAr() {
 
   // Build the Dimensional Layer
 
-  var $arcanvaspane =  $( '<div>', { id: 'arcanvaspane', class: 'canvascenter' } );
-  var $arcanvas =  $( '<canvas>', { id: 'arcanvas', class: 'canvasorient' } );
-  $arcanvaspane.append( $arcanvas );
-  $( 'body' ).append( $arcanvaspane );
-
-  $( '#arcanvas' ).click.off;
+//  var $arcanvaspane =  $( '<div>', { id: 'arcanvaspane', class: 'canvascenter' } );
+//  var $arcanvas =  $( '<canvas>', { id: 'arcanvas', class: 'canvasorient' } );
+//  $arcanvaspane.append( $arcanvas );
+//  $( 'body' ).append( $arcanvaspane );
+//
+//  $( '#arcanvas' ).click.off;
 
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
