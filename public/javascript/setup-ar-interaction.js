@@ -352,6 +352,7 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
         loadIotAr();
         var modMessage = userContext.rtcId + 'added AR Model' + data.modelName ;
         emitMessage( modMessage );
+        messageBar( modMessage );
         arTrigger1.visible = false;
       } );
     }
