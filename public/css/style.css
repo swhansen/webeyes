@@ -12,7 +12,7 @@ body {
     font-family: Sans-Serif;
 }
 
-svg {
+#iot-radial {
   position: fixed;
   bottom: 20;
   left: 50%;
