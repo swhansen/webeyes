@@ -6,6 +6,15 @@
     -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
 }
 
+
+/* Radial Menus */
+ #menu { display: block; margin: 0 auto; overflow: hidden; }
+  .item {visibility: hidden;}
+    .item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
+    .item:hover .sector { fill: #b3b3ff; }
+    .menu-trigger { fill: #EA2A55; pointer-events: auto;}
+    .menu-trigger:hover { cursor: pointer; }
+
 #menu {
   position: fixed;
   bottom: 0;
