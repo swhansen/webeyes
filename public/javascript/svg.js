@@ -33,6 +33,10 @@ svg.style.pointerEvents = "none";
 
 svg.onclick = function (e) {
     e.stopPropagation();
+    open = false;
+    TweenMax.staggerTo(items, .3, {scale:0, ease:Back.easeIn}, 0.05);
+        label.innerHTML = "+";
+    svg.style.pointerEvents = "none";
 }
 //close the nav when document is clicked
 document.onclick = function () {
