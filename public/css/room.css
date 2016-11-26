@@ -6,18 +6,6 @@
     -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
 }
 
-#menu {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  max-width: 600px;
-  border-radius: 125px 125px 0 0;
-}
-
-
-
 .canvasorient {
     padding-left: 0;
     padding-right: 0;
