@@ -12,9 +12,11 @@ svg.style.pointerEvents = "none";
     trigger.addEventListener('click', toggleMenu, false);
 
     //toggle menu when trigger is clicked
-    
+
     function toggleMenu(event) {
-    	
+
+      console.log( 'click on radial:', event );
+
      if (!event) var event = window.event;
     event.stopPropagation();
     open = !open;
