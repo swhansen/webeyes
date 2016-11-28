@@ -29,7 +29,8 @@
     "tweenjs": "~16.3.1",
     "leapjs": "~0.6.4",
     "materialize": "~0.97.5",
-    "jquery-serialize-object": "~2.5.0"
+    "jquery-serialize-object": "~2.5.0",
+    "gsap": "~1.19.0"
   },
   "moduleType": [
     "amd",
