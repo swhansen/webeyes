@@ -264,6 +264,7 @@ $( function() {
 
     // Experimental dynamic AR  model loads
 
+
   if ( selectedObject.name === 'arTrigger1' ) {
     data.file = 'ar-load-iot.js';
     data.modelName = 'iot';
@@ -281,6 +282,7 @@ $( function() {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
   }
+
 
   if ( selectedObject.name === 'arTrigger2' ) {
     data.file = 'ar-load-swordguy.js';
@@ -396,4 +398,27 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
       } );
     }
   } );
+
+function loadArModel( model ) {
+
+  switch( model ) {
+    case iot:
+    data.file = 'ar-load-iot.js';
+    data.modelName = 'iot';
+
+   $.when(
+        $.getScript( 'javascript/armodels/ar-load-iot.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadIotAr();
+        arTrigger1.visible = false;
+      } );
+
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+
+  }
+}
 
