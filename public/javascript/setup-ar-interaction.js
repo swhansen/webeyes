@@ -421,6 +421,65 @@ function loadArModel( model ) {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
 
+    break;
+
+    case 'swordguy':
+    console.log( 'at loadArModel:', model );
+    data.file = 'ar-load-swordguy.js';
+    data.modelName = 'swordguy';
+
+   $.when(
+        $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSwordGuy();
+        arTrigger2.visible = false;
+      } );
+
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+
+    break;
+
+    case 'geometry':
+    data.file = 'ar-load-geometry.js';
+    data.modelName = 'geometry';
+
+   $.when(
+        $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadGeometry();
+        arTrigger4.visible = false;
+      } );
+
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+    break;
+
+    case 'sheep':
+    data.file = 'ar-load-sheep.js';
+    data.modelName = 'sheep';
+
+   $.when(
+        $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSheep();
+        arTrigger3.visible = false;
+      } );
+
+    var sessionId = socketServer.sessionid;
+    socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+
+    break;
+
   }
 }
 
