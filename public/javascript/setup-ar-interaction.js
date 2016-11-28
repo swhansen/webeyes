@@ -461,7 +461,7 @@ function loadArModel( model ) {
     socketServer.emit( 'arDynamicLoadModel', data, sessionId );
     break;
 
-    case 'sheep':
+    case 'pig':
     data.file = 'ar-load-sheep.js';
     data.modelName = 'sheep';
 
