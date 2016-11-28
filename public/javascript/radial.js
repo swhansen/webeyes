@@ -1,4 +1,4 @@
-var svg = document.getElementById('menu'),
+var svg = document.getElementById('radial-menu'),
     items = svg.querySelectorAll('.item'),
     trigger = svg.getElementById('trigger'),
     label = trigger.querySelectorAll('#label')[0],
