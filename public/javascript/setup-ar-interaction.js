@@ -402,7 +402,8 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
 function loadArModel( model ) {
 
   switch( model ) {
-    case iot:
+    console.log( 'at loadArModel:', model );
+    case 'iot':
     data.file = 'ar-load-iot.js';
     data.modelName = 'iot';
 
