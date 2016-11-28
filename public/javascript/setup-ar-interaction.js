@@ -262,7 +262,10 @@ $( function() {
        emitArObject( arShareData );
      }
 
-    // Experimental dynamic AR  model loads
+
+
+
+  // Experimental dynamic AR  model loads
 
   if ( selectedObject.name === 'arTrigger1' ) {
     data.file = 'ar-load-iot.js';
@@ -339,6 +342,10 @@ $( function() {
 }
 }
 
+
+
+
+
 socketServer.on( 'arDynamicLoadModel', function( data ) {
 
    if ( data.modelName === 'iot' ) {
@@ -398,14 +405,11 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
   } );
 
 function loadArModel( model ) {
-
   switch ( model ) {
-
     case 'iot':
     console.log( 'at loadArModel:', model );
     data.file = 'ar-load-iot.js';
     data.modelName = 'iot';
-
     $.when(
         $.getScript( 'javascript/armodels/ar-load-iot.js' ),
         $.Deferred( function( deferred ) {
@@ -415,16 +419,13 @@ function loadArModel( model ) {
         loadIotAr();
         arTrigger1.visible = false;
       } );
-
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'arDynamicLoadModel', data, sessionId );
     break;
 
     case 'swordguy':
-
     data.file = 'ar-load-swordguy.js';
     data.modelName = 'swordguy';
-
     $.when(
         $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
         $.Deferred( function( deferred ) {
@@ -434,16 +435,13 @@ function loadArModel( model ) {
         loadSwordGuy();
         arTrigger2.visible = false;
       } );
-
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'arDynamicLoadModel', data, sessionId );
     break;
 
     case 'geometry':
-
       data.file = 'ar-load-geometry.js';
       data.modelName = 'geometry';
-
       $.when(
         $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
         $.Deferred( function( deferred ) {
@@ -453,7 +451,6 @@ function loadArModel( model ) {
         loadGeometry();
         arTrigger4.visible = false;
       } );
-
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'arDynamicLoadModel', data, sessionId );
     break;
@@ -461,7 +458,6 @@ function loadArModel( model ) {
     case 'pig':
       data.file = 'ar-load-sheep.js';
       data.modelName = 'sheep';
-
       $.when(
         $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
         $.Deferred( function( deferred ) {
@@ -471,7 +467,6 @@ function loadArModel( model ) {
         loadSheep();
         arTrigger3.visible = false;
       } );
-
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'arDynamicLoadModel', data, sessionId );
     break;
