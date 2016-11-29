@@ -237,6 +237,7 @@ $( function() {
        arShareData.operation = 'animateSelectedObject';
        arShareData.animate = selectedObject.userData.isAnimated;
        arShareData.name = intersects[0].object.name;
+       arShareData.isAnimated = selectedObject.userData.isAnimated;
 
        emitArObject( arShareData );
      }
@@ -261,9 +262,6 @@ $( function() {
 
        emitArObject( arShareData );
      }
-
-
-
 
   // Experimental dynamic AR  model loads
 
@@ -341,10 +339,6 @@ $( function() {
  }
 }
 }
-
-
-
-
 
 socketServer.on( 'arDynamicLoadModel', function( data ) {
 
@@ -472,4 +466,3 @@ function loadArModel( model ) {
     break;
   }
 }
-

@@ -54,8 +54,7 @@ function addDimensionalLayer( layer ) {
 userContext.addDimensionalLayer( 'fullpage' );
 userContext.addDimensionalLayer( 'box0' );
 userContext.addDimensionalLayer( 'canvaspane' );
-//userContext.addDimensionalLayer( 'box0' );
-//userContext.addDimensionalLayer( 'canvaspane' );
+userContext.addDimensionalLayer( 'textentryBox' );
 console.log( 'userContext:', userContext );
 
  $( '*' ).filter( function() {
@@ -66,6 +65,7 @@ console.log( 'userContext:', userContext );
 
 var layerList = [
   'fullpage',
+  'textentryBox',
   'box0',
   'canvaspane',
   'utilcanvaspane',
@@ -709,7 +709,6 @@ function expandThumb( whichBox ) {
       var usr = whichBox  + 1;
       var modMessage = 'The Moderator has focused User-' + usr;
 
-      //sendModeratorText(modMessage);
       emitMessage( modMessage );
       messageBar( modMessage );
     }
@@ -817,21 +816,12 @@ function sendText( e ) {
     return false;
 }
 
-function sendModeratorText( moderatorMessage ) {
-  for ( var i = 0; i < maxCALLERS; i++ ) {
-      var easyrtcid = easyrtc.getIthCaller( i );
-      if ( easyrtcid && easyrtcid !== '' ) {
-          easyrtc.sendPeerMessage( easyrtcid, 'im', moderatorMessage );
-      }
-  }
-    return false;
-}
-
 function showTextEntry() {
     document.getElementById( 'textentryField' ).value = '';
     document.getElementById( 'textentryBox' ).style.display = 'block';
     document.getElementById( 'textEntryButton' ).style.display = 'none';
     document.getElementById( 'textentryField' ).focus();
+    moveLayertoTop( 'textentryBox' );
 }
 
 function showMessage( startX, startY, content ) {

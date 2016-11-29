@@ -8,8 +8,6 @@
 
 /* Radial Menus */
 
-
-
 .item {visibility: hidden;}
 .item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
 .item:hover .sector { fill: #b3b3ff; }
@@ -28,7 +26,6 @@
   max-width: 600px;
   border-radius: 125px 125px 0 0;
 }
-
 
 .canvasorient {
     padding-left: 0;
