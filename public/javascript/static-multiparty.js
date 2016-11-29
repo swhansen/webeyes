@@ -824,7 +824,7 @@ function showTextEntry() {
     document.getElementById( 'textEntryButton' ).style.display = 'none';
     document.getElementById( 'textentryField' ).focus();
     moveLayertoTop( 'textentryBox' );
-    moveLayertoTop( 'textEntryButton' );
+   // moveLayertoTop( 'textentryButton' );
 }
 
 function showMessage( startX, startY, content ) {
