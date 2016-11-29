@@ -795,12 +795,14 @@ function loginSuccess() {
 }
 
 function cancelText() {
+  console.log( 'canceling text box' );
     document.getElementById( 'textentryBox' ).style.display = 'none';
     document.getElementById( 'textEntryButton' ).style.display = 'block';
     $( '#layer-menu-button' ).click();
 }
 
 function sendText( e ) {
+  console.log( 'sending Text' );
     document.getElementById( 'textentryBox' ).style.display = 'none';
     document.getElementById( 'textEntryButton' ).style.display = 'block';
     var stringToSend = document.getElementById( 'textentryField' ).value;
