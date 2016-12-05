@@ -31,7 +31,6 @@ function loadGeometry() {
     cube2.name = 'cube2';
     cube2.userData.isSelectable = true;
     cube2.userData.isAnimated = false;
-    cube2.userData.move = moveCube
     arSelectObjectArray.push( cube2 );
     scene.add( cube2 );
 }
