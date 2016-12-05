@@ -21,6 +21,7 @@ function loadGeometry() {
 //    sphere.position.set( 1.2, -0.2, -4.0 );
 //    knot.position.set( 0.5, 0.22, -5.0 );
 //
+
     var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
     var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
     var cube2 = new THREE.Mesh( geometryCube2, material2 );
@@ -30,6 +31,7 @@ function loadGeometry() {
     cube2.name = 'cube2';
     cube2.userData.isSelectable = true;
     cube2.userData.isAnimated = false;
+    cube2.userData.move = moveCube
     arSelectObjectArray.push( cube2 );
     scene.add( cube2 );
 }

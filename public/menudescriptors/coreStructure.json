@@ -38,7 +38,7 @@
         "emailInvite": {
             "mainButton": "#inviteViaEmail",
             "buttons": [],
-            "desc": "tmp",
+            "desc": "Session email invite",
             "initState": "none",
             "baseZ": "20"
         },

@@ -75,9 +75,6 @@ var alertWeg2rtEntry = function( lightNo ) {
     dataType: 'json',
     url: URL,
     data: JSON.stringify( dataObject ),
-
-//    success: function( data ) { console.log( data ); },
-
     error: function( a, err ) { }
     } );
 };

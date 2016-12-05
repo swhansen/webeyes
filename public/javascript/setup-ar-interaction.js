@@ -168,8 +168,6 @@ $( function() {
          arShareData.arObjectOpacity = selectedObject.material.opacity;
          arShareData.name = selectedObject.name;
 
-         // animateArObjects();
-
          emitArObject( arShareData );
          return;
        }
