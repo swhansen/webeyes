@@ -67,7 +67,7 @@ $( function() {
     var dir = mouse3D.sub( cameraDriver.position ).normalize();
     var raycaster = new THREE.Raycaster( cameraDriver.position, mouse3D );
 
-    var scale = 4.0;
+  //  var scale = 4.0;
 
     var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
 

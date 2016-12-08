@@ -27,17 +27,19 @@ var svg = document.getElementById( 'radial-menu' ),
     }
     }
 
-svg.onclick = function( e ) {
-    e.stopPropagation();
-    radialOpen = false;
-    TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        label.innerHTML = '+';
-    svg.style.pointerEvents = 'none';
-};
+    svg.onclick = function( e ) {
+        e.stopPropagation();
+        radialOpen = false;
+        TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+            label.innerHTML = '+';
+        svg.style.pointerEvents = 'none';
+    };
+
 //close the nav when document is clicked
-document.onclick = function() {
-    radialOpen = false;
-    TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        label.innerHTML = '+';
-    svg.style.pointerEvents = 'none';
-};
+
+    document.onclick = function() {
+        radialOpen = false;
+        TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+            label.innerHTML = '+';
+        svg.style.pointerEvents = 'none';
+    };
