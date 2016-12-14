@@ -1,6 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <image id="b-text-_Image1" width="1px" height="24px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAYCAYAAAA7zJfaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAEUlEQVQImWNgYGDgY6A7YAEABtQAE0Njl6EAAAAASUVORK5CYII=" /> </defs>
+<svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
     <symbol viewBox="0 0 64 63" id="icon-b-chat">
         <title>b-chat</title>
