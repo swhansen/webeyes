@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
         <image id="b-text-_Image1" width="1px" height="24px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAYCAYAAAA7zJfaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAEUlEQVQImWNgYGDgY6A7YAEABtQAE0Njl6EAAAAASUVORK5CYII=" /> </defs>
+        <defs>
     <symbol viewBox="0 0 64 63" id="icon-b-chat">
         <title>b-chat</title>
         <g transform="matrix(1,0,0,1,-126,-65)">
@@ -148,4 +149,5 @@
             </g>
         </g>
     </symbol>
+</defs>
 </svg>
