@@ -609,6 +609,9 @@ $( function() {
     } );
     $( '#inviteViaEmail' ).click( function() {
         $( '#invite-dialog' ).dialog( 'open' );
+        for ( var button in uiStructure.structure ) {
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
+    }
       } ) ;
 
 // Validating Form Fields.....
