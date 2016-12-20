@@ -825,6 +825,9 @@ function showTextEntry() {
     document.getElementById( 'textentryField' ).focus();
    // moveLayertoTop( 'textentryBox' );
    // moveLayertoTop( 'textentryButton' );
+   for ( var button in uiStructure.structure ) {
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
+    }
 }
 
 function showMessage( startX, startY, content ) {
