@@ -493,6 +493,7 @@ $( function() {
 
   $( function() {
     $( '.fade-swap' ).click( function() {
+      console.log( 'Erase Fade' );
       if ( $( this ).attr( 'class' ) === 'fade-swap' ) {
     //    this.src = this.src.replace( 'img/erase-on', 'img/erase-off' );
         fadeSwitch = false;
