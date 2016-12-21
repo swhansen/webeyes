@@ -493,7 +493,6 @@ $( function() {
 
   $( function() {
     $( '.fade-swap' ).click( function() {
-      $( '#fadeButton' ).style.display = 'visible';
       if ( $( this ).attr( 'class' ) === 'fade-swap' ) {
         this.src = this.src.replace( 'img/erase-on', 'img/erase-off' );
         fadeSwitch = false;
@@ -541,7 +540,7 @@ $( function() {
 
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
       this.src = this.src.replace( 'img/video-on', 'img/video-off' );
-        document.getElementById( getIdOfBox( boxToMute ) )<!--
+        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'hidden';
 
         var avatar = document.getElementById( theAvatar );
 
