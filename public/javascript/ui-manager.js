@@ -492,7 +492,7 @@ $( function() {
   // toggle line drawing fade
 
   $( function() {
-    $( '.fadeButton' ).click( function() {
+    $( '#fadeButton' ).click( function() {
       console.log( 'Erase Fade' );
       if ( $( this ).attr( 'class' ) === 'fade-swap' ) {
       //  this.src = this.src.replace( 'img/erase-on', 'img/erase-off' );
