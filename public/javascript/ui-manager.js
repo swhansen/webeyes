@@ -495,17 +495,16 @@ $( function() {
     $( '.fade-swap' ).click( function() {
       console.log( 'Erase Fade' );
       if ( $( this ).attr( 'class' ) === 'fade-swap' ) {
-        this.src = this.src.replace( 'img/erase-on', 'img/erase-off' );
+      //  this.src = this.src.replace( 'img/erase-on', 'img/erase-off' );
         fadeSwitch = false;
         toggleFade();
       } else {
-        this.src = this.src.replace( 'img/erase-off', 'img/erase-on' );
+    //    this.src = this.src.replace( 'img/erase-off', 'img/erase-on' );
         fadeSwitch = true;
         toggleFade();
       }
       $( this ).toggleClass( 'on' );
     } );
-
   } );
 
 //
