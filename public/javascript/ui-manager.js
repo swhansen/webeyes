@@ -276,7 +276,6 @@ $( function() {
         userContext.arvrWorld = inputValue.toLowerCase();
         swal.close();
         setArWorld();
-        radialMemu( 'ar' );
     } );
   } );
 } );
@@ -334,6 +333,7 @@ $( function() {
           userContext.arvrWorld = inputValue.toLowerCase();
           swal.close();
           setVrWorld();
+          radialMemu( 'ar' );
     } );
   } );
 } );
