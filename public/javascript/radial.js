@@ -1,5 +1,5 @@
 function radialMenu( menu ) {
-if ( menu === 'ar ') {
+if ( menu === 'ar') {
 var svg = document.getElementById( 'radial-menu' ),
     items = svg.querySelectorAll( '.item' ),
     trigger = svg.getElementById( 'trigger' ),
