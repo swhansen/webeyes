@@ -1,5 +1,4 @@
-function radialMenu( menu ) {
-if ( menu === 'ar') {
+
 var svg = document.getElementById( 'radial-menu' ),
     items = svg.querySelectorAll( '.item' ),
     trigger = svg.getElementById( 'trigger' ),
@@ -45,5 +44,4 @@ var svg = document.getElementById( 'radial-menu' ),
             label.innerHTML = '+';
         svg.style.pointerEvents = 'none';
     };
-  }
   }
