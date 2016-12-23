@@ -303,7 +303,7 @@ function setArWorld() {
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
-      // inform all the pees of the mode
+      // inform all the peers of the mode
 }
 
 $( function() {
