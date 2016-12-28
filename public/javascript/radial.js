@@ -1,5 +1,5 @@
 
-function vrRadial( menu ) {
+
 var svg = document.getElementById( 'radial-menu' ),
     items = svg.querySelectorAll( '.item' ),
     trigger = svg.getElementById( 'trigger' ),
@@ -11,7 +11,7 @@ var svg = document.getElementById( 'radial-menu' ),
     svg.style.pointerEvents = 'none';
 
     trigger.addEventListener( 'click', toggleMenu, false );
-}
+
     //toggle menu when trigger is clicked
 
     function toggleMenu( event ) {

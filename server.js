@@ -40,9 +40,7 @@ app.use( express.static( __dirname + '/public' ) );
 app.use( '/bower', express.static( __dirname + '/bower_components' ) );
 
 // Needed to parse form data(changed for express 4.x)
-app.use( bodyParser.urlencoded( {
-  extended: false
-} ) );
+app.use( bodyParser.urlencoded( { extended: false } ) );
 app.use( bodyParser.json() );
 
 var loggedIn = false;
@@ -200,6 +198,7 @@ app.get( '/users', function( req, res ) {
             throw Error;
         }
         res.render( 'users', { users: docs } );
+        console.log( 'mongo query', docs);
     } );
 } );
 

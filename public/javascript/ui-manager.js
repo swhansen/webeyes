@@ -333,7 +333,6 @@ $( function() {
           userContext.arvrWorld = inputValue.toLowerCase();
           swal.close();
           setVrWorld();
-          vrRadial( 'vrradial' );
     } );
   } );
 } );
