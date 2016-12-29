@@ -8,7 +8,7 @@ var cors       = require( 'cors' );
 var http      = require( 'http' );
 var bson      = require ( 'bson' );
 
-var Users = require( './public/models/users' );
+//var Users = require( './public/models/users' );
 
 var clients    = [];
 var linecolors = [ 'rgba(255, 0, 0, 1)',
@@ -64,15 +64,14 @@ mongoose.connect( mongoUriString, function( err, res ) {
   }
 } );
 
-//var Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
+  var userSchema = new Schema( {
+    firstName:String,
+    lastName:String,
+    email: String
+  } );
 
-//  var userSchema = new Schema( {
-//    firstName:String,
-//    lastName:String,
-//    email: String
-//  } );
-//
-//  var Users = mongoose.model( 'users', userSchema );
+  var Users = mongoose.model( 'users', userSchema );
 
 // test for tests....
 app.use( function( req, res, next ) {
@@ -195,13 +194,6 @@ app.get( '/video', function( req, res ) {
 // Experiment with the user DB on Mongo
 //
 
-var apiRouter = express.Router();
-
-// invoked for any requests passed to this router
-apiRouter.use(function(req, res, next) {
-  // .. some logic here .. like any other middleware
-  next();
-});
 
 
 
@@ -212,11 +204,10 @@ app.get( '/users', function( req, res ) {
             throw Error;
         }
         res.render( 'users', { users: docs } );
-        console.log( 'mongo query', docs );
     } );
 } );
 
-app.get( 'api/users/:lastName', function( req, res ) {
+app.get( '/users/:lastName', function( req, res ) {
 
         if ( req.params.lastName ) {
         Users.findOne( { lastName: req.params.lastName },
@@ -228,14 +219,6 @@ app.get( 'api/users/:lastName', function( req, res ) {
         } );
     }
 } );
-
-//app.use( '/api', apiRouter );
-
-// will handle any request that ends in /events
-// depends on where the router is "use()'d"
-//apiRouter.get('/api', function(req, res) {
-//  res.json( { message: 'hooray! welcome to our api!' } );
-//});
 
 app.get( '/api', function( req, res ) {
     res.json( { message: 'hooray! welcome to our api!' } );
@@ -266,7 +249,7 @@ app.get( 'api/users/:lastName', function( req, res ) {
     }
 } );
 
-//app.use('/api', apiRouter);
+
 
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
