@@ -193,7 +193,15 @@ app.get( '/video', function( req, res ) {
 // Experiment with the user DB on Mongo
 //
 
-var router = express.Router();
+var apiRouter = express.Router();
+
+// invoked for any requests passed to this router
+apiRouter.use(function(req, res, next) {
+  // .. some logic here .. like any other middleware
+  next();
+});
+
+
 
 app.get( '/users', function( req, res ) {
   var query = Users.find( {} ).limit( 10 );
@@ -219,9 +227,17 @@ app.get( '/users/:lastName', function( req, res ) {
     }
 } );
 
-router.get( '/api', function( req, res ) {
-    res.json( { message: 'hooray! welcome to our api!' } );
-} );
+// will handle any request that ends in /events
+// depends on where the router is "use()'d"
+apiRouter.get('/api', function(req, res) {
+  res.json( { message: 'hooray! welcome to our api!' } );
+});
+
+
+
+//router.get( '/api', function( req, res ) {
+//    res.json( { message: 'hooray! welcome to our api!' } );
+//} );
 
 
 
