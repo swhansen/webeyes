@@ -227,7 +227,7 @@ app.get( '/users/:lastName', function( req, res ) {
     }
 } );
 
-app.use( 'api', apiRouter );
+app.use( '/api', apiRouter );
 
 // will handle any request that ends in /events
 // depends on where the router is "use()'d"
