@@ -240,7 +240,15 @@ app.get( '/api', function( req, res ) {
 } );
 
 app.get( '/api/users', function( req, res ) {
-    res.json( { message: 'users from API' } );
+
+  var query = Users.find( {} ).limit( 10 );
+  query.exec( function( err, docs ) {
+        if ( err ) {
+            throw Error;
+        }
+        res.json( { message: docs } );
+    } );
+ //   res.json( { message: 'users from API' } );
 } );
 
 //app.use('/api', apiRouter);
