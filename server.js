@@ -217,11 +217,11 @@ app.get( '/users/:lastName', function( req, res ) {
             res.render( 'lastname', docs );
         } );
     }
-}
+} );
 
-router.get('/api', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });
-});
+router.get( '/api', function( req, res ) {
+    res.json( { message: 'hooray! welcome to our api!' } );
+} );
 
 
 
