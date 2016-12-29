@@ -235,11 +235,15 @@ app.get( '/users/:lastName', function( req, res ) {
 //  res.json( { message: 'hooray! welcome to our api!' } );
 //});
 
-apiRouter.get( '/api', function( req, res, next ) {
+app.get( '/api', function( req, res ) {
     res.json( { message: 'hooray! welcome to our api!' } );
 } );
 
-app.use('/api', apiRouter);
+app.get( '/api/users', function( req, res ) {
+    res.json( { message: 'users from API' } );
+} );
+
+//app.use('/api', apiRouter);
 
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
