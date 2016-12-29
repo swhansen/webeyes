@@ -227,13 +227,13 @@ app.get( '/users/:lastName', function( req, res ) {
     }
 } );
 
+app.use( 'api', apiRouter );
+
 // will handle any request that ends in /events
 // depends on where the router is "use()'d"
 apiRouter.get('/api', function(req, res) {
   res.json( { message: 'hooray! welcome to our api!' } );
 });
-
-
 
 //router.get( '/api', function( req, res ) {
 //    res.json( { message: 'hooray! welcome to our api!' } );
