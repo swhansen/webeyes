@@ -8,7 +8,7 @@ var cors       = require( 'cors' );
 var http      = require( 'http' );
 var bson      = require ( 'bson' );
 
-//var Users = require( './public/models/users' );
+var Users = require( './public/models/users' );
 
 var clients    = [];
 var linecolors = [ 'rgba(255, 0, 0, 1)',
@@ -64,14 +64,14 @@ mongoose.connect( mongoUriString, function( err, res ) {
   }
 } );
 
-var Schema = mongoose.Schema;
-  var userSchema = new Schema( {
-    firstName:String,
-    lastName:String,
-    email: String
-  } );
-
-  var Users = mongoose.model( 'users', userSchema );
+//var Schema = mongoose.Schema;
+//  var userSchema = new Schema( {
+//    firstName:String,
+//    lastName:String,
+//    email: String
+//  } );
+//
+//  var Users = mongoose.model( 'users', userSchema );
 
 // test for tests....
 app.use( function( req, res, next ) {
