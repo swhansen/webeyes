@@ -8,6 +8,8 @@ var cors       = require( 'cors' );
 var http      = require( 'http' );
 var bson      = require ( 'bson' );
 
+var Users = require( '/models/users' );
+
 var clients    = [];
 var linecolors = [ 'rgba(255, 0, 0, 1)',
                    'rgba(255, 0, 225, 1)',
@@ -62,15 +64,15 @@ mongoose.connect( mongoUriString, function( err, res ) {
   }
 } );
 
-var Schema = mongoose.Schema;
+//var Schema = mongoose.Schema;
 
-var userSchema = new Schema( {
-  firstName:String,
-  lastName:String,
-  email: String
-} );
-
-var Users = mongoose.model( 'users', userSchema );
+//  var userSchema = new Schema( {
+//    firstName:String,
+//    lastName:String,
+//    email: String
+//  } );
+//
+//  var Users = mongoose.model( 'users', userSchema );
 
 // test for tests....
 app.use( function( req, res, next ) {
@@ -249,6 +251,19 @@ app.get( '/api/users', function( req, res ) {
         res.json( { message: docs } );
     } );
  //   res.json( { message: 'users from API' } );
+} );
+
+app.get( 'api/users/:lastName', function( req, res ) {
+
+        if ( req.params.lastName ) {
+        Users.findOne( { lastName: req.params.lastName },
+         function( err, docs ) {
+            if ( err ) {
+                throw Error;
+            }
+            res.json( { message: docs } );
+        } );
+    }
 } );
 
 //app.use('/api', apiRouter);
