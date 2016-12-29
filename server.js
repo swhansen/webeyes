@@ -62,11 +62,13 @@ mongoose.connect( mongoUriString, function( err, res ) {
   }
 } );
 
-var userSchema = {
+var Schema = mongoose.Schema;
+
+var userSchema = new Schema( {
   firstName:String,
   lastName:String,
   email: String
-};
+} );
 
 var Users = mongoose.model( 'users', userSchema );
 
@@ -198,7 +200,7 @@ app.get( '/users', function( req, res ) {
             throw Error;
         }
         res.render( 'users', { users: docs } );
-        console.log( 'mongo query', docs);
+        console.log( 'mongo query', docs );
     } );
 } );
 
