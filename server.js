@@ -8,7 +8,7 @@ var cors       = require( 'cors' );
 var http      = require( 'http' );
 var bson      = require ( 'bson' );
 
-var Users = require( '/models/users' );
+var Users = require( './public/models/users' );
 
 var clients    = [];
 var linecolors = [ 'rgba(255, 0, 0, 1)',
