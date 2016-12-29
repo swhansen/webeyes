@@ -221,7 +221,7 @@ app.get( '/users/:lastName', function( req, res ) {
 } );
 
 app.get( '/api', function( req, res ) {
-    res.json( { message: 'hooray! welcome to our api!' } );
+    res.json( { message: 'Welcome to the WebEyes API!' } );
 } );
 
 app.get( '/api/users', function( req, res ) {
@@ -233,10 +233,11 @@ app.get( '/api/users', function( req, res ) {
         }
         res.json( { message: docs } );
     } );
+
  //   res.json( { message: 'users from API' } );
 } );
 
-app.get( 'api/users/:lastName', function( req, res ) {
+app.get( '/api/users/:lastName', function( req, res ) {
 
         if ( req.params.lastName ) {
         Users.findOne( { lastName: req.params.lastName },
@@ -248,8 +249,6 @@ app.get( 'api/users/:lastName', function( req, res ) {
         } );
     }
 } );
-
-
 
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
