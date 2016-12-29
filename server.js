@@ -216,7 +216,7 @@ app.get( '/users', function( req, res ) {
     } );
 } );
 
-app.get( '/users/:lastName', function( req, res ) {
+app.get( 'api/users/:lastName', function( req, res ) {
 
         if ( req.params.lastName ) {
         Users.findOne( { lastName: req.params.lastName },
