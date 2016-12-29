@@ -193,6 +193,8 @@ app.get( '/video', function( req, res ) {
 // Experiment with the user DB on Mongo
 //
 
+var router = express.Router();
+
 app.get( '/users', function( req, res ) {
   var query = Users.find( {} ).limit( 10 );
   query.exec( function( err, docs ) {
@@ -215,7 +217,13 @@ app.get( '/users/:lastName', function( req, res ) {
             res.render( 'lastname', docs );
         } );
     }
-} );
+}
+
+router.get('/api', function(req, res) {
+    res.json({ message: 'hooray! welcome to our api!' });
+});
+
+
 
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
