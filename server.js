@@ -8,7 +8,7 @@ var cors       = require( 'cors' );
 var http      = require( 'http' );
 var bson      = require ( 'bson' );
 
-var Users = require( './public/models/users' );
+var User = require( './public/models/users' );
 
 var clients    = [];
 var linecolors = [ 'rgba(255, 0, 0, 1)',
@@ -20,8 +20,7 @@ var room;
 var mongoUriString =
   process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost/heroku_appw08fz1r7';
-//  'mongodb://localhost/heroku_app31783365';
+  'mongodb://localhost/heroku_app31783365';
 
 var sendgridUsername = process.env.SENDGRID_USERNAME || 'app31783365@heroku.com';
 var sendgridPassword = process.env.SENDGRID_PASSWORD || 'jja7gngo8427';
@@ -195,11 +194,8 @@ app.get( '/video', function( req, res ) {
 // Experiment with the user DB on Mongo
 //
 
-
-
-
 app.get( '/users', function( req, res ) {
-  var query = Users.find( {} ).limit( 10 );
+  var query = User.find( {} ).limit( 10 );
   query.exec( function( err, docs ) {
         if ( err ) {
             throw Error;
@@ -209,9 +205,8 @@ app.get( '/users', function( req, res ) {
 } );
 
 app.get( '/users/:lastName', function( req, res ) {
-
         if ( req.params.lastName ) {
-        Users.findOne( { lastName: req.params.lastName },
+        User.findOne( { lastName: req.params.lastName },
          function( err, docs ) {
             if ( err ) {
                 throw Error;
@@ -220,6 +215,10 @@ app.get( '/users/:lastName', function( req, res ) {
         } );
     }
 } );
+
+//
+// API
+//
 
 app.get( '/api', function( req, res ) {
     res.json( { message: 'Welcome to the WebEyes API!' } );
@@ -239,7 +238,6 @@ app.get( '/api/users', function( req, res ) {
 } );
 
 app.get( '/api/users/:lastName', function( req, res ) {
-
         if ( req.params.lastName ) {
         Users.findOne( { lastName: req.params.lastName },
          function( err, docs ) {
