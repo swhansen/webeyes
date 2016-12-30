@@ -226,7 +226,7 @@ app.get( '/api', function( req, res ) {
 
 app.get( '/api/users', function( req, res ) {
 
-  var query = Users.find( {} ).limit( 10 );
+  var query = User.find( {} ).limit( 10 );
   query.exec( function( err, docs ) {
         if ( err ) {
             throw Error;
@@ -239,7 +239,7 @@ app.get( '/api/users', function( req, res ) {
 
 app.get( '/api/users/:lastName', function( req, res ) {
         if ( req.params.lastName ) {
-        Users.findOne( { lastName: req.params.lastName },
+        User.findOne( { lastName: req.params.lastName },
          function( err, docs ) {
             if ( err ) {
                 throw Error;
