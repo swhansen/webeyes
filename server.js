@@ -251,13 +251,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
 
-socketServer.sockets.on( 'connection', function( client ) {
-
- // client.on( 'placeArObject', function( data, session ) {
-    //client.emit( 'utility', data );
-    var data = 'foo';
-    client.broadcast.emit( 'placeARObject', data );
-  } );
+socketServer.emit( 'placeArObject', req.body );
 
   res.json( { message: 'Got placeArObject Post' } );
 } );
