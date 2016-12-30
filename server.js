@@ -249,12 +249,12 @@ app.get( '/api/users/:lastName', function( req, res ) {
 } );
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
-console.log( ' got the placeArObject Post' );
-res.json({ message: 'Got placeARObject Post' });
+  console.log( ' got the placeArObject Post' );
 
+webserver.sockets.emit( 'placeArObject', req.body );
+
+  res.json({ message: 'Got placeArObject Post' });
 } );
-
-
 
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
