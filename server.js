@@ -249,7 +249,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
 } );
 
 app.get( '/api/ar/placeArObject', function(req, res, next ) {
-io.socket.emit( 'placeArObject', req.body );
+socketServer.socket.emit( 'placeArObject', req.body );
 res.send( {} );
 } );
 
