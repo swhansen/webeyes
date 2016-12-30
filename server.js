@@ -236,9 +236,9 @@ app.get( '/api/users', function( req, res ) {
  //   res.json( { message: 'users from API' } );
 } );
 
-app.get( '/api/users/:lastName/users:org', function( req, res ) {
+app.get( '/api/users/:lastName', function( req, res ) {
         if ( req.params.lastName ) {
-        User.findOne( { lastName: req.params.lastName, org: req.params.org },
+        User.findOne( { lastName: req.params.lastName },
          function( err, docs ) {
             if ( err ) {
                 throw Error;
@@ -301,7 +301,7 @@ var webServer = app.listen( port );
 var socketServer = io.listen( webServer );
 /*jshint +W079 */
 
-socketServer.set( 'log level', 1);
+socketServer.set( 'log level', 1 );
 
 // "Bus" Communication
 
