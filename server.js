@@ -248,7 +248,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
     }
 } );
 
-app.get( '/api/ar/placeArObject', function(req, res, next ) {
+app.post( '/api/ar/placeArObject', function(req, res, next ) {
 socketServer.socket.emit( 'placeArObject', req.body );
 res.send( {} );
 } );
