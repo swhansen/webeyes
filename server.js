@@ -238,7 +238,7 @@ app.get( '/api/users', function( req, res ) {
 
 app.get( '/api/users/:lastName/users:org', function( req, res ) {
         if ( req.params.lastName ) {
-        User.findOne( { lastName: req.params.lastName, org: req.params.ord },
+        User.findOne( { lastName: req.params.lastName, org: req.params.org },
          function( err, docs ) {
             if ( err ) {
                 throw Error;
