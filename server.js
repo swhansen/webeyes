@@ -248,6 +248,13 @@ app.get( '/api/users/:lastName', function( req, res ) {
     }
 } );
 
+app.post( '/api/ar/placeArObject', (req, res, next ){
+io.socket.emit( 'placeArObject', req.body );
+res.send;
+})
+
+
+
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
 //
@@ -293,7 +300,9 @@ app.get( '/about', function( req, res ) {
 var port = process.env.PORT || 8080;
 
 // var webServer = app.listen(process.env.port || 8080);
+
 var webServer = app.listen( port );
+
 //console.log( 'Listening on port ' + port );
 
 // Start Socket.io so it attaches itself to Express server

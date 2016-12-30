@@ -5,6 +5,10 @@ function setupArInteractionEvents() {
 //  - set the cameraDriver based on AR/VR and focus/peer
 //
 
+socketServer.on( 'placeArObject', function( data ) {
+  console.log( 'recieved placeArObject' );
+  }
+
 var arCanvas = document.getElementById( 'arcanvaspane' );
 var ar0 = document.getElementById( 'arcanvas' );
 
