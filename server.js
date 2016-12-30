@@ -253,7 +253,7 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
 
 //var sessionId = socketServer.sessionid;
 var data = 'placeArObject';
-      socketServer.emit( 'placeArObject', data );
+      fooServer.emit( 'placeArObject', data );
 
   res.json( { message: 'Got placeArObject Post' } );
 } );
@@ -312,6 +312,22 @@ var webServer = app.listen( port );
 /*jshint -W079 */
 var socketServer = io.listen( webServer );
 /*jshint +W079 */
+
+fooServer = io.connect( '/' );
+
+fooServer.sockets.on( 'connection', function( client ) {
+
+  client.on( 'placeArObject', function( data, session ) {
+    //client.emit( 'utility', data );
+    console.log( 'client.on placeArObject');
+    client.broadcast.emit( 'placeArObject', data );
+  } );
+} );
+
+
+
+
+
 
 socketServer.set( 'log level', 1 );
 
