@@ -252,8 +252,7 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
 
 //var sessionId = socketServer.sessionid;
-var data = 'placeArObject';
-      fooServer.emit( 'placeArObject', data );
+foo.sockets.emit( 'placeArObject', req.body );
 
   res.json( { message: 'Got placeArObject Post' } );
 } );
@@ -313,16 +312,16 @@ var webServer = app.listen( port );
 var socketServer = io.listen( webServer );
 /*jshint +W079 */
 
-fooServer = io.connect( '/' );
+foo = require( 'socket.io').listen( app );
 
-fooServer.sockets.on( 'connection', function( client ) {
-
-  client.on( 'placeArObject', function( data, session ) {
-    //client.emit( 'utility', data );
-    console.log( 'client.on placeArObject');
-    client.broadcast.emit( 'placeArObject', data );
-  } );
-} );
+//fooServer.sockets.on( 'connection', function( client ) {
+//
+//  client.on( 'placeArObject', function( data, session ) {
+//    //client.emit( 'utility', data );
+//    console.log( 'client.on placeArObject');
+//    client.broadcast.emit( 'placeArObject', data );
+//  } );
+//} );
 
 
 
