@@ -252,6 +252,7 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
 
 var sessionId = socketServer.sessionid;
+var data = 'placeArObject';
       socketServer.emit( 'placeArObject', data, sessionId );
 
   res.json( { message: 'Got placeArObject Post' } );
