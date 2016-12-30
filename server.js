@@ -162,7 +162,6 @@ app.get( '/logout', function( req, res ) {
 
 //Check the password to prevent unauthoried logouts
 app.post( '/logout', function( req, res ) {
-  //console.log( 'Posted data:' + JSON.stringify( req.body ) );
   if ( req.body.pw === password ) {
     if ( loggedIn === true ) {
       loggedIn = false;
@@ -237,9 +236,9 @@ app.get( '/api/users', function( req, res ) {
  //   res.json( { message: 'users from API' } );
 } );
 
-app.get( '/api/users/:lastName', function( req, res ) {
+app.get( '/api/users/:lastName/users:org', function( req, res ) {
         if ( req.params.lastName ) {
-        User.findOne( { lastName: req.params.lastName },
+        User.findOne( { lastName: req.params.lastName, org: req.params.ord },
          function( err, docs ) {
             if ( err ) {
                 throw Error;
