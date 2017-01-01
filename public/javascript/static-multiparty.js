@@ -16,7 +16,7 @@ var isIotGrabOn = false;
 socketServer = io.connect( '/' );
 /*jshint +W020 */
 
-fooServer = iofoo.connect( '/' );
+fooServer = io.connect( '/' );
 
 var uiStructure = {};
 
