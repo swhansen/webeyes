@@ -250,9 +250,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
-
-  socketServer.emit( 'placeArObject' );
-
+socketServer.emit( 'placeArObject');
   res.json( { message: 'Got placeArObject Post' } );
 } );
 
@@ -320,7 +318,7 @@ socketServer.sockets.on( 'connection', function( client ) {
   client.on( 'placeArObject', function( data, session ) {
     //client.emit( 'utility', data );
     console.log( 'client.on placeArObject');
-    client.broadcast.emit( 'placeArObject', data );
+    client.broadcast.emit( 'placeArObject' );
   } );
 
   client.on( 'arDynamicLoadModel', function( data, session ) {
