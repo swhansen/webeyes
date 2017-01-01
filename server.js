@@ -310,7 +310,7 @@ var socketServer = io.listen( webServer );
 /*jshint +W079 */
 
 
-var iofoo = io.listen( webserver );
+var iofoo = io.listen( webServer );
 
 iofoo.on( 'connection', (socket) => {
   console.log('a user connected');
