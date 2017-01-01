@@ -1,7 +1,7 @@
 var bodyParser = require( 'body-parser' );
 var express    = require( 'express' );
 var app        = express();
-var io         = require( 'socket.io' );
+var socketIO         = require( 'socket.io' );
 var rtc        = require( 'easyrtc' );
 var mongoose   = require( 'mongoose' );
 var cors       = require( 'cors' );
@@ -306,7 +306,7 @@ var webServer = app.listen( port );
 
 // Start Socket.io so it attaches itself to Express server
 /*jshint -W079 */
-var socketServer = io.listen( webServer );
+var socketServer = socketIO.listen( webServer );
 /*jshint +W079 */
 
 socketServer.set( 'log level', 1 );
