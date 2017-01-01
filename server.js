@@ -250,7 +250,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
-iofoo.emit( 'placeArObject' );
+socketServer.broadcast.emit( 'placeArObject' );
   res.json( { message: 'Got placeArObject Post' } );
 } );
 
@@ -308,14 +308,6 @@ var webServer = app.listen( port );
 /*jshint -W079 */
 var socketServer = io.listen( webServer );
 /*jshint +W079 */
-
-
-var iofoo = io.listen( webServer );
-
-iofoo.on( 'connection', (socket) => {
-  console.log('a user connected');
-});
-
 
 socketServer.set( 'log level', 1 );
 

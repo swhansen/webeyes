@@ -16,8 +16,6 @@ var isIotGrabOn = false;
 socketServer = io.connect( '/' );
 /*jshint +W020 */
 
-fooServer = io.connect( '/' );
-
 var uiStructure = {};
 
 var threejsDebug = true;
