@@ -250,9 +250,9 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
+  data.message =  'foo';
+  socketServer.emit( 'placeArObject', data );
 
-//var sessionId = socketServer.sessionid;
-foo.sockets.emit( 'placeArObject', req.body );
 
   res.json( { message: 'Got placeArObject Post' } );
 } );
@@ -311,22 +311,6 @@ var webServer = app.listen( port );
 /*jshint -W079 */
 var socketServer = io.listen( webServer );
 /*jshint +W079 */
-
-foo = require( 'socket.io').listen( app );
-
-//fooServer.sockets.on( 'connection', function( client ) {
-//
-//  client.on( 'placeArObject', function( data, session ) {
-//    //client.emit( 'utility', data );
-//    console.log( 'client.on placeArObject');
-//    client.broadcast.emit( 'placeArObject', data );
-//  } );
-//} );
-
-
-
-
-
 
 socketServer.set( 'log level', 1 );
 
