@@ -250,7 +250,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
-iofoo.emit( 'placeArObject', { 'foo' } );
+iofoo.emit( 'placeArObject' );
   res.json( { message: 'Got placeArObject Post' } );
 } );
 
