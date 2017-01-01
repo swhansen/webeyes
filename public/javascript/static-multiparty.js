@@ -45,9 +45,6 @@ var userContext = {
   dimensionalLayers: []
 };
 
-socketServer.on( 'placeArObject', function( data ) {
-  console.log( 'recieved placeArObject');
-  } );
 
 function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {

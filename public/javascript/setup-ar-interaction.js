@@ -5,7 +5,7 @@ function setupArInteractionEvents() {
 //  - set the cameraDriver based on AR/VR and focus/peer
 //
 
-socketServer.on( 'placeArObject', function() ) {
+socketServer.on( 'placeArObject', function( data ) ) {
   console.log( 'recieved placeArObject');
   } );
 
