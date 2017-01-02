@@ -313,7 +313,7 @@ socketServer.set( 'log level', 1 );
 
 // "Bus" Communication
 
-socketServer.sockets.on( 'connection', function( client ) {
+socketServer.on( 'connection', function( client ) {
 
   client.on( 'arDynamicLoadModel', function( data, session ) {
     //client.emit( 'utility', data );
