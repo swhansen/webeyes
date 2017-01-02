@@ -250,6 +250,20 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
+
+socketServer.on( "connection", function( socket ) {
+  var tweet = { user: "nodesource", text: "Hello, world!" };
+
+  var interval = setInterval(function () {
+        socket.emit( "placeArObject", tweet );
+    }, 1000);
+
+    socket.on("disconnect", function () {
+        clearInterval(interval);
+    } );
+} );
+
+
 socketServer.emit( 'placeArObject' );
   res.json( { message: 'Got placeArObject Post' } );
 } );
