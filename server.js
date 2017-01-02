@@ -250,6 +250,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
+  res.json( { message: 'got it' } );
 
 socketServer.on( "connection", function( socket ) {
   var tweet = { user: "nodesource", text: "Hello, world!" };
