@@ -79,7 +79,7 @@ socketServer.on( 'roomnamerequest', function( data ) {
 } );
 
 socketServer.on( 'placeArObject', function( data ) {
-  console.log( 'Test Msg at static-multiparty recieved on placeArObject' );
+  console.log( 'Test Msg at static-multiparty recieved on placeArObject', data );
   } );
 
   var sessionId = socketServer.sessionid;
