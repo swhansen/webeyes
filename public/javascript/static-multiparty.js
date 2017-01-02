@@ -78,6 +78,10 @@ socketServer.on( 'roomnamerequest', function( data ) {
   updateRoom( data );
 } );
 
+socketServer.on( 'placeArObject', function( data ) {
+  console.log( 'recieved placeArObject' );
+  } );
+
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
 
