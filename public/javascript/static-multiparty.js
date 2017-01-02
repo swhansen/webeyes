@@ -16,10 +16,6 @@ var isIotGrabOn = false;
 socketServer = io.connect( '/' );
 /*jshint +W020 */
 
-socketServer.on( 'placeArObject', function () {
-  console.log( 'recieved placeArObject');
-  } );
-
 var uiStructure = {};
 
 var threejsDebug = true;

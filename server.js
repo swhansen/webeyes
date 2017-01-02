@@ -250,7 +250,9 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
-  socketServer.emit( 'placeArObject' );
+  var sessionId = socketServer.sessionid;
+  var data = 'foo'
+  socketServer.emit( 'placeArObject', data, sessionId );
   res.json( { message: 'got it' } );
 
 } );
