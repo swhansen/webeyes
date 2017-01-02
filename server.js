@@ -250,10 +250,11 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
+  var sessionId = socketServer.sessionid;
   var data = {};
   data.event = 'place';
   data.object = 'cube';
-  socketServer.sockets.emit( 'placeArObject' );
+  socketServer.sockets.emit( 'placeArObject', data, sessionId );
   res.json( { message: 'placeArObject invoked' } );
 
 } );
