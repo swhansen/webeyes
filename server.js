@@ -263,9 +263,6 @@ socketServer.on( "connection", function( socket ) {
     } );
 } );
 
-
-socketServer.emit( 'placeArObject' );
-  res.json( { message: 'Got placeArObject Post' } );
 } );
 
 //
