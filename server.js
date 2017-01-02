@@ -256,7 +256,7 @@ socketServer.on( "connection", function( socket ) {
   var tweet = { user: "nodesource", text: "Hello, world!" };
 
   var interval = setInterval(function () {
-        socket.emit( "placeArObject", tweet );
+        socket.broadcast.emit( "placeArObject", tweet );
     }, 1000);
 
     socket.on("disconnect", function () {
