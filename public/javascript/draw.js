@@ -110,9 +110,6 @@ function receiveLineFromClient( data ) {
 
 // socket.io communication
 
-socketServer.on( 'placeArObject', function( data ) {
-  console.log( 'recieved placeArObject' );
-  } );
 
 function emitDraw( data ) {
   var sessionId = socketServer.sessionid;

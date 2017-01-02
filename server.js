@@ -250,9 +250,11 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
-
-  socketServer.sockets.emit( 'placeArObject', { msg: 'foo'} );
-  res.json( { message: 'got it' } );
+  var data;
+  data.event = 'place';
+  data.object = 'cube'
+  socketServer.sockets.emit( 'placeArObject', data);
+  res.json( { message: 'placeArObject invoked' } );
 
 } );
 
