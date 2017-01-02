@@ -250,7 +250,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
 
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
-socketIO.emit( 'placeArObject' );
+socketServer.emit( 'placeArObject' );
   res.json( { message: 'Got placeArObject Post' } );
 } );
 
@@ -312,6 +312,7 @@ var socketServer = socketIO.listen( webServer );
 socketServer.set( 'log level', 1 );
 
 // "Bus" Communication
+//socketServer.sockets.on( 'connection', function( client ) {
 
 socketServer.on( 'connection', function( client ) {
 
