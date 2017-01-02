@@ -253,7 +253,7 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
   var data = {};
   data.event = 'place';
   data.object = 'cube';
-  socketServer.sockets.broadcast.emit( 'placeArObject', data );
+  socketServer.sockets.emit( 'placeArObject' );
   res.json( { message: 'placeArObject invoked' } );
 
 } );
