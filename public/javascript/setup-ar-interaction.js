@@ -6,7 +6,7 @@ function setupArInteractionEvents() {
 //
 
 socketServer.on( 'placeArObject', function( data ) {
-  console.log( 'recieved placeArObject' );
+  console.log( 'Test msg at setup-ar-interaction: recieved on placeArObject', data.event, data.object );
   } );
 
 var arCanvas = document.getElementById( 'arcanvaspane' );

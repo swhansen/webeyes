@@ -79,7 +79,7 @@ socketServer.on( 'roomnamerequest', function( data ) {
 } );
 
 socketServer.on( 'placeArObject', function( data ) {
-  console.log( 'Test Msg at static-multiparty recieved on placeArObject', data.event );
+  console.log( 'Test msg at static-multiparty recieved on placeArObject', data.event, data.object );
   } );
 
   var sessionId = socketServer.sessionid;
@@ -990,7 +990,7 @@ var _c = 0;
 
 var updateDegree = function( e ) {
     _e = e;
-}
+};
 
 window.addEventListener( 'deviceorientation', updateDegree, false );
 
