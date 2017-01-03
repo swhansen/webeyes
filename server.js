@@ -1,14 +1,14 @@
-var bodyParser = require( 'body-parser' );
-var express    = require( 'express' );
-var app        = express();
-var socketIO         = require( 'socket.io' );
-var rtc        = require( 'easyrtc' );
-var mongoose   = require( 'mongoose' );
-var cors       = require( 'cors' );
-var http      = require( 'http' );
-var bson      = require ( 'bson' );
+var bodyParser  = require( 'body-parser' );
+var express     = require( 'express' );
+var app         = express();
+var socketIO    = require( 'socket.io' );
+var rtc         = require( 'easyrtc' );
+var mongoose    = require( 'mongoose' );
+var cors        = require( 'cors' );
+var http        = require( 'http' );
+var bson        = require ( 'bson' );
 
-var User = require( './public/models/users' );
+var User        = require( './public/models/users' );
 
 var clients    = [];
 var linecolors = [ 'rgba(255, 0, 0, 1)',
@@ -251,9 +251,11 @@ app.get( '/api/users/:lastName', function( req, res ) {
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
   var sessionId = socketServer.sessionid;
+  var object = req.param( ' object' );
+  var locX = req.param( 'locX' );
   var data = {};
-  data.event = 'place';
-  data.object = 'cube';
+  data.object = object;
+  data.locX = locX;
   socketServer.sockets.emit( 'placeArObject', data, sessionId );
   res.json( { message: 'placeArObject invoked' } );
 } );
