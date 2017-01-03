@@ -257,7 +257,7 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
   data.object = object;
   data.locX = locX;
   socketServer.sockets.emit( 'placeArObject', data, sessionId );
-  res.json( { message: 'placeArObject invoked' } );
+  res.json( { message: 'placeArObject invoked' + object + locX } );
 } );
 
 //
