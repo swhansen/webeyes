@@ -251,7 +251,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
   var sessionId = socketServer.sessionid;
-  var object = req.param( ' object' );
+  var object = req.param( 'object' );
   var locX = req.param( 'locX' );
   var data = {};
   data.object = object;
