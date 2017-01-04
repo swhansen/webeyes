@@ -8,6 +8,8 @@ var cors        = require( 'cors' );
 var http        = require( 'http' );
 var bson        = require ( 'bson' );
 
+// Mongoose Schemas
+
 var User        = require( './public/models/users' );
 
 var clients    = [];
@@ -63,15 +65,6 @@ mongoose.connect( mongoUriString, function( err, res ) {
   console.log ( 'Succeeded connecting to: ' + mongoUriString );
   }
 } );
-
-//var Schema = mongoose.Schema;
-//  var userSchema = new Schema( {
-//    firstName:String,
-//    lastName:String,
-//    email: String
-//  } );
-//
-//  var Users = mongoose.model( 'users', userSchema );
 
 // test for tests....
 app.use( function( req, res, next ) {
@@ -226,12 +219,10 @@ app.get( '/api', function( req, res ) {
 app.get( '/api/users', function( req, res ) {
 
   var queryObject = {};
-    for (var key in req.query) {
-        queryObject[key] = req.query[key];
+    for ( var key in req.query ) {
+        queryObject[ key ] = req.query[ key ];
     }
-
-    // find the users with the filter applied.
-    User.find(queryObject, function( err, docs ) {
+    User.find( queryObject, function( err, docs ) {
             if ( err ) {
                 throw Error;
             }
@@ -239,18 +230,6 @@ app.get( '/api/users', function( req, res ) {
         } );
     }
 );
-
-
-//  var query = User.find( {} ).limit( 10 );
-//  query.exec( function( err, docs ) {
-//        if ( err ) {
-//            throw Error;
-//        }
-//        res.json( { message: docs } );
-//    } );
-//
- //   res.json( { message: 'users from API' } );
-//} );
 
 app.get( '/api/users/:lastName', function( req, res ) {
         if ( req.params.lastName ) {
@@ -267,13 +246,16 @@ app.get( '/api/users/:lastName', function( req, res ) {
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
   var sessionId = socketServer.sessionid;
-  var object = req.body.object;
-  var locX = req.body.locX;
   var data = {};
-  data.object = object;
-  data.locX = locX;
+
+  data.object = req.body.object;
+  data.locX = req.body.locX;
+
+ // var data = {};
+ // data.object = object;
+ // data.locX = locX;
   socketServer.sockets.emit( 'placeArObject', data, sessionId );
-  res.json( { message: 'placeArObject invoked: ' + object + locX } );
+  res.json( { message: 'placeArObject invoked: ' + data.object + data.locX } );
 } );
 
 //
