@@ -194,24 +194,14 @@ app.get( '/video', function( req, res ) {
 //
 
 app.get( '/users', function( req, res ) {
-
-var queryObject = {};
-    for (var key in req.query) {
-        queryObject[key] = req.query[key];
-    }
-
-    // find the users with the filter applied.
-    User.find( queryObject, cb );
+  var query = User.find( {} ).limit( 10 );
+  query.exec( function( err, docs ) {
+        if ( err ) {
+            throw Error;
+        }
+        res.render( 'users', { users: docs } );
+    } );
 } );
-
-//  var query = User.find( {} ).limit( 10 );
-//  query.exec( function( err, docs ) {
-//        if ( err ) {
-//            throw Error;
-//        }
-//        res.render( 'users', { users: docs } );
-//    } );
-//} );
 
 app.get( '/users/:lastName', function( req, res ) {
         if ( req.params.lastName ) {
@@ -235,14 +225,30 @@ app.get( '/api', function( req, res ) {
 
 app.get( '/api/users', function( req, res ) {
 
-  var query = User.find( {} ).limit( 10 );
-  query.exec( function( err, docs ) {
-        if ( err ) {
-            throw Error;
-        }
-        res.json( { message: docs } );
-    } );
+  var queryObject = {};
+    for (var key in req.query) {
+        queryObject[key] = req.query[key];
+    }
 
+    // find the users with the filter applied.
+    User.find(queryObject, function( err, docs ) {
+            if ( err ) {
+                throw Error;
+            }
+            res.json( { message: docs } );
+        } );
+    }
+);
+
+
+//  var query = User.find( {} ).limit( 10 );
+//  query.exec( function( err, docs ) {
+//        if ( err ) {
+//            throw Error;
+//        }
+//        res.json( { message: docs } );
+//    } );
+//
  //   res.json( { message: 'users from API' } );
 } );
 
