@@ -194,14 +194,24 @@ app.get( '/video', function( req, res ) {
 //
 
 app.get( '/users', function( req, res ) {
-  var query = User.find( {} ).limit( 10 );
-  query.exec( function( err, docs ) {
-        if ( err ) {
-            throw Error;
-        }
-        res.render( 'users', { users: docs } );
-    } );
+
+var queryObject = {};
+    for (var key in req.query) {
+        queryObject[key] = req.query[key];
+    }
+
+    // find the users with the filter applied.
+    User.find( queryObject, cb );
 } );
+
+//  var query = User.find( {} ).limit( 10 );
+//  query.exec( function( err, docs ) {
+//        if ( err ) {
+//            throw Error;
+//        }
+//        res.render( 'users', { users: docs } );
+//    } );
+//} );
 
 app.get( '/users/:lastName', function( req, res ) {
         if ( req.params.lastName ) {
@@ -251,13 +261,13 @@ app.get( '/api/users/:lastName', function( req, res ) {
 app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
   var sessionId = socketServer.sessionid;
-  var object = req.body.object
+  var object = req.body.object;
   var locX = req.body.locX;
   var data = {};
   data.object = object;
   data.locX = locX;
   socketServer.sockets.emit( 'placeArObject', data, sessionId );
-  res.json( { message: 'placeArObject invoked' + object + locX } );
+  res.json( { message: 'placeArObject invoked: ' + object + locX } );
 } );
 
 //
