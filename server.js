@@ -250,7 +250,7 @@ app.get( '/api/users', function( req, res ) {
 //    } );
 //
  //   res.json( { message: 'users from API' } );
-} );
+//} );
 
 app.get( '/api/users/:lastName', function( req, res ) {
         if ( req.params.lastName ) {
