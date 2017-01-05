@@ -52,6 +52,7 @@ function useModeCode( modeCode ) {
     } );
 
     userContext.uistate = 'vr';
+    userContext.addDimensionalLayer( 'arcanvaspane') ;
 
     for ( button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
