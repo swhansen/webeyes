@@ -87,7 +87,7 @@ $( function() {
         arShareData.y = pos.y;
         arShareData.z = pos.z;
 
-    addNewArObjectToWorld( arShareData, 'ffff00' );
+    addNewArObjectToWorld( arShareData, '0xffff00' );
     return false;
     },
 
@@ -96,10 +96,10 @@ $( function() {
   }, 750 );
 
   function addNewArObjectToWorld( d, color ) {
-    var foo = '0x' + color;
- var c = new THREE.Color( '0x' + color );
-      console.log( 'addNewArObjectToWorld-color:', c );
-      var materialTorus1 = new THREE.MeshLambertMaterial( { color: c } );
+ //   var foo = '0x' + color;
+// var c = new THREE.Color( '0x' + color );
+      console.log( 'addNewArObjectToWorld-color:', color );
+      var materialTorus1 = new THREE.MeshLambertMaterial( { color: color } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
 
