@@ -207,6 +207,7 @@ app.get( '/users/:lastName', function( req, res ) {
 //
 // API
 //
+//  User Based API
 
 app.get( '/api', function( req, res ) {
     res.json( { message: 'Welcome to the WebEyes API!' } );
@@ -239,6 +240,10 @@ app.get( '/api/users/:lastName', function( req, res ) {
     }
 } );
 
+//
+//  AR/VR based API
+//
+
 app.post( '/api/ar/addNewArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
   var sessionId = socketServer.sessionid;
@@ -250,8 +255,12 @@ app.post( '/api/ar/addNewArObject', function( req, res, next ) {
   data.y = req.body.locY;
   data.z = req.body.locZ;
   socketServer.sockets.emit( 'addNewArObject', data, sessionId );
-  res.json( { message: 'placeArObject invoked: ' + data.x + ' ' + data.y + ' ' + data.z } );
+  res.json( { message: 'newArObject Created: ' + data.x + ' ' + data.y + ' ' + data.z } );
 } );
+
+//
+//  Ststem Based API
+//
 
 app.get( '/api/system/getDimensionalLayers', function( req, res ) {
   console.log( ' GET dimensionalLayers', dimensionalLayers );
