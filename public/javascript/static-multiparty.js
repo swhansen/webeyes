@@ -45,10 +45,10 @@ var userContext = {
   dimensionalLayers: []
 };
 
-
 function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
     this.dimensionalLayers.push( layer );
+    console.log( 'userContext:', userContext );
   }
 }
 
@@ -56,6 +56,7 @@ userContext.addDimensionalLayer( 'fullpage' );
 userContext.addDimensionalLayer( 'box0' );
 userContext.addDimensionalLayer( 'canvaspane' );
 userContext.addDimensionalLayer( 'textentryBox' );
+
 console.log( 'userContext:', userContext );
 
  $( '*' ).filter( function() {

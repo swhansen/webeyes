@@ -3,30 +3,51 @@
     "firstName": "Steve",
     "lastName": "Hansen",
     "email": "sw_hansen@obliquevision.org",
-    "org": "WebEyes"
+    "org": "WebEyes",
+    "phone": "978-123-456",
+    "useName": "",
+    "password": "",
+    "userStatus": ""
+
   },
   {
     "firstName": "Chuck",
     "lastName": "Andon",
     "email": "candon@yelco.com",
-    "org": "WebEyes"
+    "org": "WebEyes",
+    "phone": "978-123-456",
+    "useName": "",
+    "password": "",
+    "userStatus": ""
   },
   {
     "firstName": "Mo",
     "lastName": "Fine",
     "email": "mo@threes.com",
-    "org": "ThreeS"
+    "org": "ThreeS",
+    "phone": "978-123-456",
+    "useName": "",
+    "password": "",
+    "userStatus": ""
   },
   {
     "firstName": "Curly",
     "lastName": "Fine",
     "email": "curly@threes.com",
-    "org": "ThreeS"
+    "org": "ThreeS",
+    "phone": "978-123-456",
+    "useName": "",
+    "password": "",
+    "userStatus": ""
   },
   {
     "firstName": "Shemp",
     "lastName": "Fine",
     "email": "shemp@threes.com",
-    "org": "ThreeS"
+    "org": "ThreeS",
+    "phone": "978-123-456",
+    "useName": "",
+    "password": "",
+    "userStatus": ""
   }
 ]
