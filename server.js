@@ -18,7 +18,7 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                    'rgba(255, 115, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
 var room;
-var dimensionalLayers = [];
+var dimensionalLayers;
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
