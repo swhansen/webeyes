@@ -12,7 +12,7 @@ socketServer.on( 'addNewArObject', function( data ) {
     arShareData.y = data.y;
     arShareData.z = data.z;
 
-    addNewArObjectToWorld( arShareData );
+    addNewArObjectToWorld( arShareData, data.color );
 
   } );
 
@@ -121,6 +121,7 @@ $( function() {
       newArObj.x = d.x;
       newArObj.y = d.y;
       newArObj.z = d.z;
+      newArObj.color = color;
       newArObj.id = arUserCreatedObject.id;
       newArObj.createdBy = userContext.rtcId;
       newArObj.isSelectable = true;
