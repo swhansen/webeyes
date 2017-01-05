@@ -87,7 +87,7 @@ $( function() {
         arShareData.y = pos.y;
         arShareData.z = pos.z;
 
-    addNewArObjectToWorld( arShareData, 'ff6666' );
+    addNewArObjectToWorld( arShareData, 'ffff00' );
     return false;
     },
 
@@ -96,8 +96,7 @@ $( function() {
   }, 750 );
 
   function addNewArObjectToWorld( d, color ) {
-
-      var c = '0x' + color;
+ var c = new THREE.Color( '0x' + color );
       console.log( 'addNewArObjectToWorld-color:', c );
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: c } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
