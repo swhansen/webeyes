@@ -6,7 +6,7 @@ function setupArInteractionEvents() {
 //
 
 socketServer.on( 'addNewArObject', function( data ) {
-  console.log( 'Test msg at setup-ar-interaction: recieved on placeArObject', data.object, data.name );
+  console.log( 'Test msg at setup-ar-interaction: recieved on placeArObject', data. );
     arShareData.operation = 'newObject';
     arShareData.x = data.x;
     arShareData.y = data.y;
@@ -87,7 +87,7 @@ $( function() {
         arShareData.y = pos.y;
         arShareData.z = pos.z;
 
-    addNewArObjectToWorld( arShareData );
+    addNewArObjectToWorld( arShareData, 'FFFF00' );
     return false;
     },
 
@@ -95,8 +95,10 @@ $( function() {
       return false;
   }, 750 );
 
-  function addNewArObjectToWorld( d ) {
-      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+  function addNewArObjectToWorld( d, color ) {
+
+      var c = '0x+color';
+      var materialTorus1 = new THREE.MeshLambertMaterial( { color: c } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
 
