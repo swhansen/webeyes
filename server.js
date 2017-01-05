@@ -315,6 +315,11 @@ socketServer.set( 'log level', 1 );
 
 socketServer.on( 'connection', function( client ) {
 
+  client.on( 'dimensionalLayers', function( data, session ) {
+    dimensionalLayers === data;
+    console.log( 'dimensionalLayers updated', data );
+  } );
+
   client.on( 'arDynamicLoadModel', function( data, session ) {
     //client.emit( 'utility', data );
     client.broadcast.emit( 'arDynamicLoadModel', data );

@@ -49,7 +49,13 @@ function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
     this.dimensionalLayers.push( layer );
     console.log( 'userContext.dimensionalLayers:', this.dimensionalLayers );
+    emitDimensionalLayers( this.dimensionalLayers );
   }
+}
+
+function emitDimensionalLayers( data ) {
+  var sessionId = socketServer.sessionid;
+  socketServer.emit( 'dimensionalLayers', data, sessionId );
 }
 
 // the base Dimensional Layers
