@@ -250,7 +250,7 @@ app.post( '/api/ar/addNewArObject', function( req, res, next ) {
   data.y = req.body.locY;
   data.z = req.body.locZ;
   socketServer.sockets.emit( 'addNewArObject', data, sessionId );
-  res.json( { message: 'placeArObject invoked: ' + data.object + ' ' + data.name } );
+  res.json( { message: 'placeArObject invoked: ' + data.x + ' ' + data.y + ' ' + data.z } );
 } );
 
 app.get( '/api/system/getDimensionalLayers', function( req, res ) {
