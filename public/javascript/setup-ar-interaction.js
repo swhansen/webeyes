@@ -96,6 +96,7 @@ $( function() {
   }, 750 );
 
   function addNewArObjectToWorld( d, color ) {
+    var foo = '0x' + color;
  var c = new THREE.Color( '0x' + color );
       console.log( 'addNewArObjectToWorld-color:', c );
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: c } );
