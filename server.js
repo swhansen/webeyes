@@ -247,15 +247,18 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
   var sessionId = socketServer.sessionid;
   var data = {};
-
   data.object = req.body.object;
+  data.object = req.body.name;
+  data.object = req.body.color;
   data.locX = req.body.locX;
-
- // var data = {};
- // data.object = object;
- // data.locX = locX;
+  data.locY = req.body.locY;
+  data.locZ = req.body.locZ;
   socketServer.sockets.emit( 'placeArObject', data, sessionId );
-  res.json( { message: 'placeArObject invoked: ' + data.object + data.locX } );
+  socketServer.on( 'placeArObject', function( data, session) {
+console.log( 'back from server');
+
+  res.json( { message: 'placeArObject invoked: ' + data.object + ' ' +data.name } );
+} );
 } );
 
 //
