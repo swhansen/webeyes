@@ -253,7 +253,8 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
   res.json( { message: 'placeArObject invoked: ' + data.object + ' ' + data.name } );
 } );
 
-app.get( '/api/system/getDimensionalLayers', function ( req, res ) {
+app.get( '/api/system/getDimensionalLayers', function( req, res ) {
+  console.log( ' GET dimensionalLayers', dimensionalLayers );
   res.json( { message: dimensionalLayers } );
 } );
 
