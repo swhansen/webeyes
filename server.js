@@ -248,8 +248,8 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
   var sessionId = socketServer.sessionid;
   var data = {};
   data.object = req.body.object;
-  data.object = req.body.name;
-  data.object = req.body.color;
+  data.name = req.body.name;
+  data.color = req.body.color;
   data.locX = req.body.locX;
   data.locY = req.body.locY;
   data.locZ = req.body.locZ;
