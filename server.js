@@ -240,6 +240,21 @@ app.get( '/api/users/:lastName', function( req, res ) {
     }
 } );
 
+app.post( '/api/users', function( req, res ) {
+  var user = new User();
+  user.firstName = req.body.firstName;
+  user.lastName = req.body.lastName;
+  user.email = req.body.email;
+  user.org = req.body.org;
+
+  user.save( function( err ) {
+    if ( err ) {
+      res.send( err );
+    }
+    res.json( { message: 'user created' } );
+  } );
+} );
+
 //
 //  AR/VR based API
 //

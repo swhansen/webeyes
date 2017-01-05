@@ -27,7 +27,6 @@ function loadGeometry() {
     var cube2 = new THREE.Mesh( geometryCube2, material2 );
     cube2.position.set( -2.0, 0.0, -6.0 );
     cube2.rotateZ = 10.00;
-    cube2.position.set( -2.0, 0.0, -6.0 );
     cube2.name = 'cube2';
     cube2.userData.isSelectable = true;
     cube2.userData.isAnimated = false;
