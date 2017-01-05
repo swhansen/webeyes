@@ -239,17 +239,17 @@ app.get( '/api/users/:lastName', function( req, res ) {
     }
 } );
 
-app.post( '/api/ar/placeArObject', function( req, res, next ) {
+app.post( '/api/ar/addNewArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
   var sessionId = socketServer.sessionid;
   var data = {};
   data.object = req.body.object;
   data.name = req.body.name;
   data.color = req.body.color;
-  data.locX = req.body.locX;
-  data.locY = req.body.locY;
-  data.locZ = req.body.locZ;
-  socketServer.sockets.emit( 'placeArObject', data, sessionId );
+  data.x = req.body.locX;
+  data.y = req.body.locY;
+  data.z = req.body.locZ;
+  socketServer.sockets.emit( 'addNewArObject', data, sessionId );
   res.json( { message: 'placeArObject invoked: ' + data.object + ' ' + data.name } );
 } );
 
