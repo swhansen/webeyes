@@ -87,7 +87,7 @@ $( function() {
         arShareData.y = pos.y;
         arShareData.z = pos.z;
 
-    addNewArObjectToWorld( arShareData, '0xffff00' );
+    addNewArObjectToWorld( arShareData, 'red' );
     return false;
     },
 
