@@ -18,7 +18,7 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                    'rgba(255, 115, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
 var room;
-var dimensionalLayers;
+var dimensionalLayers = [];
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
@@ -321,7 +321,7 @@ socketServer.set( 'log level', 1 );
 socketServer.on( 'connection', function( client ) {
 
   client.on( 'updateDimensionalLayers', function( data, session ) {
-    dimensionalLayers === data;
+    dimensionalLayers = data;
     console.log( 'dimensionalLayers updated', data );
   } );
 
