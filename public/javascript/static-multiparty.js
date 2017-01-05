@@ -48,9 +48,11 @@ var userContext = {
 function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
     this.dimensionalLayers.push( layer );
-    console.log( 'userContext:', userContext );
+    console.log( 'userContext.dimensionalLayers:', this.dimensionalLayers );
   }
 }
+
+// the base Dimensional Layers
 
 userContext.addDimensionalLayer( 'fullpage' );
 userContext.addDimensionalLayer( 'box0' );

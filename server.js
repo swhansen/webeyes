@@ -18,6 +18,7 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                    'rgba(255, 115, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
 var room;
+var dimensionalLayers = [];
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
@@ -37,13 +38,8 @@ app.use( '/css', express.static( __dirname + '/easyrtc/css' ) );
 
 app.use( express.static( __dirname + '/public' ) );
 
-//app.use( '/css', express.static( __dirname + '/public/css' ) );
-//app.use( '/img', express.static( __dirname + '/public/img' ) );
-//app.use( '/javascript', express.static( __dirname + '/public/javascripts' ) );
-
 app.use( '/bower', express.static( __dirname + '/bower_components' ) );
 
-// Needed to parse form data(changed for express 4.x)
 app.use( bodyParser.urlencoded( { extended: false } ) );
 app.use( bodyParser.json() );
 
