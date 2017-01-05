@@ -55,7 +55,7 @@ function addDimensionalLayer( layer ) {
 
 function emitDimensionalLayers( data ) {
   var sessionId = socketServer.sessionid;
-  socketServer.emit( 'dimensionalLayers', data, sessionId );
+  socketServer.emit( 'updateDimensionalLayers', data, sessionId );
 }
 
 // the base Dimensional Layers

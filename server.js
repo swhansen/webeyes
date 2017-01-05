@@ -253,6 +253,10 @@ app.post( '/api/ar/placeArObject', function( req, res, next ) {
   res.json( { message: 'placeArObject invoked: ' + data.object + ' ' + data.name } );
 } );
 
+app.get( '/api/system/getDimensionalLayers', function ( res, req ) {
+  res.json( { message: dimensionalLayers } );
+} );
+
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
 //
@@ -315,7 +319,7 @@ socketServer.set( 'log level', 1 );
 
 socketServer.on( 'connection', function( client ) {
 
-  client.on( 'dimensionalLayers', function( data, session ) {
+  client.on( 'updateDimensionalLayers', function( data, session ) {
     dimensionalLayers === data;
     console.log( 'dimensionalLayers updated', data );
   } );
