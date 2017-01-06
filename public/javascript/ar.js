@@ -15,12 +15,17 @@ var mixer;
 // for API
 function getArWorldSummary() {
 
-  var sceneChildren = [];
-  var foo = scene.children.length;
+  var sceneChildArray = [];
+  var child = {};
 
-  for ( i = 0; i < foo; i++ ) {
+  for ( i = 0; i < scene.children.length; i++ ) {
     console.log( 'scene children:', scene.children[i].id, scene.children[i].type );
+    child.id = scene.children[i].id;
+    child.type = scene.children[i].type;
+
+ sceneChildArray.push( child ) ;
   }
+  console.log( 'child array:', sceneChildArray );
 }
 
 //
