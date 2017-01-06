@@ -262,13 +262,11 @@ app.post( '/api/users', function( req, res ) {
 app.delete( '/api/users/:user_id', function( req, res ) {
         User.remove( { _id: req.params.user_id },
              function( err, user ) {
-            if ( err )
+            if( err )
                 res.send( err );
-            res.json({ message: 'Successfully deleted' });
+            res.json( { message: 'Successfully deleted' } );
         } );
     } );
-
-
 
 //
 //  AR/VR based API

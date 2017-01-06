@@ -12,6 +12,17 @@ var lamp;
 var knot;
 var mixer;
 
+// for API
+function getArWorldSummary() {
+
+  var sceneChildren = [];
+  var foo = scene.children.length;
+
+  _.forEach( [ scene.children ], function( value, key ) {
+    console.log( 'scene.children:', key );
+  } );
+}
+
 //
 // ----------  Main AR/VR entry point --------------------------
 //

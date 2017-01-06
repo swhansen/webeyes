@@ -104,6 +104,8 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( sphereU );
   scene.add( sphereD );
 
+  getArWorldSummary();
+
   // Build the triggers to add ar elements (experimental)
 
   // IOT
