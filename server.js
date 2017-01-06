@@ -259,8 +259,8 @@ app.post( '/api/users', function( req, res ) {
   } );
 } );
 
-app.put( '/api/users/:user_id', function(req, res) {
-        user.remove( { _id: req.params.user_id },
+app.put( '/api/users/:user_id', function( req, res ) {
+        User.remove( { _id: req.params.user_id },
              function(err, user) {
             if ( err )
                 res.send( err );
