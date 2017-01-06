@@ -246,6 +246,9 @@ app.post( '/api/users', function( req, res ) {
   user.lastName = req.body.lastName;
   user.email = req.body.email;
   user.org = req.body.org;
+  user.org = req.body.password;
+  user.org = req.body.phone;
+  user.org = req.body.userStatus;
 
   user.save( function( err ) {
     if ( err ) {
