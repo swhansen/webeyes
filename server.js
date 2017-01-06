@@ -19,6 +19,7 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
 var room;
 var dimensionalLayers = [];
+var arScene = [];
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
@@ -262,14 +263,14 @@ app.post( '/api/users', function( req, res ) {
 app.delete( '/api/users/:user_id', function( req, res ) {
         User.remove( { _id: req.params.user_id },
              function( err, user ) {
-            if( err )
+            if ( err )
                 res.send( err );
             res.json( { message: 'Successfully deleted' } );
         } );
     } );
 
 //
-//  AR/VR based API
+//  AR/VR Based API
 //
 
 app.post( '/api/ar/addNewArObject', function( req, res, next ) {
