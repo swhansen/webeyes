@@ -19,7 +19,7 @@ function getArWorldSummary() {
   var foo = scene.children.length;
 
   for ( i = 0; i < foo; i++ ) {
-    console.log( 'scene children:', scene.children[i].is, scene.children[i].type );
+    console.log( 'scene children:', scene.children[i].id, scene.children[i].type );
   }
 }
 
