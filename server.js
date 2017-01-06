@@ -245,10 +245,11 @@ app.post( '/api/users', function( req, res ) {
   user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
   user.email = req.body.email;
+  user.userName = req.body.username;
   user.org = req.body.org;
-  user.org = req.body.password;
-  user.org = req.body.phone;
-  user.org = req.body.userStatus;
+  user.password = req.body.password;
+  user.phone = req.body.phone;
+  user.userStatus = req.body.userstatus;
 
   user.save( function( err ) {
     if ( err ) {

@@ -5,7 +5,7 @@
     "email": "sw_hansen@obliquevision.org",
     "org": "WebEyes",
     "phone": "978-123-456",
-    "useName": "",
+    "userName": "",
     "password": "",
     "userStatus": ""
 
@@ -16,7 +16,7 @@
     "email": "candon@yelco.com",
     "org": "WebEyes",
     "phone": "978-123-456",
-    "useName": "",
+    "userName": "",
     "password": "",
     "userStatus": ""
   },
@@ -26,8 +26,8 @@
     "email": "mo@threes.com",
     "org": "ThreeS",
     "phone": "978-123-456",
-    "useName": "",
-    "password": "",
+    "userName": "",
+    "password": "xx01232",
     "userStatus": ""
   },
   {
@@ -36,9 +36,9 @@
     "email": "curly@threes.com",
     "org": "ThreeS",
     "phone": "978-123-456",
-    "useName": "",
+    "userName": "curl",
     "password": "",
-    "userStatus": ""
+    "userStatus": "tier-1"
   },
   {
     "firstName": "Shemp",
@@ -46,8 +46,8 @@
     "email": "shemp@threes.com",
     "org": "ThreeS",
     "phone": "978-123-456",
-    "useName": "",
+    "userName": "she",
     "password": "",
-    "userStatus": ""
+    "userStatus": "free"
   }
 ]
