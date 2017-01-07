@@ -25,7 +25,6 @@ function getArWorldSummary() {
     child.id = scene.children[i].uuid;
     child.name = scene.children[i].name;
     child.position = scene.children[i].position;
-    child.position = scene.children[i].rotation;
     sceneChildren[i] = child;
   }
   var sessionId = socketServer.sessionid;
