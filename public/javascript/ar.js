@@ -22,8 +22,8 @@ function getArWorldSummary() {
   for ( i = 0; i < scene.children.length; i++ ) {
     var child = {};
     child.id = scene.children[i].id;
-    child.uuid = scene.children[i].uuid;
-    child.type = scene.children[i].type;
+    child.id = scene.children[i].uuid;
+    child.type = scene.children[i].geometry.type;
     child.name = scene.children[i].name;
     child.position = scene.children[i].position;
 
