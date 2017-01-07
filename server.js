@@ -369,18 +369,12 @@ socketServer.on( 'connection', function( client ) {
 
 // if rtcid does not  exists
 
-if ( _.findIndex( sessionUserContext, { 'rtcid': data.rtcid } ) === -1 ) {
+if ( _.findIndex( sessionUserContext, function( o ) { return o.rtcId == data.rtcId; } === -1 ) ) {
+  console.log( 'no match rtcid..so push:', data.rtcId );
   sessionUserContext.push( data );
 } else {
- sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcid': data.rtcid } ) ] = data;
+ sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } ) ] = data;
 }
-
-//  for ( i = 0; i < sessionUserContext.length; i++ ) {
-//    if ( sessionUserContext[i].rtcid === data.rtcid ) {
-//      sessionUserContext[i]  = data;
-//    } }
-//  for ( i = 0; i < sessionUserContext.length; i++ ) {
-
     console.log( 'updateSessionUserContext:', sessionUserContext );
   } );
 
