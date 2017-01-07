@@ -274,6 +274,7 @@ $( function() {
              return false;
          }
         userContext.arvrWorld = inputValue.toLowerCase();
+        emitSessionUserContext( userContext );
         swal.close();
         setArWorld();
     } );
@@ -331,6 +332,7 @@ $( function() {
                return false;
            }
           userContext.arvrWorld = inputValue.toLowerCase();
+          emitSessionUserContext( userContext );
           swal.close();
           setVrWorld();
     } );

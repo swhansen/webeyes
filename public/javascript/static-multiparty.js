@@ -727,8 +727,6 @@ function expandThumb( whichBox ) {
 
       emitMessage( modMessage );
       messageBar( modMessage );
-
-      emitSessionUserContext( userContext );
     }
 }
 
