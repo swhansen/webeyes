@@ -365,9 +365,9 @@ socketServer.set( 'log level', 1 );
 
 socketServer.on( 'connection', function( client ) {
 
-  client.on( 'updateUserContext', function( data, session ) {
+  client.on( 'updateSessionUserContext', function( data, session ) {
     sessionUserContext.push( data );
-    console.log( 'sessionUserContext:', sessionUserContext );
+    console.log( 'updateSessionUserContext:', sessionUserContext );
   } );
 
   client.on( 'updateDimensionalLayers', function( data, session ) {
