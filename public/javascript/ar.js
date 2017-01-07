@@ -17,9 +17,10 @@ var mixer;
 function getArWorldSummary() {
 
   var sceneChildren = [];
-  var child = {};
+ // var child = {};
 
   for ( i = 0; i < scene.children.length; i++ ) {
+    var child = {};
     child.id = scene.children[i].id;
     child.uuid = scene.children[i].uuid;
     child.type = scene.children[i].type;
@@ -28,7 +29,7 @@ function getArWorldSummary() {
 
     console.log( child.id );
 
-    sceneChildren.push( child ) ;
+    sceneChildren[i] = child;
   }
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'updateArObjects', sceneChildren, sessionId );

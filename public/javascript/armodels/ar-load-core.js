@@ -104,8 +104,6 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( sphereU );
   scene.add( sphereD );
 
-  getArWorldSummary();
-
   // Build the triggers to add ar elements (experimental)
 
   // IOT
@@ -145,6 +143,8 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   arTrigger4.userData.isSelectable = true;
   arTrigger4.visible = true;
   arSelectObjectArray.push( arTrigger4 );
+
+  getArWorldSummary();
 
   function arConnectionController() {
 
