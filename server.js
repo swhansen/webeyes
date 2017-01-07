@@ -366,12 +366,20 @@ socketServer.on( 'connection', function( client ) {
 
   client.on( 'updateSessionUserContext', function( data, session ) {
 
-  for ( i = 0; i < sessionUserContext.length; i++ ) {
-    if ( sessionUserContext[i].rtcid === data.rtcid ) {
-      sessionUserContext[i]  = data;
-    } else
-    sessionUserContext.push( data );
-    }
+// if it does not  exists
+
+if ( _.findIndex( sessionUserContext, { 'rtcid': data.rtcid } ) === -1 ) {
+  sessionUserContext.push( data );
+} else {
+ sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcid': data.rtcid} ) ] = data;
+}
+
+//  for ( i = 0; i < sessionUserContext.length; i++ ) {
+//    if ( sessionUserContext[i].rtcid === data.rtcid ) {
+//      sessionUserContext[i]  = data;
+//    } }
+//  for ( i = 0; i < sessionUserContext.length; i++ ) {
+
     console.log( 'updateSessionUserContext:', sessionUserContext );
   } );
 
