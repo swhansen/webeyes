@@ -1181,6 +1181,7 @@ console.log( 'Join Room userContext:', userContext );
    // First time through for all connections
 
        if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
+        console.log( 'connectionCount:', boxUsed[0], easyrtc.getConnectionCount() );
          userContext.isSessionInitiator = true;
          connectList.push( {
            rtcid: myId,
