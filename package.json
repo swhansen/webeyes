@@ -15,14 +15,16 @@
   "dependencies": {
     "body-parser": "*",
     "bower": "^1.4.1",
+    "bson": "*",
     "cors": "2.7.x",
     "easyrtc": "1.0.x",
     "express": "^4.x.x",
     "express-handlebars": "2.0.x",
+    "lodash": "^4.17.4",
     "mongoose": "*",
     "sendgrid": "1.9.x",
     "socket.io": "0.9.x",
-    "bson": "*"
+    "lodash": "*"
   },
   "devDependencies": {
     "assert": "^1.1.2",

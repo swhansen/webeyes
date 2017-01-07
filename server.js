@@ -6,7 +6,8 @@ var rtc         = require( 'easyrtc' );
 var mongoose    = require( 'mongoose' );
 var cors        = require( 'cors' );
 var http        = require( 'http' );
-var bson        = require ( 'bson' );
+var bson        = require( 'bson' );
+var _           = require( 'lodash' );
 
 // Mongoose Schemas
 
@@ -371,7 +372,7 @@ socketServer.on( 'connection', function( client ) {
 if ( _.findIndex( sessionUserContext, { 'rtcid': data.rtcid } ) === -1 ) {
   sessionUserContext.push( data );
 } else {
- sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcid': data.rtcid} ) ] = data;
+ sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcid': data.rtcid } ) ] = data;
 }
 
 //  for ( i = 0; i < sessionUserContext.length; i++ ) {
