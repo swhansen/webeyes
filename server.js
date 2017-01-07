@@ -20,6 +20,7 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
 var room;
 var dimensionalLayers = [];
 var arObjects = {};
+var sessionUserContext = [];
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
@@ -362,10 +363,15 @@ socketServer.set( 'log level', 1 );
 //socketServer.sockets.on( 'connection', function( client ) {
 
 socketServer.on( 'connection', function( client ) {
+  client.on( 'updateUserContext', function( data, session ) {
+    sessionUserContext.push( data );
+    console.log( 'sessionUserContext:', sessionUserContext );
+  } );
 
+
+socketServer.on( 'connection', function( client ) {
   client.on( 'updateDimensionalLayers', function( data, session ) {
     dimensionalLayers = data;
-    console.log( 'dimensionalLayers updated', data );
   } );
 
   client.on( 'updateArObjects', function( data, session ) {

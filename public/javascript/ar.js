@@ -22,7 +22,7 @@ function getArWorldSummary() {
   for ( i = 0; i < scene.children.length; i++ ) {
     child = {};
     child.id = scene.children[i].id;
-    child.id = scene.children[i].uuid;
+    child.uuid = scene.children[i].uuid;
     child.name = scene.children[i].name;
     child.visible = scene.children[i].visible;
     child.position = scene.children[i].position;
@@ -30,7 +30,6 @@ function getArWorldSummary() {
   }
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'updateArObjects', sceneChildren, sessionId );
-  console.log( 'child array:', sceneChildren );
 }
 
 //

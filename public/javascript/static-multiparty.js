@@ -58,6 +58,11 @@ function emitDimensionalLayers( data ) {
   socketServer.emit( 'updateDimensionalLayers', data, sessionId );
 }
 
+function emitSessionUserContext( data ) {
+  var sessionId = socketServer.sessionid;
+  socketServer.emit( 'sessionUserContext', data, sessionId );
+}
+
 // the base Dimensional Layers
 
 userContext.addDimensionalLayer( 'fullpage' );
@@ -144,7 +149,7 @@ function moveLayertoTop( layer ) {
 
 socketServer.on( 'userContext', function( data ) {
 
-if ( data.rtcId == 'all' ) {
+  if ( data.rtcId == 'all' ) {
     var p = data.param;
     userContext[ p ] = data.state;
 
@@ -1173,7 +1178,7 @@ console.log( 'Join Room userContext:', userContext );
 
        userContext.rtcId = myId;
 
-//     // First time through for all connections
+   // First time through for all connections
 
        if ( boxUsed[0] === true && easyrtc.getConnectionCount() === 0 ) {
          userContext.isSessionInitiator = true;
@@ -1183,6 +1188,7 @@ console.log( 'Join Room userContext:', userContext );
            avatar: 'avatar0'
          } );
        }
+       emitSessionUserContext( userContext );
      }
    );
 

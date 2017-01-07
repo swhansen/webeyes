@@ -72,6 +72,7 @@ if ( userContext.mobile === true ) {
 //
 
 var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    light.name = 'HemisphereLight';
     scene.add( light );
 
 // build the cardinal orientation points
