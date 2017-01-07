@@ -362,6 +362,7 @@ socketServer.set( 'log level', 1 );
 // "Bus" Communication
 //socketServer.sockets.on( 'connection', function( client ) {
 
+
 socketServer.on( 'connection', function( client ) {
 
   client.on( 'updateUserContext', function( data, session ) {
@@ -369,8 +370,6 @@ socketServer.on( 'connection', function( client ) {
     console.log( 'sessionUserContext:', sessionUserContext );
   } );
 
-
-socketServer.on( 'connection', function( client ) {
   client.on( 'updateDimensionalLayers', function( data, session ) {
     dimensionalLayers = data;
   } );
