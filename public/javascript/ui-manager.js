@@ -102,7 +102,6 @@ function getLayersZindexStatus() {
 
 $( function() {
 $( '#sticky-draw' ).click( function() {
-
     _.each( uiStructure.structure, function( fcn ) {
     $( fcn.sideBar ).fadeOut( 2 );
   } );

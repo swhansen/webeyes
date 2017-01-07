@@ -367,7 +367,7 @@ socketServer.on( 'connection', function( client ) {
 
   client.on( 'updateSessionUserContext', function( data, session ) {
 
-// if it does not  exists
+// if rtcid does not  exists
 
 if ( _.findIndex( sessionUserContext, { 'rtcid': data.rtcid } ) === -1 ) {
   sessionUserContext.push( data );

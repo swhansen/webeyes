@@ -70,7 +70,6 @@ userContext.addDimensionalLayer( 'box0' );
 userContext.addDimensionalLayer( 'canvaspane' );
 userContext.addDimensionalLayer( 'textentryBox' );
 
-console.log( 'userContext:', userContext );
 
  $( '*' ).filter( function() {
    return $( this ).css( 'z-index' ) >= 10;
@@ -728,6 +727,8 @@ function expandThumb( whichBox ) {
 
       emitMessage( modMessage );
       messageBar( modMessage );
+
+      emitSessionUserContext( userContext );
     }
 }
 
