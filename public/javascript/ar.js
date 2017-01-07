@@ -25,7 +25,7 @@ function getArWorldSummary() {
     child.type = scene.children[i].type;
     child.position = scene.children[i].position;
 
- sceneChildArray.push( child scene) ;
+ sceneChildArray.push( child ) ;
   }
   console.log( 'child array:', sceneChildArray );
 }
