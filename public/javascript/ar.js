@@ -19,7 +19,6 @@ function getArWorldSummary() {
   var sceneChildren = [];
   var child = {}
 
-
   for ( i = 0; i < scene.children.length; i++ ) {
     child = {};
     child.id = scene.children[i].id;

@@ -81,7 +81,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   var trigger2Mat = new THREE.MeshPhongMaterial( { color: 0xff6666 } );
   var trigger3Mat = new THREE.MeshPhongMaterial( { color: 0x009933 } );
   var trigger4Mat = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
-  var geometrySphere = new THREE.SphereGeometry( 0.1, 16, 16 );
+  var geometrySphere = new THREE.CircleGeometry( 0.1, 16 );
 
   sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
   sphereS = new THREE.Mesh( geometrySphere, cardinalMat );

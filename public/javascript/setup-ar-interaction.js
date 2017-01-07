@@ -127,6 +127,8 @@ $( function() {
       newArObj.objectType = 'bagel';
 
       emitArObject( newArObj );
+
+      getArWorldSummary();
     }
 
     function pushNewArObject( d ) {
