@@ -27,7 +27,6 @@ function setIotZone( iotCode ) {
 }
 
   function setHueIotDevice( data ) {
-
   if ( data.deviceId === 'all' ) {
     hueSetAllLightsXY( data.state, data.XY, data.bri );
     } else {

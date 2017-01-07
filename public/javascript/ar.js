@@ -13,17 +13,19 @@ var knot;
 var mixer;
 
 // for API
+
 function getArWorldSummary() {
 
   var sceneChildArray = [];
   var child = {};
 
   for ( i = 0; i < scene.children.length; i++ ) {
-    console.log( 'scene children:', scene.children[i].id, scene.children[i].type );
     child.id = scene.children[i].id;
+    child.uuid = scene.children[i].uuid;
     child.type = scene.children[i].type;
+    child.position = scene.children[i].position;
 
- sceneChildArray.push( child ) ;
+ sceneChildArray.push( child scene) ;
   }
   console.log( 'child array:', sceneChildArray );
 }
