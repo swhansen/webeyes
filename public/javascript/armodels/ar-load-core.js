@@ -91,11 +91,23 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   sphereD = new THREE.Mesh( geometrySphere, cardinalMat );
 
   sphereN.position.set( 0.0, 0.0, 6.0 );
+  sphereN.name = 'sphereN';
+
   sphereS.position.set( 0.0, 0.0, -6.0 );
+  sphereS.name = 'sphereS';
+
   sphereE.position.set( 6.0, 0.0, 0.0 );
+  sphereE.name = 'sphereE';
+
   sphereW.position.set( -6.0, 0.0, 0.0 );
+  sphereW.name = 'sphereW';
+
   sphereU.position.set( 0.0, 6.0, 0.0 );
+  sphereU.name = 'sphereU';
+
   sphereD.position.set( 0.0, -6.0, 0.0 );
+  sphereD.name = 'sphereD';
+
 
   scene.add( sphereN );
   scene.add( sphereS );
