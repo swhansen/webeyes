@@ -373,6 +373,7 @@ if ( _.findIndex( sessionUserContext, function( o ) { return o.rtcId == data.rtc
   console.log( 'no match rtcid..so push:', data.rtcId );
   sessionUserContext.push( data );
 } else {
+  console.log( 'match for rtcid', data.rtcId)
  sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } ) ] = data;
 }
     console.log( 'updateSessionUserContext:', sessionUserContext );
