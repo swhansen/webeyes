@@ -362,11 +362,16 @@ socketServer.set( 'log level', 1 );
 // "Bus" Communication
 //socketServer.sockets.on( 'connection', function( client ) {
 
-
 socketServer.on( 'connection', function( client ) {
 
   client.on( 'updateSessionUserContext', function( data, session ) {
+
+  for ( i = 0; i < sessionUserContext.length; i++ ) {
+    if ( sessionUserContext[i].rtcid === data.rtcid ) {
+      sessionUserContext[i]  = data;
+    } else
     sessionUserContext.push( data );
+    }
     console.log( 'updateSessionUserContext:', sessionUserContext );
   } );
 
