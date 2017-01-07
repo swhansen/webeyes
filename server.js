@@ -19,7 +19,7 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
 var room;
 var dimensionalLayers = [];
-var arObjects = [];
+var arObjects = {};
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
@@ -296,6 +296,11 @@ app.get( '/api/system/getDimensionalLayers', function( req, res ) {
   res.json( { message: dimensionalLayers } );
 } );
 
+app.get( '/api/system/getArObjects', function( req, res ) {
+  console.log( ' GET arObjects', dimensionalLayers );
+  res.json( { message: arObjects } );
+} );
+
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
 //
@@ -365,7 +370,7 @@ socketServer.on( 'connection', function( client ) {
 
   client.on( 'updateArObjects', function( data, session ) {
     arObjects = data;
-    console.log( 'AR Objects updated', data[2].uuid );
+    console.log( 'AR Objects updated', arObjects );
   } );
 
   client.on( 'arDynamicLoadModel', function( data, session ) {
