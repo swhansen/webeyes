@@ -363,6 +363,7 @@ socketServer.set( 'log level', 1 );
 //socketServer.sockets.on( 'connection', function( client ) {
 
 socketServer.on( 'connection', function( client ) {
+
   client.on( 'updateUserContext', function( data, session ) {
     sessionUserContext.push( data );
     console.log( 'sessionUserContext:', sessionUserContext );
