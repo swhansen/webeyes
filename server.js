@@ -365,7 +365,7 @@ socketServer.on( 'connection', function( client ) {
 
   client.on( 'updateArObjects', function( data, session ) {
     arObjects = data;
-    console.log( 'A Objects updated', data );
+    console.log( 'AR Objects updated', data[2].uuid );
   } );
 
   client.on( 'arDynamicLoadModel', function( data, session ) {
