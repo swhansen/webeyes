@@ -19,7 +19,7 @@ var linecolors = [ 'rgba(255, 0, 0, 1)',
                     'rgba(0, 0, 225, 1)' ];
 var room;
 var dimensionalLayers = [];
-var arScene = [];
+var arObjects = [];
 
 var mongoUriString =
   process.env.MONGOLAB_URI ||
@@ -361,6 +361,11 @@ socketServer.on( 'connection', function( client ) {
   client.on( 'updateDimensionalLayers', function( data, session ) {
     dimensionalLayers = data;
     console.log( 'dimensionalLayers updated', data );
+  } );
+
+  client.on( 'updateArObjects', function( data, session ) {
+    arObjects = data;
+    console.log( 'A Objects updated', data );
   } );
 
   client.on( 'arDynamicLoadModel', function( data, session ) {

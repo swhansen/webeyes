@@ -20,13 +20,15 @@ function getArWorldSummary() {
   var child = [];
 
   for ( i = 0; i < scene.children.length; i++ ) {
-    child[0] = scene.children[i].id;
-    child[1] = scene.children[i].uuid;
-    child[2] = scene.children[i].type;
-    child[3] = scene.children[i].position;
+    child.id = scene.children[i].id;
+    child.uuid = scene.children[i].uuid;
+    child.type = scene.children[i].type;
+    child.position = scene.children[i].position;
 
  sceneChildArray.push( child ) ;
   }
+  var sessionId = socketServer.sessionid;
+  socketServer.emit( 'updateArObjects', sceneChildArray, sessionId );
   console.log( 'child array:', sceneChildArray );
 }
 
