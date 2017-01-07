@@ -273,6 +273,11 @@ app.delete( '/api/users/:user_id', function( req, res ) {
 //  AR/VR Based API
 //
 
+app.get( '/api/ar/getArObjects', function( req, res ) {
+  console.log( ' GET arObjects', dimensionalLayers );
+  res.json( { message: arObjects } );
+} );
+
 app.post( '/api/ar/addNewArObject', function( req, res, next ) {
   console.log( ' got the placeArObject Post' );
   var sessionId = socketServer.sessionid;
@@ -288,17 +293,12 @@ app.post( '/api/ar/addNewArObject', function( req, res, next ) {
 } );
 
 //
-//  Ststem Based API
+//  System Based API
 //
 
 app.get( '/api/system/getDimensionalLayers', function( req, res ) {
   console.log( ' GET dimensionalLayers', dimensionalLayers );
   res.json( { message: dimensionalLayers } );
-} );
-
-app.get( '/api/system/getArObjects', function( req, res ) {
-  console.log( ' GET arObjects', dimensionalLayers );
-  res.json( { message: arObjects } );
 } );
 
 //
