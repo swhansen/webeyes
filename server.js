@@ -303,6 +303,11 @@ app.get( '/api/system/getDimensionalLayers', function( req, res ) {
   res.json( { message: dimensionalLayers } );
 } );
 
+app.get( '/api/system/getChannelUserContext', function( req, res ) {
+  console.log( ' GET userContext', sessionUserContext );
+  res.json( { message: sessionUserContext } );
+} );
+
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
 //
