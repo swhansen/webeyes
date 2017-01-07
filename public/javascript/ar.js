@@ -17,13 +17,13 @@ var mixer;
 function getArWorldSummary() {
 
   var sceneChildArray = [];
-  var child = {};
+  var child = [];
 
   for ( i = 0; i < scene.children.length; i++ ) {
-    child.id = scene.children[i].id;
-    child.uuid = scene.children[i].uuid;
-    child.type = scene.children[i].type;
-    child.position = scene.children[i].position;
+    child[0] = scene.children[i].id;
+    child[1] = scene.children[i].uuid;
+    child[2] = scene.children[i].type;
+    child[3] = scene.children[i].position;
 
  sceneChildArray.push( child ) ;
   }
