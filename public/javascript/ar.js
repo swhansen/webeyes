@@ -16,8 +16,8 @@ var mixer;
 
 function getArWorldSummary() {
 
-  var sceneChildArray = [];
-  var child = [];
+  var sceneChildren = [];
+  var child = {};
 
   for ( i = 0; i < scene.children.length; i++ ) {
     child.id = scene.children[i].id;
@@ -25,11 +25,11 @@ function getArWorldSummary() {
     child.type = scene.children[i].type;
     child.position = scene.children[i].position;
 
- sceneChildArray.push( child ) ;
+ sceneChildren.push( child ) ;
   }
   var sessionId = socketServer.sessionid;
-  socketServer.emit( 'updateArObjects', sceneChildArray, sessionId );
-  console.log( 'child array:', sceneChildArray );
+  socketServer.emit( 'updateArObjects', sceneChildren, sessionId );
+  console.log( 'child array:', sceneChildren );
 }
 
 //
