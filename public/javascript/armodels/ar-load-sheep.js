@@ -20,4 +20,6 @@ function loadSheep() {
      arSelectObjectArray.push( sheep );
     } );
 
+   getArWorldSummary();
+
  }

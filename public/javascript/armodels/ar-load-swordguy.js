@@ -52,5 +52,6 @@
          mixer.addAction( new THREE.AnimationAction( clipMorpher ) );
          mixer.addAction( new THREE.AnimationAction( clipBones ) );
        }
+       getArWorldSummary();
 
 }

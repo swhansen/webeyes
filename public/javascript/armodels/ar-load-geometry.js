@@ -32,4 +32,6 @@ function loadGeometry() {
     cube2.userData.isAnimated = false;
     arSelectObjectArray.push( cube2 );
     scene.add( cube2 );
+
+    getArWorldSummary();
 }

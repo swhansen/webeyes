@@ -23,12 +23,9 @@ function getArWorldSummary() {
     var child = {};
     child.id = scene.children[i].id;
     child.id = scene.children[i].uuid;
-    child.type = scene.children[i].geometry.type;
     child.name = scene.children[i].name;
     child.position = scene.children[i].position;
-
-    console.log( child.id );
-
+    child.position = scene.children[i].rotation;
     sceneChildren[i] = child;
   }
   var sessionId = socketServer.sessionid;
