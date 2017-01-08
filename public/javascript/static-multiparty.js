@@ -61,6 +61,7 @@ function emitDimensionalLayers( data ) {
 function emitSessionUserContext( data ) {
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'updateSessionUserContext', data, sessionId );
+  console.log( 'emit updateSessionUserContext:', data );
 }
 
 // the base Dimensional Layers
