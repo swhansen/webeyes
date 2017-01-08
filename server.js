@@ -378,7 +378,7 @@ var foo =  _.findIndex( sessionUserContext, function( o ) { return o.rtcId === d
 
 if ( foo === -1 ) {
 
-  console.log(' sessionUserContext:', sessionUserContext );
+  console.log( 'sessionUserContext:', sessionUserContext );
   console.log( 'no match rtcid..so push:', foo, data.rtcId );
   sessionUserContext.push( data );
 } else {
@@ -406,7 +406,7 @@ if ( foo === -1 ) {
 
   client.on( 'updateArObjects', function( data, session ) {
     arObjects = data;
-    console.log( 'AR Objects updated', arObjects );
+  //  console.log( 'AR Objects updated', arObjects );
   } );
 
   client.on( 'arDynamicLoadModel', function( data, session ) {
