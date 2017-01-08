@@ -370,35 +370,31 @@ socketServer.set( 'log level', 1 );
 
 socketServer.on( 'connection', function( client ) {
 
+    // maintain local record of channel participants userContect
+
   client.on( 'updateSessionUserContext', function( data, session ) {
 
-// if rtcid does not  exists
+    // if rtcid does not exists
 
-var foo =  _.findIndex( sessionUserContext, function( o ) { return o.rtcId == data.rtcId; } );
-
-if ( foo === -1 ) {
-
-  console.log( 'sessionUserContext:', sessionUserContext );
-  console.log( 'no match rtcid..so push:', foo, data.rtcId );
-  sessionUserContext.push( data );
-} else {
+  //var newUser =  _.findIndex( sessionUserContext, function( o ) { return o.rtcId == data.rtcId; } );
   var index = _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } );
 
-  console.log( 'match for rtcid...so splice and push', data.rtcId, 'index:', index );
-  if ( index > -1 ) {
-  sessionUserContext.splice( index, 1 );
-  sessionUserContext.push( data );
-}
+  if ( index === -1 ) {
 
- //sessionUserContext[ index ] = data;
-}
-    console.log( 'updateSessionUserContext:', sessionUserContext );
+    console.log( 'no match rtcid..so push:', index, data.rtcId );
+
+    sessionUserContext.push( data );
+    } else {
+
+      // update the element with new userContext
+
+      //console.log( 'match for rtcid...so splice and push', data.rtcId, 'index:', index );
+    if ( index > -1 ) {
+      sessionUserContext.splice( index, 1 );
+      sessionUserContext.push( data );
+      }
+    }
   } );
-
-
-
-
-
 
   client.on( 'updateDimensionalLayers', function( data, session ) {
     dimensionalLayers = data;

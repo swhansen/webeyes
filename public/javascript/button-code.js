@@ -23,8 +23,8 @@ function useModeCode( modeCode ) {
     setPeerUserContext( 'all', 'modMeState', false );
 
     userContext.modMeState = true;
+    emitSessionUserContext( userContext );
 
-    userContext.modMeState = true;
     $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
       uiStructure = data;
       } );
@@ -87,6 +87,7 @@ function useModeCode( modeCode ) {
 
       userContext.modMeState = true;
       userContext.participantState = 'focus';
+      emitSessionUserContext( userContext );
 
       $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
           uiStructure = data;

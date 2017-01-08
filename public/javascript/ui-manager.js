@@ -288,6 +288,7 @@ function setArWorld() {
       userContext.modMeState = true;
       userContext.uiState = 'ar';
       userContext.mode = 'ar';
+      emitSessionUserContext( userContext );
 
       setPeerUserContext( 'all', 'mode', 'ar' );
       setPeerUserContext( 'all', 'participantState', 'peer' );
@@ -351,6 +352,7 @@ function setVrWorld() {
       setPeerUserContext( 'all', 'mode', 'vr' );
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
+      emitSessionUserContext( userContext );
 
 // set a parameter to load specific World
 
