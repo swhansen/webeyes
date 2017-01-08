@@ -51,7 +51,7 @@ function useModeCode( modeCode ) {
       uiStructure = data;
     } );
 
-    userContext.uistate = 'vr';
+    userContext.uiState = 'vr';
     userContext.addDimensionalLayer( 'arcanvaspane') ;
     emitSessionUserContext( userContext );
 
