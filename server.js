@@ -385,8 +385,10 @@ if ( foo === -1 ) {
   var index = sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } ) ];
 
   console.log( 'match for rtcid...so splice and push', data.rtcId , 'index:', index );
-  sessionUserContext.splice( index, -1 );
+  if( index > -1 ) {
+  sessionUserContext.splice( index, 1 );
   sessionUserContext.push( data );
+}
 
  //sessionUserContext[ index ] = data;
 }
