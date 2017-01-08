@@ -384,11 +384,19 @@ if ( foo === -1 ) {
 } else {
   var index = sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } ) ];
 
-  console.log( 'match for rtcid...so replace', data.rtcId , 'index:', index );
- sessionUserContext[ index ] = data;
+  console.log( 'match for rtcid...so splice and push', data.rtcId , 'index:', index );
+  sessionUserContext.splice( index, -1 );
+  sessionUserContext.push( data );
+
+ //sessionUserContext[ index ] = data;
 }
     console.log( 'updateSessionUserContext:', sessionUserContext );
   } );
+
+
+
+
+
 
   client.on( 'updateDimensionalLayers', function( data, session ) {
     dimensionalLayers = data;
