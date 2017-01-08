@@ -374,7 +374,7 @@ socketServer.on( 'connection', function( client ) {
 
 // if rtcid does not  exists
 
-var foo =  _.findIndex( sessionUserContext, function( o ) { return o.rtcId === data.rtcId; } );
+var foo =  _.findIndex( sessionUserContext, function( o ) { return o.rtcId == data.rtcId; } );
 
 if ( foo === -1 ) {
 
@@ -382,9 +382,9 @@ if ( foo === -1 ) {
   console.log( 'no match rtcid..so push:', foo, data.rtcId );
   sessionUserContext.push( data );
 } else {
-  var index = sessionUserContext[ _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } ) ];
+  var index = _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } );
 
-  console.log( 'match for rtcid...so splice and push', data.rtcId , 'index:', index );
+  console.log( 'match for rtcid...so splice and push', data.rtcId, 'index:', index );
   if ( index > -1 ) {
   sessionUserContext.splice( index, 1 );
   sessionUserContext.push( data );
