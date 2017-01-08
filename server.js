@@ -304,7 +304,7 @@ app.get( '/api/system/getDimensionalLayers', function( req, res ) {
 } );
 
 app.get( '/api/system/getChannelUserContext', function( req, res ) {
-  console.log( ' GET userContext', sessionUserContext );
+  // console.log( ' GET userContext', sessionUserContext );
   res.json( { message: sessionUserContext } );
 } );
 
@@ -374,7 +374,7 @@ socketServer.on( 'connection', function( client ) {
 
 // if rtcid does not  exists
 
-var foo =  _.findIndex( sessionUserContext, function( o ) { return o.rtcId === data.rtcId; });
+var foo =  _.findIndex( sessionUserContext, function( o ) { return o.rtcId === data.rtcId; } );
 
 if ( foo === -1 ) {
 
