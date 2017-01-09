@@ -216,7 +216,9 @@ app.get( '/api', function( req, res ) {
     res.json( { message: 'Welcome to the WebEyes API!' } );
 } );
 
-app.get( '/api/users', function( req, res ) {
+//  User Based API
+
+app.get( '/api/user', function( req, res ) {
 
   var queryObject = {};
     for ( var key in req.query ) {
@@ -231,7 +233,7 @@ app.get( '/api/users', function( req, res ) {
     }
 );
 
-app.get( '/api/users/:lastName', function( req, res ) {
+app.get( '/api/user/:lastName', function( req, res ) {
         if ( req.params.lastName ) {
         User.findOne( { lastName: req.params.lastName },
          function( err, docs ) {
@@ -243,7 +245,7 @@ app.get( '/api/users/:lastName', function( req, res ) {
     }
 } );
 
-app.post( '/api/users', function( req, res ) {
+app.post( '/api/user', function( req, res ) {
   var user = new User();
   user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
@@ -262,7 +264,7 @@ app.post( '/api/users', function( req, res ) {
   } );
 } );
 
-app.delete( '/api/users/:user_id', function( req, res ) {
+app.delete( '/api/user/:user_id', function( req, res ) {
         User.remove( { _id: req.params.user_id },
              function( err, user ) {
             if ( err )
@@ -303,7 +305,7 @@ app.get( '/api/system/getDimensionalLayers', function( req, res ) {
   res.json( { message: dimensionalLayers } );
 } );
 
-app.get( '/api/system/getChannelUsersContext', function( req, res ) {
+app.get( '/api/system/getChannelUserContext', function( req, res ) {
   // console.log( ' GET userContext', sessionUserContext );
   res.json( { message: sessionUserContext } );
 } );
