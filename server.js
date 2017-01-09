@@ -303,7 +303,7 @@ app.get( '/api/system/getDimensionalLayers', function( req, res ) {
   res.json( { message: dimensionalLayers } );
 } );
 
-app.get( '/api/system/getChannelUserContext', function( req, res ) {
+app.get( '/api/system/getChannelUsersContext', function( req, res ) {
   // console.log( ' GET userContext', sessionUserContext );
   res.json( { message: sessionUserContext } );
 } );
@@ -352,11 +352,7 @@ app.get( '/about', function( req, res ) {
 
 var port = process.env.PORT || 8080;
 
-// var webServer = app.listen(process.env.port || 8080);
-
 var webServer = app.listen( port );
-
-//console.log( 'Listening on port ' + port );
 
 // Start Socket.io so it attaches itself to Express server
 /*jshint -W079 */
@@ -366,34 +362,19 @@ var socketServer = socketIO.listen( webServer );
 socketServer.set( 'log level', 1 );
 
 // "Bus" Communication
-//socketServer.sockets.on( 'connection', function( client ) {
 
 socketServer.on( 'connection', function( client ) {
 
-    // maintain local record of channel participants userContect
-
   client.on( 'updateSessionUserContext', function( data, session ) {
-
-    // if rtcid does not exists
-
-  //var newUser =  _.findIndex( sessionUserContext, function( o ) { return o.rtcId == data.rtcId; } );
-  var index = _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } );
-
-  if ( index === -1 ) {
-
-    console.log( 'no match rtcid..so push:', index, data.rtcId );
-
-    sessionUserContext.push( data );
-    } else {
-
-      // update the element with new userContext
-
-      //console.log( 'match for rtcid...so splice and push', data.rtcId, 'index:', index );
-    if ( index > -1 ) {
-      sessionUserContext.splice( index, 1 );
-      sessionUserContext.push( data );
+    var index = _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } );
+      if ( index === -1 ) {
+        sessionUserContext.push( data );
+      } else {
+        if ( index > -1 ) {
+          sessionUserContext.splice( index, 1 );
+          sessionUserContext.push( data );
+        }
       }
-    }
   } );
 
   client.on( 'updateDimensionalLayers', function( data, session ) {
