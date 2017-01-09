@@ -29,6 +29,12 @@
 
 [Mongo](https://www.mongolab.com) deployed using mongolab
 
+## API
+
+We use [Swagger](http://swagger.io/) to develop, maintain and present our API
+
+https://app.swaggerhub.com/api/swhansen/WEG2RT/1.0.0
+
 ## Testing
 
 Grunt is used to tie the testing togather
