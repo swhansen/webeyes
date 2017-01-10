@@ -27,7 +27,7 @@
   border-radius: 125px 125px 0 0;
 }
 
-#layerradial {
+#layer-radial-menu {
   display: block;
   margin: 0 auto;
   overflow: hidden;
@@ -38,6 +38,7 @@
           transform: translateX(-50%);
   max-width: 600px;
   border-radius: 125px 125px 0 0;
+  z-index: 500;
 }
 
 #util-radial-menu {
