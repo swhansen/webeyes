@@ -27,6 +27,19 @@
   border-radius: 125px 125px 0 0;
 }
 
+#layerradial {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  position: fixed;
+  top: 200px;
+  left: 90%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  max-width: 600px;
+  border-radius: 125px 125px 0 0;
+}
+
 #util-radial-menu {
   display: block;
   margin: 0 auto;
