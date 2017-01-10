@@ -21,7 +21,9 @@
 
 ## Repository:
 
-    https://github.com/swhansen/webeyes.git
+    https://github.com/swhansen/webeyes
+
+    https://github.com/swhansen/webeyes-api
 
 ## Deploy:
 
@@ -31,7 +33,7 @@
 
 ## API
 
-We use [Swagger](http://swagger.io/) to develop, maintain and present our API
+We use [Swagger](http://swagger.io/) to develop, maintain and present our APIs
 
 https://app.swaggerhub.com/api/swhansen/WEG2RT/1.0.0
 

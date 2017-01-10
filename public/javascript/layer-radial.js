@@ -1,7 +1,7 @@
-var svg = document.getElementById('menu'),
+var svg = document.getElementById('layerMenu'),
     items = svg.querySelectorAll('.item'),
-    trigger = svg.getElementById('trigger'),
-    label = trigger.querySelectorAll('#label')[0],
+    trigger = svg.getElementById('layersTrigger'),
+    label = trigger.querySelectorAll('#layersLabel')[0],
     open = false;
 
     //first scale the elements down
