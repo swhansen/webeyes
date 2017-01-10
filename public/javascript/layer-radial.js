@@ -1,4 +1,4 @@
-var svg = document.getElementById('layerMenu'),
+var svg = document.getElementById('layer-radial-menu'),
     items = svg.querySelectorAll('.item'),
     trigger = svg.getElementById('layersTrigger'),
     label = trigger.querySelectorAll('#layersLabel')[0],
