@@ -1,7 +1,9 @@
-var svg = document.getElementById( 'layerRadialMenu' ),
+
+
+var svg = document.getElementById( 'radial-menu' ),
     items = svg.querySelectorAll( '.item' ),
     trigger = svg.getElementById( 'trigger' ),
-    label = trigger.querySelectorAll( '#layersLabel' )[0],
+    label = trigger.querySelectorAll( '#label' )[0],
     radialOpen = false;
 
     //first scale the elements down
