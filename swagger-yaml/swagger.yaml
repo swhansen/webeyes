@@ -1,0 +1,320 @@
+---
+swagger: "2.0"
+info:
+  description: "Core WebEyes API for basic demonstration purposes."
+  version: "1.0.0"
+  title: "WebEyes"
+  contact:
+    email: "sw_hansen@obliquvision.org"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/swhansen/WEG2RT/1.0.0"
+tags:
+- name: "user"
+  description: "User query and creation"
+- name: "ar"
+  description: "Queries and creation of AR objects"
+- name: "system"
+  description: "System level information"
+schemes:
+- "https"
+- "http"
+paths:
+  /api/ar/addNewArObject:
+    post:
+      tags:
+      - "ar"
+      summary: "Add a new object to an AR/VR Dimensional Layer"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Create an AR/VR object"
+        required: true
+        schema:
+          $ref: "#/definitions/NewArObject"
+      responses:
+        default:
+          description: "successful operation"
+  /api/ar/getArObjects:
+    get:
+      tags:
+      - "ar"
+      summary: "Retrieve AR/VR object for current channel"
+      description: " Summary of basic AR/VR object parameters"
+      operationId: "getArObjects"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ArObjects"
+        405:
+          description: "Invalid input"
+  /api/system/getChannelUserContext:
+    get:
+      tags:
+      - "system"
+      summary: "Get the userContext for Participants"
+      description: "Array of userContext objects for all channel pParticipants"
+      operationId: "findPetsByStatus"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/UserContext"
+        400:
+          description: "Invalid status value"
+  /api/system/getDimensionalLayers:
+    get:
+      tags:
+      - "system"
+      summary: "Retrieve the system level dimensional layers"
+      description: "Returns an array of current dimensional Layers"
+      operationId: "getDimensionalLayers"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/DimensionalLayers"
+        405:
+          description: "Invalid input"
+  /user:
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "Create a user."
+      operationId: "createUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+  /user/{username}:
+    get:
+      tags:
+      - "user"
+      summary: "Get user by user name"
+      description: ""
+      operationId: "getUserByName"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be fetched. Use user1 for testing. "
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        400:
+          description: "Invalid username supplied"
+        404:
+          description: "User not found"
+    put:
+      tags:
+      - "user"
+      summary: "Updated user"
+      description: "This can only be done by the logged in user."
+      operationId: "updateUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        400:
+          description: "Invalid user supplied"
+        404:
+          description: "User not found"
+    delete:
+      tags:
+      - "user"
+      summary: "Delete user"
+      description: "Delete a user by ID."
+      operationId: "deleteUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Invalid username supplied"
+        404:
+          description: "User not found"
+securityDefinitions:
+  webeyes_auth:
+    type: "oauth2"
+    authorizationUrl: "http://weg2rt.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:users: "modify your account"
+      read:user: "read your user"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  UserContext:
+    type: "object"
+    properties:
+      rtciId:
+        type: "string"
+        description: "unique rtcId of the Participant"
+      isSessionInitiator:
+        type: "boolean"
+      isLeap:
+        type: "boolean"
+      isIotHome:
+        type: "boolean"
+      modMeState:
+        type: "boolean"
+      participantState:
+        type: "string"
+      uiState:
+        type: "string"
+      mode:
+        type: "string"
+      arCapable:
+        type: "boolean"
+      geoLocation:
+        type: "boolean"
+      orientation:
+        type: "boolean"
+      mobile:
+        type: "boolean"
+      browserType:
+        type: "string"
+      browserVideoDevices:
+        type: "string"
+      room:
+        type: "string"
+      arvrWorld:
+        type: "string"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      userStatus:
+        type: "integer"
+        format: "int32"
+        description: "User Status"
+    xml:
+      name: "User"
+  NewArObject:
+    properties:
+      object:
+        type: "string"
+        enum:
+        - "cube"
+        - "sphere"
+        - "torus"
+      name:
+        type: "string"
+      color:
+        type: "string"
+      position:
+        type: "array"
+        items:
+          $ref: "#/definitions/ArObjectPos"
+  ArObjects:
+    properties:
+      id:
+        type: "string"
+      uuid:
+        type: "string"
+      name:
+        type: "string"
+      visible:
+        type: "string"
+      position:
+        type: "array"
+        items:
+          $ref: "#/definitions/ArObjectPos"
+  ArObjectPos:
+    properties:
+      posX:
+        type: "number"
+      posY:
+        type: "number"
+      posZ:
+        type: "number"
+  DimensionalLayers:
+    properties:
+      dimensionalLayer:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
