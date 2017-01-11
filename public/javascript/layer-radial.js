@@ -1,40 +1,40 @@
-var svg = document.getElementById('layer-radial-menu'),
-    items = svg.querySelectorAll('.item'),
-    trigger = svg.getElementById('layersTrigger'),
-    label = trigger.querySelectorAll('#layersLabel')[0],
-    open = false;
+var layerRadialSvg = document.getElementById('layer-radial-menu'),
+    layerRadialItems = layerRadialSvg.querySelectorAll('.layer-radial-item'),
+    layerRadialTrigger = layerRadialSvg.getElementById('layer-radial-trigger'),
+    layerRadialLabel = layerRadialTrigger.querySelectorAll('#layer-radial-label')[0],
+    layerRadialOpen = false;
 
     //first scale the elements down
-    TweenLite.set(items, {scale:0, visibility:"visible"});
-svg.style.pointerEvents = "none";
+    TweenLite.set( layerRadialItems, { scale:0, visibility:"visible" } );
+    layerRadialSvg.style.pointerEvents = "none";
 
     //set up event handler
-    trigger.addEventListener('click', toggleMenu, false);
+    layerRadialTrigger.addEventListener( 'click', toggleMenu, false );
 
     //toggle menu when trigger is clicked
 
-    function toggleMenu(event) {
-     if (!event) var event = window.event;
-    event.stopPropagation();
-    open = !open;
-    if (open) {
-        TweenMax.staggerTo(items, 0.7, {scale:1, ease:Elastic.easeOut}, 0.05);
-        label.innerHTML = "|";
-      svg.style.pointerEvents = "auto";
-    } else {
-        TweenMax.staggerTo(items, .3, {scale:0, ease:Back.easeIn}, 0.05);
-        label.innerHTML = "+";
-      svg.style.pointerEvents = "none";
-    }
+    function toggleMenu( event ) {
+     if ( !event ) var event = window.event;
+        event.stopPropagation();
+        layerRadialOpen = !layerRadialOpen;
+    if ( layerRadialOpen ) {
+        TweenMax.staggerTo( layerRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
+        layerRadialLabel.innerHTML = "|";
+        layerRadialSvg.style.pointerEvents = "auto";
+      } else {
+        TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
+        layerRadialLabel.innerHTML = "+";
+        layerRadialSvg.style.pointerEvents = "none";
+      }
     }
 
-svg.onclick = function (e) {
+layerRadialSvg.onclick = function( e ) {
     e.stopPropagation();
-}
+};
 //close the nav when document is clicked
 document.onclick = function () {
-    open = false;
-    TweenMax.staggerTo(items, .3, {scale:0, ease:Back.easeIn}, 0.05);
-        label.innerHTML = "+";
-    svg.style.pointerEvents = "none";
+    layerRadialOpen = false;
+    TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+    layerRadialLabel.innerHTML = "-";
+    layerRadialSvg.style.pointerEvents = "none";
 };
