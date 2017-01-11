@@ -29,7 +29,6 @@ var layerRadialSvg = document.getElementById('layer-radial-menu'),
     }
 
 
-};
 //close the nav when document is clicked
 document.onclick = function () {
     layerRadialOpen = false;
