@@ -28,8 +28,8 @@ var layerRadialSvg = document.getElementById( 'layer-radial-menu' ),
       }
     }
 
-
 //close the nav when document is clicked
+
 document.onclick = function() {
     layerRadialOpen = false;
     TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
