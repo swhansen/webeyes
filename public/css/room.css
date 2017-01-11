@@ -14,6 +14,13 @@
 .menu-trigger { fill: #EA2A55; pointer-events: auto;}
 .menu-trigger:hover { cursor: pointer; }
 
+
+.layer-radial-item {visibility: hidden;}
+.layer-radial-item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
+.layer-radial-item:hover .sector { fill: #b3b3ff; }
+.layer-radial-trigger { fill: #EA2A55; pointer-events: auto;}
+.layer-radial-trigger:hover { cursor: pointer; }
+
 #radial-menu {
   display: block;
   margin: 0 auto;
