@@ -1,12 +1,12 @@
-var layerRadialSvg = document.getElementById('layer-radial-menu'),
-    layerRadialItems = layerRadialSvg.querySelectorAll('.layer-radial-item'),
-    layerRadialTrigger = layerRadialSvg.getElementById('layer-radial-trigger'),
-    layerRadialLabel = layerRadialTrigger.querySelectorAll('#layer-radial-label')[0],
+var layerRadialSvg = document.getElementById( 'layer-radial-menu' ),
+    layerRadialItems = layerRadialSvg.querySelectorAll( '.layer-radial-item' ),
+    layerRadialTrigger = layerRadialSvg.getElementById( 'layer-radial-trigger' ),
+    layerRadialLabel = layerRadialTrigger.querySelectorAll( '#layer-radial-label' )[ 0 ],
     layerRadialOpen = false;
 
     //first scale the elements down
-    TweenLite.set( layerRadialItems, { scale:0, visibility:"visible" } );
-    layerRadialSvg.style.pointerEvents = "none";
+    TweenLite.set( layerRadialItems, { scale:0, visibility:'visible' } );
+    layerRadialSvg.style.pointerEvents = 'none';
 
     //set up event handler
     layerRadialTrigger.addEventListener( 'click', layerToggleMenu, false );
@@ -30,9 +30,9 @@ var layerRadialSvg = document.getElementById('layer-radial-menu'),
 
 
 //close the nav when document is clicked
-document.onclick = function () {
+document.onclick = function() {
     layerRadialOpen = false;
     TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-    layerRadialLabel.innerHTML = "-";
+    layerRadialLabel.innerHTML = "+";
     layerRadialSvg.style.pointerEvents = "none";
 };
