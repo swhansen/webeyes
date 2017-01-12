@@ -27,22 +27,14 @@
 .menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
 symbol{overflow:visible;}
 
-#context-radial-container{
-  z-index: 500;
-  position: fixed;
-  bottom: 350px;
-  right: 10px;
-  background-color: gray;
-  border-radius: 25px;
-    border: 2px solid gray;
-    padding: 4px;
-}
 
 #ar-radial-container {
   display: block;
   margin: 0 auto;
   overflow: hidden;
-
+  position: fixed;
+  top: 100px;
+  left: 97%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 
@@ -53,7 +45,9 @@ symbol{overflow:visible;}
   display: block;
   margin: 0 auto;
   overflow: hidden;
-
+  position: fixed;
+  top: 250px;
+  left: 97%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 
