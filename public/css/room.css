@@ -21,6 +21,12 @@
 .layer-radial-trigger { fill: #EA2A55; pointer-events: auto;}
 .layer-radial-trigger:hover { cursor: pointer; }
 
+.ar-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
+.ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
+.menu-trigger{fill:#EA2A55;pointer-events:auto;}
+.menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
+symbol{overflow:visible;}
+
 #radial-menu {
   display: block;
   margin: 0 auto;
@@ -33,6 +39,20 @@
   max-width: 600px;
   border-radius: 125px 125px 0 0;
 }
+
+#ar-radial-container {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  position: fixed;
+  top: 150px;
+  left: 90%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  max-width: 600px;
+  border-radius: 125px 125px 0 0;
+}
+
 
 #layer-radial-container {
   display: block;
