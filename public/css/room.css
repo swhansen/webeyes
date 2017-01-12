@@ -27,7 +27,9 @@
 .menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
 symbol{overflow:visible;}
 
-
+#context-radial-container{
+  z-index: 500;
+}
 
 #ar-radial-container {
   display: block;
@@ -35,7 +37,7 @@ symbol{overflow:visible;}
   overflow: hidden;
   position: fixed;
   top: 150px;
-  left: 90%;
+  left: 97%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   max-width: 600px;
@@ -54,9 +56,8 @@ symbol{overflow:visible;}
           transform: translateX(-50%);
   max-width: 600px;
   border-radius: 125px 125px 0 0;
-  z-index: 500;
 }
-
+ß
 #util-radial-menu {
   display: block;
   margin: 0 auto;
