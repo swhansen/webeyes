@@ -35,6 +35,7 @@ layerRadialSvg.onclick = function( e ) {
 //close the nav when document is clicked
 document.onclick = function () {
     layerRadialOpen = false;
+    arRadialOpen = false;
     TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
     layerRadialLabel.innerHTML = "L";
     layerRadialSvg.style.pointerEvents = "none";
