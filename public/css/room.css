@@ -28,9 +28,9 @@
 symbol{overflow:visible;}
 
 #context-radial-container{
-  z-index:500;
+  z-index: 500;
   position: fixed;
-  bottom: 250px;
+  bottom: 350px;
   right: 10px;
   background-color: gray;
   border-radius: 25px;
