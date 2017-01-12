@@ -28,7 +28,14 @@
 symbol{overflow:visible;}
 
 #context-radial-container{
-  z-index: 500;
+  z-index:200;
+  position: fixed;
+  bottom: 250px;
+  right: 10px;
+  background-color: gray;
+  border-radius: 25px;
+    border: 2px solid gray;
+    padding: 4px;
 }
 
 #ar-radial-container {
