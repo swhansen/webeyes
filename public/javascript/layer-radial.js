@@ -9,7 +9,7 @@ var layerRadialSvg = document.getElementById( 'layer-radial-menu' ),
     layerRadialSvg.style.pointerEvents = 'none';
 
     //set up event handler
-    layerRadialTrigger.addEventListener( 'click', layerToggleMenu, false );
+    layerRadialTrigger.addEventListener( 'click', layerToggleMenu, true );
 
     //toggle menu when trigger is clicked
 

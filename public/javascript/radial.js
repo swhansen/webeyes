@@ -8,7 +8,7 @@ var svg = document.getElementById( 'radial-menu' ),
     TweenLite.set( items, { scale:0, visibility: 'visible' } );
     svg.style.pointerEvents = 'none';
 
-    trigger.addEventListener( 'click', toggleMenu, false );
+    trigger.addEventListener( 'click', toggleMenu, true );
 
     //toggle menu when trigger is clicked
 
