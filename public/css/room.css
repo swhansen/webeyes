@@ -40,7 +40,7 @@ symbol{overflow:visible;}
           transform: translateX(-50%);
   max-width: 600px;
   border-radius: 125px 125px 0 0;
-  z-index: 500;
+
 }
 
 
@@ -55,7 +55,7 @@ symbol{overflow:visible;}
           transform: translateX(-50%);
   max-width: 600px;
   border-radius: 125px 125px 0 0;
-  z-index: 500;
+
 }
 
 #util-radial-menu {
