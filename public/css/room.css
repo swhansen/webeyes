@@ -27,7 +27,9 @@
 .menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
 symbol{overflow:visible;}
 
-
+#radial-container {
+  z-index: :500;
+}
 
 #ar-radial-container {
   display: block;
