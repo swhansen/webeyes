@@ -28,9 +28,6 @@ var arRadialSvg = document.getElementById('ar-radial-menu'),
       }
     }
 
-arRadialSvg.onclick = function( e ) {
-    e.stopPropagation();
-};
 
 //close the nav when document is clicked
 
