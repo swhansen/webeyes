@@ -42,9 +42,7 @@ symbol{overflow:visible;}
   display: block;
   margin: 0 auto;
   overflow: hidden;
-  position: fixed;
-  top: 150px;
-  left: 97%;
+
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 
@@ -55,9 +53,7 @@ symbol{overflow:visible;}
   display: block;
   margin: 0 auto;
   overflow: hidden;
-  position: fixed;
-  top: 200px;
-  left: 97%;
+
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 
