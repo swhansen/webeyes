@@ -28,6 +28,7 @@
 symbol{overflow:visible;}
 
 
+
 #ar-radial-container {
   display: block;
   margin: 0 auto;
@@ -37,7 +38,9 @@ symbol{overflow:visible;}
   left: 97%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-
+  max-width: 600px;
+  border-radius: 125px 125px 0 0;
+  z-index: 500;
 }
 
 
@@ -46,11 +49,13 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  top: 250px;
+  top: 200px;
   left: 97%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-
+  max-width: 600px;
+  border-radius: 125px 125px 0 0;
+  z-index: 500;
 }
 
 #util-radial-menu {
