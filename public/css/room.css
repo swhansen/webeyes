@@ -50,7 +50,7 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  top: 200px;
+  top: 300px;
   left: 90%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
