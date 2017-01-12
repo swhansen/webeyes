@@ -33,6 +33,7 @@ arRadialSvg.onclick = function( e ) {
 };
 
 //close the nav when document is clicked
+
 document.onclick = function () {
     arRadialOpen = false;
     TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
