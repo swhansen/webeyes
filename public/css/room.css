@@ -28,7 +28,7 @@
 symbol{overflow:visible;}
 
 #context-radial-container{
-  z-index:200;
+  z-index:500;
   position: fixed;
   bottom: 250px;
   right: 10px;
@@ -47,8 +47,7 @@ symbol{overflow:visible;}
   left: 97%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  max-width: 600px;
-  border-radius: 125px 125px 0 0;
+
 }
 
 
@@ -61,10 +60,9 @@ symbol{overflow:visible;}
   left: 97%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  max-width: 600px;
-  border-radius: 125px 125px 0 0;
+
 }
-ß
+
 #util-radial-menu {
   display: block;
   margin: 0 auto;
