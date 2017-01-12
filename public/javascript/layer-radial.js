@@ -23,7 +23,7 @@ var layerRadialSvg = document.getElementById( 'layer-radial-menu' ),
         layerRadialSvg.style.pointerEvents = "auto";
       } else {
         TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
-        layerRadialLabel.innerHTML = "+";
+        layerRadialLabel.innerHTML = "L";
         layerRadialSvg.style.pointerEvents = "none";
       }
     }
@@ -33,6 +33,6 @@ var layerRadialSvg = document.getElementById( 'layer-radial-menu' ),
 document.onclick = function() {
     layerRadialOpen = false;
     TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-    layerRadialLabel.innerHTML = "+";
+    layerRadialLabel.innerHTML = "L";
     layerRadialSvg.style.pointerEvents = "none";
 };
