@@ -9,7 +9,7 @@ var arRadialSvg = document.getElementById('ar-radial-menu'),
     arRadialSvg.style.pointerEvents = "none";
 
     //set up event handler
-    arRadialTrigger.addEventListener( 'click', arToggleMenu, false );
+    arRadialTrigger.addEventListener( 'click', arToggleMenu, true );
 
     //toggle menu when trigger is clicked
 
