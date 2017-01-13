@@ -125,6 +125,23 @@ document.onclick = function () {
         arRadialOpen = false;
 
         TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-            label.innerHTML = '+';
+        label.innerHTML = '+';
         svg.style.pointerEvents = 'none';
+
+        TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+        layerRadialLabel.innerHTML = '+';
+        layerRadialSvg.style.pointerEvents = 'none';
+
+        TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+        arRadialLabel.innerHTML = '+';
+        arRadialSvg.style.pointerEvents = 'none';
     };
+
+
+
+
+
+
+
+
+
