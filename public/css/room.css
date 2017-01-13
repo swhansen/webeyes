@@ -17,9 +17,12 @@
 .layer-radial-item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
 .layer-radial-item:hover .sector { fill: #b3b3ff; }
 
-.ar-radial-item { visibility: hidden; }
-.ar-radial-item .sector{transition:all .1s linear; fill:#fff; stroke:#111;}
-.ar-radial-item:hover .sector {fill: #b3b3ff;}
+.ar-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
+.ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
+.menu-trigger{fill:#EA2A55;pointer-events:auto;}
+.menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
+symbol{overflow:visible;}
+
 
 
 .menu-trigger { fill: #EA2A55; pointer-events: auto;}
