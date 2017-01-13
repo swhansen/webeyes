@@ -10,23 +10,19 @@ var layerRadialSvg = document.getElementById( 'layer-radial-menu' ),
     layerRadialLabel = layerRadialTrigger.querySelectorAll( '#layer-radial-label' )[ 0 ],
     layerRadialOpen = false;
 
-var arRadialSvg = document.getElementById('ar-radial-menu'),
-    arRadialItems = arRadialSvg.querySelectorAll('.ar-radial-item'),
-    arRadialTrigger = arRadialSvg.getElementById('ar-radial-trigger'),
-    arRadialLabel = arRadialTrigger.querySelectorAll('#ar-radial-label')[0],
+var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
+    arRadialItems = arRadialSvg.querySelectorAll( '.ar-radial-item' ),
+    arRadialTrigger = arRadialSvg.getElementById( 'ar-radial-trigger' ),
+    arRadialLabel = arRadialTrigger.querySelectorAll( '#ar-radial-label' )[ 0 ],
     arRadialOpen = false;
 
-
 //first scale the elements down
-    TweenLite.set( layerRadialItems, { scale:0, visibility:'visible' } );
-    layerRadialSvg.style.pointerEvents = 'none';
 
-    //set up event handler
-    layerRadialTrigger.addEventListener( 'click', layerToggleMenu, true );
+  TweenLite.set( layerRadialItems, { scale:0, visibility:'visible' } );
+  layerRadialSvg.style.pointerEvents = 'none';
+  layerRadialTrigger.addEventListener( 'click', layerToggleMenu, true );
 
-    //toggle menu when trigger is clicked
-
-    function layerToggleMenu( event ) {
+  function layerToggleMenu( event ) {
      if ( !event ) var event = window.event;
         event.stopPropagation();
         layerRadialOpen = !layerRadialOpen;
@@ -41,15 +37,12 @@ var arRadialSvg = document.getElementById('ar-radial-menu'),
       }
     }
 
-
 //close the nav when document is clicked
 
-document.onclick = function () {
-    layerRadialOpen = false;
-    TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-    layerRadialLabel.innerHTML = "L";
-    layerRadialSvg.style.pointerEvents = "none";
-};
+
+
+
+
 
 //first scale the elements down
     TweenLite.set( arRadialItems, { scale:0, visibility:"visible" } );
@@ -76,14 +69,7 @@ document.onclick = function () {
     }
 
 
-//close the nav when document is clicked
 
-document.onclick = function () {
-    arRadialOpen = false;
-    TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-    arRadialLabel.innerHTML = "+";
-    arRadialSvg.style.pointerEvents = "none";
-};
 
 
     //first scale the elements down
@@ -116,6 +102,11 @@ document.onclick = function () {
             label.innerHTML = '+';
         svg.style.pointerEvents = 'none';
     };
+
+
+
+
+
 
 //close the nav when document is clicked
 
