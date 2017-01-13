@@ -4,6 +4,117 @@ var svg = document.getElementById( 'radial-menu' ),
     label = trigger.querySelectorAll( '#label' )[0],
     radialOpen = false;
 
+var layerRadialSvg = document.getElementById( 'layer-radial-menu' ),
+    layerRadialItems = layerRadialSvg.querySelectorAll( '.layer-radial-item' ),
+    layerRadialTrigger = layerRadialSvg.getElementById( 'layer-radial-trigger' ),
+    layerRadialLabel = layerRadialTrigger.querySelectorAll( '#layer-radial-label' )[ 0 ],
+    layerRadialOpen = false;
+
+var arRadialSvg = document.getElementById('ar-radial-menu'),
+    arRadialItems = arRadialSvg.querySelectorAll('.ar-radial-item'),
+    arRadialTrigger = arRadialSvg.getElementById('ar-radial-trigger'),
+    arRadialLabel = arRadialTrigger.querySelectorAll('#ar-radial-label')[0],
+    arRadialOpen = false;
+
+
+//first scale the elements down
+    TweenLite.set( layerRadialItems, { scale:0, visibility:'visible' } );
+    layerRadialSvg.style.pointerEvents = 'none';
+
+    //set up event handler
+    layerRadialTrigger.addEventListener( 'click', layerToggleMenu, true );
+
+    //toggle menu when trigger is clicked
+
+    function layerToggleMenu( event ) {
+     if ( !event ) var event = window.event;
+        event.stopPropagation();
+        layerRadialOpen = !layerRadialOpen;
+    if ( layerRadialOpen ) {
+        TweenMax.staggerTo( layerRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
+        layerRadialLabel.innerHTML = "|";
+        layerRadialSvg.style.pointerEvents = "auto";
+      } else {
+        TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
+        layerRadialLabel.innerHTML = "L";
+        layerRadialSvg.style.pointerEvents = "none";
+      }
+    }
+
+
+//close the nav when document is clicked
+
+document.onclick = function () {
+    layerRadialOpen = false;
+    TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+    layerRadialLabel.innerHTML = "L";
+    layerRadialSvg.style.pointerEvents = "none";
+};
+
+//first scale the elements down
+    TweenLite.set( arRadialItems, { scale:0, visibility:"visible" } );
+    arRadialSvg.style.pointerEvents = "none";
+
+    //set up event handler
+    arRadialTrigger.addEventListener( 'click', arToggleMenu, true );
+
+    //toggle menu when trigger is clicked
+
+    function arToggleMenu( event ) {
+     if ( !event ) var event = window.event;
+        event.stopPropagation();
+        arRadialOpen = !arRadialOpen;
+    if ( arRadialOpen ) {
+        TweenMax.staggerTo( arRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
+        arRadialLabel.innerHTML = "|";
+        arRadialSvg.style.pointerEvents = "auto";
+      } else {
+        TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
+        arRadialLabel.innerHTML = "+";
+        arRadialSvg.style.pointerEvents = "none";
+      }
+    }
+
+
+//close the nav when document is clicked
+
+document.onclick = function () {
+    arRadialOpen = false;
+    TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+    arRadialLabel.innerHTML = "+";
+    arRadialSvg.style.pointerEvents = "none";
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //first scale the elements down
     TweenLite.set( items, { scale:0, visibility: 'visible' } );
     svg.style.pointerEvents = 'none';
