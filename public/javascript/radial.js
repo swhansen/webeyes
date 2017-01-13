@@ -86,35 +86,6 @@ document.onclick = function () {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //first scale the elements down
     TweenLite.set( items, { scale:0, visibility: 'visible' } );
     svg.style.pointerEvents = 'none';
@@ -150,6 +121,9 @@ document.onclick = function () {
 
     document.onclick = function() {
         radialOpen = false;
+        layerRadialOpen = false;
+        arRadialOpen = false;
+
         TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
             label.innerHTML = '+';
         svg.style.pointerEvents = 'none';
