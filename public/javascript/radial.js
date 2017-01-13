@@ -16,8 +16,6 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
     arRadialLabel = arRadialTrigger.querySelectorAll( '#ar-radial-label' )[ 0 ],
     arRadialOpen = false;
 
-//first scale the elements down
-
   TweenLite.set( layerRadialItems, { scale:0, visibility:'visible' } );
   layerRadialSvg.style.pointerEvents = 'none';
   layerRadialTrigger.addEventListener( 'click', layerToggleMenu, true );
@@ -37,21 +35,18 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
       }
     }
 
-//close the nav when document is clicked
 
+    layerRadaialSvg.onclick = function( e ) {
+        e.stopPropagation();
+        layerRadialOpen = false;
+        TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+            layerRadialLabel.innerHTML = '+';
+        layerRadialSvg.style.pointerEvents = 'none';
+    };
 
-
-
-
-
-//first scale the elements down
     TweenLite.set( arRadialItems, { scale:0, visibility:"visible" } );
     arRadialSvg.style.pointerEvents = "none";
-
-    //set up event handler
     arRadialTrigger.addEventListener( 'click', arToggleMenu, true );
-
-    //toggle menu when trigger is clicked
 
     function arToggleMenu( event ) {
      if ( !event ) var event = window.event;
@@ -68,17 +63,9 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
       }
     }
 
-
-
-
-
-    //first scale the elements down
     TweenLite.set( items, { scale:0, visibility: 'visible' } );
     svg.style.pointerEvents = 'none';
-
     trigger.addEventListener( 'click', toggleMenu, true );
-
-    //toggle menu when trigger is clicked
 
     function toggleMenu( event ) {
     if ( !event ) var event = window.event;
@@ -103,11 +90,6 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         svg.style.pointerEvents = 'none';
     };
 
-
-
-
-
-
 //close the nav when document is clicked
 
     document.onclick = function() {
@@ -127,12 +109,3 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         arRadialLabel.innerHTML = '+';
         arRadialSvg.style.pointerEvents = 'none';
     };
-
-
-
-
-
-
-
-
-

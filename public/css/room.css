@@ -23,12 +23,8 @@
 .menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
 symbol{overflow:visible;}
 
-
-
 .menu-trigger { fill: #EA2A55; pointer-events: auto;}
 .menu-trigger:hover { cursor: pointer; }
-
-
 
 #ar-radial-container {
   display: block;
@@ -42,7 +38,6 @@ symbol{overflow:visible;}
   max-width: 600px;
   border-radius: 125px 125px 0 0;
   z-index: 300;
-
 }
 
 
