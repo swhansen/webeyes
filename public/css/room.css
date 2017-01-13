@@ -21,11 +21,11 @@
 .layer-radial-trigger { fill: #EA2A55; pointer-events: auto;}
 .layer-radial-trigger:hover { cursor: pointer; }
 
-.ar-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
-.ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
+.ar-radial-item { visibility: hidden; }
+.ar-radial-item .sector{transition:all .1s linear; fill:#fff; stroke:#111;}
+.ar-radial-item:hover {fill:#eee;}
 .menu-trigger{fill:#EA2A55;pointer-events:auto;}
-.menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
-symbol{overflow:visible;}
+.menu-trigger:hover {cursor:pointer;}
 
 
 
