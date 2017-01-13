@@ -21,13 +21,15 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
   layerRadialTrigger.addEventListener( 'click', layerToggleMenu, true );
 
   function layerToggleMenu( event ) {
+
+    console.log( 'layerToggleMenu:', event );
      if ( !event ) var event = window.event;
         event.stopPropagation();
         layerRadialOpen = !layerRadialOpen;
     if ( layerRadialOpen ) {
         TweenMax.staggerTo( layerRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
         layerRadialLabel.innerHTML = "|";
-        layerRadialSvg.style.pointerEvents = "none";
+        layerRadialSvg.style.pointerEvents = "auto";
       } else {
         TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
         layerRadialLabel.innerHTML = "L";
@@ -48,13 +50,14 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
     arRadialTrigger.addEventListener( 'click', arToggleMenu, true );
 
     function arToggleMenu( event ) {
+      console.log( 'arToggleMenu:', event );
      if ( !event ) var event = window.event;
         event.stopPropagation();
         arRadialOpen = !arRadialOpen;
     if ( arRadialOpen ) {
         TweenMax.staggerTo( arRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
         arRadialLabel.innerHTML = "|";
-        arRadialSvg.style.pointerEvents = "none";
+        arRadialSvg.style.pointerEvents = "auto";
       } else {
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
         arRadialLabel.innerHTML = "+";
@@ -81,7 +84,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
     if ( radialOpen ) {
         TweenMax.staggerTo( items, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
         label.innerHTML = '-';
-      svg.style.pointerEvents = 'none';
+      svg.style.pointerEvents = 'auto';
     } else {
         TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
         label.innerHTML = '+';
