@@ -35,7 +35,6 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
       }
     }
 
-
     layerRadialSvg.onclick = function( e ) {
         e.stopPropagation();
         layerRadialOpen = false;
@@ -62,6 +61,14 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         arRadialSvg.style.pointerEvents = "none";
       }
     }
+
+    arRadialSvg.onclick = function( e ) {
+        e.stopPropagation();
+        arRadialOpen = false;
+        TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+            arRadialLabel.innerHTML = '+';
+        arRadialSvg.style.pointerEvents = 'none';
+    };
 
     TweenLite.set( items, { scale:0, visibility: 'visible' } );
     svg.style.pointerEvents = 'none';
