@@ -36,7 +36,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
     }
 
 
-    layerRadaialSvg.onclick = function( e ) {
+    layerRadialSvg.onclick = function( e ) {
         e.stopPropagation();
         layerRadialOpen = false;
         TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
