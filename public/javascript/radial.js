@@ -18,16 +18,18 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
 
   TweenLite.set( drawRadialItems, { scale:0, visibility:'visible' } );
   drawRadialSvg.style.pointerEvents = 'none';
-  drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
-  function drawToggleMenu( event ) {
 
-    drawRadialSvg.style.visibility = 'hidden';
+ drawRadialSvg.style.visibility = 'hidden';
     drawRadialTrigger.style.visibility = 'hidden';
     drawRadialItems.style.visibility = 'hidden';
 
 
 
+
+  drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
+
+  function drawToggleMenu( event ) {
 
      if ( !event ) var event = window.event;
         event.stopPropagation();
