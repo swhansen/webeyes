@@ -20,8 +20,8 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
   drawRadialSvg.style.pointerEvents = 'none';
 
 
- drawRadialSvg.style.visibility = 'hidden';
-    drawRadialTrigger.style.visibility = 'hidden';
+// drawRadialSvg.style.visibility = 'hidden';
+// drawRadialTrigger.style.visibility = 'hidden';
 
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
