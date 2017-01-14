@@ -29,7 +29,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
   drawRadialSvg.style.pointerEvents = 'none';
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
-  function layerToggleMenu( event ) {
+  function drawToggleMenu( event ) {
 
     console.log( 'drawToggleMenu:', event );
      if ( !event ) var event = window.event;
