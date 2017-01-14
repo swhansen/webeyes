@@ -26,6 +26,19 @@ symbol{overflow:visible;}
 .menu-trigger { fill: #EA2A55; pointer-events: auto;}
 .menu-trigger:hover { cursor: pointer; }
 
+#radial-menu {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  max-width: 600px;
+  border-radius: 125px 125px 0 0;
+}
+
 #ar-radial-container {
   display: block;
   margin: 0 auto;
