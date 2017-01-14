@@ -22,10 +22,6 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
 
  drawRadialSvg.style.visibility = 'hidden';
     drawRadialTrigger.style.visibility = 'hidden';
-    drawRadialItems.style.visibility = 'hidden';
-
-
-
 
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
