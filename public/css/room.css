@@ -40,7 +40,7 @@ symbol{overflow:visible;}
   z-index: 300;
 }
 
-#layer-radial-container {
+#draw-radial-container {
   display: block;
   margin: 0 auto;
   overflow: hidden;
