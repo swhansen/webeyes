@@ -13,9 +13,9 @@
 .item:hover .sector { fill: #b3b3ff; }
 
 
-.layer-radial-item {visibility: hidden;}
-.layer-radial-item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
-.layer-radial-item:hover .sector { fill: #b3b3ff; }
+.daw-radial-item {visibility: hidden;}
+.draw-radial-item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
+.draw-radial-item:hover .sector { fill: #b3b3ff; }
 
 .ar-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
 .ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
