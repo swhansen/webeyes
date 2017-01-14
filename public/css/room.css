@@ -13,16 +13,12 @@
 .item:hover .sector { fill: #b3b3ff; }
 
 
-.draw-radial-item {visibility: hidden;}
-.draw-radial-item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
-.draw-radial-item:hover .sector { fill: #b3b3ff; }
+.layer-radial-item {visibility: hidden;}
+.layer-radial-item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
+.layer-radial-item:hover .sector { fill: #b3b3ff; }
 
-
-.ar-radial-item {visibility: hidden;}
 .ar-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
 .ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
-
-
 .menu-trigger{fill:#EA2A55;pointer-events:auto;}
 .menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
 symbol{overflow:visible;}
@@ -35,7 +31,7 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  top: 220px;
+  top: 200px;
   left: 90%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -44,7 +40,7 @@ symbol{overflow:visible;}
   z-index: 300;
 }
 
-#draw-radial-container {
+#layer-radial-container {
   display: block;
   margin: 0 auto;
   overflow: hidden;
