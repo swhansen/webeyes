@@ -39,7 +39,7 @@ symbol{overflow:visible;}
   border-radius: 125px 125px 0 0;
 }
 
-#ar-radial-container {
+#ar-radial-menu {
   display: block;
   margin: 0 auto;
   overflow: hidden;
@@ -58,7 +58,7 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  top: 300px;
+  top: 275px;
   left: 90%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
