@@ -13,7 +13,7 @@
 .item:hover .sector { fill: #b3b3ff; }
 
 
-.daw-radial-item {visibility: hidden;}
+.draw-radial-item {visibility: hidden;}
 .draw-radial-item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
 .draw-radial-item:hover .sector { fill: #b3b3ff; }
 
