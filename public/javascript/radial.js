@@ -5,13 +5,6 @@ var svg = document.getElementById( 'radial-menu' ),
     radialOpen = false;
 
 
-
-
-
-
-
-
-
 var drawRadialSvg = document.getElementById( 'draw-radial-menu' ),
     drawRadialItems = drawRadialSvg.querySelectorAll( '.draw-radial-item' ),
     drawRadialTrigger = drawRadialSvg.getElementById( 'draw-radial-trigger' ),
