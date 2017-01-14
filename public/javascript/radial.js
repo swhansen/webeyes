@@ -10,11 +10,6 @@ var drawRadialSvg = document.getElementById( 'draw-radial-menu' ),
     drawRadialLabel = drawRadialTrigger.querySelectorAll( '#draw-radial-label' )[ 0 ],
     drawRadialOpen = false;
 
-
-
-
-
-
 var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
     arRadialItems = arRadialSvg.querySelectorAll( '.ar-radial-item' ),
     arRadialTrigger = arRadialSvg.getElementById( 'ar-radial-trigger' ),
@@ -26,19 +21,17 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
   function drawToggleMenu( event ) {
-
-    console.log( 'drawToggleMenu:', event );
      if ( !event ) var event = window.event;
         event.stopPropagation();
         drawRadialOpen = !drawRadialOpen;
     if ( drawRadialOpen ) {
         TweenMax.staggerTo( drawRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        drawRadialLabel.innerHTML = "|";
-        drawRadialSvg.style.pointerEvents = "auto";
+        drawRadialLabel.innerHTML = '|';
+        drawRadialSvg.style.pointerEvents = 'auto';
       } else {
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
-        drawRadialLabel.innerHTML = "D";
-        drawRadialSvg.style.pointerEvents = "none";
+        drawRadialLabel.innerHTML = 'D';
+        drawRadialSvg.style.pointerEvents = 'none';
       }
     }
 
@@ -50,23 +43,22 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         drawRadialSvg.style.pointerEvents = 'none';
     };
 
-    TweenLite.set( arRadialItems, { scale:0, visibility:"visible" } );
-    arRadialSvg.style.pointerEvents = "none";
+    TweenLite.set( arRadialItems, { scale:0, visibility:'visible' } );
+    arRadialSvg.style.pointerEvents = 'none';
     arRadialTrigger.addEventListener( 'click', arToggleMenu, true );
 
     function arToggleMenu( event ) {
-      console.log( 'arToggleMenu:', event );
      if ( !event ) var event = window.event;
         event.stopPropagation();
         arRadialOpen = !arRadialOpen;
     if ( arRadialOpen ) {
         TweenMax.staggerTo( arRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        arRadialLabel.innerHTML = "|";
-        arRadialSvg.style.pointerEvents = "auto";
+        arRadialLabel.innerHTML = '|';
+        arRadialSvg.style.pointerEvents = 'auto';
       } else {
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
-        arRadialLabel.innerHTML = "+";
-        arRadialSvg.style.pointerEvents = "none";
+        arRadialLabel.innerHTML = 'A';
+        arRadialSvg.style.pointerEvents = 'none';
       }
     }
 
