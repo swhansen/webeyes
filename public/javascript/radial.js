@@ -23,6 +23,12 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
   function drawToggleMenu( event ) {
 
     drawRadialSvg.style.visibility = 'hidden';
+    drawRadialTrigger.style.visibility = 'hidden';
+    drawRadialItems.style.visibility = 'hidden';
+
+
+
+
      if ( !event ) var event = window.event;
         event.stopPropagation();
         drawRadialOpen = !drawRadialOpen;
