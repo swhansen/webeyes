@@ -4,11 +4,11 @@ var svg = document.getElementById( 'radial-menu' ),
     label = trigger.querySelectorAll( '#label' )[0],
     radialOpen = false;
 
-var layerRadialSvg = document.getElementById( 'draw-radial-menu' ),
-    layerRadialItems = layerRadialSvg.querySelectorAll( '.draw-radial-item' ),
-    layerRadialTrigger = layerRadialSvg.getElementById( 'draw-radial-trigger' ),
-    layerRadialLabel = layerRadialTrigger.querySelectorAll( '#draw-radial-label' )[ 0 ],
-    layerRadialOpen = false;
+var drawRadialSvg = document.getElementById( 'draw-radial-menu' ),
+    drawRadialItems = drawRadialSvg.querySelectorAll( '.draw-radial-item' ),
+    drawRadialTrigger = drawRadialSvg.getElementById( 'draw-radial-trigger' ),
+    drawRadialLabel = drawRadialTrigger.querySelectorAll( '#draw-radial-label' )[ 0 ],
+    drawRadialOpen = false;
 
 
 
@@ -21,33 +21,33 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
     arRadialLabel = arRadialTrigger.querySelectorAll( '#ar-radial-label' )[ 0 ],
     arRadialOpen = false;
 
-  TweenLite.set( layerRadialItems, { scale:0, visibility:'visible' } );
-  layerRadialSvg.style.pointerEvents = 'none';
-  layerRadialTrigger.addEventListener( 'click', layerToggleMenu, true );
+  TweenLite.set( drawRadialItems, { scale:0, visibility:'visible' } );
+  drawRadialSvg.style.pointerEvents = 'none';
+  drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
-  function layerToggleMenu( event ) {
+  function drawToggleMenu( event ) {
 
-    console.log( 'layerToggleMenu:', event );
+    console.log( 'drawToggleMenu:', event );
      if ( !event ) var event = window.event;
         event.stopPropagation();
-        layerRadialOpen = !layerRadialOpen;
-    if ( layerRadialOpen ) {
-        TweenMax.staggerTo( layerRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        layerRadialLabel.innerHTML = "|";
-        layerRadialSvg.style.pointerEvents = "auto";
+        drawRadialOpen = !drawRadialOpen;
+    if ( drawRadialOpen ) {
+        TweenMax.staggerTo( drawRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
+        drawRadialLabel.innerHTML = "|";
+        drawRadialSvg.style.pointerEvents = "auto";
       } else {
-        TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
-        layerRadialLabel.innerHTML = "L";
-        layerRadialSvg.style.pointerEvents = "none";
+        TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
+        drawRadialLabel.innerHTML = "L";
+        drawRadialSvg.style.pointerEvents = "none";
       }
     }
 
-    layerRadialSvg.onclick = function( e ) {
+    drawRadialSvg.onclick = function( e ) {
         e.stopPropagation();
-        layerRadialOpen = false;
-        TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-            layerRadialLabel.innerHTML = '+';
-        layerRadialSvg.style.pointerEvents = 'none';
+        drawRadialOpen = false;
+        TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+            drawRadialLabel.innerHTML = '+';
+        drawRadialSvg.style.pointerEvents = 'none';
     };
 
     TweenLite.set( arRadialItems, { scale:0, visibility:"visible" } );
@@ -109,16 +109,16 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
 
     document.onclick = function() {
         radialOpen = false;
-        layerRadialOpen = false;
+        drawRadialOpen = false;
         arRadialOpen = false;
 
         TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
         label.innerHTML = '+';
         svg.style.pointerEvents = 'none';
 
-        TweenMax.staggerTo( layerRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        layerRadialLabel.innerHTML = '+';
-        layerRadialSvg.style.pointerEvents = 'none';
+        TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+        drawRadialLabel.innerHTML = '+';
+        drawRadialSvg.style.pointerEvents = 'none';
 
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
         arRadialLabel.innerHTML = '+';
