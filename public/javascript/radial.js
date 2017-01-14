@@ -21,6 +21,8 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
   function drawToggleMenu( event ) {
+
+    drawRadialSvg..style.visibility = 'hidden';
      if ( !event ) var event = window.event;
         event.stopPropagation();
         drawRadialOpen = !drawRadialOpen;
