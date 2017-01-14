@@ -4,10 +4,10 @@ var svg = document.getElementById( 'radial-menu' ),
     label = trigger.querySelectorAll( '#label' )[0],
     radialOpen = false;
 
-var layerRadialSvg = document.getElementById( 'layer-radial-menu' ),
-    layerRadialItems = layerRadialSvg.querySelectorAll( '.layer-radial-item' ),
-    layerRadialTrigger = layerRadialSvg.getElementById( 'layer-radial-trigger' ),
-    layerRadialLabel = layerRadialTrigger.querySelectorAll( '#layer-radial-label' )[ 0 ],
+var layerRadialSvg = document.getElementById( 'draw-radial-menu' ),
+    layerRadialItems = layerRadialSvg.querySelectorAll( '.draw-radial-item' ),
+    layerRadialTrigger = layerRadialSvg.getElementById( 'draw-radial-trigger' ),
+    layerRadialLabel = layerRadialTrigger.querySelectorAll( '#draw-radial-label' )[ 0 ],
     layerRadialOpen = false;
 
 
