@@ -53,7 +53,7 @@ symbol{overflow:visible;}
   z-index: 300;
 }
 
-#draw-radial-container {
+#draw-radial-menu {
   display: block;
   margin: 0 auto;
   overflow: hidden;
