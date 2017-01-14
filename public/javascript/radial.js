@@ -59,11 +59,11 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         arRadialOpen = !arRadialOpen;
     if ( arRadialOpen ) {
         TweenMax.staggerTo( arRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-       // arRadialLabel.innerHTML = '|';
+        arRadialLabel.innerHTML = '|';
         arRadialSvg.style.pointerEvents = 'auto';
       } else {
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
-      //  arRadialLabel.innerHTML = 'A';
+        arRadialLabel.innerHTML = 'A';
         arRadialSvg.style.pointerEvents = 'none';
       }
     }
@@ -72,7 +72,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         e.stopPropagation();
         arRadialOpen = false;
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-     //       arRadialLabel.innerHTML = '+';
+            arRadialLabel.innerHTML = '+';
         arRadialSvg.style.pointerEvents = 'none';
     };
 
