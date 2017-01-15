@@ -1,3 +1,12 @@
+
+var radialList = [
+  'draw-radial-menu',
+  'ar-radial-menu'
+];
+
+
+
+
 var svg = document.getElementById( 'radial-menu' ),
     items = svg.querySelectorAll( '.item' ),
     trigger = svg.getElementById( 'trigger' ),
@@ -20,8 +29,19 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
   drawRadialSvg.style.pointerEvents = 'none';
 
 
-// drawRadialSvg.style.visibility = 'hidden';
-//drawRadialTrigger.style.visibility = 'hidden';
+ drawRadialSvg.style.visibility = 'hidden';
+drawRadialTrigger.style.visibility = 'hidden';
+
+
+function moveRadialtoTop( radialMenu ) {
+
+ _.forEach( radialListList, function( key ) {
+     document.getElementById( key ).style.zIndex = '10';
+     console.log( key );
+    } );
+  document.getElementById( layer ).style.zIndex = '100';
+  console.log( getLayersZindexStatus() );
+}
 
 
 $( '#draw-radial-item-2' ).attr( 'style', 'visibility: hidden');
@@ -39,6 +59,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
         drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'auto';
       } else {
+        moveRadialtoTop( 'draw-radial-menu' );
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
         drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'none';
@@ -66,6 +87,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
         arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'auto';
       } else {
+        moveRadialtoTop( 'ar-radial-menu' );
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
         arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'none';
