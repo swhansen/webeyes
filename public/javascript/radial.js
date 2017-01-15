@@ -7,7 +7,7 @@ var svg = document.getElementById( 'radial-menu' ),
 var drawRadialSvg = document.getElementById( 'draw-radial-menu' ),
     drawRadialItems = drawRadialSvg.querySelectorAll( '.draw-radial-item' ),
     drawRadialTrigger = drawRadialSvg.getElementById( 'draw-radial-trigger' ),
- //   drawRadialLabel = drawRadialTrigger.querySelectorAll( '#draw-radial-label' )[ 0 ],
+    drawRadialLabel = drawRadialTrigger.querySelectorAll( '#draw-radial-label' )[ 0 ],
     drawRadialOpen = false;
 
 var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
