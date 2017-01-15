@@ -49,6 +49,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
   function drawToggleMenu( event ) {
+        moveRadialtoTop( 'draw-radial-menu' );
 
      if ( !event ) var event = window.event;
         event.stopPropagation();
@@ -58,7 +59,6 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
         drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'auto';
       } else {
-        moveRadialtoTop( 'draw-radial-menu' );
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
         drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'none';
@@ -78,6 +78,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
     arRadialTrigger.addEventListener( 'click', arToggleMenu, true );
 
     function arToggleMenu( event ) {
+        moveRadialtoTop( 'ar-radial-menu' );
      if ( !event ) var event = window.event;
         event.stopPropagation();
         arRadialOpen = !arRadialOpen;
@@ -86,7 +87,6 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
         arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'auto';
       } else {
-        moveRadialtoTop( 'ar-radial-menu' );
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
         arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'none';
