@@ -35,7 +35,7 @@ drawRadialTrigger.style.visibility = 'hidden';
 
 function moveRadialtoTop( radialMenu ) {
 
- _.forEach( radialListList, function( key ) {
+ _.forEach( radialList, function( key ) {
      document.getElementById( key ).style.zIndex = '10';
      console.log( key );
     } );
