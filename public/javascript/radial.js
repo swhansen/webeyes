@@ -32,11 +32,11 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         drawRadialOpen = !drawRadialOpen;
     if ( drawRadialOpen ) {
         TweenMax.staggerTo( drawRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        drawRadialLabel.innerHTML = '|';
+        drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'auto';
       } else {
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
-        drawRadialLabel.innerHTML = 'D';
+        drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'none';
       }
     }
@@ -45,7 +45,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         e.stopPropagation();
         drawRadialOpen = false;
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-            drawRadialLabel.innerHTML = '+';
+            drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'none';
     };
 
@@ -59,11 +59,11 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         arRadialOpen = !arRadialOpen;
     if ( arRadialOpen ) {
         TweenMax.staggerTo( arRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        arRadialLabel.innerHTML = '|';
+        arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'auto';
       } else {
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
-        arRadialLabel.innerHTML = 'A';
+        arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'none';
       }
     }
@@ -72,7 +72,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         e.stopPropagation();
         arRadialOpen = false;
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-            arRadialLabel.innerHTML = '+';
+            arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'none';
     };
 
@@ -111,14 +111,14 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         arRadialOpen = false;
 
         TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        label.innerHTML = '+';
+        label.innerHTML = '';
         svg.style.pointerEvents = 'none';
 
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        drawRadialLabel.innerHTML = '+';
+        drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'none';
 
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        arRadialLabel.innerHTML = '+';
+        arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'none';
     };
