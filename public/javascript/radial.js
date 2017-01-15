@@ -7,7 +7,7 @@ var svg = document.getElementById( 'radial-menu' ),
 var drawRadialSvg = document.getElementById( 'draw-radial-menu' ),
     drawRadialItems = drawRadialSvg.querySelectorAll( '.draw-radial-item' ),
     drawRadialTrigger = drawRadialSvg.getElementById( 'draw-radial-trigger' ),
-    drawRadialLabel = drawRadialTrigger.querySelectorAll( '#draw-radial-label' )[ 0 ],
+ //   drawRadialLabel = drawRadialTrigger.querySelectorAll( '#draw-radial-label' )[ 0 ],
     drawRadialOpen = false;
 
 var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
@@ -32,7 +32,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         drawRadialOpen = !drawRadialOpen;
     if ( drawRadialOpen ) {
         TweenMax.staggerTo( drawRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        drawRadialLabel.innerHTML = '|';
+  //      drawRadialLabel.innerHTML = '|';
         drawRadialSvg.style.pointerEvents = 'auto';
       } else {
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
@@ -45,7 +45,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         e.stopPropagation();
         drawRadialOpen = false;
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-            drawRadialLabel.innerHTML = '+';
+   //         drawRadialLabel.innerHTML = '+';
         drawRadialSvg.style.pointerEvents = 'none';
     };
 
@@ -59,7 +59,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         arRadialOpen = !arRadialOpen;
     if ( arRadialOpen ) {
         TweenMax.staggerTo( arRadialItems, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        arRadialLabel.innerHTML = '|';
+     //   arRadialLabel.innerHTML = '|';
         arRadialSvg.style.pointerEvents = 'auto';
       } else {
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
@@ -115,7 +115,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         svg.style.pointerEvents = 'none';
 
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        drawRadialLabel.innerHTML = '+';
+   //     drawRadialLabel.innerHTML = '+';
         drawRadialSvg.style.pointerEvents = 'none';
 
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
