@@ -23,6 +23,10 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
 // drawRadialSvg.style.visibility = 'hidden';
 //drawRadialTrigger.style.visibility = 'hidden';
 
+
+$( '#draw-radial-item-2' ).style.visibility = 'hidden';
+$( '#draw-radial-item-4' ).style.visibility = 'hidden';
+
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
   function drawToggleMenu( event ) {
@@ -86,11 +90,11 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
     radialOpen = !radialOpen;
     if ( radialOpen ) {
         TweenMax.staggerTo( items, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        label.innerHTML = '-';
+        label.innerHTML = '';
       svg.style.pointerEvents = 'auto';
     } else {
         TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        label.innerHTML = '+';
+        label.innerHTML = '';
       svg.style.pointerEvents = 'none';
     }
     }
@@ -99,7 +103,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         e.stopPropagation();
         radialOpen = false;
         TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-            label.innerHTML = '+';
+            label.innerHTML = '';
         svg.style.pointerEvents = 'none';
     };
 
