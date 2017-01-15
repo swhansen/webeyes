@@ -36,7 +36,7 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
         drawRadialSvg.style.pointerEvents = 'auto';
       } else {
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
-        drawRadialLabel.innerHTML = 'D';
+  //      drawRadialLabel.innerHTML = 'D';
         drawRadialSvg.style.pointerEvents = 'none';
       }
     }
