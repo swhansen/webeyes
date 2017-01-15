@@ -39,8 +39,7 @@ function moveRadialtoTop( radialMenu ) {
      document.getElementById( key ).style.zIndex = '10';
      console.log( key );
     } );
-  document.getElementById( layer ).style.zIndex = '100';
-  console.log( getLayersZindexStatus() );
+  document.getElementById( radialMenu ).style.zIndex = '100';
 }
 
 
