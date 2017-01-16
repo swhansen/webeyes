@@ -59,10 +59,10 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
 
   function drawToggleMenu( event ) {
 
-        moveRadialtoTop( 'draw-radial-menu' );
+      moveRadialtoTop( 'draw-radial-menu' );
 
-        moveLayertoTop( 'canvaspane' );
-        userContext.uiState = 'draw';
+      moveLayertoTop( 'canvaspane' );
+      userContext.uiState = 'draw';
       setDomPointerEvent( 'arcanvaspane', 'none' );
       setDomPointerEvent( 'canvas0', 'auto' );
       setDomPointerEvent( 'arcanvaspane', 'none' );

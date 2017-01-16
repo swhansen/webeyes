@@ -16,20 +16,6 @@
             "initState": "none",
             "baseZ": "20"
         },
-        "draw": {
-            "mainButton": "#drawButton",
-            "sideBar": "#draw-ui-container",
-            "buttons": [
-                "#fadeButton",
-                "#b1"
-            ],
-
-            "renderElement": "canvaspane",
-
-            "desc": "drawing layer",
-            "initState": "none",
-            "baseZ": "20"
-        },
         "video": {
             "mainButton": "#videoButton",
             "buttons": [],
