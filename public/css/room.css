@@ -77,7 +77,7 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  top: 300;
+  top: 300px;
   left: 82%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
