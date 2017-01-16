@@ -62,6 +62,13 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
         moveRadialtoTop( 'draw-radial-menu' );
 
         moveLayertoTop( 'canvaspane' );
+        userContext.uiState = 'draw';
+      setDomPointerEvent( 'arcanvaspane', 'none' );
+      setDomPointerEvent( 'canvas0', 'auto' );
+      setDomPointerEvent( 'arcanvaspane', 'none' );
+
+
+
   //      document.getElementById( 'canvaspane' ).style.zIndex = '200';
   //      document.getElementById( 'arcanvaspane' ).style.zIndex = '10';
 
