@@ -53,7 +53,6 @@ function moveRadialtoBottom( radialMenu ) {
 $( '#draw-radial-item-2' ).css( 'visibility', 'hidden');
 $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
 
-
   TweenLite.set( drawRadialItems, { scale:0, visibility:'visible' } );
   drawRadialSvg.style.pointerEvents = 'none';
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
@@ -183,7 +182,7 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
         radialOpen = false;
         drawRadialOpen = false;
         arRadialOpen = false;
-        utilRadialOpen= false;
+        utilRadialOpen = false;
 
         TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
         label.innerHTML = '';
