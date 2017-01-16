@@ -59,6 +59,9 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
 
       moveRadialtoTop( 'draw-radial-menu' );
 
+      $( '#draw-radial-item-1' ).css( 'visibility', 'hidden');
+$( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
+
       moveLayertoTop( 'canvaspane' );
       userContext.uiState = 'draw';
       setDomPointerEvent( 'arcanvaspane', 'none' );
