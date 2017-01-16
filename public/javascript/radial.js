@@ -1,8 +1,8 @@
 
 var radialList = [
   'draw-radial-menu',
-  'ar-radial-menu'
-  'util-rasial-menu'
+  'ar-radial-menu',
+  'util-radial-menu'
 ];
 
 var svg = document.getElementById( 'radial-menu' ),
