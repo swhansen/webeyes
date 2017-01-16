@@ -512,6 +512,11 @@ $( function() {
 
   } );
 
+  function toggleFade() {
+    fadeSwitch = !fadeSwitch;
+    toggleFade();
+  }
+
 //
 //  Video muting
 //  - "hide" the video element and replace with image
