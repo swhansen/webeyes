@@ -102,6 +102,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
         arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'none';
+        moveRadialtoBottom( 'ar-radial-menu' );
       }
     }
 
@@ -111,6 +112,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
             arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'none';
+        moveRadialtoBottom( 'ar-radial-menu' );
     };
 
     TweenLite.set( items, { scale:0, visibility: 'visible' } );
