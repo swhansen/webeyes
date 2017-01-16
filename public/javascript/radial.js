@@ -34,12 +34,19 @@ var arRadialSvg = document.getElementById( 'ar-radial-menu' ),
 
 
 function moveRadialtoTop( radialMenu ) {
-
  _.forEach( radialList, function( key ) {
      document.getElementById( key ).style.zIndex = '10';
      console.log( key );
     } );
   document.getElementById( radialMenu ).style.zIndex = '100';
+}
+
+function moveRadialtoBottom( radialMenu ) {
+ _.forEach( radialList, function( key ) {
+     document.getElementById( key ).style.zIndex = '100';
+     console.log( key );
+    } );
+  document.getElementById( radialMenu ).style.zIndex = '10';
 }
 
 
@@ -49,6 +56,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
   drawRadialTrigger.addEventListener( 'click', drawToggleMenu, true );
 
   function drawToggleMenu( event ) {
+
         moveRadialtoTop( 'draw-radial-menu' );
 
      if ( !event ) var event = window.event;
@@ -62,6 +70,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
         drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'none';
+        moveRadialtoBottom( 'draw-radial-menu' );
       }
     }
 
@@ -71,6 +80,7 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
             drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'none';
+        moveRadialtoBottom( 'draw-radial-menu' );
     };
 
     TweenLite.set( arRadialItems, { scale:0, visibility:'visible' } );
@@ -78,7 +88,9 @@ $( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
     arRadialTrigger.addEventListener( 'click', arToggleMenu, true );
 
     function arToggleMenu( event ) {
+
         moveRadialtoTop( 'ar-radial-menu' );
+
      if ( !event ) var event = window.event;
         event.stopPropagation();
         arRadialOpen = !arRadialOpen;
