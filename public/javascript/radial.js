@@ -35,7 +35,6 @@ var utilRadialSvg = document.getElementById( 'util-radial-menu' ),
 function moveRadialtoTop( radialMenu ) {
  _.forEach( radialList, function( key ) {
      document.getElementById( key ).style.zIndex = '10';
-     console.log( key );
     } );
   document.getElementById( radialMenu ).style.zIndex = '100';
 }
@@ -43,7 +42,6 @@ function moveRadialtoTop( radialMenu ) {
 function moveRadialtoBottom( radialMenu ) {
  _.forEach( radialList, function( key ) {
      document.getElementById( key ).style.zIndex = '100';
-     console.log( key );
     } );
   document.getElementById( radialMenu ).style.zIndex = '10';
 }

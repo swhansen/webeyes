@@ -512,8 +512,9 @@ $( function() {
 
   } );
 
-  function toggleFade() {
+  function eraseSwitch() {
     fadeSwitch = !fadeSwitch;
+    console.log( 'fadeSwitch:' fadeSwitch)
     toggleFade();
   }
 
