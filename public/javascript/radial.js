@@ -61,6 +61,10 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
 
         moveRadialtoTop( 'draw-radial-menu' );
 
+        moveLayertoTop( 'canvaspane' );
+  //      document.getElementById( 'canvaspane' ).style.zIndex = '200';
+  //      document.getElementById( 'arcanvaspane' ).style.zIndex = '10';
+
      if ( !event ) var event = window.event;
         event.stopPropagation();
         drawRadialOpen = !drawRadialOpen;
@@ -92,6 +96,10 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
     function arToggleMenu( event ) {
 
         moveRadialtoTop( 'ar-radial-menu' );
+
+        moveLayertoTop( 'arcanvaspane' );
+      //  document.getElementById( 'canvaspane' ).style.zIndex = '10';
+      //  document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
 
      if ( !event ) var event = window.event;
         event.stopPropagation();
