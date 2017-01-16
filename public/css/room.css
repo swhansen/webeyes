@@ -19,6 +19,11 @@
 
 .ar-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
 .ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
+
+.util-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
+.util-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
+
+
 .menu-trigger{fill:#EA2A55;pointer-events:auto;}
 .menu-trigger:hover, .menu-trigger:focus{cursor:pointer;}
 symbol{overflow:visible;}
@@ -72,12 +77,13 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  bottom: 0;
-  left: 50%;
+  top: 300;
+  left: 82%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   max-width: 600px;
   border-radius: 125px 125px 0 0;
+  z-index: 300;
 }
 
 .canvasorient {
