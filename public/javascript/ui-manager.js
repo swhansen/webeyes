@@ -512,12 +512,6 @@ $( function() {
 
   } );
 
-  function eraseSwitch() {
-    fadeSwitch = !fadeSwitch;
-    console.log( 'fadeSwitch:', fadeSwitch);
-    toggleFade();
-  }
-
 //
 //  Video muting
 //  - "hide" the video element and replace with image

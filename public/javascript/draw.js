@@ -53,6 +53,12 @@ function drawCanvaslineArray() {
     }
 }
 
+function eraseSwitch() {
+    fadeSwitch = !fadeSwitch;
+    console.log( 'fadeSwitch:', fadeSwitch);
+    toggleFade();
+  }
+
 function toggleFade() {
 if ( fadeTimer ) {return;}
   if ( fadeSwitch === true && fade === true  ) {
