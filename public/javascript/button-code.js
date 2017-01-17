@@ -48,9 +48,11 @@ function useModeCode( modeCode ) {
     var sessionId = socketServer.sessionid;
     socketServer.emit( 'utility', 'leapClientInit', sessionId );
 
-     _.each( uiStructure.structure[layer].buttons, function( button ) {
-    $( button ).fadeIn( 2000 );
-  } );
+     mainCollapsed = true;
+      for ( var button in uiStructure.structure ) {
+        t = 500;
+        $( uiStructure.structure[button].mainButton ).fadeOut( t );
+      }
 
     msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
     messageBar( msgString );
