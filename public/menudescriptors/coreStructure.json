@@ -22,14 +22,6 @@
             "initState": "none",
             "baseZ": "20"
         },
-        "leap": {
-            "mainButton": "#leapButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "Initialize Leap",
-            "initState": "none",
-            "baseZ": "20"
-        },
         "codeInput": {
             "mainButton": "#codeDialogButton",
             "buttons": [],
