@@ -3,6 +3,19 @@
 
 function initModme() {
 
+  function initLeap() {
+    userContext.isLeap = true;
+    leapFocus();
+
+  // Tell everyone to initialize Leap
+
+  var sessionId = socketServer.sessionid;
+      socketServer.emit( 'utility', 'leapClientInit', sessionId );
+
+    msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
+    messageBar( msgString );
+  }
+
 $( function() {
   $( '#focus-participant' ).tooltip( {
       content: 'Select a participant box to focus',
