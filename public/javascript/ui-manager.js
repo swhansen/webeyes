@@ -340,17 +340,8 @@ $( function() {
           emitSessionUserContext( userContext );
           swal.close();
           setVrWorld();
-
-
-
-
-
-
-
-
-
-
           $( '#vrMainButton' ).css( 'visibility', 'hidden' );
+          $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
     } );
   } );
 } );
