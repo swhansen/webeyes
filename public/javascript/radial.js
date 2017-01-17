@@ -5,11 +5,11 @@ var radialList = [
   'util-radial-menu'
 ];
 
-var svg = document.getElementById( 'radial-menu' ),
-    items = svg.querySelectorAll( '.item' ),
-    trigger = svg.getElementById( 'trigger' ),
-    label = trigger.querySelectorAll( '#label' )[0],
-    radialOpen = false;
+//var svg = document.getElementById( 'radial-menu' ),
+//    items = svg.querySelectorAll( '.item' ),
+//    trigger = svg.getElementById( 'trigger' ),
+//    label = trigger.querySelectorAll( '#label' )[0],
+//    radialOpen = false;
 
 var drawRadialSvg = document.getElementById( 'draw-radial-menu' ),
     drawRadialItems = drawRadialSvg.querySelectorAll( '.draw-radial-item' ),
@@ -52,9 +52,12 @@ function clearObjects() {
   emitUtility( 'reset' );
       }
 
+
+// draw radial
+
 //$( '#draw-radial-item-2' ).attr( 'style', 'visibility: hidden');
 //$( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
-$( '#draw-radial-item-2' ).css( 'visibility', 'hidden' );
+$( '#draw-radial-item-1' ).css( 'visibility', 'hidden' );
 $( '#draw-radial-item-4' ).css( 'visibility', 'hidden' );
 $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
@@ -64,21 +67,15 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
   function drawToggleMenu( event ) {
 
-      moveRadialtoTop( 'draw-radial-menu' );
-
-      $( '#draw-radial-item-1' ).css( 'visibility', 'hidden');
-$( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
+    moveRadialtoTop( 'draw-radial-menu' );
+    $( '#draw-radial-item-1' ).css( 'visibility', 'hidden' );
+    $( '#draw-radial-item-4' ).css( 'visibility', 'hidden' );
 
       moveLayertoTop( 'canvaspane' );
       userContext.uiState = 'draw';
       setDomPointerEvent( 'arcanvaspane', 'none' );
       setDomPointerEvent( 'canvas0', 'auto' );
       setDomPointerEvent( 'arcanvaspane', 'none' );
-
-
-
-  //      document.getElementById( 'canvaspane' ).style.zIndex = '200';
-  //      document.getElementById( 'arcanvaspane' ).style.zIndex = '10';
 
      if ( !event ) var event = window.event;
         event.stopPropagation();
@@ -103,6 +100,9 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
         drawRadialSvg.style.pointerEvents = 'none';
         moveRadialtoBottom( 'draw-radial-menu' );
     };
+
+    // ar radial
+
 
     TweenLite.set( arRadialItems, { scale:0, visibility:'visible' } );
     arRadialSvg.style.pointerEvents = 'none';
@@ -140,6 +140,8 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
         moveRadialtoBottom( 'ar-radial-menu' );
     };
 
+    // utility radial
+
     TweenLite.set( utilRadialItems, { scale:0, visibility:'visible' } );
     utilRadialSvg.style.pointerEvents = 'none';
     utilRadialTrigger.addEventListener( 'click', utilToggleMenu, true );
@@ -170,46 +172,47 @@ $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
         utilRadialLabel.innerHTML = '';
         utilRadialSvg.style.pointerEvents = 'none';
         moveRadialtoBottom( 'util-radial-menu' );
-    };
+      };
 
-    TweenLite.set( items, { scale:0, visibility: 'visible' } );
-    svg.style.pointerEvents = 'none';
-    trigger.addEventListener( 'click', toggleMenu, true );
 
-    function toggleMenu( event ) {
-    if ( !event ) var event = window.event;
-    event.stopPropagation();
-    radialOpen = !radialOpen;
-    if ( radialOpen ) {
-        TweenMax.staggerTo( items, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
-        label.innerHTML = '';
-      svg.style.pointerEvents = 'auto';
-    } else {
-        TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        label.innerHTML = '';
-      svg.style.pointerEvents = 'none';
-    }
-    }
-
-    svg.onclick = function( e ) {
-        e.stopPropagation();
-        radialOpen = false;
-        TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-            label.innerHTML = '';
-        svg.style.pointerEvents = 'none';
-    };
+//    TweenLite.set( items, { scale:0, visibility: 'visible' } );
+//    svg.style.pointerEvents = 'none';
+//    trigger.addEventListener( 'click', toggleMenu, true );
+//
+//    function toggleMenu( event ) {
+//    if ( !event ) var event = window.event;
+//    event.stopPropagation();
+//    radialOpen = !radialOpen;
+//    if ( radialOpen ) {
+//        TweenMax.staggerTo( items, 0.7, { scale:1, ease:Elastic.easeOut }, 0.05 );
+//        label.innerHTML = '';
+//      svg.style.pointerEvents = 'auto';
+//    } else {
+//        TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+//        label.innerHTML = '';
+//      svg.style.pointerEvents = 'none';
+//    }
+//    }
+//
+//    svg.onclick = function( e ) {
+//        e.stopPropagation();
+//        radialOpen = false;
+//        TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+//            label.innerHTML = '';
+//        svg.style.pointerEvents = 'none';
+//    };
 
 //close the nav when document is clicked
 
     document.onclick = function() {
-        radialOpen = false;
-        drawRadialOpen = false;
-        arRadialOpen = false;
-        utilRadialOpen = false;
-
-        TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
-        label.innerHTML = '';
-        svg.style.pointerEvents = 'none';
+  //      radialOpen = false;
+  //      drawRadialOpen = false;
+  //      arRadialOpen = false;
+  //      utilRadialOpen = false;
+//
+  //      TweenMax.staggerTo( items, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
+  //      label.innerHTML = '';
+  //      svg.style.pointerEvents = 'none';
 
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
         drawRadialLabel.innerHTML = '';
