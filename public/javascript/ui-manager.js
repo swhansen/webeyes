@@ -221,6 +221,30 @@ $( function() {
   );
 } );
 
+function initLeap() {
+    userContext.isLeap = true;
+    leapFocus();
+
+  // Tell everyone to initialize Leap
+
+  var sessionId = socketServer.sessionid;
+      socketServer.emit( 'utility', 'leapClientInit', sessionId );
+
+    msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
+    messageBar( msgString );
+
+   // mainCollapsed = true;
+   //   for ( var button in uiStructure.structure ) {
+   //     t = 500;
+   //     $( uiStructure.structure[button].mainButton ).fadeOut( t );
+   //   }
+    }
+
+
+
+
+
+
 $( function() {
   $( '#utilButton' ).click( function() {
     buildSideMenu( 'util' );

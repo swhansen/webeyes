@@ -37,6 +37,14 @@ function useModeCode( modeCode ) {
       mainCollapsed = true;
     break;
 
+
+    case 'leapme':
+
+    userContext.isLeap = true;
+    emitSessionUserContext( userContext );
+
+    break;
+
   case 'vrme':
 
     setPeerUserContext( 'all', 'modMeState', false );
@@ -172,7 +180,7 @@ $( '#codeDialogModal' ).dialog( {
               swal.showInputError('Please Enter Code!');
               return false;
             }
-           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc' ],
+           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme' ],
               inputValue.toLowerCase() ) ) ) {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
