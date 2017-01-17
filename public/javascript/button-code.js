@@ -40,6 +40,7 @@ function useModeCode( modeCode ) {
 
     case 'leapme':
 
+    initLeap();
     userContext.isLeap = true;
     emitSessionUserContext( userContext );
 
