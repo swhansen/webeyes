@@ -45,11 +45,18 @@ function moveRadialtoBottom( radialMenu ) {
     } );
   document.getElementById( radialMenu ).style.zIndex = '10';
 }
+function clearObjects() {
+  removeUserCreatedArObjects();
+  clearUtilCanvas();
+  clearDrawCanvas();
+  emitUtility( 'reset' );
+      }
 
 //$( '#draw-radial-item-2' ).attr( 'style', 'visibility: hidden');
 //$( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
 $( '#draw-radial-item-2' ).css( 'visibility', 'hidden');
 $( '#draw-radial-item-4' ).css( 'visibility', 'hidden');
+$( '#draw-radial-item-5' ).css( 'visibility', 'hidden');
 
   TweenLite.set( drawRadialItems, { scale:0, visibility:'visible' } );
   drawRadialSvg.style.pointerEvents = 'none';
