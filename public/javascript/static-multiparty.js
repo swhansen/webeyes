@@ -29,6 +29,7 @@ var userContext = {
   isSessionInitiator: false,
   isLeap: false,
   isIotHome: false,
+  iotZone: '',
   modMeState: false,
   participantState: 'peer',
   uiState: '',

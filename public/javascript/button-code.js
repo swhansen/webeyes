@@ -129,12 +129,16 @@ function useModeCode( modeCode ) {
 
   case 'iots':
     setIotZone( 'iots' );
+    userContext.iotZone = 'iots';
+    loadIotAr();
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
   break;
 
   case 'iotc':
     setIotZone( 'iotc' );
+    userContext.iotZone = 'iotc';
+    loadIotAr();
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
   break;
