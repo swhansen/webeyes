@@ -16,6 +16,8 @@ var mixer;
 
 function getArWorldSummary() {
 
+  // for experimental API
+
   var sceneChildren = [];
   var child = {};
 

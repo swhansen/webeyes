@@ -6,14 +6,12 @@ function setupArInteractionEvents() {
 //
 
 socketServer.on( 'addNewArObject', function( data ) {
-  console.log( 'Test msg at setup-ar-interaction: recieved on placeArObject', data );
     arShareData.operation = 'newObject';
     arShareData.x = data.x;
     arShareData.y = data.y;
     arShareData.z = data.z;
 
     addNewArObjectToWorld( arShareData, data.color );
-
   } );
 
 var arCanvas = document.getElementById( 'arcanvaspane' );
