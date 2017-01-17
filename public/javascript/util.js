@@ -12,6 +12,8 @@ var d3 = document.getElementById('material');
 
 function initUtil() {
 
+  userContext.addDimensionalLayer( 'utilcanvaspane' );
+
   document.getElementById('utilcanvaspane').className = 'canvascenter';
 
   utilCanvas.style.width = '100%';
@@ -101,3 +103,4 @@ socketServer.on( 'utility', function(data) {
     break;
   }
 } );
+
