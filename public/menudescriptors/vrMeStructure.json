@@ -1,21 +1,5 @@
 {
     "structure": {
-        "util": {
-            "mainButton": "#utilButton",
-            "sideBar": "#utility-ui-container",
-            "buttons": [
-                "#doc-button-1",
-                "#doc-button-2",
-                "#bullseye",
-                "#arch"
-            ],
-
-            "renderElement": "utilcanvaspane",
-
-            "desc": "utility layer",
-            "initState": "none",
-            "baseZ": "20"
-        },
         "video": {
             "mainButton": "#videoButton",
             "buttons": [],

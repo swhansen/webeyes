@@ -277,6 +277,7 @@ $( function() {
         emitSessionUserContext( userContext );
         swal.close();
         setArWorld();
+        $( '#arMainButton' ).css( 'visibility', 'hidden' );
     } );
   } );
 } );
@@ -336,6 +337,7 @@ $( function() {
           emitSessionUserContext( userContext );
           swal.close();
           setVrWorld();
+          $( '#vrMainButton' ).css( 'visibility', 'hidden' );
     } );
   } );
 } );
