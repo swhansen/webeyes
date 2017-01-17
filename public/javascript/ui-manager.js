@@ -278,6 +278,9 @@ $( function() {
         swal.close();
         setArWorld();
         $( '#arMainButton' ).css( 'visibility', 'hidden' );
+        $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+
+
     } );
   } );
 } );
