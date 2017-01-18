@@ -816,6 +816,50 @@ function loginSuccess() {
  // expand the mirror image initially.
 }
 
+$( function() {
+  $( '#textEntryButton' ).click( function() {
+
+ swal( {
+     title: 'VR World',
+     text: 'Input your text',
+     type: 'input',
+     showCancelButton: true,
+     closeOnCancel: true,
+     closeOnConfirm: false,
+     animation: 'slide-from-top',
+     inputPlaceholder: 'VR World'
+       },
+         function( textToSend ) {
+           if ( textToSend === false ) { return false; }
+           if ( textToSend === '' ) {
+               swal.showInputError( 'Please Enter Your Text Message!' );
+               return false;
+             }
+
+          swal.close();
+          if ( stringToSend && stringToSend !== '' ) {
+        for ( var i = 0; i < maxCALLERS; i++ ) {
+            var easyrtcid = easyrtc.getIthCaller( i );
+            if ( easyrtcid && easyrtcid !== '' ) {
+                easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
+            }
+        }
+    }
+    } );
+  } );
+} );
+
+
+
+
+
+
+
+
+
+
+
+
 function cancelText() {
   console.log( 'canceling text box' );
     document.getElementById( 'textentryBox' ).style.display = 'none';
@@ -844,14 +888,12 @@ function showTextEntry() {
     document.getElementById( 'textentryField' ).value = '';
     document.getElementById( 'textentryBox' ).style.display = 'block';
 
-    document.getElementById( 'textentryBox' ).style.zIndex = '300';
-    document.getElementById( 'textentryButton' ).style.zIndex = '300';
-    document.getElementById( 'textentryField' ).style.zIndex = '300';
-
     document.getElementById( 'textEntryButton' ).style.display = 'none';
     document.getElementById( 'textentryField' ).focus();
+
    // moveLayertoTop( 'textentryBox' );
    // moveLayertoTop( 'textentryButton' );
+
    for ( var button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
