@@ -829,9 +829,9 @@ $( function() {
      animation: 'slide-from-top',
      inputPlaceholder: 'VR World'
        },
-         function( textToSend ) {
-           if ( textToSend === false ) { return false; }
-           if ( textToSend === '' ) {
+         function( stringToSend ) {
+           if ( stringToSend === false ) { return false; }
+           if ( stringToSend === '' ) {
                swal.showInputError( 'Please Enter Your Text Message!' );
                return false;
              }
