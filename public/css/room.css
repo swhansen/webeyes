@@ -18,10 +18,10 @@
 .draw-radial-item:hover .sector { fill: #607D8b; }
 
 .ar-radial-item .sector{transition:all .1s linear;fill:#B0BEC5;stroke:#455A64;}
-.ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#607D8b;}
+.ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#607D8b;stroke:#455A64;}
 
-.util-radial-item .sector{transition:all .1s linear;fill:#B0BEC5;stroke:#455A64;}
-.util-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#607D8b;}
+.util-radial-item .sector{transition:all .1s linear; fill:#B0BEC5; stroke:#455A64; }
+.util-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#607D8b;stroke:#455A64;}
 
 
 .menu-trigger{fill:#EA2A55;pointer-events:auto;}
