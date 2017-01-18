@@ -845,6 +845,8 @@ function showTextEntry() {
     document.getElementById( 'textentryBox' ).style.display = 'block';
 
     document.getElementById( 'textentryBox' ).style.zIndex = '300';
+    document.getElementById( 'textentryButton' ).style.zIndex = '300';
+    document.getElementById( 'textentryField' ).style.zIndex = '300';
 
     document.getElementById( 'textEntryButton' ).style.display = 'none';
     document.getElementById( 'textentryField' ).focus();
