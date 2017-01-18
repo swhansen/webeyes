@@ -841,6 +841,7 @@ $( function() {
         for ( var i = 0; i < maxCALLERS; i++ ) {
             var easyrtcid = easyrtc.getIthCaller( i );
             if ( easyrtcid && easyrtcid !== '' ) {
+              console.log( 'Text Msg:', stringToSend );
                 easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
             }
         }
