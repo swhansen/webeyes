@@ -54,6 +54,8 @@ function useModeCode( modeCode ) {
         $( uiStructure.structure[button].mainButton ).fadeOut( t );
       }
 
+      userContext.addDimensionalLayer( 'arcanvaspane' );
+
     msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
     messageBar( msgString );
 

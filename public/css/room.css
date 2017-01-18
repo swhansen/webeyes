@@ -15,13 +15,13 @@
 
 .draw-radial-item {visibility: hidden;}
 .draw-radial-item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
-.draw-radial-item:hover .sector { fill: #b3b3ff; }
+.draw-radial-item:hover .sector { fill: #607D8b; }
 
 .ar-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
-.ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
+.ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#607D8b;}
 
 .util-radial-item .sector{transition:all .1s linear;fill:#fff;stroke:#111;}
-.util-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#eee;}
+.util-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#607D8b;}
 
 
 .menu-trigger{fill:#EA2A55;pointer-events:auto;}

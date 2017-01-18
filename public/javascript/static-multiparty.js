@@ -54,10 +54,14 @@ function addDimensionalLayer( layer ) {
   }
 }
 
+// for API
+
 function emitDimensionalLayers( data ) {
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'updateDimensionalLayers', data, sessionId );
 }
+
+// for API
 
 function emitSessionUserContext( data ) {
   var sessionId = socketServer.sessionid;
