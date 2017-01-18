@@ -843,6 +843,9 @@ function sendText( e ) {
 function showTextEntry() {
     document.getElementById( 'textentryField' ).value = '';
     document.getElementById( 'textentryBox' ).style.display = 'block';
+
+    document.getElementById( 'textentryBox' ).style.zIndex = '300';
+
     document.getElementById( 'textEntryButton' ).style.display = 'none';
     document.getElementById( 'textentryField' ).focus();
    // moveLayertoTop( 'textentryBox' );
