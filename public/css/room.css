@@ -25,7 +25,7 @@
 
 
 .menu-trigger{fill:#EA2A55;pointer-events:auto;}
-.menu-trigger:hover, .menu-trigger:focus{cursor:pointer; fill:#607D8b}
+.menu-trigger:hover{fill:#607D8b}, .menu-trigger:focus{cursor:pointer; fill:#607D8b}
 symbol{overflow:visible;}
 
 
