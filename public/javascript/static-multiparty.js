@@ -75,6 +75,7 @@ userContext.addDimensionalLayer( 'fullpage' );
 userContext.addDimensionalLayer( 'box0' );
 userContext.addDimensionalLayer( 'canvaspane' );
 userContext.addDimensionalLayer( 'textentryBox' );
+userContext.addDimensionalLayer( 'utilcanvaspane' );
 
 
  $( '*' ).filter( function() {

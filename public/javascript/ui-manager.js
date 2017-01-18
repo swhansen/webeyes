@@ -234,6 +234,9 @@ $( function() {
   );
 } );
 
+
+
+
 $( function() {
   $( '#drawButton' ).click( function() {
       buildSideMenu( 'draw' );
@@ -344,7 +347,10 @@ $( function() {
           userContext.arvrWorld = inputValue.toLowerCase();
           emitSessionUserContext( userContext );
           swal.close();
+
           setVrWorld();
+          shareArVrWorld();
+
           $( '#vrMainButton' ).css( 'visibility', 'hidden' );
           $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
     } );
@@ -417,10 +423,44 @@ function setVrWorld() {
       msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
        emitMessage( msgString );
       }
+
+
     }
   );
 } );
 
+
+function shareArVrWorld()  {
+  if ( userContext.mode === 'ar' ) {
+
+      // Tell everyone to initialize
+
+      var sessionId = socketServer.sessionid;
+          socketServer.emit( 'utility', 'arClientInit', sessionId );
+
+      // Start the orientation data feed
+
+        emitArOrientationData();
+
+        document.getElementById( 'sticky-ar' ).style.display = 'visible';
+
+        msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
+        emitMessage( msgString );
+      }
+
+    if ( userContext.mode === 'vr' ) {
+
+      // Tell everyone to initialize AR
+
+      var sessionId = socketServer.sessionid;
+          socketServer.emit( 'utility', 'vrClientInit', sessionId );
+
+      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+
+      msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
+       emitMessage( msgString );
+      }
+}
 
 //
 // Moderator Toggle
