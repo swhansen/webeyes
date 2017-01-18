@@ -836,8 +836,6 @@ $( function() {
                return false;
              }
 
-          swal.close();
-          if ( stringToSend && stringToSend !== '' ) {
         for ( var i = 0; i < maxCALLERS; i++ ) {
             var easyrtcid = easyrtc.getIthCaller( i );
             if ( easyrtcid && easyrtcid !== '' ) {
@@ -845,7 +843,10 @@ $( function() {
                 easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
             }
         }
-    }
+          swal.close();
+
+
+
     } );
   } );
 } );
