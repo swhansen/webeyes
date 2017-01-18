@@ -835,6 +835,8 @@ $( function() {
                swal.showInputError( 'Please Enter Your Text Message!' );
                return false;
              }
+             console.log( 'Text Msg:', stringToSend );
+          swal.close();
 
         for ( var i = 0; i < maxCALLERS; i++ ) {
             var easyrtcid = easyrtc.getIthCaller( i );
@@ -843,7 +845,6 @@ $( function() {
                 easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
             }
         }
-          swal.close();
 
 
 
