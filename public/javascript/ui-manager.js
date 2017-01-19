@@ -514,6 +514,28 @@ $( function() {
     } );
   } );
 
+function loadUtilImage( utilImage ) {
+
+switch ( utilImage ) {
+   case 'doc1':
+    emitUtility( 'doc-1' );
+    drawDoc1();
+   break;
+  case 'doc2':
+    emitUtility( 'doc-2' );
+    drawDoc2();
+   break;
+  case 'bullseye':
+      emitUtility( 'bullseye' );
+      drawBullsEye();
+   break;
+   case 'arch':
+      emitUtility( 'arch' );
+      drawArch();
+   break;
+  }
+}
+
 $( function() {
     $( '#mod-reset' ).click( function() {
         emitUtility( 'reset' );
