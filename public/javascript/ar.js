@@ -76,5 +76,6 @@ function loadAr() {
   ).done( function() {
     setUpArLayer();
     setupArInteractionEvents();
+    $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
     } );
   }
