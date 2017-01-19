@@ -21,8 +21,8 @@ function initUtil() {
   utilCanvas.width = utilCanvas.offsetWidth;
   utilCanvas.height = utilCanvas.offsetHeight;
 
- // box0Height = document.getElementById('box0').offsetHeight;
- // box0Width = document.getElementById('box0').offsetWidth;
+  box0Height = document.getElementById('box0').offsetHeight;
+  box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
 }
@@ -32,7 +32,7 @@ function loadUtilImage( utilImage ) {
 switch ( utilImage ) {
    case 'doc1':
     emitUtility( 'doc-1' );
-    drawDoc1( utilImage, ctx);
+    drawDoc1();
    break;
   case 'doc2':
     emitUtility( 'doc-2' );
@@ -49,35 +49,9 @@ switch ( utilImage ) {
   }
 }
 
-//function drawDoc1() {
-
-function drawDoc1(img, ctx) {
-   var canvas = ctx.canvas ;
-   var hRatio = canvas.width  / img.width    ;
-   var vRatio =  canvas.height / img.height  ;
-   var ratio  = Math.min ( hRatio, vRatio );
-   var centerShift_x = ( canvas.width - img.width*ratio ) / 2;
-   var centerShift_y = ( canvas.height - img.height*ratio ) / 2;
-   ctx.clearRect(0,0,canvas.width, canvas.height);
-   ctx.drawImage(img, 0,0, img.width, img.height,
-                      centerShift_x,centerShift_y,img.width*ratio, img.height*ratio);
+function drawDoc1() {
+  ctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  ctx.drawImage( d1, 0, 0, d1.width , d1.height, 0, 0, utilCanvas.width, utilCanvas.height );
-//}
 
 function drawDoc2() {
   ctx.drawImage(d2, 0, 0, utilCanvas.width, utilCanvas.height);
