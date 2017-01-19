@@ -76,8 +76,8 @@ function drawDoc1(img, ctx) {
 
 
 
-  ctx.drawImage( d1, 0, 0, d1.width , d1.height, 0, 0, utilCanvas.width, utilCanvas.height );
-}
+//  ctx.drawImage( d1, 0, 0, d1.width , d1.height, 0, 0, utilCanvas.width, utilCanvas.height );
+//}
 
 function drawDoc2() {
   ctx.drawImage(d2, 0, 0, utilCanvas.width, utilCanvas.height);
