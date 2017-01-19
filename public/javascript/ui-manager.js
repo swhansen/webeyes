@@ -514,8 +514,6 @@ $( function() {
     } );
   } );
 
-
-
 $( function() {
     $( '#mod-reset' ).click( function() {
         emitUtility( 'reset' );
@@ -537,15 +535,6 @@ $( function() {
 
 // --------------------------
 
- $( function() {
-   $( '#b1' )
-     .button( {
-       label: 'Test Button'
-     } )
-     .click( function( event ) {
-       alert( 'clicked button' );
-     } );
- } );
 
   // toggle line drawing fade
 
