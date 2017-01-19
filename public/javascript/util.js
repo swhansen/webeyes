@@ -50,7 +50,7 @@ switch ( utilImage ) {
 }
 
 function drawDoc1() {
-  ctx.drawImage(d1, 0, 0, utilCanvas.width - 50, utilCanvas.height - 50);
+  ctx.drawImage(d1, 0, 0, utilCanvas.width - 70, utilCanvas.height - 70);
 }
 
 function drawDoc2() {
