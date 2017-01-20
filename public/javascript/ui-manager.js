@@ -287,14 +287,12 @@ $( function() {
         setArWorld();
         $( '#arMainButton' ).css( 'visibility', 'hidden' );
         $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
-
-
     } );
   } );
 } );
 
 function setArWorld() {
-      buildSideMenu( 'augme' );
+ //     buildSideMenu( 'augme' );
 
       userContext.participantState = 'focus';
       userContext.modMeState = true;
