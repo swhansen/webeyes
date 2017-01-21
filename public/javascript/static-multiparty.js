@@ -821,14 +821,14 @@ $( function() {
   $( '#textEntryButton' ).click( function() {
 
  swal( {
-     title: 'VR World',
+     title: 'Text Message to All Session Participants',
      text: 'Input your text',
      type: 'input',
      showCancelButton: true,
      closeOnCancel: true,
      closeOnConfirm: false,
      animation: 'slide-from-top',
-     inputPlaceholder: 'VR World'
+     inputPlaceholder: 'text msg'
        },
          function( stringToSend ) {
            if ( stringToSend === false ) { return false; }
