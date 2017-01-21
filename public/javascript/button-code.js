@@ -170,7 +170,7 @@ function useModeCode( modeCode ) {
   break;
 
   case 'iotz':
-
+console.log ( 'at case iotz' );
 iotZoneModal();
   break;
   }
