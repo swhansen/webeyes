@@ -233,8 +233,8 @@ $( '#codeDialogModal' ).dialog( {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
           }
-         useModeCode( inputValue.toLowerCase() );
          swal.close();
+         useModeCode( inputValue.toLowerCase() );
        }
   } );
 } );
