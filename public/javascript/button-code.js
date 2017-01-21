@@ -15,7 +15,6 @@ setDomPointerEvent('canvas0', 'none');
 }
 
 function useModeCode( modeCode ) {
-  var iotZone;
   var mainCollapsed;
   switch ( modeCode ) {
 
@@ -169,9 +168,9 @@ function useModeCode( modeCode ) {
   break;
 
   case 'iotz':
-
+console.log( 'at iot subzone swal' );
   swal( {
-    title: 'iot Zome Set',
+    title: 'iot Zone Set',
     text: 'Input your IOT SubZone',
     type: 'input',
     showCancelButton: true,
@@ -180,7 +179,7 @@ function useModeCode( modeCode ) {
     animation: 'slide-from-top',
     inputPlaceholder: 'IOT Sub Zone'
       },
-        function( inputValue ){
+        function( inputValue ) {
           if ( inputValue === false ) return false;
           if (inputValue === '') {
               swal.showInputError('Please Enter a sub-zone code!');
