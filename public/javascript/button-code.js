@@ -168,7 +168,7 @@ function useModeCode( modeCode ) {
     messageBar( msgString );
   break;
 
-  case 'iotzone':
+  case 'iotz':
 
   swal( {
     title: 'iot Zome Set',
