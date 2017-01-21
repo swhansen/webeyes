@@ -186,7 +186,7 @@ function useModeCode( modeCode ) {
               swal.showInputError('Please Enter a sub-zone code!');
               return false;
             }
-          var ZoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
+          var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
 
           if ( !( inputvalue ).match( zoneReg ) ) {
             console.log( 'IOT sub-zone INVALID', inputvalue );
