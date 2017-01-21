@@ -244,7 +244,7 @@ $( '#codeDialogModal' ).dialog( {
 
           if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
-       //  swal.close();
+         swal.close();
          useModeCode( inputValue.toLowerCase() );
        }
        }
