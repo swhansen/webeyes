@@ -244,8 +244,12 @@ $( '#codeDialogModal' ).dialog( {
 
           if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
+            if ( inputValue.toLowerCase() === iotz ) {
+              useModeCode( inputValue.toLowerCase() );
+            } else {
          swal.close();
          useModeCode( inputValue.toLowerCase() );
+       }
        }
        }
   } );
