@@ -169,7 +169,7 @@ function useModeCode( modeCode ) {
 
   case 'iotz':
 console.log( 'at iot subzone swal' );
-  swal( {
+  function() { swal( {
     title: 'iot Zone Set',
     text: 'Input your IOT SubZone',
     type: 'input',
@@ -198,6 +198,7 @@ console.log( 'at iot subzone swal' );
 
           swal.close();
           } );
+};
   break;
   }
 }
