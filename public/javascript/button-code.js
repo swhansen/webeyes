@@ -15,6 +15,7 @@ setDomPointerEvent('canvas0', 'none');
 }
 
 function useModeCode( modeCode ) {
+  var iotZone;
   var mainCollapsed;
   switch ( modeCode ) {
 
@@ -162,9 +163,41 @@ function useModeCode( modeCode ) {
   case 'iotc':
     setIotZone( 'iotc' );
     userContext.iotZone = 'iotc';
-    loadArModel( 'iot' )
+    loadArModel( 'iot' );
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
+  break;
+
+  case 'iotzone':
+
+  swal( {
+    title: 'iot Zome Set',
+    text: 'Input your IOT SubZone',
+    type: 'input',
+    showCancelButton: true,
+    closeOnCancel: true,
+    closeOnConfirm: false,
+    animation: 'slide-from-top',
+    inputPlaceholder: 'IOT Sub Zone'
+      },
+        function(inputValue){
+          if ( inputValue === false ) return false;
+          if (inputValue === '') {
+              swal.showInputError('Please Enter a sub-zone code!');
+              return false;
+            }
+          var ZoneReg =  ^([1-9][0-9]{0,2}|1000)$;
+
+          if ( !( inputvalue ).match( zoneReg ) ) {
+            console.log( 'IOT sub-zone INVALID', inputvalue );
+            swal.showInputError( 'Please enter a valid sub-zone: 1-999' );
+            return false;
+          }
+
+          console.log( 'IOT sub-zone valid', inputvalue );
+
+          swal.close();
+          } );
   break;
   }
 }
@@ -196,7 +229,7 @@ $( '#codeDialogModal' ).dialog( {
               swal.showInputError('Please Enter Code!');
               return false;
             }
-           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme' ],
+           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) ) {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
