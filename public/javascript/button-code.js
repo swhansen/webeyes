@@ -180,13 +180,13 @@ function useModeCode( modeCode ) {
     animation: 'slide-from-top',
     inputPlaceholder: 'IOT Sub Zone'
       },
-        function(inputValue){
+        function( inputValue ){
           if ( inputValue === false ) return false;
           if (inputValue === '') {
               swal.showInputError('Please Enter a sub-zone code!');
               return false;
             }
-          var ZoneReg =  ^([1-9][0-9]{0,2}|1000)$;
+          var ZoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
 
           if ( !( inputvalue ).match( zoneReg ) ) {
             console.log( 'IOT sub-zone INVALID', inputvalue );
