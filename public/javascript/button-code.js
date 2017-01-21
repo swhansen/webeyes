@@ -153,7 +153,7 @@ function useModeCode( modeCode ) {
 
   case 'iots':
     setIotZone( 'iots' );
-    loadArModel( 'iot' )
+    loadArModel( 'iot' );
     userContext.iotZone = 'iots';
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
@@ -168,8 +168,17 @@ function useModeCode( modeCode ) {
   break;
 
   case 'iotz':
+
+iotZoneModal();
+  break;
+  }
+}
+
+
+function iotZoneModal() {
+
 console.log( 'at iot subzone swal' );
-  function() { swal( {
+ swal( {
     title: 'iot Zone Set',
     text: 'Input your IOT SubZone',
     type: 'input',
@@ -180,7 +189,7 @@ console.log( 'at iot subzone swal' );
     inputPlaceholder: 'IOT Sub Zone'
       },
         function( inputValue ) {
-          console.log( 'at iot zone inside function');
+          console.log( 'at iot zone inside function' );
           if ( inputValue === false ) return false;
           if (inputValue === '') {
               swal.showInputError('Please Enter a sub-zone code!');
@@ -189,18 +198,16 @@ console.log( 'at iot subzone swal' );
           var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
 
           if ( !( inputValue ).match( zoneReg ) ) {
-            console.log( 'IOT sub-zone INVALID', inputvalue );
+            console.log( 'IOT sub-zone INVALID', inputValue );
             swal.showInputError( 'Please enter a valid sub-zone: 1-999' );
             return false;
           }
 
-          console.log( 'IOT sub-zone valid', inputvalue );
+          console.log( 'IOT sub-zone valid', inputValue );
 
           swal.close();
           } );
-};
-  break;
-  }
+
 }
 
 // UI code input dialog
