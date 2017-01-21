@@ -180,6 +180,7 @@ console.log( 'at iot subzone swal' );
     inputPlaceholder: 'IOT Sub Zone'
       },
         function( inputValue ) {
+          console.log( 'at iot zone inside function');
           if ( inputValue === false ) return false;
           if (inputValue === '') {
               swal.showInputError('Please Enter a sub-zone code!');
@@ -187,7 +188,7 @@ console.log( 'at iot subzone swal' );
             }
           var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
 
-          if ( !( inputvalue ).match( zoneReg ) ) {
+          if ( !( inputValue ).match( zoneReg ) ) {
             console.log( 'IOT sub-zone INVALID', inputvalue );
             swal.showInputError( 'Please enter a valid sub-zone: 1-999' );
             return false;
