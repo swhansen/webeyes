@@ -14,6 +14,8 @@ modmeUI();
 setDomPointerEvent('canvas0', 'none');
 }
 
+iotZoneModal();
+
 function useModeCode( modeCode ) {
   var mainCollapsed;
   switch ( modeCode ) {
@@ -176,7 +178,6 @@ iotZoneModal();
 
 
 function iotZoneModal() {
-
 console.log( 'at iot subzone swal' );
  swal( {
     title: 'iot Zone Set',
