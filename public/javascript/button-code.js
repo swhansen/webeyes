@@ -168,8 +168,8 @@ function useModeCode( modeCode ) {
   break;
 
   case 'iotz':
-console.log ( 'at case iotz' );
-iotZoneModal();
+    console.log ( 'at case iotz' );
+    iotZoneModal();
   break;
   }
 }
@@ -247,8 +247,11 @@ $( '#codeDialogModal' ).dialog( {
           if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
             if ( inputValue.toLowerCase() === 'iotz' ) {
+              console.log( 'code modal IOTZ');
               useModeCode( inputValue.toLowerCase() );
-            } else if ( inputValue.toLowerCase() === 'vrme' || 'augme' ) {
+            } else
+
+            if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
               console.log(' vrme....@@@@@@');
               swal.close();
             } else {
