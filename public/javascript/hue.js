@@ -30,7 +30,7 @@ function setIotZone( iotZone ) {
 }
 
 function setIotSubZone( subZoneId ) {
-  var szSrt = '<p IOT sub-zone: ' + subZoneId + '</p>';
+  var szStr = '<p IOT sub-zone: ' + subZoneId + '</p>';
 
   if ( userContext.iotZone === 'iotc' ) {
 
@@ -42,7 +42,7 @@ function setIotSubZone( subZoneId ) {
     }
       console.log( ' at setiotzone', userContext );
       $( '#iotZoneId' ).html( 'IOT Zone: Chuck' );
-      $( '#iotsubzone' ).text( szStr );
+      $( '#iotsubzone' ).html( szStr );
   }
 
   function setHueIotDevice( data ) {
