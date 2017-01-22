@@ -257,7 +257,7 @@ $( '#codeDialogModal' ).dialog( {
     //    console.log(' vrme....@@@@@@');
     //    swal.close();
     //   } else {
-         swal.close();
+    //     swal.close();
          useModeCode( inputValue.toLowerCase() );
           }
        }
