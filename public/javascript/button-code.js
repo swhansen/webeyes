@@ -254,7 +254,7 @@ $( '#codeDialogModal' ).dialog( {
 
       else if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
         console.log(' vrme....@@@@@@');
-    return;
+    //return;
        } else {
          swal.close();
          useModeCode( inputValue.toLowerCase() );
