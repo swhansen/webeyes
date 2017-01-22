@@ -22,6 +22,22 @@ var threejsDebug = true;
 
 var leapPeerHandAnimate = false;
 
+
+var infoBar = {
+    "room": userContext.room,
+    "zone":userContext.iotZone,
+    "subzone":userContext.iotSubZone,
+    "device":"1"
+}
+
+var room = $("<div/>",{"text":infoBar.room,"class":"roomId" });
+var room = $("<div/>",{"text":infoBar.zone,"class":"iotZoneId" });
+var room = $("<div/>",{"text":infoBar.subzone,"class":"iotsubzone" });
+var room = $("<div/>",{"text":infoBar.device,"class":"iotDeviceId" });
+
+
+
+
 // Container for User Context
 
 var userContext = {
@@ -46,6 +62,25 @@ var userContext = {
   addDimensionalLayer: addDimensionalLayer,
   dimensionalLayers: []
 };
+
+
+var infoBar = {
+    "room": userContext.room,
+    "zone":userContext.iotZone,
+    "subzone":userContext.iotSubZone,
+    "device":"1"
+}
+
+var room = $("<div/>",{"text":infoBar.room,"class":"roomId" });
+var zone = $("<div/>",{"text":infoBar.zone,"class":"iotZoneId" });
+var subzone = $("<div/>",{"text":infoBar.subzone,"class":"iotsubzone" });
+var device = $("<div/>",{"text":infoBar.device,"class":"iotDeviceId" });
+
+$("#infobar").fadeIn(1500);
+ $("#infobar").append(room).append(zone).append(subzone).append(device);
+
+
+
 
 function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
