@@ -203,6 +203,7 @@ console.log( 'at iot subzone swal' );
           }
 
           console.log( 'IOT sub-zone valid', inputValue );
+          userContext.iotZone = inputValue
 
           swal.close();
           } );
@@ -246,6 +247,8 @@ $( '#codeDialogModal' ).dialog( {
               inputValue.toLowerCase() ) ) {
             if ( inputValue.toLowerCase() === 'iotz' ) {
               useModeCode( inputValue.toLowerCase() );
+            } else if ( inputValue.toLowerCase() === 'vrme' ) {
+              console.log(' vrme....@@@@@@');
             } else {
          swal.close();
          useModeCode( inputValue.toLowerCase() );
