@@ -23,19 +23,6 @@ var threejsDebug = true;
 var leapPeerHandAnimate = false;
 
 
-var infoBar = {
-    "room": userContext.room,
-    "zone":userContext.iotZone,
-    "subzone":userContext.iotSubZone,
-    "device":"1"
-}
-
-var room = $("<div/>",{"text":infoBar.room,"class":"roomId" });
-var room = $("<div/>",{"text":infoBar.zone,"class":"iotZoneId" });
-var room = $("<div/>",{"text":infoBar.subzone,"class":"iotsubzone" });
-var room = $("<div/>",{"text":infoBar.device,"class":"iotDeviceId" });
-
-
 
 
 // Container for User Context
