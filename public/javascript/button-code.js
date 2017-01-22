@@ -202,8 +202,10 @@ console.log( 'at iot subzone swal' );
             return false;
           }
 
-          console.log( 'IOT sub-zone valid', inputValue );
-          userContext.iotZone = inputValue
+          userContext.iotSubZone = inputValue;
+
+          setIotZone( inputValue );
+          console.log( ' iotzoneModal', userContext );
 
           swal.close();
           } );

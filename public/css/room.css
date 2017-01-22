@@ -92,7 +92,8 @@ symbol{overflow:visible;}
     display: block;
 }
 
-#iotZoneId {
+
+#roomId {
   position: fixed;
   top: 10px;
   left: 20px;
@@ -102,9 +103,9 @@ symbol{overflow:visible;}
   z-index: 200;
 }
 
-#iotDeviceId {
+#iotZoneId {
   position: fixed;
-  top: 28px;
+  top: 25px;
   left: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -112,9 +113,19 @@ symbol{overflow:visible;}
   z-index: 200;
 }
 
-#roomId {
+#iotsubzone {
   position: fixed;
-  top: 48px;
+  top: 40px;
+  left: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight:  bold;
+  z-index: 200;
+}
+
+#iotDeviceId {
+  position: fixed;
+  top: 55px;
   left: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;

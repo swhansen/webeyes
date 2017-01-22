@@ -30,6 +30,7 @@ var userContext = {
   isLeap: false,
   isIotHome: false,
   iotZone: '',
+  iotSubZone: '',
   modMeState: false,
   participantState: 'peer',
   uiState: '',
@@ -852,17 +853,6 @@ $( function() {
     } );
   } );
 } );
-
-
-
-
-
-
-
-
-
-
-
 
 function cancelText() {
   console.log( 'canceling text box' );
