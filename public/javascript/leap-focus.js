@@ -162,7 +162,7 @@ function emitLeap( data ) {
 
 function updateHueText( selectedHueDevice ) {
   var val = 'IOT Device:' + selectedHueDevice;
-  $( '#iotDeviceId' ).html( val );
+  $( '#iotDeviceId' ).text( val );
 }
 
 function findPinchingFingerType( hand ){

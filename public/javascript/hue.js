@@ -83,6 +83,7 @@ var hueSetLightStateXY = function( lightNo, state, xy, bri ) {
     data: JSON.stringify( dataObject ),
     error: function( a, err ) { }
     } );
+    $( '#iotDeviceId' ).text( 'IOT Device: ' + data.lightNo );
 };
 
 var alertWeg2rtEntry = function( lightNo ) {

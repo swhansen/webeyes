@@ -246,17 +246,18 @@ $( '#codeDialogModal' ).dialog( {
 
              if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
+
                 if ( inputValue.toLowerCase() === 'iotz' ) {
                   console.log( 'code modal IOTZ');
                   useModeCode( inputValue.toLowerCase() );
                 }
 
-          //  else
+    //  else
 
-          //  if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
-          //    console.log(' vrme....@@@@@@');
-          //    swal.close();
-         //   } else {
+    //  if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
+    //    console.log(' vrme....@@@@@@');
+    //    swal.close();
+    //   } else {
          swal.close();
          useModeCode( inputValue.toLowerCase() );
           }
