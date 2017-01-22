@@ -218,7 +218,7 @@ $( '#codeDialogModal' ).dialog( {
     } );
 
  $( '#codeDialogButton' ).click( function() {
-  swal({
+  swal( {
     title: 'Button Code',
     text: 'Input your Super Secret Code',
     type: 'input',
@@ -244,24 +244,28 @@ $( '#codeDialogModal' ).dialog( {
               return false;
           }
 
-          if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
+             if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
-            if ( inputValue.toLowerCase() === 'iotz' ) {
-              console.log( 'code modal IOTZ');
-              useModeCode( inputValue.toLowerCase() );
-            } else
+                if ( inputValue.toLowerCase() === 'iotz' ) {
+                  console.log( 'code modal IOTZ');
+                  useModeCode( inputValue.toLowerCase() );
+                }
 
-            if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
-              console.log(' vrme....@@@@@@');
-              swal.close();
-            } else {
+          //  else
+
+          //  if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
+          //    console.log(' vrme....@@@@@@');
+          //    swal.close();
+         //   } else {
          swal.close();
          useModeCode( inputValue.toLowerCase() );
+          }
        }
        }
-       }
-  } );
+    );
+
 } );
+
 
 // recieving unique rtcID
 
