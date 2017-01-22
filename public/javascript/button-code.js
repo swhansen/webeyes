@@ -188,7 +188,6 @@ console.log( 'at iot subzone swal' );
     inputPlaceholder: 'IOT Sub Zone'
       },
         function( inputValue ) {
-          console.log( 'at iot zone inside function' );
           if ( inputValue === false ) return false;
           if (inputValue === '') {
               swal.showInputError('Please Enter a sub-zone code!');
@@ -204,8 +203,8 @@ console.log( 'at iot subzone swal' );
 
           userContext.iotSubZone = inputValue;
 
-          setIotZone( inputValue );
-          console.log( ' iotzoneModal', userContext );
+          setIotSubZone( inputValue );
+          console.log( 'at  iotzoneModal', userContext );
 
           swal.close();
           } );
