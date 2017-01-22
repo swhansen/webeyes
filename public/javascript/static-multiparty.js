@@ -56,7 +56,7 @@ var infoBar = {
     "zone":userContext.iotZone,
     "subzone":userContext.iotSubZone,
     "device":"1"
-}
+};
 
 var room = $("<div/>",{"text":infoBar.room,"class":"roomId" });
 var zone = $("<div/>",{"text":infoBar.zone,"class":"iotZoneId" });
