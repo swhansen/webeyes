@@ -20,21 +20,17 @@ function setIotZone( iotZone ) {
      hueURL = iotZones.steve;
      userContext.iotZone = iotZone;
      $( '#iotZoneId' ).html( 'IOT Zone: Steve' );
- //    $( '#iotsubzone' ).html( szStr );
-
     break;
     case 'iotc':
       hueURL =  iotZones.chuck;
       userContext.iotZone = iotZone;
       $( '#iotZoneId' ).html( 'IOT Zone Chuck' );
- //     $( '#iotsubzone' ).html( 'IOT sub-zone', hueURL );
     break;
-
   }
 }
 
 function setIotSubZone( subZoneId ) {
-  var szSrt = 'IOT sub-zone: ' + subZoneId;
+  var szSrt = '<p IOT sub-zone: ' + subZoneId + '</p>';
 
   if ( userContext.iotZone === 'iotc' ) {
 
