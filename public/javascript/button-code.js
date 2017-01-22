@@ -246,7 +246,6 @@ $( '#codeDialogModal' ).dialog( {
 
              if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
-
                 if ( inputValue.toLowerCase() === 'iotz' ) {
                   console.log( 'code modal IOTZ');
                   useModeCode( inputValue.toLowerCase() );
