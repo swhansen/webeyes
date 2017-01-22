@@ -15,24 +15,26 @@ socketServer.on( 'iotControl', function( data ) {
 function setIotZone( iotZone ) {
 
   switch ( iotZone ) {
+
     case 'iots':
      hueURL = iotZones.steve;
      userContext.iotZone = iotZone;
      $( '#iotZoneId' ).html( 'IOT Zone: Steve' );
-     $( '#iotsubzone' ).html( 'IOT sub-zone', hueURL );
+ //    $( '#iotsubzone' ).html( szStr );
 
     break;
     case 'iotc':
       hueURL =  iotZones.chuck;
       userContext.iotZone = iotZone;
       $( '#iotZoneId' ).html( 'IOT Zone Chuck' );
-      $( '#iotsubzone' ).html( 'IOT sub-zone', hueURL );
+ //     $( '#iotsubzone' ).html( 'IOT sub-zone', hueURL );
     break;
 
   }
 }
 
 function setIotSubZone( subZoneId ) {
+  var szSrt = 'IOT sub-zone: ' + subZoneId;
 
   if ( userContext.iotZone === 'iotc' ) {
 
@@ -44,7 +46,7 @@ function setIotSubZone( subZoneId ) {
     }
       console.log( ' at setiotzone', userContext );
       $( '#iotZoneId' ).html( 'IOT Zone: Chuck' );
-      $( '#iotsubzone' ).html( 'IOT sub-zone:', hueURL );
+      $( '#iotsubzone' ).html( szStr );
   }
 
   function setHueIotDevice( data ) {
