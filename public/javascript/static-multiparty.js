@@ -58,10 +58,10 @@ var infoBar = {
     "device":"1"
 };
 
-var room = $("<div/>",{"text":infoBar.room,"class":"roomId" });
-var zone = $("<div/>",{"text":infoBar.zone,"class":"iotZoneId" });
-var subzone = $("<div/>",{"text":infoBar.subzone,"class":"iotsubzone" });
-var device = $("<div/>",{"text":infoBar.device,"class":"iotDeviceId" });
+var room = $("<div/>",{"text":infoBar.room });
+var zone = $("<div/>",{"text":infoBar.zone });
+var subzone = $("<div/>",{"text":infoBar.subzone });
+var device = $("<div/>",{"text":infoBar.device });
 
 $("#infobar").fadeIn(1500);
  $("#infobar").append(room).append(zone).append(subzone).append(device);
