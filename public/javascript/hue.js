@@ -12,9 +12,9 @@ socketServer.on( 'iotControl', function( data ) {
     setHueIotDevice( data );
       } );
 
-function setIotZone( iotCode ) {
+function setIotZone( iotZone ) {
 
-  switch ( iotCode ) {
+  switch ( iotZone ) {
     case 'iots':
      hueURL = iotZones.steve;
      $( '#iotZoneId' ).html( 'IOT Zone: Steve' );
@@ -27,6 +27,8 @@ function setIotZone( iotCode ) {
       $( '#iotZoneId' ).html( 'IOT Zone Chuck' );
       $( '#iotsubzone' ).html( 'IOT sub-zone', hueURL );
     break;
+
+    userContext.iotZone = iotZone;
   }
 }
 
