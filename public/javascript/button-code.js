@@ -243,18 +243,17 @@ $( '#codeDialogModal' ).dialog( {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
           }
-
              if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
-                  console.log( 'code modal IOTZ');
+                  console.log( 'code modal IOTZ' );
                   useModeCode( inputValue.toLowerCase() );
+                  swal.close();
+                  return;
                 }
 
-    //  else
-
-    //  if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
-    //    console.log(' vrme....@@@@@@');
+      else if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
+        console.log(' vrme....@@@@@@');
     //    swal.close();
        } else {
          swal.close();
@@ -262,7 +261,7 @@ $( '#codeDialogModal' ).dialog( {
           }
        }
        }
-    );
+    } );
 
 } );
 
