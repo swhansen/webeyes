@@ -42,7 +42,7 @@ function setIotSubZone( subZoneId ) {
     }
       console.log( ' at setiotzone', userContext );
       $( '#iotZoneId' ).html( 'IOT Zone: Chuck' );
-      $( '#iotsubzone' ).html(" " '+szStr+' " ");
+      $( '#iotsubzone' ).html( "  '+szStr+'  ");
   }
 
   function setHueIotDevice( data ) {
