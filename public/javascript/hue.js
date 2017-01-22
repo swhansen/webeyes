@@ -18,10 +18,18 @@ function setIotZone( iotCode ) {
     case 'iots':
      hueURL = iotZones.steve;
      $( '#iotZoneId' ).html( 'IOT Zone: Steve' );
+     $( '#iotsubzone' ).html( 'IOT sub-zone' hueURL );
+
     break;
     case 'iotc':
       hueURL =  iotZones.chuck;
+
+      hueURL = 'http://192.168.1.' + userContext.iotSubZone + '/api/52927745603325e730bd719e2a8bf2cb';
+
+      console.log( 'iotc URL set to', hueURL );
+
       $( '#iotZoneId' ).html( 'IOT Zone Chuck' );
+      $( '#iotsubzone' ).html( 'IOT sub-zone' hueURL );
     break;
   }
 }
