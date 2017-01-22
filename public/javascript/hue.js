@@ -30,7 +30,7 @@ function setIotZone( iotZone ) {
 }
 
 function setIotSubZone( subZoneId ) {
-  var szStr = '<p IOT sub-zone: ' + subZoneId + '</p>';
+  var szStr = 'IOT sub-zone: ' + subZoneId;
 
   if ( userContext.iotZone === 'iotc' ) {
 
@@ -41,8 +41,8 @@ function setIotSubZone( subZoneId ) {
       hueURL = iotZones.steve;
     }
       console.log( ' at setiotzone', userContext );
-      $( '#iotZoneId' ).html( 'IOT Zone: Chuck' );
-      $( '#iotsubzone' ).text( szStr );
+      $( '#iotZoneId' ).html( 'IOT Zone:' + ' Chuck' );
+      $( '#iotsubzone' ).text( 'IOT sub-zone: ' + subZoneId );
   }
 
   function setHueIotDevice( data ) {
