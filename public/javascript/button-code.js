@@ -248,13 +248,12 @@ $( '#codeDialogModal' ).dialog( {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
                   console.log( 'code modal IOTZ' );
                   useModeCode( inputValue.toLowerCase() );
-                  swal.close();
-                  return;
+                  return true;
                 }
 
       else if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
         console.log(' vrme....@@@@@@');
-    //return;
+    return true;
        } else {
       //   swal.close();
          useModeCode( inputValue.toLowerCase() );
