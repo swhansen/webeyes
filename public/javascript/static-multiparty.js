@@ -22,9 +22,6 @@ var threejsDebug = true;
 
 var leapPeerHandAnimate = false;
 
-
-
-
 // Container for User Context
 
 var userContext = {
@@ -49,25 +46,6 @@ var userContext = {
   addDimensionalLayer: addDimensionalLayer,
   dimensionalLayers: []
 };
-
-
-var infoBar = {
-    "room": userContext.room,
-    "zone":userContext.iotZone,
-    "subzone":userContext.iotSubZone,
-    "device":"1"
-};
-
-var room = $("<div/>",{"text":infoBar.room });
-var zone = $("<div/>",{"text":infoBar.zone });
-var subzone = $("<div/>",{"text":infoBar.subzone });
-var device = $("<div/>",{"text":infoBar.device });
-
-$("#infobar").fadeIn(1500);
- $("#infobar").append(room).append(zone).append(subzone).append(device);
-
-
-
 
 function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
