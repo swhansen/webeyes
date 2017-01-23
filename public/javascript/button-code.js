@@ -153,7 +153,7 @@ function useModeCode( modeCode ) {
 
   case 'iots':
     setIotZone( 'iots' );
- //   loadArModel( 'iot' );
+    loadArModel( 'iot' );
     userContext.iotZone = 'iots';
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
@@ -162,7 +162,7 @@ function useModeCode( modeCode ) {
   case 'iotc':
     setIotZone( 'iotc' );
     userContext.iotZone = 'iotc';
- //   loadArModel( 'iot' );
+    loadArModel( 'iot' );
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
   break;
@@ -233,34 +233,38 @@ $( '#codeDialogModal' ).dialog( {
 
           if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
             swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
-          }
-          if (inputValue === '') {
+          } else {
+            if (inputValue === '') {
               swal.showInputError('Please Enter Code!');
               return false;
-          }
-            if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
+            }
+           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) ) {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
           }
+
              if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
-                  console.log( 'code modal IOTZ' );
+                  console.log( 'code modal IOTZ');
                   useModeCode( inputValue.toLowerCase() );
-                  swal.close;
                 }
 
-    //  else if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
+    //  else
+
+    //  if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
     //    console.log(' vrme....@@@@@@');
-  //  swal.close
-          } else {
+    //    swal.close();
+       } else {
          swal.close();
          useModeCode( inputValue.toLowerCase() );
           }
-       } );
-       } );
+       }
+       }
+    );
 
+} );
 
 
 // recieving unique rtcID
