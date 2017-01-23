@@ -112,6 +112,11 @@ socketServer.on( 'utility', function(data) {
       ctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
   //    removeUserCreatedArObjects();
     break;
+
+    case 'clearmoderator':
+    $( '#ismoderator' ).text( );
+    break;
+
     case 'arClientInit':
         loadAr( 'peer' );
     break;
