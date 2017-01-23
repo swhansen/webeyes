@@ -689,9 +689,6 @@ function focusUser( rtcid ) {
 
     updateMuteImage( false );
     handleWindowResize();
-
-    emitUtility( 'clearmoderator' );
-    $( '#ismoderator' ).text( 'Moderator' );
 }
 
 function expandThumb( whichBox ) {

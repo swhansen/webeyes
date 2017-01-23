@@ -36,8 +36,8 @@ function useModeCode( modeCode ) {
       document.getElementById( 'modmeButton' ).style.visibility = 'visible';
       mainCollapsed = true;
 
- //     emitUtility( 'clearmoderator' );
- //     $( '#ismoderator' ).text( 'Moderator' );
+      emitUtility( 'clearmoderator' );
+      $( '#ismoderator' ).text( 'Moderator' );
 
     break;
 
@@ -104,6 +104,9 @@ function useModeCode( modeCode ) {
     emitMessage( msgString );
 
     vrWorldModal();
+
+    emitUtility( 'clearmoderator' );
+    $( '#ismoderator' ).text( 'Moderator' );
 
   break;
 
