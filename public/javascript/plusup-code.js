@@ -36,6 +36,8 @@ function useModeCode( modeCode ) {
       document.getElementById( 'modmeButton' ).style.visibility = 'visible';
       mainCollapsed = true;
 
+      emitUtility( 'clearmoderator' );
+
       $( '#ismoderator' ).text( 'Moderator' );
 
     break;

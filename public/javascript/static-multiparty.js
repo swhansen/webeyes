@@ -107,7 +107,7 @@ socketServer.on( 'roomnamerequest', function( data ) {
   socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
 
 function updateRoom( data ) {
-  var str = 'Room Name:' + data;
+  var str = 'Channel:' + data;
   $( '#roomId' ).html( str );
   userContext.room = data;
   }
