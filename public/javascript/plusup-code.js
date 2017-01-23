@@ -140,6 +140,8 @@ function useModeCode( modeCode ) {
       msgString = 'User ' + userContext.rtcId + ' has become the focus in AR mode';
       emitMessage( msgString );
 
+      arWorldModal();
+
       emitArOrientationData();
 
     break;
@@ -178,7 +180,7 @@ function useModeCode( modeCode ) {
   break;
   }
 }
-
+// ------- end plus-up case -------------------------
 
 function iotZoneModal() {
 console.log( 'at iot subzone swal' );
@@ -213,7 +215,6 @@ console.log( 'at iot subzone swal' );
 
           swal.close();
           } );
-
 }
 
 function vrWorldModal() {
@@ -248,41 +249,36 @@ swal( {
     } );
 }
 
-
-//function setVrWorld() {
-//
-//      buildSideMenu( 'vrme' );
-//
-//      userContext.participantState = 'focus';
-//      userContext.modMeState = true;
-//      userContext.uiState = 'vr';
-//      userContext.mode = 'vr';
-//
-//      setPeerUserContext( 'all', 'mode', 'vr' );
-//      setPeerUserContext( 'all', 'participantState', 'peer' );
-//      userContext.participantState = 'focus';
-//      emitSessionUserContext( userContext );
-//
-//// set a parameter to load specific World
-//
-//      loadAr();
-//
-//      document.getElementById( 'canvaspane' ).style.zIndex = '10';
-//      document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
-//
-//      document.getElementById( 'sticky-ar' ).style.display = 'visible';
-//      setDomPointerEvent( 'canvas0', 'none' );
-//      setDomPointerEvent( 'arcanvaspane', 'auto' );
-//
-//      // inform all the pees of the mode
-//
-//      msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
-//      emitMessage( msgString );
-//
-//    }
-
-
-
+function arWorldModal() {
+  swal( {
+     title: 'AR World',
+     text: 'Input Your AR World',
+     type: 'input',
+     showCancelButton: true,
+     closeOnCancel: true,
+     closeOnConfirm: false,
+     animation: 'slide-from-top',
+     inputPlaceholder: 'AR World'
+       },
+         function( inputValue ) {
+           if ( inputValue === false ) { return false; }
+           if ( inputValue === '' ) {
+               swal.showInputError( 'Please Enter Your AR World!' );
+               return false;
+             }
+           if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
+               inputValue.toLowerCase() ) ) ) {
+                 swal.showInputError( 'Please enter a valid AR World' );
+               return false;
+           }
+          userContext.arvrWorld = inputValue.toLowerCase();
+          emitSessionUserContext( userContext );
+          swal.close();
+          setArWorld();
+          $( '#arMainButton' ).css( 'visibility', 'hidden' );
+          $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+    } );
+}
 
 
 // UI code input dialog
@@ -322,11 +318,11 @@ $( '#codeDialogModal' ).dialog( {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
                   console.log( 'code modal IOTZ');
                   useModeCode( inputValue.toLowerCase() );
-                }  else
-                if ( inputValue.toLowerCase() === 'vrme' ) {
-                  console.log( 'code modal vrme');
-                  useModeCode( inputValue.toLowerCase() );
-                }
+                }  //else
+            //    if ( inputValue.toLowerCase() === 'vrme' ) {
+            //      console.log( 'code modal vrme');
+           //       useModeCode( inputValue.toLowerCase() );
+           //     }
               else {
                 console.log( 'end of code dialog logic:', inputValue );
                 swal.close();
