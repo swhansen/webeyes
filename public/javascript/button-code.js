@@ -232,7 +232,6 @@ $( '#codeDialogModal' ).dialog( {
       },
         function(inputValue){
           if ( inputValue === false ) return false;
-
           if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
             swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
           } else {
@@ -240,12 +239,12 @@ $( '#codeDialogModal' ).dialog( {
               swal.showInputError('Please Enter Code!');
               return false;
             }
-           else if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
+           else
+            if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) ) {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
           }
-
              if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
@@ -259,6 +258,7 @@ $( '#codeDialogModal' ).dialog( {
     //    console.log(' vrme....@@@@@@');
     //    swal.close();
         else {
+          console.log( 'end of code dialog logic:', inputValue );
          swal.close();
          useModeCode( inputValue.toLowerCase() );
           }
