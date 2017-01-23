@@ -39,9 +39,6 @@ function useModeCode( modeCode ) {
 
 
     case 'leapme':
-
-
-    console.log( ' case leapme: in button code' );
     userContext.isLeap = true;
     leapFocus();
 
@@ -64,8 +61,6 @@ function useModeCode( modeCode ) {
     break;
 
   case 'vrme':
-
-  console.log( 'at case vrme');
 
     setPeerUserContext( 'all', 'modMeState', false );
     setPeerUserContext( 'all', 'mode', 'vr');
@@ -175,7 +170,6 @@ function useModeCode( modeCode ) {
   break;
 
   case 'iotz':
-    console.log ( 'at case iotz' );
     iotZoneModal();
   break;
   }
@@ -183,7 +177,6 @@ function useModeCode( modeCode ) {
 // ------- end plus-up case -------------------------
 
 function iotZoneModal() {
-console.log( 'at iot subzone swal' );
  swal( {
     title: 'iot Zone Set',
     text: 'Input your IOT SubZone',
@@ -203,16 +196,11 @@ console.log( 'at iot subzone swal' );
           var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
 
           if ( !( inputValue ).match( zoneReg ) ) {
-            console.log( 'IOT sub-zone INVALID', inputValue );
             swal.showInputError( 'Please enter a valid sub-zone: 1-999' );
             return false;
           }
-
           userContext.iotSubZone = inputValue;
-
           setIotSubZone( inputValue );
-          console.log( 'at  iotzoneModal', userContext );
-
           swal.close();
           } );
 }
@@ -275,6 +263,7 @@ function arWorldModal() {
           emitSessionUserContext( userContext );
           swal.close();
           setArWorld();
+          shareArVrWorld();
           $( '#arMainButton' ).css( 'visibility', 'hidden' );
           $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
     } );
@@ -316,20 +305,16 @@ $( '#codeDialogModal' ).dialog( {
              if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
               inputValue.toLowerCase() ) ) {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
-                  console.log( 'code modal IOTZ');
                   useModeCode( inputValue.toLowerCase() );
                 }  else
                 if ( inputValue.toLowerCase() === 'vrme' ) {
-                  console.log( 'code modal vrme');
                   useModeCode( inputValue.toLowerCase() );
                 }
                 else
                 if ( inputValue.toLowerCase() === 'augme' ) {
-                  console.log( 'code modal augmme');
                   useModeCode( inputValue.toLowerCase() );
                 }
               else {
-                console.log( 'end of code dialog logic:', inputValue );
                 swal.close();
                 useModeCode( inputValue.toLowerCase() );
                 }

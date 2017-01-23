@@ -158,8 +158,6 @@ $( function() {
      var selectedObject = intersects[0].object;
      console.log( 'intersects:', intersects, selectedObject );
 
-     if (intersects.length <= 0 ) return;
-
      if ( intersects.length > 0 ) {
 
  // IOT Lights
