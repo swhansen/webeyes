@@ -65,6 +65,8 @@ function useModeCode( modeCode ) {
 
   case 'vrme':
 
+  console.log( 'at case vrme');
+
     setPeerUserContext( 'all', 'modMeState', false );
     setPeerUserContext( 'all', 'mode', 'vr');
     setPeerUserContext( 'all', 'participantState', 'peer' );
@@ -90,7 +92,6 @@ function useModeCode( modeCode ) {
    // document.getElementById( 'arMainButton' ).style.visibility = 'hidden';
     document.getElementById( 'vrMainButton' ).style.visibility = 'visible';
     document.getElementById( 'sticky-compass' ).style.visibility = 'hidden';
-
     document.getElementById( 'canvas0' ).style.pointerEvents = 'none';
 
     mainCollapsed = true;
@@ -102,6 +103,8 @@ function useModeCode( modeCode ) {
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
     emitMessage( msgString );
+
+    arWorldModal();
 
   break;
 
@@ -213,6 +216,37 @@ console.log( 'at iot subzone swal' );
 
 }
 
+function arWorldModal() {
+swal( {
+   title: 'AR World',
+   text: 'Input Your VR World',
+   type: 'input',
+   showCancelButton: true,
+   closeOnCancel: true,
+   closeOnConfirm: false,
+   animation: 'slide-from-top',
+   inputPlaceholder: 'AR VR World'
+     },
+       function( inputValue ) {
+         if ( inputValue === false ) { return false; }
+         if ( inputValue === '' ) {
+             swal.showInputError( 'Please Enter Your AR World!' );
+             return false;
+           }
+         if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
+             inputValue.toLowerCase() ) ) ) {
+               swal.showInputError( 'Please enter a valid AR World' );
+             return false;
+         }
+        userContext.arvrWorld = inputValue.toLowerCase();
+        emitSessionUserContext( userContext );
+        swal.close();
+        setArWorld();
+        $( '#arMainButton' ).css( 'visibility', 'hidden' );
+        $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+    } );
+}
+
 // UI code input dialog
 
 $( '#codeDialogModal' ).dialog( {
@@ -249,6 +283,10 @@ $( '#codeDialogModal' ).dialog( {
               inputValue.toLowerCase() ) ) {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
                   console.log( 'code modal IOTZ');
+                  useModeCode( inputValue.toLowerCase() );
+                }  else
+                if ( inputValue.toLowerCase() === 'vrme' ) {
+                  console.log( 'code modal vrme');
                   useModeCode( inputValue.toLowerCase() );
                 }
               else {
