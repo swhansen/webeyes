@@ -35,6 +35,8 @@ function useModeCode( modeCode ) {
       document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
       document.getElementById( 'modmeButton' ).style.visibility = 'visible';
       mainCollapsed = true;
+
+      $( '#ismoderator' ).text( 'Moderator' );
     break;
 
 
