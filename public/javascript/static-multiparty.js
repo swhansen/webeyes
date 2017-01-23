@@ -1298,7 +1298,7 @@ console.log( 'Join Room userContext:', userContext );
 
 initDraw();
 initUtil();
-initUiManager();
+//initUiManager();
 messageBar( 'User Session Initialized' );
 
 }
