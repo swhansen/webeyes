@@ -40,6 +40,8 @@ function useModeCode( modeCode ) {
 
     case 'leapme':
 
+
+    console.log( ' case leapme: in button code' );
     userContext.isLeap = true;
     leapFocus();
 
