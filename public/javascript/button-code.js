@@ -256,13 +256,13 @@ $( '#codeDialogModal' ).dialog( {
     //  if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
     //    console.log(' vrme....@@@@@@');
     //    swal.close();
-       } else {
+        else {
          swal.close();
          useModeCode( inputValue.toLowerCase() );
           }
        }
        }
-    );
+    })
 
 } );
 
