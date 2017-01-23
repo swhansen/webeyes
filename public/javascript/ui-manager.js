@@ -351,6 +351,8 @@ $( function() {
 
           $( '#vrMainButton' ).css( 'visibility', 'hidden' );
           $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+
+          $( '#ismoderator' ).text( 'Moderator' );
     } );
   } );
 } );
