@@ -251,20 +251,14 @@ $( '#codeDialogModal' ).dialog( {
                   console.log( 'code modal IOTZ');
                   useModeCode( inputValue.toLowerCase() );
                 }
-
-    //  else
-
-    //  if ( inputValue.toLowerCase() === ( 'vrme' || 'augme' ) ) {
-    //    console.log(' vrme....@@@@@@');
-    //    swal.close();
-        else {
-          console.log( 'end of code dialog logic:', inputValue );
-         swal.close();
-         useModeCode( inputValue.toLowerCase() );
-          }
-       }
-       }
-    } );
+              else {
+                console.log( 'end of code dialog logic:', inputValue );
+                swal.close();
+                useModeCode( inputValue.toLowerCase() );
+                }
+              }
+            }
+      } );
 } );
 
 
