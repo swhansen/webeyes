@@ -218,32 +218,35 @@ console.log( 'at iot subzone swal' );
 
 function arWorldModal() {
 swal( {
-   title: 'AR World',
-   text: 'Input Your VR World',
-   type: 'input',
-   showCancelButton: true,
-   closeOnCancel: true,
-   closeOnConfirm: false,
-   animation: 'slide-from-top',
-   inputPlaceholder: 'AR VR World'
-     },
-       function( inputValue ) {
-         if ( inputValue === false ) { return false; }
-         if ( inputValue === '' ) {
-             swal.showInputError( 'Please Enter Your AR World!' );
-             return false;
+     title: 'VR World',
+     text: 'Input your VR World',
+     type: 'input',
+     showCancelButton: true,
+     closeOnCancel: true,
+     closeOnConfirm: false,
+     animation: 'slide-from-top',
+     inputPlaceholder: 'VR World'
+       },
+         function( inputValue ) {
+           if ( inputValue === false ) { return false; }
+           if ( inputValue === '' ) {
+               swal.showInputError( 'Please Enter Your VR World!' );
+               return false;
+             }
+            if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
+               inputValue.toLowerCase() ) ) ) {
+                 swal.showInputError( 'Please enter a valid VR World' );
+               return false;
            }
-         if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
-             inputValue.toLowerCase() ) ) ) {
-               swal.showInputError( 'Please enter a valid AR World' );
-             return false;
-         }
-        userContext.arvrWorld = inputValue.toLowerCase();
-        emitSessionUserContext( userContext );
-        swal.close();
-        setArWorld();
-        $( '#arMainButton' ).css( 'visibility', 'hidden' );
-        $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+          userContext.arvrWorld = inputValue.toLowerCase();
+          emitSessionUserContext( userContext );
+          swal.close();
+
+          setVrWorld();
+          shareArVrWorld();
+
+          $( '#vrMainButton' ).css( 'visibility', 'hidden' );
+          $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
     } );
 }
 
