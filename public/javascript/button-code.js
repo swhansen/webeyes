@@ -258,11 +258,9 @@ $( '#codeDialogModal' ).dialog( {
          swal.close();
          useModeCode( inputValue.toLowerCase() );
           }
-       }
-       }
-    } );
+       } );
+       } );
 
-} );
 
 
 // recieving unique rtcID
