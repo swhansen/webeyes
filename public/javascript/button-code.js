@@ -262,8 +262,7 @@ $( '#codeDialogModal' ).dialog( {
           }
        }
        }
-    })
-
+    } );
 } );
 
 
