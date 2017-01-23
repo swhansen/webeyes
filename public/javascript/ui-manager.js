@@ -534,7 +534,6 @@ $( function() {
 
 // --------------------------
 
-
   // toggle line drawing fade
 
   $( function() {
