@@ -7,7 +7,7 @@
 //  mainButton: button in main menu
 //  sideBar: container for the layer function button list (re-name??)
 //  buttons: button list in the layer menu
-//
+
 
 //function initUiManager() {
 
