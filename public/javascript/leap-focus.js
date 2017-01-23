@@ -5,7 +5,7 @@ function leapFocus() {
 //} ).each( function() {
 //  console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 //} );
-console.log( 'at leapFocus()' );
+
 var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
