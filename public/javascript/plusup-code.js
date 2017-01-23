@@ -144,6 +144,9 @@ function useModeCode( modeCode ) {
 
       arWorldModal();
 
+      emitUtility( 'clearmoderator' );
+      $( '#ismoderator' ).text( 'Moderator' );
+
       emitArOrientationData();
 
     break;

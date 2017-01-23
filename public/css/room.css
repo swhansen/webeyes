@@ -93,6 +93,17 @@ symbol{overflow:visible;}
 }
 
 
+#statusbar {
+position:absolute;
+top:50%;
+left:0;
+ background-color: gray;
+  border-radius: 25px;
+    border: 2px solid gray;
+    padding: 4px;
+}
+
+
 #roomId {
   position: fixed;
   top: 10px;
