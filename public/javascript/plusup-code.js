@@ -318,11 +318,16 @@ $( '#codeDialogModal' ).dialog( {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
                   console.log( 'code modal IOTZ');
                   useModeCode( inputValue.toLowerCase() );
-                }  //else
-            //    if ( inputValue.toLowerCase() === 'vrme' ) {
-            //      console.log( 'code modal vrme');
-           //       useModeCode( inputValue.toLowerCase() );
-           //     }
+                }  else
+                if ( inputValue.toLowerCase() === 'vrme' ) {
+                  console.log( 'code modal vrme');
+                  useModeCode( inputValue.toLowerCase() );
+                }
+                else
+                if ( inputValue.toLowerCase() === 'augme' ) {
+                  console.log( 'code modal augmme');
+                  useModeCode( inputValue.toLowerCase() );
+                }
               else {
                 console.log( 'end of code dialog logic:', inputValue );
                 swal.close();
