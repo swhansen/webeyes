@@ -63,9 +63,7 @@ function drawArch() {
 
 function clearUtilCanvas() {
   ctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
-
-
-
+  emitUtility( 'reset' );
 }
 
 function drawBullsEye() {
@@ -112,7 +110,6 @@ socketServer.on( 'utility', function(data) {
     case 'reset':
       clearUtilCanvas();
       clearDrawCanvas();
-      emitUtility( 'reset' );
   //    removeUserCreatedArObjects();
     break;
     case 'arClientInit':
