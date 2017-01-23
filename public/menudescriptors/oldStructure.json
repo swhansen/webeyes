@@ -1,0 +1,70 @@
+{
+    "structure": {
+        "video": {
+            "mainButton": "#videoButton",
+            "buttons": [],
+            "desc": "toggle video broadcast",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "emailInvite": {
+            "mainButton": "#inviteViaEmail",
+            "buttons": [],
+            "desc": "tmp",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "text": {
+            "mainButton": "#textEntryButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "IM Text",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "codeInput": {
+            "mainButton": "#codeDialogButton",
+            "buttons": [],
+            "desc": "special code input",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "modme": {
+            "mainButton": "#modmeButton",
+            "sideBar": "#mod-ui-container",
+            "buttons": [
+                "#focus-participant",
+                "#mod-reset"
+            ],
+            "desc": "moderator code functions",
+            "initState": "none",
+            "baseZ": "20"
+        },
+        "vrme": {
+            "mainButton": "#vrMainButton",
+            "sideBar": "#aug-ui-container",
+            "buttons": [
+                "#shareaug",
+                "#clearaug"
+            ],
+            "renderElement": "arcanvaspane",
+            "desc": "VR code functions",
+            "initState": "none",
+            "baseZ": "20",
+            "events": [
+                "click",
+                "mousedown",
+                "mouseup",
+                "mousemove"
+            ]
+        },
+        "leap": {
+            "mainButton": "#leapButton",
+            "sideBar": "",
+            "buttons": [],
+            "desc": "Initialize Leap",
+            "initState": "none",
+            "baseZ": "20"
+        }
+    }
+  }

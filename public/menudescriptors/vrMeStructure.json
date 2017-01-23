@@ -10,7 +10,7 @@
         "emailInvite": {
             "mainButton": "#inviteViaEmail",
             "buttons": [],
-            "desc": "tmp",
+            "desc": "Session email invite",
             "initState": "none",
             "baseZ": "20"
         },
@@ -28,43 +28,6 @@
             "desc": "special code input",
             "initState": "none",
             "baseZ": "20"
-        },
-        "modme": {
-            "mainButton": "#modmeButton",
-            "sideBar": "#mod-ui-container",
-            "buttons": [
-                "#focus-participant",
-                "#mod-reset"
-            ],
-            "desc": "moderator code functions",
-            "initState": "none",
-            "baseZ": "20"
-        },
-        "vrme": {
-            "mainButton": "#vrMainButton",
-            "sideBar": "#aug-ui-container",
-            "buttons": [
-                "#shareaug",
-                "#clearaug"
-            ],
-            "renderElement": "arcanvaspane",
-            "desc": "VR code functions",
-            "initState": "none",
-            "baseZ": "20",
-            "events": [
-                "click",
-                "mousedown",
-                "mouseup",
-                "mousemove"
-            ]
-        },
-        "leap": {
-            "mainButton": "#leapButton",
-            "sideBar": "",
-            "buttons": [],
-            "desc": "Initialize Leap",
-            "initState": "none",
-            "baseZ": "20"
-        }
+            }
     }
   }
