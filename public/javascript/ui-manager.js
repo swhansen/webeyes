@@ -355,37 +355,37 @@ $( function() {
   } );
 } );
 
-function setVrWorld() {
-
-      buildSideMenu( 'vrme' );
-
-      userContext.participantState = 'focus';
-      userContext.modMeState = true;
-      userContext.uiState = 'vr';
-      userContext.mode = 'vr';
-
-      setPeerUserContext( 'all', 'mode', 'vr' );
-      setPeerUserContext( 'all', 'participantState', 'peer' );
-      userContext.participantState = 'focus';
-      emitSessionUserContext( userContext );
-
-// set a parameter to load specific World
-
-      loadAr();
-
-      document.getElementById( 'canvaspane' ).style.zIndex = '10';
-      document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
-
-      document.getElementById( 'sticky-ar' ).style.display = 'visible';
-      setDomPointerEvent( 'canvas0', 'none' );
-      setDomPointerEvent( 'arcanvaspane', 'auto' );
-
-      // inform all the pees of the mode
-
-      msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
-      emitMessage( msgString );
-
-    }
+//function setVrWorld() {
+//
+//      buildSideMenu( 'vrme' );
+//
+//      userContext.participantState = 'focus';
+//      userContext.modMeState = true;
+//      userContext.uiState = 'vr';
+//      userContext.mode = 'vr';
+//
+//      setPeerUserContext( 'all', 'mode', 'vr' );
+//      setPeerUserContext( 'all', 'participantState', 'peer' );
+//      userContext.participantState = 'focus';
+//      emitSessionUserContext( userContext );
+//
+//// set a parameter to load specific World
+//
+//      loadAr();
+//
+//      document.getElementById( 'canvaspane' ).style.zIndex = '10';
+//      document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
+//
+//      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+//      setDomPointerEvent( 'canvas0', 'none' );
+//      setDomPointerEvent( 'arcanvaspane', 'auto' );
+//
+//      // inform all the pees of the mode
+//
+//      msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
+//      emitMessage( msgString );
+//
+//    }
 
   $( function() {
     $( '#shareaug' ).click( function() {
