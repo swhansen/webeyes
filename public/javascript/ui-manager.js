@@ -357,7 +357,7 @@ $( function() {
 
 function setVrWorld() {
 
-      buildSideMenu( 'vrme' );
+ //     buildSideMenu( 'vrme' );
 
       userContext.participantState = 'focus';
       userContext.modMeState = true;
@@ -440,7 +440,7 @@ function shareArVrWorld()  {
 
         emitArOrientationData();
 
-        document.getElementById( 'sticky-ar' ).style.display = 'visible';
+  //      document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
         msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
         emitMessage( msgString );
@@ -453,12 +453,13 @@ function shareArVrWorld()  {
       var sessionId = socketServer.sessionid;
           socketServer.emit( 'utility', 'vrClientInit', sessionId );
 
-      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+  //    document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
       msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
        emitMessage( msgString );
       }
 }
+
 
 //
 // Moderator Toggle
