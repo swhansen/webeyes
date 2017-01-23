@@ -61,7 +61,7 @@ function drawArch() {
   ctx.drawImage(d3, 0, 0 , utilCanvas.width, utilCanvas.height);
 }
 
-function clearUtilCanvas() {
+ function clearUtilCanvas() {
   ctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
   emitUtility( 'reset' );
 }
@@ -108,8 +108,9 @@ socketServer.on( 'utility', function(data) {
       drawArch();
     break;
     case 'reset':
-      clearUtilCanvas();
+   //   clearUtilCanvas();
       clearDrawCanvas();
+      ctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
   //    removeUserCreatedArObjects();
     break;
     case 'arClientInit':
