@@ -104,7 +104,7 @@ function useModeCode( modeCode ) {
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
     emitMessage( msgString );
 
-    arWorldModal();
+    vrWorldModal();
 
   break;
 
@@ -216,7 +216,7 @@ console.log( 'at iot subzone swal' );
 
 }
 
-function arWorldModal() {
+function vrWorldModal() {
 swal( {
      title: 'VR World',
      text: 'Input your VR World',
@@ -236,9 +236,7 @@ swal( {
             if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
                inputValue.toLowerCase() ) ) ) {
                  swal.showInputError( 'Please enter a valid VR World' );
-               return false;
-           }
-          userContext.arvrWorld = inputValue.toLowerCase();
+               return false; } userContext.arvrWorld = inputValue.toLowerCase();
           emitSessionUserContext( userContext );
           swal.close();
 
