@@ -37,7 +37,6 @@ function useModeCode( modeCode ) {
       mainCollapsed = true;
 
       emitUtility( 'clearmoderator' );
-
       $( '#ismoderator' ).text( 'Moderator' );
 
     break;

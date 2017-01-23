@@ -114,7 +114,7 @@ socketServer.on( 'utility', function(data) {
     break;
 
     case 'clearmoderator':
-    $( '#ismoderator' ).text( );
+    $( '#ismoderator' ).text( '' );
     break;
 
     case 'arClientInit':
