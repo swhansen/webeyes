@@ -118,6 +118,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
     }
 
     drawRadialSvg.onclick = function( e ) {
+      console.log( 'drawradialSVG:' e );
       $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
         e.stopPropagation();
         drawRadialOpen = false;
