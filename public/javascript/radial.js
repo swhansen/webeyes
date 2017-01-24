@@ -88,11 +88,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
   function drawToggleMenu( event ) {
 
 
- // $( '#draw-radial-item-3 .sector' ).style.fill = '#DE5B32';
-
-  //$('#draw-radial-item-3').children('path').find('.sector').style.fill = '#DE5B32';
-
-  $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
+ // $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
 
 
     highlightSelectedRadial( 'draw-radial-circle' );
@@ -122,6 +118,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
     }
 
     drawRadialSvg.onclick = function( e ) {
+      $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
         e.stopPropagation();
         drawRadialOpen = false;
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
