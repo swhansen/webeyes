@@ -90,7 +90,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
  // $( '#draw-radial-item-3 .sector' ).style.fill = '#DE5B32';
 
-  $('#draw-radial-item-3').children('path').find('.sector').style.fill = '#DE5B32';
+  //$('#draw-radial-item-3').children('path').find('.sector').style.fill = '#DE5B32';
 
 
     highlightSelectedRadial( 'draw-radial-circle' );
