@@ -97,12 +97,14 @@ symbol{overflow:visible;}
 
   background:#ddd;
   display:table;
-  border-spacing:5px;
+  border-spacing:7px;
   border-collapse:separate;
 }
 .s-element{
   background-color:#ccc;
   display:table-row;
+  padding-bottom:5px;
+  padding-top:5px;
 }
 
 #statusbar {
