@@ -87,10 +87,6 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
   function drawToggleMenu( event ) {
 
-
- // $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
-
-
     highlightSelectedRadial( 'draw-radial-circle' );
     moveRadialtoTop( 'draw-radial-menu' );
     $( '#draw-radial-item-1' ).css( 'visibility', 'hidden' );
@@ -126,7 +122,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
     var foo = '#' + e.target.parentNode.id;
 
-    if ( e.target.parentNode.id === 'draw-radial-item-3') {
+    if ( e.target.parentNode.id === 'draw-radial-erase') {
 
     if ( fadeSwitch) {
         $( foo ).children( 'path' ).css({ fill: "#ff0000" } );
