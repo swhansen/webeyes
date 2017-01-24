@@ -24,7 +24,7 @@ function useModeCode( modeCode ) {
    var d  = {
 element: 'iotDeviceId',
 text: 'a big text string'
-}
+};
 
 updateStatusBox( d );
 

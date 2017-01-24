@@ -54,12 +54,12 @@ iotZoneId: '',
 iotSubzone: '',
 iotDeviceId: '',
 moderator: ''
-}
+};
 
 function updateStatusBox( data ) {
 console.log( 'updateStatusBox:', data );
 var foo = '#' + data.element;
-$( '#iotDeviceId' ).text( 'IOT Device: ' + data.text );
+$( '#' + data.element ).text( 'IOT Device: ' + data.text );
 
 }
 
