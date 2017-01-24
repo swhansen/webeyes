@@ -92,66 +92,56 @@ symbol{overflow:visible;}
     display: block;
 }
 
-
 #statusbar {
 position:absolute;
-top:50%;
-left:0;
- background-color: gray;
-  border-radius: 25px;
+top:25%;
+left:5px;
+background-color: gray;
+border-radius: 10px;
     border: 2px solid gray;
     padding: 4px;
+box-shadow:0 0 18px rgba(0,0,0,0.6);
+z-index: 200;
 }
 
-
 #roomId {
-  position: fixed;
   top: 10px;
   left: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight:  bold;
-  z-index: 200;
 }
 
 #iotZoneId {
-  position: fixed;
   top: 25px;
   left: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight:  bold;
-  z-index: 200;
 }
 
 #iotsubzone {
-  position: fixed;
   top: 40px;
   left: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight:  bold;
-  z-index: 200;
 }
 
 #iotDeviceId {
-  position: fixed;
   top: 55px;
   left: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight:  bold;
-  z-index: 200;
 }
 
 #ismoderator {
-  position: fixed;
   top: 70px;
   left: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight:  bold;
-  z-index: 200;
 }
 
 #position {

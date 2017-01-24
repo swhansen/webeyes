@@ -146,7 +146,12 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
     utilRadialSvg.style.pointerEvents = 'none';
     utilRadialTrigger.addEventListener( 'click', utilToggleMenu, true );
 
+
+
     function utilToggleMenu( event ) {
+
+      document.getElementById("util-circle").style.fill = '#fff';
+
 
         moveRadialtoTop( 'util-radial-menu' );
 
