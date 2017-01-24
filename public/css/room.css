@@ -106,12 +106,15 @@ symbol{overflow:visible;}
   padding-bottom:5px;
   padding-top:5px;
 }
+p.s-element{
+   padding-bottom:5px;
+  padding-top:5px;
+}
 
 #statusbar {
 position:absolute;
 top:25%;
 left:5px;
-
 border-radius: 10px;
     border: 2px solid gray;
     padding: 4px;
