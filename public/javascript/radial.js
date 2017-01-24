@@ -119,20 +119,18 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
     drawRadialSvg.onclick = function( e ) {
 
-
-      console.log( 'drawradialSVG:', e );
-      console.log( 'drawradialSVG-target:', e.target );
-      console.log( '-tagname:', e.target.tagName );
-      console.log( '-parent:', e.target.parentNode.id );
+   //  console.log( 'drawradialSVG:', e );
+   //  console.log( 'drawradialSVG-target:', e.target );
+   //  console.log( '-tagname:', e.target.tagName );
+   //  console.log( '-parent:', e.target.parentNode.id );
 
       var foo = '#' + e.target.parentNode.id;
 
-    //  var bar = document.getElementById( foo );
-
-      $(foo).children('path').css({ fill: "#ff0000" });
-
-
-
+    if ( fadeSwitch ) {
+        $(foo).children('path').css({ fill: "#ff0000" });
+      else {
+        $(foo).children('path').css({ fill: "#29a329" });
+      }
 
         e.stopPropagation();
         drawRadialOpen = false;
