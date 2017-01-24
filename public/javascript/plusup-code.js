@@ -23,10 +23,10 @@ function useModeCode( modeCode ) {
 
    var d  = {
 element: 'iotDeviceId',
-text: 'a big text string'
+text: 'a test string'
 };
 
-updateStatusBox( d );
+updateStatusBox( 'iotDeviceId', 'a test string' );
 
     setPeerUserContext( 'all', 'modMeState', false );
 

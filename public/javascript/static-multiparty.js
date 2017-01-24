@@ -56,11 +56,13 @@ iotDeviceId: '',
 moderator: ''
 };
 
-function updateStatusBox( data ) {
-console.log( 'updateStatusBox:', data );
-var foo = '#' + data.element;
-$( '#' + data.element ).text( 'IOT Device: ' + data.text );
 
+
+function updateStatusBox( e, t ) {
+console.log( 'updateStatusBox:', data );
+
+var foo = '#' + e;
+$( '#' + e ).text( 'IOT Device: ' + t );
 }
 
 
