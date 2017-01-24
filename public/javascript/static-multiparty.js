@@ -58,7 +58,8 @@ moderator: ''
 
 function updateStatusBox( data ) {
 console.log( 'updateStatusBox:', data );
-$( '#' + data.element ).text( 'IOT Device: ' + data.text );
+var foo = '#' + data.element;
+$( foo ).text( 'IOT Device: ' + data.text );
 
 }
 
