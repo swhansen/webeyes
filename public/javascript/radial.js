@@ -73,7 +73,6 @@ function clearObjects() {
   emitUtility( 'reset' );
       }
 
-
 // draw radial
 
 //$( '#draw-radial-item-2' ).attr( 'style', 'visibility: hidden');
@@ -89,7 +88,9 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
   function drawToggleMenu( event ) {
 
 
-  $( '#draw-radial-item-3 .sector' ).style.fill = '#DE5B32';
+ // $( '#draw-radial-item-3 .sector' ).style.fill = '#DE5B32';
+
+  $('#draw-radial-item-3').find('.sector').style.fill = '#DE5B32';
 
 
     highlightSelectedRadial( 'draw-radial-circle' );
