@@ -55,18 +55,16 @@ function moveRadialtoBottom( radialMenu ) {
   document.getElementById( radialMenu ).style.zIndex = '10';
 }
 
+
+
 function highlightSelectedRadial( radialTrigger ) {
  _.forEach( radialTriggerCircle, function(  key ) {
   console.log( 'highlightSelectedRadial', key );
      document.getElementById( key ).style.fill = '#3F51B5';
     } );
-  document.getElementById( radialTrigger ).style.fill = '#FFF';
+  document.getElementById( radialTrigger ).style.fill = '#DE5B32';
   console.log( 'exit highlight', document.getElementById( radialTrigger ).style.fill );
 }
-
-
-
-
 
 function clearObjects() {
   removeUserCreatedArObjects();
