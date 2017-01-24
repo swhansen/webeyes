@@ -120,8 +120,9 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
     drawRadialSvg.onclick = function( e ) {
 
 
+      console.log( 'drawradialSVG:', e );
       console.log( 'drawradialSVG:', e.target );
-     console.log( 'target:', e.target.tagName );
+      console.log( 'target:', e.target.tagName );
 
 
    //   $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
