@@ -124,13 +124,16 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
    //  console.log( '-tagname:', e.target.tagName );
    //  console.log( '-parent:', e.target.parentNode.id );
 
-      var foo = '#' + e.target.parentNode.id;
+    var foo = '#' + e.target.parentNode.id;
+
+    if ( e.target.parentNode.id === 'draw-radial-item-3') {
 
     if ( fadeSwitch) {
         $( foo ).children( 'path' ).css({ fill: "#ff0000" } );
       } else {
         $(foo).children('path').css({ fill: "#29a329" });
       }
+    }
 
         e.stopPropagation();
         drawRadialOpen = false;
