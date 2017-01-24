@@ -57,13 +57,13 @@ moderator: ''
 }
 
 function updateStatusBox( data ) {
-
+console.log( d );
 $( '#' + data.element ).text( 'IOT Device: ' + data.text );
 
 }
 
 var d  = {
-element: 'roomId',
+element: 'iotDeviceId',
 text: 'a big text string'
 }
 
