@@ -125,10 +125,10 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
       console.log( '-tagname:', e.target.tagName );
       console.log( '-parent:', e.target.parentNode.id );
 
+      var foo = e.target.parentNode.id;
 
+      $( foo ).children('path').css({ fill: "#ff0000" });
 
-   //   $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
-      e.target.parentNode.id.children('path').css({ fill: "#ff0000" });
 
 
 
