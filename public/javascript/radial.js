@@ -48,9 +48,9 @@ function moveRadialtoBottom( radialMenu ) {
 function highlightSelectedRadial( radialTrigger ) {
  _.forEach( radialTriggerCircle, function(  key ) {
   console.log( 'highlightSelectedRadial', key );
-     document.getElementById( key ).style.fill = '#3F51B5';
+     document.getElementById( key ).style.fill = '#90A4AE';
     } );
-  document.getElementById( radialTrigger ).style.fill = '#DE5B32';
+  document.getElementById( radialTrigger ).style.fill = '#546E7A';
   console.log( 'exit highlight', document.getElementById( radialTrigger ).style.fill );
 }
 
@@ -106,7 +106,7 @@ drawRadialSvg.onclick = function( e ) {
     if ( fadeSwitch) {
         $( selectedSectorId ).children( 'path' ).css({ fill: "#ff0000" } );
       } else {
-        $( selectedSectorId ).children('path').css({ fill: "#29a329" });
+        $( selectedSectorId ).children('path').css({ fill: "#0080" });
       }
     }
   e.stopPropagation();
