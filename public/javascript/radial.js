@@ -56,7 +56,8 @@ function moveRadialtoBottom( radialMenu ) {
 }
 
 function highlightSelectedRadial( radialTrigger ) {
- _.forEach( radialTriggerCircle, function( key ) {
+ _.forEach( radialTriggerCircle, function(  key ) {
+  console.log( 'highlightSelectedRadial', key );
      document.getElementById( key ).style.fill = '#3F51B5';
     } );
   document.getElementById( radialTrigger ).style.fill = '#FFF';
