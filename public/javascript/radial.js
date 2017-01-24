@@ -127,7 +127,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
       var foo = e.target.parentNode.id;
 
-      $( foo ).children('path').css({ fill: "#ff0000" });
+      $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
 
 
 
