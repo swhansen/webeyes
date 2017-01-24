@@ -57,7 +57,7 @@ moderator: ''
 }
 
 function updateStatusBox( data ) {
-console.log( d );
+console.log( 'updateStatusBox:', data );
 $( '#' + data.element ).text( 'IOT Device: ' + data.text );
 
 }
