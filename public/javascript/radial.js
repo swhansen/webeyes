@@ -121,7 +121,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
 
       console.log( 'drawradialSVG:', e.target );
-     console.log( 'target:', e.target.id );
+     console.log( 'target:', e.target.tagName );
 
 
    //   $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
