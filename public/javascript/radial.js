@@ -134,6 +134,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
     function arToggleMenu( event ) {
 
+        highlightSelectedRadial( 'ar-radial-circle' );
         moveRadialtoTop( 'ar-radial-menu' );
 
         moveLayertoTop( 'arcanvaspane' );
@@ -172,6 +173,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
     function utilToggleMenu( event ) {
 
+        highlightSelectedRadial( 'util-radial-circle' );
         moveRadialtoTop( 'util-radial-menu' );
 
      if ( !event ) var event = window.event;
