@@ -128,6 +128,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
 
    //   $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
+      e.target.parentNode.id.children('path').css({ fill: "#ff0000" });
 
 
 
