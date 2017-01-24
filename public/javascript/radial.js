@@ -125,7 +125,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
       console.log( 'target:', e.target.tagName );
 
 
-e.target.tagName.css( { fill: "#ff0000" } );
+e.target.css( { fill: "#ff0000" } );
 
    //   $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
 
