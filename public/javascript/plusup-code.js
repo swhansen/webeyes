@@ -12,7 +12,7 @@
 //
 // modmeUI();
 
-//setDomPointerEvent('canvas0', 'none');
+//`setDomPointerEvent('canvas0', 'none');
 //}
 
 function useModeCode( modeCode ) {
