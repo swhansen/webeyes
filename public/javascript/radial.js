@@ -126,9 +126,9 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
       var foo = '#' + e.target.parentNode.id;
 
-    if ( fadeSwitch ) {
-        $(foo).children('path').css({ fill: "#ff0000" });
-      else {
+    if ( fadeSwitch) {
+        $( foo ).children( 'path' ).css({ fill: "#ff0000" } );
+      } else {
         $(foo).children('path').css({ fill: "#29a329" });
       }
 
