@@ -11,13 +11,6 @@ var radialTriggerCircle = [
   'ar-radial-circle'
 ];
 
-
-//var svg = document.getElementById( 'radial-menu' ),
-//    items = svg.querySelectorAll( '.item' ),
-//    trigger = svg.getElementById( 'trigger' ),
-//    label = trigger.querySelectorAll( '#label' )[0],
-//    radialOpen = false;
-
 var drawRadialSvg = document.getElementById( 'draw-radial-menu' ),
     drawRadialItems = drawRadialSvg.querySelectorAll( '.draw-radial-item' ),
     drawRadialTrigger = drawRadialSvg.getElementById( 'draw-radial-trigger' ),
@@ -36,9 +29,6 @@ var utilRadialSvg = document.getElementById( 'util-radial-menu' ),
     utilRadialLabel = utilRadialTrigger.querySelectorAll( '#util-radial-label' )[ 0 ],
     utilRadialOpen = false;
 
-// drawRadialSvg.style.visibility = 'hidden';
-// drawRadialTrigger.style.visibility = 'hidden';
-
 function moveRadialtoTop( radialMenu ) {
  _.forEach( radialList, function( key ) {
      document.getElementById( key ).style.zIndex = '10';
@@ -54,8 +44,6 @@ function moveRadialtoBottom( radialMenu ) {
     } );
   document.getElementById( radialMenu ).style.zIndex = '10';
 }
-
-
 
 function highlightSelectedRadial( radialTrigger ) {
  _.forEach( radialTriggerCircle, function(  key ) {
@@ -75,8 +63,6 @@ function clearObjects() {
 
 // draw radial
 
-//$( '#draw-radial-item-2' ).attr( 'style', 'visibility: hidden');
-//$( '#draw-radial-item-4' ).attr( 'style', 'visibility: hidden');
 $( '#draw-radial-item-1' ).css( 'visibility', 'hidden' );
 $( '#draw-radial-item-4' ).css( 'visibility', 'hidden' );
 $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
@@ -115,14 +101,8 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
 drawRadialSvg.onclick = function( e ) {
 
-   //  console.log( 'drawradialSVG:', e );
-   //  console.log( 'drawradialSVG-target:', e.target );
-   //  console.log( '-tagname:', e.target.tagName );
-   //  console.log( '-parent:', e.target.parentNode.id );
-
   if ( e.target.parentNode.id === 'draw-radial-erase') {
     var selectedSectorId = '#' + e.target.parentNode.id;
-
     if ( fadeSwitch) {
         $( selectedSectorId ).children( 'path' ).css({ fill: "#ff0000" } );
       } else {
@@ -176,7 +156,7 @@ drawRadialSvg.onclick = function( e ) {
         moveRadialtoBottom( 'ar-radial-menu' );
     };
 
-    // utility radial
+  // utility radial
 
     TweenLite.set( utilRadialItems, { scale:0, visibility:'visible' } );
     utilRadialSvg.style.pointerEvents = 'none';
@@ -210,7 +190,6 @@ drawRadialSvg.onclick = function( e ) {
         utilRadialSvg.style.pointerEvents = 'none';
         moveRadialtoBottom( 'util-radial-menu' );
       };
-
 
 //    TweenLite.set( items, { scale:0, visibility: 'visible' } );
 //    svg.style.pointerEvents = 'none';
