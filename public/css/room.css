@@ -92,6 +92,19 @@ symbol{overflow:visible;}
     display: block;
 }
 
+
+.s-bar{
+
+  background:#ddd;
+  display:table;
+  border-spacing:5px;
+  border-collapse:separate;
+}
+.s-element{
+  background-color:#ccc;
+  display:table-row;
+}
+
 #statusbar {
 position:absolute;
 top:25%;
