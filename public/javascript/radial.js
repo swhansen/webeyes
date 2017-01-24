@@ -35,8 +35,10 @@ var utilRadialSvg = document.getElementById( 'util-radial-menu' ),
 function moveRadialtoTop( radialMenu ) {
  _.forEach( radialList, function( key ) {
      document.getElementById( key ).style.zIndex = '10';
+     document.getElementById( 'key' ).style.fill = '3F51B5';
     } );
   document.getElementById( radialMenu ).style.zIndex = '100';
+  document.getElementById( 'radialMenu' ).style.fill = '#fff';
 }
 
 function moveRadialtoBottom( radialMenu ) {
@@ -146,12 +148,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
     utilRadialSvg.style.pointerEvents = 'none';
     utilRadialTrigger.addEventListener( 'click', utilToggleMenu, true );
 
-
-
     function utilToggleMenu( event ) {
-
-      document.getElementById("util-circle").style.fill = '#fff';
-
 
         moveRadialtoTop( 'util-radial-menu' );
 
