@@ -47,6 +47,28 @@ var userContext = {
   dimensionalLayers: []
 };
 
+var statusBox = {
+channel: '',
+roomId: '',
+iotZoneId: '',
+iotSubzone: '',
+iotDeviceId: '',
+moderator: '';
+}
+
+function updateStatusBox( data ) {
+
+$( '#' + data.element ).text( 'IOT Device: ' + data.text );
+
+}
+
+var d  = {
+element: 'roomId',
+text: 'a big text string'
+}
+
+updateStatusBox( d );
+
 function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
     this.dimensionalLayers.push( layer );
@@ -103,7 +125,7 @@ socketServer.on( 'roomnamerequest', function( data ) {
   socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
 
 function updateRoom( data ) {
-  var str = 'metaverse:' + data;
+  var str = 'Channel:' + data;
   $( '#roomId' ).html( str );
   userContext.room = data;
   }
