@@ -90,7 +90,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
   function drawToggleMenu( event ) {
 
-    highlightSelectedRadial( 'draw-radial-trigger' );
+    highlightSelectedRadial( 'draw-radial-circle' );
     moveRadialtoTop( 'draw-radial-menu' );
     $( '#draw-radial-item-1' ).css( 'visibility', 'hidden' );
     $( '#draw-radial-item-4' ).css( 'visibility', 'hidden' );
