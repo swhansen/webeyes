@@ -121,10 +121,13 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
 
       console.log( 'drawradialSVG:', e.target );
-      console.log( 'drawradialSVG:', e.path[1] );
+//      console.log( 'drawradialSVG:', e.target.find( 'fill' )  );
 
 
-      $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
+   //   $('#draw-radial-item-3').children('path').css({ fill: "#ff0000" });
+
+e.target.css({ fill: "#ff0000" });
+
         e.stopPropagation();
         drawRadialOpen = false;
         TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
