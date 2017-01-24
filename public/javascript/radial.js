@@ -5,6 +5,13 @@ var radialList = [
   'util-radial-menu'
 ];
 
+var radialTriggerCircle = [
+  'util-radial-circle',
+  'draw-radial-circle',
+  'ar-radial-circle'
+];
+
+
 //var svg = document.getElementById( 'radial-menu' ),
 //    items = svg.querySelectorAll( '.item' ),
 //    trigger = svg.getElementById( 'trigger' ),
@@ -35,11 +42,11 @@ var utilRadialSvg = document.getElementById( 'util-radial-menu' ),
 function moveRadialtoTop( radialMenu ) {
  _.forEach( radialList, function( key ) {
      document.getElementById( key ).style.zIndex = '10';
-     document.getElementById( 'key' ).style.fill = '3F51B5';
     } );
   document.getElementById( radialMenu ).style.zIndex = '100';
-  document.getElementById( 'radialMenu' ).style.fill = '#fff';
 }
+
+//document.getElementById("radialMenu").style.fill = '#fff';
 
 function moveRadialtoBottom( radialMenu ) {
  _.forEach( radialList, function( key ) {
@@ -47,6 +54,18 @@ function moveRadialtoBottom( radialMenu ) {
     } );
   document.getElementById( radialMenu ).style.zIndex = '10';
 }
+
+function highlightSelectedRadial( radialTrigger ) {
+ _.forEach( radialTriggerCircle, function( key ) {
+     document.getElementById( key ).style.fill = '#3F51B5';
+    } );
+  document.getElementById( RadialTrigger ).style.fill = '#FFF';
+}
+
+
+
+
+
 function clearObjects() {
   removeUserCreatedArObjects();
   clearUtilCanvas();
@@ -69,6 +88,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
   function drawToggleMenu( event ) {
 
+    highlightSelectedRadial( 'draw-radialTrigger' );
     moveRadialtoTop( 'draw-radial-menu' );
     $( '#draw-radial-item-1' ).css( 'visibility', 'hidden' );
     $( '#draw-radial-item-4' ).css( 'visibility', 'hidden' );
