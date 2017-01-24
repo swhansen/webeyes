@@ -53,7 +53,7 @@ roomId: '',
 iotZoneId: '',
 iotSubzone: '',
 iotDeviceId: '',
-moderator: '';
+moderator: ''
 }
 
 function updateStatusBox( data ) {
