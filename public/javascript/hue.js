@@ -31,13 +31,9 @@ function setIotZone( iotZone ) {
 
 function setIotSubZone( subZoneId ) {
   var szStr = 'IOT sub-zone: ' + subZoneId;
-
   if ( userContext.iotZone === 'iotc' ) {
-
     hueURL = 'http://192.168.1.' + userContext.iotSubZone + '/api/52927745603325e730bd719e2a8bf2cb';
-
     } else if ( userContext.iotZone === 'iots' ) {
-
       hueURL = iotZones.steve;
     }
       console.log( ' at setiotzone', userContext );

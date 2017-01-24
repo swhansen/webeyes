@@ -8,7 +8,6 @@
 //  sideBar: container for the layer function button list (re-name??)
 //  buttons: button list in the layer menu
 
-
 //function initUiManager() {
 
 // var uiStructure = {};
@@ -404,7 +403,6 @@ function setVrWorld() {
       // Start the orientation data feed
 
         emitArOrientationData();
-
         document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
         msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
@@ -423,12 +421,9 @@ function setVrWorld() {
       msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
        emitMessage( msgString );
       }
-
-
     }
   );
 } );
-
 
 function shareArVrWorld()  {
   if ( userContext.mode === 'ar' ) {
@@ -461,7 +456,6 @@ function shareArVrWorld()  {
        emitMessage( msgString );
       }
 }
-
 
 //
 // Moderator Toggle

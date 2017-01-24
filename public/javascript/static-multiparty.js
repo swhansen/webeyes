@@ -99,10 +99,6 @@ socketServer.on( 'roomnamerequest', function( data ) {
   updateRoom( data );
 } );
 
-//socketServer.on( 'placeArObject', function( data ) {
-//  console.log( 'Test msg at static-multiparty recieved on placeArObject', data.object, data.name );
-//  } );
-
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
 
@@ -163,14 +159,6 @@ socketServer.on( 'userContext', function( data ) {
     console.log( 'userContext at multiparty- data:', data );
     console.log( 'userContext at multiparty:', userContext );
   }
-
-// if ( data.rtcId !== userContext.rtcId ) {
-//   var p = data.param;
-//   userContext[ p ] = data.state;
-
-//   console.log( 'userContext at multiparty- data:', data );
-//   console.log( 'userContext at multiparty:', userContext );
-//  }
 } );
 
 // Footer Messages
@@ -674,7 +662,6 @@ function focusUser( rtcid ) {
     if ( activeBox >= 0 ) {
         collapseToThumbHelper();
     }
-
        var id = getIdOfBox( whichBox );
        activeBox = whichBox;
        setReshaper( id, reshapeToFullSize );
@@ -684,9 +671,7 @@ function focusUser( rtcid ) {
            updateMuteImage();
            document.getElementById( 'killButton' ).style.display = 'block';
        }
-
     expandThumb( whichBox );
-
     updateMuteImage( false );
     handleWindowResize();
 }

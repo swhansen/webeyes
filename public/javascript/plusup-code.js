@@ -1,16 +1,17 @@
 
-//   Functions for execution of the 'mode-code'
+//   Functions for execution of the 'mod-code'
 
-function initModme() {
+// function initModme() {
+//
+// $( function() {
+//   $( '#focus-participant' ).tooltip( {
+//       content: 'Select a participant box to focus',
+//       track:true
+//     } );
+//   } );
+//
+// modmeUI();
 
-$( function() {
-  $( '#focus-participant' ).tooltip( {
-      content: 'Select a participant box to focus',
-      track:true
-    } );
-  } );
-
-modmeUI();
 setDomPointerEvent('canvas0', 'none');
 }
 
@@ -40,7 +41,6 @@ function useModeCode( modeCode ) {
       $( '#ismoderator' ).text( 'Moderator' );
 
     break;
-
 
     case 'leapme':
     userContext.isLeap = true;
@@ -279,7 +279,6 @@ function arWorldModal() {
     } );
 }
 
-
 // UI code input dialog
 
 $( '#codeDialogModal' ).dialog( {
@@ -288,14 +287,14 @@ $( '#codeDialogModal' ).dialog( {
 
  $( '#codeDialogButton' ).click( function() {
   swal( {
-    title: 'Button Code',
+    title: 'Plus-up Code',
     text: 'Input your Super Secret Code',
     type: 'input',
     showCancelButton: true,
     closeOnCancel: true,
     closeOnConfirm: false,
     animation: 'slide-from-top',
-    inputPlaceholder: 'Button Code'
+    inputPlaceholder: 'Plus-up Code'
       },
         function(inputValue){
           if ( inputValue === false ) return false;
@@ -332,7 +331,6 @@ $( '#codeDialogModal' ).dialog( {
             }
       } );
 } );
-
 
 // recieving unique rtcID
 
