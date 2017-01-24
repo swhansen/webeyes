@@ -63,12 +63,7 @@ $( '#iotDeviceId' ).text( 'IOT Device: ' + data.text );
 
 }
 
-var d  = {
-element: 'iotDeviceId',
-text: 'a big text string'
-}
 
-updateStatusBox( d );
 
 function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
