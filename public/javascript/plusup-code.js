@@ -21,8 +21,8 @@ function useModeCode( modeCode ) {
 
    case 'modme':
     setPeerUserContext( 'all', 'modMeState', false );
-
     userContext.modMeState = true;
+    statusBox.updateElement( 'ismoderator', 'moderator' );
     emitSessionUserContext( userContext );
 
     $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
@@ -36,18 +36,15 @@ function useModeCode( modeCode ) {
       document.getElementById( 'modmeButton' ).style.visibility = 'visible';
       mainCollapsed = true;
 
-      emitUtility( 'clearmoderator' );
-      statusBox.updateElement( 'ismoderator', 'moderator' );
 
     break;
 
 
     case 'clearmodme':
-      statusBox.updateElement( 'ismoderator', '' );
       setPeerUserContext( 'all', 'modMeState', false );
       userContext.modMeState = false
+      statusBox.updateElement( 'ismoderator', '' );
       emitUtility( 'clearmoderator' );
-
     break;
 
     case 'leapme':
