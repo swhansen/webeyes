@@ -119,7 +119,6 @@ socketServer.on( 'utility', function(data) {
       statusBox.updateElement( 'ismoderator', '' );
       userContext.modMeState = false;
 
-
     break;
     case 'arClientInit':
         loadAr( 'peer' );
