@@ -62,7 +62,7 @@ function updateElement( element, info ) {
   this.element = info;
   $( '#' + element ).text( 'IOT Device: ' + info );
 
-  // now broadcast to peers
+  // now broadcast to
 }
 
 function updateStatusBox( e, t ) {
@@ -130,7 +130,7 @@ socketServer.on( 'roomnamerequest', function( data ) {
   socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
 
 function updateRoom( data ) {
-  var str = data;
+  var str = 'Channel:' + data;
   $( '#roomId' ).html( str );
   userContext.room = data;
   }
