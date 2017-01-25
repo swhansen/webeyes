@@ -368,16 +368,16 @@ swal({
 setTimeout(function() {
 if ( inputValue === false ) return false;
          if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-           swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
+           reject('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
          } else {
            if (inputValue === '') {
-             swal.showInputError('Please Enter Code!');
+             reject('Please Enter Code!');
              return false;
            }
           else
            if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
              inputValue.toLowerCase() ) ) ) {
-               swal.showInputError( 'Please enter a valid code' );
+               reject( 'Please enter a valid code' );
              return false;
          }
             if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
@@ -393,7 +393,7 @@ if ( inputValue === false ) return false;
                  useModeCode( inputValue.toLowerCase() );
                }
              else {
-               swal.close();
+               resolve();
                useModeCode( inputValue.toLowerCase() );
                }
              }
