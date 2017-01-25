@@ -53,8 +53,18 @@ roomId: '',
 iotZoneId: '',
 iotSubzone: '',
 iotDeviceId: '',
-moderator: ''
+moderator: '',
+changeElement: changeElement
 };
+
+
+function changeElement( element, info ) {
+
+this.element = info;
+console.log( 'changeElement:', element, info )
+console.log( 'statusBox:', statusBox );
+
+}
 
 
 
