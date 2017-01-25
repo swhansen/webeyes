@@ -315,12 +315,12 @@ $( '#codeDialogModal' ).dialog( {
               return false;
             }
            else
-            if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
+            if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme' ],
               inputValue.toLowerCase() ) ) ) {
                 swal.showInputError( 'Please enter a valid code' );
               return false;
           }
-             if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz' ],
+             if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme' ],
               inputValue.toLowerCase() ) ) {
                 if ( inputValue.toLowerCase() === 'iotz' ) {
                   useModeCode( inputValue.toLowerCase() );
