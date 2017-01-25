@@ -40,7 +40,6 @@ function setIotSubZone( subZoneId ) {
       hueURL = iotZones.steve;
     }
       statusBox.updateElement( 'iotsubzone', subZoneId );
-     // statusBox.updateElement( 'iotZoneId', subZoneId );
   }
 
   function setHueIotDevice( data ) {

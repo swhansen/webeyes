@@ -95,6 +95,9 @@ function emitUtility( data ) {
 
 socketServer.on( 'utility', function(data) {
   switch ( data ) {
+    case 'statusbox':
+      updateStatusBox( data );
+    break;
     case 'bullseye':
       drawBullsEye();
     break;

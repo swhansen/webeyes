@@ -20,9 +20,6 @@ function useModeCode( modeCode ) {
   switch ( modeCode ) {
 
    case 'modme':
-
-    statusBox.updateElement( 'iotDeviceId', 'a test string' );
-
     setPeerUserContext( 'all', 'modMeState', false );
 
     userContext.modMeState = true;
@@ -40,7 +37,7 @@ function useModeCode( modeCode ) {
       mainCollapsed = true;
 
       emitUtility( 'clearmoderator' );
-      $( '#ismoderator' ).text( 'Moderator' );
+      statusBox.updateElement( 'ismoderator', 'moderator' );
 
     break;
 
