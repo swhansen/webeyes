@@ -240,6 +240,7 @@ swal( {
 
           setVrWorld();
           shareArVrWorld();
+          statusBox.updateElement( 'metaverse', inputValue );
 
           $( '#vrMainButton' ).css( 'visibility', 'hidden' );
           $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
@@ -273,6 +274,8 @@ function arWorldModal() {
           swal.close();
           setArWorld();
           shareArVrWorld();
+          statusBox.updateElement( 'metaverse', inputValue );
+
           $( '#arMainButton' ).css( 'visibility', 'hidden' );
           $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
     } );

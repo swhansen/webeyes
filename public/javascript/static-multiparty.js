@@ -54,6 +54,7 @@ iotZoneId: '',
 iotsubzone: '',
 iotDeviceId: '',
 ismoderator: '',
+metaverse: '',
 updateElement: updateElement
 };
 
