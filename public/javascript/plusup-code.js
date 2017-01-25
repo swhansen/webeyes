@@ -349,24 +349,18 @@ $( '#codeDialogButton' ).click( function() {
  } );
 
 
-
-
-
-
-
 $( '#codeDialogButton' ).click( function() {
-
-swal({
-  title: 'Enter your super secret clearmodme',
-  input: 'text',
-  showCancelButton: true,
-  confirmButtonText: 'Submit',
-  showLoaderOnConfirm: true,
-  preConfirm: function ( inputValue) {
-    return new Promise(function (resolve, reject) {
-    setTimeout(function() {
-    if ( inputValue === false ) return false;
-         if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
+  swal({
+    title: 'Enter your super secret code',
+    input: 'text',
+    showCancelButton: true,
+    confirmButtonText: 'Submit',
+    showLoaderOnConfirm: true,
+    preConfirm: function ( inputValue) {
+      return new Promise(function (resolve, reject) {
+      setTimeout(function() {
+      if ( inputValue === false ) return false;
+        if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
            reject('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
          } else {
            if (inputValue === '') {
@@ -381,37 +375,23 @@ swal({
          }
             if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
              inputValue.toLowerCase() ) ) {
-               if ( inputValue.toLowerCase() === 'iotz' ) {
-                 useModeCode( inputValue.toLowerCase() );
-               }  else
-               if ( inputValue.toLowerCase() === 'vrme' ) {
-                 useModeCode( inputValue.toLowerCase() );
-               }
-               else
-               if ( inputValue.toLowerCase() === 'augme' ) {
-                 useModeCode( inputValue.toLowerCase() );
-               }
-             else {
+
                resolve();
                useModeCode( inputValue.toLowerCase() );
-               }
+
              }
            }
-
-      }, 200 )
+      }, 10 )
     })
   },
-  allowOutsideClick: false
-}).then(function (inputValue) {
-  swal( {
+    allowOutsideClick: false
+    }).then(function (inputValue) {
+    swal( {
     type: 'success',
     title: 'Code Accepted',
+    } )
   } )
 } )
-
-} )
-
-
 
 
 // recieving unique rtcID
