@@ -375,10 +375,20 @@ $( '#codeDialogButton' ).click( function() {
          }
             if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
              inputValue.toLowerCase() ) ) {
-
+               if ( inputValue.toLowerCase() === 'iotz' ) {
+                 useModeCode( inputValue.toLowerCase() );
+               }  else
+               if ( inputValue.toLowerCase() === 'vrme' ) {
+                 useModeCode( inputValue.toLowerCase() );
+               }
+               else
+               if ( inputValue.toLowerCase() === 'augme' ) {
+                 useModeCode( inputValue.toLowerCase() );
+               }
+             else {
                resolve();
                useModeCode( inputValue.toLowerCase() );
-
+               }
              }
            }
       }, 10 )
