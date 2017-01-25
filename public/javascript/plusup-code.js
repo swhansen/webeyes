@@ -21,7 +21,7 @@ function useModeCode( modeCode ) {
 
    case 'modme':
 
-statusBox.changeElement( 'iotDeviceId', 'a test string' );
+    statusBox.updateElement( 'iotDeviceId', 'a test string' );
 
     setPeerUserContext( 'all', 'modMeState', false );
 
