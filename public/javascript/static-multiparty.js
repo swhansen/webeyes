@@ -54,7 +54,7 @@ iotZoneId: '',
 iotsubzone: '',
 iotDeviceId: '',
 ismoderator: '',
-changeElement: updateElement
+updateElement: updateElement
 };
 
 

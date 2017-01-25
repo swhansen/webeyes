@@ -4,7 +4,7 @@ var iotZones = { steve: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b',
 
 var hueURL = iotZones.steve;
 
-statusBox.updateElement( 'iotZoneId', 'iots' );
+setIotZone( 'iots' );
 
 var hueLightState;
 var hueLightList;
