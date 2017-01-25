@@ -60,18 +60,10 @@ updateElement: updateElement
 
 function updateElement( element, info ) {
   this.element = info;
-  $( '#' + element ).text( 'IOT Device: ' + info );
+  $( '#' + element ).text( info );
 
   // now broadcast to
 }
-
-function updateStatusBox( e, t ) {
-console.log( 'updateStatusBox:', data );
-
-var foo = '#' + e;
-$( '#' + e ).text( 'IOT Device: ' + t );
-}
-
 
 
 function addDimensionalLayer( layer ) {
