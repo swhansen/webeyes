@@ -357,16 +357,15 @@ $( '#codeDialogButton' ).click( function() {
 $( '#codeDialogButton' ).click( function() {
 
 swal({
-  title: 'Submit email to run ajax request',
+  title: 'Enter your super secret clearmodme',
   input: 'text',
   showCancelButton: true,
   confirmButtonText: 'Submit',
   showLoaderOnConfirm: true,
   preConfirm: function ( inputValue) {
     return new Promise(function (resolve, reject) {
-
-setTimeout(function() {
-if ( inputValue === false ) return false;
+    setTimeout(function() {
+    if ( inputValue === false ) return false;
          if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
            reject('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
          } else {
@@ -399,16 +398,15 @@ if ( inputValue === false ) return false;
              }
            }
 
-      }, 1000)
+      }, 200 )
     })
   },
   allowOutsideClick: false
 }).then(function (inputValue) {
-  swal({
+  swal( {
     type: 'success',
-    title: 'Ajax request finished!',
-    html: 'Submitted email: ' + email
-  })
+    title: 'Code Accepted',
+  } )
 } )
 
 } )
