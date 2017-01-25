@@ -103,30 +103,23 @@ symbol{overflow:visible;}
   background-color:#ccc;
   display:table-row;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 12px;
   font-weight:  bold;
 }
 
-
 table{
-
   border-collapse: collapse;
 }
 
-td{
+td{ padding: 2px 0;
+font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight:  bold;
+   }
 
-  padding: 5px 0;
-}
+tr{ border: 5px solid #e6e6ff; }
 
-tr
-{
-  border: 5px solid #e6e6ff;
-}
-
-table + table
-{
-  border-collapse: collapse;
-}
+table + table{ border-collapse: collapse;}
 
 #statusbar {
 position:absolute;
@@ -138,8 +131,6 @@ border-radius: 10px;
 box-shadow:0 0 18px rgba(0,0,0,0.6);
 z-index: 200;
 }
-
-
 
 #position {
   width: 25px;
