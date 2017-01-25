@@ -44,7 +44,7 @@ var userContext = {
   room: '',
   arvrWorld: '',
   dimensionalLayers: [],
-  addDimensionalLayer: addDimensionalLayer,
+  addDimensionalLayer: addDimensionalLayer
 };
 
 var statusBox = {
