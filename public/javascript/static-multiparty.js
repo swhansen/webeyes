@@ -43,30 +43,27 @@ var userContext = {
   browserVideoDevices: '',
   room: '',
   arvrWorld: '',
-  addDimensionalLayer: addDimensionalLayer,
   dimensionalLayers: []
+  addDimensionalLayer: addDimensionalLayer,
 };
 
 var statusBox = {
 channel: '',
 roomId: '',
 iotZoneId: '',
-iotSubzone: '',
+iotsubzone: '',
 iotDeviceId: '',
-moderator: '',
-changeElement: changeElement
+ismoderator: '',
+changeElement: updateElement
 };
 
 
-function changeElement( element, info ) {
+function updateElement( element, info ) {
+  this.element = info;
+  $( '#' + element ).text( 'IOT Device: ' + info );
 
-this.element = info;
-console.log( 'changeElement:', element, info )
-console.log( 'statusBox:', statusBox );
-$( '#' + element ).text( 'IOT Device: ' + info );
+  // now broadcast to peers
 }
-
-
 
 function updateStatusBox( e, t ) {
 console.log( 'updateStatusBox:', data );
@@ -133,7 +130,7 @@ socketServer.on( 'roomnamerequest', function( data ) {
   socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
 
 function updateRoom( data ) {
-  var str = 'Channel:' + data;
+  var str = data;
   $( '#roomId' ).html( str );
   userContext.room = data;
   }
