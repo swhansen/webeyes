@@ -379,8 +379,12 @@ socketServer.on( 'connection', function( client ) {
       }
   } );
 
+  client.on( 'updateStatusBox', function( data, session ) {
+    client.broadcast.emit( 'updateStatusBox', data );
+  } );
+
   client.on( 'updateDimensionalLayers', function( data, session ) {
-    dimensionalLayers = data;
+    client.broadcast.emit( 'arDynamicLoadModel', data );
   } );
 
   client.on( 'updateArObjects', function( data, session ) {

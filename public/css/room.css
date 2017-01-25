@@ -94,7 +94,6 @@ symbol{overflow:visible;}
 
 
 .s-bar{
-
   background:#ddd;
   display:table;
   border-spacing:7px;
@@ -106,6 +105,27 @@ symbol{overflow:visible;}
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight:  bold;
+}
+
+
+table{
+
+  border-collapse: collapse;
+}
+
+td{
+
+  padding: 5px 0;
+}
+
+tr
+{
+  border: 5px solid #e6e6ff;
+}
+
+table + table
+{
+  border-collapse: collapse;
 }
 
 #statusbar {

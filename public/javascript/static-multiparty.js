@@ -61,8 +61,17 @@ updateElement: updateElement
 function updateElement( element, info ) {
   this.element = info;
   $( '#' + element ).text( info );
+  var data = {};
+  data.element = element;
+  data.info = info;
 
-  // now broadcast to
+  socketServer.emit('updateStatusBox', data, sessionId);
+}
+
+socketServer.on( 'updateStatusBox', function(data) {
+  var element = data.element
+  statusBox[element] = data.info;
+  $( '#' + element ).text( data.info );
 }
 
 
