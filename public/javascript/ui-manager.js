@@ -221,10 +221,6 @@ $( function() {
 } );
 
 
-
-
-
-
 $( function() {
   $( '#utilButton' ).click( function() {
     buildSideMenu( 'util' );
@@ -232,9 +228,6 @@ $( function() {
     }
   );
 } );
-
-
-
 
 $( function() {
   $( '#drawButton' ).click( function() {
@@ -291,6 +284,7 @@ $( function() {
 } );
 
 function setArWorld() {
+
  //     buildSideMenu( 'augme' );
 
       userContext.participantState = 'focus';
@@ -302,8 +296,6 @@ function setArWorld() {
       setPeerUserContext( 'all', 'mode', 'ar' );
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
-
-// set a parameter to load specific World
 
       loadAr();
 
@@ -369,8 +361,6 @@ function setVrWorld() {
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
       emitSessionUserContext( userContext );
-
-// set a parameter to load specific World
 
       loadAr();
 

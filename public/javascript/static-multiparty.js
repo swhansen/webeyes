@@ -10,7 +10,7 @@ var connectList = [];
 var WEBEYES = {};
 
 var compassToggle = false;
-var isIotGrabOn = true;
+var isIotGrabOn = false;
 
 /*jshint -W020 */
 socketServer = io.connect( '/' );

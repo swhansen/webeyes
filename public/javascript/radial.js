@@ -106,7 +106,7 @@ drawRadialSvg.onclick = function( e ) {
     if ( fadeSwitch ) {
         $( selectedSectorId ).children( 'path' ).css( { fill: "#ff0000" } );
       } else {
-        $( selectedSectorId ).children('path').css({ fill: "#00800" });
+        $( selectedSectorId ).children( 'path' ).css({ fill: "#008000" });
       }
     }
   e.stopPropagation();
