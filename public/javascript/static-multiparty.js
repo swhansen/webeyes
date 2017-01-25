@@ -63,7 +63,7 @@ function changeElement( element, info ) {
 this.element = info;
 console.log( 'changeElement:', element, info )
 console.log( 'statusBox:', statusBox );
-
+$( '#' + element ).text( 'IOT Device: ' + t );
 }
 
 
