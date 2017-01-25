@@ -304,13 +304,13 @@ $( '#codeDialogModal' ).dialog( {
   swal( {
     title: 'Plus-up Code',
     text: 'Input your Super Secret Code',
-    type: 'input',
+    input: 'text',
     showCancelButton: true,
     closeOnCancel: true,
     closeOnConfirm: false,
     animation: 'slide-from-top',
     inputPlaceholder: 'Plus-up Code'
-      },
+      } ).then(
         function(inputValue){
           if ( inputValue === false ) return false;
           if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
@@ -346,6 +346,8 @@ $( '#codeDialogModal' ).dialog( {
             }
       } );
 } );
+
+
 
 // recieving unique rtcID
 
