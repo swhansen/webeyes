@@ -300,104 +300,89 @@ $( '#codeDialogModal' ).dialog( {
         autoOpen: false
     } );
 
- $( '#codeDialogButton' ).click( function() {
-  swal( {
-    title: 'Plus-up Code',
-    text: 'Input your Super Secret Code',
-    input: 'text',
-    showCancelButton: true,
-    closeOnCancel: true,
-    closeOnConfirm: false,
-    animation: 'slide-from-top',
-    inputPlaceholder: 'Plus-up Code',
-      } ).then(
-        function(inputValue){
-          if ( inputValue === false ) return false;
-          if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-            swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
-          } else {
-            if (inputValue === '') {
-              swal.showInputError('Please Enter Code!');
-              return false;
-            }
-           else
-            if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
-              inputValue.toLowerCase() ) ) ) {
-                swal.showInputError( 'Please enter a valid code' );
-              return false;
-          }
-             if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
-              inputValue.toLowerCase() ) ) {
-                if ( inputValue.toLowerCase() === 'iotz' ) {
-                  useModeCode( inputValue.toLowerCase() );
-                }  else
-                if ( inputValue.toLowerCase() === 'vrme' ) {
-                  useModeCode( inputValue.toLowerCase() );
-                }
-                else
-                if ( inputValue.toLowerCase() === 'augme' ) {
-                  useModeCode( inputValue.toLowerCase() );
-                }
-              else {
-                swal.close();
-                useModeCode( inputValue.toLowerCase() );
-                }
-              }
-            }
-      }
+//$( '#codeDialogButton' ).click( function() {
+// swal( {
+//   title: 'Plus-up Code',
+//   text: 'Input your Super Secret Code',
+//   input: 'text',
+//   showCancelButton: true,
+//   closeOnCancel: true,
+//   closeOnConfirm: false,
+//   animation: 'slide-from-top',
+//   inputPlaceholder: 'Plus-up Code',
+//     } ).then(
+//       function(inputValue){
+//         if ( inputValue === false ) return false;
+//         if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
+//           swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
+//         } else {
+//           if (inputValue === '') {
+//             swal.showInputError('Please Enter Code!');
+//             return false;
+//           }
+//          else
+//           if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
+//             inputValue.toLowerCase() ) ) ) {
+//               swal.showInputError( 'Please enter a valid code' );
+//             return false;
+//         }
+//            if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
+//             inputValue.toLowerCase() ) ) {
+//               if ( inputValue.toLowerCase() === 'iotz' ) {
+//                 useModeCode( inputValue.toLowerCase() );
+//               }  else
+//               if ( inputValue.toLowerCase() === 'vrme' ) {
+//                 useModeCode( inputValue.toLowerCase() );
+//               }
+//               else
+//               if ( inputValue.toLowerCase() === 'augme' ) {
+//                 useModeCode( inputValue.toLowerCase() );
+//               }
+//             else {
+//               swal.close();
+//               useModeCode( inputValue.toLowerCase() );
+//               }
+//             }
+//           }
+//     }
 
-      );
-} );
+//     );
+// );
 
 $( '#codeDialogButton' ).click( function() {
+
 swal({
   title: 'Submit email to run ajax request',
-  input: 'text',
+  input: 'email',
   showCancelButton: true,
   confirmButtonText: 'Submit',
   showLoaderOnConfirm: true,
-  preConfirm: function(inputValue){
-          if ( inputValue === false ) return false;
-          if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-            swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
-          } else {
-            if (inputValue === '') {
-              swal.showInputError('Please Enter Code!');
-              return false;
-            }
-           else
-            if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
-              inputValue.toLowerCase() ) ) ) {
-                swal.showInputError( 'Please enter a valid code' );
-              return false;
-          }
-             if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
-              inputValue.toLowerCase() ) ) {
-                if ( inputValue.toLowerCase() === 'iotz' ) {
-                  useModeCode( inputValue.toLowerCase() );
-                }  else
-                if ( inputValue.toLowerCase() === 'vrme' ) {
-                  useModeCode( inputValue.toLowerCase() );
-                }
-                else
-                if ( inputValue.toLowerCase() === 'augme' ) {
-                  useModeCode( inputValue.toLowerCase() );
-                }
-              else {
-                swal.close();
-                useModeCode( inputValue.toLowerCase() );
-                }
-              }
-            }
-      } ,
+  preConfirm: function (email) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function() {
+        if (email === 'taken@example.com') {
+          reject('This email is already taken.')
+        } else {
+          resolve()
+        }
+      }, 2000)
+    })
+  },
   allowOutsideClick: false
-}).then(function (inputValue) {
+}).then(function (email) {
   swal({
     type: 'success',
     title: 'Ajax request finished!',
     html: 'Submitted email: ' + email
   })
 })
+
+
+
+
+
+
+
 } )
 
 
