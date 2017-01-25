@@ -68,11 +68,11 @@ function updateElement( element, info ) {
   socketServer.emit('updateStatusBox', data, sessionId);
 }
 
-socketServer.on( 'updateStatusBox', function(data) {
-  var element = data.element
+socketServer.on( 'updateStatusBox', function( data ) {
+  var element = data.element;
   statusBox[element] = data.info;
   $( '#' + element ).text( data.info );
-}
+} );
 
 
 function addDimensionalLayer( layer ) {
