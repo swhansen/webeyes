@@ -115,7 +115,11 @@ socketServer.on( 'utility', function(data) {
       ctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
     break;
     case 'clearmoderator':
-    $( '#ismoderator' ).text( '' );
+
+      statusBox.updateElement( 'ismoderator', '' );
+      userContext.modMeState = false;
+
+
     break;
     case 'arClientInit':
         loadAr( 'peer' );

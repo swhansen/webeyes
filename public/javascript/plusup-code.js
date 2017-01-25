@@ -41,6 +41,13 @@ function useModeCode( modeCode ) {
 
     break;
 
+
+    case 'clearmodme':
+      statusBox.updateElement( 'ismoderator', '' );
+      emitUtility( 'clearmoderator' );
+
+    break;
+
     case 'leapme':
     userContext.isLeap = true;
     leapFocus();
