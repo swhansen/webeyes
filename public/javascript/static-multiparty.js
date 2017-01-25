@@ -65,7 +65,6 @@ function updateElement( element, info ) {
   var data = {};
   data.element = element;
   data.info = info;
-
   socketServer.emit('updateStatusBox', data, sessionId);
 }
 

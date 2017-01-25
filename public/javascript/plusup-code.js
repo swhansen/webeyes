@@ -22,7 +22,8 @@ function useModeCode( modeCode ) {
    case 'modme':
     setPeerUserContext( 'all', 'modMeState', false );
     userContext.modMeState = true;
-    statusBox.updateElement( 'ismoderator', 'moderator' );
+    statusBox.updateElement( 'ismoderator', '' );
+    $( '#ismoderator' ).text( 'moderator' );
     emitSessionUserContext( userContext );
 
     $.getJSON( '../menudescriptors/modmeStructure.json', function( data ) {
