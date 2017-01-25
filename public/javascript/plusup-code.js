@@ -362,7 +362,7 @@ swal({
   showCancelButton: true,
   confirmButtonText: 'Submit',
   showLoaderOnConfirm: true,
-  preConfirm: function (text) {
+  preConfirm: function ( inputValue) {
     return new Promise(function (resolve, reject) {
 
 setTimeout(function() {
@@ -403,7 +403,7 @@ if ( inputValue === false ) return false;
     })
   },
   allowOutsideClick: false
-}).then(function (email) {
+}).then(function (inputValue) {
   swal({
     type: 'success',
     title: 'Ajax request finished!',
