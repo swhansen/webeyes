@@ -44,6 +44,8 @@ function useModeCode( modeCode ) {
 
     case 'clearmodme':
       statusBox.updateElement( 'ismoderator', '' );
+      setPeerUserContext( 'all', 'modMeState', false );
+      userContext.modmeState = false
       emitUtility( 'clearmoderator' );
 
     break;
