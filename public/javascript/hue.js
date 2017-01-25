@@ -49,7 +49,8 @@ function setIotSubZone( subZoneId ) {
     } else {
       hueSetLightStateXY( data.deviceId, data.state, data.XY, data.bri );
     }
-    $( '#iotDeviceId' ).text( 'IOT Device: ' + data.deviceId );
+  //  $( '#iotDeviceId' ).text(  data.deviceId );
+    statusBox.updateElement( 'iotDeviceId', data.deviceId );
 }
 
 var hueSetLightState = function( lightNo, state, hue, sat, bri ) {
