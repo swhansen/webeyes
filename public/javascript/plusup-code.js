@@ -202,13 +202,13 @@ function iotZoneModal() {
  swal( {
     title: 'iot Zone Set',
     text: 'Input your IOT SubZone',
-    type: 'input',
+    input: 'text',
     showCancelButton: true,
     closeOnCancel: true,
     closeOnConfirm: false,
     animation: 'slide-from-top',
     inputPlaceholder: 'IOT Sub Zone'
-      },
+      } ).then(
         function( inputValue ) {
           if ( inputValue === false ) return false;
           if (inputValue === '') {
@@ -231,13 +231,13 @@ function vrWorldModal() {
 swal( {
      title: 'VR World',
      text: 'Input your VR World',
-     type: 'input',
+     input: 'text',
      showCancelButton: true,
      closeOnCancel: true,
      closeOnConfirm: false,
      animation: 'slide-from-top',
      inputPlaceholder: 'VR World'
-       },
+       } ).then(
          function( inputValue ) {
            if ( inputValue === false ) { return false; }
            if ( inputValue === '' ) {
@@ -264,13 +264,13 @@ function arWorldModal() {
   swal( {
      title: 'AR World',
      text: 'Input Your AR World',
-     type: 'input',
+     input: 'text',
      showCancelButton: true,
      closeOnCancel: true,
      closeOnConfirm: false,
      animation: 'slide-from-top',
      inputPlaceholder: 'AR World'
-       },
+       } ).then(
          function( inputValue ) {
            if ( inputValue === false ) { return false; }
            if ( inputValue === '' ) {
