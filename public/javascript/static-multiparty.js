@@ -43,7 +43,7 @@ var userContext = {
   browserVideoDevices: '',
   room: '',
   arvrWorld: '',
-  dimensionalLayers: []
+  dimensionalLayers: [],
   addDimensionalLayer: addDimensionalLayer,
 };
 
