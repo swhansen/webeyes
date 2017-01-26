@@ -57,15 +57,16 @@ swal({
     accept: 'image/*'
   }
 } ).then(function (file) {
-  var reader = new FileReader;
-  reader.onload = function (e) {
+  var reader = new FileReader();
+  reader.onload = function ( theFile) {
+    var img = new Image();
     swal( {
-      imageUrl: e.target.result
+      imageUrl: theFile.target.result
     } );
+    img.src = theFile.target.result
+      ctx.drawImage( img, 0, 0, box0Width, box0Height);
   }
   reader.readAsDataURL( file );
-  console.log( 'openFileModal', file );
- //  ctx.drawImage( file, 0, 0, box0Width, box0Height);
 } );
 }
 
