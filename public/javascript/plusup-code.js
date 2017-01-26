@@ -404,8 +404,6 @@ $( '#codeDialogButton' ).click( function() {
     confirmButtonText: 'Submit',
     showLoaderOnConfirm: true,
     preConfirm: function ( inputValue) {
-      return new Promise(function (resolve, reject) {
-      setTimeout(function() {
       if ( inputValue === false ) { reject('Please Enter Code!'); }
       if (inputValue === '') { reject( 'Please Enter Code!' ); }
       if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
@@ -415,11 +413,9 @@ $( '#codeDialogButton' ).click( function() {
       if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
             useModeCode( inputValue.toLowerCase() );
           } else {
-            resolve();
             useModeCode( inputValue.toLowerCase() );
+            resolve();
             }
-        }, 10);
-    } );
     }
   } );
 } );
