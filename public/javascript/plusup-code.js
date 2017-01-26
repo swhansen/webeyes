@@ -261,40 +261,32 @@ function iotZoneModal() {
 //}
 
 function vrWorldModal() {
-swal({
-  title: 'Select AR/VR World',
-  input: 'select',
-  inputOptions: {
-    'steve': 'steve',
-    'chuck': 'chuck',
-    'test': 'test'
-  },
-  inputPlaceholder: 'Select a World',
-  showCancelButton: true,
-  inputValidator: function (inputValue) {
-    return new Promise(function (resolve, reject) {
-
-        setVrWorld();
-          shareArVrWorld();
-          statusBox.updateElement( 'metaverse', inputValue );
-        resolve()
-      }
-    )
-  }
-} ).then(function (result) {
-  swal( {
-    type: 'success',
-    html: 'You selected: ' + result + ' World...Enjoy'
+  swal({
+    title: 'Select AR/VR World',
+    input: 'select',
+    inputOptions: {
+      'steve': 'steve',
+      'chuck': 'chuck',
+      'test': 'test'
+    },
+    inputPlaceholder: 'Select an AR/VR World',
+    showCancelButton: true,
+    inputValidator: function (inputValue) {
+      return new Promise(function (resolve, reject) {
+          setVrWorld();
+            shareArVrWorld();
+            statusBox.updateElement( 'metaverse', inputValue );
+          resolve()
+        }
+      )
+    }
+  } ).then(function (result) {
+    swal( {
+      type: 'success',
+      html: 'Your entering ' + result + ' world...Enjoy'
+      } )
     } )
-  } )
 }
-
-
-
-
-
-
-
 
 function arWorldModal() {
   swal( {
