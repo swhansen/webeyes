@@ -64,7 +64,8 @@ swal({
     } );
   }
   reader.readAsDataURL( file );
-   ctx.drawImage( file, 0, 0, box0Width, box0Height);
+  console.log( 'openFileModal', file );
+ //  ctx.drawImage( file, 0, 0, box0Width, box0Height);
 } );
 }
 
