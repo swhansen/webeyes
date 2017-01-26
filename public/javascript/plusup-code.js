@@ -289,7 +289,6 @@ swal({
   swal( {
     type: 'success',
     html: 'You selected: ' + result
-    console.log( 'AR/VR World', value)
     } )
   } )
 }
