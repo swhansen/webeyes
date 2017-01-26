@@ -356,7 +356,6 @@ swal({
   reader.onload = function (e) {
     swal({
       imageUrl: e.target.result
-      console.log( e );
       console.log( e.target.result );
     })
   }
