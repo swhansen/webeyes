@@ -326,7 +326,7 @@ swal( {
     '<a href="//github.com">links</a> ' +
     'and other HTML tags',
   showCloseButton: true,
-  showCancelButton: true,
+  showCancelButton: true
 } );
 }
 
