@@ -58,16 +58,16 @@ function openFileModal() {
     }
       } ).then(function ( file ) {
         var reader = new FileReader();
-        var data = {};
+        var msg = {};
         reader.onload = function ( theFile ) {
           var img = new Image();
           img.onload = function() {
                   canvas.width = img.width;
                   canvas.height = img.height;
                   ctx.drawImage( img, 0, 0 );
-                  data.img = img;
-                  emitUtilImage( data );
-                  console.log( 'openFileModal shareImage:', data );
+                  data = utilCanvas.toDataURL 'image/jpg';
+                  socketServer.emit('shareImage', data, sessionId);
+             //     console.log( 'openFileModal shareImage:', data );
             };
             img.src = event.target.result;
           };
@@ -79,8 +79,8 @@ function openFileModal() {
 
 
 socketServer.on( 'shareImage', function( data ) {
-  console.log( 'util shareImage:', data );
-ctx.drawImage( data.img, 0, 0 );
+//  console.log( 'util shareImage:', data );
+ctx.drawImage( data, 0, 0 );
 } );
 
 
