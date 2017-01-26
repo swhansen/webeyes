@@ -321,14 +321,16 @@ function helpModal() {
 swal({
   title: '<i>HTML</i> <u>example</u>',
   type: 'question',
+  width: '700px',
   html:
 '<b>modme: </b> participant controls centering of all participants video<br>' +
-'<b>augme: </b> augmented reality mode, must be mobile<br> ' +
- 'vrme, iots, iotc' +
- 'leapme, iotz, clearmodme, leapgrabon, leapgraboff' +
-
-
-
+'<b>clearmodme: </b> clears moderator privledges<br>' +
+'<b>augme: </b> augmented reality mode, requires sensor enabled device<br> ' +
+'<b>vrme: </b> virtual reality mode, moderator controls world locally<br>' +
+'<b>iots, iotc: </b> set the  zone' +
+'<b> iotz: </b> set the IOT sub-zone' +
+'<b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor' +
+'<b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction' +
 
     'You can use <b>bold text</b>, ' +
     '<a href="//github.com">links</a> ' +
