@@ -324,7 +324,7 @@ swal({
   width: '700px',
   html:
 '<ul>' +
-'<li><b>modme: </b> participant controls centering of all participants video</li>' +
+'<li>modme: participant controls centering of all participants video</li>' +
 '<li><b>clearmodme: </b> clears moderator privledges</li>' +
 '<li><b>augme: </b> augmented reality mode, requires sensor enabled device</li> ' +
 '<li><b>vrme: </b> virtual reality mode, moderator controls world locally</li>' +
