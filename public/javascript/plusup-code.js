@@ -396,6 +396,7 @@ $( '#codeDialogModal' ).dialog( {
 
 var p1 =  [ 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff' ];
 var p2 =  [ 'help',  'augme', 'vrme',  'iotz' ];
+
 plusupCodeArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
 
 
@@ -420,24 +421,22 @@ $( '#codeDialogButton' ).click( function() {
       if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
               reject( 'Please enter a valid code' ); }
 
-      if ( ( _.includes( plusupCodeArray, inputValue.toLowerCase() ) )  ) {
+      if ( ( _.includes( p2, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
+          }
 
-     }
-
-    //    if ( ( _.includes( p2, inputValue.toLowerCase() ) )  ) {
-    //       useModeCode( inputValue.toLowerCase() );
-
-      else { resolve(); } } );
+            if ( ( _.includes( p1, inputValue.toLowerCase() ) )  ) {
+            useModeCode( inputValue.toLowerCase() );
+            resolve();
+          }
 
       //if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
       //      useModeCode( inputValue.toLowerCase() ); }
 
-          } } );
-
-
-
+          } );
+    }
         } );
+} );
 
 
 
