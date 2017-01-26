@@ -63,8 +63,8 @@ swal({
       imageUrl: e.target.result
     } );
   }
-  foo = reader.readAsDataURL( file );
-   ctx.drawImage( foo, 0, 0, box0Width, box0Height);
+  reader.readAsDataURL( file );
+   ctx.drawImage( file, 0, 0, box0Width, box0Height);
 } );
 }
 
