@@ -324,12 +324,12 @@ swal({
   width: '700px',
   html:
 '<ul>' +
-'<li>modme: participant controls centering of all participants video</li>' +
+'<li><b>modme: </b> participant controls centering of all participants video</li>' +
 '<li><b>clearmodme: </b> clears moderator privledges</li>' +
 '<li><b>augme: </b> augmented reality mode, requires sensor enabled device</li> ' +
 '<li><b>vrme: </b> virtual reality mode, moderator controls world locally</li>' +
-'<li><b>iots, iotc: </b> set the  zone</li>' +
-'<li><b> iotz: </b> set the IOT sub-zone</li>' +
+'<li><b>iots, iotc: </b> set the IOT zone</li>' +
+'<li><b> iotz: </b> set the IOT sub-zone; int( 1-999 )</li>' +
 '<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
 '<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
 '</ul>' +
