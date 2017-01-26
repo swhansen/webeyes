@@ -315,20 +315,17 @@ function vrWorldModal() {
 }
 
 function helpModal() {
-swal({
+swal( {
   title: '<i>HTML</i> <u>example</u>',
   type: 'info',
+  showCancelButton: true,
   html:
     'You can use <b>bold text</b>, ' +
     '<a href="//github.com">links</a> ' +
     'and other HTML tags',
   showCloseButton: true,
   showCancelButton: true,
-  confirmButtonText:
-    'Got It!',
-  cancelButtonText:
-    '<i Cancel</i>'
-} )
+} );
 }
 
 
