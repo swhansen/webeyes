@@ -422,7 +422,7 @@ $( '#codeDialogButton' ).click( function() {
 
       if ( ( _.includes( bar, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
-            resolve();
+        //    resolve();
           }
 
         //    resolve();
