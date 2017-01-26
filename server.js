@@ -383,8 +383,8 @@ socketServer.on( 'connection', function( client ) {
     client.broadcast.emit( 'updateStatusBox', data );
   } );
 
-   client.on( 'loadUtilImage', function( data, session ) {
-    client.broadcast.emit( 'loadUtilImage', data );
+   client.on( 'shareImage', function( data, session ) {
+    client.broadcast.emit( 'shareImage', data );
   } );
 
   client.on( 'updateDimensionalLayers', function( data, session ) {

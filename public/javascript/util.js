@@ -66,7 +66,7 @@ function openFileModal() {
                   canvas.height = img.height;
                   ctx.drawImage( img, 0, 0 );
                   data.img = img;
-                //  emitUtilImage( data );
+                  emitUtilImage( data );
             };
             img.src = event.target.result;
           };
@@ -74,11 +74,13 @@ function openFileModal() {
       } );
 }
 
-
-
-socketServer.on( 'loadUtilImage', function(data) {
+socketServer.on( 'shareImage', function( data ) {
 ctx.drawImage( data.img, 0, 0 );
+} );
 
+function emitUtilImage( data ) {
+  var sessionId = socketServer.sessionid;
+  socketServer.emit('shareImage', data, sessionId);
 }
 
 
@@ -126,11 +128,7 @@ function drawBullsEye() {
 
 function emitUtility( data ) {
   var sessionId = socketServer.sessionid;
-  socketServer.emit('utility', data, sessionId);
-
-function emitUtilImage( data ) {
-  var sessionId = socketServer.sessionid;
-  socketServer.emit('loadUtilImage', data, sessionId);
+  socketServer.emit( 'utility', data, sessionId);
 }
 
 socketServer.on( 'utility', function(data) {
