@@ -227,38 +227,79 @@ function iotZoneModal() {
           } );
 }
 
-function vrWorldModal() {
-swal( {
-     title: 'VR World',
-     text: 'Input your VR World',
-     input: 'text',
-     showCancelButton: true,
-     closeOnCancel: true,
-     closeOnConfirm: false,
-     animation: 'slide-from-top',
-     inputPlaceholder: 'VR World'
-       } ).then(
-         function( inputValue ) {
-           if ( inputValue === false ) { return false; }
-           if ( inputValue === '' ) {
-               swal.showInputError( 'Please Enter Your VR World!' );
-               return false;
-             }
-            if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
-               inputValue.toLowerCase() ) ) ) {
-                 swal.showInputError( 'Please enter a valid VR World' );
-               return false; } userContext.arvrWorld = inputValue.toLowerCase();
-          emitSessionUserContext( userContext );
-          swal.close();
+//function vrWorldModal() {
+//swal( {
+//     title: 'VR World',
+//     text: 'Input your VR World',
+//     input: 'text',
+//     showCancelButton: true,
+//     closeOnCancel: true,
+//     closeOnConfirm: false,
+//     animation: 'slide-from-top',
+//     inputPlaceholder: 'VR World'
+//       } ).then(
+//         function( inputValue ) {
+//           if ( inputValue === false ) { return false; }
+//           if ( inputValue === '' ) {
+//               swal.showInputError( 'Please Enter Your VR World!' );
+//               return false;
+//             }
+//            if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
+//               inputValue.toLowerCase() ) ) ) {
+//                 swal.showInputError( 'Please enter a valid VR World' );
+//               return false; } userContext.arvrWorld = inputValue.toLowerCase();
+//          emitSessionUserContext( userContext );
+//          swal.close();
+//
+//          setVrWorld();
+//          shareArVrWorld();
+//          statusBox.updateElement( 'metaverse', inputValue );
+//
+//          $( '#vrMainButton' ).css( 'visibility', 'hidden' );
+//          $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+//    } );
+//}
 
-          setVrWorld();
+function vrWorldModal() {
+swal({
+  title: 'Select AR/VR World',
+  input: 'select',
+  inputOptions: {
+    'SRB': 'steve',
+    'UKR': 'chuck',
+    'HRV': 'test'
+  },
+  inputPlaceholder: 'Select a World',
+  showCancelButton: true,
+  inputValidator: function (value) {
+    return new Promise(function (resolve, reject) {
+
+      if (  _.includes( [ 'steve', 'chuck', 'test' ],
+               inputValue.toLowerCase() ) )   {
+        setVrWorld();
           shareArVrWorld();
           statusBox.updateElement( 'metaverse', inputValue );
-
-          $( '#vrMainButton' ).css( 'visibility', 'hidden' );
-          $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
-    } );
+        resolve()
+      } else {
+        reject('Select a valid world' )
+      }
+    } )
+  }
+} ).then(function (result) {
+  swal( {
+    type: 'success',
+    html: 'You selected: ' + result
+    consloe.log( 'AR/VR World', value)
+    } )
+  } )
 }
+
+
+
+
+
+
+
 
 function arWorldModal() {
   swal( {
