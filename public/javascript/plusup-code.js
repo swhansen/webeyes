@@ -437,9 +437,8 @@ $( '#codeDialogButton' ).click( function() {
                  useModeCode( inputValue.toLowerCase() );
                }
                if ( inputValue.toLowerCase() === 'help' ) {
-                 useModeCode( inputValue.toLowerCase() );
-               }
-             else {
+                useModeCode( inputValue.toLowerCase() );
+              else {
                resolve();
                useModeCode( inputValue.toLowerCase() );
                }
