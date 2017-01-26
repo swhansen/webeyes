@@ -440,6 +440,9 @@ $( '#codeDialogButton' ).click( function() {
                if ( inputValue.toLowerCase() === 'augme' ) {
                  useModeCode( inputValue.toLowerCase() );
                }
+               if ( inputValue.toLowerCase() === 'help' ) {
+                 useModeCode( inputValue.toLowerCase() );
+               }
              else {
                resolve();
                useModeCode( inputValue.toLowerCase() );
