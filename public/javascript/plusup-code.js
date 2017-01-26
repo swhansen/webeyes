@@ -391,17 +391,12 @@ $( '#codeDialogButton' ).click( function() {
                }
              }
            }
-      }, 10 )
-    })
+      }, 10);
+    } );
   },
     allowOutsideClick: false
-    }).then(function (inputValue) {
-    swal( {
-    type: 'success',
-    title: 'Code Accepted',
-    } )
-  } )
-} )
+    } );
+} );
 
 
 // recieving unique rtcID
