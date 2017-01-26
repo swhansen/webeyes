@@ -413,10 +413,13 @@ $( '#codeDialogButton' ).click( function() {
       if ( inputValue === false ) { reject('Please Enter Code!'); }
       if (inputValue === '') { reject( 'Please Enter Code!' ); }
       if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-           reject( 'Oops... Not an AR Capable Device', 'Use a orientation and location aware device' ); };
+           reject( 'Oops... Not an AR Capable Device', 'Use a orientation and location aware device' ); }
       if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
               reject( 'Please enter a valid code' );
-         } else {
+         } else if (inputValue.toLowerCase() === 'iotz' ) {
+
+            useModeCode( inputValue.toLowerCase() );
+          } else {
             resolve();
             useModeCode( inputValue.toLowerCase() );
             }
