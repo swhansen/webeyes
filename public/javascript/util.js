@@ -63,7 +63,8 @@ swal({
     swal( {
       imageUrl: theFile.target.result
     } );
-    img.src = theFile.target.result
+    img.src = theFile.target.result;
+    ctx.globalAlpha = 0.5;
       ctx.drawImage( img, 0, 0, box0Width, box0Height);
   }
   reader.readAsDataURL( file );
