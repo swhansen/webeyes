@@ -418,7 +418,7 @@ $( '#codeDialogButton' ).click( function() {
 
       if ( ( _.includes( bar, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
-        swal.closeModal();
+        resolve();
 
       if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
             useModeCode( inputValue.toLowerCase() ); }
