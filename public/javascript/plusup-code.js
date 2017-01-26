@@ -200,6 +200,7 @@ function useModeCode( modeCode ) {
     helpModal();
   break;
 }
+}
 // ------- end plus-up case -------------------------
 
 //function iotZoneModal() {
