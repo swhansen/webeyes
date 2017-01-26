@@ -426,21 +426,6 @@ $( '#codeDialogButton' ).click( function() {
          }
             if ( _.includes( plusupCodeArray,
              inputValue.toLowerCase() ) ) {
-               if ( inputValue.toLowerCase() === 'iotz' ) {
-                 resolve();
-                 useModeCode( inputValue.toLowerCase() );
-               }  else
-               if ( inputValue.toLowerCase() === 'vrme' ) {
-                 useModeCode( inputValue.toLowerCase() );
-               }
-               else
-               if ( inputValue.toLowerCase() === 'augme' ) {
-                 useModeCode( inputValue.toLowerCase() );
-               }
-               if ( inputValue.toLowerCase() === 'help' ) {
-                useModeCode( inputValue.toLowerCase() );
-              }
-              else {
                resolve();
                useModeCode( inputValue.toLowerCase() );
                }
