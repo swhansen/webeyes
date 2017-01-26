@@ -50,51 +50,26 @@ switch ( utilImage ) {
 }
 
 function openFileModal() {
-swal({
-  title: 'Select image',
-  input: 'file',
-  inputAttributes: {
-    accept: 'image/*'
-  }
-} ).then(function (file) {
-  var reader = new FileReader();
-  reader.onload = function ( theFile) {
-    var img = new Image();
-    img.onload = function(){
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img,0,0);
-      }
-      img.src = event.target.result;
+  swal( {
+    title: 'Select image',
+    input: 'file',
+    inputAttributes: {
+      accept: 'image/*'
     }
-  reader.readAsDataURL( file );
-} );
+      } ).then(function ( file ) {
+        var reader = new FileReader();
+        reader.onload = function ( theFile ) {
+          var img = new Image();
+          img.onload = function() {
+                  canvas.width = img.width;
+                  canvas.height = img.height;
+                  ctx.drawImage( img, 0, 0 );
+            };
+            img.src = event.target.result;
+          };
+        reader.readAsDataURL( file );
+      } );
 }
-
-
-var imageLoader = document.getElementById('imageLoader');
-    imageLoader.addEventListener('change', handleImage, false);
-
-function handleImage(e){
-    var reader = new FileReader();
-    reader.onload = function(event){
-        var img = new Image();
-        img.onload = function(){
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img,0,0);
-        }
-        img.src = event.target.result;
-    }
-    reader.readAsDataURL(e.target.files[0]);
-}
-
-
-
-
-
-
-
 
 function drawDoc1() {
   ctx.drawImage( d1, 0, 0, box0Width, box0Height);
