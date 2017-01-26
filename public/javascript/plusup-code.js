@@ -417,11 +417,14 @@ $( '#codeDialogButton' ).click( function() {
 
 
       if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
+        swal.closeModal();
             useModeCode( inputValue.toLowerCase() );
+
           } else {
             useModeCode( inputValue.toLowerCase() );
             }
         }
+        swal.closeModal();
 
 
     } );
