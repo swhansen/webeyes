@@ -67,26 +67,20 @@ function openFileModal() {
                   ctx.drawImage( img, 0, 0 );
                   data = utilCanvas.toDataURL('image/jpg');
                   socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:data });
-                  console.log( 'openFileModal shareImage:', data );
+                  //console.log( 'openFileModal shareImage:', data );
             };
             img.src = event.target.result;
           };
-        reader.readAsDataURL( file );
+        reader.readAsDataURL( theFile );
       } );
 }
 
-
-
-
 socketServer.on( 'shareImage', function( data ) {
   img = new Image;
-    img.width = data.width;
-        img.height = data.height;
-        img.src = data.source;
-    ctx.drawImage( img, 0, 0) ;
-
-//  console.log( 'util shareImage:', data );
-//ctx.drawImage( data, 0, 0 );
+  img.width = data.width;
+  img.height = data.height;
+  img.src = data.source;
+  ctx.drawImage( img, 0, 0) ;
 } );
 
 
