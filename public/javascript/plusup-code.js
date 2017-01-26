@@ -323,14 +323,16 @@ swal({
   type: 'question',
   width: '700px',
   html:
-'<b>modme: </b> participant controls centering of all participants video<br>' +
-'<b>clearmodme: </b> clears moderator privledges<br>' +
-'<b>augme: </b> augmented reality mode, requires sensor enabled device<br> ' +
-'<b>vrme: </b> virtual reality mode, moderator controls world locally<br>' +
-'<b>iots, iotc: </b> set the  zone'<br> +
-'<b> iotz: </b> set the IOT sub-zone'<br> +
-'<b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor'<br> +
-'<b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction'<br> +
+'<ul>' +
+'<li><b>modme: </b> participant controls centering of all participants video</li>' +
+'<li><b>clearmodme: </b> clears moderator privledges</li>' +
+'<li><b>augme: </b> augmented reality mode, requires sensor enabled device</li> ' +
+'<li><b>vrme: </b> virtual reality mode, moderator controls world locally</li>' +
+'<li><b>iots, iotc: </b> set the  zone</li>' +
+'<li><b> iotz: </b> set the IOT sub-zone</li>' +
+'<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
+'<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
+'</ul>'
 
     'You can use <b>bold text</b>, ' +
     '<a href="//github.com">links</a> ' +
