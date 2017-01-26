@@ -288,7 +288,7 @@ function vrWorldModal() {
     } );
 }
 
-function vrWorldModal() {
+function arWorldModal() {
   swal({
     title: 'Select a AR World',
     input: 'select',
@@ -427,6 +427,7 @@ $( '#codeDialogButton' ).click( function() {
             if ( _.includes( plusupCodeArray,
              inputValue.toLowerCase() ) ) {
                if ( inputValue.toLowerCase() === 'iotz' ) {
+                 resolve();
                  useModeCode( inputValue.toLowerCase() );
                }  else
                if ( inputValue.toLowerCase() === 'vrme' ) {
