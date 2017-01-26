@@ -328,7 +328,8 @@ swal({
     'Got It!',
   cancelButtonText:
     '<i Cancel</i>'
-})
+} )
+}
 
 
 
