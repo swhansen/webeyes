@@ -199,6 +199,10 @@ function useModeCode( modeCode ) {
   console.log('at case helpModal' );
     helpModal();
   break;
+
+  case 'openfile':
+    openFileModal();
+  break;
   }
 }
 // ------- end plus-up case -------------------------
@@ -333,15 +337,30 @@ swal({
 '<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
 '<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
 '</ul>' +
+'You can use find more info at, ' +
+'<a href="//blablabla.com">links</a> ',
 
-    'You can use <b>bold text</b>, ' +
-    '<a href="//github.com">links</a> ' +
-    'and other HTML tags',
   showCloseButton: true,
 })
 }
 
-
+function openFileModal() {
+swal({
+  title: 'Select image',
+  input: 'file',
+  inputAttributes: {
+    accept: 'image/*'
+  }
+}).then(function (file) {
+  var reader = new FileReader
+  reader.onload = function (e) {
+    swal({
+      imageUrl: e.target.result
+    })
+  }
+  reader.readAsDataURL(file)
+})
+}
 
 
 // UI code input dialog
@@ -398,7 +417,7 @@ $( '#codeDialogModal' ).dialog( {
 //     );
 // } );
 
-var plusupCodeArray =  [ 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
+var plusupCodeArray =  [ 'openfile', 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
 
 $( '#codeDialogButton' ).click( function() {
   swal( {

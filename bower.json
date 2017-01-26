@@ -24,7 +24,6 @@
     "jquery-ui": "~1.11.2",
     "underscore": "~1.7.0",
     "lodash": "~3.6.0",
-    "sweetalert": "~1.1.0",
     "threejs": "*",
     "tweenjs": "~16.3.1",
     "leapjs": "~0.6.4",
