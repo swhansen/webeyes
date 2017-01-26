@@ -413,16 +413,19 @@ $( '#codeDialogButton' ).click( function() {
            reject( 'Oops... Not an AR Capable Device', 'Use a orientation and location aware device' ); }
       if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
               reject( 'Please enter a valid code' ); }
+
+
+
       if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
             useModeCode( inputValue.toLowerCase() );
           } else {
             useModeCode( inputValue.toLowerCase() );
             }
-        }, 10);
+        }
+
+
     } );
-    }
-  } );
-} );
+
 
 // recieving unique rtcID
 
