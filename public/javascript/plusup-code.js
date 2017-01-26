@@ -394,14 +394,10 @@ $( '#codeDialogModal' ).dialog( {
 //     );
 // } );
 
-var p1 =  [ 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff' ];
-var p2 =  [ 'help',  'augme', 'vrme',  'iotz' ];
+var modalSingle =  [ 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff' ];
+var modalMultiple =  [ 'help',  'augme', 'vrme',  'iotz' ];
 
 plusupCodeArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
-
-
-var bar =  [ 'help',  'augme', 'vrme',  'leapme', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
-
 
 $( '#codeDialogButton' ).click( function() {
 
@@ -421,18 +417,15 @@ $( '#codeDialogButton' ).click( function() {
       if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
               reject( 'Please enter a valid code' ); }
 
-      if ( ( _.includes( p2, inputValue.toLowerCase() ) )  ) {
+      if ( ( _.includes( modalMultiple, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
           }
 
-            if ( ( _.includes( p1, inputValue.toLowerCase() ) )  ) {
+      //if ( ( _.includes( modalSingle, inputValue.toLowerCase() ) )  ) {
+        else {
             useModeCode( inputValue.toLowerCase() );
             resolve();
           }
-
-      //if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
-      //      useModeCode( inputValue.toLowerCase() ); }
-
           } );
     }
         } );
