@@ -416,13 +416,13 @@ $( '#codeDialogButton' ).click( function() {
               reject( 'Please enter a valid code' ); }
 
 
+      if ( ( _.includes( bar, inputValue.toLowerCase() ) )  ) {
+            useModeCode( inputValue.toLowerCase() );
+        swal.closeModal();
 
       if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
             useModeCode( inputValue.toLowerCase() ); }
 
-      if ( ( _.includes( bar, inputValue.toLowerCase() ) )  ) {
-            useModeCode( inputValue.toLowerCase() );
-        //    resolve();
           }
 
         //    resolve();
