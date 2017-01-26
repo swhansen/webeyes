@@ -410,34 +410,21 @@ $( '#codeDialogButton' ).click( function() {
     preConfirm: function ( inputValue) {
       return new Promise(function (resolve, reject) {
       setTimeout(function() {
-      if ( inputValue === false ) return false;
-        if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-           reject('Oops... Not an AR Capable Device', 'Use a orientation and location aware device');
+      if ( inputValue === false ) { reject('Please Enter Code!'); }
+      if (inputValue === '') {reject( 'Please Enter Code!' ) };
+      if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
+           reject('Oops... Not an AR Capable Device', 'Use a orientation and location aware device') };
+      if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
+              reject( 'Please enter a valid code' );
          } else {
-           if (inputValue === '') {
-             reject('Please Enter Code!');
-             return false;
-           }
-          else
-           if ( !( _.includes( plusupCodeArray,
-             inputValue.toLowerCase() ) ) ) {
-               reject( 'Please enter a valid code' );
-             return false;
-         }
-            if ( _.includes( plusupCodeArray,
-             inputValue.toLowerCase() ) ) {
-               resolve();
-               useModeCode( inputValue.toLowerCase() );
-               }
-             }
-           }
+            resolve();
+            useModeCode( inputValue.toLowerCase() );
+            }
       }, 10);
     } );
-  },
-    allowOutsideClick: false
-    } );
-} );
-
+    } }
+    );
+}
 
 // recieving unique rtcID
 
