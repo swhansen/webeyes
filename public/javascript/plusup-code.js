@@ -322,11 +322,18 @@ swal({
   title: '<i>HTML</i> <u>example</u>',
   type: 'info',
   html:
+
+'<b>augme-</b> augmented reality mode, must be mobile ' +
+ 'modme, augme, vrme, iots, iotc' +
+ 'leapme, iotz, clearmodme, leapgrabon, leapgraboff' +
+
+
+
+
     'You can use <b>bold text</b>, ' +
     '<a href="//github.com">links</a> ' +
     'and other HTML tags',
   showCloseButton: true,
-  showCancelButton: true,
 })
 }
 
