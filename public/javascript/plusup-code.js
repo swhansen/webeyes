@@ -320,11 +320,11 @@ function helpModal() {
   console.log( 'at helpModal' );
 swal({
   title: '<i>HTML</i> <u>example</u>',
-  type: 'info',
+  type: 'question',
   html:
-
-'<b>augme-</b> augmented reality mode, must be mobile ' +
- 'modme, augme, vrme, iots, iotc' +
+'<b>modme: </b> participant controls centering of all participants video<br>' +
+'<b>augme: </b> augmented reality mode, must be mobile<br> ' +
+ 'vrme, iots, iotc' +
  'leapme, iotz, clearmodme, leapgrabon, leapgraboff' +
 
 
