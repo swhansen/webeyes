@@ -66,7 +66,7 @@ function openFileModal() {
                   canvas.height = img.height;
                   ctx.drawImage( img, 0, 0 );
                   data.img = img;
-                  emitUtilImage( data );
+                //  emitUtilImage( data );
             };
             img.src = event.target.result;
           };
