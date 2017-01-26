@@ -193,7 +193,8 @@ function useModeCode( modeCode ) {
 
   case 'iotz':
     iotZoneModal();
-  break;case 'help':
+  break;
+  case 'help':
     helpModal();
   break;
   }
@@ -314,14 +315,20 @@ function vrWorldModal() {
 }
 
 function helpModal() {
-swal( {
-
-  title: 'Codes',
+swal({
+  title: '<i>HTML</i> <u>example</u>',
+  type: 'info',
+  html:
+    'You can use <b>bold text</b>, ' +
+    '<a href="//github.com">links</a> ' +
+    'and other HTML tags',
+  showCloseButton: true,
   showCancelButton: true,
-  html: '<p>This is some text in a paragraph.</p><br><p>This is some text in a paragraph</p>'
-
+  confirmButtonText:
+    'Got It!',
+  cancelButtonText:
+    '<i Cancel</i>'
 })
-}
 
 
 
