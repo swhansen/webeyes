@@ -414,7 +414,7 @@ $( '#codeDialogButton' ).click( function() {
             useModeCode( inputValue.toLowerCase() );
           } else {
             useModeCode( inputValue.toLowerCase() );
-            resolve();
+            //resolve();
             }
     }
   } );
