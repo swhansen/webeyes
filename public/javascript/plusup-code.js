@@ -318,16 +318,14 @@ function vrWorldModal() {
 
 function helpModal() {
   console.log( 'at helpModal' );
-swal( {
-  title: '<i>HTML</i> <u>example</u>',
-  type: 'info',
-  html:
-    'You can use <b>bold text</b>, ' +
-    '<a href="//github.com">links</a> ' +
-    'and other HTML tags',
-  showCloseButton: true,
-  showCancelButton: true
-} );
+swal({
+  title: 'jQuery HTML example',
+  html: $('<div>')
+    .addClass('some-class')
+    .text('jQuery is everywhere.'),
+  animation: false,
+  customClass: 'animated tada'
+})
 }
 
 
