@@ -395,10 +395,10 @@ $( '#codeDialogModal' ).dialog( {
 // } );
 
 var plusupCodeArray =  [ 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
+var bar =  [ 'help',  'augme', 'vrme',  'leapme', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
+
 
 $( '#codeDialogButton' ).click( function() {
-
-
 
   swal( {
     title: 'Enter your super secret code',
@@ -418,17 +418,17 @@ $( '#codeDialogButton' ).click( function() {
 
 
       if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
+            useModeCode( inputValue.toLowerCase() );}
+      if ( ( _.includes( bar, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
+          }
+
             resolve();
+            } );
 
-          } else {
-            useModeCode( inputValue.toLowerCase() );
-            resolve();
-            }
+        } } );
 
-        } );
 
-    } } );
 } );
 
 
