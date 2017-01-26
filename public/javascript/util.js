@@ -67,6 +67,7 @@ function openFileModal() {
                   ctx.drawImage( img, 0, 0 );
                   data.img = img;
                   emitUtilImage( data );
+                  console.log( 'openFileModal shareImage:', data );
             };
             img.src = event.target.result;
           };
@@ -74,9 +75,14 @@ function openFileModal() {
       } );
 }
 
+
+
+
 socketServer.on( 'shareImage', function( data ) {
+  console.log( 'util shareImage': data );
 ctx.drawImage( data.img, 0, 0 );
 } );
+
 
 function emitUtilImage( data ) {
   var sessionId = socketServer.sessionid;
