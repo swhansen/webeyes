@@ -424,7 +424,7 @@ $( '#codeDialogButton' ).click( function() {
     } );
     }
   } );
-}
+} );
 
 // recieving unique rtcID
 
