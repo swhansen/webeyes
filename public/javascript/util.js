@@ -71,7 +71,7 @@ function openFileModal() {
             };
             img.src = event.target.result;
           };
-        reader.readAsDataURL( theFile );
+        reader.readAsDataURL( file );
       } );
 }
 
