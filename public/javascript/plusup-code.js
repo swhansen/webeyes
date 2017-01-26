@@ -398,7 +398,7 @@ var plusupCodeArray =  [ 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iot
 
 $( '#codeDialogButton' ).click( function() {
 
-  var p1 = Promise.resolve({ then: useModeCode( inputValue.toLowerCase() ) } );
+
 
   swal( {
     title: 'Enter your super secret code',
