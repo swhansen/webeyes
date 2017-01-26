@@ -79,6 +79,7 @@ function openFileModal() {
 
 
 socketServer.on( 'shareImage', function( data ) {
+  img = new Image;
     img.width = data.width;
         img.height = data.height;
         img.src = data.source;
