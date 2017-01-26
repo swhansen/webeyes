@@ -198,34 +198,86 @@ function useModeCode( modeCode ) {
 }
 // ------- end plus-up case -------------------------
 
+//function iotZoneModal() {
+// swal( {
+//    title: 'iot Zone Set',
+//    text: 'Input your IOT SubZone',
+//    input: 'text',
+//    showCancelButton: true,
+//    closeOnCancel: true,
+//    closeOnConfirm: false,
+//    animation: 'slide-from-top',
+//    inputPlaceholder: 'IOT Sub Zone'
+//      } ).then(
+//        function( inputValue ) {
+//          if ( inputValue === false ) return false;
+//          if (inputValue === '') {
+//              swal.showInputError('Please Enter a sub-zone code!');
+//              return false;
+//            }
+//          var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
+//
+//          if ( !( inputValue ).match( zoneReg ) ) {
+//            swal.showInputError( 'Please enter a valid sub-zone: 1-999' );
+//            return false;
+//          }
+//          userContext.iotSubZone = inputValue;
+//          setIotSubZone( inputValue );
+//          swal.close();
+//          } );
+//}
+
+
+
 function iotZoneModal() {
- swal( {
-    title: 'iot Zone Set',
-    text: 'Input your IOT SubZone',
+  swal( {
+    title: 'Enter your sub-zone',
     input: 'text',
     showCancelButton: true,
-    closeOnCancel: true,
-    closeOnConfirm: false,
-    animation: 'slide-from-top',
-    inputPlaceholder: 'IOT Sub Zone'
-      } ).then(
-        function( inputValue ) {
-          if ( inputValue === false ) return false;
-          if (inputValue === '') {
-              swal.showInputError('Please Enter a sub-zone code!');
-              return false;
-            }
-          var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
+    confirmButtonText: 'Submit',
+    showLoaderOnConfirm: true,
+    preConfirm: function ( inputValue) {
+      return new Promise( function ( resolve, reject ) {
+      setTimeout(function() {
+      if ( inputValue === false ) { reject( 'Please Enter  aCode!' ) };
+      if (inputValue === '') { reject( 'Please Enter a Code!') };
 
-          if ( !( inputValue ).match( zoneReg ) ) {
-            swal.showInputError( 'Please enter a valid sub-zone: 1-999' );
-            return false;
+        var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
+        if ( !( inputValue ).match( zoneReg ) ) {
+            reject ( 'Please enter a valid sub-zone: 1-999' );
+          } else {
+            userContext.iotSubZone = inputValue;
+            setIotSubZone( inputValue );
+            resolve();
           }
-          userContext.iotSubZone = inputValue;
-          setIotSubZone( inputValue );
-          swal.close();
-          } );
+        }, 10);
+    } );
+    } }
+    );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function vrWorldModal() {
   swal({
@@ -264,7 +316,7 @@ function vrWorldModal() {
       'chuck': 'chuck',
       'test': 'test'
     },
-    inputPlaceholder: 'Select a AR World',
+    inputPlaceholder: 'Select a VR World',
     showCancelButton: true,
     inputValidator: function (inputValue) {
       return new Promise(function (resolve, reject) {
@@ -340,7 +392,7 @@ $( '#codeDialogModal' ).dialog( {
 
 
 $( '#codeDialogButton' ).click( function() {
-  swal({
+  swal( {
     title: 'Enter your super secret code',
     input: 'text',
     showCancelButton: true,
