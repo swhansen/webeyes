@@ -274,16 +274,12 @@ swal({
   inputValidator: function (inputValue) {
     return new Promise(function (resolve, reject) {
 
-      if (  (_.includes( [ 'steve', 'chuck', 'test' ],
-               inputValue.toLowerCase() ) )  ) {
         setVrWorld();
           shareArVrWorld();
           statusBox.updateElement( 'metaverse', inputValue );
         resolve()
-      } else {
-        reject('Select a valid world' )
       }
-    } )
+    )
   }
 } ).then(function (result) {
   swal( {
