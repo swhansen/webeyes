@@ -271,7 +271,7 @@ swal({
   },
   inputPlaceholder: 'Select a World',
   showCancelButton: true,
-  inputValidator: function (value) {
+  inputValidator: function (inputValue) {
     return new Promise(function (resolve, reject) {
 
       if (  _.includes( [ 'steve', 'chuck', 'test' ],
