@@ -394,7 +394,11 @@ $( '#codeDialogModal' ).dialog( {
 //     );
 // } );
 
-var plusupCodeArray =  [ 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
+var p1 =  [ 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff' ];
+var p2 =  [ 'help',  'augme', 'vrme',  'iotz' ];
+plussupArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
+
+
 var bar =  [ 'help',  'augme', 'vrme',  'leapme', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
 
 
@@ -412,16 +416,22 @@ $( '#codeDialogButton' ).click( function() {
       if (inputValue === '') { reject( 'Please Enter Code!' ); }
       if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
            reject( 'Oops... Not an AR Capable Device', 'Use a orientation and location aware device' ); }
+
       if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
               reject( 'Please enter a valid code' ); }
 
-
-      if ( ( _.includes( bar, inputValue.toLowerCase() ) )  ) {
+      if ( ( _.includes( p1, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
-        resolve();
 
-      if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
-            useModeCode( inputValue.toLowerCase() ); }
+      }
+
+         if ( ( _.includes( p2, inputValue.toLowerCase() ) )  ) {
+            useModeCode( inputValue.toLowerCase() );
+
+      }
+
+      //if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
+      //      useModeCode( inputValue.toLowerCase() ); }
 
           }
 
