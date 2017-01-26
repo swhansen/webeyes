@@ -228,7 +228,6 @@ function useModeCode( modeCode ) {
 //}
 
 
-
 function iotZoneModal() {
   swal( {
     title: 'Enter your sub-zone',
@@ -239,8 +238,8 @@ function iotZoneModal() {
     preConfirm: function ( inputValue) {
       return new Promise( function ( resolve, reject ) {
       setTimeout(function() {
-      if ( inputValue === false ) { reject( 'Please Enter  aCode!' ) };
-      if (inputValue === '') { reject( 'Please Enter a Code!') };
+      if ( inputValue === false ) { reject( 'Please Enter  aCode!' ) }
+      if (inputValue === '') { reject( 'Please Enter a Code!') }
 
         var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
         if ( !( inputValue ).match( zoneReg ) ) {
@@ -256,31 +255,8 @@ function iotZoneModal() {
     );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function vrWorldModal() {
-  swal({
+  swal( {
     title: 'Select a VR World',
     input: 'select',
     inputOptions: {
@@ -295,16 +271,16 @@ function vrWorldModal() {
           setVrWorld();
           shareArVrWorld();
           statusBox.updateElement( 'metaverse', inputValue );
-          resolve()
+          resolve();
         }
-      )
+      );
     }
   } ).then(function (result) {
     swal( {
       type: 'success',
       html: 'Your entering ' + result + ' world...Enjoy'
-      } )
-    } )
+      } );
+    } );
 }
 
 function vrWorldModal() {
@@ -323,16 +299,16 @@ function vrWorldModal() {
           setArWorld();
           shareArVrWorld();
           statusBox.updateElement( 'metaverse', inputValue );
-          resolve()
+          resolve();
         }
-      )
+      );
     }
   } ).then(function (result) {
     swal( {
       type: 'success',
       html: 'Your entering ' + result + ' world...Enjoy'
-      } )
-    } )
+      } );
+    } );
 }
 
 
@@ -389,7 +365,7 @@ $( '#codeDialogModal' ).dialog( {
 //     }
 //     );
 // } );
-
+var plusupCodeArray =  [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
 
 $( '#codeDialogButton' ).click( function() {
   swal( {
@@ -410,7 +386,7 @@ $( '#codeDialogButton' ).click( function() {
              return false;
            }
           else
-           if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
+           if ( !( _.includes( plusupCodeArray,
              inputValue.toLowerCase() ) ) ) {
                reject( 'Please enter a valid code' );
              return false;
