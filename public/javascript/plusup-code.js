@@ -428,20 +428,23 @@ $( '#codeDialogButton' ).click( function() {
          if ( ( _.includes( p2, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
 
-      }
+      } else { resolve(); }
 
       //if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
       //      useModeCode( inputValue.toLowerCase() ); }
 
-          }
+          } )
 
-        //    resolve();
-            } );
+            resolve();
+            } } );
 
-        } } );
+        } );
 
 
-} );
+
+
+
+
 
 
 // recieving unique rtcID
