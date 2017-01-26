@@ -396,7 +396,7 @@ $( '#codeDialogModal' ).dialog( {
 
 var p1 =  [ 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff' ];
 var p2 =  [ 'help',  'augme', 'vrme',  'iotz' ];
-plussupCodeArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
+plusupCodeArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
 
 
 var bar =  [ 'help',  'augme', 'vrme',  'leapme', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
@@ -420,7 +420,7 @@ $( '#codeDialogButton' ).click( function() {
       if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
               reject( 'Please enter a valid code' ); }
 
-      if ( ( _.includes( plussupCodeArray, inputValue.toLowerCase() ) )  ) {
+      if ( ( _.includes( plusupCodeArray, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
 
      }
