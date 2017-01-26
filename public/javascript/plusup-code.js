@@ -397,6 +397,9 @@ $( '#codeDialogModal' ).dialog( {
 var plusupCodeArray =  [ 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
 
 $( '#codeDialogButton' ).click( function() {
+
+  var p1 = Promise.resolve({ then: useModeCode( inputValue.toLowerCase() ) } );
+
   swal( {
     title: 'Enter your super secret code',
     input: 'text',
@@ -415,7 +418,7 @@ $( '#codeDialogButton' ).click( function() {
       if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
             useModeCode( inputValue.toLowerCase() );
           } else {
-            resolve( useModeCode( inputValue.toLowerCase() ) );
+            resolve( "success" ).then( useModeCode( inputValue.toLowerCase() ) );
 
             }
         }, 10);
