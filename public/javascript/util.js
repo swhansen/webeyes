@@ -58,18 +58,32 @@ function openFileModal() {
     }
       } ).then(function ( file ) {
         var reader = new FileReader();
+        var data = {};
         reader.onload = function ( theFile ) {
           var img = new Image();
           img.onload = function() {
                   canvas.width = img.width;
                   canvas.height = img.height;
                   ctx.drawImage( img, 0, 0 );
+                  data.img = img;
+                  emitUtilImage( data );
             };
             img.src = event.target.result;
           };
         reader.readAsDataURL( file );
       } );
 }
+
+
+
+socketServer.on( 'loadUtilImage', function(data) {
+ctx.drawImage( data.img, 0, 0 );
+
+}
+
+
+
+
 
 function drawDoc1() {
   ctx.drawImage( d1, 0, 0, box0Width, box0Height);
@@ -113,6 +127,10 @@ function drawBullsEye() {
 function emitUtility( data ) {
   var sessionId = socketServer.sessionid;
   socketServer.emit('utility', data, sessionId);
+
+function emitUtilImage( data ) {
+  var sessionId = socketServer.sessionid;
+  socketServer.emit('loadUtilImage', data, sessionId);
 }
 
 socketServer.on( 'utility', function(data) {

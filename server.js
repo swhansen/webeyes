@@ -383,6 +383,10 @@ socketServer.on( 'connection', function( client ) {
     client.broadcast.emit( 'updateStatusBox', data );
   } );
 
+   client.on( 'loadUtilImage', function( data, session ) {
+    client.broadcast.emit( 'loadUtilImage', data );
+  } );
+
   client.on( 'updateDimensionalLayers', function( data, session ) {
     client.broadcast.emit( 'arDynamicLoadModel', data );
   } );
