@@ -422,8 +422,8 @@ $( '#codeDialogButton' ).click( function() {
 
           } else {
             useModeCode( inputValue.toLowerCase() );
-            resolve();
             }
+            resolve();
 
         } );
 
