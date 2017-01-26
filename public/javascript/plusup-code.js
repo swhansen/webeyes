@@ -193,6 +193,8 @@ function useModeCode( modeCode ) {
 
   case 'iotz':
     iotZoneModal();
+  break;case 'help':
+    helpModal();
   break;
   }
 }
@@ -311,6 +313,18 @@ function vrWorldModal() {
     } );
 }
 
+function helpModal() {
+swal( {
+
+  title: 'Codes',
+  showCancelButton: true,
+  html: '<p>This is some text in a paragraph.</p><br><p>This is some text in a paragraph</p>'
+
+})
+}
+
+
+
 
 // UI code input dialog
 
@@ -365,7 +379,8 @@ $( '#codeDialogModal' ).dialog( {
 //     }
 //     );
 // } );
-var plusupCodeArray =  [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
+
+var plusupCodeArray =  [ 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
 
 $( '#codeDialogButton' ).click( function() {
   swal( {
@@ -379,7 +394,7 @@ $( '#codeDialogButton' ).click( function() {
       setTimeout(function() {
       if ( inputValue === false ) return false;
         if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-           reject('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
+           reject('Oops... Not an AR Capable Device', 'Use a orientation and location aware device');
          } else {
            if (inputValue === '') {
              reject('Please Enter Code!');
@@ -391,7 +406,7 @@ $( '#codeDialogButton' ).click( function() {
                reject( 'Please enter a valid code' );
              return false;
          }
-            if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
+            if ( _.includes( plusupCodeArray,
              inputValue.toLowerCase() ) ) {
                if ( inputValue.toLowerCase() === 'iotz' ) {
                  useModeCode( inputValue.toLowerCase() );
