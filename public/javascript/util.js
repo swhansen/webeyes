@@ -79,7 +79,7 @@ function openFileModal() {
 
 
 socketServer.on( 'shareImage', function( data ) {
-  console.log( 'util shareImage:' data );
+  console.log( 'util shareImage:', data );
 ctx.drawImage( data.img, 0, 0 );
 } );
 
