@@ -199,11 +199,6 @@ function useModeCode( modeCode ) {
   console.log('at case helpModal' );
     helpModal();
   break;
-
-  case 'openfile':
-    openFileModal();
-  break;
-  }
 }
 // ------- end plus-up case -------------------------
 
@@ -344,26 +339,6 @@ swal({
 })
 }
 
-function openFileModal() {
-swal({
-  title: 'Select image',
-  input: 'file',
-  inputAttributes: {
-    accept: 'image/*'
-  }
-}).then(function (file) {
-  var reader = new FileReader
-  reader.onload = function (e) {
-    swal({
-      imageUrl: e.target.result
-      console.log( e.target.result );
-    })
-  }
-  reader.readAsDataURL(file)
-})
-}
-
-
 // UI code input dialog
 
 $( '#codeDialogModal' ).dialog( {
@@ -418,7 +393,7 @@ $( '#codeDialogModal' ).dialog( {
 //     );
 // } );
 
-var plusupCodeArray =  [ 'openfile', 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
+var plusupCodeArray =  [ 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
 
 $( '#codeDialogButton' ).click( function() {
   swal( {

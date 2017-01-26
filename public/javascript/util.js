@@ -49,6 +49,29 @@ switch ( utilImage ) {
   }
 }
 
+function openFileModal() {
+swal({
+  title: 'Select image',
+  input: 'file',
+  inputAttributes: {
+    accept: 'image/*'
+  }
+} ).then(function (file) {
+  var reader = new FileReader;
+  reader.onload = function (e) {
+    swal( {
+      imageUrl: e.target.result
+    } );
+  }
+  foo = reader.readAsDataURL( file );
+   ctx.drawImage( foo, 0, 0, box0Width, box0Height);
+} );
+}
+
+
+
+
+
 function drawDoc1() {
   ctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
