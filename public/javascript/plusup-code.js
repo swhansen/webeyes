@@ -424,11 +424,11 @@ $( '#codeDialogButton' ).click( function() {
             useModeCode( inputValue.toLowerCase() );
             }
         }
-        swal.closeModal();
+
 
 
     } );
-});
+} );
 
 
 // recieving unique rtcID
