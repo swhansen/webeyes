@@ -416,8 +416,7 @@ $( '#codeDialogButton' ).click( function() {
            reject( 'Oops... Not an AR Capable Device', 'Use a orientation and location aware device' ); }
       if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
               reject( 'Please enter a valid code' );
-         } else if (inputValue.toLowerCase() === 'iotz' ) {
-
+         } else if (inputValue.toLowerCase() === 'iotz' || 'vrme' || 'augme' ) {
             useModeCode( inputValue.toLowerCase() );
           } else {
             resolve();
