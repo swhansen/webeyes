@@ -332,7 +332,7 @@ swal({
 '<li><b> iotz: </b> set the IOT sub-zone</li>' +
 '<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
 '<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
-'</ul>'
+'</ul>' +
 
     'You can use <b>bold text</b>, ' +
     '<a href="//github.com">links</a> ' +
