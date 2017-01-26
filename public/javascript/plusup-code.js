@@ -265,9 +265,9 @@ swal({
   title: 'Select AR/VR World',
   input: 'select',
   inputOptions: {
-    'SRB': 'steve',
-    'UKR': 'chuck',
-    'HRV': 'test'
+    'steve': 'steve',
+    'chuck': 'chuck',
+    'test': 'test'
   },
   inputPlaceholder: 'Select a World',
   showCancelButton: true,
@@ -284,7 +284,7 @@ swal({
 } ).then(function (result) {
   swal( {
     type: 'success',
-    html: 'You selected: ' + result
+    html: 'You selected: ' + result + ' World...Enjoy'
     } )
   } )
 }
