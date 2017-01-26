@@ -197,19 +197,7 @@ function useModeCode( modeCode ) {
 
   case 'help':
   console.log('at case helpModal' );
-    swal({
-  title: 'Auto close alert!',
-  text: 'I will close in 2 seconds.',
-  timer: 2000
-}).then(
-  function () {},
-  // handling the promise rejection
-  function (dismiss) {
-    if (dismiss === 'timer') {
-      console.log('I was closed by the timer')
-    }
-  }
-);
+    helpModal();
   break;
   }
 }
@@ -331,18 +319,15 @@ function vrWorldModal() {
 function helpModal() {
   console.log( 'at helpModal' );
 swal({
-  title: 'Auto close alert!',
-  text: 'I will close in 2 seconds.',
-  timer: 2000
-}).then(
-  function () {},
-  // handling the promise rejection
-  function (dismiss) {
-    if (dismiss === 'timer') {
-      console.log('I was closed by the timer')
-    }
-  }
-)
+  title: '<i>HTML</i> <u>example</u>',
+  type: 'info',
+  html:
+    'You can use <b>bold text</b>, ' +
+    '<a href="//github.com">links</a> ' +
+    'and other HTML tags',
+  showCloseButton: true,
+  showCancelButton: true,
+})
 }
 
 
