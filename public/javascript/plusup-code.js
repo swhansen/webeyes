@@ -199,6 +199,11 @@ function useModeCode( modeCode ) {
   console.log('at case helpModal' );
     helpModal();
   break;
+
+  case 'loadimage':
+openFileModal();
+  break;
+
 }
 }
 // ------- end plus-up case -------------------------
@@ -394,7 +399,7 @@ $( '#codeDialogModal' ).dialog( {
 //     );
 // } );
 
-var plusupCodeArray =  [ 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
+var plusupCodeArray =  [ 'loadimage', 'help', 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
 
 $( '#codeDialogButton' ).click( function() {
   swal( {
