@@ -319,7 +319,7 @@ function vrWorldModal() {
 function helpModal() {
   console.log( 'at helpModal' );
 swal({
-  title: '<i>HTML</i> <u>example</u>',
+  title: '<i>WEBEYES plus-up codes</i>',
   type: 'question',
   width: '700px',
   html:
@@ -327,10 +327,10 @@ swal({
 '<b>clearmodme: </b> clears moderator privledges<br>' +
 '<b>augme: </b> augmented reality mode, requires sensor enabled device<br> ' +
 '<b>vrme: </b> virtual reality mode, moderator controls world locally<br>' +
-'<b>iots, iotc: </b> set the  zone' +
-'<b> iotz: </b> set the IOT sub-zone' +
-'<b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor' +
-'<b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction' +
+'<b>iots, iotc: </b> set the  zone'<br> +
+'<b> iotz: </b> set the IOT sub-zone'<br> +
+'<b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor'<br> +
+'<b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction'<br> +
 
     'You can use <b>bold text</b>, ' +
     '<a href="//github.com">links</a> ' +
