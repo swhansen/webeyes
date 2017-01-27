@@ -81,7 +81,7 @@ socketServer.on( 'shareImage', function( data ) {
   img.height = data.height;
   img.src = data.source;
 
-  img.src = 'data:image/jpeg;base64,' + data.source;
+  img.src = 'data:image/jpeg,' + data.source;
   ctx.drawImage( img, 0, 0) ;
 } );
 
