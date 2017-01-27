@@ -102,7 +102,7 @@ if ( data) {
 });
      //console.log( 'shareImage-on:', err);
 } );
-}
+} );
 
 function image (from, base64Image) {
     $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
