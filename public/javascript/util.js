@@ -90,6 +90,8 @@ socketServer.on( 'shareImage', function( data ) {
     img.width = data.width;
     img.height = data.height;
     img.src = data.source;
+    var utilCanvas = document.getElementById('utilcanvas');
+var ctx = utilCanvas.getContext('2d');
 
     ctx.drawImage( img, 0, 0, box0Width, box0Height );
     console.log( 'serveron-sharechange:', img.width, img.height, img.src );
