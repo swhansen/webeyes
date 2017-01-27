@@ -78,17 +78,17 @@ function openFileModal() {
 
 
 socketServer.on( 'shareImage', function( data ) {
- image( 'fred', data.source)
+ image( 'fred', data.source);
  try{
    img = new Image( 300, 300 );
   // img.width = data.width;
    //img.height = data.height;
    img.src = data.source;
-  ctx.drawImage( img );
+  ctx.drawImage( img, 0, 0 );
    console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 }
    catch( err ) {
-     console.log( 'shareImage-on:', err)
+     console.log( 'shareImage-on:', err);
  }
 } );
 
