@@ -394,13 +394,10 @@ $( '#codeDialogModal' ).dialog( {
 //     );
 // } );
 
-var modalSingle =  [ 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff' ];
 var modalMultiple =  [ 'help',  'augme', 'vrme',  'iotz' ];
-
-plusupCodeArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
+var plusupCodeArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
 
 $( '#codeDialogButton' ).click( function() {
-
   swal( {
     title: 'Enter your super secret code',
     input: 'text',
@@ -409,34 +406,22 @@ $( '#codeDialogButton' ).click( function() {
     showLoaderOnConfirm: true,
     preConfirm: function ( inputValue) {
       return new Promise(function (resolve, reject) {
-      if ( inputValue === false ) { reject('Please Enter Code!'); }
-      if (inputValue === '') { reject( 'Please Enter Code!' ); }
-      if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
+        if ( inputValue === false ) { reject('Please Enter Code!'); }
+        if (inputValue === '') { reject( 'Please Enter Code!' ); }
+        if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
            reject( 'Oops... Not an AR Capable Device', 'Use a orientation and location aware device' ); }
-
-      if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
-              reject( 'Please enter a valid code' ); }
-
-      if ( ( _.includes( modalMultiple, inputValue.toLowerCase() ) )  ) {
+        if ( !( _.includes( plusupCodeArray, inputValue.toLowerCase() ) ) ) {
+              reject( 'Please enter a valid code - hint: enter help' ); }
+        if ( ( _.includes( modalMultiple, inputValue.toLowerCase() ) )  ) {
             useModeCode( inputValue.toLowerCase() );
-          }
-
-      //if ( ( _.includes( modalSingle, inputValue.toLowerCase() ) )  ) {
-        else {
+          } else {
             useModeCode( inputValue.toLowerCase() );
             resolve();
-          }
-          } );
-    }
+            }
         } );
+      }
+    } );
 } );
-
-
-
-
-
-
-
 
 // recieving unique rtcID
 
