@@ -99,7 +99,7 @@ socketServer.on( 'shareImage', function( data ) {
 
 
 function emitUtilImage( data ) {
-  console.log( 'emitUtilImage:', data.width, data.height, data.src );
+  console.log( 'emitUtilImage:', data.width, data.height, data.source );
   var sessionId = socketServer.sessionid;
   socketServer.emit('shareImage', data, sessionId);
 }
