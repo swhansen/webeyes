@@ -63,7 +63,7 @@ function openFileModal() {
             img.onload = function(){
                 utilCanvas.width = img.width;
                 utilCanvas.height = img.height;
-                ctx.drawImage(img,0,0);
+                ctx.drawImage(img, 0, 0);
                 imgdata = utilCanvas.toDataURL();
                 var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( foo );
@@ -87,10 +87,10 @@ function openFileModal() {
 socketServer.on( 'shareImage', function( data ) {
   try{
   img = new Image();
-  img.width = data.width;
-  img.height = data.height;
-  img.src = data.source;
-  ctx.drawImage( img.src, img.width, img.height );
+ // utilCanvas.width = data.width;
+ // utilCanvas.height = data.height;
+  //img.src = data.source;
+  ctx.drawImage( data.source, 0, 0 );
 
   console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 
