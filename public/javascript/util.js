@@ -90,13 +90,13 @@ socketServer.on( 'shareImage', function( data ) {
   img.width = data.width;
   img.height = data.height;
   img.src = data.source;
+  ctx.drawImage( img, image.width, image.height );
 
   console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 
-  ctx.drawImage( img, 0, 0 ) ;
   }
     catch( err ) {
-    console.log( 'shareImage-on:', err)
+    console.log( 'shareImage-on:', err);
   }
 } );
 
