@@ -61,8 +61,8 @@ function openFileModal() {
         reader.onload = function(event){
             var img = new Image();
             img.onload = function(){
-              //  utilCanvas.width = box.width;
-              //  utilCanvas.height = img.height;
+                utilCanvas.width = box.width;
+                utilCanvas.height = img.height;
                 utilctx.drawImage(img, 0, 0);
                 imgdata = utilCanvas.toDataURL();
                 var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
@@ -79,33 +79,16 @@ function openFileModal() {
 
 socketServer.on( 'shareImage', function( data ) {
  image( 'fred', data.source );
- var promise = new Promise(resolve, reject ) {
-
+ try{
    img = new Image( 300, 300 );
    img.width = box0.width;
    img.height = box0.height;
    img.src = data.source;
   utilctx.drawImage( img, 0, 0 );
-  // console.log( 'serveron-sharechange:', img.width, img.height, img.src ); )
-
-if( data ) {
-  resolve();
+  // console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 }
-else {
-  reject();
-}
-
-
-// }
-//   img = new Image( 300, 300 );
-//   img.width = box0.width;
-//   img.height = box0.height;
-//   img.src = data.source;
-//  utilctx.drawImage( img, 0, 0 );
-//  // console.log( 'serveron-sharechange:', img.width, img.height, img.src );
-//}
-//   catch( err ) {
-//     //console.log( 'shareImage-on:', err);
+   catch( err ) {
+     //console.log( 'shareImage-on:', err);
  }
 } );
 
