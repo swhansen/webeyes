@@ -84,8 +84,8 @@ socketServer.on( 'shareImage', function( data ) {
 //   img.width = data.width;
 //   img.height = data.height;
 //   img.src = data.source;
-  ctx.drawImage( img.src, 0, 0, box0Width, box0Height );
-   console.log( 'serveron-sharechange:', img.width, img.height, img.src );
+  ctx.drawImage( data.src, 0, 0, box0Width, box0Height );
+  // console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 }
    catch( err ) {
      console.log( 'shareImage-on:', err)
