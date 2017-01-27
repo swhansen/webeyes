@@ -56,14 +56,14 @@ function openFileModal() {
     inputAttributes: {
       accept: 'image/*'
     }
-      } ).then(function handleImage(e){
+      } ).then( function handleImage(e){
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
         img.onload = function(){
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img,0,0);
+            utilCanvas.width = img.width;
+            utilCanvas.height = img.height;
+            ctx.drawImage(img, 0,0 );
 
 
 
