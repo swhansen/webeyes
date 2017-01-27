@@ -64,19 +64,19 @@ function openFileModal() {
             utilCanvas.width = img.width;
             utilCanvas.height = img.height;
             ctx.drawImage(img,0,0);
-        }
+        };
         img.src = event.target.result;
-    }
+    };
     reader.readAsDataURL(e.target.files[0] );
-} )
+} );
 }
 
 
-canvas.width = img.width;
-                  canvas.height = img.height;
-                  ctx.drawImage( img.src, 0, 0 );
-                  imgdata = utilCanvas.toDataURL( 'image/jpeg' );
-                  socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
+//anvas.width = img.width;
+//                 canvas.height = img.height;
+//                 ctx.drawImage( img.src, 0, 0 );
+//                 imgdata = utilCanvas.toDataURL( 'image/jpeg' );
+//                 socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
 
 
 socketServer.on( 'shareImage', function( data ) {
