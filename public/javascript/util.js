@@ -93,7 +93,7 @@ socketServer.on( 'shareImage', function( data ) {
 
   console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 
-  ctx.drawImage( img.src, img.width, img.height );
+  ctx.drawImage( img, 0, 0 );
   }
     catch( err ) {
     console.log( 'shareImage-on:', err)
