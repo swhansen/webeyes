@@ -66,7 +66,7 @@ function openFileModal() {
                 utilCanvas.width = img.width;
                 utilCanvas.height = img.height;
                 ctx.drawImage(img,0,0);
-                imgdata = utilCanvas.toDataURL( 'image/jpeg' ).toString( 'base64');
+                imgdata = utilCanvas.toDataURL( 'image/jpeg' );
                 var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( foo );
                 //socketServer.emit('shareImage', {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata });
@@ -77,7 +77,6 @@ function openFileModal() {
       }
       );
 }
-
 
 //anvas.width = img.width;
 //                 canvas.height = img.height;
@@ -90,7 +89,7 @@ socketServer.on( 'shareImage', function( data ) {
   img = new Image();
   img.width = data.width;
   img.height = data.height;
-  img.src = 'data:image/jpeg;base64,' + data.source;
+  img.src = data.source;
 
   console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 
@@ -151,7 +150,7 @@ function emitUtility( data ) {
   socketServer.emit( 'utility', data, sessionId);
 }
 
-socketServer.on( 'utility', function(data) {
+socketServer.on( 'utility', function( data ) {
   switch ( data ) {
     case 'statusbox':
       updateStatusBox( data );
