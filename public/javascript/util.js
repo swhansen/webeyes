@@ -56,23 +56,22 @@ function openFileModal() {
     inputAttributes: {
       accept: 'image/*'
     }
-      } ).then( function handleImage(e){
-    var reader = new FileReader();
-    reader.onload = function(event){
-        var img = new Image();
-        img.onload = function(){
-            utilCanvas.width = img.width;
-            utilCanvas.height = img.height;
-            ctx.drawImage(img, 0,0 );
-
-
-
+      } ).then( function readImage() {
+    if ( this.files && this.files[0] ) {
+        var FR= new FileReader();
+        FR.onload = function(e) {
+           var img = new Image();
+           img.onload = function() {
+             ctx.drawImage(img, 0, 0);
+           };
+           img.src = e.target.result;
         };
-        img.src = event.target.result;
-    };
-    reader.readAsDataURL(e.target.files[0]);
-} );
-}
+        FR.readAsDataURL( this.files[0] );
+    }
+  }
+) }
+
+
 
 
 //function handleImage(e){
