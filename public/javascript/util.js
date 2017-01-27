@@ -2,7 +2,7 @@
 // canvas playground for experimental stuff
 
 var utilCanvas = document.getElementById('utilcanvas');
-var ctx = utilCanvas.getContext('2d');
+var utilctx = utilCanvas.getContext('2d');
 var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
@@ -63,7 +63,7 @@ function openFileModal() {
             img.onload = function(){
                 utilCanvas.width = img.width;
                 utilCanvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
+                utilctx.drawImage(img, 0, 0);
                 imgdata = utilCanvas.toDataURL();
                 var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( foo );
@@ -81,10 +81,10 @@ socketServer.on( 'shareImage', function( data ) {
  image( 'fred', data.source );
  try{
    img = new Image( 300, 300 );
-  // img.width = data.width;
-   //img.height = data.height;
+   img.width = box0.width;
+   img.height = box0.height;
    img.src = data.source;
-  ctx.drawImage( img, 0, 0 );
+  utilctx.drawImage( img, 0, 0 );
   // console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 }
    catch( err ) {
@@ -103,42 +103,42 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  ctx.drawImage( d1, 0, 0, box0Width, box0Height);
+  utilctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
 
 function drawDoc2() {
-  ctx.drawImage(d2, 0, 0, utilCanvas.width, utilCanvas.height);
+  utilctx.drawImage(d2, 0, 0, utilCanvas.width, utilCanvas.height);
 }
 
 function drawArch() {
-  ctx.drawImage(d3, 0, 0 , utilCanvas.width, utilCanvas.height);
+  utilctx.drawImage(d3, 0, 0 , utilCanvas.width, utilCanvas.height);
 }
 
  function clearUtilCanvas() {
-  ctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
+  utilctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
   emitUtility( 'clearutil' );
 }
 
 function drawBullsEye() {
   var outerRadius = 300;
   var innerRadius = 275;
-  ctx.beginPath();
-  ctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
-  ctx.fillStyle = 'rgba(255,255,255,.2)';
-  ctx.fill();
-  ctx.globalCompositeOperation = 'destination-out';
-  ctx.beginPath();
-  ctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
-  ctx.fillStyle = 'green';
-  ctx.fill();
-  ctx.globalCompositeOperation = 'source-over';
-  ctx.beginPath();
-  ctx.moveTo(500 - innerRadius, 400);
-  ctx.lineTo(500 + innerRadius, 400);
-  ctx.stroke();
-  ctx.moveTo(500, 400 - innerRadius);
-  ctx.lineTo(500, 400 + innerRadius);
-  ctx.stroke();
+  utilctx.beginPath();
+  utilctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
+  utilctx.fillStyle = 'rgba(255,255,255,.2)';
+  utilctx.fill();
+  utilctx.globalCompositeOperation = 'destination-out';
+  utilctx.beginPath();
+  utilctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
+  utilctx.fillStyle = 'green';
+  utilctx.fill();
+  utilctx.globalCompositeOperation = 'source-over';
+  utilctx.beginPath();
+  utilctx.moveTo(500 - innerRadius, 400);
+  utilctx.lineTo(500 + innerRadius, 400);
+  utilctx.stroke();
+  utilctx.moveTo(500, 400 - innerRadius);
+  utilctx.lineTo(500, 400 + innerRadius);
+  utilctx.stroke();
 }
 
 function emitUtility( data ) {
@@ -165,7 +165,7 @@ socketServer.on( 'utility', function( data ) {
     break;
     case 'clearutil':
       clearDrawCanvas();
-      ctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
+      utilutil.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
     break;
     case 'clearmoderator':
 
