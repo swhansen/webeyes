@@ -78,7 +78,7 @@ function openFileModal() {
 
 
 socketServer.on( 'shareImage', function( data ) {
- image( 'fred', data.source);
+ image( 'fred', data.source );
  try{
    img = new Image( 300, 300 );
   // img.width = data.width;
@@ -93,7 +93,7 @@ socketServer.on( 'shareImage', function( data ) {
 } );
 
 function image (from, base64Image) {
-    $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+    $('#utilcanvaspane').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
   }
 
 function emitUtilImage( data ) {
