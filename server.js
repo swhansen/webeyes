@@ -384,7 +384,7 @@ socketServer.on( 'connection', function( client ) {
   } );
 
    client.on( 'shareImage', function( data, session ) {
-    console.log( 'shareImage:', data.width, data.height, data.source );
+    //console.log( 'shareImage:', data.width, data.height, data.source );
     client.broadcast.emit( 'shareImage', data );
   } );
 

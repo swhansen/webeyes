@@ -85,16 +85,15 @@ socketServer.on( 'shareImage', function( data ) {
    //img.height = data.height;
    img.src = data.source;
   ctx.drawImage( img, 0, 0 );
-   console.log( 'serveron-sharechange:', img.width, img.height, img.src );
+  // console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 }
    catch( err ) {
-     console.log( 'shareImage-on:', err);
+     //console.log( 'shareImage-on:', err);
  }
 } );
 
 function image (from, base64Image) {
-  $('#utilcanvaspane').style.visibility = 'visible';
-    $('#utilcanvaspane').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+    $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
   }
 
 function emitUtilImage( data ) {
