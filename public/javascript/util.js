@@ -92,14 +92,14 @@ socketServer.on( 'shareImage', function( data ) {
   img.height = data.height;
   img.src = 'data:image/jpeg;base64,' + data.source;
 
-  console.log( 'serveron-sharechange:', img.width, img.height );
+  console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 
   ctx.drawImage( img, 0, 0 ) ;
 } );
 
 
 function emitUtilImage( data ) {
-  console.log( 'emitUtilImage:', data.width, data.height );
+  console.log( 'emitUtilImage:', data.width, data.height, data.src );
   var sessionId = socketServer.sessionid;
   socketServer.emit('shareImage', data, sessionId);
 }
