@@ -51,17 +51,17 @@ switch ( utilImage ) {
 var imageLoader = document.getElementById('imageLoader');
     imageLoader.addEventListener('change', handleImage, false);
 
-//function openFileModal() {
-//  swal( {
-//    title: 'Select image',
-//    input: 'file',
-//    inputAttributes: {
-//      accept: 'image/*'
-//    }
-//      } ).then(
+function openFileModal() {
+  swal( {
+    title: 'Select image',
+    input: 'file',
+    inputAttributes: {
+      accept: 'image/*'
+    }
+      } ).then(
 
 
-      function handleImage(e){
+  function (e){
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
@@ -74,10 +74,10 @@ var imageLoader = document.getElementById('imageLoader');
         };
         img.src = event.target.result;
     };
-    reader.readAsDataURL(e.target.files[0] );
+    reader.readAsDataURL(e );
 }
-//);
-//}
+);
+}
 
 
 //anvas.width = img.width;
