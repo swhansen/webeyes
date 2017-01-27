@@ -86,14 +86,14 @@ function openFileModal() {
 
 socketServer.on( 'shareImage', function( data ) {
   try{
-  img = new Image();
-  img.width = data.width;
-  img.height = data.height;
-  img.src = data.source;
+    img = new Image();
+    img.width = data.width;
+    img.height = data.height;
+    img.src = data.source;
 
-  console.log( 'serveron-sharechange:', img.width, img.height, img.src );
+    ctx.drawImage( img, 0, 0, box0Width, box0Height );
+    console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 
-  ctx.drawImage( img, 0, 0 );
   }
     catch( err ) {
     console.log( 'shareImage-on:', err)
