@@ -86,6 +86,7 @@ function openFileModal() {
 
 
 socketServer.on( 'shareImage', function( data ) {
+  try{
   img = new Image();
   img.width = data.width;
   img.height = data.height;
@@ -94,17 +95,17 @@ socketServer.on( 'shareImage', function( data ) {
   console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 
   ctx.drawImage( img, 0, 0 ) ;
+  }
+    catch( err ) {
+    console.log( 'shareImage-on:', err)
+  }
 } );
-
 
 function emitUtilImage( data ) {
   console.log( 'emitUtilImage:', data.width, data.height, data.source );
   var sessionId = socketServer.sessionid;
   socketServer.emit('shareImage', data, sessionId);
 }
-
-
-
 
 function drawDoc1() {
   ctx.drawImage( d1, 0, 0, box0Width, box0Height);
