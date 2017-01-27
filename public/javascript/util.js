@@ -49,14 +49,19 @@ switch ( utilImage ) {
   }
 }
 
-function openFileModal() {
-  swal( {
-    title: 'Select image',
-    input: 'file',
-    inputAttributes: {
-      accept: 'image/*'
-    }
-      } ).then(function handleImage(e){
+//function openFileModal() {
+//  swal( {
+//    title: 'Select image',
+//    input: 'file',
+//    inputAttributes: {
+//      accept: 'image/*'
+//    }
+//      } ).then(
+
+var imageLoader = document.getElementById('imageLoader');
+    imageLoader.addEventListener('change', handleImage, false);
+
+      function handleImage(e){
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
@@ -68,8 +73,9 @@ function openFileModal() {
         img.src = event.target.result;
     };
     reader.readAsDataURL(e.target.files[0] );
-} );
 }
+//);
+//}
 
 
 //anvas.width = img.width;
