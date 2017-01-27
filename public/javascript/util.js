@@ -56,45 +56,27 @@ function openFileModal() {
     inputAttributes: {
       accept: 'image/*'
     }
-      } ).then( function readImage() {
-    if ( this.files && this.files[0] ) {
-        var FR= new FileReader();
-        FR.onload = function(e) {
-           var img = new Image();
-           img.onload = function() {
+      } ).then(function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
             utilCanvas.width = img.width;
             utilCanvas.height = img.height;
-             ctx.drawImage(img, 0, 0);
-           };
-           img.src = e.target.result;
-        };
-        FR.readAsDataURL( this.files[0] );
+            ctx.drawImage(img,0,0);
+        }
+        img.src = event.target.result;
     }
-  }
-) }
+    reader.readAsDataURL(e.target.files[0] );
+} )
+}
 
 
-
-
-//function handleImage(e){
-//    var reader = new FileReader();
-//    reader.onload = function(event){
-//        var img = new Image();
-//        img.onload = function(){
-//            canvas.width = img.width;
-//            canvas.height = img.height;
-//            ctx.drawImage(img,0,0);
-//        }
-//        img.src = event.target.result;
-//    }
-//    reader.readAsDataURL(e.target.files[0]);
-//}
-//
-//canvas.width = img.width;
-//                  canvas.height = img.height;
-//                  ctx.drawImage( img.src, 0, 0 );
-//                  imgdata = utilCanvas.toDataURL( 'image/jpeg' );
-//                  socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
+canvas.width = img.width;
+                  canvas.height = img.height;
+                  ctx.drawImage( img.src, 0, 0 );
+                  imgdata = utilCanvas.toDataURL( 'image/jpeg' );
+                  socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
 
 
 socketServer.on( 'shareImage', function( data ) {
