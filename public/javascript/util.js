@@ -79,7 +79,7 @@ function openFileModal() {
 
 socketServer.on( 'shareImage', function( data ) {
  image( 'fred', data.source );
-return Promise(function(resolve, reject) {
+return new Promise(function(resolve, reject) {
   // do a thing, possibly async, then…
 
    img = new Image( 300, 300 );
