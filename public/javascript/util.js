@@ -48,8 +48,6 @@ switch ( utilImage ) {
    break;
   }
 }
-var imageLoader = document.getElementById('imageLoader');
-    imageLoader.addEventListener('change', handleImage, false);
 
 function openFileModal() {
   swal( {
@@ -66,7 +64,7 @@ function openFileModal() {
                 utilCanvas.width = img.width;
                 utilCanvas.height = img.height;
                 ctx.drawImage(img,0,0);
-                imgdata = utilCanvas.toDataURL( 'image/jpeg' );
+                imgdata = utilCanvas.toDataURL();
                 var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( foo );
                 //socketServer.emit('shareImage', {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata });
@@ -83,6 +81,7 @@ function openFileModal() {
 //                 ctx.drawImage( img.src, 0, 0 );
 //                 imgdata = utilCanvas.toDataURL( 'image/jpeg' );
 //                 socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
+
 
 
 socketServer.on( 'shareImage', function( data ) {
