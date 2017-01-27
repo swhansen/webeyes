@@ -78,7 +78,7 @@ function openFileModal() {
 
 
 socketServer.on( 'shareImage', function( data ) {
-  imag( 'fred', data.source)
+  image( 'fred', data.source)
  //try{
  //  img = new Image();
  //  img.width = data.width;
