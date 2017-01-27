@@ -79,18 +79,24 @@ function openFileModal() {
 
 socketServer.on( 'shareImage', function( data ) {
  image( 'fred', data.source );
- try{
+var promise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+
    img = new Image( 300, 300 );
    img.width = box0.width;
    img.height = box0.height;
    img.src = data.source;
   utilctx.drawImage( img, 0, 0 );
   // console.log( 'serveron-sharechange:', img.width, img.height, img.src );
-}
-   catch( err ) {
+if ( data) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
      //console.log( 'shareImage-on:', err);
- }
 } );
+}
 
 function image (from, base64Image) {
     $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
