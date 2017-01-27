@@ -51,14 +51,17 @@ switch ( utilImage ) {
 var imageLoader = document.getElementById('imageLoader');
     imageLoader.addEventListener('change', handleImage, false);
 
-function openFileModal() {
-  swal( {
-    title: 'Select image',
-    input: 'file',
-    inputAttributes: {
-      accept: 'image/*'
-    }
-      } ).then( function (e){
+//function openFileModal() {
+//  swal( {
+//    title: 'Select image',
+//    input: 'file',
+//    inputAttributes: {
+//      accept: 'image/*'
+//    }
+//      } ).then(
+
+
+      function handleImage(e){
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
@@ -66,12 +69,14 @@ function openFileModal() {
             utilCanvas.width = img.width;
             utilCanvas.height = img.height;
             ctx.drawImage(img,0,0);
+            imgdata = utilCanvas.toDataURL( 'image/jpeg' );
+            socketServer.emit('shareImage', {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata });
         };
         img.src = event.target.result;
     };
     reader.readAsDataURL(e.target.files[0] );
-} );
 }
+//);
 //}
 
 
@@ -83,7 +88,7 @@ function openFileModal() {
 
 
 socketServer.on( 'shareImage', function( data ) {
-  img = new Image;
+  img = new Image();
   img.width = data.width;
   img.height = data.height;
   img.src = data.source;
