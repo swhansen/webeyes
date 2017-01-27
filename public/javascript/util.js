@@ -62,6 +62,8 @@ function openFileModal() {
         FR.onload = function(e) {
            var img = new Image();
            img.onload = function() {
+            utilCanvas.width = img.width;
+            utilCanvas.height = img.height;
              ctx.drawImage(img, 0, 0);
            };
            img.src = e.target.result;
