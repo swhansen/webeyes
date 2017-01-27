@@ -58,25 +58,24 @@ function openFileModal() {
     inputAttributes: {
       accept: 'image/*'
     }
-      } ).then(
-
-
-  function (e){
-    var reader = new FileReader();
-    reader.onload = function(event){
-        var img = new Image();
-        img.onload = function(){
-            utilCanvas.width = img.width;
-            utilCanvas.height = img.height;
-            ctx.drawImage(img,0,0);
-            imgdata = utilCanvas.toDataURL( 'image/jpeg' );
-            socketServer.emit('shareImage', {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata });
+    } ).then( function (e) {
+        var reader = new FileReader();
+        reader.onload = function(event){
+            var img = new Image();
+            img.onload = function(){
+                utilCanvas.width = img.width;
+                utilCanvas.height = img.height;
+                ctx.drawImage(img,0,0);
+                imgdata = utilCanvas.toDataURL( 'image/jpeg' );
+                var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
+                emitUtilImage( foo );
+                //socketServer.emit('shareImage', {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata });
+            };
+            img.src = event.target.result;
         };
-        img.src = event.target.result;
-    };
-    reader.readAsDataURL(e );
-}
-);
+        reader.readAsDataURL(e );
+      }
+      );
 }
 
 
@@ -93,8 +92,9 @@ socketServer.on( 'shareImage', function( data ) {
   img.height = data.height;
   img.src = data.source;
 
-//  img.src = 'data:image/jpeg,' + data.source;
-  ctx.drawImage( img, 0, 0) ;
+  console.log( 'serveron-sharechange:', img.width, img. height );
+
+  ctx.drawImage( img, 0, 0 ) ;
 } );
 
 
