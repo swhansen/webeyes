@@ -64,8 +64,8 @@ function openFileModal() {
           img.onload = function() {
                   canvas.width = img.width;
                   canvas.height = img.height;
-                  ctx.drawImage( img, 0, 0 );
-                  data = utilCanvas.toDataURL('image/;base64');
+                //  ctx.drawImage( img, 0, 0 );
+                  data = utilCanvas.toDataURL('image/jpeg;base64');
                   socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:data });
                   //console.log( 'openFileModal shareImage:', data );
             };
