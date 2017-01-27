@@ -93,6 +93,7 @@ socketServer.on( 'shareImage', function( data ) {
 } );
 
 function image (from, base64Image) {
+  $('#utilcanvaspane').style.visibility = 'visible';
     $('#utilcanvaspane').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
   }
 
