@@ -80,11 +80,11 @@ function openFileModal() {
 socketServer.on( 'shareImage', function( data ) {
  // image( 'fred', data.source)
  try{
-//   img = new Image();
+  img = new Image();
 //   img.width = data.width;
 //   img.height = data.height;
-//   img.src = data.source;
-  ctx.drawImage( data.src, 0, 0, box0Width, box0Height );
+   img.src = data.source;
+  ctx.drawImage( img, 0, 0, box0Width, box0Height );
   // console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 }
    catch( err ) {
