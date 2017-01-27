@@ -56,24 +56,45 @@ function openFileModal() {
     inputAttributes: {
       accept: 'image/*'
     }
-      } ).then(function ( file ) {
-        var reader = new FileReader();
-        var msg = {};
-        reader.onload = function ( e ) {
-          console.log( 'e:'. e );
-          var img = new Image();
-            img = e.target.result;
-          //  console.log( 'img.src:', img.src );
-                  canvas.width = img.width;
-                  canvas.height = img.height;
-                  ctx.drawImage( img.src, 0, 0 );
-                  imgdata = utilCanvas.toDataURL( 'image/jpeg' );
-                  socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
-                  //console.log( 'openFileModal shareImage:', data );
-          };
-        reader.readAsDataURL( file );
-      } );
+      } ).then(function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img,0,0);
+
+
+
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+} );
 }
+
+
+//function handleImage(e){
+//    var reader = new FileReader();
+//    reader.onload = function(event){
+//        var img = new Image();
+//        img.onload = function(){
+//            canvas.width = img.width;
+//            canvas.height = img.height;
+//            ctx.drawImage(img,0,0);
+//        }
+//        img.src = event.target.result;
+//    }
+//    reader.readAsDataURL(e.target.files[0]);
+//}
+//
+//canvas.width = img.width;
+//                  canvas.height = img.height;
+//                  ctx.drawImage( img.src, 0, 0 );
+//                  imgdata = utilCanvas.toDataURL( 'image/jpeg' );
+//                  socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
+
 
 socketServer.on( 'shareImage', function( data ) {
   img = new Image;
