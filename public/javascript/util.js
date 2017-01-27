@@ -60,8 +60,9 @@ function openFileModal() {
         var reader = new FileReader();
         var msg = {};
         reader.onload = function ( e ) {
+          console.log( 'e:'. e );
           var img = new Image();
-            img.src = e.target.result;
+            img = e.target.result;
           //  console.log( 'img.src:', img.src );
                   canvas.width = img.width;
                   canvas.height = img.height;
