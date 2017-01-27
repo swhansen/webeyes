@@ -61,8 +61,8 @@ function openFileModal() {
         reader.onload = function(event){
             var img = new Image();
             img.onload = function(){
-                utilCanvas.width = box.width;
-                utilCanvas.height = img.height;
+              //  utilCanvas.width = box.width;
+              //  utilCanvas.height = img.height;
                 utilctx.drawImage(img, 0, 0);
                 imgdata = utilCanvas.toDataURL();
                 var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
