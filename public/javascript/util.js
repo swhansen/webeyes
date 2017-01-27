@@ -61,7 +61,8 @@ function openFileModal() {
         var msg = {};
         reader.onload = function ( e ) {
           var img = new Image();
-            img = e.target.result;
+            img.src = e.target.result;
+            console.log( 'img.src:', img.src );
                   canvas.width = img.width;
                   canvas.height = img.height;
                   ctx.drawImage( img, 0, 0 );
