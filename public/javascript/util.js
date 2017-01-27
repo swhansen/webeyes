@@ -63,7 +63,7 @@ function openFileModal() {
             img.onload = function(){
                 utilCanvas.width = img.width;
                 utilCanvas.height = img.height;
-                ctx.drawImage(img,0,0);
+                ctx.drawImage(img, 0, 0);
                 imgdata = utilCanvas.toDataURL();
                 var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( foo );
@@ -76,34 +76,30 @@ function openFileModal() {
       );
 }
 
-//anvas.width = img.width;
-//                 canvas.height = img.height;
-//                 ctx.drawImage( img.src, 0, 0 );
-//                 imgdata = utilCanvas.toDataURL( 'image/jpeg' );
-//                 socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
-
-
 
 socketServer.on( 'shareImage', function( data ) {
-  try{
-    img = new Image();
-    img.width = data.width;
-    img.height = data.height;
-    img.src = data.source;
-    var utilCanvas = document.getElementById('utilcanvas');
-var ctx = utilCanvas.getContext('2d');
+  imag( 'fred', data.source)
+ //try{
+ //  img = new Image();
+ //  img.width = data.width;
+ //  img.height = data.height;
+ //  img.src = data.source;
 
-    ctx.drawImage( img, 0, 0, box0Width, box0Height );
-    console.log( 'serveron-sharechange:', img.width, img.height, img.src );
+ //  ctx.drawImage( img, 0, 0, box0Width, box0Height );
+ //  console.log( 'serveron-sharechange:', img.width, img.height, img.src );
 
-  }
-    catch( err ) {
-    console.log( 'shareImage-on:', err)
-  }
+ //}
+ //  catch( err ) {
+ //    console.log( 'shareImage-on:', err)
+ //}
 } );
 
+function image (from, base64Image) {
+    $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+  }
+
 function emitUtilImage( data ) {
-  console.log( 'emitUtilImage:', data.width, data.height, data.source );
+  //console.log( 'emitUtilImage:', data.width, data.height, data.source );
   var sessionId = socketServer.sessionid;
   socketServer.emit('shareImage', data, sessionId);
 }
