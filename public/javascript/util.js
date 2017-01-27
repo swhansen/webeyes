@@ -62,10 +62,10 @@ function openFileModal() {
         reader.onload = function ( e ) {
           var img = new Image();
             img.src = e.target.result;
-            console.log( 'img.src:', img.src );
+          //  console.log( 'img.src:', img.src );
                   canvas.width = img.width;
                   canvas.height = img.height;
-                  ctx.drawImage( img, 0, 0 );
+                  ctx.drawImage( img.src, 0, 0 );
                   imgdata = utilCanvas.toDataURL( 'image/jpeg' );
                   socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
                   //console.log( 'openFileModal shareImage:', data );
