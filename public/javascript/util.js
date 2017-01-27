@@ -59,17 +59,15 @@ function openFileModal() {
       } ).then(function ( file ) {
         var reader = new FileReader();
         var msg = {};
-        reader.onload = function ( theFile ) {
+        reader.onload = function ( e ) {
           var img = new Image();
-          img.onload = function() {
+            img.src = e.target.result;
                   canvas.width = img.width;
                   canvas.height = img.height;
                   ctx.drawImage( img, 0, 0 );
                   imgdata = utilCanvas.toDataURL( 'image/jpeg' );
                   socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
                   //console.log( 'openFileModal shareImage:', data );
-            };
-            img.src = event.target.result;
           };
         reader.readAsDataURL( file );
       } );
