@@ -165,7 +165,7 @@ socketServer.on( 'utility', function( data ) {
     break;
     case 'clearutil':
       clearDrawCanvas();
-      utilutil.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
+      utilctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
     break;
     case 'clearmoderator':
 
