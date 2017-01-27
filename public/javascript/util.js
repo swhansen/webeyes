@@ -92,7 +92,7 @@ socketServer.on( 'shareImage', function( data ) {
   img.height = data.height;
   img.src = data.source;
 
-  console.log( 'serveron-sharechange:', img.width, img. height );
+  console.log( 'serveron-sharechange:', img.width, img.height );
 
   ctx.drawImage( img, 0, 0 ) ;
 } );
