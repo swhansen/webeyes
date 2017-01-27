@@ -65,8 +65,8 @@ function openFileModal() {
                   canvas.width = img.width;
                   canvas.height = img.height;
                   ctx.drawImage( img, 0, 0 );
-                  data = utilCanvas.toDataURL( 'image/jpeg, 0.5' );
-                  socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:data });
+                  imgdata = utilCanvas.toDataURL( 'image/jpeg' );
+                  socketServer.emit('shareImage', {  width: canvas.width, height: canvas.height, source:imgdata });
                   //console.log( 'openFileModal shareImage:', data );
             };
             img.src = event.target.result;
@@ -81,7 +81,7 @@ socketServer.on( 'shareImage', function( data ) {
   img.height = data.height;
   img.src = data.source;
 
-  img.src = 'data:image/jpeg,' + data.source;
+//  img.src = 'data:image/jpeg,' + data.source;
   ctx.drawImage( img, 0, 0) ;
 } );
 
