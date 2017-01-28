@@ -201,37 +201,8 @@ function useModeCode( modeCode ) {
   break;
   }
 }
+
 // ------- end plus-up case -------------------------
-
-//function iotZoneModal() {
-// swal( {
-//    title: 'iot Zone Set',
-//    text: 'Input your IOT SubZone',
-//    input: 'text',
-//    showCancelButton: true,
-//    closeOnCancel: true,
-//    closeOnConfirm: false,
-//    animation: 'slide-from-top',
-//    inputPlaceholder: 'IOT Sub Zone'
-//      } ).then(
-//        function( inputValue ) {
-//          if ( inputValue === false ) return false;
-//          if (inputValue === '') {
-//              swal.showInputError('Please Enter a sub-zone code!');
-//              return false;
-//            }
-//          var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
-//
-//          if ( !( inputValue ).match( zoneReg ) ) {
-//            swal.showInputError( 'Please enter a valid sub-zone: 1-999' );
-//            return false;
-//          }
-//          userContext.iotSubZone = inputValue;
-//          setIotSubZone( inputValue );
-//          swal.close();
-//          } );
-//}
-
 
 function iotZoneModal() {
   swal( {
@@ -317,27 +288,25 @@ function arWorldModal() {
 }
 
 function helpModal() {
-  console.log( 'at helpModal' );
-swal({
-  title: '<i>WEBEYES plus-up codes</i>',
-  type: 'question',
-  width: '700px',
-  html:
-'<ul>' +
-'<li><b>modme: </b> participant controls centering of all participants video</li>' +
-'<li><b>clearmodme: </b> clears moderator privledges</li>' +
-'<li><b>augme: </b> augmented reality mode, requires sensor enabled device</li> ' +
-'<li><b>vrme: </b> virtual reality mode, moderator controls world locally</li>' +
-'<li><b>iots, iotc: </b> set the IOT zone. <b>note:</b> must be preceded by a vrme/augme</li>' +
-'<li><b> iotz: </b> set the IOT sub-zone; int( 1-999 )</li>' +
-'<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
-'<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
-'</ul>' +
-'You can use find more info at, ' +
-'<a href="//blablabla.com">links</a> ',
-
-  showCloseButton: true,
-})
+  swal({
+    title: '<i>WEBEYES plus-up codes</i>',
+    type: 'info',
+    width: '700px',
+    html:
+  '<ul>' +
+  '<li><b>modme: </b> participant controls centering of all participants video</li>' +
+  '<li><b>clearmodme: </b> clears moderator privledges</li>' +
+  '<li><b>augme: </b> augmented reality mode, requires sensor enabled device</li> ' +
+  '<li><b>vrme: </b> virtual reality mode, moderator controls world locally</li>' +
+  '<li><b>iots, iotc: </b> set the IOT zone. <b>note:</b> must be preceded by a vrme/augme</li>' +
+  '<li><b> iotz: </b> set the IOT sub-zone; int( 1-999 )</li>' +
+  '<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
+  '<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
+  '</ul>' +
+  'You can use find more info at, ' +
+  '<a href="//blablabla.com">links</a> ',
+    showCloseButton: true,
+  })
 }
 
 // UI code input dialog
