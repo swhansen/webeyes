@@ -65,48 +65,44 @@ function openFileModal() {
               //  utilCanvas.height = img.height;
                 utilctx.drawImage(img, 0, 0);
                 imgdata = utilCanvas.toDataURL();
-                var foo = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
-                emitUtilImage( foo );
-                //socketServer.emit('shareImage', {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata });
+                var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
+                emitUtilImage( data );
             };
             img.src = event.target.result;
         };
-        reader.readAsDataURL(e );
+        reader.readAsDataURL( e );
       }
       );
 }
 
-
 socketServer.on( 'shareImage', function( data ) {
- image( 'fred', data.source );
-return new Promise(function(resolve, reject) {
-  // do a thing, possibly async, then…
-
-   img = new Image( 300, 300 );
+  // image( 'fred', data.source );
+  return new Promise(function(resolve, reject) {
+    img = new Image( 300, 300 );
    img.width = box0.width;
    img.height = box0.height;
    img.src = data.source;
-  utilctx.drawImage( img, 0, 0 );
-  // console.log( 'serveron-sharechange:', img.width, img.height, img.src );
-if ( data) {
-    resolve("Stuff worked!");
-  }
-  else {
-    reject(Error("It broke"));
-  }
+    utilctx.drawImage( img, 0, 0 );
+  if ( data) {
+      resolve("Stuff worked!");
+    }
+    else {
+      reject(Error("It broke"));
+    }
 
   promise.then(function(result) {
-  console.log(result); // "Stuff worked!"
-}, function(err) {
-  console.log(err); // Error: "It broke"
-});
+    console.log(result); // "Stuff worked!"
+  }, function(err) {
+      console.log(err); // Error: "It broke"
+  });
      //console.log( 'shareImage-on:', err);
-} );
+  } );
 } );
 
-function image (from, base64Image) {
-    $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
-  }
+
+//function image (from, base64Image) {
+//    $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+//  }
 
 function emitUtilImage( data ) {
   //console.log( 'emitUtilImage:', data.width, data.height, data.source );

@@ -92,7 +92,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
         drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'auto';
       } else {
-        TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
+        TweenMax.staggerTo( drawRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
         drawRadialLabel.innerHTML = '';
         drawRadialSvg.style.pointerEvents = 'none';
         moveRadialtoBottom( 'draw-radial-menu' );
@@ -101,12 +101,12 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
 drawRadialSvg.onclick = function( e ) {
 
-  if ( e.target.parentNode.id === 'draw-radial-erase') {
+  if ( e.target.parentNode.id === 'draw-radial-erase' ) {
     var selectedSectorId = '#' + e.target.parentNode.id;
     if ( fadeSwitch ) {
         $( selectedSectorId ).children( 'path' ).css( { fill: "#ff0000" } );
       } else {
-        $( selectedSectorId ).children( 'path' ).css({ fill: "#008000" });
+        $( selectedSectorId ).children( 'path' ).css( { fill: "#008000" } );
       }
     }
   e.stopPropagation();
@@ -129,6 +129,7 @@ drawRadialSvg.onclick = function( e ) {
         moveRadialtoTop( 'ar-radial-menu' );
 
         moveLayertoTop( 'arcanvaspane' );
+
       //  document.getElementById( 'canvaspane' ).style.zIndex = '10';
       //  document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
 
@@ -140,7 +141,7 @@ drawRadialSvg.onclick = function( e ) {
         arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'auto';
       } else {
-        TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
+        TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
         arRadialLabel.innerHTML = '';
         arRadialSvg.style.pointerEvents = 'none';
         moveRadialtoBottom( 'ar-radial-menu' );
@@ -175,7 +176,7 @@ drawRadialSvg.onclick = function( e ) {
         utilRadialLabel.innerHTML = '';
         utilRadialSvg.style.pointerEvents = 'auto';
       } else {
-        TweenMax.staggerTo( utilRadialItems, 0.3, { scale:0, ease:Back.easeIn}, 0.05 );
+        TweenMax.staggerTo( utilRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );
         utilRadialLabel.innerHTML = '';
         utilRadialSvg.style.pointerEvents = 'none';
         moveRadialtoBottom( 'util-radial-menu' );
@@ -221,6 +222,7 @@ drawRadialSvg.onclick = function( e ) {
 //close the nav when document is clicked
 
     document.onclick = function() {
+
   //      radialOpen = false;
   //      drawRadialOpen = false;
   //      arRadialOpen = false;

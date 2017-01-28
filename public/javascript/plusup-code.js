@@ -328,7 +328,7 @@ swal({
 '<li><b>clearmodme: </b> clears moderator privledges</li>' +
 '<li><b>augme: </b> augmented reality mode, requires sensor enabled device</li> ' +
 '<li><b>vrme: </b> virtual reality mode, moderator controls world locally</li>' +
-'<li><b>iots, iotc: </b> set the IOT zone</li>' +
+'<li><b>iots, iotc: </b> set the IOT zone. <b>note:</b> must be preceded by a vrme/augme</li>' +
 '<li><b> iotz: </b> set the IOT sub-zone; int( 1-999 )</li>' +
 '<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
 '<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
@@ -346,53 +346,6 @@ $( '#codeDialogModal' ).dialog( {
         autoOpen: false
     } );
 
-//$( '#codeDialogButton' ).click( function() {
-// swal( {
-//   title: 'Plus-up Code',
-//   text: 'Input your Super Secret Code',
-//   input: 'text',
-//   showCancelButton: true,
-//   closeOnCancel: true,
-//   closeOnConfirm: false,
-//   animation: 'slide-from-top',
-//   inputPlaceholder: 'Plus-up Code',
-//     } ).then(
-//       function(inputValue){
-//         if ( inputValue === false ) return false;
-//         if ( inputValue.toLowerCase() === 'augme' && userContext.arCapable === false) {
-//           swal('Oops... Not an AR Capable Device', 'Use a orientation and location aware device', 'error' );
-//         } else {
-//           if (inputValue === '') {
-//             swal.showInputError('Please Enter Code!');
-//             return false;
-//           }
-//          else
-//           if ( !( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
-//             inputValue.toLowerCase() ) ) ) {
-//               swal.showInputError( 'Please enter a valid code' );
-//             return false;
-//         }
-//            if ( _.includes( [ 'devme', 'modme', 'augme', 'vrme', 'iots', 'iotc', 'leapme', 'iotz', 'clearmodme', 'leapgrabon', 'leapgraboff' ],
-//             inputValue.toLowerCase() ) ) {
-//               if ( inputValue.toLowerCase() === 'iotz' ) {
-//                 useModeCode( inputValue.toLowerCase() );
-//               }  else
-//               if ( inputValue.toLowerCase() === 'vrme' ) {
-//                 useModeCode( inputValue.toLowerCase() );
-//               }
-//               else
-//               if ( inputValue.toLowerCase() === 'augme' ) {
-//                 useModeCode( inputValue.toLowerCase() );
-//               }
-//             else {
-//               swal.close();
-//               useModeCode( inputValue.toLowerCase() );
-//               }
-//             }
-//           }
-//     }
-//     );
-// } );
 
 var modalMultiple =  [ 'help',  'augme', 'vrme',  'iotz' ];
 var plusupCodeArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
