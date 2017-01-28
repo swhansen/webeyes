@@ -834,36 +834,34 @@ function loginSuccess() {
 $( function() {
   $( '#textEntryButton' ).click( function() {
 
- swal( {
-     title: 'Text Message to All Session Participants',
-     text: 'Input your text',
-     type: 'input',
-     showCancelButton: true,
-     closeOnCancel: true,
-     closeOnConfirm: false,
-     animation: 'slide-from-top',
-     inputPlaceholder: 'text msg'
-       },
-         function( stringToSend ) {
-           if ( stringToSend === false ) { return false; }
-           if ( stringToSend === '' ) {
-               swal.showInputError( 'Please Enter Your Text Message!' );
-               return false;
-             }
-             console.log( 'Text Msg:', stringToSend );
-          swal.close();
+  swal( {
+    title: 'Enter your super secret code',
+    input: 'text',
+    showCancelButton: true,
+    confirmButtonText: 'Submit',
+    showLoaderOnConfirm: true,
+    preConfirm: function( inputValue ) {
+      return new Promise( function( resolve, reject ) {
+
+    if ( inputValue ) {
+        resolve();
+      } else {
+
+        if ( inputValue === false ) { reject('Please enter a message'); }
+        if ( inputValue === '') { reject( 'Please enter a message!' ); }
+        }
+      } );
+    }
+  } ).then(function( result ) {
 
         for ( var i = 0; i < maxCALLERS; i++ ) {
             var easyrtcid = easyrtc.getIthCaller( i );
             if ( easyrtcid && easyrtcid !== '' ) {
-              console.log( 'Text Msg:', stringToSend );
+              console.log( 'Text Msg:', inputValue );
                 easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
             }
         }
-
-
-
-    } );
+      } );
   } );
 } );
 
