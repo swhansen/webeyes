@@ -836,7 +836,7 @@ $( function() {
 
     swal( {
       title: 'Enter a message',
-      test: 'Your text will be broadcast to all channel participants',
+      text: 'Your text will be broadcast to all channel participants',
       input: 'text',
       showCancelButton: true,
       confirmButtonText: 'Submit',
