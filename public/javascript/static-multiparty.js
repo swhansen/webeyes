@@ -834,32 +834,30 @@ function loginSuccess() {
 $( function() {
   $( '#textEntryButton' ).click( function() {
 
-  swal( {
-    title: 'Enter a text message',
-    input: 'text',
-    showCancelButton: true,
-    confirmButtonText: 'Submit',
-    showLoaderOnConfirm: true,
-    preConfirm: function( inputValue ) {
-      return new Promise( function( resolve, reject ) {
-
-        if ( inputValue ) {
-            resolve();
-        } else {
-          reject( 'Please enter a message!' );
-        }
-      } );
-    }
-  } ).then(function( result ) {
-        for ( var i = 0; i < maxCALLERS; i++ ) {
+    swal( {
+      title: 'Enter a text message',
+      input: 'text',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      showLoaderOnConfirm: true,
+      preConfirm: function( inputValue ) {
+        return new Promise( function( resolve, reject ) {
+          if ( inputValue ) {
+              resolve();
+          } else {
+            reject( 'Please enter a message!' );
+          }
+        } );
+      }
+      } ).then( function( result ) {
+          for ( var i = 0; i < maxCALLERS; i++ ) {
             var easyrtcid = easyrtc.getIthCaller( i );
             if ( easyrtcid && easyrtcid !== '' ) {
-              console.log( 'Text Msg:', result );
                 easyrtc.sendPeerMessage( easyrtcid, 'im', result );
-            }
-        }
-      } );
-  } );
+              }
+          }
+        } );
+    } );
 } );
 
 function cancelText() {
