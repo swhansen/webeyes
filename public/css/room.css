@@ -47,7 +47,7 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  top: 100px;
+  top: 60px;
   left: 80%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -61,7 +61,7 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  top: 250px;
+  top: 170px;
   left: 80%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -75,7 +75,7 @@ symbol{overflow:visible;}
   margin: 0 auto;
   overflow: hidden;
   position: fixed;
-  top: 400px;
+  top: 280px;
   left: 80%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
