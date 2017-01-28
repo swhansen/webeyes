@@ -835,7 +835,7 @@ $( function() {
   $( '#textEntryButton' ).click( function() {
 
   swal( {
-    title: 'Enter your super secret code',
+    title: 'Enter a text message',
     input: 'text',
     showCancelButton: true,
     confirmButtonText: 'Submit',
@@ -843,22 +843,19 @@ $( function() {
     preConfirm: function( inputValue ) {
       return new Promise( function( resolve, reject ) {
 
-    if ( inputValue ) {
-        resolve();
-      } else {
-
-        if ( inputValue === false ) { reject('Please enter a message'); }
-        if ( inputValue === '') { reject( 'Please enter a message!' ); }
+        if ( inputValue ) {
+            resolve();
+        } else {
+          reject( 'Please enter a message!' );
         }
       } );
     }
   } ).then(function( result ) {
-
         for ( var i = 0; i < maxCALLERS; i++ ) {
             var easyrtcid = easyrtc.getIthCaller( i );
             if ( easyrtcid && easyrtcid !== '' ) {
-              console.log( 'Text Msg:', inputValue );
-                easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
+              console.log( 'Text Msg:', result );
+                easyrtc.sendPeerMessage( easyrtcid, 'im', result );
             }
         }
       } );
