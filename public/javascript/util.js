@@ -24,7 +24,10 @@ function initUtil() {
   //var ucp = $( '#utilcanvaspane');
   var b0 = $( '#box0' );
 
-  $( '#utilcanvaspane').position = b0.position;
+  $( '#utilcanvaspane').top = b0.top;
+  $( '#utilcanvaspane').bottom = b0.bottom;
+  $( '#utilcanvaspane').left = b0.left;
+  $( '#utilcanvaspane').right = b0.right;
 
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
