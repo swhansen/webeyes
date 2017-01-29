@@ -16,10 +16,10 @@ function initUtil() {
 
   document.getElementById('utilcanvaspane').className = 'canvascenter';
 
-  utilCanvas.style.width = '100%';
-  utilCanvas.style.height = '100%';
-  utilCanvas.width = utilCanvas.offsetWidth;
-  utilCanvas.height = utilCanvas.offsetHeight;
+// utilCanvas.style.width = '100%';
+// utilCanvas.style.height = '100%';
+// utilCanvas.width = utilCanvas.offsetWidth;
+// utilCanvas.height = utilCanvas.offsetHeight;
 
   //var ucp = $( '#utilcanvaspane');
   var b0 = $( '#box0');
@@ -68,7 +68,8 @@ function openFileModal() {
             img.onload = function(){
               //  utilCanvas.width = box.width;
               //  utilCanvas.height = img.height;
-                utilctx.drawImage(img, 0, 0);
+              utilctx.globalAlpha = 0.5;
+                utilctx.drawImage(img, b0.width, bo.height );
                 imgdata = utilCanvas.toDataURL();
                 var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( data );
