@@ -50,7 +50,7 @@ function highlightSelectedRadial( radialTrigger ) {
   console.log( 'highlightSelectedRadial', key );
      document.getElementById( key ).style.fill = '#5C6BC0';
     } );
-  document.getElementById( radialTrigger ).style.fill = '#2979FF';
+  document.getElementById( radialTrigger ).style.fill = '#E91E63';
   console.log( 'exit highlight', document.getElementById( radialTrigger ).style.fill );
 }
 
