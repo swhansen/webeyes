@@ -48,7 +48,7 @@ function moveRadialtoBottom( radialMenu ) {
 function highlightSelectedRadial( radialTrigger ) {
  _.forEach( radialTriggerCircle, function(  key ) {
   console.log( 'highlightSelectedRadial', key );
-     document.getElementById( key ).style.fill = '#5C6BC0';
+     document.getElementById( key ).style.fill = '#448AFF';
     } );
   document.getElementById( radialTrigger ).style.fill = '#E91E63';
   console.log( 'exit highlight', document.getElementById( radialTrigger ).style.fill );
