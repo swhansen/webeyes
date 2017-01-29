@@ -24,16 +24,16 @@ function initUtil() {
   //var ucp = $( '#utilcanvaspane');
   var b0 = $( '#box0' );
 
-  var box0Pos = $( '#box0' ).position();
+  var box0Pos = $( '#box0' ).offset();
 
   console.log( 'box0Pos:', box0Pos );
 
-  $( '#utilcanvaspane').top = b0.top;
-  $( '#utilcanvaspane').bottom = b0.bottom;
-  $( '#utilcanvaspane').left = b0.left;
-  $( '#utilcanvaspane').right = b0.right;
+  $( '#utilcanvaspane').top = box0Pos.top;
+  $( '#utilcanvaspane').width = $( '#box0' ).width;
+  $( '#utilcanvaspane').left = box0Pos.left;
+  $( '#utilcanvaspane').height = $( '#box0' ).height;
 
-  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').right);
+  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').width);
 
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
