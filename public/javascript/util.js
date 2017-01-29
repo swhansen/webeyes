@@ -16,25 +16,25 @@ function initUtil() {
 
 //  document.getElementById('utilcanvaspane').className = 'canvascenter';
 
-// utilCanvas.style.width = '100%';
-// utilCanvas.style.height = '100%';
-// utilCanvas.width = utilCanvas.offsetWidth;
-// utilCanvas.height = utilCanvas.offsetHeight;
+ utilCanvas.style.width = '100%';
+ utilCanvas.style.height = '100%';
+ utilCanvas.width = utilCanvas.offsetWidth;
+ utilCanvas.height = utilCanvas.offsetHeight;
 
   //var ucp = $( '#utilcanvaspane');
-  var b0 = $( '#box0' );
-
-  var box0Pos = $( '#box0' ).offset();
-
-  console.log( 'box0Pos:', box0Pos );
-
-  $( '#utilcanvaspane').top = box0Pos.top;
-  $( '#utilcanvaspane').width = $( '#box0' ).width;
-  $( '#utilcanvaspane').left = box0Pos.left;
-  $( '#utilcanvaspane').height = $( '#box0' ).height;
-
-  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').width);
-
+//  var b0 = $( '#box0' );
+//
+//  var box0Pos = $( '#box0' ).offset();
+//
+//  console.log( 'box0Pos:', box0Pos );
+//
+//  $( '#utilcanvaspane').top = box0Pos.top;
+//  $( '#utilcanvaspane').width = $( '#box0' ).width;
+//  $( '#utilcanvaspane').left = box0Pos.left;
+//  $( '#utilcanvaspane').height = $( '#box0' ).height;
+//
+//  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height);
+//
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
 
