@@ -21,6 +21,11 @@ function initUtil() {
   utilCanvas.width = utilCanvas.offsetWidth;
   utilCanvas.height = utilCanvas.offsetHeight;
 
+  //var ucp = $( '#utilcanvaspane');
+  var b0 = $( '#box0');
+
+  $( '#utilcanvaspane').position = b0.position;
+
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
 
