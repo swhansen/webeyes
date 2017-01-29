@@ -14,7 +14,7 @@ function initUtil() {
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
 
-  document.getElementById('utilcanvaspane').className = 'canvascenter';
+//  document.getElementById('utilcanvaspane').className = 'canvascenter';
 
 // utilCanvas.style.width = '100%';
 // utilCanvas.style.height = '100%';
@@ -28,6 +28,8 @@ function initUtil() {
   $( '#utilcanvaspane').bottom = b0.bottom;
   $( '#utilcanvaspane').left = b0.left;
   $( '#utilcanvaspane').right = b0.right;
+
+  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').right);
 
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
