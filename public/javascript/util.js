@@ -14,7 +14,7 @@ function initUtil() {
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
 
-//  document.getElementById('utilcanvaspane').className = 'canvascenter';
+  document.getElementById('utilcanvaspane').className = 'canvascenter';
 
  utilCanvas.style.width = '100%';
  utilCanvas.style.height = '100%';
