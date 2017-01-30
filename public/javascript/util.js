@@ -10,7 +10,7 @@ var d3 = document.getElementById('material');
 //var box0Width;
 //var box0Height;
 
-//function initUtil() {
+function initUtil() {
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
 
@@ -45,7 +45,7 @@ var position = $( '#box0' ).offset();
   box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
-//}
+}
 
 function loadUtilImage( utilImage ) {
 
