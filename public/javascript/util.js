@@ -7,11 +7,11 @@ var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
-
-function drawMyCanvas() {
   var c = document.getElementById("myCanvas");
 
 var myctx = c.getContext("2d");
+
+function drawMyCanvas() {
 var outerRadius = 300;
   var innerRadius = 275;
   utilctx.beginPath();
