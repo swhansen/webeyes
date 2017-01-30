@@ -75,9 +75,10 @@ $( '#mycanvaspane').css( 'height', boxHeight );
 
 $( '#mycanvaspane').css( 'z-index', 300 );
 
-
-canvas.style.width = '100%';
-canvas.style.height = '100%';
+canvas.width = c.clientWidth;
+canvas.height = c.clientHeight;
+//canvas.style.width = '100%';
+//canvas.style.height = '100%';
 
 
 //c.style.width  = 400;
