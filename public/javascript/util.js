@@ -10,16 +10,6 @@ var d3 = document.getElementById('material');
 
 
 
-function myDraw() {
-var c = document.getElementById("myCanvas");
-var myctx = c.getContext("2d");
-myctx.moveTo(0,0);
-myctx.lineTo(200,100);
-myctx.stroke();
-}
-
-myDraw();
-
 
 
 
@@ -65,6 +55,19 @@ var boxHeight = box.outerHeight();
 //  box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
+
+
+  function myDraw() {
+var c = document.getElementById("myCanvas");
+var myctx = c.getContext("2d");
+myctx.moveTo(0,0);
+myctx.lineTo(200,100);
+myctx.stroke();
+}
+
+myDraw();
+
+
 }
 
 function loadUtilImage( utilImage ) {
