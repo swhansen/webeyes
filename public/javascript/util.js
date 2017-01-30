@@ -26,14 +26,18 @@ var d3 = document.getElementById('material');
   //var ucp = $( '#utilcanvaspane');
 //  var b0 = $( '#box0' );
 //
-  var box0Pos = $( '#box0' ).position();
+//  var box0Pos = $( '#box0' ).position();
 //
-  console.log( 'box0Pos:', box0Pos );
+
+var position = $( '#box0' ).offset();
+  console.log( 'box0Pos:', position );
 //
-  $( '#utilcanvaspane').css( 'top', box0Pos.top );
-  $( '#utilcanvaspane').css( 'height', $( '#box0' ).offsetHeight );
-  $( '#utilcanvaspane').css( 'left', box0Pos.left );
-  $( '#utilcanvaspane').css( 'width', $( '#box0').offsetWidth );
+//  $( '#utilcanvaspane').css( 'top', $( '#box0' ).top ) );
+  $( '#utilcanvaspane').css(position);
+  $( '#utilcanvaspane').css( 'height', $( '#box0' ).offsetHeight() );
+  $( '#utilcanvaspane').css( 'width', $( '#box0').offsetWidth() );
+
+  console.log( box0top:', $( '#box0' ).top ) );
 
   //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
 //
