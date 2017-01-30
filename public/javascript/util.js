@@ -9,10 +9,10 @@ var d3 = document.getElementById('material');
 
 
 var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.moveTo(0,0);
-ctx.lineTo(200,100);
-ctx.stroke();
+var myctx = c.getContext("2d");
+myctx.moveTo(0,0);
+myctx.lineTo(200,100);
+myctx.stroke();
 
 
 
@@ -25,6 +25,13 @@ ctx.stroke();
 
 
 function initUtil() {
+
+  var c = document.getElementById("myCanvas");
+var myctx = c.getContext("2d");
+myctx.moveTo(0,0);
+myctx.lineTo(200,100);
+myctx.stroke();
+
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
 
