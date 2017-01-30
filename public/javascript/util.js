@@ -26,12 +26,18 @@ myctx.stroke();
 
 function initUtil() {
 
+
+
+function drawMyCanvas() {
   var c = document.getElementById("myCanvas");
+
 var myctx = c.getContext("2d");
 myctx.moveTo(0,0);
 myctx.lineTo(200,100);
 myctx.stroke();
+}
 
+drawMyCanvas();
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
 
