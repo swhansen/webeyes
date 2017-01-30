@@ -16,10 +16,10 @@ function initUtil() {
 
   document.getElementById('utilcanvaspane').className = 'canvascenter';
 
- utilCanvas.style.width = '100%';
- utilCanvas.style.height = '100%';
- utilCanvas.width = utilCanvas.offsetWidth;
- utilCanvas.height = utilCanvas.offsetHeight;
+ //utilCanvas.style.width = '100%';
+ //utilCanvas.style.height = '100%';
+// utilCanvas.width = utilCanvas.offsetWidth;
+// utilCanvas.height = utilCanvas.offsetHeight;
 
   //var ucp = $( '#utilcanvaspane');
 //  var b0 = $( '#box0' );
@@ -33,7 +33,7 @@ function initUtil() {
   $( '#utilcanvaspane').left =    box0.left;
   $( '#utilcanvaspane').width =   box0.width;
 
-  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height);
+  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height) );
 //
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
