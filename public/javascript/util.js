@@ -60,9 +60,26 @@ var boxHeight = box.outerHeight();
   function myDraw() {
 var c = document.getElementById("myCanvas");
 var myctx = c.getContext("2d");
-myctx.moveTo(0,0);
-myctx.lineTo(200,100);
-myctx.stroke();
+var outerRadius = 300;
+  var innerRadius = 275;
+  myctx.beginPath();
+  myctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
+  myctx.fillStyle = 'rgba(255,255,255,.2)';
+  myctx.fill();
+  myctx.globalCompositeOperation = 'destination-out';
+  myctx.beginPath();
+  myctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
+  myctx.fillStyle = 'green';
+  myctx.fill();
+  myctx.globalCompositeOperation = 'source-over';
+  myctx.beginPath();
+  myctx.moveTo(500 - innerRadius, 400);
+  myctx.lineTo(500 + innerRadius, 400);
+  myctx.stroke();
+  myctx.moveTo(500, 400 - innerRadius);
+  myctx.lineTo(500, 400 + innerRadius);
+  myctx.stroke();
+  console.log( 'drawBullsEye - end:' );
 }
 
 myDraw();
