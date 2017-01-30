@@ -7,7 +7,7 @@ var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
-var myctx;
+var docctx;
 var box0Height;
 var varbox0Width;
 
@@ -48,42 +48,42 @@ var boxHeight = box.outerHeight();
 
 
 
-var c = document.getElementById("mycanvaspane");
-var canvas = document.getElementById('myCanvas');
+var c = document.getElementById("doccanvaspane");
+var canvas = document.getElementById('docanvas');
 
 
-$( '#mycanvaspane').css( boxPosition );
-$( '#mycanvaspane').css( 'width', boxWidth );
-$( '#mycanvaspane').css( 'height', boxHeight );
+$( '#doccanvaspane').css( boxPosition );
+$( '#doccanvaspane').css( 'width', boxWidth );
+$( '#doccanvaspane').css( 'height', boxHeight );
 
-$( '#mycanvaspane').css( 'z-index', 50);
+$( '#doccanvaspane').css( 'z-index', 50);
 
 canvas.width = c.clientWidth;
 canvas.height = c.clientHeight;
 
- myctx = canvas.getContext('2d');
+ docctx = canvas.getContext('2d');
 
 
 function myDraw() {
 var outerRadius = 300;
   var innerRadius = 275;
-  myctx.beginPath();
-  myctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
-  myctx.fillStyle = 'rgba(255,255,255,.2)';
-  myctx.fill();
-  myctx.globalCompositeOperation = 'destination-out';
-  myctx.beginPath();
-  myctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
-  myctx.fillStyle = 'green';
-  myctx.fill();
-  myctx.globalCompositeOperation = 'source-over';
-  myctx.beginPath();
-  myctx.moveTo(500 - innerRadius, 400);
-  myctx.lineTo(500 + innerRadius, 400);
-  myctx.stroke();
-  myctx.moveTo(500, 400 - innerRadius);
-  myctx.lineTo(500, 400 + innerRadius);
-  myctx.stroke();
+  docctx.beginPath();
+  docctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
+  docctx.fillStyle = 'rgba(255,255,255,.2)';
+  docctx.fill();
+  docctx.globalCompositeOperation = 'destination-out';
+  docctx.beginPath();
+  docctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
+  docctx.fillStyle = 'green';
+  docctx.fill();
+  docctx.globalCompositeOperation = 'source-over';
+  docctx.beginPath();
+  docctx.moveTo(500 - innerRadius, 400);
+  docctx.lineTo(500 + innerRadius, 400);
+  docctx.stroke();
+  docctx.moveTo(500, 400 - innerRadius);
+  docctx.lineTo(500, 400 + innerRadius);
+  docctx.stroke();
   console.log( 'drawBullsEye - end:' );
 }
 
@@ -181,11 +181,11 @@ function drawDoc1() {
 }
 
 function drawDoc2() {
-  myctx.drawImage(d2, 0, 0, box0Width, box0Height );
+  docctx.drawImage(d2, 0, 0, box0Width, box0Height );
 }
 
 function drawArch() {
-  utilctx.drawImage(d3, 0, 0 , box0Width, box0Height );
+  docctx.drawImage(d3, 0, 0 , box0Width, box0Height );
 }
 
  function clearUtilCanvas() {
