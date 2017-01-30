@@ -61,7 +61,7 @@ function initUtil() {
   $( '#doccanvaspane').css( 'z-index', 50);
 
   docCanvas.width = docCanvasPane.clientWidth;
-  docCanvas.height = docCanvaPane.clientHeight;
+  docCanvas.height = docCanvasPane.clientHeight;
 
   docctx = docCanvas.getContext('2d');
 
