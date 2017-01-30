@@ -9,8 +9,10 @@ var d3 = document.getElementById('material');
 
 var docctx;
 var box0Height;
-var varbox0Width;
-var docCanvas;
+var box0Width;
+//var docCanvas;
+var docCanvasPane = document.getElementById("doccanvaspane");
+var docCanvas = document.getElementById('doccanvas');
 
 function initUtil() {
 
@@ -51,8 +53,7 @@ function initUtil() {
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
 
-  var docCanvasPane = document.getElementById("doccanvaspane");
-  var docCanvas = document.getElementById('doccanvas');
+
 
 
   $( '#doccanvaspane').css( boxPosition );
