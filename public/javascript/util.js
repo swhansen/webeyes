@@ -63,18 +63,20 @@ var boxHeight = box.outerHeight();
 //myDrawDiv.css(  'width', 600 );
 //myDrawDiv.css(  'height', 600 );
 var c = document.getElementById("mycanvaspane");
+var canvas = document.getElementById('myCanvas');
+var myctx = canvas.getContext('2d');
 
-//$( '#myCanvas').css( boxPosition);
+$( '#mycanvaspane').( boxPosition );
 
-c.style.width  = 400;
-c.style.height = 300;
+//c.style.width  = 400;
+//c.style.height = 300;
 //c.style.width  = '800px';
 //c.style.height = '600px';
 //c.style.top = '100px';
 //c.style.left = '100px';
 c.style.zIndex = '300';
 
-var myctx = c.getContext("2d");
+//var myctx = c.getContext("2d");
 myctx.fillStyle = 'rgb(200,0,0)';
         myctx.fillRect (10, 10, 50, 50);
 
