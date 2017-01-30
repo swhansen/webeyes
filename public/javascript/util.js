@@ -66,8 +66,8 @@ var c = document.getElementById("mycanvaspane");
 
 //$( '#myCanvas').css( boxPosition);
 
-c.width  = 400;
-c.height = 300;
+c.style.width  = 400;
+c.style.height = 300;
 //c.style.width  = '800px';
 //c.style.height = '600px';
 //c.style.top = '100px';
