@@ -34,10 +34,10 @@ var position = $( '#box0' ).offset();
 //
 //  $( '#utilcanvaspane').css( 'top', $( '#box0' ).top ) );
   $( '#utilcanvaspane').css(position);
-  $( '#utilcanvaspane').css( 'height', $( '#box0' ).offsetHeight() );
-  $( '#utilcanvaspane').css( 'width', $( '#box0').offsetWidth() );
+  $( '#utilcanvaspane').css( 'height', $( '#box0' ).outerHeight() );
+  $( '#utilcanvaspane').css( 'width', $( '#box0').outerWidth() );
 
-  console.log( 'box0width:', $( '#box0').offsetWidth() ) ;
+  console.log( 'box0width:', $( '#box0').outerWidth() ) ;
 
   //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
 //
