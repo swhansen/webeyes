@@ -59,10 +59,10 @@ var boxHeight = box.outerHeight();
 
   function myDraw() {
 var c = document.getElementById("myCanvas");
-myCanvas.width  = 800;
-myCanvas.height = 600;
-myCanvas.style.width  = '800px';
-myCanvas.style.height = '600px';
+myCanvas.width  = 400;
+myCanvas.height = 300;
+myCanvas.style.width  = '400px';
+myCanvas.style.height = '300px';
 
 
 var myctx = c.getContext("2d");
