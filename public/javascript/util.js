@@ -8,11 +8,17 @@ var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
 
+
+
+function myDraw() {
 var c = document.getElementById("myCanvas");
 var myctx = c.getContext("2d");
 myctx.moveTo(0,0);
 myctx.lineTo(200,100);
 myctx.stroke();
+}
+
+myDraw();
 
 
 
