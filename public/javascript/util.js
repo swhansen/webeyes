@@ -61,10 +61,8 @@ var boxHeight = box.outerHeight();
 var c = document.getElementById("myCanvas");
 myCanvas.width  = 400;
 myCanvas.height = 300;
-myCanvas.style.width  = '400px';
-myCanvas.style.height = '300px';
-
-
+myCanvas.style.width  = '800px';
+myCanvas.style.height = '600px';
 var myctx = c.getContext("2d");
 myctx.fillStyle = 'rgb(200,0,0)';
         myctx.fillRect (10, 10, 50, 50);
