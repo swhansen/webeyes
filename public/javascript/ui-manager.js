@@ -224,7 +224,7 @@ $( function() {
 $( function() {
   $( '#utilButton' ).click( function() {
     buildSideMenu( 'util' );
-    userContext.addDimensionalLayer( 'utilcanvaspane' );
+    userContext.addDimensionalLayer( 'doccanvaspane' );
     }
   );
 } );

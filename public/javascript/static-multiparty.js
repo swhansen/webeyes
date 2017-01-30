@@ -104,7 +104,7 @@ userContext.addDimensionalLayer( 'fullpage' );
 userContext.addDimensionalLayer( 'box0' );
 userContext.addDimensionalLayer( 'canvaspane' );
 userContext.addDimensionalLayer( 'textentryBox' );
-userContext.addDimensionalLayer( 'utilcanvaspane' );
+userContext.addDimensionalLayer( 'doccanvaspane' );
 
 
  $( '*' ).filter( function() {
@@ -118,7 +118,7 @@ var layerList = [
   'textentryBox',
   'box0',
   'canvaspane',
-  'utilcanvaspane',
+  'doccanvaspane',
   'arcanvaspane',
   'leappane'
 ];
