@@ -1,6 +1,5 @@
 
 // canvas playground for experimental stuff
-function initUtil() {
 
 var utilCanvas = document.getElementById( 'utilcanvas' );
 var utilctx = utilCanvas.getContext( '2d' );
@@ -8,6 +7,7 @@ var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
+function initUtil() {
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
 
