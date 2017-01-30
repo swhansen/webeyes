@@ -8,6 +8,8 @@ var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
 var myctx;
+var box0Height;
+var varbox0Width;
 
 function initUtil() {
 
@@ -38,8 +40,8 @@ var boxHeight = box.outerHeight();
 
   //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
 //
-//  box0Height = document.getElementById('box0').offsetHeight;
-//  box0Width = document.getElementById('box0').offsetWidth;
+  box0Height = document.getElementById('box0').offsetHeight;
+  box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
 
@@ -179,7 +181,7 @@ function drawDoc1() {
 }
 
 function drawDoc2() {
-  myctx.drawImage(d2, 0, 0);
+  myctx.drawImage(d2, 0, 0, box0Width, box0Height );
 }
 
 function drawArch() {
