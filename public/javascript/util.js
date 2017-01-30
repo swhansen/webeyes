@@ -7,9 +7,17 @@ var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
-  var c = document.getElementById("myCanvas");
 
-var myctx = c.getContext("2d");
+
+
+
+
+function initUtil() {
+
+
+ var c = document.getElementById( "myCanvas" );
+
+var myctx = c.getContext( "2d" );
 
 function drawMyCanvas() {
 var outerRadius = 300;
@@ -35,14 +43,6 @@ var outerRadius = 300;
 }
 
 drawMyCanvas();
-
-
-
-
-function initUtil() {
-
-
-
 
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
