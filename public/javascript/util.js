@@ -175,11 +175,11 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  utilctx.drawImage( d1, 0, 0);
+  utilctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
 
 function drawDoc2() {
-  myctx.drawImage(d2, 0, 0, 600, 600);
+  myctx.drawImage(d2, 0, 0);
 }
 
 function drawArch() {
