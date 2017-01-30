@@ -10,6 +10,7 @@ var d3 = document.getElementById('material');
 var docctx;
 var box0Height;
 var varbox0Width;
+var docCanvas;
 
 function initUtil() {
 
