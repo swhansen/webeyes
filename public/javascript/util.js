@@ -94,7 +94,7 @@ myctx.fillStyle = 'rgb(200,0,0)';
         myctx.fillRect (10, 10, 50, 50);
 
         myctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-        myctx.fillRect (50, 50, 50, 50);
+        myctx.fillRect (200, 200, 75, 50);
   console.log( 'drawBullsEye - end:' );
 }
 
