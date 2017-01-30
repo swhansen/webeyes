@@ -63,9 +63,10 @@ var myDrawDiv = $( '#mydrawdiv');
 myDrawDiv.css(  'width', 600 );
 myDrawDiv.css(  'height', 600 );
 myDrawDiv.css(  'z-index', 600 );
-myCanvas.width  = 400;
-myCanvas.height = 300;
-myCanvas.style.width  = '800px';
+
+myCanvas.width  = 600;
+myCanvas.height = 600;
+myCanvas.style.width  = '600px';
 myCanvas.style.height = '600px';
 
 var c = document.getElementById("myCanvas");
