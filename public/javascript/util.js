@@ -87,7 +87,7 @@ var outerRadius = 300;
   console.log( 'drawBullsEye - end:' );
 }
 
-myDraw();
+//myDraw();
 
 
 }
@@ -129,7 +129,7 @@ function openFileModal() {
               //  utilCanvas.width = box.width;
               //  utilCanvas.height = img.height;
              // utilctx.globalAlpha = 0.7;
-                docctx.drawImage( img, 5, 5, 700, 500 );
+                docctx.drawImage( img, 5, 5,  box0Width, box0Height );
                 imgdata = utilCanvas.toDataURL();
                 var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( data );
