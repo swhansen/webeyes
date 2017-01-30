@@ -7,9 +7,6 @@ var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
-//var box0Width;
-//var box0Height;
-
 function initUtil() {
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
@@ -18,7 +15,6 @@ function initUtil() {
 
  utilCanvas.style.width = '100%';
  utilCanvas.style.height = '100%';
-
 
 // utilCanvas.width = utilCanvas.offsetWidth;
 // utilCanvas.height = utilCanvas.offsetHeight;
@@ -45,8 +41,7 @@ var position = $( '#box0' ).offset();
   box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
-  var utilctx = utilCanvas.getContext('2d');
-
+}
 
 function loadUtilImage( utilImage ) {
 
@@ -218,5 +213,4 @@ socketServer.on( 'utility', function( data ) {
     break;
   }
 } );
-}
 
