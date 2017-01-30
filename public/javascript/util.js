@@ -103,7 +103,7 @@ socketServer.on( 'shareImage', function( data ) {
    img.width = box0.width;
    img.height = box0.height;
    img.src = data.source;
-    utilctx.drawImage( img, 0, 0 );
+    utilctx.drawImage( img, 0, 0, utilCanvas.width, utilCanvas.height );
   if ( data) {
       resolve("Stuff worked!");
     }
