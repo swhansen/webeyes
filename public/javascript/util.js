@@ -57,7 +57,6 @@ var boxHeight = box.outerHeight();
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
 
 
-  function myDraw() {
 
 //var myDrawDiv = $( '#mydrawdiv');
 //myDrawDiv.css(  'width', 600 );
@@ -78,8 +77,10 @@ $( '#mycanvaspane').css( 'z-index', 300 );
 canvas.width = c.clientWidth;
 canvas.height = c.clientHeight;
 
-
 var myctx = canvas.getContext('2d');
+
+
+  function myDraw() {
 var outerRadius = 300;
   var innerRadius = 275;
   myctx.beginPath();
