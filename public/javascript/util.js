@@ -69,9 +69,6 @@ $( '#mycanvaspane').css( boxPosition );
 $( '#mycanvaspane').css( 'width', boxWidth );
 $( '#mycanvaspane').css( 'height', boxHeight );
 
-
-
-
 $( '#mycanvaspane').css( 'z-index', 300 );
 
 canvas.width = c.clientWidth;
@@ -80,7 +77,7 @@ canvas.height = c.clientHeight;
 var myctx = canvas.getContext('2d');
 
 
-  function myDraw() {
+function myDraw() {
 var outerRadius = 300;
   var innerRadius = 275;
   myctx.beginPath();
@@ -193,7 +190,7 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  utilctx.drawImage( d1, 0, 0, box0Width, box0Height);
+  myctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
 
 function drawDoc2() {
