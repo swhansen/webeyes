@@ -58,7 +58,7 @@ $( '#mycanvaspane').css( boxPosition );
 $( '#mycanvaspane').css( 'width', boxWidth );
 $( '#mycanvaspane').css( 'height', boxHeight );
 
-$( '#mycanvaspane').css( 'z-index', 50 );
+$( '#mycanvaspane').css( 'z-index', 300 );
 
 canvas.width = c.clientWidth;
 canvas.height = c.clientHeight;
@@ -183,7 +183,7 @@ function drawDoc1() {
 }
 
 function drawDoc2() {
-  myctx.drawImage(d2, 0, 0, box0Width, box0Height );
+  myctx.drawImage(d2, 0, 0, 300, 300);
 }
 
 function drawArch() {
