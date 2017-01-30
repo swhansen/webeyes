@@ -1,8 +1,8 @@
 
 // canvas playground for experimental stuff
 
-var utilCanvas = document.getElementById( 'utilcanvas' );
-var utilctx = utilCanvas.getContext( '2d' );
+//var utilCanvas = document.getElementById( 'utilcanvas' );
+//var utilctx = utilCanvas.getContext( '2d' );
 var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
@@ -13,12 +13,12 @@ var varbox0Width;
 
 function initUtil() {
 
-  userContext.addDimensionalLayer( 'utilcanvaspane' );
+  userContext.addDimensionalLayer( 'doccanvaspane' );
 
 //  document.getElementById('utilcanvaspane').className = 'canvascenter';
 
- utilCanvas.style.width = '100%';
- utilCanvas.style.height = '100%';
+ //utilCanvas.style.width = '100%';
+ //utilCanvas.style.height = '100%';
 
 // utilCanvas.width = utilCanvas.offsetWidth;
 // utilCanvas.height = utilCanvas.offsetHeight;
@@ -30,13 +30,17 @@ function initUtil() {
 
   console.log( 'box0Pos:', boxPosition );
   console.log( 'box0width/height:', boxWidth, boxHeight ) ;
+
+
+
+
 //
 //  $( '#utilcanvaspane').css( 'top', $( '#box0' ).top ) );
-  $( '#utilcanvaspane').css( boxPosition);
-  $( '#utilcanvaspane').css( 'width', boxWidth );
-  $( '#utilcanvaspane').css( 'height', boxHeight );
+//  $( '#utilcanvaspane').css( boxPosition);
+//  $( '#utilcanvaspane').css( 'width', boxWidth );
+//  $( '#utilcanvaspane').css( 'height', boxHeight );
 
-  document.getElementById('utilcanvaspane').style.visibility = 'visible';
+//  document.getElementById('utilcanvaspane').style.visibility = 'visible';
 
 
 
@@ -46,8 +50,8 @@ function initUtil() {
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
 
-  var c = document.getElementById("doccanvaspane");
-  var canvas = document.getElementById('doccanvas');
+  var docCanvasPane = document.getElementById("doccanvaspane");
+  var docCanvas = document.getElementById('doccanvas');
 
 
   $( '#doccanvaspane').css( boxPosition );
@@ -56,10 +60,10 @@ function initUtil() {
 
   $( '#doccanvaspane').css( 'z-index', 50);
 
-  canvas.width = c.clientWidth;
+  canvas.width = docCanvasPane.clientWidth;
   canvas.height = c.clientHeight;
 
-  docctx = canvas.getContext('2d');
+  docctx = docCanvas.getContext('2d');
 
 
 }
@@ -99,12 +103,9 @@ function openFileModal() {
         reader.onload = function(event){
             var img = new Image();
             img.onload = function(){
-              //  utilCanvas.width = box.width;
-              //  utilCanvas.height = img.height;
-             // utilctx.globalAlpha = 0.7;
                 docctx.drawImage( img, 5, 5,  box0Width, box0Height );
-                imgdata = utilCanvas.toDataURL();
-                var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
+                imgdata = docCanvas.toDataURL();
+                var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitUtilImage( data );
             };
             img.src = event.target.result;
