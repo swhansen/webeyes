@@ -26,7 +26,7 @@ var d3 = document.getElementById('material');
   //var ucp = $( '#utilcanvaspane');
 //  var b0 = $( '#box0' );
 //
-  var box0Pos = $( '#box0' ).position;
+  var box0Pos = $( '#box0' ).position();
 //
   console.log( 'box0Pos:', box0Pos );
 //
