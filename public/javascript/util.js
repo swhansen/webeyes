@@ -77,24 +77,28 @@ $( '#mycanvaspane').css( 'z-index', 300 );
 
 canvas.width = c.clientWidth;
 canvas.height = c.clientHeight;
-//canvas.style.width = '100%';
-//canvas.style.height = '100%';
 
-
-//c.style.width  = 400;
-//c.style.height = 300;
-//c.style.width  = '800px';
-//c.style.height = '600px';
-//c.style.top = '100px';
-//c.style.left = '100px';
-//c.style.zIndex = '300';
 
 var myctx = canvas.getContext('2d');
-myctx.fillStyle = 'rgb(200,0,0)';
-        myctx.fillRect (10, 10, 50, 50);
-
-        myctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-        myctx.fillRect (200, 200, 75, 50);
+var outerRadius = 300;
+  var innerRadius = 275;
+  myctx.beginPath();
+  myctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
+  myctx.fillStyle = 'rgba(255,255,255,.2)';
+  myctx.fill();
+  myctx.globalCompositeOperation = 'destination-out';
+  myctx.beginPath();
+  myctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
+  myctx.fillStyle = 'green';
+  myctx.fill();
+  myctx.globalCompositeOperation = 'source-over';
+  myctx.beginPath();
+  myctx.moveTo(500 - innerRadius, 400);
+  myctx.lineTo(500 + innerRadius, 400);
+  myctx.stroke();
+  myctx.moveTo(500, 400 - innerRadius);
+  myctx.lineTo(500, 400 + innerRadius);
+  myctx.stroke();
   console.log( 'drawBullsEye - end:' );
 }
 
