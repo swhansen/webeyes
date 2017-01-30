@@ -14,7 +14,7 @@ var d3 = document.getElementById('material');
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
 
-  document.getElementById('utilcanvaspane').className = 'canvascenter';
+//  document.getElementById('utilcanvaspane').className = 'canvascenter';
 
  utilCanvas.style.width = '100%';
  utilCanvas.style.height = '100%';
@@ -26,16 +26,16 @@ var d3 = document.getElementById('material');
   //var ucp = $( '#utilcanvaspane');
 //  var b0 = $( '#box0' );
 //
-  var box0 = $( '#box0' );
+  var box0Pos = $( '#box0' ).position;
 //
-//  console.log( 'box0Pos:', box0Pos );
+  console.log( 'box0Pos:', box0Pos );
 //
-  $( '#utilcanvaspane').top =     box0.top;
-  $( '#utilcanvaspane').height =  box0.height;
-  $( '#utilcanvaspane').left =    box0.left;
-  $( '#utilcanvaspane').width =   box0.width;
+  $( '#utilcanvaspane').css( 'top', box0Pos.top );
+  $( '#utilcanvaspane').css( 'height', $( '#box0' ).offsetHeight );
+  $( '#utilcanvaspane').css( 'left', box0Pos.left );
+  $( '#utilcanvaspane').css( 'width', $( '#box0').offsetWidth );
 
-  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
+  //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
 //
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
