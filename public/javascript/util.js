@@ -23,10 +23,10 @@ function initUtil() {
 // utilCanvas.width = utilCanvas.offsetWidth;
 // utilCanvas.height = utilCanvas.offsetHeight;
 
-var box = $( '#box0' );
-var boxPosition = box.offset();
-var boxWidth = box.outerWidth();
-var boxHeight = box.outerHeight();
+  var box = $( '#box0' );
+  var boxPosition = box.offset();
+  var boxWidth = box.outerWidth();
+  var boxHeight = box.outerHeight();
 
   console.log( 'box0Pos:', boxPosition );
   console.log( 'box0width/height:', boxWidth, boxHeight ) ;
@@ -36,58 +36,30 @@ var boxHeight = box.outerHeight();
   $( '#utilcanvaspane').css( 'width', boxWidth );
   $( '#utilcanvaspane').css( 'height', boxHeight );
 
-
-
-  //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
-//
-  box0Height = document.getElementById('box0').offsetHeight;
-  box0Width = document.getElementById('box0').offsetWidth;
-
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
 
 
 
 
-var c = document.getElementById("doccanvaspane");
-var canvas = document.getElementById('doccanvas');
 
 
-$( '#doccanvaspane').css( boxPosition );
-$( '#doccanvaspane').css( 'width', boxWidth );
-$( '#doccanvaspane').css( 'height', boxHeight );
+  box0Height = document.getElementById('box0').offsetHeight;
+  box0Width = document.getElementById('box0').offsetWidth;
 
-$( '#doccanvaspane').css( 'z-index', 50);
-
-canvas.width = c.clientWidth;
-canvas.height = c.clientHeight;
-
- docctx = canvas.getContext('2d');
+  var c = document.getElementById("doccanvaspane");
+  var canvas = document.getElementById('doccanvas');
 
 
-function myDraw() {
-var outerRadius = 300;
-  var innerRadius = 275;
-  docctx.beginPath();
-  docctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
-  docctx.fillStyle = 'rgba(255,255,255,.2)';
-  docctx.fill();
-  docctx.globalCompositeOperation = 'destination-out';
-  docctx.beginPath();
-  docctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
-  docctx.fillStyle = 'green';
-  docctx.fill();
-  docctx.globalCompositeOperation = 'source-over';
-  docctx.beginPath();
-  docctx.moveTo(500 - innerRadius, 400);
-  docctx.lineTo(500 + innerRadius, 400);
-  docctx.stroke();
-  docctx.moveTo(500, 400 - innerRadius);
-  docctx.lineTo(500, 400 + innerRadius);
-  docctx.stroke();
-  console.log( 'drawBullsEye - end:' );
-}
+  $( '#doccanvaspane').css( boxPosition );
+  $( '#doccanvaspane').css( 'width', boxWidth );
+  $( '#doccanvaspane').css( 'height', boxHeight );
 
-//myDraw();
+  $( '#doccanvaspane').css( 'z-index', 50);
+
+  canvas.width = c.clientWidth;
+  canvas.height = c.clientHeight;
+
+  docctx = canvas.getContext('2d');
 
 
 }
@@ -118,6 +90,7 @@ function openFileModal() {
   swal( {
     title: 'Select image',
     input: 'file',
+    showCancelButton: true,
     inputAttributes: {
       accept: 'image/*'
     }
