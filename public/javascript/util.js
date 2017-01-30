@@ -100,8 +100,8 @@ socketServer.on( 'shareImage', function( data ) {
   // image( 'fred', data.source );
   return new Promise(function(resolve, reject) {
     img = new Image( 300, 300 );
-   img.width = box0.width;
-   img.height = box0.height;
+   img.width = $( '#box0' ).outerWidth();
+   img.height = $( '#box0' ).outerHeight();
    img.src = data.source;
     utilctx.drawImage( img, 0, 0, utilCanvas.width, utilCanvas.height );
   if ( data) {
