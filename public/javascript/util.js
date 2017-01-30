@@ -66,8 +66,8 @@ myDrawDiv.css(  'z-index', 600 );
 
 myCanvas.width  = 600;
 myCanvas.height = 600;
-myCanvas.style.width  = '600px';
-myCanvas.style.height = '600px';
+//myCanvas.style.width  = '600px';
+//myCanvas.style.height = '600px';
 
 var c = document.getElementById("myCanvas");
 
