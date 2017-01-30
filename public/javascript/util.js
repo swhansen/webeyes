@@ -8,14 +8,16 @@ var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
 
-var c = document.getElementById("myCanvas");
+function drawMyCanvas() {
+  var c = document.getElementById("myCanvas");
+
 var myctx = c.getContext("2d");
 myctx.moveTo(0,0);
 myctx.lineTo(200,100);
 myctx.stroke();
+}
 
-
-
+drawMyCanvas();
 
 
 
@@ -28,16 +30,7 @@ function initUtil() {
 
 
 
-function drawMyCanvas() {
-  var c = document.getElementById("myCanvas");
 
-var myctx = c.getContext("2d");
-myctx.moveTo(0,0);
-myctx.lineTo(200,100);
-myctx.stroke();
-}
-
-drawMyCanvas();
 
   userContext.addDimensionalLayer( 'utilcanvaspane' );
 
