@@ -24,16 +24,16 @@ function initUtil() {
   //var ucp = $( '#utilcanvaspane');
 //  var b0 = $( '#box0' );
 //
-//  var box0Pos = $( '#box0' ).offset();
+  var box0 = $( '#box0' );
 //
 //  console.log( 'box0Pos:', box0Pos );
 //
-//  $( '#utilcanvaspane').top = box0Pos.top;
-//  $( '#utilcanvaspane').width = $( '#box0' ).width;
-//  $( '#utilcanvaspane').left = box0Pos.left;
-//  $( '#utilcanvaspane').height = $( '#box0' ).height;
-//
-//  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height);
+  $( '#utilcanvaspane').top =     box0.top;
+  $( '#utilcanvaspane').height =  box0.height;
+  $( '#utilcanvaspane').left =    box0.left;
+  $( '#utilcanvaspane').width =   box0.width;
+
+  console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height);
 //
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
@@ -78,7 +78,7 @@ function openFileModal() {
               //  utilCanvas.width = box.width;
               //  utilCanvas.height = img.height;
               utilctx.globalAlpha = 0.5;
-                utilctx.drawImage(img, 10, 10, $( '#box0').width, $( '#box0').height );
+                utilctx.drawImage(img, 10, 10 );
                 imgdata = utilCanvas.toDataURL();
                 var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( data );
