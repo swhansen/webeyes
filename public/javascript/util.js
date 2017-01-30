@@ -21,8 +21,6 @@ function initUtil() {
 // utilCanvas.width = utilCanvas.offsetWidth;
 // utilCanvas.height = utilCanvas.offsetHeight;
 
-
-
 var box = $( '#box0' );
 var boxPosition = box.offset();
 var boxWidth = box.outerWidth();
@@ -47,9 +45,7 @@ var boxHeight = box.outerHeight();
 
 
 
-//var myDrawDiv = $( '#mydrawdiv');
-//myDrawDiv.css(  'width', 600 );
-//myDrawDiv.css(  'height', 600 );
+
 var c = document.getElementById("mycanvaspane");
 var canvas = document.getElementById('myCanvas');
 
@@ -179,7 +175,7 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  utilctx.drawImage( d1, 0, 0, box0Width, box0Height);
+  utilctx.drawImage( d1, 0, 0);
 }
 
 function drawDoc2() {
