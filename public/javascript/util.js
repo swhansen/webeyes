@@ -67,6 +67,12 @@ var canvas = document.getElementById('myCanvas');
 var myctx = canvas.getContext('2d');
 
 $( '#mycanvaspane').css( boxPosition );
+$( '#mycanvaspane').css( 'width', boxWidth );
+$( '#mycanvaspane').css( 'height', boxHeight );
+
+
+
+
 $( '#mycanvaspane').css( 'z-index', 300 );
 
 
