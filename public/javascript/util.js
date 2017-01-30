@@ -177,7 +177,7 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  utilctx.drawImage( d1, 0, 0, box0Width, box0Height);
+  docctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
 
 function drawDoc2() {
@@ -196,23 +196,23 @@ function drawArch() {
 function drawBullsEye() {
   var outerRadius = 300;
   var innerRadius = 275;
-  utilctx.beginPath();
-  utilctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
-  utilctx.fillStyle = 'rgba(255,255,255,.2)';
-  utilctx.fill();
-  utilctx.globalCompositeOperation = 'destination-out';
-  utilctx.beginPath();
-  utilctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
-  utilctx.fillStyle = 'green';
-  utilctx.fill();
-  utilctx.globalCompositeOperation = 'source-over';
-  utilctx.beginPath();
-  utilctx.moveTo(500 - innerRadius, 400);
-  utilctx.lineTo(500 + innerRadius, 400);
-  utilctx.stroke();
-  utilctx.moveTo(500, 400 - innerRadius);
-  utilctx.lineTo(500, 400 + innerRadius);
-  utilctx.stroke();
+  docctx.beginPath();
+  docctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
+  docctx.fillStyle = 'rgba(255,255,255,.2)';
+  docctx.fill();
+  docctx.globalCompositeOperation = 'destination-out';
+  docctx.beginPath();
+  docctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
+  docctx.fillStyle = 'green';
+  docctx.fill();
+  docctx.globalCompositeOperation = 'source-over';
+  docctx.beginPath();
+  docctx.moveTo(500 - innerRadius, 400);
+  docctx.lineTo(500 + innerRadius, 400);
+  docctx.stroke();
+  docctx.moveTo(500, 400 - innerRadius);
+  docctx.lineTo(500, 400 + innerRadius);
+  docctx.stroke();
   console.log( 'drawBullsEye - end:' );
 }
 
