@@ -58,7 +58,7 @@ $( '#mycanvaspane').css( boxPosition );
 $( '#mycanvaspane').css( 'width', boxWidth );
 $( '#mycanvaspane').css( 'height', boxHeight );
 
-$( '#mycanvaspane').css( 'z-index', 300 );
+$( '#mycanvaspane').css( 'z-index', 50);
 
 canvas.width = c.clientWidth;
 canvas.height = c.clientHeight;
