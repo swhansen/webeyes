@@ -19,21 +19,20 @@ function initUtil() {
 // utilCanvas.width = utilCanvas.offsetWidth;
 // utilCanvas.height = utilCanvas.offsetHeight;
 
-  //var ucp = $( '#utilcanvaspane');
-//  var b0 = $( '#box0' );
-//
-//  var box0Pos = $( '#box0' ).position();
-//
+var box = $( '#box0' );
+var boxPosition = box.offset();
+var boxWidth = box.outerWidth();
+var boxHeight = box.outerHeight();
 
-var position = $( '#box0' ).offset();
-  console.log( 'box0Pos:', position );
+  console.log( 'box0Pos:', boxPosition );
+  console.log( 'box0width/height:', boxWidth, boxHeight ) ;
 //
 //  $( '#utilcanvaspane').css( 'top', $( '#box0' ).top ) );
-  $( '#utilcanvaspane').css(position);
-  $( '#utilcanvaspane').css( 'height', $( '#box0' ).outerHeight() );
-  $( '#utilcanvaspane').css( 'width', $( '#box0').outerWidth() );
+  $( '#utilcanvaspane').css( boxPosition);
+  $( '#utilcanvaspane').css( 'height', boxWidth );
+  $( '#utilcanvaspane').css( 'width', boxHeight );
 
-  console.log( 'box0width:', $( '#box0').outerWidth() ) ;
+
 
   //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
 //
@@ -128,19 +127,19 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  utilctx.drawImage( d1, 0, 0, box0Width, box0Height);
+  utilctx.drawImage( d1, 0, 0, boxWidth, boxHeight);
 }
 
 function drawDoc2() {
-  utilctx.drawImage(d2, 0, 0, utilCanvas.width, utilCanvas.height);
+  utilctx.drawImage(d2, 0, 0, uboxWidth, boxHeight );
 }
 
 function drawArch() {
-  utilctx.drawImage(d3, 0, 0 , utilCanvas.width, utilCanvas.height);
+  utilctx.drawImage(d3, 0, 0 , boxWidth, boxHeight );
 }
 
  function clearUtilCanvas() {
-  utilctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
+  utilctx.clearRect(0, 0, boxWidth, boxHeight );
   emitUtility( 'clearutil' );
 }
 
