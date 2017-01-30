@@ -45,7 +45,8 @@ var position = $( '#box0' ).offset();
   box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
-}
+  var utilctx = utilCanvas.getContext('2d');
+
 
 function loadUtilImage( utilImage ) {
 
@@ -83,7 +84,7 @@ function openFileModal() {
             img.onload = function(){
               //  utilCanvas.width = box.width;
               //  utilCanvas.height = img.height;
-              utilctx.globalAlpha = 0.7;
+             // utilctx.globalAlpha = 0.7;
                 utilctx.drawImage( img, 10, 10, 500, 500 );
                 imgdata = utilCanvas.toDataURL();
                 var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
@@ -217,4 +218,5 @@ socketServer.on( 'utility', function( data ) {
     break;
   }
 } );
+}
 
