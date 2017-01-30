@@ -12,16 +12,29 @@ function drawMyCanvas() {
   var c = document.getElementById("myCanvas");
 
 var myctx = c.getContext("2d");
-myctx.moveTo(0,0);
-myctx.lineTo(200,100);
-myctx.stroke();
+var outerRadius = 300;
+  var innerRadius = 275;
+  utilctx.beginPath();
+  utilctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
+  utilctx.fillStyle = 'rgba(255,255,255,.2)';
+  utilctx.fill();
+  utilctx.globalCompositeOperation = 'destination-out';
+  utilctx.beginPath();
+  utilctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
+  utilctx.fillStyle = 'green';
+  utilctx.fill();
+  utilctx.globalCompositeOperation = 'source-over';
+  utilctx.beginPath();
+  utilctx.moveTo(500 - innerRadius, 400);
+  utilctx.lineTo(500 + innerRadius, 400);
+  utilctx.stroke();
+  utilctx.moveTo(500, 400 - innerRadius);
+  utilctx.lineTo(500, 400 + innerRadius);
+  utilctx.stroke();
+  console.log( 'drawBullsEye - end:' );
 }
 
 drawMyCanvas();
-
-
-
-
 
 
 
