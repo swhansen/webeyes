@@ -1304,7 +1304,7 @@ console.log( 'Join Room userContext:', userContext );
   box0Width = document.getElementById( 'box0' ).offsetWidth;
 
 initDraw();
-//initUtil();
+initUtil();
 //initUiManager();
 messageBar( 'User Session Initialized' );
 
