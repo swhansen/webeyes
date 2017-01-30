@@ -37,7 +37,7 @@ var position = $( '#box0' ).offset();
   $( '#utilcanvaspane').css( 'height', $( '#box0' ).offsetHeight() );
   $( '#utilcanvaspane').css( 'width', $( '#box0').offsetWidth() );
 
-  console.log( box0top:', $( '#box0' ).top ) );
+  console.log( 'box0top:', $( '#box0' ).top ) );
 
   //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
 //
