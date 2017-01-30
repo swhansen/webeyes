@@ -84,7 +84,7 @@ function openFileModal() {
               //  utilCanvas.width = box.width;
               //  utilCanvas.height = img.height;
               utilctx.globalAlpha = 0.7;
-                utilctx.drawImage(img, 10, 10, $( '#box0' ).outerWidth(), $( '#box0' ).outerHeight() );
+                utilctx.drawImage( img, 10, 10, 500, 500 );
                 imgdata = utilCanvas.toDataURL();
                 var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( data );
@@ -168,6 +168,7 @@ function drawBullsEye() {
   utilctx.moveTo(500, 400 - innerRadius);
   utilctx.lineTo(500, 400 + innerRadius);
   utilctx.stroke();
+  console.log( 'drawBullsEye - end:' );
 }
 
 function emitUtility( data ) {
