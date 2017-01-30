@@ -1,5 +1,10 @@
 
-// canvas playground for experimental stuff
+// canvas playground for experimental document sharing
+
+
+// notes: the div  and the containing canvas need to be sized to the
+// center dimensional window. The sixe of the windo w is dynamic and
+// is se on session initiation.
 
 //var utilCanvas = document.getElementById( 'utilcanvas' );
 //var utilctx = utilCanvas.getContext( '2d' );
@@ -10,9 +15,8 @@ var d3 = document.getElementById('material');
 var docctx;
 var box0Height;
 var box0Width;
-//var docCanvas;
-var docCanvasPane = document.getElementById("doccanvaspane");
-var docCanvas = document.getElementById('doccanvas');
+var docCanvasPane = document.getElementById( 'doccanvaspane' );
+var docCanvas = document.getElementById( 'doccanvas' );
 
 function initUtil() {
 
@@ -34,10 +38,6 @@ function initUtil() {
   console.log( 'box0Pos:', boxPosition );
   console.log( 'box0width/height:', boxWidth, boxHeight ) ;
 
-
-
-
-//
 //  $( '#utilcanvaspane').css( 'top', $( '#box0' ).top ) );
 //  $( '#utilcanvaspane').css( boxPosition);
 //  $( '#utilcanvaspane').css( 'width', boxWidth );
@@ -46,27 +46,18 @@ function initUtil() {
 //  document.getElementById('utilcanvaspane').style.visibility = 'visible';
 
 
-
-
-
-
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
-
-
-
 
   $( '#doccanvaspane').css( boxPosition );
   $( '#doccanvaspane').css( 'width', boxWidth );
   $( '#doccanvaspane').css( 'height', boxHeight );
-
   $( '#doccanvaspane').css( 'z-index', 50);
 
   docCanvas.width = docCanvasPane.clientWidth;
   docCanvas.height = docCanvasPane.clientHeight;
 
   docctx = docCanvas.getContext('2d');
-
 
 }
 
