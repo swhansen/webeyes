@@ -129,7 +129,7 @@ function openFileModal() {
               //  utilCanvas.width = box.width;
               //  utilCanvas.height = img.height;
              // utilctx.globalAlpha = 0.7;
-                utilctx.drawImage( img, 5, 5, 700, 500 );
+                docctx.drawImage( img, 5, 5, 700, 500 );
                 imgdata = utilCanvas.toDataURL();
                 var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( data );
@@ -148,7 +148,7 @@ socketServer.on( 'shareImage', function( data ) {
    img.width = $( '#box0' ).outerWidth();
    img.height = $( '#box0' ).outerHeight();
    img.src = data.source;
-    utilctx.drawImage( img, 0, 0, box0Width, box0Height );
+    docctx.drawImage( img, 0, 0, box0Width, box0Height );
   if ( data) {
       resolve("Stuff worked!");
     }
@@ -189,7 +189,7 @@ function drawArch() {
 }
 
  function clearUtilCanvas() {
-  utilctx.clearRect(0, 0, box0Width, box0Height );
+  docctx.clearRect(0, 0, box0Width, box0Height );
   emitUtility( 'clearutil' );
 }
 
@@ -240,7 +240,7 @@ socketServer.on( 'utility', function( data ) {
     break;
     case 'clearutil':
       clearDrawCanvas();
-      utilctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
+      docctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
     break;
     case 'clearmoderator':
 
