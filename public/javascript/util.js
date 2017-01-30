@@ -59,7 +59,7 @@ var boxHeight = box.outerHeight();
 
   function myDraw() {
 
-var MyDrawDiv = $( '#mydrawdiv');
+var myDrawDiv = $( '#mydrawdiv');
 myDrawDiv.css(  'width', 600 );
 myDrawDiv.css(  'height', 600 );
 var c = document.getElementById("myCanvas");
