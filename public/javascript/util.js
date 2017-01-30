@@ -80,7 +80,7 @@ function openFileModal() {
               //  utilCanvas.width = box.width;
               //  utilCanvas.height = img.height;
              // utilctx.globalAlpha = 0.7;
-                utilctx.drawImage( img, 5, 5 );
+                utilctx.drawImage( img, 5, 5, 700, 500 );
                 imgdata = utilCanvas.toDataURL();
                 var data = {  width: utilCanvas.width, height: utilCanvas.height, source:imgdata };
                 emitUtilImage( data );
