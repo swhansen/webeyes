@@ -49,7 +49,7 @@ var boxHeight = box.outerHeight();
 
 
 var c = document.getElementById("doccanvaspane");
-var canvas = document.getElementById('docanvas');
+var canvas = document.getElementById('doccanvas');
 
 
 $( '#doccanvaspane').css( boxPosition );
