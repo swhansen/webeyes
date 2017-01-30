@@ -64,7 +64,7 @@ var boxHeight = box.outerHeight();
 //myDrawDiv.css(  'height', 600 );
 var c = document.getElementById("mycanvaspane");
 var canvas = document.getElementById('myCanvas');
-var myctx = canvas.getContext('2d');
+
 
 $( '#mycanvaspane').css( boxPosition );
 $( '#mycanvaspane').css( 'width', boxWidth );
@@ -88,12 +88,12 @@ canvas.style.height = '100%';
 //c.style.left = '100px';
 //c.style.zIndex = '300';
 
-//var myctx = c.getContext("2d");
+var myctx = canvas.getContext('2d');
 myctx.fillStyle = 'rgb(200,0,0)';
         myctx.fillRect (10, 10, 50, 50);
 
         myctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-        myctx.fillRect (100, 200, 50, 50);
+        myctx.fillRect (50, 50, 50, 50);
   console.log( 'drawBullsEye - end:' );
 }
 
