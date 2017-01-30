@@ -19,6 +19,8 @@ function initUtil() {
 // utilCanvas.width = utilCanvas.offsetWidth;
 // utilCanvas.height = utilCanvas.offsetHeight;
 
+
+
 var box = $( '#box0' );
 var boxPosition = box.offset();
 var boxWidth = box.outerWidth();
@@ -36,8 +38,8 @@ var boxHeight = box.outerHeight();
 
   //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
 //
-  box0Height = document.getElementById('box0').offsetHeight;
-  box0Width = document.getElementById('box0').offsetWidth;
+//  box0Height = document.getElementById('box0').offsetHeight;
+//  box0Width = document.getElementById('box0').offsetWidth;
 
   document.getElementById('utilcanvaspane').style.visibility = 'visible';
 }
@@ -98,7 +100,7 @@ socketServer.on( 'shareImage', function( data ) {
    img.width = $( '#box0' ).outerWidth();
    img.height = $( '#box0' ).outerHeight();
    img.src = data.source;
-    utilctx.drawImage( img, 0, 0, utilCanvas.width, utilCanvas.height );
+    utilctx.drawImage( img, 0, 0, box0Width, box0Height );
   if ( data) {
       resolve("Stuff worked!");
     }
@@ -127,19 +129,19 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  utilctx.drawImage( d1, 0, 0, boxWidth, boxHeight);
+  utilctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
 
 function drawDoc2() {
-  utilctx.drawImage(d2, 0, 0, uboxWidth, boxHeight );
+  utilctx.drawImage(d2, 0, 0, box0Width, box0Height );
 }
 
 function drawArch() {
-  utilctx.drawImage(d3, 0, 0 , boxWidth, boxHeight );
+  utilctx.drawImage(d3, 0, 0 , box0Width, box0Height );
 }
 
  function clearUtilCanvas() {
-  utilctx.clearRect(0, 0, boxWidth, boxHeight );
+  utilctx.clearRect(0, 0, box0Width, box0Height );
   emitUtility( 'clearutil' );
 }
 
