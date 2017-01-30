@@ -60,7 +60,7 @@ var boxHeight = box.outerHeight();
   function myDraw() {
 var c = document.getElementById("myCanvas");
 var myctx = c.getContext("2d");
-ctx.fillStyle = 'rgb(200,0,0)';
+myctx.fillStyle = 'rgb(200,0,0)';
         myctx.fillRect (10, 10, 50, 50);
 
         myctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
