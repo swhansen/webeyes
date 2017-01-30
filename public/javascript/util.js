@@ -183,7 +183,7 @@ function drawDoc1() {
 }
 
 function drawDoc2() {
-  myctx.drawImage(d2, 0, 0, 300, 300);
+  myctx.drawImage(d2, 0, 0, 600, 600);
 }
 
 function drawArch() {
