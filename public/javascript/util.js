@@ -7,18 +7,7 @@ var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
-
-
-
-
-
-
-
-
-
-
-
-
+var myctx;
 
 function initUtil() {
 
@@ -74,7 +63,7 @@ $( '#mycanvaspane').css( 'z-index', 300 );
 canvas.width = c.clientWidth;
 canvas.height = c.clientHeight;
 
-var myctx = canvas.getContext('2d');
+ myctx = canvas.getContext('2d');
 
 
 function myDraw() {
@@ -190,11 +179,11 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  myctx.drawImage( d1, 0, 0, box0Width, box0Height);
+  utilctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
 
 function drawDoc2() {
-  utilctx.drawImage(d2, 0, 0, box0Width, box0Height );
+  myctx.drawImage(d2, 0, 0, box0Width, box0Height );
 }
 
 function drawArch() {
