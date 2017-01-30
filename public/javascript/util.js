@@ -67,6 +67,8 @@ var canvas = document.getElementById('myCanvas');
 var myctx = canvas.getContext('2d');
 
 $( '#mycanvaspane').css( boxPosition );
+$( '#mycanvaspane').css( 'z-index', 300 );
+
 
 //c.style.width  = 400;
 //c.style.height = 300;
@@ -74,7 +76,7 @@ $( '#mycanvaspane').css( boxPosition );
 //c.style.height = '600px';
 //c.style.top = '100px';
 //c.style.left = '100px';
-c.style.zIndex = '300';
+//c.style.zIndex = '300';
 
 //var myctx = c.getContext("2d");
 myctx.fillStyle = 'rgb(200,0,0)';
