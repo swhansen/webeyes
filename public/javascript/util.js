@@ -62,11 +62,14 @@ var boxHeight = box.outerHeight();
 var myDrawDiv = $( '#mydrawdiv');
 myDrawDiv.css(  'width', 600 );
 myDrawDiv.css(  'height', 600 );
-var c = document.getElementById("myCanvas");
+myDrawDiv.css(  'z-index', 600 );
 myCanvas.width  = 400;
 myCanvas.height = 300;
 myCanvas.style.width  = '800px';
 myCanvas.style.height = '600px';
+
+var c = document.getElementById("myCanvas");
+
 var myctx = c.getContext("2d");
 myctx.fillStyle = 'rgb(200,0,0)';
         myctx.fillRect (10, 10, 50, 50);
