@@ -19,8 +19,6 @@ function initUtil() {
 // utilCanvas.width = utilCanvas.offsetWidth;
 // utilCanvas.height = utilCanvas.offsetHeight;
 
-
-
 var box = $( '#box0' );
 var boxPosition = box.offset();
 var boxWidth = box.outerWidth();
@@ -30,18 +28,16 @@ var boxHeight = box.outerHeight();
   console.log( 'box0width/height:', boxWidth, boxHeight ) ;
 //
 //  $( '#utilcanvaspane').css( 'top', $( '#box0' ).top ) );
-  $( '#utilcanvaspane').css( boxPosition);
-  $( '#utilcanvaspane').css( 'height', boxWidth );
-  $( '#utilcanvaspane').css( 'width', boxHeight );
-
-
+  $( '#utilcanvas').css( boxPosition);
+  $( '#utilcanvas').css( 'width', boxWidth );
+  $( '#utilcanvas').css( 'height', boxHeight );
 
   //console.log( 'utilcanvas pabe Position:', $( '#utilcanvaspane').top, $( '#utilcanvaspane').height );
 //
 //  box0Height = document.getElementById('box0').offsetHeight;
 //  box0Width = document.getElementById('box0').offsetWidth;
 
-  document.getElementById('utilcanvaspane').style.visibility = 'visible';
+  document.getElementById('utilcanvas').style.visibility = 'visible';
 }
 
 function loadUtilImage( utilImage ) {
