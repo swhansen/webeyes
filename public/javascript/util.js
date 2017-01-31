@@ -92,11 +92,13 @@ function openFileModal() {
 socketServer.on( 'shareImage', function( data ) {
   // image( 'fred', data.source );
   return new Promise(function(resolve, reject) {
-    img = new Image( 300, 300 );
-   img.width = $( '#box0' ).outerWidth();
-   img.height = $( '#box0' ).outerHeight();
+    img = new Image();
+ //  img.width = $( '#box0' ).outerWidth();
+ //  img.height = $( '#box0' ).outerHeight();
+  img.width = data.width;
+   img.height = data.height;
    img.src = data.source;
-    docctx.drawImage( img, 0, 0, docCanvas.width, docCanvas.width );
+    docctx.drawImage( img, 0, 0 );
   if ( data) {
       resolve( 'Stuff worked!' );
     }
