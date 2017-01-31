@@ -12,8 +12,8 @@ var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
 var docctx;
-var box0Height;
-var box0Width;
+var boxHeight;
+var boxWidth;
 var docCanvasPane = document.getElementById( 'doccanvaspane' );
 var docCanvas = document.getElementById( 'doccanvas' );
 
@@ -77,7 +77,7 @@ function openFileModal() {
         reader.onload = function(event){
             var img = new Image();
             img.onload = function(){
-                docctx.drawImage( img, 5, 5,  box0Width, box0Height );
+                docctx.drawImage( img, 5, 5,  boxWidth, boxHeight );
                 imgdata = docCanvas.toDataURL();
                 var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitUtilImage( data );
@@ -182,7 +182,7 @@ socketServer.on( 'utility', function( data ) {
     break;
     case 'clearutil':
       clearDrawCanvas();
-      docctx.clearRect(0, 0, box0Width, box0Height);
+      docctx.clearRect(0, 0, boxWidth, boxHeight);
     break;
     case 'clearmoderator':
 
