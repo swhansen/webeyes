@@ -79,7 +79,7 @@ function openFileModal() {
             img.onload = function(){
                 docctx.drawImage( img, 5, 5,  box0Width, box0Height );
                 imgdata = docCanvas.toDataURL();
-                console.log( 'imagedata at modal:', imgdata );
+             //   console.log( 'imagedata at modal:', imgdata );
                 var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitDocImage( data );
             };
@@ -91,39 +91,29 @@ function openFileModal() {
 }
 
 socketServer.on( 'shareImage', function( data ) {
-img = new Image();
-img.width = data.width;
-img.height = data.height;
-img.src = data.source;
 
+  return new Promise(function(resolve, reject) {
+    img = new Image();
+ //  img.width = $( '#box0' ).outerWidth();
+ //  img.height = $( '#box0' ).outerHeight();
+  img.width = data.width;
+   img.height = data.height;
+   img.src = data.source;
+    docctx.drawImage( img, 0, 0  );
     console.log( 'recieve shareImage-on:', data );
-    docctx.drawImage( img , 0, 0 );
-
-
-
-  // image( 'fred', data.source );
-//  return new Promise(function(resolve, reject) {
-//    img = new Image();
-// //  img.width = $( '#box0' ).outerWidth();
-// //  img.height = $( '#box0' ).outerHeight();
-//  img.width = data.width;
-//   img.height = data.height;
-//   img.src = data.source;
-//    docctx.drawImage( img, 0, 0,  box0Width, box0Height  );
-//    console.log( 'shareImage-on:', data );
-//  if ( data) {
-//      resolve( 'Stuff worked!' );
-//    }
-//    else {
-//      reject(Error( 'It broke' ));
-//    }
-//  promise.then(function(result) {
-//    console.log(result); // "Stuff worked!"
-//  }, function(err) {
-//      console.log(err); // Error: "It broke"
-//  } );
-//     //console.log( 'shareImage-on:', err);
-//  } );
+  if ( data) {
+      resolve( 'Stuff worked!' );
+    }
+    else {
+      reject(Error( 'It broke' ));
+    }
+  promise.then(function(result) {
+    console.log(result); // "Stuff worked!"
+  }, function(err) {
+      console.log(err); // Error: "It broke"
+  } );
+     //console.log( 'shareImage-on:', err);
+  } );
 } );
 
 function emitDocImage( data ) {
