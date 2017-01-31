@@ -243,12 +243,48 @@ function touchMoveHandler( e ) {
 
 function initDraw() {
 
-  document.getElementById( 'canvaspane' ).className = 'canvascenter';
 
-  canvas.style.width = '100%';
-  canvas.style.height = '100%';
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+userContext.addDimensionalLayer( 'canvaspane' );
+
+  var box = $( '#box0' );
+  var boxPosition = box.offset();
+  var boxWidth = box.outerWidth();
+  var boxHeight = box.outerHeight();
+
+  $( '#canvaspane').css( boxPosition );
+  $( '#canvaspane').css( 'width', boxWidth );
+  $( '#canvaspane').css( 'height', boxHeight );
+  $( '#canvaspane').css( 'z-index', 50);
+
+
+  canvas.width = canvasPane.clientWidth;
+  canvas.height = canvasPane.clientHeight;
+
+  context = canvas.getContext('2d');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //document.getElementById( 'canvaspane' ).className = 'canvascenter';
+
+ //canvas.style.width = '100%';
+ //canvas.style.height = '100%';
+ //canvas.width = canvas.offsetWidth;
+ //canvas.height = canvas.offsetHeight;
 
   canvasPane.style.visibility = 'visible';
   //canvasPane.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
