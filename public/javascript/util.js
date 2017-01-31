@@ -99,8 +99,8 @@ socketServer.on( 'shareImage', function( data ) {
   imgRecieve.width = data.width;
    imgRecieve.height = data.height;
    imgRecieve.src = data.source;
-    docctx.drawImage( imgRecieve, box0Width, box0Height );
-    console.log( 'recieve shareImage-on:', data );
+    docctx.drawImage( imgRecieve, 5, 5, box0Width, box0Height );
+   // console.log( 'recieve shareImage-on:', data );
   if ( data) {
       resolve( 'Stuff worked!' );
     }
@@ -117,7 +117,7 @@ socketServer.on( 'shareImage', function( data ) {
 } );
 
 function emitDocImage( data ) {
-  console.log( 'emitdocImage:', data.width, data.height, data.source );
+ // console.log( 'emitdocImage:', data.width, data.height, data.source );
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'shareImage', data, sessionId );
 }
