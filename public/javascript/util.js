@@ -83,7 +83,7 @@ function openFileModal() {
                 var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitDocImage( data );
             };
-            img.src = event.target.result;
+            imgSend.src = event.target.result;
         };
         reader.readAsDataURL( e );
       }
