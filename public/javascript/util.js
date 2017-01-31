@@ -96,8 +96,8 @@ socketServer.on( 'shareImage', function( data ) {
     img = new Image();
  //  img.width = $( '#box0' ).outerWidth();
  //  img.height = $( '#box0' ).outerHeight();
-  img.width = data.width;
-   img.height = data.height;
+  img.width = box0Width;
+   img.height = box0Height;
    img.src = data.source;
     docctx.drawImage( img, 0, 0  );
     console.log( 'recieve shareImage-on:', data );
