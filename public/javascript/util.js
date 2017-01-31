@@ -99,7 +99,7 @@ socketServer.on( 'shareImage', function( data ) {
   imgRecieve.width = data.width;
    imgRecieve.height = data.height;
    imgRecieve.src = data.source;
-    docctx.drawImage( imgRecieve, 5, 5, box0Width, box0Height );
+    docctx.drawImage( imgRecieve, 0, 0, imgRecieve.width, imgRecieve.height, 0, 0, box0Width, box0Height );
    // console.log( 'recieve shareImage-on:', data );
   if ( data) {
       resolve( 'Stuff worked!' );
