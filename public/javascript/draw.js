@@ -251,10 +251,10 @@ userContext.addDimensionalLayer( 'canvaspane' );
   var boxWidth = box.outerWidth();
   var boxHeight = box.outerHeight();
 
-  $( '#canvaspane').css( boxPosition );
-  $( '#canvaspane').css( 'width', boxWidth );
-  $( '#canvaspane').css( 'height', boxHeight );
-  $( '#canvaspane').css( 'z-index', 50);
+  $( '#canvaspane' ).css( boxPosition );
+  $( '#canvaspane' ).css( 'width', boxWidth );
+  $( '#canvaspane' ).css( 'height', boxHeight );
+  $( '#canvaspane' ).css( 'z-index', 50 );
 
 
   canvas.width = canvasPane.clientWidth;
