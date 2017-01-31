@@ -78,7 +78,8 @@ function openFileModal() {
             var img = new Image();
             img.onload = function(){
                 docctx.drawImage( img, 5, 5,  box0Width, box0Height );
-                imgdata = docCanvas.toDataURL();
+                imgdata = docCanvas.toDataURL( 'image/jpg');
+                console.log( 'imagedata at modal:', imgdata );
                 var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitUtilImage( data );
             };
@@ -90,15 +91,14 @@ function openFileModal() {
 }
 
 socketServer.on( 'shareImage', function( data ) {
-
-img.onload=start;
+img = new Image();
+img.width = data.width;
+img.height = data.height;
 img.src = data.source;
-function start(){
-    //document.body.appendChild(img);
-    // or
+
     console.log( 'recieve shareImage-on:', data );
-    docctx.drawImage(img,0,0);
-}
+    docctx.drawImage(img , 0, 0);
+
 
 
   // image( 'fred', data.source );
