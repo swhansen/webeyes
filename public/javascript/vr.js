@@ -33,7 +33,7 @@ function setUpArLayer( participantState ) {
 
   var step = 0;
 
-  var arCanvas = document.getElementById( 'arcanvaspane' );
+  var arCanvasPane = document.getElementById( 'arcanvaspane' );
   var ar0 = document.getElementById( 'arcanvas' );
   var mouseVector;
 
@@ -44,10 +44,10 @@ function setUpArLayer( participantState ) {
   ar0.width = ar0.offsetWidth;
   ar0.height = ar0.offsetHeight;
 
-  arCanvas.style.visibility = 'visible';
+  arCanvasPane.style.visibility = 'visible';
   ar0.style.visibility = 'visible';
 
-  arcanvas.style.zIndex = 30;
+  arcanvasPane.style.zIndex = 30;
 
   setDomPointerEvent( 'canvas0', 'none' );
   setDomPointerEvent( 'arcanvaspane', 'auto' );
