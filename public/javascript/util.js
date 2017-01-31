@@ -94,7 +94,9 @@ function openFileModal() {
 socketServer.on( 'shareImage', function( data ) {
 
   return new Promise(function(resolve, reject) {
-    var imgRecieve = new Image(data.width, data.height);
+
+  if ( data) {
+      resolve( var imgRecieve = new Image(data.width, data.height);
  //  img.width = $( '#box0' ).outerWidth();
  //  img.height = $( '#box0' ).outerHeight();
   //imgRecieve.width = data.width;
@@ -102,9 +104,7 @@ socketServer.on( 'shareImage', function( data ) {
    imgRecieve.src = data.source;
 
     docctx.drawImage( imgRecieve, 0, 0, data.width, data.height, 0, 0, box0Width, box0Height );
-    console.log( 'recieve shareImage-on:', data.width, data.height, box0Width, box0Height );
-  if ( data) {
-      resolve( 'Stuff worked!' );
+    console.log( 'recieve shareImage-on:', data.width, data.height, box0Width, box0Height ); );
     }
     else {
       reject(Error( 'It broke' ));
