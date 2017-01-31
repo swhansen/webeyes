@@ -34,18 +34,18 @@ function setUpArLayer( participantState ) {
   var step = 0;
 
   var arCanvasPane = document.getElementById( 'arcanvaspane' );
-  var ar0 = document.getElementById( 'arcanvas' );
+  var arCanvas = document.getElementById( 'arcanvas' );
   var mouseVector;
 
   document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
 
-  ar0.style.width = '100%';
-  ar0.style.height = '100%';
-  ar0.width = ar0.offsetWidth;
-  ar0.height = ar0.offsetHeight;
+  arCanvas.style.width = '100%';
+  arCanvas.style.height = '100%';
+  arCanvas.width = arCanvas.offsetWidth;
+  arCanvas.height = arCanvas.offsetHeight;
 
   arCanvasPane.style.visibility = 'visible';
-  ar0.style.visibility = 'visible';
+  arCanvas.style.visibility = 'visible';
 
   arcanvasPane.style.zIndex = 30;
 
