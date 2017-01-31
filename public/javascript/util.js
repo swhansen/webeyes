@@ -31,10 +31,10 @@ function initUtil() {
   //box0Height = document.getElementById('box0').offsetHeight;
   //box0Width = document.getElementById('box0').offsetWidth;
 
-  $( '#doccanvaspane').css( boxPosition );
-  $( '#doccanvaspane').css( 'width', boxWidth );
-  $( '#doccanvaspane').css( 'height', boxHeight );
-  $( '#doccanvaspane').css( 'z-index', 50);
+  $( '#doccanvaspane' ).css( boxPosition );
+  $( '#doccanvaspane' ).css( 'width', boxWidth );
+  $( '#doccanvaspane' ).css( 'height', boxHeight );
+  $( '#doccanvaspane' ).css( 'z-index', 50);
 
   docCanvas.width = docCanvasPane.clientWidth;
   docCanvas.height = docCanvasPane.clientHeight;
