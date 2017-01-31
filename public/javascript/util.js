@@ -96,12 +96,12 @@ socketServer.on( 'shareImage', function( data ) {
    img.width = $( '#box0' ).outerWidth();
    img.height = $( '#box0' ).outerHeight();
    img.src = data.source;
-    docctx.drawImage( img, 0, 0, box0Width, box0Height );
+    docctx.drawImage( img, 0, 0, docCanvas.width, docCanvas.width );
   if ( data) {
-      resolve("Stuff worked!");
+      resolve( 'Stuff worked!' );
     }
     else {
-      reject(Error("It broke"));
+      reject(Error( 'It broke' ));
     }
   promise.then(function(result) {
     console.log(result); // "Stuff worked!"
