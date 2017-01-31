@@ -90,33 +90,44 @@ function openFileModal() {
 }
 
 socketServer.on( 'shareImage', function( data ) {
+
+img.onload=start;
+img.src = data.source;
+function start(){
+    //document.body.appendChild(img);
+    // or
+    console.log( 'recieve shareImage-on:', data );
+    docctx.drawImage(img,0,0);
+}
+
+
   // image( 'fred', data.source );
-  return new Promise(function(resolve, reject) {
-    img = new Image();
- //  img.width = $( '#box0' ).outerWidth();
- //  img.height = $( '#box0' ).outerHeight();
-  img.width = data.width;
-   img.height = data.height;
-   img.src = data.source;
-    docctx.drawImage( img, 0, 0,  box0Width, box0Height  );
-    console.log( 'shareImage-on:', data );
-  if ( data) {
-      resolve( 'Stuff worked!' );
-    }
-    else {
-      reject(Error( 'It broke' ));
-    }
-  promise.then(function(result) {
-    console.log(result); // "Stuff worked!"
-  }, function(err) {
-      console.log(err); // Error: "It broke"
-  } );
-     //console.log( 'shareImage-on:', err);
-  } );
+//  return new Promise(function(resolve, reject) {
+//    img = new Image();
+// //  img.width = $( '#box0' ).outerWidth();
+// //  img.height = $( '#box0' ).outerHeight();
+//  img.width = data.width;
+//   img.height = data.height;
+//   img.src = data.source;
+//    docctx.drawImage( img, 0, 0,  box0Width, box0Height  );
+//    console.log( 'shareImage-on:', data );
+//  if ( data) {
+//      resolve( 'Stuff worked!' );
+//    }
+//    else {
+//      reject(Error( 'It broke' ));
+//    }
+//  promise.then(function(result) {
+//    console.log(result); // "Stuff worked!"
+//  }, function(err) {
+//      console.log(err); // Error: "It broke"
+//  } );
+//     //console.log( 'shareImage-on:', err);
+//  } );
 } );
 
 function emitUtilImage( data ) {
-  //console.log( 'emitUtilImage:', data.width, data.height, data.source );
+  console.log( 'emitdocImage:', data.width, data.height, data.source );
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'shareImage', data, sessionId );
 }
