@@ -94,11 +94,11 @@ function openFileModal() {
 socketServer.on( 'shareImage', function( data ) {
 
   return new Promise(function(resolve, reject) {
-    var imgRecieve = new Image();
+    var imgRecieve = new Image(data.width, data.height);
  //  img.width = $( '#box0' ).outerWidth();
  //  img.height = $( '#box0' ).outerHeight();
-  imgRecieve.width = data.width;
-   imgRecieve.height = data.height;
+  //imgRecieve.width = data.width;
+  // imgRecieve.height = data.height;
    imgRecieve.src = data.source;
 
     docctx.drawImage( imgRecieve, 0, 0, data.width, data.height, 0, 0, box0Width, box0Height );
