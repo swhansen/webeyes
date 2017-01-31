@@ -1,10 +1,9 @@
 
 // canvas playground for experimental document sharing
 
-
-// notes: the div  and the containing canvas need to be sized to the
-// center dimensional window. The sixe of the windo w is dynamic and
-// is se on session initiation.
+// notes: the div and the containing canvas need to be sized to the
+// center dimensional window. The size of the windo window is dynamic and
+// is set on session initiation.
 
 //var utilCanvas = document.getElementById( 'utilcanvas' );
 //var utilctx = utilCanvas.getContext( '2d' );
@@ -20,34 +19,17 @@ var docCanvas = document.getElementById( 'doccanvas' );
 
 function initUtil() {
 
+  // set the dimensionalLayer and canvas based on center box size
+
   userContext.addDimensionalLayer( 'doccanvaspane' );
-
-//  document.getElementById('utilcanvaspane').className = 'canvascenter';
-
- //utilCanvas.style.width = '100%';
- //utilCanvas.style.height = '100%';
-
-// utilCanvas.width = utilCanvas.offsetWidth;
-// utilCanvas.height = utilCanvas.offsetHeight;
 
   var box = $( '#box0' );
   var boxPosition = box.offset();
   var boxWidth = box.outerWidth();
   var boxHeight = box.outerHeight();
 
-  console.log( 'box0Pos:', boxPosition );
-  console.log( 'box0width/height:', boxWidth, boxHeight ) ;
-
-//  $( '#utilcanvaspane').css( 'top', $( '#box0' ).top ) );
-//  $( '#utilcanvaspane').css( boxPosition);
-//  $( '#utilcanvaspane').css( 'width', boxWidth );
-//  $( '#utilcanvaspane').css( 'height', boxHeight );
-
-//  document.getElementById('utilcanvaspane').style.visibility = 'visible';
-
-
-  box0Height = document.getElementById('box0').offsetHeight;
-  box0Width = document.getElementById('box0').offsetWidth;
+  //box0Height = document.getElementById('box0').offsetHeight;
+  //box0Width = document.getElementById('box0').offsetWidth;
 
   $( '#doccanvaspane').css( boxPosition );
   $( '#doccanvaspane').css( 'width', boxWidth );
@@ -58,7 +40,6 @@ function initUtil() {
   docCanvas.height = docCanvasPane.clientHeight;
 
   docctx = docCanvas.getContext('2d');
-
 }
 
 function loadUtilImage( utilImage ) {
@@ -122,20 +103,14 @@ socketServer.on( 'shareImage', function( data ) {
     else {
       reject(Error("It broke"));
     }
-
   promise.then(function(result) {
     console.log(result); // "Stuff worked!"
   }, function(err) {
       console.log(err); // Error: "It broke"
-  });
+  } );
      //console.log( 'shareImage-on:', err);
   } );
 } );
-
-
-//function image (from, base64Image) {
-//    $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
-//  }
 
 function emitUtilImage( data ) {
   //console.log( 'emitUtilImage:', data.width, data.height, data.source );
