@@ -12,8 +12,8 @@ var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
 var docctx;
-var boxHeight;
-var boxWidth;
+var box0Height;
+var box0Width;
 var docCanvasPane = document.getElementById( 'doccanvaspane' );
 var docCanvas = document.getElementById( 'doccanvas' );
 
@@ -28,8 +28,8 @@ function initUtil() {
   var boxWidth = box.outerWidth();
   var boxHeight = box.outerHeight();
 
-  //box0Height = document.getElementById('box0').offsetHeight;
-  //box0Width = document.getElementById('box0').offsetWidth;
+  box0Height = document.getElementById('box0').offsetHeight;
+  box0Width = document.getElementById('box0').offsetWidth;
 
   $( '#doccanvaspane' ).css( boxPosition );
   $( '#doccanvaspane' ).css( 'width', boxWidth );
@@ -77,7 +77,7 @@ function openFileModal() {
         reader.onload = function(event){
             var img = new Image();
             img.onload = function(){
-                docctx.drawImage( img, 5, 5,  boxWidth, boxHeight );
+                docctx.drawImage( img, 5, 5,  box0Width, box0Height );
                 imgdata = docCanvas.toDataURL();
                 var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitUtilImage( data );
@@ -119,19 +119,19 @@ function emitUtilImage( data ) {
 }
 
 function drawDoc1() {
-  docctx.drawImage( d1, 0, 0, boxWidth, boxHeight);
+  docctx.drawImage( d1, 0, 0, box0Width, box0Height);
 }
 
 function drawDoc2() {
-  docctx.drawImage(d2, 0, 0, boxWidth, boxHeight );
+  docctx.drawImage(d2, 0, 0, box0Width, box0Height );
 }
 
 function drawArch() {
-  docctx.drawImage(d3, 0, 0 , boxWidth, boxHeight );
+  docctx.drawImage(d3, 0, 0 , box0Width, box0Height );
 }
 
  function clearUtilCanvas() {
-  docctx.clearRect(0, 0, boxWidth, boxHeight );
+  docctx.clearRect(0, 0, box0Width, box0Height );
   emitUtility( 'clearutil' );
 }
 
@@ -182,7 +182,7 @@ socketServer.on( 'utility', function( data ) {
     break;
     case 'clearutil':
       clearDrawCanvas();
-      docctx.clearRect(0, 0, boxWidth, boxHeight);
+      docctx.clearRect(0, 0, box0Width, box0Height);
     break;
     case 'clearmoderator':
 
