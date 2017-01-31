@@ -75,10 +75,10 @@ function openFileModal() {
     } ).then( function (e) {
         var reader = new FileReader();
         reader.onload = function(event){
-            var img = new Image();
-            img.onload = function(){
-                docctx.drawImage( img, 5, 5,  box0Width, box0Height );
-                imgdata = docCanvas.toDataURL();
+            var imgSend = new Image();
+            imgSend.onload = function(){
+                docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
+              var imgdata = docCanvas.toDataURL();
              //   console.log( 'imagedata at modal:', imgdata );
                 var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitDocImage( data );
@@ -93,13 +93,13 @@ function openFileModal() {
 socketServer.on( 'shareImage', function( data ) {
 
   return new Promise(function(resolve, reject) {
-    img = new Image();
+    var imgRecieve = new Image();
  //  img.width = $( '#box0' ).outerWidth();
  //  img.height = $( '#box0' ).outerHeight();
-  img.width = box0Width;
-   img.height = box0Height;
-   img.src = data.source;
-    docctx.drawImage( img, 0, 0  );
+  imgRecieve.width = box0Width;
+   imgRecieve.height = box0Height;
+   imgRecieve.src = data.source;
+    docctx.drawImage( imgRecieve, 0, 0  );
     console.log( 'recieve shareImage-on:', data );
   if ( data) {
       resolve( 'Stuff worked!' );
