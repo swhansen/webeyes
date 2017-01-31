@@ -96,10 +96,10 @@ socketServer.on( 'shareImage', function( data ) {
     var imgRecieve = new Image();
  //  img.width = $( '#box0' ).outerWidth();
  //  img.height = $( '#box0' ).outerHeight();
-  imgRecieve.width = box0Width;
-   imgRecieve.height = box0Height;
+  imgRecieve.width = data.width;
+   imgRecieve.height = data.height;
    imgRecieve.src = data.source;
-    docctx.drawImage( imgRecieve, 0, 0  );
+    docctx.drawImage( imgRecieve, box0Width, box0Height );
     console.log( 'recieve shareImage-on:', data );
   if ( data) {
       resolve( 'Stuff worked!' );
