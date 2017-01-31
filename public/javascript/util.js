@@ -103,7 +103,7 @@ socketServer.on( 'shareImage', function( data ) {
 
 
 
-    docctx.drawImage( imgRecieve, 0, 0, data.width, data.height, 0, 0, box0Width, box0Height );
+    docctx.drawImage( data.source, 0, 0, data.width, data.height, 0, 0, box0Width, box0Height );
     $("#myimg").attr("src", data.source );
     console.log( 'recieve shareImage-on:', data.width, data.height, box0Width, box0Height );
   if ( data) {
