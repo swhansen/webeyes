@@ -115,23 +115,23 @@ socketServer.on( 'shareImage', function( data ) {
 function emitUtilImage( data ) {
   //console.log( 'emitUtilImage:', data.width, data.height, data.source );
   var sessionId = socketServer.sessionid;
-  socketServer.emit('shareImage', data, sessionId);
+  socketServer.emit( 'shareImage', data, sessionId );
 }
 
 function drawDoc1() {
-  docctx.drawImage( d1, 0, 0, box0Width, box0Height);
+  docctx.drawImage( d1, 0, 0, boxWidth, boxHeight);
 }
 
 function drawDoc2() {
-  docctx.drawImage(d2, 0, 0, box0Width, box0Height );
+  docctx.drawImage(d2, 0, 0, boxWidth, boxHeight );
 }
 
 function drawArch() {
-  docctx.drawImage(d3, 0, 0 , box0Width, box0Height );
+  docctx.drawImage(d3, 0, 0 , boxWidth, boxHeight );
 }
 
  function clearUtilCanvas() {
-  docctx.clearRect(0, 0, box0Width, box0Height );
+  docctx.clearRect(0, 0, boxWidth, boxHeight );
   emitUtility( 'clearutil' );
 }
 
@@ -182,7 +182,7 @@ socketServer.on( 'utility', function( data ) {
     break;
     case 'clearutil':
       clearDrawCanvas();
-      docctx.clearRect(0, 0, utilCanvas.width, utilCanvas.height);
+      docctx.clearRect(0, 0, box0Width, box0Height);
     break;
     case 'clearmoderator':
 
