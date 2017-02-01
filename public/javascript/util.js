@@ -97,10 +97,13 @@ socketServer.on( 'shareImage', function( data ) {
   imgRecieve.onload = renderImage;
   imgRecieve.src = data.source;
 
-  function renderImage(){
+  function renderImage() {
     docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
   }
   } );
+
+
+
 
 
 
