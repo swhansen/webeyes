@@ -111,26 +111,26 @@ function setDocAlpha() {
   } );
 }
 
-//socketServer.on( 'shareImage', function( data ) {
-//  var imgRecieve = new Image();
-//  imgRecieve.onload = start;
-//  imgRecieve.src = data.source;
-//  function start(){
-//    if ( !imgRecieve ) { console.log( 'no data over the pipe' ); }
-//    docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
-//    }
-//  } );
-
 socketServer.on( 'shareImage', function( data ) {
   var imgRecieve = new Image();
-    new Promise( function( resolve, reject ) {
+  imgRecieve.onload = start;
   imgRecieve.src = data.source;
-  imgRecieve.onload = resolve;
-
-} ).then( docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height ) );
+  function start(){
+    if ( !imgRecieve ) { console.log( 'no data over the pipe' ); }
+    docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
+    }
   } );
 
-
+//socketServer.on( 'shareImage', function( data ) {
+//  var imgRecieve = new Image();
+//    new Promise( function( resolve, reject ) {
+//  imgRecieve.src = data.source;
+//  imgRecieve.onload = resolve;
+//
+//} ).then( docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height ) );
+//  } );
+//
+//
 
 //
 //     docctx.drawImage( imgRecieve, 0, 0, data.width, data.height, 0, 0, box0Width, box0Height );
