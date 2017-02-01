@@ -122,12 +122,12 @@ function setDocAlpha() {
 //  } );
 
 socketServer.on( 'shareImage', function( data ) {
-    new Promise( function( resolve, reject ) {
   var imgRecieve = new Image();
-  imgRecieve.onload = resolve;
+    new Promise( function( resolve, reject ) {
   imgRecieve.src = data.source;
-  docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
-} ).then( console.log( 'Weeeeeeee') );
+  imgRecieve.onload = resolve;
+
+} ).then( docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height ) );
   } );
 
 
