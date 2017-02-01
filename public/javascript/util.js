@@ -91,6 +91,25 @@ function openFileModal() {
       );
 }
 
+function setDocAlpha() {
+  swal( {
+  title: 'How old are you?',
+  type: 'question',
+  showCancelButton: true,
+  input: 'range',
+  inputAttributes: {
+    min: 0.1,
+    max: 1.0,
+    step: 0.1
+  },
+  inputValue: 1.0
+
+} ).then(function( inputValue ) {
+  docctx.globalAlpha = inputValue;
+  console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
+  } );
+}
+
 socketServer.on( 'shareImage', function( data ) {
   var imgRecieve = new Image();
   imgRecieve.onload = start;
