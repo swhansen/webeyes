@@ -100,7 +100,7 @@ socketServer.on( 'shareImage', function( data ) {
     if ( !imgRecieve ) { console.log( 'no data over the pipe' ); }
     docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
 
-  //  $("#myimg").attr("src", imgRecieve );
+    $("#myimg").attr("src", imgRecieve );
 
     }
   } );
