@@ -175,7 +175,7 @@ function moveLayertoTop( layer ) {
      console.log( key );
     } );
   document.getElementById( layer ).style.zIndex = '100';
-  console.log( 'dimensionalLayer rearrange:' getLayersZindexStatus() );
+  console.log( 'dimensionalLayer rearrange:', getLayersZindexStatus() );
 }
 
 socketServer.on( 'userContext', function( data ) {
