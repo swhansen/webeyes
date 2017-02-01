@@ -92,7 +92,6 @@ function openFileModal() {
 }
 
 socketServer.on( 'shareImage', function( data ) {
-
   var imgRecieve = new Image();
   imgRecieve.onload = start;
   imgRecieve.src = data.source;
@@ -106,11 +105,6 @@ socketServer.on( 'shareImage', function( data ) {
   } );
 
 
-
-
-
-
-
 //   return new Promise( function( resolve, reject ) {
 //     var imgRecieve = new Image( data.width, data.height);
 //  //  img.width = $( '#box0' ).outerWidth();
@@ -118,8 +112,6 @@ socketServer.on( 'shareImage', function( data ) {
 //   //imgRecieve.width = data.width;
 //   // imgRecieve.height = data.height;
 //    imgRecieve.src = data.source;
-//
-//
 //
 //     docctx.drawImage( imgRecieve, 0, 0, data.width, data.height, 0, 0, box0Width, box0Height );
 //
