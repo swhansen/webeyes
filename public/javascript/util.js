@@ -82,7 +82,7 @@ function openFileModal() {
               var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
 
              //   console.log( 'imagedata at modal:', imgdata );
-                var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
+                var data = {  alpha: docAlpha, width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitDocImage( data );
             };
             imgSend.src = event.target.result;
@@ -113,11 +113,14 @@ function setDocAlpha() {
 
 socketServer.on( 'shareImage', function( data ) {
   var imgRecieve = new Image();
+  var origDocAlpha = docAlpha;
+  docctx.globalAlpha = data.alpha;
   imgRecieve.onload = start;
   imgRecieve.src = data.source;
   function start(){
     if ( !imgRecieve ) { console.log( 'no data over the pipe' ); }
     docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
+    docAlpha = origDocAlpha;
     }
   } );
 
