@@ -126,7 +126,8 @@ socketServer.on( 'shareImage', function( data ) {
   var imgRecieve = new Image();
   imgRecieve.onload = resolve;
   imgRecieve.src = data.source;
-} ).then( docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height ) );
+  docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
+} ).then( console.log( 'Weeeeeeee') );
   } );
 
 
