@@ -12,6 +12,7 @@ var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
 
 var docctx;
+var docAlpha = 1.0;
 var box0Height;
 var box0Width;
 var docCanvasPane = document.getElementById( 'doccanvaspane' );
@@ -102,9 +103,10 @@ function setDocAlpha() {
     max: 1.0,
     step: 0.1
   },
-  inputValue: 1.0
+  inputValue: docAlpha
 
 } ).then(function( inputValue ) {
+  docAlpha = inputValue;
   docctx.globalAlpha = inputValue;
   console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
   } );
