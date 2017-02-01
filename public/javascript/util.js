@@ -78,7 +78,7 @@ function openFileModal() {
             var imgSend = new Image();
             imgSend.onload = function(){
                 docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
-              var imgdata = docCanvas.toDataURL( 'image/jpg', 0.6 );
+              var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
 
              //   console.log( 'imagedata at modal:', imgdata );
                 var data = {  width: docCanvas.width, height: docCanvas.height, source:imgdata };
@@ -93,15 +93,16 @@ function openFileModal() {
 
 socketServer.on( 'shareImage', function( data ) {
 
-var imgRecieve = new Image();
-imgRecieve.onload = start;
-imgRecieve.src = data.source;
-function start(){
+  var imgRecieve = new Image();
+  imgRecieve.onload = start;
+  imgRecieve.src = data.source;
+  function start(){
+    if ( !imgRecieve ) { console.log( 'no data over the pipe' ); }
     docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
 
-    $("#myimg").attr("src", imgRecieve );
+  //  $("#myimg").attr("src", imgRecieve );
 
-  }
+    }
   } );
 
 
