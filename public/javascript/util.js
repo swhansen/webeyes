@@ -94,7 +94,7 @@ function openFileModal() {
 
 function setDocAlpha() {
   swal( {
-  title: 'How old are you?',
+  title: 'Set document load opacity',
   type: 'question',
   showCancelButton: true,
   input: 'range',
@@ -104,11 +104,10 @@ function setDocAlpha() {
     step: 0.1
   },
   inputValue: docAlpha
-
-} ).then(function( inputValue ) {
-  docAlpha = inputValue;
-  docctx.globalAlpha = inputValue;
-  console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
+  } ).then(function( inputValue ) {
+    docAlpha = inputValue;
+    docctx.globalAlpha = inputValue;
+    console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
   } );
 }
 
@@ -119,9 +118,6 @@ socketServer.on( 'shareImage', function( data ) {
   function start(){
     if ( !imgRecieve ) { console.log( 'no data over the pipe' ); }
     docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
-
-  //  $("#myimg").attr("src", data.source );
-
     }
   } );
 
