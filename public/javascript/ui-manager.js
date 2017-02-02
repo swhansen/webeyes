@@ -570,7 +570,7 @@ $( function() {
     var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
 
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
-      this.src = this.src.replace( 'img/video-on', 'img/video-off' );
+      this.src = this.src.replace( 'img/b-video.svg', 'img/mute-video.svg' );
         document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'hidden';
 
         var avatar = document.getElementById( theAvatar );
@@ -587,7 +587,7 @@ $( function() {
         emitVideoMute( videoMuteData );
       } else {
 
-        this.src = this.src.replace( 'img/video-off', 'img/video-on' );
+        this.src = this.src.replace( 'img/mute-video.svg', 'img/b-video.svg' );
         document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'visible';
         document.getElementById( theAvatar ).style.visibility = 'hidden';
         videoMuteData.state = 'visible';
