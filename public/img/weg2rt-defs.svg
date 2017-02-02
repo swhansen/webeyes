@@ -1,5 +1,5 @@
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
+   <defs>
         <image id="b-ar-_Image1" width="64px" height="64px" xlink:href="data:image/png;base64,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" />
         <image id="b-chat-_Image1" width="64px" height="63px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA/CAYAAABQHc7KAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFaUlEQVRogeWbW2/bRhCFP+pmxW7stgmMGGnTBAjQ1xRo///PCZqktY34KttiH2aPdrgiJVIXSmYPsFiaMsmdM5fdHQ4zNocM6IXWB4ahDcK5CXAHPAJPoZWhH9oAGAMjYBquewjtKZybAvm6g14XWWga9Cg0CX0D3K/5jBFwhBGah/tOiGTmrEjEugRI4xJ8HP6+BG7XvHcVxsAJJvAdkQhZRCOsSoC07gUfAt+BqxXv2RRHwEtMeE9EI2vor/Bg+foIOAAOw8P/CX1beMDIHoQxSJmNXKEpAV74F+HB58B1w/tsEvcYGSfY2HIaWEETAhTopPUR8C08fNd4wmLOMTbG2iTUJUDCKxpnwFdWCDpbRI5ZopQzdecrUYcACT/EhO9hwu8rbjAShtSYIusQIOHF7Jf1x7h13BJjwkISlhGgqU4B7wv7ZfaLIBJgAQmLCPDCHwH/0u40ty60YjzGlCYSClhEgEz/B2yqaWuBs0k8YXKMiavFAgm9igu1vB2H/mJ7Y9w6LjBFHhA3ZjNUESDzH2OaX2vHtQe4xFx5SA0CpH0xdrnt0bWA75hSDzCXmMldRYBM5ryN0bWEc+KmrZIAv+Ib8DwDXxVuiPuYmRWkBPhsznOa8uriDpOtT9g9egJ8ZmdEt7QvXFF0g6zMApTL2+UWd1u4JabuCi6gff4AE/5uF6NrCd4NeqkLyAK6TMA1Lg6UETBgP5Ic28IjJmOBgDS13WUCHogxIOsRk4mygD7dJmBChQVI+IzqtzZdwZQgcxoD9GPXIQLm1gGKBf8HzBEg4Ye7GU+rGJEshTNizkyzQVdRkK9sO5xjW+GuYoRLkJYRMA3/1FXopckcATkxe9plCzggEjAVAbnrp8R8ehdxQqwwKViAtP9IfP/XRRwTK0umaQyYEpfBP7Y5qpZwHHq9IyiNAVNsvfyq1aG1g9eYgmcvSdKCArnAhG7GgWMiATmBAEEkqBwtB07bHuEW8Qqz+HtcdZmfBfw0+IBlhX6jO8HwA2bZqjOcswCIFjAh1va9bWuEW8QZpn1Vk81Ng94CVJU5wbKov/K89wY94D0my1xxZVkM8ASotPV9a8PdPN5hApcVVZa6gI8DsoI3PM9p8SfMhVWuW/B/KDftjGJiRK/K32LFkM8lXzgGPmEKvAp9YQYA8pSALDlWrlCJkjPgM/ufNusDf2KCXmEW4CvVZ7vBZTVCaRtha4PPWxr4pvAJU5iEvydOgRJ+oQv4Pj13iJGwjxVjfeAPbDN3hb0Fkun77wxyf8EylBFyiE2P+xQTXgB/Yfv9VHgf/QvlclUE1Fn9DbEp5hozs13iZ4o+n2reB74CVl3gaLrsAb9gseGi7AFbRh/4CPyOCStllAk/p33dYBlSa0izR1NMAx/C+baKqt5h/v4SE1xT3R1x0VPY+rKmBeTJsf9oSa/STrHY8IBVZm0DbzDBT5nXuvf5Wh9X1d3p+XeH6cdRB64fh16Jx2/A31h1+arukWGr0LPQ9zEhy5oEl/CzTU/V85tsddPP4lRNMiKW1el4nPyWY7XGX4kmesv8DKJrx1hUfx2Ezpxg2qlO3LH/zfv80m8Gmu71PQkqphARaqPkb1Wd6ZV0312v9Jtexuic9iPKUEmjDxSF1bH/n9rCEwbVBPJ9n0YrG/AgaX3XS3iRKfhVmr+ngpiEfHTN/536ey2Xa0oA7sb+QZ4ACes17iuzPAG4vmx2keDqn0p6r/VGH0z5h6+CtLLEt35F85pfRkBKbCqs1/g0ub6xEOugjAg/a6Tk6PeyWoQy1/LNazrV+E4+nS27V7qN7pWcq0OAJ6KsX0njVYPeJFIi/HF6zvfpQqtMuxsTXPgPYhoQjuuNd/oAAAAASUVORK5CYII=" />
         <image id="b-compass-_Image1" width="64px" height="64px" xlink:href="data:image/png;base64,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" />
@@ -592,69 +592,7 @@
     <symbol viewBox="0 0 64 64" id="weg2rt-opacity">
         <title>opacity</title>
         <g transform="matrix(1,0,0,1,-768,-448)">
-            <g transform="matrix(1.36435,0,0,1.32418,-292.525,-148.908)">
-                <g id="opacity-opacity">
-                    <circle id="opacity-opacity1" cx="801.274" cy="474.244" r="21.406" style="fill:rgb(211,211,211);" />
-                    <clipPath id="opacity-_clip1">
-                        <circle id="opacity-opacity2" cx="801.274" cy="474.244" r="21.406" /> </clipPath>
-                    <g clip-path="url(#opacity-_clip1)">
-                        <g transform="matrix(1.34366,0,0,0.951747,-333.23,13.1999)">
-                            <rect x="827.92" y="460.223" width="16.166" height="49.415" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,227.039,121.578)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,222.958,126.703)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,222.958,116.452)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,218.877,121.502)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,214.797,126.769)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,227.039,131.723)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,222.958,136.902)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,218.877,131.566)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,227.039,111.59)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,235.201,121.367)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,231.12,126.283)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,227.039,141.974)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,222.958,146.626)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,214.797,146.971)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,231.12,136.848)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,231.12,116.295)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,235.201,131.409)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,214.797,136.638)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,218.877,141.974)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,214.797,116.295)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,218.877,111.169)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,222.958,106.307)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                        <g transform="matrix(0.73295,0,0,0.755187,214.797,106.096)">
-                            <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </symbol>
-    <symbol viewBox="0 0 64 64" id="weg2rt-opavity">
-        <title>opavity</title>
-        <g transform="matrix(1,0,0,1,-768,-448)">
-            <g id="opavity-opacity">
+            <g id="opacity-opacity">
                 <g transform="matrix(1.56531,0,0,1.23267,-523.814,-118.236)">
                     <rect x="827.92" y="460.223" width="16.166" height="49.415" /> </g>
                 <g transform="matrix(1,0,0,1,14.4441,10.7477)">
@@ -827,67 +765,6 @@
                     <path d="M403.209,98.474L425.66,95.769" style="stroke:black;stroke-width:2.22px;" /> </g>
                 <g transform="matrix(0.851432,0.687876,0.0061724,-0.00764,13.047,-154.381)">
                     <path d="M402.273,96.381L424.696,93.916" style="stroke:black;stroke-width:2.69px;" /> </g>
-            </g>
-        </g>
-    </symbol>
-    <symbol viewBox="0 0 64 64" id="weg2rt-slice1">
-        <title>slice1</title>
-        <g transform="matrix(1,0,0,1,-768,-448)">
-            <g id="slice1-opacity" transform="matrix(1,0,0,1,-66.3656,47.9825)">
-                <clipPath id="slice1-_clip1">
-                    <ellipse cx="866.063" cy="431.407" rx="28.757" ry="28.42" /> </clipPath>
-                <g clip-path="url(#slice1-_clip1)">
-                    <g transform="matrix(1.83322,0,0,1.26028,-683.593,-179.94)">
-                        <rect x="827.92" y="460.223" width="16.166" height="49.415" /> </g>
-                    <g transform="matrix(1,0,0,1,80.8097,-37.2348)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,75.242,-30.4474)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,75.242,-44.0223)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,69.6743,-37.3355)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,64.1066,-30.361)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,80.8097,-23.801)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,75.242,-16.9431)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,69.6743,-24.009)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,80.8097,-50.4607)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,91.9451,-37.5133)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,86.3774,-31.0044)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,80.8097,-10.2261)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,75.242,-4.06616)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,64.1066,-3.60984)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,86.3774,-17.0136)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,86.3774,-44.2303)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,91.9451,-24.217)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,97.5128,-30.7964)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,64.1066,-17.292)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,69.6743,-10.2261)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,64.1066,-44.2303)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,69.6743,-51.0177)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,75.242,-57.4561)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                    <g transform="matrix(1,0,0,1,64.1066,-57.7346)">
-                        <rect x="799.698" y="458.819" width="5.568" height="6.787" /> </g>
-                </g>
             </g>
         </g>
     </symbol>
