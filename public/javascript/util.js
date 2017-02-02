@@ -228,10 +228,8 @@ socketServer.on( 'utility', function( data ) {
       docctx.clearRect(0, 0, box0Width, box0Height);
     break;
     case 'clearmoderator':
-
       statusBox.updateElement( 'ismoderator', '' );
       userContext.modMeState = false;
-
     break;
     case 'arClientInit':
         loadAr( 'peer' );

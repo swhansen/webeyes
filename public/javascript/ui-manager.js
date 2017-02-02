@@ -220,7 +220,6 @@ $( function() {
   );
 } );
 
-
 $( function() {
   $( '#utilButton' ).click( function() {
     buildSideMenu( 'util' );
