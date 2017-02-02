@@ -95,6 +95,7 @@ function openFileModal() {
 function setDocAlpha() {
   swal( {
   title: 'Set document load opacity',
+  text: 'Opacity will be set for broadcast images',
   type: 'question',
   showCancelButton: true,
   input: 'range',
