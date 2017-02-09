@@ -73,6 +73,7 @@ $( '#draw-radial-item-5' ).css( 'visibility', 'hidden' );
 
     highlightSelectedRadial( 'draw-radial-circle' );
     moveRadialtoTop( 'draw-radial-menu' );
+
     $( '#draw-radial-item-1' ).css( 'visibility', 'hidden' );
     $( '#draw-radial-item-4' ).css( 'visibility', 'hidden' );
 
@@ -165,6 +166,7 @@ drawRadialSvg.onclick = function( e ) {
 
         highlightSelectedRadial( 'util-radial-circle' );
         moveRadialtoTop( 'util-radial-menu' );
+         moveLayertoTop( 'doccanvaspane' );
 
      if ( !event ) var event = window.event;
         event.stopPropagation();

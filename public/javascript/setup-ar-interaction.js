@@ -237,7 +237,6 @@ $( function() {
      if ( intersects[0].object.name === 'swordGuyMesh' ) {
       if ( selectedObject.userData.isAnimated === false ) {
           selectedObject.userData.isAnimated = true;
-
           } else {
           selectedObject.userData.isAnimated = false;
         }
