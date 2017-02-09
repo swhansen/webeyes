@@ -51,8 +51,8 @@ function createSwordGuy( geometry, materials, x, y, z, s ) {
   var bonesClip = geometry.animations[0];
   var facesClip = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
 
-  mixer.clipAction( bonesClip ).setDuration( 3.0 );
-  mixer.clipAction( facesClip ).setDuration( 2.0 );
+  mixer.clipAction( bonesClip ).setDuration( 3.0 ).play();
+  mixer.clipAction( facesClip ).setDuration( 2.0 ).play();
 }
 
 getArWorldSummary();
