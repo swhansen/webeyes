@@ -37,8 +37,8 @@ function setUpArLayer() {
   arCanvasPane.style.visibility = 'visible';
   arCanvas.style.visibility = 'visible';
 
-  var CANVAS_WIDTH = boxWidth,
-      CANVAS_HEIGHT = boxHeight;
+  var CANVAS_WIDTH = 300,
+      CANVAS_HEIGHT = 300;
 
   if ( arSelectObjectArray ) { arSelectObjectArray = []; }
 
