@@ -40,6 +40,8 @@ function initUtil() {
   docCanvas.width = docCanvasPane.clientWidth;
   docCanvas.height = docCanvasPane.clientHeight;
 
+  docCanvasPane.style.visibility = 'visible';
+
   docctx = docCanvas.getContext('2d');
 }
 
