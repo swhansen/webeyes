@@ -27,8 +27,8 @@ function setUpArLayer() {
 //  arCanvas.width = arCanvasPane.clientWidth;
 //  arCanvas.height = arCanvasPane.clientHeight;
 
-  arCanvas.style.width = '100%';
-  arCanvas.style.height = '100%';
+//  arCanvas.style.width = '100%';
+//  arCanvas.style.height = '100%';
   arCanvas.width = arCanvas.offsetWidth;
   arCanvas.height = arCanvas.offsetHeight;
 
