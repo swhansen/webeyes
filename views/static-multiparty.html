@@ -5,12 +5,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
         <script type="text/javascript" src="/javascript/easyrtc.js"></script>
+
         <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="bower/jquery-ui/jquery-ui.min.js"></script>
+
         <script type="text/javascript" src="bower/lodash/lodash.min.js"></script>
         <script type="text/javascript" src="bower/sweetalert2/dist/sweetalert2.min.js"></script>
 
-        <script type="text/javascript" src="bower/threejs/build/three.min.js"></script>
+    <!--    <script type="text/javascript" src="bower/threejs/build/three.min.js"></script> -->
+            <script type="text/javascript" src="bower/threejs/build/three.min.js"></script>
+
+            <script type="text/javascript" src="javascript/Detector.js"></script>
+
         <script type="text/javascript" src="bower/tweenjs/src/Tween.js"></script>
         <script type="text/javascript" src="bower/gsap/src/minified/TweenMax.min.js"></script>
         <script type="text/javascript" src="bower/threejs/examples/js/controls/DeviceOrientationControls.js"></script>
@@ -38,7 +44,7 @@
     </head>
     <body onload="appInit()">
 
-    <div id="fullpage" class="boxCommon" style="background-color: #90CAF9">
+    <div id="fullpage" class="boxCommon" >
 
         <div id="messageFooter"> Message Panel</div>
 
@@ -86,11 +92,6 @@
                 <button id="textentryCancel" style="float:left;margin-left:1em" onclick="cancelText()">Cancel</button>
             </div>
 
-
-        <img id="killButton" class="transit boxCommon" onclick="killActiveBox()" src="images/button_close.png" style="display:none;z-index:3" alt="close button" />
-
-        <img id="muteButton" onclick ="muteActiveBox()" src="img/button_mute.png" height="64" width="64" style="display:none" alt="mute button" /><br>
-
         <div id="canvaspane"  class="boxCommon" style="visibility:hidden; pointer-events:none">
             <canvas id="canvas0" style="pointer-events:none"></canvas>
         </div>
@@ -99,7 +100,7 @@
             <canvas id="doccanvas" ></canvas>
         </div>
 
-        <div id="arcanvaspane" class="canvascenter" style="visibility:hidden">
+        <div id="arcanvaspane" class="boxCommon" style="visibility:hidden">
             <canvas id="arcanvas" class="canvasorient"></canvas>
         </div>
 
@@ -121,41 +122,37 @@
         </div>
 
         <div id="main-ui-container" class="ui-zindex">
-            <img id="modmeButton" class="ripple-effect" src="img/modme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
-            <img id="devmeButton" src="img/devme.png" height="64" width="64" style=" display:none" alt="code button" /><br>
 
-        <svg id="arMainButton" height="64" width="64" style="display:none" alt="AR Button"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-ar"> </use> </svg> <br>
+            <svg id="codeDialogButton" height="64" width="64" style="display:none" alt="plusup"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-plusup"> </use>
+            </svg> <br>
 
-        <svg id="vrMainButton" height="64" width="64" style="display:none" alt="VR Button"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-vr"> </use> </svg> <br>
+            <svg id="inviteViaEmail" height="64" width="64" style="display:none" alt="Email Invite"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-envelope"> </use>
+            </svg> <br>
 
-            <img id="codeDialogButton" class="ripple-effect" src="img/b-plusup.svg" height="64" width="64" style=" display:none" alt="code button" /><br>
+            <svg id="textEntryButton" class="ripple-effect" height="64" width="64" style="display:none" alt=""> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-text"> </use>
+            </svg> <br>
 
-            <svg id="leapButton" height="64" width="64" style="display:none" alt="Draw Button"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-hand"> </use> </svg> <br>
-
-
-        <svg id="inviteViaEmail" height="64" width="64" style="display:none" alt="Email Invite"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-envelope"> </use> </svg> <br>
-        <!--    <img id="inviteViaEmail" src="img/email-invite.png" class="ripple-effect" height="64" width="64" style=" display:none" alt="WC button" /><br> -->
-
-        <svg id="textEntryButton" class="ripple-effect" height="64" width="64" style="display:none" alt=""> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-text"> </use> </svg> <br>
-
-       <!--     <img id="textEntryButton" onclick ="showTextEntry()" src="img/textEntry.png" height="64" width="64" style="display:none" alt="text button" /><br>
-            <img id="textButton"  onclick ="showTextEntry()" src="img/textEntry.png" height="60" width="60" style="z-index:3; display:none" alt="text button"/><br> -->
-
-            <svg id="drawButton" class="ripple-effect" height="64" width="64" style="display:none" alt="Draw Button"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-draw"> </use> </svg> <br>
-
-            <img id="utilButton" class="ripple-effect" class="ripple-effect" src="img/util.png" height="64" width="64" style="display:none" alt="utility button" /><br>
-
-            <img id="videoButton" class='video-swap' src="img/b-video.svg" height="64" width="64" style=" display:none" alt="video button" /><br>
+            <a href="#0" class="video-swap">
+                <svg id="videoButton"  height="64" width="64" style=" display:none" alt="video button"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-video"></use>
+                </svg> <br>
+            </a>
         </div>
 
-
-        <div id="sticky-ui-container" style="visibility: hidden" class="ui-zindex">
             <img id="sticky-compass" class="ripple-effect" src="img/compass.png" height="64" width="64" style="visibility:hidden" alt="aug2" /><br>
+  <!--      <div id="sticky-ui-container" style="visibility: hidden" class="ui-zindex">
+
             <img id="sticky-handiot" class="ripple-effect" src="img/hand.png" height="64" width="64" style="visibility:hidden" alt="stickyiot" /><br>
+
             <svg id="sticky-ar" class="ripple-effect" height="64" width="64" style="display:visible" alt="AR Button"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-ar"> </use> </svg> <br>
+
             <svg id="sticky-draw" class="ripple-effect" style="display:visible" alt="stickydraw" height="64" width="64" style="display:none" alt="Sticky Draw"> <use xlink:href="img/weg2rt-defs.svg#weg2rt-b-draw"> </use> </svg> <br>
         </div>
+-->
 
+
+  <img id="killButton" class="transit boxCommon" onclick="killActiveBox()" src="images/button_close.png" style="display:none;z-index:3" alt="close button" /><br>
+
+<img id="muteButton" onclick ="muteActiveBox()" src="img/button_mute.png" height="64" width="64" style="display:none" alt="mute button" /><br>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300"viewBox="-2 -2 504 504" id="draw-radial-menu" style="transform-origin: 50% 50% 0px; transform: matrix3d(-0.00436915, -0.99999, 0, 0, 0.99999, -0.00436915, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); touch-action: none; user-select: none;">
 
@@ -264,7 +261,7 @@
 <defs>
     <pattern id="arimage" x="0%" y="0%" height="100%" width="100%"
              viewBox="0 0 512 512">
-      <image x="0%" y="0%" width="512" height="512" xlink:href="img/threeD.svg"></image>
+      <image x="0%" y="0%" width="512" height="512" xlink:href="img/geometry.svg"></image>
     </pattern>
   </defs>
 <g id="ar-radial-trigger" class="trigger menu-trigger" role="button">
@@ -274,26 +271,6 @@
 </g>
 </svg>
 </svg>
-
-       <div id="ar-ui-container" class="ui-zindex">
-           <img id="fadeButton" class="fade-swap" src="img/erase-on.png" height="64" width="64" style="display:none" alt="Fade button" /><br>
-
-        <div id="mod-ui-container" class="ui-zindex">
-            <img id="focus-participant" class="ripple-effect" title="tooltip" src="img/focus-moderator-off.png" height="64" width="64" style="display:none" alt="mod button" /><br>
-            <img id="mod-reset" title="tooltip" class="ripple-effect" src="img/mod-reset.png" height="64" width="64" style="display:none" alt="mod reset" /><br>
-        </div>
-
-        <div id="aug-ui-container" class="ui-zindex">
-            <img id="shareaug" class="ripple-effect"  src="img/ar-share.png" height="64" width="64" style="display:none" alt="shareaug" /><br>
-      <!--      <img id="clearaug" class="ripple-effect" src="img/mod-reset.png" height="64" width="64" style="display:none" alt="shareaug" /><br> -->
-        </div>
-
-        <div id="utility-ui-container" class="ui-zindex">
-            <img id="doc-button-1" class="doc-pub-1" src="img/document-b.png" height="64" width="64" style="display:none" alt="util button" /><br>
-            <img id="doc-button-2" class="doc-pub-2" src="img/document-y.png" height="64" width="64" style="display:none" alt="util button" /><br>
-            <img id="bullseye"  class="bullseye-swap" src="img/bullseye.png" height="64" width="64" style="display:none" alt="bullseyebutton" /><br>
-            <img id="arch"  class="arch-swap" src="img/arch.png" height="64" width="64" style="display:none" alt="arch" /><br>
-        </div>
 
         <div id="invite-dialog" title="WEG2RT Invite">
             <form action="" method="post">

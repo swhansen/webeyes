@@ -33,8 +33,8 @@ function useModeCode( modeCode ) {
       t = 1000;
       $( uiStructure.structure[button].mainButton ).fadeOut( t );
       }
-      document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
-      document.getElementById( 'modmeButton' ).style.visibility = 'visible';
+    //  document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
+    //  document.getElementById( 'modmeButton' ).style.visibility = 'visible';
       mainCollapsed = true;
     break;
 
@@ -98,10 +98,10 @@ function useModeCode( modeCode ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
 
-    document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
-    document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
+  //  document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
+  //  document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
    // document.getElementById( 'arMainButton' ).style.visibility = 'hidden';
-    document.getElementById( 'vrMainButton' ).style.visibility = 'visible';
+ //   document.getElementById( 'vrMainButton' ).style.visibility = 'visible';
     document.getElementById( 'sticky-compass' ).style.visibility = 'hidden';
     document.getElementById( 'canvas0' ).style.pointerEvents = 'none';
 
@@ -140,9 +140,9 @@ function useModeCode( modeCode ) {
           $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
         }
 
-      document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
-      document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
-      document.getElementById( 'arMainButton' ).style.visibility = 'visible';
+  //    document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
+  //    document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
+  //    document.getElementById( 'arMainButton' ).style.visibility = 'visible';
       document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
       mainCollapsed = true;
 
@@ -170,8 +170,8 @@ function useModeCode( modeCode ) {
     for ( button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
-    document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
-    document.getElementById( 'devmeButton' ).style.visibility = 'visible';
+//    document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
+//    document.getElementById( 'devmeButton' ).style.visibility = 'visible';
     mainCollapsed = true;
   break;
 

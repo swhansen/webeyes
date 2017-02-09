@@ -8,16 +8,11 @@
 
 /* Radial Menus */
 
-.item {visibility: hidden;}
-.item .sector { transition: all .1s linear; fill: #fff; stroke: #111;  }
-.item:hover .sector { fill: #b3b3ff; }
-
-
 .draw-radial-item {visibility: hidden;}
 .draw-radial-item .sector { transition: all .1s linear; fill: #B0BEC5; stroke: #455A64;  }
 .draw-radial-item:hover .sector { fill: #607D8b; }
 
-.ar-radial-item .sector{transition:all .1s linear;fill:#B0BEC5;stroke:#455A64;}
+.ar-radial-item .sector{transition:all .1s linear;fill:#B0BEC5; stroke:#455A64;}
 .ar-radial-item:hover .sector,.ar-radial-item:focus .sector{fill:#607D8b;}
 
 .util-radial-item .sector{transition:all .1s linear; fill:#B0BEC5; stroke:#455A64; }
@@ -26,21 +21,8 @@
 
 .menu-trigger{fill:#EA2A55;pointer-events:auto;}
 .menu-trigger:hover, .menu-trigger:focus{cursor:pointer; fill:#607D8b}
+
 symbol{overflow:visible;}
-
-
-#radial-menu {
-  display: block;
-  margin: 0 auto;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  max-width: 600px;
-  border-radius: 125px 125px 0 0;
-}
 
 #ar-radial-menu {
   display: block;
@@ -388,17 +370,14 @@ width: 1000px;
 }
 
 body {
-    background-color: #90CAF9;
+    background-color: #1C1B1B;
     margin-left:0px;
     margin-top:0px;
 }
 
 #killButton {
     opacity:0.7;
-    position:absolute; !important;
-    bottom:10px; !important;
-    right:10px; !important;
-    z-index: 100;
+
 }
 
 #killButton:hover {s
@@ -408,9 +387,6 @@ body {
 
 #muteButton {
     opacity:0.7;
-    position:absolute; !important;
-    bottom:75px; !important;
-    right:10px; !important;
 }
 
 #muteButton:hover {

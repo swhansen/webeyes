@@ -35,7 +35,7 @@ function initUtil() {
   $( '#doccanvaspane' ).css( boxPosition );
   $( '#doccanvaspane' ).css( 'width', boxWidth );
   $( '#doccanvaspane' ).css( 'height', boxHeight );
-  $( '#doccanvaspane' ).css( 'z-index', 50);
+  $( '#doccanvaspane' ).css( 'z-index', 50 );
 
   docCanvas.width = docCanvasPane.clientWidth;
   docCanvas.height = docCanvasPane.clientHeight;

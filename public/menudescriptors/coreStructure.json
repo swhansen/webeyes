@@ -1,9 +1,16 @@
 {
     "structure": {
+         "hangup": {
+            "mainButton": "#killbutton",
+            "buttons": [],
+            "desc": "toggle video broadcast",
+            "initState": "none",
+            "baseZ": "20"
+        },
         "video": {
             "mainButton": "#videoButton",
             "buttons": [],
-            "desc": "toggle video broadcast",
+            "desc": "toggle video broadcast mute",
             "initState": "none",
             "baseZ": "20"
         },

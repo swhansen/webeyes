@@ -4,25 +4,45 @@ function setUpArLayer() {
   renderer = null;
   var step = 0;
 
-  var arCanvas = document.getElementById( 'arcanvaspane' );
-  var ar0 = document.getElementById( 'arcanvas' );
+
+  var arCanvasPane = document.getElementById( 'arcanvaspane' );
+  var arCanvas = document.getElementById( 'arcanvas' );
+
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
- // document.getElementById( 'arcanvaspane' ).className = 'canvascenter';
+  userContext.addDimensionalLayer( 'arcanvaspane' );
 
-  ar0.style.width = '100%';
-  ar0.style.height = '100%';
-  ar0.width = ar0.offsetWidth;
-  ar0.height = ar0.offsetHeight;
+  var box = $( '#box0' );
+  var boxPosition = box.offset();
+  var boxWidth = box.outerWidth();
+  var boxHeight = box.outerHeight();
 
+  box0Height = document.getElementById('box0').offsetHeight;
+  box0Width = document.getElementById('box0').offsetWidth;
+
+  $( '#arcanvaspane' ).css( boxPosition );
+  $( '#arcanvaspane' ).css( 'width', boxWidth );
+  $( '#arcanvaspane' ).css( 'height', boxHeight );
+  $( '#arcanvaspane' ).css( 'z-index', 50 );
+
+  arCanvas.width = arCanvasPane.clientWidth;
+  arCanvas.height = arCanvasPane.clientHeight;
+
+//  arCanvas.style.width = '100%';
+//  arCanvas.style.height = '100%';
+//  arCanvas.width = arCanvas.offsetWidth;
+//  arCanvas.height = arCanvas.offsetHeight;
+
+  arCanvasPane.style.visibility = 'visible';
   arCanvas.style.visibility = 'visible';
-  ar0.style.visibility = 'visible';
 
-  var CANVAS_WIDTH = 300,
-      CANVAS_HEIGHT = 300;
+  var CANVAS_WIDTH = boxWidth,
+      CANVAS_HEIGHT = boxHeight;
 
   if ( arSelectObjectArray ) { arSelectObjectArray = []; }
+
+ // var  helper, facesClip, bonesClip;
 
   scene = new THREE.Scene();
 
@@ -54,16 +74,17 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
   vrDrivenCameraControls.connect();
 }
 
-  renderer = new THREE.WebGLRenderer( { canvas: ar0, alpha: true } );
+  renderer = new THREE.WebGLRenderer( { canvas: arCanvas, alpha: true } );
 
 // set the renderer based on the device type
 
-if ( userContext.mobile === true ) {
-  renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
-  } else { renderer.setSize( box0Width, box0Width ); }
+// if ( userContext.mobile === true ) {
+//   renderer.setSize( arCanvas.offsetWidth, arCanvas.offsetHeight );
+//   } else { renderer.setSize( box0Width, box0Width ); }
 
-//  renderer.setSize( box0Width, box0Width );
-//  renderer.setSize( ar0.offsetWidth, ar0.offsetHeight );
+if ( userContext.mobile === true ) {
+  renderer.setSize( arCanvas.offsetWidth, arCanvas.offsetHeight );
+  } else { renderer.setSize( box0Width, box0Width ); }
 
   renderer.setClearColor( 0x000000, 0 );
 
@@ -109,7 +130,6 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   sphereD.position.set( 0.0, -6.0, 0.0 );
   sphereD.name = 'sphereD';
 
-
   scene.add( sphereN );
   scene.add( sphereS );
   scene.add( sphereE );
@@ -121,43 +141,103 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 
   // IOT
 
-  arTrigger1 = new THREE.Mesh( geometrySphere, trigger1Mat );
-  arTrigger1.position.set( 1.0, 2.0, -4.0 );
-  arTrigger1.name = 'arTrigger1';
-  scene.add( arTrigger1 );
-  arTrigger1.userData.isSelectable = true;
-  arTrigger1.visible = true;
-  arSelectObjectArray.push( arTrigger1 );
+//  arTrigger1 = new THREE.Mesh( geometrySphere, trigger1Mat );
+//  arTrigger1.position.set( 1.0, 2.0, -4.0 );
+//  arTrigger1.name = 'arTrigger1';
+//  scene.add( arTrigger1 );
+//  arTrigger1.userData.isSelectable = true;
+//  arTrigger1.visible = true;
+//  arSelectObjectArray.push( arTrigger1 );
+//
+//  // Sword Guy
+//
+//  arTrigger2 = new THREE.Mesh( geometrySphere, trigger2Mat );
+//  arTrigger2.position.set( 1.0, 1.75, -4.0 );
+//  arTrigger2.name = 'arTrigger2';
+//  scene.add( arTrigger2 );
+//  arTrigger2.userData.isSelectable = true;
+//  arTrigger2.visible = true;
+//  arSelectObjectArray.push( arTrigger2 );
+//
+//  //
+//
+//  arTrigger3 = new THREE.Mesh( geometrySphere, trigger3Mat );
+//  arTrigger3.position.set( 1.2, 1.75, -4.0 );
+//  arTrigger3.name = 'arTrigger3';
+//  scene.add( arTrigger3 );
+//  arTrigger3.userData.isSelectable = true;
+//  arTrigger3.visible = true;
+//  arSelectObjectArray.push( arTrigger3 );
+//
+//  arTrigger4 = new THREE.Mesh( geometrySphere, trigger4Mat );
+//  arTrigger4.position.set( 1.2, 2.0, -4.0 );
+//  arTrigger4.name = 'arTrigger4';
+//  scene.add( arTrigger4 );
+//  arTrigger4.userData.isSelectable = true;
+//  arTrigger4.visible = true;
+//  arSelectObjectArray.push( arTrigger4 );
 
-  // Sword Guy
+/// test load sword guy
 
-  arTrigger2 = new THREE.Mesh( geometrySphere, trigger2Mat );
-  arTrigger2.position.set( 1.0, 1.75, -4.0 );
-  arTrigger2.name = 'arTrigger2';
-  scene.add( arTrigger2 );
-  arTrigger2.userData.isSelectable = true;
-  arTrigger2.visible = true;
-  arSelectObjectArray.push( arTrigger2 );
 
-  //
+//var geometry = new THREE.PlaneGeometry( 16000, 16000 );
+//  var material = new THREE.MeshPhongMaterial( { emissive: 0x888888 } );
+//
+//    var loader = new THREE.JSONLoader();
+//
+//   loader.load( '../armodels/knight.js', function( geometry, materials ) {createSwordGuy( geometry, materials, 0, -15.0, 65.0, 3.0 );
+//         } );
 
-  arTrigger3 = new THREE.Mesh( geometrySphere, trigger3Mat );
-  arTrigger3.position.set( 1.2, 1.75, -4.0 );
-  arTrigger3.name = 'arTrigger3';
-  scene.add( arTrigger3 );
-  arTrigger3.userData.isSelectable = true;
-  arTrigger3.visible = true;
-  arSelectObjectArray.push( arTrigger3 );
-
-  arTrigger4 = new THREE.Mesh( geometrySphere, trigger4Mat );
-  arTrigger4.position.set( 1.2, 2.0, -4.0 );
-  arTrigger4.name = 'arTrigger4';
-  scene.add( arTrigger4 );
-  arTrigger4.userData.isSelectable = true;
-  arTrigger4.visible = true;
-  arSelectObjectArray.push( arTrigger4 );
-
-  getArWorldSummary();
+//function createSwordGuy( geometry, materials, x, y, z, s ) {
+//
+//
+//  var mesh, helper;
+//  var facesClip, bonesClip;
+//
+//         geometry.computeBoundingBox();
+//
+//         console.log( 'geometry.boundingBox:', geometry.boundingBox );
+//
+//         var bb = geometry.boundingBox;
+//         for ( var i = 0; i < materials.length; i++ ) {
+//           var m = materials[ i ];
+//           m.skinning = true;
+//           m.morphTargets = true;
+//           m.specular.setHSL( 0, 0, 0.1 );
+//           m.color.setHSL( 0.6, 0, 0.6 );
+//         }
+//         swordGuyMesh = new THREE.SkinnedMesh( geometry, new THREE.MultiMaterial( materials ) );
+//         swordGuyMesh.position.set( x, y - bb.min.y * s, z );
+//         swordGuyMesh.scale.set( s, s, s );
+//         swordGuyMesh.rotation.y =  -Math.PI;
+//         swordGuyMesh.name = 'swordGuyMesh';
+//
+//         swordGuyMesh.userData.objectType =  'swordGuyMesh';
+//         swordGuyMesh.userData.isAnimated = false;
+//         swordGuyMesh.userData.isUserCreated = false;
+//         swordGuyMesh.userData.isSelectable = true;
+//         swordGuyMesh.userData.createdBy = 'system';
+//
+//         scene.add( swordGuyMesh );
+//         arSelectObjectArray.push( swordGuyMesh );
+//
+//      //   swordGuyMesh.castShadow = true;
+//      //   swordGuyMesh.receiveShadow = true;
+//
+//        helper = new THREE.SkeletonHelper( swordGuyMesh );
+//        helper.material.linewidth = 3;
+//        helper.visible = false;
+//        scene.add( helper );
+//
+//      mixer = new THREE.AnimationMixer( swordGuyMesh );
+//      var bonesClip = geometry.animations[ 0 ];
+//      var facesClip = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
+//
+//      mixer.clipAction( bonesClip ).setDuration( 3.0 ).play();
+//      mixer.clipAction( facesClip ).setDuration( 2.0 ).play();
+//       }
+//
+//  getArWorldSummary();
 
   function arConnectionController() {
 
@@ -207,7 +287,6 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
       }
 }
 
-
   function animateArObjects() {
 
     var dt = clock.getDelta();
@@ -230,22 +309,8 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 //        sheep.rotation.z += dt * 2;
 //    }
 
-//  Flying  Pig
-//    if ( flyingPig !== undefined ) {
-//      pivotPoint.rotation.y += dt * 1.0;
-//    }
-
-//  Sword Guy
-//    if ( isAnimateSwordGuy === true ) {
-//         mixer.update( dt );
-//          helper.update();
-//    }
-
-
-// Use a case statement
-
-
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+
         if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
               arSelectObjectArray[i].userData.isAnimated === true ) {
           arSelectObjectArray[i].rotation.y += dt * 1.0;
@@ -258,10 +323,10 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 
         if ( arSelectObjectArray[i].name === 'swordGuyMesh' &&
               arSelectObjectArray[i].userData.isAnimated === true ) {
-                  mixer.update( dt );
-                  helper.update();
-        }
 
+                 mixer.update( dt );
+          //        helper.update();
+        }
     }
   }
 

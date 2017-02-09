@@ -95,87 +95,6 @@ function getLayersZindexStatus() {
 // setLayerPointerExclusive( 'fullpage' );
 // console.log( 'fullpage - PointerMode:', getLayersPointerStatus() );
 
-//
-// Sticky menus
-//
-
-$( function() {
-$( '#sticky-draw' ).click( function() {
-    _.each( uiStructure.structure, function( fcn ) {
-    $( fcn.sideBar ).fadeOut( 2 );
-  } );
-
-  document.getElementById( 'canvaspane' ).style.zIndex = '50';
-  document.getElementById( 'arcanvaspane' ).style.zIndex = '10';
-
-  //moveLayertoTop( 'canvaspane' );
-
-  setDomPointerEvent( 'canvas0', 'auto' );
-  setDomPointerEvent( 'arcanvaspane', 'none' );
-
-  messageBar( 'Draw Layer is in Focus' );
- } );
-  } );
-
-$( function() {
-  $( '#sticky-ar' ).click( function() {
-
-  //  _.each( uiStructure.structure, function( fcn ) {
-  //     $( fcn.sideBar ).fadeOut( 2 );
-  //    } );
-
-   document.getElementById( 'canvaspane' ).style.zIndex = '10';
-   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
-
-     setDomPointerEvent( 'canvas0', 'none' );
-     setDomPointerEvent( 'arcanvaspane', 'auto' );
-     messageBar( 'AR Layer is in Focus' );
-  } );
-} );
-
-// Toggle the leap hand to control IOT
-
-$( function() {
-  $( '#sticky-handiot' ).click( function() {
-    if ( isIotGrabOn === true ) {
-      document.getElementById( 'sticky-handiot' ).src = 'img/hand.png';
-      isIotGrabOn = false;
-    } else {
-      document.getElementById( 'sticky-handiot' ).src = 'img/handiot.png';
-      isIotGrabOn = true;
-    }
-  } );
-} );
-
-$( function() {
-  $( '#sticky-compass' ).click( function() {
-    compassToggle = !compassToggle;
-    var data = compassToggle;
-    orientationCompass( data );
-    var sessionId = socketServer.sessionid;
-    socketServer.emit( 'toggleCompass', data, sessionId );
-  } );
-} );
-
-function buildSideMenu( layer ) {
-
-  // remove existing side menu(s)
-  // expand right element div and buttons for function specific menu
-  // collapse main menu
-
-  _.each( uiStructure.structure, function( fcn ) {
-    $( fcn.sideBar ).fadeOut( 2 );
-  } );
-
-  $( '#layer-menu-button' ).trigger( 'click' );
-
-  $( uiStructure.structure[layer].sideBar ).fadeIn( 5 );
-
-  _.each( uiStructure.structure[layer].buttons, function( button ) {
-    $( button ).fadeIn( 2000 );
-  } );
-}
-
 // the main menu collapse-expand
 
 $( document ).ready( function() {
@@ -194,91 +113,6 @@ $( document ).ready( function() {
         $( uiStructure.structure[button].mainButton ).fadeOut( t );
       }
     }
-  } );
-} );
-
-$( function() {
-  $( '#leapButton' ).click( function() {
-    userContext.isLeap = true;
-    document.getElementById( 'sticky-handiot' ).style.visibility = 'visible';
-    leapFocus();
-
-  // Tell everyone to initialize Leap
-
-  var sessionId = socketServer.sessionid;
-      socketServer.emit( 'utility', 'leapClientInit', sessionId );
-
-    msgString = 'User ' + userContext.rtcId + ' has become iniialized Leap';
-    messageBar( msgString );
-
-    mainCollapsed = true;
-      for ( var button in uiStructure.structure ) {
-        t = 500;
-        $( uiStructure.structure[button].mainButton ).fadeOut( t );
-      }
-    }
-  );
-} );
-
-$( function() {
-  $( '#utilButton' ).click( function() {
-    buildSideMenu( 'util' );
-    userContext.addDimensionalLayer( 'doccanvaspane' );
-    }
-  );
-} );
-
-$( function() {
-  $( '#drawButton' ).click( function() {
-      buildSideMenu( 'draw' );
-      userContext.uiState = 'draw';
-      setDomPointerEvent( 'arcanvaspane', 'none' );
-      setDomPointerEvent( 'canvas0', 'auto' );
-      setDomPointerEvent( 'arcanvaspane', 'none' );
-    }
-  );
-} );
-
-$( function() {
-  $( '#modmeButton' ).click( function() {
-      buildSideMenu( 'modme' );
-      userContext.modMeState = true;
-      setDomPointerEvent( 'canvas0', 'none' );
-      setDomPointerEvent( 'arcanvaspane', 'none' );
-    }
-  );
-} );
-
-$( function() {
-  $( '#arMainButton' ).click( function() {
-   swal( {
-   title: 'AR World',
-   text: 'Input Your VR World',
-   type: 'input',
-   showCancelButton: true,
-   closeOnCancel: true,
-   closeOnConfirm: false,
-   animation: 'slide-from-top',
-   inputPlaceholder: 'AR VR World'
-     },
-       function( inputValue ) {
-         if ( inputValue === false ) { return false; }
-         if ( inputValue === '' ) {
-             swal.showInputError( 'Please Enter Your AR World!' );
-             return false;
-           }
-         if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
-             inputValue.toLowerCase() ) ) ) {
-               swal.showInputError( 'Please enter a valid AR World' );
-             return false;
-         }
-        userContext.arvrWorld = inputValue.toLowerCase();
-        emitSessionUserContext( userContext );
-        swal.close();
-        setArWorld();
-        $( '#arMainButton' ).css( 'visibility', 'hidden' );
-        $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
-    } );
   } );
 } );
 
@@ -301,51 +135,38 @@ function setArWorld() {
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
       document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
 
-      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+  //    document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
       // inform all the peers of the mode
 }
 
-$( function() {
-  $( '#vrMainButton' ).click( function() {
+function setTestWorld() {
 
- swal( {
-     title: 'VR World',
-     text: 'Input your VR World',
-     type: 'input',
-     showCancelButton: true,
-     closeOnCancel: true,
-     closeOnConfirm: false,
-     animation: 'slide-from-top',
-     inputPlaceholder: 'VR World'
-       },
-         function( inputValue ) {
-           if ( inputValue === false ) { return false; }
-           if ( inputValue === '' ) {
-               swal.showInputError( 'Please Enter Your VR World!' );
-               return false;
-             }
-            if ( !( _.includes( [ 'steve', 'chuck', 'test' ],
-               inputValue.toLowerCase() ) ) ) {
-                 swal.showInputError( 'Please enter a valid VR World' );
-               return false;
-           }
-          userContext.arvrWorld = inputValue.toLowerCase();
-          emitSessionUserContext( userContext );
-          swal.close();
+ //     buildSideMenu( 'augme' );
 
-          setVrWorld();
-          shareArVrWorld();
+      userContext.participantState = 'focus';
+      userContext.modMeState = true;
+      userContext.uiState = 'ar';
+      userContext.mode = 'ar';
+      emitSessionUserContext( userContext );
 
-          $( '#vrMainButton' ).css( 'visibility', 'hidden' );
-          $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+      setPeerUserContext( 'all', 'mode', 'ar' );
+      setPeerUserContext( 'all', 'participantState', 'peer' );
+      userContext.participantState = 'focus';
 
-          $( '#ismoderator' ).text( 'Moderator' );
-    } );
-  } );
-} );
+      loadAr();
+
+      document.getElementById( 'canvaspane' ).style.zIndex = '10';
+      document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
+
+  //    document.getElementById( 'sticky-ar' ).style.display = 'visible';
+      setDomPointerEvent( 'canvas0', 'none' );
+      setDomPointerEvent( 'arcanvaspane', 'auto' );
+
+      // inform all the peers of the mode
+}
 
 function setVrWorld() {
 
@@ -366,7 +187,7 @@ function setVrWorld() {
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
       document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
-      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+//      document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
@@ -377,42 +198,42 @@ function setVrWorld() {
 
     }
 
-  $( function() {
-    $( '#shareaug' ).click( function() {
+// $( function() {
+//   $( '#shareaug' ).click( function() {
 
-// Focus the AR initiator (modme)
+/// Focus the AR initiator (modme)
 
-    if ( userContext.mode === 'ar' ) {
+//   if ( userContext.mode === 'ar' ) {
 
-      // Tell everyone to initialize
+//     // Tell everyone to initialize
 
-      var sessionId = socketServer.sessionid;
-          socketServer.emit( 'utility', 'arClientInit', sessionId );
+//     var sessionId = socketServer.sessionid;
+//         socketServer.emit( 'utility', 'arClientInit', sessionId );
 
-      // Start the orientation data feed
+//     // Start the orientation data feed
 
-        emitArOrientationData();
-        document.getElementById( 'sticky-ar' ).style.display = 'visible';
+//       emitArOrientationData();
+//       document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
-        msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
-        emitMessage( msgString );
-      }
+//       msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
+//       emitMessage( msgString );
+//     }
 
-    if ( userContext.mode === 'vr' ) {
+//   if ( userContext.mode === 'vr' ) {
 
-      // Tell everyone to initialize AR
+//     // Tell everyone to initialize AR
 
-      var sessionId = socketServer.sessionid;
-          socketServer.emit( 'utility', 'vrClientInit', sessionId );
+//     var sessionId = socketServer.sessionid;
+//         socketServer.emit( 'utility', 'vrClientInit', sessionId );
 
-      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+//     document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
-      msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
-       emitMessage( msgString );
-      }
-    }
-  );
-} );
+//     msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
+//      emitMessage( msgString );
+//     }
+//   }
+// );
+// );
 
 function shareArVrWorld()  {
   if ( userContext.mode === 'ar' ) {
@@ -446,106 +267,6 @@ function shareArVrWorld()  {
       }
 }
 
-//
-// Moderator Toggle
-//
-
-$( function() {
-    $( '.moderator-swap' ).click( function() {
-      if ( $( this ).attr( 'class' ) === 'moderator-swap' ) {
-        this.src = this.src.replace( 'img/focus-moderator-off.png', 'img/focus-moderator.png' );
-        modSwitch = true;
-        setDomPointerEvent( 'canvas0', 'none' );
-      } else {
-        this.src = this.src.replace( 'img/focus-moderator.png', 'img/focus-moderator-off.png' );
-        modSwitch = false;
-        setDomPointerEvent( 'canvas0', 'auto' );
-      }
-      $( this ).toggleClass( 'on' );
-    } );
-  } );
-
-//
-//  Utility menu buttons
-//   - Push only per workflow change (swh - 8-15-15)
-//
-
-  $( function() {
-    $( '.doc-pub-1' ).click( function() {
-      emitUtility( 'doc-1' );
-      drawDoc1();
-     } );
-  } );
-
-$( function() {
-    $( '.doc-pub-2' ).click( function() {
-      emitUtility( 'doc-2' );
-      drawDoc1();
-    } );
-  } );
-
-$( function() {
-    $( '.arch-swap' ).click( function() {
-      emitUtility( 'arch' );
-      drawArch();
-    } );
-  } );
-
-  $( function() {
-    $( '.bullseye-swap' ).click( function() {
-      emitUtility( 'bullseye' );
-      drawBullsEye();
-    } );
-  } );
-
-$( function() {
-    $( '#mod-reset' ).click( function() {
-        emitUtility( 'reset' );
-        clearUtilCanvas();
-        clearDrawCanvas();
-      }
-    );
-  } );
-
-$( function() {
-    $( '#clearaug' ).click( function() {
-        removeUserCreatedArObjects();
-        clearUtilCanvas();
-        clearDrawCanvas();
-        emitUtility( 'reset' );
-      }
-    );
-  } );
-
-// --------------------------
-
-  // toggle line drawing fade
-
-  $( function() {
-    $( '.fade-swap' ).click( function() {
-      console.log( 'Erase Fade' );
-      if ( $( this ).attr( 'class' ) === 'fade-swap' ) {
-        this.src = this.src.replace( 'img/erase-on', 'img/erase-off' );
-        fadeSwitch = false;
-        toggleFade();
-      } else {
-        this.src = this.src.replace( 'img/erase-off', 'img/erase-on' );
-        fadeSwitch = true;
-        toggleFade();
-      }
-      $( this ).toggleClass( 'on' );
-    } );
-
-  } );
-
-//
-//  Video muting
-//  - "hide" the video element and replace with image
-//  - Toggled by main menu button
-//  - based on the unique rtcid if the "owner"
-//   - send mute message to other clients
-//
-
 function emitVideoMute( videoMuteData ) {
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'videoMute', videoMuteData, sessionId );
@@ -570,36 +291,38 @@ $( function() {
     var videoBoxToMute = document.getElementById( getIdOfBox( boxToMute ) );
 
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
-      this.src = this.src.replace( 'img/b-video.svg', 'img/mute-video.svg' );
-        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'hidden';
 
-        var avatar = document.getElementById( theAvatar );
+      $(this).find("use").attr("xlink:href", "img/weg2rt-defs.svg#weg2rt-b-mute-video");
 
-        avatar.src  = 'img/' + theAvatar + '.png';
-        avatar.style.width = videoBoxToMute.style.width;
-        avatar.style.height = videoBoxToMute.style.height;
-        avatar.style.left = videoBoxToMute.style.left;
-        avatar.style.top = videoBoxToMute.style.top;
-        avatar.style.visibility = 'visible';
-        videoMuteData.state = 'hidden';
-        videoMuteData.avatar = theAvatar;
+      document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'hidden';
 
-        emitVideoMute( videoMuteData );
-      } else {
+      var avatar = document.getElementById( theAvatar );
+      avatar.src  = 'img/' + theAvatar + '.png';
+      avatar.style.width = videoBoxToMute.style.width;
+      avatar.style.height = videoBoxToMute.style.height;
+      avatar.style.left = videoBoxToMute.style.left;
+      avatar.style.top = videoBoxToMute.style.top;
+      avatar.style.visibility = 'visible';
+      videoMuteData.state = 'hidden';
+      videoMuteData.avatar = theAvatar;
+      emitVideoMute( videoMuteData );
 
-        this.src = this.src.replace( 'img/mute-video.svg', 'img/b-video.svg' );
-        document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'visible';
-        document.getElementById( theAvatar ).style.visibility = 'hidden';
-        videoMuteData.state = 'visible';
+    } else {
+
+      $(this).find("use").attr("xlink:href", "img/weg2rt-defs.svg#weg2rt-b-video");
+
+      document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'visible';
+      document.getElementById( theAvatar ).style.visibility = 'hidden';
+      videoMuteData.state = 'visible';
 
         emitVideoMute( videoMuteData );
       }
+
       $( this ).toggleClass( 'on' );
 
     for ( var button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
-
     } );
   } );
 

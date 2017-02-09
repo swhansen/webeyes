@@ -12,51 +12,54 @@ var WEBEYES = {};
 var compassToggle = false;
 var isIotGrabOn = false;
 
-/*jshint -W020 */
-socketServer = io.connect( '/' );
-/*jshint +W020 */
-
 var uiStructure = {};
 
 var threejsDebug = true;
+
+// var mixer;
 
 var leapPeerHandAnimate = false;
 
 // Container for User Context
 
 var userContext = {
-  rtcId: '',
-  isSessionInitiator: false,
-  isLeap: false,
-  isIotHome: false,
-  iotZone: '',
-  iotSubZone: '',
-  modMeState: false,
-  participantState: 'peer',
-  uiState: '',
-  mode: '',
-  arCapable: false,
-  geoLocation: false,
-  orientation: false,
-  mobile: false,
-  browserType: '',
-  browserVideoDevices: '',
-  room: '',
-  arvrWorld: '',
-  dimensionalLayers: [],
-  addDimensionalLayer: addDimensionalLayer
+  rtcId               : '',
+  isSessionInitiator  : false,
+  isLeap              : false,
+  isIotHome           : false,
+  iotZone             : '',
+  iotSubZone          : '',
+  modMeState          : false,
+  participantState    : 'peer',
+  uiState             : '',
+  mode                : '',
+  arCapable           : false,
+  geoLocation         : false,
+  orientation         : false,
+  mobile              : false,
+  browserType         : '',
+  browserVideoDevices : '',
+  room                : '',
+  arvrWorld           : '',
+  dimensionalLayers   : [],
+  addDimensionalLayer : addDimensionalLayer
 };
 
 var statusBox = {
-channel: '',
-roomId: '',
-iotZoneId: '',
-iotsubzone: '',
-iotDeviceId: '',
-ismoderator: '',
-metaverse: '',
-updateElement: updateElement
+channel       : '',
+roomId        : '',
+iotZoneId     : '',
+iotsubzone    : '',
+iotDeviceId   : '',
+ismoderator   : '',
+metaverse     : '',
+updateElement : updateElement
 };
+
+
+/*jshint -W020 */
+socketServer = io.connect( '/' );
+/*jshint +W020 */
 
 
 function updateElement( element, info ) {
@@ -648,7 +651,6 @@ function collapseToThumb() {
     activeBox = -1;
     updateMuteImage( false );
     handleWindowResize();
-
 }
 
 function updateMuteImage( toggle ) {
