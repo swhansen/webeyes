@@ -13,26 +13,26 @@ function setUpArLayer() {
 
   userContext.addDimensionalLayer( 'arcanvaspane' );
 
- // var box = $( '#box0' );
- // var boxPosition = box.offset();
- // var boxWidth = box.outerWidth();
- // var boxHeight = box.outerHeight();
+  var box = $( '#box0' );
+  var boxPosition = box.offset();
+  var boxWidth = box.outerWidth();
+  var boxHeight = box.outerHeight();
 
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
 
-//  $( '#arcanvaspane' ).css( boxPosition );
-//  $( '#arcanvaspane' ).css( 'width', boxWidth );
-//  $( '#arcanvaspane' ).css( 'height', boxHeight );
-//  $( '#arcanvaspane' ).css( 'z-index', 50 );
+  $( '#arcanvaspane' ).css( boxPosition );
+  $( '#arcanvaspane' ).css( 'width', boxWidth );
+  $( '#arcanvaspane' ).css( 'height', boxHeight );
+  $( '#arcanvaspane' ).css( 'z-index', 50 );
 
   arCanvas.width = arCanvasPane.clientWidth;
   arCanvas.height = arCanvasPane.clientHeight;
 
-  arCanvas.style.width = '100%';
-  arCanvas.style.height = '100%';
-  arCanvas.width = arCanvas.offsetWidth;
-  arCanvas.height = arCanvas.offsetHeight;
+//  arCanvas.style.width = '100%';
+//  arCanvas.style.height = '100%';
+//  arCanvas.width = arCanvas.offsetWidth;
+//  arCanvas.height = arCanvas.offsetHeight;
 
   arCanvasPane.style.visibility = 'visible';
   arCanvas.style.visibility = 'visible';
