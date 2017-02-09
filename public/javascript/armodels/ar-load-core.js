@@ -4,10 +4,8 @@ function setUpArLayer() {
   renderer = null;
   var step = 0;
 
-
   var arCanvasPane = document.getElementById( 'arcanvaspane' );
   var arCanvas = document.getElementById( 'arcanvas' );
-
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
@@ -18,16 +16,16 @@ function setUpArLayer() {
 //  var boxWidth = box.outerWidth();
 //  var boxHeight = box.outerHeight();
 
-  box0Height = document.getElementById('box0').offsetHeight;
-  box0Width = document.getElementById('box0').offsetWidth;
+//  box0Height = document.getElementById('box0').offsetHeight;
+//  box0Width = document.getElementById('box0').offsetWidth;
 
 //  $( '#arcanvaspane' ).css( boxPosition );
 //  $( '#arcanvaspane' ).css( 'width', boxWidth );
 //  $( '#arcanvaspane' ).css( 'height', boxHeight );
 //  $( '#arcanvaspane' ).css( 'z-index', 50 );
 
-  arCanvas.width = arCanvasPane.clientWidth;
-  arCanvas.height = arCanvasPane.clientHeight;
+//  arCanvas.width = arCanvasPane.clientWidth;
+//  arCanvas.height = arCanvasPane.clientHeight;
 
   arCanvas.style.width = '100%';
   arCanvas.style.height = '100%';
