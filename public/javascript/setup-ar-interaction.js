@@ -341,9 +341,10 @@ $( function() {
 //       arTrigger4.visible = false;
 //     } );
 
-//   var sessionId = socketServer.sessionid;
-//   socketServer.emit( 'arDynamicLoadModel', data, sessionId );
 // }
+
+   var sessionId = socketServer.sessionid;
+   socketServer.emit( 'arDynamicLoadModel', data, sessionId );
 
  }
 }
