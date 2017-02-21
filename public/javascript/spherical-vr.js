@@ -36,9 +36,9 @@ function sphericalVr() {
   renderer.setSize( boxWidth, boxHeight );
 
   var sphere = new THREE.Mesh(
-      new THREE.SphereGeometry( 1000, 20, 20 ),
+      new THREE.SphereGeometry( 100, 20, 20 ),
       new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( 'img/office.jpg' )
+        map: THREE.ImageUtils.loadTexture( 'img/spherical.jpg' )
       } )
     );
     sphere.scale.x = -1;
@@ -52,6 +52,19 @@ function sphericalVr() {
 
   //  controls.rotateLeft(3);
   //  controls.rotateUp(.3);
+
+
+  var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
+    var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
+
+    var cube2 = new THREE.Mesh( geometryCube2, material2 );
+    cube2.position.set( -2.0, 0.0, -6.0 );
+    cube2.rotateZ = 10.00;
+    cube2.name = 'cube2';
+    cube2.userData.isSelectable = true;
+    cube2.userData.isAnimated = false;
+    arSelectObjectArray.push( cube2 );
+    scene.add( cube2 );
 
   spherePane.appendChild( renderer.domElement );
 
