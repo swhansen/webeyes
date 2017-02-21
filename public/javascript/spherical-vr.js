@@ -66,6 +66,10 @@ function sphericalVr() {
     arSelectObjectArray.push( cube2 );
     scene.add( cube2 );
 
+    var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    light.name = 'HemisphereLight';
+    scene.add( light );
+
   spherePane.appendChild( renderer.domElement );
 
   render();
