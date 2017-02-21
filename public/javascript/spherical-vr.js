@@ -1,3 +1,6 @@
+//
+//  Experimental equirectangular spherical VR
+//    - https://github.com/turban/photosphere
 
 function removeSphericalVr() {
   $( '#sphere' ).remove();
@@ -21,7 +24,7 @@ function sphericalVr() {
   $( '#spherecanvas' ).css( 'width', boxWidth );
   $( '#spherecanvas' ).css( 'height', boxHeight );
 
-  //sphereCanvas.width = spherePane.clientWidth;
+  // sphereCanvas.width = spherePane.clientWidth;
   // sphereCanvas.height = spherePane.clientHeight;
 
   var scene = new THREE.Scene();
@@ -35,7 +38,7 @@ function sphericalVr() {
   var sphere = new THREE.Mesh(
       new THREE.SphereGeometry( 100, 20, 20 ),
       new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( 'img/spherical.jpg' )
+        map: THREE.ImageUtils.loadTexture( 'img/office.jpg' )
       } )
     );
     sphere.scale.x = -1;

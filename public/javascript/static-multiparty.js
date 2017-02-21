@@ -175,7 +175,7 @@ function moveLayertoTop( layer ) {
 
  _.forEach( layerList, function( key ) {
      document.getElementById( key ).style.zIndex = '10';
-     console.log( key );
+//     console.log( key );
     } );
   document.getElementById( layer ).style.zIndex = '100';
   console.log( 'dimensionalLayer rearrange:', getLayersZindexStatus() );

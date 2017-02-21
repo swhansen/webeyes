@@ -109,7 +109,7 @@ function setDocAlpha() {
   } ).then(function( inputValue ) {
     docAlpha = inputValue;
     docctx.globalAlpha = inputValue;
-    console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
+  //  console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
   } );
 }
 
