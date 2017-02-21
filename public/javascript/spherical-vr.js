@@ -21,9 +21,8 @@ function sphericalVr() {
   $( '#spherecanvas' ).css( 'width', boxWidth );
   $( '#spherecanvas' ).css( 'height', boxHeight );
 
-
   //sphereCanvas.width = spherePane.clientWidth;
- // sphereCanvas.height = spherePane.clientHeight;
+  // sphereCanvas.height = spherePane.clientHeight;
 
   var scene = new THREE.Scene();
 
