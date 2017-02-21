@@ -55,7 +55,7 @@ function sphericalVr() {
 
 
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
-    var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
+    var material2 = new THREE.MeshPhongMaterial( { color: 'red' } );
 
     var cube2 = new THREE.Mesh( geometryCube2, material2 );
     cube2.position.set( -2.0, 0.0, -6.0 );
