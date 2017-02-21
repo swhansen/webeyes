@@ -12,10 +12,10 @@
         <script type="text/javascript" src="bower/lodash/lodash.min.js"></script>
         <script type="text/javascript" src="bower/sweetalert2/dist/sweetalert2.min.js"></script>
 
-    <!--    <script type="text/javascript" src="bower/threejs/build/three.min.js"></script> -->
-            <script type="text/javascript" src="bower/threejs/build/three.min.js"></script>
+<!--        <script type="text/javascript" src="bower/threejs/build/three.js"></script> -->
+        <script type="text/javascript" src="javascript/three.min.js"></script>
 
-            <script type="text/javascript" src="javascript/Detector.js"></script>
+        <script type="text/javascript" src="javascript/Detector.js"></script>
 
         <script type="text/javascript" src="bower/tweenjs/src/Tween.js"></script>
         <script type="text/javascript" src="bower/gsap/src/minified/TweenMax.min.js"></script>
@@ -81,10 +81,10 @@
             <video id="box2" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
             <video id="box3" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
 
-            <img id="avatar0" class="a1" style="visibility:hidden" src="img/avatar0.png"</img>
-            <img id="avatar1" class="a1" style="visibility:hidden" src="img/avatar1.png"</img>
-            <img id="avatar2" class="a1" style="visibility:hidden" src="img/avatar2.png"</img>
-            <img id="avatar3" class="a1" style="visibility:hidden" src="img/avatar3.png"</img>
+            <img id="avatar0" class="a1" style="visibility:hidden" src="img/avatar0.png"></img>
+            <img id="avatar1" class="a1" style="visibility:hidden" src="img/avatar1.png"></img>
+            <img id="avatar2" class="a1" style="visibility:hidden" src="img/avatar2.png"></img>
+            <img id="avatar3" class="a1" style="visibility:hidden" src="img/avatar3.png"></img>
 
             <div id="textentryBox" onsubmit="sendText()" style="display:none" >
                 <input type="text" id="textentryField"  class="transit boxcommon" /><br>
@@ -100,13 +100,20 @@
             <canvas id="doccanvas" ></canvas>
         </div>
 
-        <div id="arcanvaspane" class="canvascenter" style="visibility:hidden">
+        <div id="arcanvaspane" class="boxCommon" style="visibility:hidden">
             <canvas id="arcanvas" class="canvasorient"></canvas>
         </div>
+
+        <div id="sphere" class="boxCommon">
+            <canvas id="spherecanvas" class="canvasorient"></canvas>
+        </div>
+
+
 
         <div id="leappane" class="canvascenter">
             <canvas id="leapfull" class="canvasorient"></canvas>
         </div>
+
 
         <div id="compassCube" class="compassCube" style="visibility:hidden">
                 <div class="face one">DN</div>
@@ -177,24 +184,24 @@
         <a class="draw-radial-item" id="draw-radial-erase" role="link" tabindex="0" xlink:href="javascript:eraseSwitch()" xlink:title="" xlink:target="_parent" transform="matrix(0.27899,-0.96029,0.96029,0.27899,-59.82119792904308,420.32564490942843)" data-svg-origin="250 250" style=""><path fill="none" stroke="#111" stroke-width="1" class="sector" d="M250,250 l250,0 A250,250 0 0,0 461.0819813755038,116.04330125525087 z"></path><use xlink:href="img/weg2rt-defs.svg#weg2rt-erase" width="55" height="55" x="393.24993896484375" y="182.57150268554688" transform="rotate(73.8 413.24993896484375 202.57150268554688)"></use></a>
 
         <a class="draw-radial-item" id="draw-radial-item-4" role="link" tabindex="0" xlink:href="javascript:alert('draw-radial-4')" xlink:title="" xlink:target="_parent" transform="matrix(-0.35347,-0.93544,0.93544,-0.35347,104.5077032373473,572.229718652281)" data-svg-origin="250 250" style=""><path fill="none" stroke="#111" stroke-width="1" class="sector" d="M250,250 l250,0 A250,250 0 0,0 461.0819813755038,116.04330125525087 z"></path><use xlink:href="#icon-4" width="40" height="40" x="393.24993896484375" y="182.57150268554688" transform="rotate(73.8 413.24993896484375 202.57150268554688)"></use></a>
-</g>
-<defs>
-    <pattern id="drawimage" x="0%" y="0%" height="100%" width="100%"
-             viewBox="0 0 512 512">
-      <image x="0%" y="0%" width="512" height="512" xlink:href="img/pencil.svg"></image>
-    </pattern>
-  </defs>
+    </g>
+        <defs>
+            <pattern id="drawimage" x="0%" y="0%" height="100%" width="100%"
+                     viewBox="0 0 512 512">
+              <image x="0%" y="0%" width="512" height="512" xlink:href="img/pencil.svg"></image>
+            </pattern>
+          </defs>
 
-<g id="draw-radial-trigger" class="trigger menu-trigger" role="button">
-<circle  id="draw-radial-circle" class="medium" cx="250" cy="250" r="75" fill="#448AFF"  />
-<circle id="sd" class="medium" cx="250" cy="250" r="75" transform = "rotate(90 250 250)"fill="url(#drawimage)" />
-<text id="draw-radial-label" text-anchor="middle" x="250" y="247" fill="#fff" font-size="3em"></text>
-</g>
+        <g id="draw-radial-trigger" class="trigger menu-trigger" role="button">
+        <circle  id="draw-radial-circle" class="medium" cx="250" cy="250" r="75" fill="#448AFF"  />
+        <circle id="sd" class="medium" cx="250" cy="250" r="75" transform = "rotate(90 250 250)"        fill="url(#drawimage)" />
+        <text id="draw-radial-label" text-anchor="middle" x="250" y="247" fill="#fff" font-size="3em"></text>
+        </g>
 </svg>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300"viewBox="-2 -2 504 504" id="util-radial-menu" style="transform-origin: 50% 50% 0px; transform: matrix3d(-0.00436915, -0.99999, 0, 0, 0.99999, -0.00436915, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); touch-action: none; user-select: none;">
 
-<g id="symbolsContainer">
+    <g id="symbolsContainer">
     <symbol class="icon icon-" id="util-icon-1" viewBox="0 0 40 40"><!--Replace the contents of this symbol with the content of your icon--><rect fill="none" stroke="#111" stroke-width="1" width="100%" height="100%"></rect><text fill="#222" x="50%" y="50%" dy=".3em" text-anchor="middle" font-size="1.2em">P</text></symbol>
 
     <symbol class="icon icon-" id="util-icon-2" viewBox="0 0 40 40"><!--Replace the contents of this symbol with the content of your icon--><rect fill="none" stroke="#111" stroke-width="0" width="100%" height="100%"></rect><text fill="#222" x="50%" y="50%" dy=".3em" text-anchor="middle" font-size="3.0em">D1</text></symbol>
@@ -218,19 +225,19 @@
         <a class="util-radial-item" id="util-radial-item-4" role="link" tabindex="0" xlink:href="javascript:openFileModal()" xlink:title="" xlink:target="_parent" transform="matrix(-0.35347,-0.93544,0.93544,-0.35347,104.5077032373473,572.229718652281)" data-svg-origin="250 250" style=""><path fill="none" stroke="#111" stroke-width="1" class="sector" d="M250,250 l250,0 A250,250 0 0,0 461.0819813755038,116.04330125525087 z"></path><use xlink:href="img/weg2rt-defs.svg#weg2rt-folder" width="55" height="55" x="393.24993896484375" y="182.57150268554688" transform="rotate(73.8 413.24993896484375 202.57150268554688)"></use></a>
 
         <a class="util-radial-item" id="util-radial-item-5" role="link" tabindex="0" xlink:href="javascript:clearUtilCanvas()" xlink:title="" xlink:target="_parent" transform="matrix(-0.84432,-0.53582,0.53582,-0.84432,327.1252826307546,595.0386801202529)" data-svg-origin="250 250" style=""><path fill="none" stroke="#111" stroke-width="1" class="sector" d="M250,250 l250,0 A250,250 0 0,0 461.0819813755038,116.04330125525087 z"></path><use xlink:href="img/weg2rt-defs.svg#weg2rt-reset" width="55" height="55" x="393.24993896484375" y="182.57150268554688" transform="rotate(73.8 413.24993896484375 202.57150268554688)"></use></a>
-</g>
-<defs>
-    <pattern id="utilimage" x="0%" y="0%" height="100%" width="100%"
+    </g>
+    <defs>
+     <pattern id="utilimage" x="0%" y="0%" height="100%" width="100%"
              viewBox="0 0 512 512">
-      <image x="0%" y="0%" width="512" height="512" xlink:href="img/docstack.svg"></image>
-    </pattern>
-  </defs>
+        <image x="0%" y="0%" width="512" height="512" xlink:href="img/docstack.svg"></image>
+        </pattern>
+    </defs>
 
-<g id="util-radial-trigger" class="trigger menu-trigger" role="button">
-<circle id="util-radial-circle"  class="medium" cx="250" cy="250" r="75" fill="#448AFF"  />
-<circle id="sd" class="medium" cx="250" cy="250" r="75" transform = "rotate(90 256 256)"fill="url(#utilimage)" />
-<text id="util-radial-label" text-anchor="middle" x="250" y="247" fill="#fff" font-size="3em"></text>
-</g>
+    <g id="util-radial-trigger" class="trigger menu-trigger" role="button">
+        <circle id="util-radial-circle"  class="medium" cx="250" cy="250" r="75" fill="#448AFF"  />
+        <circle id="sd" class="medium" cx="250" cy="250" r="75" transform = "rotate(90 256 256)"fill="url(#utilimage)" />
+        <text id="util-radial-label" text-anchor="middle" x="250" y="247" fill="#fff" font-size="3em"></text>
+    </g>
 </svg>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300"viewBox="-2 -2 504 504" id="ar-radial-menu" style="visibility:hidden; transform-origin: 50% 50% 0px; transform: matrix3d(-0.00436915, -0.99999, 0, 0, 0.99999, -0.00436915, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); touch-action: none; user-select: none;">
@@ -257,18 +264,18 @@
         <a class="ar-radial-item" id="ar-radial-item-4" role="link" tabindex="0" xlink:href="javascript:loadArModel( 'pig' )" xlink:title="" xlink:target="_parent" transform="matrix(-0.35347,-0.93544,0.93544,-0.35347,104.5077032373473,572.229718652281)" data-svg-origin="250 250" style=""><path fill="none" stroke="#111" stroke-width="1" class="sector" d="M250,250 l250,0 A250,250 0 0,0 461.0819813755038,116.04330125525087 z"></path><use xlink:href="#ar-icon-4" width="55" height="55" x="393.24993896484375" y="182.57150268554688" transform="rotate(73.8 413.24993896484375 202.57150268554688)"></use></a>
 
         <a class="ar-radial-item" id="ar-radial-item-5" role="link" tabindex="0" xlink:href="javascript:clearObjects()" xlink:title="" xlink:target="_parent" transform="matrix(-0.84432,-0.53582,0.53582,-0.84432,327.1252826307546,595.0386801202529)" data-svg-origin="250 250" style=""><path fill="none" stroke="#111" stroke-width="1" class="sector" d="M250,250 l250,0 A250,250 0 0,0 461.0819813755038,116.04330125525087 z"></path><use xlink:href="img/weg2rt-defs.svg#weg2rt-compass" width="40" height="40" x="393.24993896484375" y="182.57150268554688" transform="rotate(73.8 413.24993896484375 202.57150268554688)"></use></a>
-</g>
-<defs>
-    <pattern id="arimage" x="0%" y="0%" height="100%" width="100%"
-             viewBox="0 0 512 512">
-      <image x="0%" y="0%" width="512" height="512" xlink:href="img/geometry.svg"></image>
-    </pattern>
-  </defs>
-<g id="ar-radial-trigger" class="trigger menu-trigger" role="button">
-<circle  id="ar-radial-circle" class="medium" cx="250" cy="250" r="75" fill="#448AFF"  />
-<circle id="sd" class="medium" cx="250" cy="250" r="75" transform = "rotate(90 256 256)"fill="url(#arimage)" />
-<text id="ar-radial-label" text-anchor="middle" x="250" y="247" fill="#fff" font-size="3em"></text>
-</g>
+    </g>
+        <defs>
+            <pattern id="arimage" x="0%" y="0%" height="100%" width="100%"
+                     viewBox="0 0 512 512">
+              <image x="0%" y="0%" width="512" height="512" xlink:href="img/geometry.svg"></image>
+            </pattern>
+          </defs>
+        <g id="ar-radial-trigger" class="trigger menu-trigger" role="button">
+        <circle  id="ar-radial-circle" class="medium" cx="250" cy="250" r="75" fill="#448AFF"  />
+        <circle id="sd" class="medium" cx="250" cy="250" r="75" transform = "rotate(90 256 256)"fill="url(#arimage)"        />
+        <text id="ar-radial-label" text-anchor="middle" x="250" y="247" fill="#fff" font-size="3em"></text>
+        </g>
 </svg>
 </svg>
 
@@ -292,7 +299,7 @@
        <img id="material" src="img/conceptual-architecture-v4.png" alt="test-document"  style="visibility:hidden">
 
          <script type="text/javascript"  src="javascript/draw.js" ></script>
-         <script type="text/javascript"  src="javascript/ar.js" ></script>
+         <script type="text/javascript"  src="javascript/augmented-main.js" ></script>
          <script type="text/javascript"  src="javascript/orientation-compass.js" ></script>
          <script type="text/javascript"  src="javascript/util.js" ></script>
          <script type="text/javascript"  src="javascript/plusup-code.js" ></script>
@@ -305,5 +312,6 @@
          <script type="text/javascript"  src="javascript/leap-peer-hand.js" ></script>
          <script type="text/javascript"  src="javascript/hue.js" ></script>
          <script type="text/javascript"  src="javascript/radial.js" ></script>
+         <script type="text/javascript"  src="javascript/spherical-vr.js" ></script>
     </body>
 </html>

@@ -1,8 +1,11 @@
 function setUpArLayer() {
 
+// var peerWindows = [ $( '#box0' ).width(), $( '#box1' ).width(), $( '#box2').width(), $( '#box3' ).width() ];
+// var m = _.max( peerWindows );
+// console.log( 'Load AR - boxN max:', m );
+
   scene = null;
   renderer = null;
-  var step = 0;
 
   var arCanvasPane = document.getElementById( 'arcanvaspane' );
   var arCanvas = document.getElementById( 'arcanvas' );
@@ -11,26 +14,22 @@ function setUpArLayer() {
 
   userContext.addDimensionalLayer( 'arcanvaspane' );
 
-//  var box = $( '#box0' );
-//  var boxPosition = box.offset();
-//  var boxWidth = box.outerWidth();
-//  var boxHeight = box.outerHeight();
+  var box0Focus = $( '#box0' );
+  var boxPosition = box0Focus.offset();
+  var boxWidth = box0Focus.outerWidth();
+  var boxHeight = box0Focus.outerHeight();
 
-//  box0Height = document.getElementById('box0').offsetHeight;
-//  box0Width = document.getElementById('box0').offsetWidth;
+  $( '#arcanvaspane' ).css( boxPosition );
+  $( '#arcanvaspane' ).css( 'width', boxWidth );
+  $( '#arcanvaspane' ).css( 'height', boxHeight );
+  $( '#arcanvaspane' ).css( 'z-index', 50 );
 
-//  $( '#arcanvaspane' ).css( boxPosition );
-//  $( '#arcanvaspane' ).css( 'width', boxWidth );
-//  $( '#arcanvaspane' ).css( 'height', boxHeight );
-//  $( '#arcanvaspane' ).css( 'z-index', 50 );
+  $( '#arcanvas' ).css( boxPosition );
+  arCanvas.width = arCanvasPane.clientWidth;
+  arCanvas.height = arCanvasPane.clientHeight;
 
-//  arCanvas.width = arCanvasPane.clientWidth;
-//  arCanvas.height = arCanvasPane.clientHeight;
-
-//  arCanvas.style.width = '100%';
-//  arCanvas.style.height = '100%';
-  arCanvas.width = arCanvas.offsetWidth;
-  arCanvas.height = arCanvas.offsetHeight;
+//  console.log( 'ar-load-core: box0-position:', boxPosition );
+//  console.log( 'ar-load-core: box0:', box0Width, box0Height );
 
   arCanvasPane.style.visibility = 'visible';
   arCanvas.style.visibility = 'visible';
@@ -51,6 +50,7 @@ function setUpArLayer() {
 
   sensorDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   sensorDrivenCamera.name = 'arSensorDrivenCamera';
+
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera.name = 'arBroadcastDrivenCamera';
 
@@ -76,15 +76,13 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 
 // set the renderer based on the device type
 
-// if ( userContext.mobile === true ) {
-//   renderer.setSize( arCanvas.offsetWidth, arCanvas.offsetHeight );
-//   } else { renderer.setSize( box0Width, box0Width ); }
-
 if ( userContext.mobile === true ) {
   renderer.setSize( arCanvas.offsetWidth, arCanvas.offsetHeight );
-  } else { renderer.setSize( box0Width, box0Width ); }
+  } else { renderer.setSize( boxWidth, boxHeight ); }
 
   renderer.setClearColor( 0x000000, 0 );
+
+  arConnectionController();
 
 //
 // AR world model
@@ -97,24 +95,21 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 // build the cardinal orientation points
 
   var cardinalMat = new THREE.MeshLambertMaterial( { color: 'red' } );
-  var trigger1Mat = new THREE.MeshPhongMaterial( { color: 0x99c2ff } );
-  var trigger2Mat = new THREE.MeshPhongMaterial( { color: 0xff6666 } );
-  var trigger3Mat = new THREE.MeshPhongMaterial( { color: 0x009933 } );
-  var trigger4Mat = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
   var geometrySphere = new THREE.CircleGeometry( 0.1, 16 );
 
-  sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
-  sphereS = new THREE.Mesh( geometrySphere, cardinalMat );
-  sphereE = new THREE.Mesh( geometrySphere, cardinalMat );
-  sphereW = new THREE.Mesh( geometrySphere, cardinalMat );
-  sphereU = new THREE.Mesh( geometrySphere, cardinalMat );
-  sphereD = new THREE.Mesh( geometrySphere, cardinalMat );
+  var sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
+  var sphereS = new THREE.Mesh( geometrySphere, cardinalMat );
+  var sphereE = new THREE.Mesh( geometrySphere, cardinalMat );
+  var sphereW = new THREE.Mesh( geometrySphere, cardinalMat );
+  var sphereU = new THREE.Mesh( geometrySphere, cardinalMat );
+  var sphereD = new THREE.Mesh( geometrySphere, cardinalMat );
 
-  sphereN.position.set( 0.0, 0.0, 6.0 );
-  sphereN.name = 'sphereN';
 
   sphereS.position.set( 0.0, 0.0, -6.0 );
   sphereS.name = 'sphereS';
+
+  sphereN.position.set( 0.0, 0.0, 6.0 );
+  sphereN.name = 'sphereN';
 
   sphereE.position.set( 6.0, 0.0, 0.0 );
   sphereE.name = 'sphereE';
@@ -135,107 +130,33 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( sphereU );
   scene.add( sphereD );
 
-  // Build the triggers to add ar elements (experimental)
+    var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
+    var material2 = new THREE.MeshPhongMaterial( { color: 'blue' } );
 
-  // IOT
+    var cube2 = new THREE.Mesh( geometryCube2, material2 );
+    cube2.position.set( -2.0, 0.0, -6.0 );
+    cube2.rotateZ = 10.00;
+    cube2.name = 'cube2';
+    cube2.userData.isSelectable = true;
+    cube2.userData.isAnimated = false;
+    arSelectObjectArray.push( cube2 );
+    scene.add( cube2 );
 
-//  arTrigger1 = new THREE.Mesh( geometrySphere, trigger1Mat );
-//  arTrigger1.position.set( 1.0, 2.0, -4.0 );
-//  arTrigger1.name = 'arTrigger1';
-//  scene.add( arTrigger1 );
-//  arTrigger1.userData.isSelectable = true;
-//  arTrigger1.visible = true;
-//  arSelectObjectArray.push( arTrigger1 );
-//
-//  // Sword Guy
-//
-//  arTrigger2 = new THREE.Mesh( geometrySphere, trigger2Mat );
-//  arTrigger2.position.set( 1.0, 1.75, -4.0 );
-//  arTrigger2.name = 'arTrigger2';
-//  scene.add( arTrigger2 );
-//  arTrigger2.userData.isSelectable = true;
-//  arTrigger2.visible = true;
-//  arSelectObjectArray.push( arTrigger2 );
-//
-//  //
-//
-//  arTrigger3 = new THREE.Mesh( geometrySphere, trigger3Mat );
-//  arTrigger3.position.set( 1.2, 1.75, -4.0 );
-//  arTrigger3.name = 'arTrigger3';
-//  scene.add( arTrigger3 );
-//  arTrigger3.userData.isSelectable = true;
-//  arTrigger3.visible = true;
-//  arSelectObjectArray.push( arTrigger3 );
-//
-//  arTrigger4 = new THREE.Mesh( geometrySphere, trigger4Mat );
-//  arTrigger4.position.set( 1.2, 2.0, -4.0 );
-//  arTrigger4.name = 'arTrigger4';
-//  scene.add( arTrigger4 );
-//  arTrigger4.userData.isSelectable = true;
-//  arTrigger4.visible = true;
-//  arSelectObjectArray.push( arTrigger4 );
+ var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
+ var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
+ var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
-/// test load sword guy
+  plane.rotation.x = -0.5 * Math.PI;
+  plane.position.set( 1.5, -0.35, -5.5 );
+  scene.add( plane );
 
+ var axisHelper = new THREE.AxisHelper( 10 );
+ axisHelper.position.set( 0.0, 0.0, 0.0 );
+ scene.add( axisHelper );
 
-//var geometry = new THREE.PlaneGeometry( 16000, 16000 );
-//  var material = new THREE.MeshPhongMaterial( { emissive: 0x888888 } );
-//
-//    var loader = new THREE.JSONLoader();
-//
-//   loader.load( '../armodels/knight.js', function( geometry, materials ) {createSwordGuy( geometry, materials, 0, -15.0, 65.0, 3.0 );
-//         } );
+  // arConnectionController();
 
-//function createSwordGuy( geometry, materials, x, y, z, s ) {
-//
-//
-//  var mesh, helper;
-//  var facesClip, bonesClip;
-//
-//         geometry.computeBoundingBox();
-//
-//         console.log( 'geometry.boundingBox:', geometry.boundingBox );
-//
-//         var bb = geometry.boundingBox;
-//         for ( var i = 0; i < materials.length; i++ ) {
-//           var m = materials[ i ];
-//           m.skinning = true;
-//           m.morphTargets = true;
-//           m.specular.setHSL( 0, 0, 0.1 );
-//           m.color.setHSL( 0.6, 0, 0.6 );
-//         }
-//         swordGuyMesh = new THREE.SkinnedMesh( geometry, new THREE.MultiMaterial( materials ) );
-//         swordGuyMesh.position.set( x, y - bb.min.y * s, z );
-//         swordGuyMesh.scale.set( s, s, s );
-//         swordGuyMesh.rotation.y =  -Math.PI;
-//         swordGuyMesh.name = 'swordGuyMesh';
-//
-//         swordGuyMesh.userData.objectType =  'swordGuyMesh';
-//         swordGuyMesh.userData.isAnimated = false;
-//         swordGuyMesh.userData.isUserCreated = false;
-//         swordGuyMesh.userData.isSelectable = true;
-//         swordGuyMesh.userData.createdBy = 'system';
-//
-//         scene.add( swordGuyMesh );
-//         arSelectObjectArray.push( swordGuyMesh );
-//
-//      //   swordGuyMesh.castShadow = true;
-//      //   swordGuyMesh.receiveShadow = true;
-//
-//        helper = new THREE.SkeletonHelper( swordGuyMesh );
-//        helper.material.linewidth = 3;
-//        helper.visible = false;
-//        scene.add( helper );
-//
-//      mixer = new THREE.AnimationMixer( swordGuyMesh );
-//      var bonesClip = geometry.animations[ 0 ];
-//      var facesClip = THREE.AnimationClip.CreateFromMorphTargetSequence( 'facialExpressions', swordGuyMesh.geometry.morphTargets, 3 );
-//
-//      mixer.clipAction( bonesClip ).setDuration( 3.0 ).play();
-//      mixer.clipAction( facesClip ).setDuration( 2.0 ).play();
-//       }
-//
-//  getArWorldSummary();
+  }
 
   function arConnectionController() {
 
@@ -249,6 +170,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
+    console.log( 'arConnectionController-vr-focus');
     cameraDriver = vrDrivenCamera;
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
@@ -258,6 +180,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
+      console.log( 'arConnectionController-vr-peer');
       cameraDriver = vrBroadcastDrivenCamera;
       vrBroadcastDrivenCamera.lookAt( scene.position );
       connectToVrBroadcast();
@@ -288,7 +211,6 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   function animateArObjects() {
 
     var dt = clock.getDelta();
-    step += dt;
 
 //    var foo = clock.getElapsedTime() - clock.startTime;
 
@@ -356,9 +278,9 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
    requestAnimationFrame( connectToBroadcastSensors );
    }
 
- arConnectionController();
+// arConnectionController();
 
-  }
+ // }
 
 //
 //    var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );

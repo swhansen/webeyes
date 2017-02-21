@@ -1,8 +1,12 @@
 function receiveArObject( data ) {
 
+  console.log( 'receiveArObject-data:', data );
+
+
     switch ( data.operation ) {
       case 'moveObject':
         var arObject = scene.getObjectByName( data.name );
+        console.log( 'case - moveObject:', arObject );
         arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
         arMoveObject( data );
       break;
@@ -13,7 +17,7 @@ function receiveArObject( data ) {
         var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
 
         arUserCreatedObject.position.set( data.x, data.y, data.z );
-        arUserCreatedObject.name = data.id;
+        arUserCreatedObject.name = data.name;
         scene.add( arUserCreatedObject );
 
         arUserCreatedObject.userData.id = data.id;
@@ -42,11 +46,19 @@ function receiveArObject( data ) {
           arObject.userData.isAnimated = data.animate;
       }
 
-        // User Created Objects
+ // User Created Objects
 
+
+      if ( data.name ===  'bagel' ) {
+          console.log( 'at animateSelectedObject:', data)
         var tempObj = scene.getObjectByName( data.name );
+        console.log( 'tempObj:', tempObj );
         tempObj.userData.isAnimated = data.isAnimated;
+}
+
       break;
+
+
 
       case 'hideSelectedObject':
 
@@ -62,6 +74,7 @@ function receiveArObject( data ) {
 
   function arMoveObject( data ) {
     var arObject = scene.getObjectByName( data.name );
+    console.log( 'arMoveObject:', arObject );
       if ( data.position ) {
           arObject.position.x = data.position.x;
           arObject.position.y = data.position.y;

@@ -56,13 +56,6 @@ function setUpArLayer( participantState ) {
   //arCanvas.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
 
 
-
-
-
-
-
-
-
   var CANVAS_WIDTH = 300,
       CANVAS_HEIGHT = 300;
 

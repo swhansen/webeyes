@@ -42,10 +42,10 @@ function createSwordGuy( geometry, materials, x, y, z, s ) {
       //   swordGuyMesh.castShadow = true;
       //   swordGuyMesh.receiveShadow = true;
 
-  helper = new THREE.SkeletonHelper( swordGuyMesh );
-  helper.material.linewidth = 3;
-  helper.visible = false;
-  scene.add( helper );
+ // helper = new THREE.SkeletonHelper( swordGuyMesh );
+ // helper.material.linewidth = 3;
+//  helper.visible = false;
+//  scene.add( helper );
 
   mixer = new THREE.AnimationMixer( swordGuyMesh );
   var bonesClip = geometry.animations[0];

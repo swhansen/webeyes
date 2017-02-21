@@ -109,8 +109,8 @@ function useModeCode( modeCode ) {
 
 // Focus the AR initiator (modme)
 
-    var sessionId = socketServer.sessionid;
-        socketServer.emit( 'focus', userContext.rtcId, sessionId );
+ //   var sessionId = socketServer.sessionid;
+ //       socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
     emitMessage( msgString );
@@ -120,6 +120,16 @@ function useModeCode( modeCode ) {
     emitUtility( 'clearmoderator' );
     $( '#ismoderator' ).text( 'Moderator' );
 
+  break;
+
+  case 'vrtest':
+
+    sphericalVr();
+
+  break;
+
+  case 'removevrtest':
+    removeSphericalVr();
   break;
 
   case 'augme':
@@ -246,6 +256,8 @@ function vrWorldModal() {
       return new Promise(function (resolve, reject) {
           setVrWorld();
           shareArVrWorld();
+   var sessionId = socketServer.sessionid;
+        socketServer.emit( 'focus', userContext.rtcId, sessionId );
           statusBox.updateElement( 'metaverse', inputValue );
           resolve();
         }
@@ -317,7 +329,7 @@ $( '#codeDialogModal' ).dialog( {
 
 
 var modalMultiple =  [ 'help',  'augme', 'vrme',  'iotz' ];
-var plusupCodeArray = [ 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
+var plusupCodeArray = [ 'removevrtest', 'vrtest', 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
 
 $( '#codeDialogButton' ).click( function() {
   swal( {

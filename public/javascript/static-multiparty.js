@@ -1302,8 +1302,9 @@ console.log( 'Join Room userContext:', userContext );
         }, 20 );
     } );
 
-  box0Height = document.getElementById( 'box0' ).offsetHeight;
-  box0Width = document.getElementById( 'box0' ).offsetWidth;
+ var box0Height = document.getElementById( 'box0' ).offsetHeight;
+ var box0Width = document.getElementById( 'box0' ).offsetWidth;
+ var box0Focus =  document.getElementById( 'box0' );
 
 initDraw();
 initUtil();

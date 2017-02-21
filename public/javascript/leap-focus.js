@@ -120,7 +120,7 @@ function emitLeap( data ) {
     //controls.enableRotate = false;
     controls.maxDistance = 1000;
 
-    scene = new THREE.Scene();
+    //scene = new THREE.Scene();
 
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     var aLight = new THREE.AmbientLight( 0x333333 );

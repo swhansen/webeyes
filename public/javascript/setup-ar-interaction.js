@@ -5,6 +5,9 @@ function setupArInteractionEvents() {
 //  - set the cameraDriver based on AR/VR and focus/peer
 //
 
+// var sessionId = socketServer.sessionid;
+//   socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+
 socketServer.on( 'addNewArObject', function( data ) {
     arShareData.operation = 'newObject';
     arShareData.x = data.x;
@@ -37,6 +40,7 @@ $( function() {
 
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
+    console.log( 'emitARObject:', data );
     socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
@@ -100,6 +104,7 @@ $( function() {
 
       arUserCreatedObject.position.set( d.x, d.y, d.z );
       arUserCreatedObject.userData.id = arUserCreatedObject.id;
+      arUserCreatedObject.name = 'bagel';
       arUserCreatedObject.userData.objectType =  'bagel';
       arUserCreatedObject.name = arUserCreatedObject.id;
       arUserCreatedObject.userData.isAnimated = false;
@@ -123,6 +128,7 @@ $( function() {
       newArObj.isSelectable = true;
       newArObj.isUserCreated = true;
       newArObj.objectType = 'bagel';
+      newArObj.name = 'bagel';
 
       emitArObject( newArObj );
 
@@ -149,15 +155,20 @@ $( function() {
 
      var vector = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
                              -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
-     projector.unprojectVector( vector, cameraDriver );
+  //   projector.unprojectVector( vector, cameraDriver );
+
+vector.unproject( cameraDriver );
+
+
      vector.sub( cameraDriver.position );
      vector.normalize();
      var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
      var intersects = rayCaster.intersectObjects( arSelectObjectArray );
      var selectedObject = intersects[0].object;
-  //   console.log( 'intersects:', intersects, selectedObject );
 
      if ( intersects.length > 0 ) {
+
+      console.log( 'onARSelect - selectedObject:', selectedObject );
 
  // IOT Lights
 
@@ -195,6 +206,8 @@ $( function() {
          arShareData.operation = 'animateSelectedObject';
          arShareData.id = selectedObject.userData.iotDeviceId;
          arShareData.isAnimated = selectedObject.userData.isAnimated;
+         arShareData.isUserCreated = true;
+         arShareData.name = 'bagel';
 
          emitArObject( arShareData );
 
@@ -234,7 +247,7 @@ $( function() {
           emitArObject( arShareData );
      }
 
-     if ( intersects[0].object.name === 'swordGuyMesh' ) {
+     if ( selectedObject.name === 'swordGuyMesh' ) {
       if ( selectedObject.userData.isAnimated === false ) {
           selectedObject.userData.isAnimated = true;
           } else {
@@ -247,9 +260,14 @@ $( function() {
        arShareData.isAnimated = selectedObject.userData.isAnimated;
 
        emitArObject( arShareData );
+       return;
      }
 
      if ( selectedObject.name === 'cube2' ) {
+
+console.log( 'onArSelect cube2:', selectedObject );
+console.log( 'render:', renderer );
+
       selectedObject.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       selectedObject.position.x += Math.round( Math.random() ) * 2 - 1;
       selectedObject.position.y += Math.round( Math.random() ) * 2 - 1;
@@ -268,7 +286,133 @@ $( function() {
        arShareData.color = intersects[0].object.material.color;
 
        emitArObject( arShareData );
+       return;
      }
+  }
+}
+}
+
+//Dynamic AR/VR Model Loading
+
+socketServer.on( 'arDynamicLoadModel', function( data ) {
+
+   if ( data.modelName === 'iot' ) {
+    var filePath =  'javascript/armodels/' + data.file;
+      $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadIotAr();
+        var modMessage = userContext.rtcId + 'added AR Model' + data.modelName ;
+        emitMessage( modMessage );
+        messageBar( modMessage );
+      } );
+    }
+
+    if ( data.modelName === 'swordguy' ) {
+    var filePath = 'javascript/armodels/' + data.file;
+      $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSwordGuy();
+      } );
+    }
+
+    if ( data.modelName === 'sheep' ) {
+    var filePath =  'javascript/armodels/' + data.file;
+      $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSheep();
+      } );
+    }
+
+    if ( data.modelName === 'geometry' ) {
+    var filePath =  'javascript/armodels/' + data.file;
+      $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadGeometry();
+      } );
+    }
+  } );
+
+
+function loadArModel( model ) {
+  switch ( model ) {
+    case 'iot':
+    data.file = 'ar-load-iot.js';
+    data.modelName = 'iot';
+    $.when(
+        $.getScript( 'javascript/armodels/ar-load-iot.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadIotAr();
+      } );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+    break;
+
+    case 'swordguy':
+    data.file = 'ar-load-swordguy.js';
+    data.modelName = 'swordguy';
+    $.when(
+        $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSwordGuy();
+      } );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+    break;
+
+    case 'geometry':
+      data.file = 'ar-load-geometry.js';
+      data.modelName = 'geometry';
+      $.when(
+        $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadGeometry();
+      } );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+    break;
+
+    case 'pig':
+      data.file = 'ar-load-sheep.js';
+      data.modelName = 'sheep';
+      $.when(
+        $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadSheep();
+      } );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+    break;
+  }
+}
+
 
   // Experimental dynamic AR  model loads
 
@@ -342,127 +486,4 @@ $( function() {
 
 // }
 
-   var sessionId = socketServer.sessionid;
-   socketServer.emit( 'arDynamicLoadModel', data, sessionId );
 
- }
-}
-}
-
-socketServer.on( 'arDynamicLoadModel', function( data ) {
-
-   if ( data.modelName === 'iot' ) {
-    var filePath =  'javascript/armodels/' + data.file;
-      $.when(
-        $.getScript( filePath ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadIotAr();
-        var modMessage = userContext.rtcId + 'added AR Model' + data.modelName ;
-        emitMessage( modMessage );
-        messageBar( modMessage );
-      } );
-    }
-
-    if ( data.modelName === 'swordguy' ) {
-    var filePath = 'javascript/armodels/' + data.file;
-      $.when(
-        $.getScript( filePath ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadSwordGuy();
-      } );
-    }
-
-    if ( data.modelName === 'sheep' ) {
-    var filePath =  'javascript/armodels/' + data.file;
-      $.when(
-        $.getScript( filePath ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadSheep();
-      } );
-    }
-
-    if ( data.modelName === 'geometry' ) {
-    var filePath =  'javascript/armodels/' + data.file;
-      $.when(
-        $.getScript( filePath ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadGeometry();
-      } );
-    }
-  } );
-
-function loadArModel( model ) {
-  switch ( model ) {
-    case 'iot':
-    data.file = 'ar-load-iot.js';
-    data.modelName = 'iot';
-    $.when(
-        $.getScript( 'javascript/armodels/ar-load-iot.js' ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadIotAr();
-      } );
-      var sessionId = socketServer.sessionid;
-      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
-    break;
-
-    case 'swordguy':
-    data.file = 'ar-load-swordguy.js';
-    data.modelName = 'swordguy';
-    $.when(
-        $.getScript( 'javascript/armodels/ar-load-swordguy.js' ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadSwordGuy();
-      } );
-      var sessionId = socketServer.sessionid;
-      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
-    break;
-
-    case 'geometry':
-      data.file = 'ar-load-geometry.js';
-      data.modelName = 'geometry';
-      $.when(
-        $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadGeometry();
-      } );
-      var sessionId = socketServer.sessionid;
-      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
-    break;
-
-    case 'pig':
-      data.file = 'ar-load-sheep.js';
-      data.modelName = 'sheep';
-      $.when(
-        $.getScript( 'javascript/armodels/ar-load-sheep.js' ),
-        $.Deferred( function( deferred ) {
-        $( deferred.resolve );
-        } )
-      ).done( function() {
-        loadSheep();
-      } );
-      var sessionId = socketServer.sessionid;
-      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
-    break;
-  }
-}
