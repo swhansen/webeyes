@@ -5,7 +5,7 @@ function removeSphericalVr() {
 
 function sphericalVr() {
 
-  var webglEl = document.getElementById('sphere');
+  var spherePane = document.getElementById('sphere');
   var sphereCanvas = document.getElementById( 'spherecanvas' );
 
   var box0Focus = $( '#box0' );
@@ -19,11 +19,8 @@ function sphericalVr() {
   $( '#sphere' ).css( 'z-index', 200 );
   $( '#spherecanvas' ).css( boxPosition );
 
-  sphereCanvas.width = webglEl.clientWidth;
-  sphereCanvas.height = webglEl.clientHeight;
-
-    //var width  = window.innerWidth,
-    //  height = window.innerHeight;
+  sphereCanvas.width = spherePane.clientWidth;
+  sphereCanvas.height = spherePane.clientHeight;
 
   var scene = new THREE.Scene();
 
@@ -51,7 +48,7 @@ function sphericalVr() {
   //  controls.rotateLeft(3);
   //  controls.rotateUp(.3);
 
-  webglEl.appendChild( renderer.domElement );
+  spherePane.appendChild( renderer.domElement );
 
   render();
 
