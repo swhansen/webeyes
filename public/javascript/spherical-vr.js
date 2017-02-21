@@ -36,7 +36,7 @@ function sphericalVr() {
   renderer.setSize( boxWidth, boxHeight );
 
   var sphere = new THREE.Mesh(
-      new THREE.SphereGeometry( 100, 20, 20 ),
+      new THREE.SphereGeometry( 1000, 20, 20 ),
       new THREE.MeshBasicMaterial( {
         map: THREE.ImageUtils.loadTexture( 'img/office.jpg' )
       } )
