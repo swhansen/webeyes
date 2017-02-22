@@ -4,13 +4,15 @@
 
 function removeSphericalVr() {
   $( '#spherepane' ).css( 'visibility', 'hidden' );
+}
 
+function sphericalVr() {
+
+if ( scene ) {
   scene.children.forEach(function(object){
     scene.remove(object);
     });
 }
-
-function sphericalVr() {
 
   var spherePane = document.getElementById('spherepane');
   var sphereCanvas = document.getElementById( 'spherecanvas' );
