@@ -8,13 +8,13 @@ function removeSphericalVr() {
 
 function sphericalVr() {
 
-if ( scene ) {
-  scene.children.forEach(function(object){
-    scene.remove(object);
-    });
+  if ( scene ) {
+    scene.children.forEach( function( object ) {
+      scene.remove( object );
+    } );
 }
 
-  var spherePane = document.getElementById('spherepane');
+  var spherePane = document.getElementById( 'spherepane' );
   var sphereCanvas = document.getElementById( 'spherecanvas' );
   spherePane.style.visibility = 'visible';
 
@@ -45,7 +45,7 @@ if ( scene ) {
   var sphere = new THREE.Mesh(
       new THREE.SphereGeometry( 100, 20, 20 ),
       new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( 'img/spherical.jpg' )
+        map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
       } )
     );
     sphere.scale.x = -1;
@@ -59,7 +59,6 @@ if ( scene ) {
 
   //  controls.rotateLeft(3);
   //  controls.rotateUp(.3);
-
 
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
     var material2 = new THREE.MeshPhongMaterial( { color: 'red' } );
