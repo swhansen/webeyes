@@ -4,6 +4,10 @@
 
 function removeSphericalVr() {
   $( '#spherepane' ).css( 'visibility', 'hidden' );
+
+  scene.children.forEach(function(object){
+    scene.remove(object);
+    });
 }
 
 function sphericalVr() {
