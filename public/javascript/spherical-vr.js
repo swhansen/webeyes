@@ -45,7 +45,7 @@ function sphericalVr() {
   var sphere = new THREE.Mesh(
       new THREE.SphereGeometry( 100, 20, 20 ),
       new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( 'https://goo.gl/maps/KS8ZY2UCqzq' )
+        map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
       } )
     );
     sphere.scale.x = -1;
