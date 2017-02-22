@@ -3,23 +3,24 @@
 //    - https://github.com/turban/photosphere
 
 function removeSphericalVr() {
-  $( '#sphere' ).remove();
+  $( '#spherepane' ).css( 'visibility', 'hidden' );
 }
 
 function sphericalVr() {
 
-  var spherePane = document.getElementById('sphere');
+  var spherePane = document.getElementById('spherepane');
   var sphereCanvas = document.getElementById( 'spherecanvas' );
+  spherePane.style.visibility = 'visible';
 
   var box0Focus = $( '#box0' );
   var boxPosition = box0Focus.offset();
   var boxWidth = box0Focus.outerWidth();
   var boxHeight = box0Focus.outerHeight();
 
-  $( '#sphere' ).css( boxPosition );
-  $( '#sphere' ).css( 'width', boxWidth );
-  $( '#sphere' ).css( 'height', boxHeight );
-  $( '#sphere' ).css( 'z-index', 200 );
+  $( '#spherepane' ).css( boxPosition );
+  $( '#spherepane' ).css( 'width', boxWidth );
+  $( '#spherepane' ).css( 'height', boxHeight );
+  $( '#spherepane' ).css( 'z-index', 200 );
   $( '#spherecanvas' ).css( boxPosition );
   $( '#spherecanvas' ).css( 'width', boxWidth );
   $( '#spherecanvas' ).css( 'height', boxHeight );
