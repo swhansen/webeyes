@@ -6,13 +6,36 @@ function removeSphericalVr() {
   $( '#spherepane' ).css( 'visibility', 'hidden' );
 }
 
-function sphericalVr( file ) {
+function sphericalVr() {
 
-  if ( scene ) {
-    scene.children.forEach( function( object ) {
-      scene.remove( object );
-    } );
-}
+//swal( {
+//    title: 'Select image',
+//    input: 'file',
+//    showCancelButton: true,
+//    inputAttributes: {
+//      accept: 'image/*'
+//    }
+//    } ).then( function (e) {
+//        var reader = new FileReader();
+//        reader.onload = function(event){
+//            var imgSend = new Image();
+//            imgSend.onload = function(){
+//                docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
+//
+//
+//            };
+//            imgSend.src = event.target.result;
+//        };
+//        reader.readAsDataURL( e );
+//      }
+//      );
+//
+//
+//  if ( scene ) {
+//    scene.children.forEach( function( object ) {
+//      scene.remove( object );
+//    } );
+//}
 
   var spherePane = document.getElementById( 'spherepane' );
   var sphereCanvas = document.getElementById( 'spherecanvas' );
