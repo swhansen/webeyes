@@ -137,10 +137,8 @@ function useModeCode( modeCode ) {
     } ).then( function ( file ) {
   var reader = new FileReader
   reader.onload = function ( e ) {
-    swal( {
       imageUrl: e.target.result
       sphericalVr( file );
-    } );
   }
   console.log( 'vrtest:', file );
   reader.readAsDataURL( file );
