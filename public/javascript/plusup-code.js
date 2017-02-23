@@ -260,30 +260,6 @@ function iotZoneModal() {
     );
 }
 
-function sphereWorldModal() {
-  swal( {
-    title: 'Select a Sphere World',
-    input: 'file',
-    showCancelButton: true,
-    inputAttributes: {
-      accept: 'image/*'
-    }
-    } ).then( function ( file ) {
-  var reader = new FileReader
-  reader.onload = function ( e ) {
-    swal( {
-      imageUrl: e.target.result
-      sphericalVr( file );
-    } );
-  }
-  reader.readAsDataURL( file );
-} );
-
-
-
-
-
-
 function vrWorldModal() {
   swal( {
     title: 'Select a VR World',
