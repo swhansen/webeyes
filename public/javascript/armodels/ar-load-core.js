@@ -62,12 +62,14 @@ function setUpArLayer() {
 if ( typeof vrBroadcastCameraControls === 'undefined' ) {
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
+
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 }
 
 if ( typeof vrDrivenCameraControls === 'undefined' ) {
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera.name = 'vrDrivenCamera';
+
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
   vrDrivenCameraControls.connect();
 }

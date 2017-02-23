@@ -122,11 +122,33 @@ function useModeCode( modeCode ) {
 
   break;
 
-  case 'vrtest':
+ case 'vrtest':
 
-    sphericalVr();
+//   sphericalVr();
 
-  break;
+
+  swal( {
+    title: 'Select a Sphere World',
+    input: 'file',
+    showCancelButton: true,
+    inputAttributes: {
+      accept: 'image/*'
+    }
+    } ).then( function ( file ) {
+  var reader = new FileReader
+  reader.onload = function ( e ) {
+    swal( {
+      imageUrl: e.target.result
+      sphericalVr( file );
+    } );
+  }
+  console.log( 'vrtest:', file );
+  reader.readAsDataURL( file );
+} );
+  }
+
+
+ break;
 
   case 'removevrtest':
     removeSphericalVr();
@@ -241,6 +263,30 @@ function iotZoneModal() {
     );
 }
 
+function sphereWorldModal() {
+  swal( {
+    title: 'Select a Sphere World',
+    input: 'file',
+    showCancelButton: true,
+    inputAttributes: {
+      accept: 'image/*'
+    }
+    } ).then( function ( file ) {
+  var reader = new FileReader
+  reader.onload = function ( e ) {
+    swal( {
+      imageUrl: e.target.result
+      sphericalVr( file );
+    } );
+  }
+  reader.readAsDataURL( file );
+} );
+
+
+
+
+
+
 function vrWorldModal() {
   swal( {
     title: 'Select a VR World',
@@ -254,9 +300,9 @@ function vrWorldModal() {
     showCancelButton: true,
     inputValidator: function (inputValue) {
       return new Promise(function (resolve, reject) {
-          setVrWorld();
-          shareArVrWorld();
-   var sessionId = socketServer.sessionid;
+        setVrWorld();
+        shareArVrWorld();
+        var sessionId = socketServer.sessionid;
         socketServer.emit( 'focus', userContext.rtcId, sessionId );
           statusBox.updateElement( 'metaverse', inputValue );
           resolve();
