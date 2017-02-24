@@ -17,25 +17,15 @@ swal( {
     inputAttributes: {
       accept: 'image/*'
     }
-    } ).then( function (e) {
-      console.log( 'swal:', e );
-        var reader = new FileReader();
-        reader.onload = function(e){
-            var img = new Image();
-            img.onload = function(){
-
-       texture =  new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( img.src )
-      } )
-            //    docctx.drawImage( img, 5, 5,  box0Width, box0Height );
-
-
-            };
-            img.src = event.target.result;
-        };
-        reader.readAsDataURL( e );
-      }
-      );
+    } ).then(function (file) {
+  var reader = new FileReader
+  reader.onload = function (e) {
+    swal({
+      imageUrl: e.target.result
+    })
+  }
+  reader.readAsDataURL(file)
+} )
 
 
   if ( scene ) {
