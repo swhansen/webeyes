@@ -6,9 +6,7 @@ function removeSphericalVr() {
   $( '#spherepane' ).css( 'visibility', 'hidden' );
 }
 
-function sphericalVr( texture ) {
-
-
+function sphericalVr( sphereTexture ) {
 
   if ( scene ) {
     scene.children.forEach( function( object ) {
@@ -47,7 +45,7 @@ function sphericalVr( texture ) {
   var sphere = new THREE.Mesh(
       new THREE.SphereGeometry( 100, 20, 20 ),
       new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( texture )
+        map: THREE.ImageUtils.loadTexture( sphereTexture )
       } )
     );
     sphere.scale.x = -1;

@@ -218,29 +218,21 @@ vrTestModal();
 // ------- end plus-up case -------------------------
 
 function vrTestModal() {
-swal( {
-    title: 'Select image',
-    input: 'file',
-    showCancelButton: true,
-    inputAttributes: {
-      accept: 'image/*'
+  swal( {
+      title: 'Select image',
+      input: 'file',
+      showCancelButton: true,
+      inputAttributes: {
+        accept: 'image/*'
+      }
+      } ).then( function ( file ) {
+    var reader = new FileReader;
+    reader.onload = function ( e ) {
+      sphericalVr( e.target.result );
     }
-    } ).then( function ( file ) {
-  var reader = new FileReader;
-  reader.onload = function ( e ) {
-    sphericalVr( e.target.result );
-   // swal({
-   //   imageUrl: e.target.result
-   // } )
-  }
-  reader.readAsDataURL( file )
-} )
-
-  }
-
-
-
-
+    reader.readAsDataURL( file )
+  } )
+}
 
 function iotZoneModal() {
   swal( {
