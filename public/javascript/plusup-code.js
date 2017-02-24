@@ -354,7 +354,7 @@ $( '#codeDialogModal' ).dialog( {
     } );
 
 
-var modalMultiple =  [ 'help',  'augme', 'vrme',  'iotz' ];
+var modalMultiple =  [ 'help', 'vrtest', 'augme', 'vrme',  'iotz' ];
 var plusupCodeArray = [ 'removevrtest', 'vrtest', 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
 
 $( '#codeDialogButton' ).click( function() {
