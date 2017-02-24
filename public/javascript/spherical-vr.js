@@ -24,7 +24,7 @@ swal( {
             img.onload = function(){
 
        texture =  new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
+        map: THREE.ImageUtils.loadTexture( img.src )
       } )
             //    docctx.drawImage( img, 5, 5,  box0Width, box0Height );
 
