@@ -77,11 +77,11 @@ function openFileModal() {
     }
     } ).then( function (e) {
         var reader = new FileReader();
-        reader.onload = function(event){
+        reader.onload = function( event ){
             var imgSend = new Image();
             imgSend.onload = function(){
                 docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
-              var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
+                var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
 
              //   console.log( 'imagedata at modal:', imgdata );
                 var data = {  alpha: docAlpha, width: docCanvas.width, height: docCanvas.height, source:imgdata };
@@ -125,37 +125,6 @@ socketServer.on( 'shareImage', function( data ) {
     docAlpha = origDocAlpha;
     }
   } );
-
-//socketServer.on( 'shareImage', function( data ) {
-//  var imgRecieve = new Image();
-//    new Promise( function( resolve, reject ) {
-//  imgRecieve.src = data.source;
-//  imgRecieve.onload = resolve;
-//
-//} ).then( docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height ) );
-//  } );
-//
-//
-
-//
-//     docctx.drawImage( imgRecieve, 0, 0, data.width, data.height, 0, 0, box0Width, box0Height );
-//
-//     $("#myimg").attr("src", data.source );
-//     console.log( 'recieve shareImage-on:', data.width, data.height, box0Width, box0Height );
-//   if ( data) {
-//       resolve( 'Stuff worked!' );
-//     }
-//     else {
-//       reject(Error( 'It broke' ));
-//     }
-//   promise.then(function(result) {
-//     console.log(result); // "Stuff worked!"
-//   }, function(err) {
-//       console.log(err); // Error: "It broke"
-//   } );
-//      //console.log( 'shareImage-on:', err);
-//   } );
-// } );
 
 function emitDocImage( data ) {
  // console.log( 'emitdocImage:', data.width, data.height, data.source );

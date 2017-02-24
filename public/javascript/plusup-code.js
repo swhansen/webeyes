@@ -122,14 +122,9 @@ function useModeCode( modeCode ) {
 
   break;
 
- case 'vrtest':
-
-
-vrTestModal();
-
- //  sphericalVr();
-
- break;
+  case 'vrtest':
+    vrTestModal();
+  break;
 
   case 'removevrtest':
     removeSphericalVr();
@@ -226,12 +221,12 @@ function vrTestModal() {
         accept: 'image/*'
       }
       } ).then( function ( file ) {
-    var reader = new FileReader;
+    var reader = new FileReader();
     reader.onload = function ( e ) {
       sphericalVr( e.target.result );
-    }
-    reader.readAsDataURL( file )
-  } )
+    };
+    reader.readAsDataURL( file );
+  } );
 }
 
 function iotZoneModal() {
