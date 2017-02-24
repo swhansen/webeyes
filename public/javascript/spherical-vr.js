@@ -8,24 +8,6 @@ function removeSphericalVr() {
 
 function sphericalVr() {
 
-  var texture;
-
-swal( {
-    title: 'Select image',
-    input: 'file',
-    showCancelButton: true,
-    inputAttributes: {
-      accept: 'image/*'
-    }
-    } ).then(function (file) {
-  var reader = new FileReader
-  reader.onload = function (e) {
-    swal({
-      imageUrl: e.target.result
-    })
-  }
-  reader.readAsDataURL(file)
-} )
 
 
   if ( scene ) {
@@ -63,10 +45,10 @@ swal( {
   renderer.setSize( boxWidth, boxHeight );
 
   var sphere = new THREE.Mesh(
-      new THREE.SphereGeometry( 100, 20, 20 ), texture
-      //new THREE.MeshBasicMaterial( {
-       // map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
-      //} )
+      new THREE.SphereGeometry( 100, 20, 20 ),
+      new THREE.MeshBasicMaterial( {
+        map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
+      } )
     );
     sphere.scale.x = -1;
     scene.add( sphere );

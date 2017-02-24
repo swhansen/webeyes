@@ -124,6 +124,25 @@ function useModeCode( modeCode ) {
 
  case 'vrtest':
 
+swal( {
+    title: 'Select image',
+    input: 'file',
+    showCancelButton: true,
+    inputAttributes: {
+      accept: 'image/*'
+    }
+    } ).then(function (file) {
+  var reader = new FileReader
+  reader.onload = function (e) {
+    swal({
+      imageUrl: e.target.result
+    })
+  }
+  reader.readAsDataURL(file)
+} )
+
+
+
    sphericalVr();
 
  break;
