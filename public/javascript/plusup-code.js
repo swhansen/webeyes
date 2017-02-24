@@ -214,17 +214,18 @@ function useModeCode( modeCode ) {
 
 function vrTestModal() {
   swal( {
-      title: 'Select image',
+      title: 'Select a PhotoSphere',
+      text: 'Load a sphere from your local device',
       input: 'file',
       showCancelButton: true,
       inputAttributes: {
         accept: 'image/*'
       }
       } ).then( function ( file ) {
-    var reader = new FileReader();
-    reader.onload = function ( e ) {
-      sphericalVr( e.target.result );
-    };
+        var reader = new FileReader();
+        reader.onload = function ( e ) {
+          sphericalVr( e.target.result );
+      };
     reader.readAsDataURL( file );
   } );
 }
