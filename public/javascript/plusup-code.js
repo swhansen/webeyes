@@ -128,25 +128,6 @@ function useModeCode( modeCode ) {
 
  break;
 
-// swal( {
-//   title: 'Select a Sphere World',
-//   input: 'file',
-//   showCancelButton: true,
-//   inputAttributes: {
-//     accept: 'image/*'
-//   }
-//   } ).then( function ( file ) {
-// var reader = new FileReader
-// reader.onload = function ( e ) {
-//     imageUrl: e.target.result
-//     sphericalVr( file );
-// }
-// console.log( 'vrtest:', file );
-// reader.readAsDataURL( file );
-// );
-// }
-
-
   case 'removevrtest':
     removeSphericalVr();
   break;

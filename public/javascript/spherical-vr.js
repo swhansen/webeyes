@@ -8,34 +8,38 @@ function removeSphericalVr() {
 
 function sphericalVr() {
 
-//swal( {
-//    title: 'Select image',
-//    input: 'file',
-//    showCancelButton: true,
-//    inputAttributes: {
-//      accept: 'image/*'
-//    }
-//    } ).then( function (e) {
-//        var reader = new FileReader();
-//        reader.onload = function(event){
-//            var imgSend = new Image();
-//            imgSend.onload = function(){
-//                docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
-//
-//
-//            };
-//            imgSend.src = event.target.result;
-//        };
-//        reader.readAsDataURL( e );
-//      }
-//      );
-//
-//
-//  if ( scene ) {
-//    scene.children.forEach( function( object ) {
-//      scene.remove( object );
-//    } );
-//}
+swal( {
+    title: 'Select image',
+    input: 'file',
+    showCancelButton: true,
+    inputAttributes: {
+      accept: 'image/*'
+    }
+    } ).then( function (e) {
+        var reader = new FileReader();
+        reader.onload = function(event){
+            var img = new Image();
+            img.onload = function(){
+
+       texture =  new THREE.MeshBasicMaterial( {
+        map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
+      } )
+            //    docctx.drawImage( img, 5, 5,  box0Width, box0Height );
+
+
+            };
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL( e );
+      }
+      );
+
+
+  if ( scene ) {
+    scene.children.forEach( function( object ) {
+      scene.remove( object );
+    } );
+}
 
   var spherePane = document.getElementById( 'spherepane' );
   var sphereCanvas = document.getElementById( 'spherecanvas' );
@@ -66,10 +70,10 @@ function sphericalVr() {
   renderer.setSize( boxWidth, boxHeight );
 
   var sphere = new THREE.Mesh(
-      new THREE.SphereGeometry( 100, 20, 20 ),
-      new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
-      } )
+      new THREE.SphereGeometry( 100, 20, 20 ), texture
+      //new THREE.MeshBasicMaterial( {
+       // map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
+      //} )
     );
     sphere.scale.x = -1;
     scene.add( sphere );
