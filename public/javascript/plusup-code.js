@@ -127,9 +127,7 @@ function useModeCode( modeCode ) {
 
 vrTestModal();
 
-
-
-   sphericalVr();
+ //  sphericalVr();
 
  break;
 
