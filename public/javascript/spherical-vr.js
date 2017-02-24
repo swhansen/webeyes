@@ -8,6 +8,8 @@ function removeSphericalVr() {
 
 function sphericalVr() {
 
+  var texture;
+
 swal( {
     title: 'Select image',
     input: 'file',
