@@ -6,7 +6,7 @@ function removeSphericalVr() {
   $( '#spherepane' ).css( 'visibility', 'hidden' );
 }
 
-function sphericalVr() {
+function sphericalVr( texture ) {
 
 
 
@@ -47,7 +47,7 @@ function sphericalVr() {
   var sphere = new THREE.Mesh(
       new THREE.SphereGeometry( 100, 20, 20 ),
       new THREE.MeshBasicMaterial( {
-        map: THREE.ImageUtils.loadTexture( 'img/3d/bridge.jpg' )
+        map: THREE.ImageUtils.loadTexture( texture )
       } )
     );
     sphere.scale.x = -1;

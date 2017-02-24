@@ -225,15 +225,17 @@ swal( {
     inputAttributes: {
       accept: 'image/*'
     }
-    } ).then(function (file) {
-  var reader = new FileReader
-  reader.onload = function (e) {
-    swal({
-      imageUrl: e.target.result
-    })
+    } ).then( function ( file ) {
+  var reader = new FileReader;
+  reader.onload = function ( e ) {
+    sphericalVr( e.target.result );
+   // swal({
+   //   imageUrl: e.target.result
+   // } )
   }
-  reader.readAsDataURL(file)
+  reader.readAsDataURL( file )
 } )
+
   }
 
 
