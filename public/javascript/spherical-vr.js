@@ -18,8 +18,9 @@ swal( {
       accept: 'image/*'
     }
     } ).then( function (e) {
+      console.log( 'swal:', e );
         var reader = new FileReader();
-        reader.onload = function(event){
+        reader.onload = function(e){
             var img = new Image();
             img.onload = function(){
 
