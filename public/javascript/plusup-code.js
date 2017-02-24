@@ -143,7 +143,7 @@ swal( {
 
 
 
-   sphericalVr();
+ //  sphericalVr();
 
  break;
 
