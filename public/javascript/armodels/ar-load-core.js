@@ -1,9 +1,5 @@
 function setUpArLayer() {
 
-// var peerWindows = [ $( '#box0' ).width(), $( '#box1' ).width(), $( '#box2').width(), $( '#box3' ).width() ];
-// var m = _.max( peerWindows );
-// console.log( 'Load AR - boxN max:', m );
-
   scene = null;
   renderer = null;
 
@@ -14,7 +10,9 @@ function setUpArLayer() {
 
   userContext.addDimensionalLayer( 'arcanvaspane' );
 
-  var box0Focus = $( '#box0' );
+  var b = getCenterBoxId();
+  var box0Focus = $( '#' + b );
+
   var boxPosition = box0Focus.offset();
   var boxWidth = box0Focus.outerWidth();
   var boxHeight = box0Focus.outerHeight();

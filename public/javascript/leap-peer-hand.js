@@ -9,23 +9,38 @@ var leapFrame;
 
  var leapPane = document.getElementById( 'leappane' );
  var leapFull = document.getElementById( 'leapfull' );
-// document.getElementById( 'leappane' ).className = 'canvascenter';
-// document.getElementById( 'leapfull' ).className = 'canvascenter';
 
- leapFull.style.width = '100%';
- leapFull.style.height = '100%';
+var leapPane = document.getElementById( 'leappane' );
+var leapFull = document.getElementById( 'leapfull' );
+
+var b = getCenterBoxId();
+var box0Focus = $( '#' + b );
+var boxPosition = box0Focus.offset();
+var boxWidth = box0Focus.outerWidth();
+var boxHeight = box0Focus.outerHeight();
+
+$( '#leappane' ).css( boxPosition );
+$( '#leappane' ).css( 'width', boxWidth );
+$( '#leappane' ).css( 'height', boxHeight );
+$( '#leappane' ).css( 'z-index', 50 );
+$( '#leapfull' ).css( boxPosition );
+leapFull.width = leapPane.clientWidth;
+leapFull.height = leapPane.clientHeight;
+
+
+// leapFull.style.width = '100%';
+// leapFull.style.height = '100%';
 
 // leapFull.width =  leapPane.offsetWidth;
 // leapFull.height = leapPane.offsetHeight;
 
-  var rect = leapFull.getBoundingClientRect();
-  var offsetX = rect.left;
-  var offsetY = rect.top;
+//  var rect = leapFull.getBoundingClientRect();
+//  var offsetX = rect.left;
+//
+//  var viewWidth = leapFull.offsetWidth;
+//  var viewHeight = leapFull.offsetHeight;
 
-  var viewWidth = leapFull.offsetWidth;
-  var viewHeight = leapFull.offsetHeight;
-
-  console.log( 'offset-XY:', offsetX, offsetY, 'viewWidth-WH:', viewWidth , viewHeight );
+//  console.log( 'offset-XY:', offsetX, offsetY, 'viewWidth-WH:', viewWidth , viewHeight );
 
  leapFull.style.visibility = 'visible';
  leapPane.style.visibility = 'visible';
@@ -53,7 +68,7 @@ var leapFrame;
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( viewWidth, viewHeight );
+    renderer.setSize( boxWidth, boxHeight );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     peerHands = new THREE.Object3D();

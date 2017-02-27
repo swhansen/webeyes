@@ -10,14 +10,27 @@ var iotIncrement = new Audio( 'audio/button-19.wav');
 var iotLightOn = new Audio( 'audio/button-17.wav');
 var iotLightOff = new Audio( 'audio/button-47.wav');
 
- var leapPane = document.getElementById( 'leappane' );
- var leapFull = document.getElementById( 'leapfull' );
- //document.getElementById( 'leappane' ).className = 'canvascenter';
+var leapPane = document.getElementById( 'leappane' );
+var leapFull = document.getElementById( 'leapfull' );
 
- leapFull.style.width = '100%';
- leapFull.style.height = '100%';
- leapFull.width =  leapPane.offsetWidth;
- leapFull.height = leapPane.offsetHeight;
+var b = getCenterBoxId();
+var box0Focus = $( '#' + b );
+var boxPosition = box0Focus.offset();
+var boxWidth = box0Focus.outerWidth();
+var boxHeight = box0Focus.outerHeight();
+
+$( '#leappane' ).css( boxPosition );
+$( '#leappane' ).css( 'width', boxWidth );
+$( '#leappane' ).css( 'height', boxHeight );
+$( '#leappane' ).css( 'z-index', 50 );
+$( '#leapfull' ).css( boxPosition );
+leapFull.width = leapPane.clientWidth;
+leapFull.height = leapPane.clientHeight;
+
+// leapFull.style.width = '100%';
+// leapFull.style.height = '100%';
+// leapFull.width =  leapPane.offsetWidth;
+// leapFull.height = leapPane.offsetHeight;
 
  leapFull.style.visibility = 'visible';
  leapPane.style.visibility = 'visible';
@@ -111,7 +124,7 @@ function emitLeap( data ) {
 
     renderer = new THREE.WebGLRenderer( { canvas: leapfull, alpha: true }  );
     renderer.setClearColor( 0xffffff, 0 );
-    renderer.setSize( box0Width, box0Height );
+    renderer.setSize( boxWidth, boxHeight );
 
     camera = new THREE.PerspectiveCamera( 40, leapFull.width / leapFull.height, 1, 5000 );
     camera.position.set( 0, 600, 420 );

@@ -56,11 +56,18 @@ metaverse     : '',
 updateElement : updateElement
 };
 
-
 /*jshint -W020 */
 socketServer = io.connect( '/' );
 /*jshint +W020 */
 
+// utility function to determine the center dimensionalLayer
+//  - used for creating dimensionalLayers based on center video div size
+
+function getCenterBoxId() {
+  var boxes = [ 'box0', 'box1', 'box2', 'box3' ];
+  var maxBox = _.max( boxes, function( o ) { return document.getElementById( o ).clientWidth} );
+ return maxBox;
+ }
 
 function updateElement( element, info ) {
   this.element = info;

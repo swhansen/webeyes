@@ -245,7 +245,10 @@ function initDraw() {
 
   userContext.addDimensionalLayer( 'canvaspane' );
 
-  var box = $( '#box0' );
+  var b = getCenterBoxId();
+  var box = $( '#' + b );
+
+ // var box = $( '#box0' );
   var boxPosition = box.offset();
   var boxWidth = box.outerWidth();
   var boxHeight = box.outerHeight();

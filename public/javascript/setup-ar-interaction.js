@@ -69,8 +69,6 @@ $( function() {
 
   $( '#arcanvas' ).longpress( function( event ) {
 
-    console.log( 'longpress' );
-
     event.preventDefault();
 
     var mouse3D = new THREE.Vector3( ( event.clientX - offsetX ) / viewWidth * 2 - 1,
@@ -80,8 +78,6 @@ $( function() {
     var dir = mouse3D.sub( cameraDriver.position ).normalize();
     var raycaster = new THREE.Raycaster( cameraDriver.position, mouse3D );
 
-  //  var scale = 4.0;
-
     var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
 
         arShareData.operation = 'newObject';
@@ -89,13 +85,38 @@ $( function() {
         arShareData.y = pos.y;
         arShareData.z = pos.z;
 
-    addNewArObjectToWorld( arShareData, 'red' );
+    selectArObjectLongPress( arShareData );
+
     return false;
     },
 
   function( e ) {
       return false;
   }, 750 );
+
+function selectArObjectLongPress( data ) {
+  swal( {
+  title: 'Select an AR Object',
+  text: 'it will be place where you long clicked',
+  input: 'select',
+  inputOptions: {
+    'bagel': 'bagel',
+  },
+    inputPlaceholder: 'Select an AR Object',
+    showCancelButton: true,
+    inputValidator: function( value ) {
+    return new Promise( function( resolve, reject ) {
+      switch ( value ) {
+        case 'bagel':
+          addNewArObjectToWorld( data, 'red' );
+          resolve();
+        break;
+      }
+    }
+    ); }
+  } ).then( function( result ) {
+  } );
+}
 
   function addNewArObjectToWorld( d, color ) {
       var materialTorus1 = new THREE.MeshLambertMaterial( { color: color } );
@@ -292,7 +313,7 @@ console.log( 'render:', renderer );
 }
 }
 
-//Dynamic AR/VR Model Loading
+// Dynamic AR/VR Model Loading --peers
 
 socketServer.on( 'arDynamicLoadModel', function( data ) {
 
@@ -349,7 +370,8 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
   } );
 
 
-function loadArModel( model ) {
+function loadArModel( model) {
+
   switch ( model ) {
     case 'iot':
     data.file = 'ar-load-iot.js';

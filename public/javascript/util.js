@@ -5,6 +5,15 @@
 // center dimensional window. The size of the windo window is dynamic and
 // is set on session initiation.
 
+
+
+
+
+
+
+
+
+
 //var utilCanvas = document.getElementById( 'utilcanvas' );
 //var utilctx = utilCanvas.getContext( '2d' );
 var d1 = document.getElementById('doc-1');
@@ -24,10 +33,13 @@ function initUtil() {
 
   userContext.addDimensionalLayer( 'doccanvaspane' );
 
-  var box = $( '#box0' );
+  var b = getCenterBoxId();
+  var box = $( '#' + b );
   var boxPosition = box.offset();
   var boxWidth = box.outerWidth();
   var boxHeight = box.outerHeight();
+
+  console.log( 'box0-xx', boxWidth, boxHeight );
 
   box0Height = document.getElementById('box0').offsetHeight;
   box0Width = document.getElementById('box0').offsetWidth;
