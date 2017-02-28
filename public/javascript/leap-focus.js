@@ -6,34 +6,29 @@ function leapFocus() {
 //  console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 //} );
 
-var iotIncrement = new Audio( 'audio/button-19.wav');
-var iotLightOn = new Audio( 'audio/button-17.wav');
-var iotLightOff = new Audio( 'audio/button-47.wav');
+  var iotIncrement = new Audio( 'audio/button-19.wav');
+  var iotLightOn = new Audio( 'audio/button-17.wav');
+  var iotLightOff = new Audio( 'audio/button-47.wav');
 
-var leapPane = document.getElementById( 'leappane' );
-var leapFull = document.getElementById( 'leapfull' );
+  var leapPane = document.getElementById( 'leappane' );
+  var leapFull = document.getElementById( 'leapfull' );
 
-var b = getCenterBoxId();
-var box0Focus = $( '#' + b );
-var boxPosition = box0Focus.offset();
-var boxWidth = box0Focus.outerWidth();
-var boxHeight = box0Focus.outerHeight();
+  var b = getCenterBoxId();
+  var box0Focus = $( '#' + b );
+  var boxPosition = box0Focus.offset();
+  var boxWidth = box0Focus.outerWidth();
+  var boxHeight = box0Focus.outerHeight();
 
-$( '#leappane' ).css( boxPosition );
-$( '#leappane' ).css( 'width', boxWidth );
-$( '#leappane' ).css( 'height', boxHeight );
-$( '#leappane' ).css( 'z-index', 50 );
-$( '#leapfull' ).css( boxPosition );
-leapFull.width = leapPane.clientWidth;
-leapFull.height = leapPane.clientHeight;
+  $( '#leappane' ).css( boxPosition );
+  $( '#leappane' ).css( 'width', boxWidth );
+  $( '#leappane' ).css( 'height', boxHeight );
+  $( '#leappane' ).css( 'z-index', 50 );
+  $( '#leapfull' ).css( boxPosition );
+  leapFull.width = leapPane.clientWidth;
+  leapFull.height = leapPane.clientHeight;
 
-// leapFull.style.width = '100%';
-// leapFull.style.height = '100%';
-// leapFull.width =  leapPane.offsetWidth;
-// leapFull.height = leapPane.offsetHeight;
-
- leapFull.style.visibility = 'visible';
- leapPane.style.visibility = 'visible';
+  leapFull.style.visibility = 'visible';
+  leapPane.style.visibility = 'visible';
 
   leapFull.style.zIndex = 15;
 
