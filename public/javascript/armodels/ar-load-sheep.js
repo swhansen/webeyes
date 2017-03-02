@@ -17,6 +17,12 @@ function loadSheep() {
      sheep.userData.isSelectable = true;
      sheep.userData.isAnimated = false;
      scene.add( sheep );
+
+ //    if ( typeof pos === 'undefined' ) {
+ //     cube2.position.set( -2.0, 0.4, 0.0 );
+ //   } else {
+ //     cube2.position.set( pos.x, pos.y, 0.0 );
+ //   }
      arSelectObjectArray.push( sheep );
     } );
 

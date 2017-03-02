@@ -11,11 +11,14 @@ function setUpArLayer() {
   userContext.addDimensionalLayer( 'arcanvaspane' );
 
   var b = getCenterBoxId();
-  var box0Focus = $( '#' + b );
+  var boxFocus = $( '#' + b );
 
-  var boxPosition = box0Focus.offset();
-  var boxWidth = box0Focus.outerWidth();
-  var boxHeight = box0Focus.outerHeight();
+  var boxPosition = boxFocus.offset();
+  var boxWidth = boxFocus.outerWidth();
+  var boxHeight = boxFocus.outerHeight();
+
+  console.log( 'userContext:', userContext );
+  console.log( 'setUpArLayer:', boxPosition, boxWidth, boxHeight );
 
   $( '#arcanvaspane' ).css( boxPosition );
   $( '#arcanvaspane' ).css( 'width', boxWidth );
@@ -103,7 +106,6 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   var sphereW = new THREE.Mesh( geometrySphere, cardinalMat );
   var sphereU = new THREE.Mesh( geometrySphere, cardinalMat );
   var sphereD = new THREE.Mesh( geometrySphere, cardinalMat );
-
 
   sphereS.position.set( 0.0, 0.0, -6.0 );
   sphereS.name = 'sphereS';
@@ -208,7 +210,36 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
       }
 }
 
-  function animateArObjects() {
+
+ function connectToVrController() {
+   vrDrivenCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, vrDrivenCamera );
+   requestAnimationFrame( connectToVrController );
+ }
+
+ function connectToVrBroadcast() {
+   vrBroadcastCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, vrBroadcastDrivenCamera );
+   requestAnimationFrame( connectToVrBroadcast );
+ }
+
+ function connectToDeviceSensors() {
+   sensorCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, sensorDrivenCamera );
+   requestAnimationFrame( connectToDeviceSensors );
+   }
+
+ function connectToBroadcastSensors() {
+   broadcastCameraControls.update();
+   animateArObjects();
+   renderer.render( scene, broadcastDrivenCamera );
+   requestAnimationFrame( connectToBroadcastSensors );
+   }
+
+function animateArObjects() {
 
     var dt = clock.getDelta();
 
@@ -243,40 +274,22 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 
         if ( arSelectObjectArray[i].name === 'swordGuyMesh' &&
               arSelectObjectArray[i].userData.isAnimated === true ) {
-
                  mixer.update( dt );
-          //        helper.update();
         }
     }
   }
 
- function connectToVrController() {
-   vrDrivenCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, vrDrivenCamera );
-   requestAnimationFrame( connectToVrController );
- }
 
- function connectToVrBroadcast() {
-   vrBroadcastCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, vrBroadcastDrivenCamera );
-   requestAnimationFrame( connectToVrBroadcast );
- }
 
- function connectToDeviceSensors() {
-   sensorCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, sensorDrivenCamera );
-   requestAnimationFrame( connectToDeviceSensors );
-   }
 
- function connectToBroadcastSensors() {
-   broadcastCameraControls.update();
-   animateArObjects();
-   renderer.render( scene, broadcastDrivenCamera );
-   requestAnimationFrame( connectToBroadcastSensors );
-   }
+
+
+
+
+
+
+
+
 
 // arConnectionController();
 

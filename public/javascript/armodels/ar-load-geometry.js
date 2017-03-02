@@ -1,4 +1,6 @@
-function loadGeometry() {
+function loadGeometry( pos ) {
+
+  console.log( 'loadGeometry:', pos );
 
 //    var geometryCube1 = new THREE.BoxGeometry( 0.5, 0.5, 0.5, 2, 2, 2 );
 //    var geometryKnot = new THREE.TorusKnotGeometry( 0.3, 0.3, 100, 16 );
@@ -31,6 +33,12 @@ function loadGeometry() {
     cube2.userData.isSelectable = true;
     cube2.userData.isAnimated = false;
     arSelectObjectArray.push( cube2 );
+
+    if ( typeof pos === 'undefined' ) {
+      cube2.position.set( -2.0, 0.0, -6.0 );
+    } else {
+      cube2.position.set( pos.x, pos.y, pos.z );
+    }
 
     scene.add( cube2 );
 

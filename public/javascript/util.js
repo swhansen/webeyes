@@ -5,17 +5,6 @@
 // center dimensional window. The size of the windo window is dynamic and
 // is set on session initiation.
 
-
-
-
-
-
-
-
-
-
-//var utilCanvas = document.getElementById( 'utilcanvas' );
-//var utilctx = utilCanvas.getContext( '2d' );
 var d1 = document.getElementById('doc-1');
 var d2 = document.getElementById('doc-2');
 var d3 = document.getElementById('material');
@@ -94,8 +83,6 @@ function openFileModal() {
             imgSend.onload = function(){
                 docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
                 var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
-
-             //   console.log( 'imagedata at modal:', imgdata );
                 var data = {  alpha: docAlpha, width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitDocImage( data );
             };
@@ -162,26 +149,31 @@ function drawArch() {
 }
 
 function drawBullsEye() {
+
+  var b = getCenterBoxId();
+  var box = $( '#' + b );
+  var cw = box.outerWidth() / 2.0;;
+  var ch = box.outerHeight() / 2.0;
   var outerRadius = 300;
   var innerRadius = 275;
+
   docctx.beginPath();
-  docctx.arc(500, 400, outerRadius, 0, 2 * Math.PI, false);
+  docctx.arc( cw, ch, outerRadius, 0, 2 * Math.PI, false);
   docctx.fillStyle = 'rgba(255,255,255,.2)';
   docctx.fill();
   docctx.globalCompositeOperation = 'destination-out';
   docctx.beginPath();
-  docctx.arc(500, 400, innerRadius, 0, 2 * Math.PI, false);
+  docctx.arc( cw, ch, innerRadius, 0, 2 * Math.PI, false);
   docctx.fillStyle = 'green';
   docctx.fill();
   docctx.globalCompositeOperation = 'source-over';
   docctx.beginPath();
-  docctx.moveTo(500 - innerRadius, 400);
-  docctx.lineTo(500 + innerRadius, 400);
+  docctx.moveTo( cw - innerRadius, ch );
+  docctx.lineTo( cw + innerRadius, ch );
   docctx.stroke();
-  docctx.moveTo(500, 400 - innerRadius);
-  docctx.lineTo(500, 400 + innerRadius);
+  docctx.moveTo( cw, ch - innerRadius);
+  docctx.lineTo( cw, ch + innerRadius);
   docctx.stroke();
-  console.log( 'drawBullsEye - end:' );
 }
 
 function emitUtility( data ) {

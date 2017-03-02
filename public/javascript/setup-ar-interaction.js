@@ -14,7 +14,7 @@ socketServer.on( 'addNewArObject', function( data ) {
     arShareData.y = data.y;
     arShareData.z = data.z;
 
-    addNewArObjectToWorld( arShareData, data.color );
+    addNewArObjectToWorld( arShareData );
   } );
 
 var arCanvas = document.getElementById( 'arcanvaspane' );
@@ -40,7 +40,6 @@ $( function() {
 
   function emitArObject( data ) {
     var sessionId = socketServer.sessionid;
-    console.log( 'emitARObject:', data );
     socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
@@ -85,22 +84,24 @@ $( function() {
         arShareData.y = pos.y;
         arShareData.z = pos.z;
 
-    selectArObjectLongPress( arShareData );
+    placeArObjectLongPress( arShareData );
 
     return false;
+
     },
 
   function( e ) {
       return false;
   }, 750 );
 
-function selectArObjectLongPress( data ) {
+function placeArObjectLongPress( data ) {
   swal( {
   title: 'Select an AR Object',
-  text: 'it will be place where you long clicked',
+  text: 'it will be places where you selected',
   input: 'select',
   inputOptions: {
     'bagel': 'bagel',
+    'cube': 'cube'
   },
     inputPlaceholder: 'Select an AR Object',
     showCancelButton: true,
@@ -108,8 +109,12 @@ function selectArObjectLongPress( data ) {
     return new Promise( function( resolve, reject ) {
       switch ( value ) {
         case 'bagel':
-          addNewArObjectToWorld( data, 'red' );
+          addNewArObjectToWorld( data );
           resolve();
+        break;
+        case 'cube':
+        loadArModel( 'geometry', data );
+        resolve();
         break;
       }
     }
@@ -118,8 +123,8 @@ function selectArObjectLongPress( data ) {
   } );
 }
 
-  function addNewArObjectToWorld( d, color ) {
-      var materialTorus1 = new THREE.MeshLambertMaterial( { color: color } );
+  function addNewArObjectToWorld( d ) {
+      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 'red' } );
       var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
       var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
 
@@ -143,7 +148,7 @@ function selectArObjectLongPress( data ) {
       newArObj.x = d.x;
       newArObj.y = d.y;
       newArObj.z = d.z;
-      newArObj.color = color;
+      newArObj.color = 'red';
       newArObj.id = arUserCreatedObject.id;
       newArObj.createdBy = userContext.rtcId;
       newArObj.isSelectable = true;
@@ -178,18 +183,14 @@ function selectArObjectLongPress( data ) {
                              -( event.clientY - offsetY ) / viewHeight * 2 + 1, 0.5 );
   //   projector.unprojectVector( vector, cameraDriver );
 
-vector.unproject( cameraDriver );
-
-
-     vector.sub( cameraDriver.position );
-     vector.normalize();
-     var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
-     var intersects = rayCaster.intersectObjects( arSelectObjectArray );
-     var selectedObject = intersects[0].object;
+    vector.unproject( cameraDriver );
+    vector.sub( cameraDriver.position );
+    vector.normalize();
+    var rayCaster = new THREE.Raycaster( cameraDriver.position, vector );
+    var intersects = rayCaster.intersectObjects( arSelectObjectArray );
+    var selectedObject = intersects[0].object;
 
      if ( intersects.length > 0 ) {
-
-      console.log( 'onARSelect - selectedObject:', selectedObject );
 
  // IOT Lights
 
@@ -286,9 +287,6 @@ vector.unproject( cameraDriver );
 
      if ( selectedObject.name === 'cube2' ) {
 
-console.log( 'onArSelect cube2:', selectedObject );
-console.log( 'render:', renderer );
-
       selectedObject.material.color.setRGB( Math.random(), Math.random(), Math.random() );
       selectedObject.position.x += Math.round( Math.random() ) * 2 - 1;
       selectedObject.position.y += Math.round( Math.random() ) * 2 - 1;
@@ -316,6 +314,11 @@ console.log( 'render:', renderer );
 // Dynamic AR/VR Model Loading --peers
 
 socketServer.on( 'arDynamicLoadModel', function( data ) {
+
+  var pos = {};
+  pos.x = data.x;
+  pos.y = data.y;
+  poz.z = data.z;
 
    if ( data.modelName === 'iot' ) {
     var filePath =  'javascript/armodels/' + data.file;
@@ -357,6 +360,7 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
     }
 
     if ( data.modelName === 'geometry' ) {
+
     var filePath =  'javascript/armodels/' + data.file;
       $.when(
         $.getScript( filePath ),
@@ -364,13 +368,19 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
         $( deferred.resolve );
         } )
       ).done( function() {
-        loadGeometry();
+        loadGeometry( pos );
       } );
     }
   } );
 
+function loadArModel( model, pos ) {
 
-function loadArModel( model) {
+  if ( typeof pos === 'undefined' ) {
+    var pos = {};
+    pos.x = -1.0;
+    pos.y =  0.5;
+    pos.z = -6.0;
+  }
 
   switch ( model ) {
     case 'iot':
@@ -406,19 +416,22 @@ function loadArModel( model) {
     case 'geometry':
       data.file = 'ar-load-geometry.js';
       data.modelName = 'geometry';
+      data.x = pos.x;
+      data.y = pos.y;
+      data.z = pos.z;
       $.when(
         $.getScript( 'javascript/armodels/ar-load-geometry.js' ),
         $.Deferred( function( deferred ) {
         $( deferred.resolve );
         } )
       ).done( function() {
-        loadGeometry();
+       loadGeometry( pos );
       } );
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'arDynamicLoadModel', data, sessionId );
     break;
 
-    case 'pig':
+    case 'sheep':
       data.file = 'ar-load-sheep.js';
       data.modelName = 'sheep';
       $.when(
@@ -434,7 +447,6 @@ function loadArModel( model) {
     break;
   }
 }
-
 
   // Experimental dynamic AR  model loads
 
