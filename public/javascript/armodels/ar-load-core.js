@@ -156,7 +156,7 @@ scene.add( ambientLight );
   scene.add( plane );
 
  var axisHelper = new THREE.AxisHelper( 10 );
- axisHelper.position.set( 0.0, 0.0, 0.0 );
+ axisHelper.position.set( 0.5, 0.5, 0.5 );
  scene.add( axisHelper );
 
   // arConnectionController();
