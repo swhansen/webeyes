@@ -75,4 +75,13 @@ function  loadIotAr() {
     arSelectObjectArray.push( hueLight3 );
     arSelectObjectArray.push( hueLight4 );
 
+
+var pointLight1 = new THREE.PointLight( 0xff0000, 1 ,100 );
+pointLight1.position.set( -0.809, -0.737, -5.227 );
+scene.add( pointLight1 );
+
+
+
+
+
 }

@@ -172,7 +172,6 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 //    vr - mouse driven
 
   if ( userContext.participantState === 'focus' && userContext.mode === 'vr' ) {
-    console.log( 'arConnectionController-vr-focus');
     cameraDriver = vrDrivenCamera;
     vrDrivenCamera.lookAt( scene.position );
     connectToVrController();
@@ -182,7 +181,6 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   }
 
     if ( userContext.participantState === 'peer' && userContext.mode === 'vr' ) {
-      console.log( 'arConnectionController-vr-peer');
       cameraDriver = vrBroadcastDrivenCamera;
       vrBroadcastDrivenCamera.lookAt( scene.position );
       connectToVrBroadcast();
