@@ -70,6 +70,8 @@ if ( typeof vrBroadcastCameraControls === 'undefined' ) {
 if ( typeof vrDrivenCameraControls === 'undefined' ) {
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera.name = 'vrDrivenCamera';
+  var cameraHelper = new THREE.CameraHelper( vrDrivenCamera );
+  scene.add( cameraHelper );
 
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
   vrDrivenCameraControls.connect();
