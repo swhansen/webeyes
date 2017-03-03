@@ -95,6 +95,9 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     light.name = 'HemisphereLight';
     scene.add( light );
 
+var ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
+scene.add( ambientLight );
+
 // build the cardinal orientation points
 
   var cardinalMat = new THREE.MeshLambertMaterial( { color: 'red' } );
