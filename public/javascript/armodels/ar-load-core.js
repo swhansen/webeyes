@@ -77,7 +77,7 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
  // vrDrivenCameraControls.connect();
 
 
-vrDrivenCameraControls.movementSpeed = 70;
+vrDrivenCameraControls.movementSpeed = 5;
 vrDrivenCameraControls.lookSpeed = 0.05;
 vrDrivenCameraControls.noFly = true;
 vrDrivenCameraControls.lookVertical = false;
