@@ -44,16 +44,6 @@ function setUpArLayer() {
 
   scene = new THREE.Scene();
 
-   renderer = new THREE.WebGLRenderer( { canvas: arCanvas, alpha: true } );
-
-// set the renderer based on the device type
-
-if ( userContext.mobile === true ) {
-  renderer.setSize( arCanvas.offsetWidth, arCanvas.offsetHeight );
-  } else { renderer.setSize( boxWidth, boxHeight ); }
-
-  renderer.setClearColor( 0x000000, 0 );
-
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator ( ar mode )
 //  - mouse x-y ( VR mode )
@@ -83,22 +73,19 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 //  var cameraHelper = new THREE.CameraHelper( vrDrivenCamera );
 //  scene.add( cameraHelper );
 
-  vrDrivenCameraControls = new THREE.FirstPersonControls( vrDrivenCamera, renderer.domElement );
- // vrDrivenCameraControls.connect();
-
-
-vrDrivenCameraControls.movementSpeed = 0.1;
-vrDrivenCameraControls.lookSpeed = 0.001;
-vrDrivenCameraControls.noFly = true;
-vrDrivenCameraControls.lookVertical = true;
-
-
-
-
-
+  vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+  vrDrivenCameraControls.connect();
 }
 
+  renderer = new THREE.WebGLRenderer( { canvas: arCanvas, alpha: true } );
 
+// set the renderer based on the device type
+
+if ( userContext.mobile === true ) {
+  renderer.setSize( arCanvas.offsetWidth, arCanvas.offsetHeight );
+  } else { renderer.setSize( boxWidth, boxHeight ); }
+
+  renderer.setClearColor( 0x000000, 0 );
 
   arConnectionController();
 
@@ -272,10 +259,6 @@ function animateArObjects() {
 //    if ( isAnimateSheep === true ) {
 //        sheep.rotation.z += dt * 2;
 //    }
-
-
-vrDrivenCameraControls.update( dt );
-
 
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
 
