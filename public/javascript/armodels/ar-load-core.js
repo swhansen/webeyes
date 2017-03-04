@@ -75,6 +75,17 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 
   vrDrivenCameraControls = new THREE.FirstPersonControls( vrDrivenCamera, arcanvas );
  // vrDrivenCameraControls.connect();
+
+
+vrDrivenCameraControls.movementSpeed = 70;
+vrDrivenCameraControls.lookSpeed = 0.05;
+vrDrivenCameraControls.noFly = true;
+vrDrivenCameraControls.lookVertical = false;
+
+
+
+
+
 }
 
   renderer = new THREE.WebGLRenderer( { canvas: arCanvas, alpha: true } );
