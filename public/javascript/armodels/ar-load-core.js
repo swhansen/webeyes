@@ -260,6 +260,10 @@ function animateArObjects() {
 //        sheep.rotation.z += dt * 2;
 //    }
 
+
+vrDrivenCameraControls.update( dt );
+
+
     for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
 
         if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
