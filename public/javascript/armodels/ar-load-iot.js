@@ -2,28 +2,28 @@ function  loadIotAr() {
 
  var hueGeometrySphere = new THREE.SphereGeometry( 0.2, 16, 16 );
 
-  var hueLightmaterial1 = new THREE.MeshPhongMaterial ( {
+  var hueLightmaterial1 = new THREE.MeshPhongMaterial( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,
       transparent: true
   } );
 
-  var hueLightmaterial2 = new THREE.MeshPhongMaterial ( {
+  var hueLightmaterial2 = new THREE.MeshPhongMaterial( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,
      transparent: true
    } );
 
-   var hueLightmaterial3 = new THREE.MeshPhongMaterial ( {
+   var hueLightmaterial3 = new THREE.MeshPhongMaterial( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,
       transparent: true
   } );
 
-  var hueLightmaterial4 = new THREE.MeshPhongMaterial ( {
+  var hueLightmaterial4 = new THREE.MeshPhongMaterial( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,
