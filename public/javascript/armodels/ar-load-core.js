@@ -44,6 +44,16 @@ function setUpArLayer() {
 
   scene = new THREE.Scene();
 
+   renderer = new THREE.WebGLRenderer( { canvas: arCanvas, alpha: true } );
+
+// set the renderer based on the device type
+
+if ( userContext.mobile === true ) {
+  renderer.setSize( arCanvas.offsetWidth, arCanvas.offsetHeight );
+  } else { renderer.setSize( boxWidth, boxHeight ); }
+
+  renderer.setClearColor( 0x000000, 0 );
+
 // Attach the cameras to orientation provider
 //  - sensors for a mobile initiator ( ar mode )
 //  - mouse x-y ( VR mode )
@@ -88,15 +98,7 @@ vrDrivenCameraControls.lookVertical = true;
 
 }
 
-  renderer = new THREE.WebGLRenderer( { canvas: arCanvas, alpha: true } );
 
-// set the renderer based on the device type
-
-if ( userContext.mobile === true ) {
-  renderer.setSize( arCanvas.offsetWidth, arCanvas.offsetHeight );
-  } else { renderer.setSize( boxWidth, boxHeight ); }
-
-  renderer.setClearColor( 0x000000, 0 );
 
   arConnectionController();
 
