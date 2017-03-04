@@ -74,7 +74,7 @@ if ( typeof vrDrivenCameraControls === 'undefined' ) {
 //  scene.add( cameraHelper );
 
   vrDrivenCameraControls = new THREE.FirstPersonControls( vrDrivenCamera, arcanvas );
-  vrDrivenCameraControls.connect();
+ // vrDrivenCameraControls.connect();
 }
 
   renderer = new THREE.WebGLRenderer( { canvas: arCanvas, alpha: true } );
