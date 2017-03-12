@@ -8,9 +8,6 @@
 //  sideBar: container for the layer function button list (re-name??)
 //  buttons: button list in the layer menu
 
-//function initUiManager() {
-
-// var uiStructure = {};
 var mainCollapsed = true;
 var modSwitch = false;
 var msgString;
@@ -180,6 +177,7 @@ function setVrWorld() {
       setPeerUserContext( 'all', 'mode', 'vr' );
       setPeerUserContext( 'all', 'participantState', 'peer' );
       userContext.participantState = 'focus';
+
       emitSessionUserContext( userContext );
 
       loadAr();
@@ -198,43 +196,6 @@ function setVrWorld() {
 
     }
 
-// $( function() {
-//   $( '#shareaug' ).click( function() {
-
-/// Focus the AR initiator (modme)
-
-//   if ( userContext.mode === 'ar' ) {
-
-//     // Tell everyone to initialize
-
-//     var sessionId = socketServer.sessionid;
-//         socketServer.emit( 'utility', 'arClientInit', sessionId );
-
-//     // Start the orientation data feed
-
-//       emitArOrientationData();
-//       document.getElementById( 'sticky-ar' ).style.display = 'visible';
-
-//       msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
-//       emitMessage( msgString );
-//     }
-
-//   if ( userContext.mode === 'vr' ) {
-
-//     // Tell everyone to initialize AR
-
-//     var sessionId = socketServer.sessionid;
-//         socketServer.emit( 'utility', 'vrClientInit', sessionId );
-
-//     document.getElementById( 'sticky-ar' ).style.display = 'visible';
-
-//     msgString = 'User ' + userContext.rtcId + ' has Shared the VR World';
-//      emitMessage( msgString );
-//     }
-//   }
-// );
-// );
-
 function shareArVrWorld()  {
   if ( userContext.mode === 'ar' ) {
 
@@ -245,7 +206,7 @@ function shareArVrWorld()  {
 
       // Start the orientation data feed
 
-        emitArOrientationData();
+  //      emitArOrientationData();
 
   //      document.getElementById( 'sticky-ar' ).style.display = 'visible';
 

@@ -1,13 +1,15 @@
 
+  'use strict';
+
 // canvas playground for experimental document sharing
 
 // notes: the div and the containing canvas need to be sized to the
 // center dimensional window. The size of the windo window is dynamic and
 // is set on session initiation.
 
-var d1 = document.getElementById('doc-1');
-var d2 = document.getElementById('doc-2');
-var d3 = document.getElementById('material');
+var d1 = document.getElementById( 'doc-1' );
+var d2 = document.getElementById( 'doc-2' );
+var d3 = document.getElementById( 'material' );
 
 var docctx;
 var docAlpha = 1.0;
@@ -30,8 +32,8 @@ function initUtil() {
 
   console.log( 'box0-xx', boxWidth, boxHeight );
 
-  box0Height = document.getElementById('box0').offsetHeight;
-  box0Width = document.getElementById('box0').offsetWidth;
+  box0Height = document.getElementById( 'box0' ).offsetHeight;
+  box0Width = document.getElementById( 'box0' ).offsetWidth;
 
   $( '#doccanvaspane' ).css( boxPosition );
   $( '#doccanvaspane' ).css( 'width', boxWidth );
@@ -43,7 +45,7 @@ function initUtil() {
 
   docCanvasPane.style.visibility = 'visible';
 
-  docctx = docCanvas.getContext('2d');
+  docctx = docCanvas.getContext( '2d' );
 }
 
 function loadUtilImage( utilImage ) {
@@ -76,11 +78,11 @@ function openFileModal() {
     inputAttributes: {
       accept: 'image/*'
     }
-    } ).then( function (e) {
+    } ).then( function( e ) {
         var reader = new FileReader();
-        reader.onload = function( event ){
+        reader.onload = function( event ) {
             var imgSend = new Image();
-            imgSend.onload = function(){
+            imgSend.onload = function() {
                 docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
                 var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
                 var data = {  alpha: docAlpha, width: docCanvas.width, height: docCanvas.height, source:imgdata };
@@ -105,7 +107,7 @@ function setDocAlpha() {
     step: 0.1
   },
   inputValue: docAlpha
-  } ).then(function( inputValue ) {
+  } ).then( function( inputValue ) {
     docAlpha = inputValue;
     docctx.globalAlpha = inputValue;
   //  console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
@@ -118,7 +120,7 @@ socketServer.on( 'shareImage', function( data ) {
   docctx.globalAlpha = data.alpha;
   imgRecieve.onload = start;
   imgRecieve.src = data.source;
-  function start(){
+  function start() {
     if ( !imgRecieve ) { console.log( 'no data over the pipe' ); }
     docctx.drawImage( imgRecieve, 0, 0, box0Width, box0Height );
     docAlpha = origDocAlpha;
@@ -152,7 +154,7 @@ function drawBullsEye() {
 
   var b = getCenterBoxId();
   var box = $( '#' + b );
-  var cw = box.outerWidth() / 2.0;;
+  var cw = box.outerWidth() / 2.0;
   var ch = box.outerHeight() / 2.0;
   var outerRadius = 300;
   var innerRadius = 275;
@@ -200,7 +202,7 @@ socketServer.on( 'utility', function( data ) {
     break;
     case 'clearutil':
       clearDrawCanvas();
-      docctx.clearRect(0, 0, box0Width, box0Height);
+      docctx.clearRect( 0, 0, box0Width, box0Height );
     break;
     case 'clearmoderator':
       statusBox.updateElement( 'ismoderator', '' );

@@ -1,3 +1,6 @@
+
+ 'use strict';
+
 var canvasPane = document.getElementById( 'canvaspane' );
 var canvas     = document.getElementById( 'canvas0' );
 var context    = canvas.getContext( '2d' );
@@ -8,7 +11,12 @@ var lineArray  = [];
 var fade       = false;
 var fadeTimer;
 var fadeSwitch = true;
-var drawPixCartScale = 25;
+
+// cartesian distance(px) to capture a mouse move event while drawing
+
+var drawPixCartScale = 10; // was 25
+
+var lineFadeRate = 20;
 
 function baseLineStyle() {
   context.lineWidth = 5;
@@ -28,23 +36,23 @@ function drawCanvaslineArray() {
   context.clearRect( 0, 0, canvas.width, canvas.height );
   baseLineStyle();
 
-  for ( var i = 0; i < lineArray.length; i++ ) {
-    var points = lineArray[i].line;
-    context.strokeStyle = lineArray[i].color;
-    context.shadowColor = lineArray[i].color;
+  lineArray.forEach( function( l ) {
+    var points = l.line;
+    context.strokeStyle = l.color;
+    context.shadowColor = l.color;
 
-    for ( var j = 0; j < points.length; j++ ) {
-      if ( j === 0 ) {
+    points.forEach( function( p, i ) {
+      if ( i === 0 ) {
         context.beginPath();
-        context.moveTo( points[j].x, points[j].y );
+        context.moveTo( p.x, p.y );
       }
-      context.lineTo( points[j].x, points[j].y );
+      context.lineTo( p.x, p.y );
       context.stroke();
+         if ( fadeSwitch === true ) {
+       l.line.shift();
     }
-    if ( fadeSwitch === true ) {
-       lineArray[i].line.shift();
-    }
-  }
+    } );
+  } );
 
     if ( lineArray.length === 0 ) {
       lineArray.length = 0;
@@ -53,16 +61,43 @@ function drawCanvaslineArray() {
     }
 }
 
+
+
+//  for ( var i = 0; i < lineArray.length; i++ ) {
+//    var points = lineArray[i].line;
+//    context.strokeStyle = lineArray[i].color;
+//    context.shadowColor = lineArray[i].color;
+//
+//    for ( var j = 0; j < points.length; j++ ) {
+//      if ( j === 0 ) {
+//        context.beginPath();
+//        context.moveTo( points[j].x, points[j].y );
+//      }
+//      context.lineTo( points[j].x, points[j].y );
+//      context.stroke();
+//    }
+//    if ( fadeSwitch === true ) {
+//       lineArray[i].line.shift();
+//    }
+//  }
+//
+//    if ( lineArray.length === 0 ) {
+//      lineArray.length = 0;
+//      fade = false;
+//      clearInterval( fadeTimer );
+//    }
+//}
+
 function eraseSwitch() {
     fadeSwitch = !fadeSwitch;
-    console.log( 'fadeSwitch:', fadeSwitch);
+    console.log( 'fadeSwitch:', fadeSwitch );
     toggleFade();
   }
 
 function toggleFade() {
 if ( fadeTimer ) {return;}
   if ( fadeSwitch === true && fade === true  ) {
-      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, 20 );
+      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, lineFadeRate );
     }
   if ( fade === false || fadeSwitch === false ) {
       clearInterval( fadeTimer );
@@ -142,6 +177,7 @@ function toolPencil() {
     lastx = data.x;
     lasty = data.y;
     data.pointerState = 'pointerDown';
+
     emitDraw( data );
   };
 
@@ -159,6 +195,7 @@ function toolPencil() {
       lastx = data.x;
       lasty = data.y;
       data.pointerState = 'pointerMove';
+
       emitDraw( data );
       }
     }
@@ -169,6 +206,7 @@ function toolPencil() {
       data.x = Math.round( ev._x );
       data.y = Math.round( ev._y );
       data.pointerState = 'pointerUp';
+
       emitDraw( data );
       tool.started = false;
     }

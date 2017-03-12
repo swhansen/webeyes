@@ -1,6 +1,7 @@
 function orientationCompass( data ) {
 
   emitArOrientationData();
+
   document.getElementById( 'compassCube' ).style.zIndex = '99';
 
   if ( data ) {
@@ -33,8 +34,8 @@ function orientationCompass( data ) {
 function emitArOrientationData() {
   window.addEventListener( 'deviceorientation', function( event ) {
   arDeviceOrientation.alpha = event.alpha;
-  arDeviceOrientation.beta = event.beta;
-  arDeviceOrientation.gamma = event.gamma;
+  arDeviceOrientation.beta = 90.0; //event.beta;
+  arDeviceOrientation.gamma =  event.gamma;
 
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'arOrientation', arDeviceOrientation, sessionId );

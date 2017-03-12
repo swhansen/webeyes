@@ -8,11 +8,27 @@ function removeSphericalVr() {
 
 function sphericalVr( sphereTexture ) {
 
-  if ( scene ) {
-    scene.children.forEach( function( object ) {
-      scene.remove( object );
-    } );
-}
+'use strict';
+
+  userContext.participantState = 'focus';
+  userContext.modMeState = true;
+  userContext.uiState = 'spherical';
+  userContext.mode = 'spherical';
+  emitSessionUserContext( userContext );
+  setPeerUserContext( 'all', 'mode', 'spherical' );
+  setPeerUserContext( 'all', 'participantState', 'peer' );
+  userContext.participantState = 'focus';
+
+  emitSessionUserContext( userContext );
+
+   msgString = 'User ' + userContext.rtcId + ' has entered Sphere Mode';
+      emitMessage( msgString );
+
+//   if ( scene ) {
+//     scene.children.forEach( function( object ) {
+//       scene.remove( object );
+//     } );
+// }
 
   var spherePane = document.getElementById( 'spherepane' );
   var sphereCanvas = document.getElementById( 'spherecanvas' );
@@ -27,6 +43,7 @@ function sphericalVr( sphereTexture ) {
   $( '#spherepane' ).css( 'width', boxWidth );
   $( '#spherepane' ).css( 'height', boxHeight );
   $( '#spherepane' ).css( 'z-index', 200 );
+
   $( '#spherecanvas' ).css( boxPosition );
   $( '#spherecanvas' ).css( 'width', boxWidth );
   $( '#spherecanvas' ).css( 'height', boxHeight );
@@ -36,8 +53,8 @@ function sphericalVr( sphereTexture ) {
 
   var scene = new THREE.Scene();
 
-  var camera = new THREE.PerspectiveCamera( 75, boxWidth / boxHeight, 1, 1000 );
-  camera.position.x = 0.1;
+  var sphereCamera = new THREE.PerspectiveCamera( 75, boxWidth / boxHeight, 1, 1000 );
+  sphereCamera.position.x = 0.01;
 
   var renderer = new THREE.WebGLRenderer( { canvas: sphereCanvas } );
   renderer.setSize( boxWidth, boxHeight );
@@ -51,14 +68,28 @@ function sphericalVr( sphereTexture ) {
     sphere.scale.x = -1;
     scene.add( sphere );
 
-  var controls = new THREE.OrbitControls( camera );
-  controls.noPan = true;
-  controls.noZoom = true;
-  controls.autoRotate = true;
-  controls.autoRotateSpeed = 0.0;
+  var sphereControls = new THREE.OrbitControls( sphereCamera );
+  sphereControls.noPan = true;
+  sphereControls.noZoom = true;
+  sphereControls.autoRotate = true;
+  sphereControls.autoRotateSpeed = 0.0;
 
-  //  controls.rotateLeft(3);
-  //  controls.rotateUp(.3);
+  function onMouseWheel( event ) {
+      event.preventDefault();
+
+      if ( event.wheelDeltaY ) { // WebKit
+        sphereCamera.fov -= event.wheelDeltaY * 0.05;
+      } else if ( event.wheelDelta ) {  // Opera / IE9
+        sphereCamera.fov -= event.wheelDelta * 0.05;
+      } else if ( event.detail ) { // Firefox
+        sphereCamera.fov += event.detail * 1.0;
+      }
+      sphereCamera.fov = Math.max( 40, Math.min( 100, sphereCamera.fov ) );
+      sphereCamera.updateProjectionMatrix();
+    }
+    sphereCanvas.addEventListener( 'mousewheel', onMouseWheel, false );
+    sphereCanvas.addEventListener( 'DOMMouseScroll', onMouseWheel, false );
+
 
   var geometryCube2 = new THREE.BoxGeometry( 0.8, 0.8, 0.8 );
     var material2 = new THREE.MeshPhongMaterial( { color: 'red' } );
@@ -78,30 +109,12 @@ function sphericalVr( sphereTexture ) {
 
   spherePane.appendChild( renderer.domElement );
 
+  function render() {
+    sphereControls.update();
+    requestAnimationFrame( render );
+    renderer.render( scene, sphereCamera );
+  }
+
   render();
 
-  function render() {
-    controls.update();
-    requestAnimationFrame( render );
-    renderer.render( scene, camera );
-  }
-
-  function onMouseWheel( event ) {
-      event.preventDefault();
-
-      if ( event.wheelDeltaY ) { // WebKit
-        camera.fov -= event.wheelDeltaY * 0.05;
-      } else if ( event.wheelDelta ) {  // Opera / IE9
-        camera.fov -= event.wheelDelta * 0.05;
-      } else if ( event.detail ) { // Firefox
-        camera.fov += event.detail * 1.0;
-      }
-
-      camera.fov = Math.max( 40, Math.min( 100, camera.fov ) );
-      camera.updateProjectionMatrix();
-  }
-
-    document.addEventListener( 'mousewheel', onMouseWheel, false );
-    document.addEventListener( 'DOMMouseScroll', onMouseWheel, false );
 }
-

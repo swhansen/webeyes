@@ -70,10 +70,9 @@ if ( typeof vrBroadcastCameraControls === 'undefined' ) {
 if ( typeof vrDrivenCameraControls === 'undefined' ) {
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera.name = 'vrDrivenCamera';
-//  var cameraHelper = new THREE.CameraHelper( vrDrivenCamera );
-//  scene.add( cameraHelper );
 
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
+
   vrDrivenCameraControls.connect();
 }
 
@@ -145,6 +144,17 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     cube2.userData.isAnimated = false;
     arSelectObjectArray.push( cube2 );
     scene.add( cube2 );
+
+  var tgeometry  = new THREE.CubeGeometry( 1, 1, 1 );
+  var tmaterial  = new THREE.MeshNormalMaterial( {
+    transparent: true,
+    opacity: 0.5,
+    side: THREE.DoubleSide
+  } );
+
+  var tmesh  = new THREE.Mesh( tgeometry, tmaterial );
+  tmesh.position.set( -2.5, 2.0, -6.0 );
+  scene.add( tmesh );
 
  var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
  var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
@@ -260,23 +270,44 @@ function animateArObjects() {
 //        sheep.rotation.z += dt * 2;
 //    }
 
-    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+//var animatedArObjects = [ 'bagel', 'sheep', 'swordGuy' ];
 
-        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
-          arSelectObjectArray[i].rotation.y += dt * 1.0;
-        }
+//    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
+//
+//
+//        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
+//              arSelectObjectArray[i].userData.isAnimated === true ) {
+//          arSelectObjectArray[i].rotation.y += dt * 1.0;
+//        }
+//
+//        if ( arSelectObjectArray[i].name === 'sheep' &&
+//              arSelectObjectArray[i].userData.isAnimated === true ) {
+//          arSelectObjectArray[i].rotation.z += dt * 2.0;
+//        }
+//
+//        if ( arSelectObjectArray[i].name === 'swordGuyMesh' &&
+//              arSelectObjectArray[i].userData.isAnimated === true ) {
+//                 mixer.update( dt );
+//        }
+//    }
 
-        if ( arSelectObjectArray[i].name === 'sheep' &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
-          arSelectObjectArray[i].rotation.z += dt * 2.0;
-        }
+  arSelectObjectArray.forEach( function( arObj ) {
 
-        if ( arSelectObjectArray[i].name === 'swordGuyMesh' &&
-              arSelectObjectArray[i].userData.isAnimated === true ) {
-                 mixer.update( dt );
+      if ( arObj.userData.objectType === 'bagel' &&
+            arObj.userData.isAnimated === true ) {
+        arObj.rotation.y += dt * 1.0;
         }
-    }
+      if ( arObj.name === 'sheep' &&
+            arObj.userData.isAnimated === true ) {
+        arObj.rotation.z += dt * 2.0;
+        }
+      if ( arObj.name === 'swordGuyMesh' &&
+            arObj.userData.isAnimated === true ) {
+               mixer.update( dt );
+        }
+      }
+    )
+
   }
 
 

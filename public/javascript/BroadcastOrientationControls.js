@@ -56,7 +56,7 @@ WEBEYES.BroadcastOrientationControls = function( object ) {
 
       quaternion.multiply( q1 );                                      // camera looks out the back of the device, not the top
 
-    //  quaternion.multiply( q0.setFromAxisAngle( zee, - orient ) );    // adjust for screen orientation
+  //    quaternion.multiply( q0.setFromAxisAngle( zee, - orient ) );    // adjust for screen orientation
 
     };
 
@@ -68,7 +68,7 @@ WEBEYES.BroadcastOrientationControls = function( object ) {
 
     socketServer.on( 'arOrientation', function( arBroadcastData ) {
       scope.deviceOrientation = arBroadcastData;
-});
+} );
     scope.enabled = true;
 
   };
@@ -89,7 +89,7 @@ WEBEYES.BroadcastOrientationControls = function( object ) {
     var alpha = scope.deviceOrientation.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
     var beta  = scope.deviceOrientation.beta  ? THREE.Math.degToRad( scope.deviceOrientation.beta  ) : 0; // X'
     var gamma = scope.deviceOrientation.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
-    //var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
+  //  var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
     setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma );
 

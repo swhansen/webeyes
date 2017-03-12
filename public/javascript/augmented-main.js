@@ -19,17 +19,18 @@ function getArWorldSummary() {
   var sceneChildren = [];
   var child = {};
 
-  for (i = 0; i < scene.children.length; i++) {
+  scene.children.forEach( function( c ) {
     child = {};
-    child.id = scene.children[i].id;
-    child.uuid = scene.children[i].uuid;
-    child.name = scene.children[i].name;
-    child.visible = scene.children[i].visible;
-    child.position = scene.children[i].position;
-    sceneChildren[i] = child;
-  }
+    child.id = c.id;
+    child.uuid = c.uuid;
+    child.name = c.name;
+    child.visible = c.visible;
+    child.position = c.position;
+    sceneChildren.push( child );
+    } );
+
   var sessionId = socketServer.sessionid;
-  socketServer.emit('updateArObjects', sceneChildren, sessionId);
+  socketServer.emit( 'updateArObjects', sceneChildren, sessionId );
 }
 
 //
@@ -52,13 +53,13 @@ function loadAr() {
   //  $( 'body' ).append( $arcanvaspane );
   //  $( '#arcanvas' ).click.off;
 
-  document.getElementById('canvaspane').style.zIndex = '10';
-  document.getElementById('arcanvaspane').style.zIndex = '50';
+  document.getElementById( 'canvaspane' ).style.zIndex = '10';
+  document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
   // document.getElementById( 'sticky-ui-container' ).style.zIndex = '50';
   // document.getElementById( 'sticky-ui-container' ).style.display = 'visible';
-  setDomPointerEvent('canvas0', 'none');
-  setDomPointerEvent('arcanvaspane', 'auto');
+  setDomPointerEvent( 'canvas0', 'none' );
+  setDomPointerEvent( 'arcanvaspane', 'auto' );
 
   clock.stop();
   clock.start();
@@ -66,15 +67,15 @@ function loadAr() {
   // load the AR world and interaction
 
   $.when(
-    $.getScript('javascript/armodels/ar-load-core.js'),
-    $.getScript('javascript/setup-ar-interaction.js'),
-    $.getScript('javascript/ar-object-communication.js'),
-    $.Deferred(function(deferred) {
-      $(deferred.resolve);
-    })
-  ).done(function() {
+    $.getScript( 'javascript/armodels/ar-load-core.js' ),
+    $.getScript( 'javascript/setup-ar-interaction.js' ),
+    $.getScript( 'javascript/ar-object-communication.js' ),
+    $.Deferred( function( deferred ) {
+      $( deferred.resolve );
+    } )
+  ).done( function() {
     setUpArLayer();
     setupArInteractionEvents();
-    $('#ar-radial-menu').css('visibility', 'visible');
-  });
+    $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+  } );
 }

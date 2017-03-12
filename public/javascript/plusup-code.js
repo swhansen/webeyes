@@ -84,13 +84,12 @@ function useModeCode( modeCode ) {
 
     userContext.modMeState = true;
     userContext.participantState = 'focus';
-    //userContext.mode = 'vr';
+    userContext.uiState = 'vr';
 
     $.getJSON( '../menudescriptors/vrMeStructure.json', function( data ) {
       uiStructure = data;
     } );
 
-    userContext.uiState = 'vr';
     userContext.addDimensionalLayer( 'arcanvaspane') ;
     emitSessionUserContext( userContext );
 
@@ -122,8 +121,8 @@ function useModeCode( modeCode ) {
 
   break;
 
-  case 'vrtest':
-    vrTestModal();
+  case 'sphereme':
+    sphereVrModal();
   break;
 
   case 'removevrtest':
@@ -212,23 +211,6 @@ function useModeCode( modeCode ) {
 
 // ------- end plus-up case -------------------------
 
-function vrTestModal() {
-  swal( {
-      title: 'Select a PhotoSphere',
-      text: 'Load a sphere from your local device',
-      input: 'file',
-      showCancelButton: true,
-      inputAttributes: {
-        accept: 'image/*'
-      }
-      } ).then( function ( file ) {
-        var reader = new FileReader();
-        reader.onload = function ( e ) {
-          sphericalVr( e.target.result );
-      };
-    reader.readAsDataURL( file );
-  } );
-}
 
 function iotZoneModal() {
   swal( {
@@ -255,6 +237,24 @@ function iotZoneModal() {
     } );
     } }
     );
+}
+
+function sphereVrModal() {
+  swal( {
+      title: 'Select a PhotoSphere',
+      text: 'Load a sphere from your local device',
+      input: 'file',
+      showCancelButton: true,
+      inputAttributes: {
+        accept: 'image/*'
+      }
+      } ).then( function ( file ) {
+        var reader = new FileReader();
+        reader.onload = function ( e ) {
+          sphericalVr( e.target.result );
+      };
+    reader.readAsDataURL( file );
+  } );
 }
 
 function vrWorldModal() {
@@ -344,8 +344,8 @@ $( '#codeDialogModal' ).dialog( {
     } );
 
 
-var modalMultiple =  [ 'help', 'vrtest', 'augme', 'vrme',  'iotz' ];
-var plusupCodeArray = [ 'removevrtest', 'vrtest', 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
+var modalMultiple =  [ 'help', 'sphereme', 'augme', 'vrme',  'iotz' ];
+var plusupCodeArray = [ 'removevrtest', 'sphereme', 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
 
 $( '#codeDialogButton' ).click( function() {
   swal( {

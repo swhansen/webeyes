@@ -5,9 +5,6 @@ function setupArInteractionEvents() {
 //  - set the cameraDriver based on AR/VR and focus/peer
 //
 
-// var sessionId = socketServer.sessionid;
-//   socketServer.emit( 'arDynamicLoadModel', data, sessionId );
-
 socketServer.on( 'addNewArObject', function( data ) {
     arShareData.operation = 'newObject';
     arShareData.x = data.x;
@@ -318,7 +315,7 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
   var pos = {};
   pos.x = data.x;
   pos.y = data.y;
-  poz.z = data.z;
+  pos.z = data.z;
 
    if ( data.modelName === 'iot' ) {
     var filePath =  'javascript/armodels/' + data.file;
