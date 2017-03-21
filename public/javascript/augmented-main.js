@@ -39,6 +39,10 @@ function getArWorldSummary() {
 
 function loadAr() {
 
+  if ( userContext.mode === 'ar') {
+  orientationCompass( true );
+}
+
   var renderer, projector, arContainer, cameraDriver;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls;
   var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;

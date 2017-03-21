@@ -71,27 +71,6 @@ function getLayersZindexStatus() {
 //  console.log( 'z-index:', $( this ), 'is:', $( this ).css( 'z-index' ) );
 //} );
 
-// captureLayerPointerState( layerList );
-// console.log( 'pointerState:', layerPointerState );
-//
-// setDomPointerEvent( 'fullpage', 'auto' );
-// console.log( 'pointerStatus:', getLayersPointerStatus() );
-//
-//  setLayersPointerFromState();
-//  console.log( 'pointerStatus:', getLayersPointerStatus() );
-
-// //setLayersPointerFromState();
-// setLayerPointerExclusive( 'utilcanvaspane');
-// console.log( 'set to canvas pane - layerPointerState:', layerPointerState );
-// console.log( 'pointerState- getLayersPointerStatus:', getLayersPointerStatus() );
-//
-// console.log( 'Layer z-index:', getLayersZindexStatus() );
-
-// setLayerPointerExclusive( 'canvaspane' );
-// console.log( 'canvas - PointerMode:', getLayersPointerStatus() );
-// setLayerPointerExclusive( 'fullpage' );
-// console.log( 'fullpage - PointerMode:', getLayersPointerStatus() );
-
 // the main menu collapse-expand
 
 $( document ).ready( function() {
@@ -232,6 +211,31 @@ function emitVideoMute( videoMuteData ) {
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'videoMute', videoMuteData, sessionId );
 }
+
+// toggle the compass
+
+$( function() {
+  $( '#sticky-compass' ).click( function() {
+    toggleCompass();
+  } )
+} )
+
+//    compassToggle = !compassToggle;
+//   // let data = compassToggle;
+//    orientationCompass( compassToggle );
+//    var sessionId = socketServer.sessionid;
+//    socketServer.emit( 'toggleCompass', compassToggle, sessionId );
+//  } );
+//  } );
+
+
+function toggleCompass() {
+      compassToggle = !compassToggle;
+      orientationCompass( compassToggle );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'toggleCompass', compassToggle, sessionId );
+    }
+
 
 $( function() {
   $( '.video-swap' ).click( function() {

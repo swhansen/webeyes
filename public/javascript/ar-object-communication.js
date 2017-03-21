@@ -1,3 +1,6 @@
+
+'use strict';
+
 function receiveArObject( data ) {
 
   console.log( 'receiveArObject-data:', data );
@@ -12,7 +15,7 @@ function receiveArObject( data ) {
       break;
 
       case 'newObject':
-        var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0x1947D1 } );
+        var materialTorus1 = new THREE.MeshLambertMaterial( { color: 'red' } );
         var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
         var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
 
@@ -48,17 +51,12 @@ function receiveArObject( data ) {
 
  // User Created Objects
 
-
       if ( data.name ===  'bagel' ) {
-          console.log( 'at animateSelectedObject:', data)
-        var tempObj = scene.getObjectByName( data.name );
-        console.log( 'tempObj:', tempObj );
+        let tempObj = scene.getObjectByName( data.name );
         tempObj.userData.isAnimated = data.isAnimated;
-}
+      }
 
       break;
-
-
 
       case 'hideSelectedObject':
 

@@ -226,8 +226,10 @@ var Easyrtc = function() {
     var self = this;
     var isFirefox = (webrtcDetectedBrowser === "firefox");
     var autoInitUserMedia = true;
+
     var sdpLocalFilter = null,
-            sdpRemoteFilter = null;
+    sdpRemoteFilter = null;
+
     var iceCandidateFilter = null;
 
     var connectionOptions =  {

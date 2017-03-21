@@ -17,6 +17,9 @@ WEBEYES.DeviceOrientationControls = function( object ) {
   this.deviceOrientation = {};
   this.screenOrientation = 0;
 
+  this.alpha = 0;
+  this.alphaOffsetAngle = 0;
+
   var onDeviceOrientationChangeEvent = function( event ) {
 
     scope.deviceOrientation = event;
@@ -85,6 +88,7 @@ WEBEYES.DeviceOrientationControls = function( object ) {
     var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
 
     setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma, orient );
+    this.alpha = alpha;
 
   };
 

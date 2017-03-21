@@ -103,9 +103,9 @@ drawRadialSvg.onclick = function( e ) {
   if ( e.target.parentNode.id === 'draw-radial-erase' ) {
     var selectedSectorId = '#' + e.target.parentNode.id;
     if ( fadeSwitch ) {
-        $( selectedSectorId ).children( 'path' ).css( { fill: "#ff0000" } );
+        $( selectedSectorId ).children( 'path' ).css( { fill: '#ff0000' } );
       } else {
-        $( selectedSectorId ).children( 'path' ).css( { fill: "#008000" } );
+        $( selectedSectorId ).children( 'path' ).css( { fill: '#008000' } );
       }
     }
   e.stopPropagation();
@@ -148,6 +148,19 @@ drawRadialSvg.onclick = function( e ) {
     }
 
     arRadialSvg.onclick = function( e ) {
+
+      if ( userContext.participantState === 'peer' ) {
+        $( '#ar-radial-compass' ).css( 'visibility', 'hidden' );
+        }
+
+      if ( e.target.parentNode.id === 'ar-radial-compass' ) {
+        let selectedSectorId = '#' + e.target.parentNode.id;
+        if ( compassToggle ) {
+          $( selectedSectorId ).children( 'path' ).css( { fill: '#ff0000' } );
+        } else {
+          $( selectedSectorId ).children( 'path' ).css( { fill: '#008000' } );
+        }
+      }
         e.stopPropagation();
         arRadialOpen = false;
         TweenMax.staggerTo( arRadialItems, 0.3, { scale:0, ease:Back.easeIn }, 0.05 );

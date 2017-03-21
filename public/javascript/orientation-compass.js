@@ -1,14 +1,20 @@
+
+'use strict';
+
 function orientationCompass( data ) {
 
   emitArOrientationData();
 
   document.getElementById( 'compassCube' ).style.zIndex = '99';
 
+  console.log( 'orientationCompass:', data );
+
   if ( data ) {
     document.getElementById( 'compassCube' ).style.visibility = 'visible';
     } else {
     document.getElementById( 'compassCube' ).style.visibility = 'hidden';
   }
+
   if ( userContext.participantState === 'focus' ) {
       window.addEventListener( 'deviceorientation', function( event ) {
       document.getElementById( 'compassCube' ).style.webkitTransform =
@@ -32,10 +38,14 @@ function orientationCompass( data ) {
 }
 
 function emitArOrientationData() {
+//  window.addEventListener( 'orientationchange', function( c ) {
+//    arDeviceOrientation.orient = c.orientation || 0;
+//  } );
+
   window.addEventListener( 'deviceorientation', function( event ) {
   arDeviceOrientation.alpha = event.alpha;
-  arDeviceOrientation.beta = 90.0; //event.beta;
-  arDeviceOrientation.gamma =  event.gamma;
+  arDeviceOrientation.beta = event.beta; //90.
+  arDeviceOrientation.gamma = event.gamma;
 
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'arOrientation', arDeviceOrientation, sessionId );
@@ -43,5 +53,6 @@ function emitArOrientationData() {
 }
 
 socketServer.on( 'toggleCompass', function( data ) {
+  console.log( 'toggleCompass at orientationCompass:', data );
   orientationCompass( data );
   } );

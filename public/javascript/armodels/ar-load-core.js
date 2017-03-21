@@ -55,7 +55,7 @@ function setUpArLayer() {
   broadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   broadcastDrivenCamera.name = 'arBroadcastDrivenCamera';
 
-  sensorCameraControls = new THREE.DeviceOrientationControls( sensorDrivenCamera );
+  sensorCameraControls = new WEBEYES.DeviceOrientationControls( sensorDrivenCamera );
   broadcastCameraControls = new WEBEYES.BroadcastOrientationControls( broadcastDrivenCamera );
 
 // Fix for re-entry to VR mode to prevent multipe handlers, etc
@@ -157,11 +157,19 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
   scene.add( tmesh );
 
  var planeGeometry = new THREE.PlaneGeometry( 5, 3, 1, 1 );
- var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
+ //var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x5F6E7D, side: THREE.DoubleSide } );
+
+var planeMaterial =  new THREE.MeshNormalMaterial( {
+    transparent: true,
+    opacity: 0.5,
+    side: THREE.DoubleSide
+  } );
+
+
  var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
   plane.rotation.x = -0.5 * Math.PI;
-  plane.position.set( 1.5, -0.15, -2.5 );
+  plane.position.set( 1.0, -0.15, -2.5 );
   scene.add( plane );
 
  var axisHelper = new THREE.AxisHelper( 10 );

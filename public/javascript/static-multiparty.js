@@ -1231,6 +1231,18 @@ console.log( 'Join Room userContext:', userContext );
     //var r = userContext.room;
     //easyrtc.joinRoom( r );
 
+
+// added SDP filters  swh - 3/15/17
+
+  var localFilter = easyrtc.buildLocalSdpFilter( {
+    audioRecvBitrate:50, videoRecvBitrate:576
+    } );
+  var remoteFilter = easyrtc.buildRemoteSdpFilter( {
+    audioSendBitrate: 50, videoSendBitrate:576
+    } );
+
+  easyrtc.setSdpFilters( localFilter, remoteFilter );
+
    easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 

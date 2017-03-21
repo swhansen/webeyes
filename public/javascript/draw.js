@@ -90,7 +90,6 @@ function drawCanvaslineArray() {
 
 function eraseSwitch() {
     fadeSwitch = !fadeSwitch;
-    console.log( 'fadeSwitch:', fadeSwitch );
     toggleFade();
   }
 

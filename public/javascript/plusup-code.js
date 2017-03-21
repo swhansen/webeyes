@@ -15,6 +15,8 @@
 //`setDomPointerEvent('canvas0', 'none');
 //}
 
+'use strict';
+
 function useModeCode( modeCode ) {
   var mainCollapsed;
   switch ( modeCode ) {
@@ -33,8 +35,6 @@ function useModeCode( modeCode ) {
       t = 1000;
       $( uiStructure.structure[button].mainButton ).fadeOut( t );
       }
-    //  document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
-    //  document.getElementById( 'modmeButton' ).style.visibility = 'visible';
       mainCollapsed = true;
     break;
 
@@ -96,13 +96,7 @@ function useModeCode( modeCode ) {
     for ( button in uiStructure.structure ) {
       $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
     }
-
-  //  document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
-  //  document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
-   // document.getElementById( 'arMainButton' ).style.visibility = 'hidden';
- //   document.getElementById( 'vrMainButton' ).style.visibility = 'visible';
-    document.getElementById( 'sticky-compass' ).style.visibility = 'hidden';
-    document.getElementById( 'canvas0' ).style.pointerEvents = 'none';
+ //   document.getElementById( 'canvas0' ).style.pointerEvents = 'none';
 
     mainCollapsed = true;
 
@@ -147,10 +141,6 @@ function useModeCode( modeCode ) {
           $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
         }
 
-  //    document.getElementById( 'devmeButton' ).style.visibility = 'hidden';
-  //    document.getElementById( 'modmeButton' ).style.visibility = 'hidden';
-  //    document.getElementById( 'arMainButton' ).style.visibility = 'visible';
-      document.getElementById( 'sticky-compass' ).style.visibility = 'visible';
       mainCollapsed = true;
 
       // Focus the AR initiator (modme)
@@ -167,6 +157,8 @@ function useModeCode( modeCode ) {
       $( '#ismoderator' ).text( 'Moderator' );
 
       emitArOrientationData();
+
+    //  orientationCompass( true );
 
     break;
 
@@ -188,6 +180,9 @@ function useModeCode( modeCode ) {
     userContext.iotZone = 'iots';
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
+
+    hueSetAllLightsXY( false );
+
   break;
 
   case 'iotc':
@@ -196,6 +191,9 @@ function useModeCode( modeCode ) {
     loadArModel( 'iot' );
     msgString = 'User ' + userContext.rtcId + ' has initalized IOT devices';
     messageBar( msgString );
+
+    hueSetAllLightsXY( false );
+
   break;
 
   case 'iotz':
@@ -210,7 +208,6 @@ function useModeCode( modeCode ) {
 }
 
 // ------- end plus-up case -------------------------
-
 
 function iotZoneModal() {
   swal( {
@@ -342,7 +339,6 @@ function helpModal() {
 $( '#codeDialogModal' ).dialog( {
         autoOpen: false
     } );
-
 
 var modalMultiple =  [ 'help', 'sphereme', 'augme', 'vrme',  'iotz' ];
 var plusupCodeArray = [ 'removevrtest', 'sphereme', 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
