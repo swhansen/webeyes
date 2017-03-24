@@ -32,6 +32,7 @@ function loadGeometry( pos ) {
     cube2.name = 'cube2';
     cube2.userData.isSelectable = true;
     cube2.userData.isAnimated = false;
+    cube2.userData.isUserCreated = true;
     arSelectObjectArray.push( cube2 );
 
     if ( typeof pos === 'undefined' ) {

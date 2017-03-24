@@ -1241,7 +1241,7 @@ console.log( 'Join Room userContext:', userContext );
     audioSendBitrate: 50, videoSendBitrate:576
     } );
 
-  easyrtc.setSdpFilters( localFilter, remoteFilter );
+    easyrtc.setSdpFilters( localFilter, remoteFilter );
 
    easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {

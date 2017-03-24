@@ -5,7 +5,6 @@ function receiveArObject( data ) {
 
   console.log( 'receiveArObject-data:', data );
 
-
     switch ( data.operation ) {
       case 'moveObject':
         var arObject = scene.getObjectByName( data.name );
@@ -47,14 +46,14 @@ function receiveArObject( data ) {
         if ( data.name === 'swordGuyMesh' ) {
           arObject = scene.getObjectByName( data.name );
           arObject.userData.isAnimated = data.animate;
-      }
+        }
 
- // User Created Objects
+ // User Created Object
 
-      if ( data.name ===  'bagel' ) {
+        if ( data.name ===  'bagel' ) {
         let tempObj = scene.getObjectByName( data.name );
         tempObj.userData.isAnimated = data.isAnimated;
-      }
+        }
 
       break;
 
@@ -86,15 +85,25 @@ function receiveArObject( data ) {
   }
 
   function removeUserCreatedArObjects() {
-    for ( var i = 0; i < scene.children.length; i++ ) {
-      if ( scene.children[i].userData.isUserCreated ) {
-        scene.remove( scene.children[i] );
-      }
-    }
-    for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
-      if ( arSelectObjectArray[j].userData.isUserCreated === true ) {
-        arSelectObjectArray.splice( j, 1 );
-      }
-    }
-  }
 
+   // for ( var i = 0; i < scene.children.length; i++ ) {
+   //   if ( scene.children[ i ].userData.isUserCreated ) {
+   //     scene.remove( scene.children[ i ] );
+   //   }
+   // }
+
+    scene.children.forEach( function( child ) {
+      if ( child.userData.isUserCreated ) {
+        scene.remove( child );
+      }
+    } );
+    arSelectObjectArray = [];
+    }
+
+
+
+  //  for ( var j = 0; j < arSelectObjectArray.length; j++ ) {
+  //    if ( arSelectObjectArray[ j ].userData.isUserCreated === true ) {
+  //      arSelectObjectArray.splice( j, 1 );
+  //    }
+  //  }

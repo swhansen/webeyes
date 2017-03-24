@@ -40,6 +40,7 @@ app.use( '/images', express.static( __dirname + '/easyrtc/images' ) );
 app.use( '/css', express.static( __dirname + '/easyrtc/css' ) );
 
 app.use( express.static( __dirname + '/public' ) );
+app.use( express.static( __dirname + '/views' ) );
 
 app.use( '/bower', express.static( __dirname + '/bower_components' ) );
 
@@ -72,26 +73,29 @@ app.use( function( req, res, next ) {
   next();
 } );
 
+
+
+
+
 //  Main entry point
 
 app.get( '/', function( req, res ) {
-  console.log( 'Login attempt' );
   if ( loggedIn === true ) {
     res.sendFile( __dirname + '/views/static-multiparty.html' );
-  } else {
-    res.render( 'entry', {
-      pageTestScript: '/qa/tests-entry.js'
-    } );
-  }
-} );
+    } else {
+    res.render( 'entry' );
+    }
+  } );
 
 //Respond to POST from login form
 app.post( '/', function( req, res ) {
   if ( loggedIn === true ) {
+    console.log( 'app.post Login data:' + JSON.stringify( req.body ) );
+    console.log( 'at app.post logged:true' );
     res.send( 'Already logged in.' );
   } else {
-    console.log( 'Posted data:' + JSON.stringify( req.body ) );
     if ( req.body.password === password ) {
+      console.log( 'app.post-login: true' + JSON.stringify( req.body ) );
       room = req.body.roomname;
       loggedIn = true;
       res.send( 'logged in' );
@@ -104,6 +108,12 @@ app.post( '/', function( req, res ) {
       res.send( 'Incorrect password.' );
     }
   }
+
+
+
+
+
+
 
 // Session invite using SendGrid
 

@@ -23,8 +23,8 @@
 <script type="text/javascript" src="bower/jquery-serialize-object/dist/jquery.serialize-object.min.js"></script>
 <script>
     $( "#loginform" ).on( "submit",  function( event ) {
-        console.log( "password sumbitted" );
         var obj = $( this ).serializeObject();
+        console.log( "password sumbitted:", obj );
 
         $.post( "/", obj, function( response, status ) {
             if ( response == "logged in" ) {
