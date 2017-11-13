@@ -12,6 +12,8 @@ var mainCollapsed = true;
 var modSwitch = false;
 var msgString;
 
+var fullScreenToggle = false;
+
 // initialize the core menu
 
 $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
@@ -20,6 +22,22 @@ $.getJSON( '../menudescriptors/coreStructure.json', function( data ) {
 
 var videoMuteData = {};
 var thisBox;
+
+$( function() {
+  $( '#fullscreen' ).click( function() {
+
+    fullScreenToggle = !fullScreenToggle;
+
+    if ( fullScreenToggle ) {
+      launchIntoFullscreen( document.documentElement );
+      } else {
+        exitFullscreen();
+    }
+    for ( var button in uiStructure.structure ) {
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
+    }
+  } );
+} );
 
 //function setDomPointerEvent( domId, mode ) {
 //  document.getElementById( domId ).style.pointerEvents = mode;
@@ -96,7 +114,6 @@ function setArWorld() {
 
  //     buildSideMenu( 'augme' );
 
-      userContext.participantState = 'focus';
       userContext.modMeState = true;
       userContext.uiState = 'ar';
       userContext.mode = 'ar';
@@ -141,21 +158,24 @@ function setTestWorld() {
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
-      // inform all the peers of the mode
 }
 
 function setVrWorld() {
 
  //     buildSideMenu( 'vrme' );
 
-      userContext.participantState = 'focus';
+   //   userContext.participantState = 'focus';
       userContext.modMeState = true;
       userContext.uiState = 'vr';
       userContext.mode = 'vr';
 
       setPeerUserContext( 'all', 'mode', 'vr' );
+      setPeerUserContext( 'all', 'uiState', 'vr' );
       setPeerUserContext( 'all', 'participantState', 'peer' );
+
       userContext.participantState = 'focus';
+
+      console.log( 'setVRWorld:', userContext );
 
       emitSessionUserContext( userContext );
 
@@ -164,41 +184,44 @@ function setVrWorld() {
       document.getElementById( 'canvaspane' ).style.zIndex = '10';
       document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
-//      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+//    document.getElementById( 'sticky-ar' ).style.display = 'visible';
       setDomPointerEvent( 'canvas0', 'none' );
       setDomPointerEvent( 'arcanvaspane', 'auto' );
 
-      // inform all the pees of the mode
+      // inform all the peers of the mode
 
       msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
       emitMessage( msgString );
 
     }
 
-function shareArVrWorld()  {
+function shareArVrWorld() {
   if ( userContext.mode === 'ar' ) {
 
       // Tell everyone to initialize
 
       var sessionId = socketServer.sessionid;
-          socketServer.emit( 'utility', 'arClientInit', sessionId );
+      let data = {};
+      data.sessionId = userContext.sessionId;
+      data.data = 'arClientInit';
 
-      // Start the orientation data feed
-
-  //      emitArOrientationData();
-
-  //      document.getElementById( 'sticky-ar' ).style.display = 'visible';
+        socketServer.emit( 'utility', data, sessionId );
 
         msgString = 'User ' + userContext.rtcId + ' has Shared the AR World';
         emitMessage( msgString );
       }
 
-    if ( userContext.mode === 'vr' ) {
+  if ( userContext.mode === 'vr' ) {
 
       // Tell everyone to initialize AR
 
       var sessionId = socketServer.sessionid;
-          socketServer.emit( 'utility', 'vrClientInit', sessionId );
+
+      let data = {};
+      data.sessionId = userContext.sessionId;
+      data.data = 'vrClientInit';
+
+          socketServer.emit( 'utility', data, sessionId );
 
   //    document.getElementById( 'sticky-ar' ).style.display = 'visible';
 
@@ -217,8 +240,8 @@ function emitVideoMute( videoMuteData ) {
 $( function() {
   $( '#sticky-compass' ).click( function() {
     toggleCompass();
-  } )
-} )
+  } );
+} );
 
 //    compassToggle = !compassToggle;
 //   // let data = compassToggle;
@@ -257,7 +280,7 @@ $( function() {
 
     if ( $( this ).attr( 'class' ) === 'video-swap' ) {
 
-      $(this).find("use").attr("xlink:href", "img/weg2rt-defs.svg#weg2rt-b-mute-video");
+      $( this ).find( 'use' ).attr( 'xlink:href', 'img/weg2rt-defs.svg#weg2rt-b-mute-video' );
 
       document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'hidden';
 
@@ -274,7 +297,7 @@ $( function() {
 
     } else {
 
-      $(this).find("use").attr("xlink:href", "img/weg2rt-defs.svg#weg2rt-b-video");
+      $( this ).find( 'use' ).attr( 'xlink:href', 'img/weg2rt-defs.svg#weg2rt-b-video' );
 
       document.getElementById( getIdOfBox( boxToMute ) ).style.visibility = 'visible';
       document.getElementById( theAvatar ).style.visibility = 'hidden';

@@ -1,7 +1,4 @@
 
-'use strict';
-
-
 var iotZones = { steve: 'http://10.0.1.2/api/4cca312bfd9d1976814b78d491ecd8b',
                  chuck: 'http://192.168.1.107/api/52927745603325e730bd719e2a8bf2cb' };
 
@@ -160,9 +157,9 @@ var hueSetAllLightsXY = function( state, xy, bri ) {
         this.y = y;
     };
 
-    Red = new XYPoint( 0.675, 0.322 ),
-    Lime = new XYPoint( 0.4091, 0.518 ),
-    Blue = new XYPoint( 0.167, 0.04 ),
+    var Red = new XYPoint( 0.675, 0.322 ),
+        Lime = new XYPoint( 0.4091, 0.518 ),
+        Blue = new XYPoint( 0.167, 0.04 ),
 
     /**
      * Parses a valid hex color string and returns the Red RGB integer value.

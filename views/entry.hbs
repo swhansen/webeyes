@@ -24,7 +24,6 @@
 <script>
     $( "#loginform" ).on( "submit",  function( event ) {
         var obj = $( this ).serializeObject();
-        console.log( "password sumbitted:", obj );
 
         $.post( "/", obj, function( response, status ) {
             if ( response == "logged in" ) {

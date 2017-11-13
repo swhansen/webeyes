@@ -85,7 +85,7 @@ function openFileModal() {
             imgSend.onload = function() {
                 docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
                 var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
-                var data = {  alpha: docAlpha, width: docCanvas.width, height: docCanvas.height, source:imgdata };
+                var data = { sessionId: userContext.sessionId, alpha: docAlpha, width: docCanvas.width, height: docCanvas.height, source:imgdata };
                 emitDocImage( data );
             };
             imgSend.src = event.target.result;
@@ -110,6 +110,7 @@ function setDocAlpha() {
   } ).then( function( inputValue ) {
     docAlpha = inputValue;
     docctx.globalAlpha = inputValue;
+
   //  console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
   } );
 }
@@ -128,25 +129,26 @@ socketServer.on( 'shareImage', function( data ) {
   } );
 
 function emitDocImage( data ) {
+
  // console.log( 'emitdocImage:', data.width, data.height, data.source );
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'shareImage', data, sessionId );
 }
 
 function drawDoc1() {
-  docctx.drawImage( d1, 0, 0, box0Width, box0Height);
+  docctx.drawImage( d1, 0, 0, box0Width, box0Height );
 }
 
 function drawDoc2() {
-  docctx.drawImage(d2, 0, 0, box0Width, box0Height );
+  docctx.drawImage( d2, 0, 0, box0Width, box0Height );
 }
 
 function drawArch() {
-  docctx.drawImage(d3, 0, 0 , box0Width, box0Height );
+  docctx.drawImage( d3, 0, 0, box0Width, box0Height );
 }
 
  function clearUtilCanvas() {
-  docctx.clearRect(0, 0, box0Width, box0Height );
+  docctx.clearRect( 0, 0, box0Width, box0Height );
   emitUtility( 'clearutil' );
 }
 
@@ -160,12 +162,12 @@ function drawBullsEye() {
   var innerRadius = 275;
 
   docctx.beginPath();
-  docctx.arc( cw, ch, outerRadius, 0, 2 * Math.PI, false);
+  docctx.arc( cw, ch, outerRadius, 0, 2 * Math.PI, false );
   docctx.fillStyle = 'rgba(255,255,255,.2)';
   docctx.fill();
   docctx.globalCompositeOperation = 'destination-out';
   docctx.beginPath();
-  docctx.arc( cw, ch, innerRadius, 0, 2 * Math.PI, false);
+  docctx.arc( cw, ch, innerRadius, 0, 2 * Math.PI, false );
   docctx.fillStyle = 'green';
   docctx.fill();
   docctx.globalCompositeOperation = 'source-over';
@@ -173,18 +175,24 @@ function drawBullsEye() {
   docctx.moveTo( cw - innerRadius, ch );
   docctx.lineTo( cw + innerRadius, ch );
   docctx.stroke();
-  docctx.moveTo( cw, ch - innerRadius);
-  docctx.lineTo( cw, ch + innerRadius);
+  docctx.moveTo( cw, ch - innerRadius );
+  docctx.lineTo( cw, ch + innerRadius );
   docctx.stroke();
 }
 
 function emitUtility( data ) {
   var sessionId = socketServer.sessionid;
-  socketServer.emit( 'utility', data, sessionId);
+  let emitUtil = {};
+  emitUtil.data = data;
+  emitUtil.sessionId = userContext.sessionId
+  socketServer.emit( 'utility', emitUtil, sessionId );
 }
 
 socketServer.on( 'utility', function( data ) {
-  switch ( data ) {
+
+console.log( 'ss.on - utility:', data );
+
+  switch ( data.data ) {
     case 'statusbox':
       updateStatusBox( data );
     break;
@@ -215,6 +223,7 @@ socketServer.on( 'utility', function( data ) {
         loadAr( 'peer' );
     break;
     case 'leapClientInit':
+
     // not the leap owner and not mobile( performance )
     if ( !userContext.isLeap && !userContext.mobile ) {
         initLeapPeerHand();

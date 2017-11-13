@@ -1,3 +1,6 @@
+
+'use strict';
+
 var bodyParser  = require( 'body-parser' );
 var express     = require( 'express' );
 var app         = express();
@@ -9,16 +12,95 @@ var http        = require( 'http' );
 var bson        = require( 'bson' );
 var _           = require( 'lodash' );
 
+
+var session = {
+  sessionId: '',
+  sessionStartTime: '',
+  sessionEndTime: '',
+  sessionParticipants: {}
+  };
+
 // Mongoose Schemas
 
 var User        = require( './public/models/users' );
+var GeoArObject = require( './public/models/geoarobjects' );
 
-var clients    = [];
+
 var linecolors = [ 'rgba(255, 0, 0, 1)',
                    'rgba(255, 0, 225, 1)',
                    'rgba(255, 115, 0, 1)',
-                    'rgba(0, 0, 225, 1)' ];
+                   'rgba(0, 0, 225, 1)'
+                  ];
+
+function getRandColor( brightness ) {
+
+    // Six levels of brightness from 0 to 5, 0 being the darkest
+
+    var rgb = [ Math.random() * 256, Math.random() * 256, Math.random() * 256 ];
+    var mix = [ brightness * 51, brightness * 51, brightness * 51 ];
+    var mixedrgb = [ rgb[ 0 ] + mix[ 0 ], rgb[ 1 ] + mix[ 1 ], rgb[ 2 ] + mix[ 2 ] ].map( function( x ) { return Math.round( x / 2.0 ); } );
+    return 'rgb( ' + mixedrgb.join( ',' ) + ' )';
+}
+
+function getRandomIntInclusive( min, max ) {
+  min = Math.ceil( min );
+  max = Math.floor( max );
+  return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
+}
+
+// stuff for user and core managment
+
+// users are the basis for all core, cannel user communication
+
+var drawsockets  = [];
+var systemUsers = [];
+var newUserData =  {};
+var sessions = [];
+var cores = [];
+
+function getUserCore( userId ) {
+  systemUsers.find( function( u ) {
+    if ( u.userId === userId ) {
+      return u.coreId;
+    }
+  } );
+  }
+
+  function getUserSession( userId ) {
+  systemUsers.forEach( function( u ) {
+    if ( u.userId === userId ) {
+      return u.sessionId;
+    }
+  } );
+  }
+
+function getUsersinCoreChannel( coreId, sessionId ) {
+  let u = [];
+  systemUsers.forEach( function( u ) {
+    if ( user.sessionId === sessionId && user.coreId === coreId ) {
+      u.push( user.userId );
+    }
+  } );
+}
+
+function addNewUser( userid, core, session ) {
+  let u = new user( userid, core, session );
+ systemUsers.push( u );
+ console.log( 'systemUsers:', systemUsers );
+}
+
+function user( userId, core, session ) {
+  this.userId = userId;
+  this.coreId = core;
+  this.sessionId = session;
+}
+
 var room;
+
+// -----------------------------------------
+
+var isRtcServerUp = false;
+
 var dimensionalLayers = [];
 var arObjects = {};
 var sessionUserContext = [];
@@ -44,7 +126,7 @@ app.use( express.static( __dirname + '/views' ) );
 
 app.use( '/bower', express.static( __dirname + '/bower_components' ) );
 
-app.use( bodyParser.urlencoded( { extended: false } ) );
+app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( bodyParser.json() );
 
 var loggedIn = false;
@@ -58,13 +140,9 @@ var handlebars = require( 'express-handlebars' )
 app.engine( 'hbs', handlebars.engine );
 app.set( 'view engine', 'hbs' );
 
-mongoose.connect( mongoUriString, function( err, res ) {
-  if ( err ) {
-  console.log( 'ERROR connecting to:' + mongoUriString + '. '  + err );
-  } else {
-  console.log ( 'Succeeded connecting to: ' + mongoUriString );
-  }
-} );
+
+
+
 
 // test for tests....
 app.use( function( req, res, next ) {
@@ -73,17 +151,67 @@ app.use( function( req, res, next ) {
   next();
 } );
 
-
-
-
-
 //  Main entry point
 
 app.get( '/', function( req, res ) {
+
+  var host = req.get( 'host' );
+  var origin = req.get( 'origin' );
+  var referer = req.get( 'referer' );
+
+  console.log( 'host, origin, referer:', host, origin, referer );
+
+    newUserData.sessionId = req.query.sessionId;
+    newUserData.useriD = req.query.userId;
+    newUserData.coreId = req.query.coreId;
+
+    console.log( 'parameters at app.get /:', req.query.userId, req.query.sessionId, req.query.coreId );
+
+// simply log the cores and sessions
+
+    if ( sessions.indexOf( req.query.sessionId )  === -1 ) {
+        sessions.push( req.query.sessionId );
+        console.log( 'added', req.query.sessionId );
+        console.log( sessions );
+    } else {
+        console.log( 'Sessions already exists' );
+    }
+
+    if ( cores.indexOf( req.query.coreId )  === -1 ) {
+        cores.push( req.query.coreId );
+        console.log( 'added:', req.query.coreId );
+        console.log( cores );
+    } else {
+        console.log( 'Core already exists' );
+    }
+  console.log( 'cores, sessions:', cores, sessions );
+
+  if ( !isRtcServerUp ) {
+    isRtcServerUp = true;
+    var easyrtcServer = rtc.listen(
+            app,
+            socketServer,
+            { 'apiEnable': 'true' }
+          );
+    }
+
+  if ( !loggedIn ) {
+    loggedIn = true;
+    res.sendFile( __dirname + '/views/static-multiparty.html' );
+
+  //  var easyrtcServer = rtc.listen(
+  //          app,
+  //          socketServer,
+  //          { 'apiEnable': 'true' }
+  //        );
+}
   if ( loggedIn === true ) {
     res.sendFile( __dirname + '/views/static-multiparty.html' );
-    } else {
-    res.render( 'entry' );
+
+//    } else {
+
+//    res.render( 'entry' );
+
     }
   } );
 
@@ -99,7 +227,6 @@ app.post( '/', function( req, res ) {
       room = req.body.roomname;
       loggedIn = true;
       res.send( 'logged in' );
-      console.log( 'Logged in' );
       var easyrtcServer = rtc.listen(
             app,
             socketServer, { 'apiEnable': 'true' }
@@ -108,12 +235,6 @@ app.post( '/', function( req, res ) {
       res.send( 'Incorrect password.' );
     }
   }
-
-
-
-
-
-
 
 // Session invite using SendGrid
 
@@ -182,7 +303,7 @@ app.post( '/logout', function( req, res ) {
   }
 } );
 
-//Initiate a video call
+// Initiate a video call
 app.get( '/video', function( req, res ) {
   if ( loggedIn === true ) {
     res.sendfile( __dirname + '/views/static-multiparty.html' );
@@ -191,9 +312,75 @@ app.get( '/video', function( req, res ) {
   }
 } );
 
+
+
+
+
+
+mongoose.connect( mongoUriString, function( err, res ) {
+  if ( err ) {
+  console.log( 'ERROR connecting to:' + mongoUriString + '. '  + err );
+  } else {
+  console.log ( 'Succeeded connecting to: ' + mongoUriString );
+  }
+} );
+
+// Mongoose Schemas
+
+var User        = require( './public/models/users' );
+var GeoArObject = require( './public/models/geoarobjects' );
+
+
 //
-// Experiment with the user DB on Mongo
+// save an AR object to Mongo
 //
+
+app.post( '/dropArObj', function( req, res ) {
+
+//    console.log( 'at dropARObj-stringify req.body:' + JSON.stringify( req.body ) );
+//    console.log( 'at dropARObj- req.body.creator:' + req.body.creator );
+//    console.log( 'at dropARObj- req.body.gimble:' + req.body.gimble );
+//    console.log( 'at dropARObj- req.body.geometry:' + req.body.geometry.coordinates );
+
+
+  var newArObj = new GeoArObject( {
+    creator: req.body.creator,
+    publicPrivate: req.body.publicPrivate,
+    arworld: req.body.arworld,
+    objectName: req.body.objectName,
+    geometry: {
+      type: 'Point',
+      coordinates: req.body.geometry.coordinates
+    },
+    north:  req.body.north,
+    gimble:  req.body.gimble,
+    scale:   req.body.scale,
+    isVisible: req.body.isVisible
+  } );
+
+  newArObj.save( function( err ) {
+    if ( err ) return console.log( err );
+
+    console.log( 'Geo AR Object saved successfully!' );
+
+      } )
+} );
+
+app.get ('/api/geoarobjects', function( req, res ) {
+ var query =  GeoArObject.find(
+      { "geometry":{ $geoWithin:{ $centerSphere:[ [ -71.609225, 42.622359 ], 0.1/3963.2] } },
+       creator: 'ZZ' } );
+
+ query.exec( function( err, docs ) {
+        if ( err ) {
+            throw Error;
+        }
+        res.json( { message: docs } );
+    } );
+
+
+} );
+
 
 app.get( '/users', function( req, res ) {
   var query = User.find( {} ).limit( 10 );
@@ -288,7 +475,7 @@ app.delete( '/api/user/:user_id', function( req, res ) {
 //
 
 app.get( '/api/ar/getArObjects', function( req, res ) {
-  console.log( ' GET arObjects', dimensionalLayers );
+  console.log( 'GET arObjects', dimensionalLayers );
   res.json( { message: arObjects } );
 } );
 
@@ -316,14 +503,13 @@ app.get( '/api/system/getDimensionalLayers', function( req, res ) {
 } );
 
 app.get( '/api/system/getChannelUserContext', function( req, res ) {
-  // console.log( ' GET userContext', sessionUserContext );
   res.json( { message: sessionUserContext } );
-} );
+  } );
 
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
 //
-// Centroid of house
+// Centroid of 55 Wallace Road, Groton Ma
 
 var cosaarQueryParms = {
   lon: -71.609117,
@@ -342,20 +528,20 @@ var cosaarOptions = {
 
 app.get( '/cosaar', function( req, res ) {
 
-cb = function( response ) {
-  var str = '';
-  response.on( 'data', function( chunk ) {
-    str += chunk;
-  } );
-  response.on( 'end', function() {
-    var arObjectsCore = JSON.parse( str );
+  let cb = function( response ) {
+    var str = '';
+    response.on( 'data', function( chunk ) {
+      str += chunk;
+    } );
+    response.on( 'end', function() {
+      var arObjectsCore = JSON.parse( str );
 
-   // var cosaarImg = JSON.stringify(arObjectsCore.hotspots[1].imageURL)
+     // var cosaarImg = JSON.stringify(arObjectsCore.hotspots[1].imageURL)
 
-  res.render( 'cosaar', arObjectsCore );
-  } );
-};
-http.request( cosaarOptions, cb ).end();
+    res.render( 'cosaar', arObjectsCore );
+    } );
+  };
+  http.request( cosaarOptions, cb ).end();
  } );
 
 app.get( '/about', function( req, res ) {
@@ -373,11 +559,47 @@ var socketServer = socketIO.listen( webServer );
 
 socketServer.set( 'log level', 1 );
 
+var clients = [];
+var sids = [];
+
+function findSocketioSessions() {
+    let availableSessions = [];
+    let rooms = socketServer.sockets.manager.rooms;
+    if ( rooms ) {
+        for ( var room in rooms ) {
+            if ( !rooms[ room ].hasOwnProperty( room ) ) {
+                availableSessions.push( room );
+            }
+        }
+    }
+    return availableSessions;
+}
+
 // "Bus" Communication
 
-socketServer.on( 'connection', function( client ) {
+socketServer.sockets.on( 'connection', function( socket ) {
 
-  client.on( 'updateSessionUserContext', function( data, session ) {
+  sids.push( socket.id );
+  socket.join( newUserData.sessionId );
+ // socket.join( newUserData.sessionId );
+
+console.log( 'connection- ' + socket.id + ' connected' );
+
+//console.log( 'test rooms:', socketServer.sockets.sockets( 'session1' ) );
+//console.log( 'socketServer rooms:', socketServer.sockets.manager.rooms );
+
+//console.log( 'socketServer rooms:', findSocketioSessions() );
+
+  socket.on( 'newParticipant', function( data, session ) {
+      console.log( 'newParticipant-data:', data );
+      addNewUser( data.userId, data.coreId, data.sessionId );
+    // socket.join( data.sessionId );
+    //  console.log( data.sessionId + 'added with socket.join' );
+    //  console.log( 'socket.on newParticipant - rooms:', data, findSocketioSessions() );
+  } );
+
+
+  socket.on( 'updateSessionUserContext', function( data, session ) {
     var index = _.findIndex( sessionUserContext, { 'rtcId': data.rtcId } );
       if ( index === -1 ) {
         sessionUserContext.push( data );
@@ -389,115 +611,181 @@ socketServer.on( 'connection', function( client ) {
       }
   } );
 
-  client.on( 'updateStatusBox', function( data, session ) {
-    client.broadcast.emit( 'updateStatusBox', data );
+  socket.on( 'updateStatusBox', function( data, session ) {
+    socket.broadcast.emit( 'updateStatusBox', data );
   } );
 
-   client.on( 'shareImage', function( data, session ) {
-  //  console.log( 'shareImage:', data.width, data.height, data.source );
-    client.broadcast.emit( 'shareImage', data );
+// data now has .sessionId
+
+   socket.on( 'shareImage', function( data, session ) {
+
+      //console.log( 'sockets in session-foo:', socketServer.sockets.to( 'foo' ) );
+
+    console.log( 'shareImage - socket.on:', data.sessionId );
+     socketServer.sockets.in( data.sessionId ).emit( 'shareImage', data );
+
+
+//note:
+
+// socket.to if originator then broadcast else not
+//  socket.to( data.sessionId ).emit( 'shareImage', data );
+
+
   } );
 
-  client.on( 'updateDimensionalLayers', function( data, session ) {
-    client.broadcast.emit( 'arDynamicLoadModel', data );
+  socket.on( 'utility', function( data, session ) {
+    socketServer.sockets.in( data.sessionId ).emit( 'utility', data, socket.id );
+    } );
+
+  socket.on( 'message', function( data, session ) {
+    console.log( 'message- socket.on:', data );
+    socketServer.sockets.in( data.sessionId ).emit( 'message', data );
   } );
 
-  client.on( 'updateArObjects', function( data, session ) {
-    arObjects = data;
-  //  console.log( 'AR Objects updated', arObjects );
+  socket.on( 'videoMute', function( data, session ) {
+    socket.broadcast.emit( 'videoMute', data );
   } );
 
-  client.on( 'arDynamicLoadModel', function( data, session ) {
-    //client.emit( 'utility', data );
-    client.broadcast.emit( 'arDynamicLoadModel', data );
+// ------------------------
+
+//?????
+
+ // socket.on( 'updateDimensionalLayers', function( data, session ) {
+ //   socket.broadcast.emit( 'arDynamicLoadModel', data );
+ // } );
+
+
+// api
+
+  socket.on( 'updateArObjects', function( data, session ) {
+   let arObjects = data;
   } );
 
-  client.on( 'utility', function( data, session ) {
-    //client.emit( 'utility', data );
-    client.broadcast.emit( 'utility', data );
+
+
+  socket.on( 'arDynamicLoadModel', function( data, session ) {
+
+    console.log( 'arDynamicLoadModel:' + this.id + 'sent:' + data );
+
+  socketServer.sockets.in( data.sessionId ).emit( 'arDynamicLoadModel', data, socket.id );
+
+  // socket.to( data.sessionId ).broadcast.emit( 'arDynamicLoadModel', data, socket.id );
+
+//socketServer.sockets.emit( 'arDynamicLoadModel', data, socket.id );
+
+  //socket.to( data.sessionId ).broadcast.emit( 'arDynamicLoadModel', data, socket.id );
+ //  socket.broadcast.emit( 'arDynamicLoadModel', data );
+
   } );
 
-  client.on( 'videoMute', function( data, session ) {
-   // client.emit( 'videoMute', data );
-    client.broadcast.emit( 'videoMute', data );
+
+
+  socket.on( 'focus', function( data, session ) {
+   socket.broadcast.emit( 'focus', data );
   } );
 
-  client.on( 'focus', function( data, session ) {
-    //client.emit( 'focus', data );
-   client.broadcast.emit( 'focus', data );
-  } );
-
-  client.on( 'message', function( data, session ) {
-    //client.emit( 'focus', data );
-   client.broadcast.emit( 'message', data );
-  } );
-
-// the orientation of the device
+//  the orientation of a mobile device
 //  used to broadcast to peers from the focus
 
-  client.on( 'arOrientation', function( data, session ) {
-    client.broadcast.emit( 'arOrientation', data );
+  socket.on( 'arOrientation', function( data, session ) {
+
+    // socket.broadcast.emit( 'arOrientation', data );
+
+    socketServer.sockets.in( data.sessionId ).emit( 'arOrientation', data );
+
   } );
 
-  client.on( 'vrOrientation', function( data, session ) {
-    client.broadcast.emit( 'vrOrientation', data );
+
+
+  socket.on( 'vrOrientation', function( data, session ) {
+
+  //  socket.broadcast.emit( 'vrOrientation', data );
+
+    socketServer.sockets.in( data.sessionId ).emit( 'vrOrientation', data );
+
+    //socket.broadcast.to( data.sessionId ).emit( 'vrOrientation', data );
+
+
   } );
 
-  client.on( 'userContext', function( data, session ) {
-    client.broadcast.emit( 'userContext', data );
+  socket.on( 'userContext', function( data, session ) {
+
+   //  socketServer.sockets.in( data.sessionId ).emit( 'userContext', data );
+     socket.broadcast.to( data.sessionId ).emit( 'userContext', data );
+
+   // socket.broadcast.emit( 'userContext', data );
   }
     );
 
-  client.on( 'arObjectShare', function( data, session ) {
-   // client.emit( 'arObjectShare ', data );
-    client.broadcast.emit( 'arObjectShare', data );
+  socket.on( 'arObjectShare', function( data, session ) {
+
+   // socket.broadcast.emit( 'arObjectShare', data );
+
+   console.log( 'arObjectShare:', data );
+
+    socketServer.sockets.in( data.sessionId ).emit( 'arObjectShare', data );
+    //  socket.in( data.sessionId ).emit( 'arObjectShare', data );
+
+
   } );
 
 // set an IOT device
 
-  client.on( 'iotControl', function( data, session ) {
-  // client.emit( 'iotState ', data );
-   console.log( 'server iotControl broadcast:', data );
-    client.broadcast.emit( 'iotControl', data );
+  socket.on( 'iotControl', function( data, session ) {
+
+ socketServer.sockets.in( data.sessionId ).emit( 'iotControl', data );
+
+   // socket.broadcast.emit( 'iotControl', data );
+
   } );
 
-client.on( 'leapShare', function( data, session ) {
-   // client.emit( 'arObjectShare ', data );
-    client.broadcast.emit( 'leapShare', data );
+socket.on( 'leapShare', function( data, session ) {
+  //  socket.broadcast.emit( 'leapShare', data );
+    socketServer.sockets.in( data.sessionId ).emit( 'leapShare', data );
   } );
 
-client.on( 'leapSphere', function( data, session ) {
-   // client.emit( 'arObjectShare ', data );
-   client.broadcast.emit( 'leapSphere', data );
+//socket.on( 'leapSphere', function( data, session ) {
+//   socket.broadcast.emit( 'leapSphere', data );
+//  } );
+
+socket.on( 'peerSphere', function( data, session ) {
+  // socket.broadcast.emit( 'peerSphere', data );
+   socketServer.sockets.in( data.sessionId ).emit( 'peerSphere', data );
   } );
 
-client.on( 'peerSphere', function( data, session ) {
-   // client.emit( 'arObjectShare ', data );
-   client.broadcast.emit( 'peerSphere', data );
+
+
+
+  socket.on( 'toggleCompass', function( data, session ) {
+    socket.broadcast.emit( 'toggleCompass', data );
   } );
 
-  client.on( 'toggleCompass', function( data, session ) {
-   // client.emit( 'arObjectShare ', data );
-    client.broadcast.emit( 'toggleCompass', data );
+  socket.on( 'roomnamerequest', function( data, session ) {
+    socket.emit( 'roomnamerequest', newUserData );
   } );
 
-  client.on( 'roomnamerequest', function( data, session ) {
-   // client.emit( 'arObjectShare ', data );
-   //console.log('SERVER-ROOM:', data );
-    client.emit( 'roomnamerequest', room );
-  } );
+  socket.on( 'drawLine', function( data, session ) {
 
-  client.on( 'drawLine', function( data, session ) {
+      // build up the colors for  drawing
 
-    // build up the colors for  drawing
+      // if ( !( socket.id in drawsockets ) ) {
+      //   drawsockets[ socket.id ] = linecolors[ Object.keys( drawsockets ).length];
+      // }
 
-    if ( !( client.id in clients ) ) {
-      clients[client.id] = linecolors[Object.keys( clients ).length];
+     if ( !( socket.id in drawsockets ) ) {
+      //drawsockets[ socket.id ] = getRandColor( getRandomIntInclusive( 0, 5 ) );
+      drawsockets[ socket.id ] = getRandColor( 5 );
     }
-    data.color = clients[client.id];
-    data.client = client.id;
-    client.emit( 'drawLine', data );
-    client.broadcast.emit( 'drawLine', data );
+
+    data.color = drawsockets[ socket.id ];
+    data.socket = socket.id;
+    socketServer.sockets.in( data.sessionId ).emit( 'drawLine', data );
+
+      // to self
+      // socket.emit( 'drawLine', data );
+      // only to other
+      // socket.broadcast.emit( 'drawLine', data );
+
   } );
 } );
 

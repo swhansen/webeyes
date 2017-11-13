@@ -13,26 +13,27 @@ function receiveArObject( data ) {
         arMoveObject( data );
       break;
 
-      case 'newObject':
-        var materialTorus1 = new THREE.MeshLambertMaterial( { color: 'red' } );
-        var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-        var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
-
-        arUserCreatedObject.position.set( data.x, data.y, data.z );
-        arUserCreatedObject.name = data.name;
-        scene.add( arUserCreatedObject );
-
-        arUserCreatedObject.userData.id = data.id;
-        arUserCreatedObject.userData.isAnimated = false;
-        arUserCreatedObject.userData.isUserCreated = true;
-        arUserCreatedObject.userData.isSelectable = true;
-        arUserCreatedObject.userData.createdBy = data.createdBy;
-        arUserCreatedObject.userData.objectType = data.objectType;
-
-        arSelectObjectArray.push( arUserCreatedObject );
-      break;
+     // case 'newObject':
+     //   var materialTorus1 = new THREE.MeshLambertMaterial( { color: 0xf7ef19 } );
+     //   var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+     //   var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+//
+     //   arUserCreatedObject.position.set( data.x, data.y, data.z );
+     //   arUserCreatedObject.name = data.name;
+     //   scene.add( arUserCreatedObject );
+//
+     //   arUserCreatedObject.userData.id = data.id;
+     //   arUserCreatedObject.userData.isAnimated = false;
+     //   arUserCreatedObject.userData.isUserCreated = true;
+     //   arUserCreatedObject.userData.isSelectable = true;
+     //   arUserCreatedObject.userData.createdBy = data.createdBy;
+     //   arUserCreatedObject.userData.objectType = data.objectType;
+//
+     //   arSelectObjectArray.push( arUserCreatedObject );
+     // break;
 
       case 'animateSelectedObject':
+      console.log( 'animateSelectedObject:', data );
         if ( data.name === 'sheep' ) {
             arObject = scene.getObjectByName( data.name );
             arObject.rotation.x = data.rotation._x;
@@ -40,7 +41,7 @@ function receiveArObject( data ) {
             arObject.rotation.z = data.rotation._z;
             arObject.material.color.setRGB( data.color.r, data.color.g, data.color.b );
             arObject.userData.isAnimated = data.isAnimated;
-            isAnimateSheep = data.animate;
+      //      isAnimateSheep = data.animate;
           }
 
         if ( data.name === 'swordGuyMesh' ) {
@@ -50,9 +51,9 @@ function receiveArObject( data ) {
 
  // User Created Object
 
-        if ( data.name ===  'bagel' ) {
-        let tempObj = scene.getObjectByName( data.name );
-        tempObj.userData.isAnimated = data.isAnimated;
+        if ( data.name === 'torus' ) {
+        arObject = scene.getObjectByName( data.name );
+        arObject.userData.isAnimated = data.animate;
         }
 
       break;
@@ -71,7 +72,7 @@ function receiveArObject( data ) {
 
   function arMoveObject( data ) {
     var arObject = scene.getObjectByName( data.name );
-    console.log( 'arMoveObject:', arObject );
+    console.log( 'arMoveObject:', data );
       if ( data.position ) {
           arObject.position.x = data.position.x;
           arObject.position.y = data.position.y;

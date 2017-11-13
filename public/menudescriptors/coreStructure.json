@@ -35,6 +35,15 @@
             "desc": "special code input",
             "initState": "none",
             "baseZ": "20"
+            },
+        "fullscreen": {
+            "mainButton": "#fullscreen",
+            "buttons": [],
+            "desc": "special code input",
+            "initState": "none",
+            "baseZ": "20"
             }
+
+
     }
   }

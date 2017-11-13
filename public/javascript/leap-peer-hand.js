@@ -5,6 +5,8 @@
 
 function initLeapPeerHand() {
 
+  console.log( 'at init LeapPeerHand' );
+
 var leapFrame;
 
  var leapPane = document.getElementById( 'leappane' );

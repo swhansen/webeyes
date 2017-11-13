@@ -18,7 +18,7 @@ WEBEYES.MouseControls = function( object ) {
 
     if ( scope.enabled === false ) { return; }
 
-    mouseDown = true;
+        mouseDown = true;
     };
 
   var onMouseMove = function( event ) {
@@ -36,10 +36,11 @@ WEBEYES.MouseControls = function( object ) {
       orientation.y += movementX * 0.005;
       orientation.x = Math.max( -PI_2, Math.min( PI_2, orientation.x ) );
 
-// emit movement
+// emit movement to peers
 
       var sessionId = socketServer.sessionid;
-        socketServer.emit( 'vrOrientation', orientation, sessionId );
+      orientation.sessionId = userContext.sessionId;
+      socketServer.emit( 'vrOrientation', orientation, sessionId );
     }
   };
 
@@ -65,6 +66,7 @@ WEBEYES.MouseControls = function( object ) {
   };
 
   this.connect = function() {
+
     var arCanvas = document.getElementById( 'arcanvaspane' );
     var ar0 = document.getElementById( 'arcanvas' );
 
@@ -87,5 +89,4 @@ this.disconnect = function() {
     arCanvas.removeEventListener( 'mousedown', onMouseDown );
   }
 };
-
 };

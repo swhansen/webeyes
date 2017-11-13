@@ -39,6 +39,9 @@ function getArWorldSummary() {
 
 function loadAr() {
 
+
+  console.log( 'loadAr:', userContext.mode );
+
   if ( userContext.mode === 'ar') {
   orientationCompass( true );
 }

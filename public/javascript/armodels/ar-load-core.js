@@ -17,8 +17,8 @@ function setUpArLayer() {
   var boxWidth = boxFocus.outerWidth();
   var boxHeight = boxFocus.outerHeight();
 
-  console.log( 'userContext:', userContext );
-  console.log( 'setUpArLayer:', boxPosition, boxWidth, boxHeight );
+ // console.log( 'userContext:', userContext );
+//  console.log( 'setUpArLayer:', boxPosition, boxWidth, boxHeight );
 
   $( '#arcanvaspane' ).css( boxPosition );
   $( '#arcanvaspane' ).css( 'width', boxWidth );
@@ -60,19 +60,16 @@ function setUpArLayer() {
 
 // Fix for re-entry to VR mode to prevent multipe handlers, etc
 
-if ( typeof vrBroadcastCameraControls === 'undefined' ) {
+if ( typeof vrBroadcastCameraControls === 'undefined' && userContext.participantState === 'peer' ) {
   vrBroadcastDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrBroadcastDrivenCamera.name = 'vrBroadcastDrivenCamera';
-
   vrBroadcastCameraControls = new WEBEYES.BroadcastVrControls( vrBroadcastDrivenCamera );
 }
 
-if ( typeof vrDrivenCameraControls === 'undefined' ) {
+if ( typeof vrDrivenCameraControls === 'undefined' && userContext.participantState === 'focus' ) {
   vrDrivenCamera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
   vrDrivenCamera.name = 'vrDrivenCamera';
-
   vrDrivenCameraControls = new WEBEYES.MouseControls( vrDrivenCamera );
-
   vrDrivenCameraControls.connect();
 }
 
@@ -278,12 +275,12 @@ function animateArObjects() {
 //        sheep.rotation.z += dt * 2;
 //    }
 
-//var animatedArObjects = [ 'bagel', 'sheep', 'swordGuy' ];
+//var animatedArObjects = [ 'torus', 'sheep', 'swordGuy' ];
 
 //    for ( var i = 0; i < arSelectObjectArray.length; i++ ) {
 //
 //
-//        if ( arSelectObjectArray[i].userData.objectType === 'bagel' &&
+//        if ( arSelectObjectArray[i].userData.objectType === 'torus' &&
 //              arSelectObjectArray[i].userData.isAnimated === true ) {
 //          arSelectObjectArray[i].rotation.y += dt * 1.0;
 //        }
@@ -301,7 +298,7 @@ function animateArObjects() {
 
   arSelectObjectArray.forEach( function( arObj ) {
 
-      if ( arObj.userData.objectType === 'bagel' &&
+      if ( arObj.name === 'torus' &&
             arObj.userData.isAnimated === true ) {
         arObj.rotation.y += dt * 1.0;
         }

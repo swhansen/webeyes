@@ -1,3 +1,5 @@
+
+
 var activeBox = -1; // nothing selected
 var aspectRatio = 4 / 3;
 
@@ -18,10 +20,14 @@ var threejsDebug = true;
 
 var leapPeerHandAnimate = false;
 
+var sessionData = {};
+
 // Container for User Context
 
 var userContext = {
   rtcId               : '',
+  coreId              : '',
+  channelId           : '',
   isSessionInitiator  : false,
   isLeap              : false,
   isIotHome           : false,
@@ -58,6 +64,30 @@ updateElement : updateElement
 socketServer = io.connect( '/' );
 /*jshint +W020 */
 
+// Detect browser diff for full screen mode
+
+function launchIntoFullscreen( element ) {
+  if ( element.requestFullscreen ) {
+    element.requestFullscreen();
+  } else if ( element.mozRequestFullScreen ) {
+    element.mozRequestFullScreen();
+  } else if ( element.webkitRequestFullscreen ) {
+    element.webkitRequestFullscreen();
+  } else if ( element.msRequestFullscreen ) {
+    element.msRequestFullscreen();
+  }
+}
+
+function exitFullscreen() {
+  if ( document.exitFullscreen ) {
+    document.exitFullscreen();
+  } else if ( document.mozCancelFullScreen ) {
+    document.mozCancelFullScreen();
+  } else if ( document.webkitExitFullscreen ) {
+    document.webkitExitFullscreen();
+  }
+}
+
 // utility function to determine the center dimensionalLayer
 //  - used for creating dimensionalLayers based on center video div size
 
@@ -73,7 +103,7 @@ function updateElement( element, info ) {
   var data = {};
   data.element = element;
   data.info = info;
-  socketServer.emit( 'updateStatusBox', data, sessionId);
+  socketServer.emit( 'updateStatusBox', data, sessionId );
 }
 
 socketServer.on( 'updateStatusBox', function( data ) {
@@ -81,7 +111,6 @@ socketServer.on( 'updateStatusBox', function( data ) {
   statusBox[element] = data.info;
   $( '#' + element ).text( data.info );
 } );
-
 
 function addDimensionalLayer( layer ) {
   if ( $.inArray( layer, this.dimensionalLayers ) === -1 ) {
@@ -91,7 +120,45 @@ function addDimensionalLayer( layer ) {
   }
 }
 
+// inform before closing tab/browser
+
+window.onbeforeunload = function( e ) {
+    var dialogText = 'Sure you want to leave WEG2RT?';
+    e = e || window.event;
+
+    // For IE and Firefox prior to version 4
+    if ( e ) {
+        e.returnValue = dialogText;
+    }
+
+    // For Safari
+    return dialogText;
+};
+
+// utility functions to grab URL parameters
+
+var GET = {};
+var query = window.location.search.substring( 1 ).split( '&' );
+
+for ( var i = 0, max = query.length; i < max; i++ )
+{
+    if( query[i] === '' ) // check for trailing & with no param
+        continue;
+
+    var param = query[i].split( '=' );
+    GET[ decodeURIComponent( param[0] ) ] = decodeURIComponent( param[ 1 ] || '' );
+}
+
+function getUrlParameter( name ) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+//
 // for API
+//
 
 function emitDimensionalLayers( data ) {
   var sessionId = socketServer.sessionid;
@@ -103,7 +170,6 @@ function emitDimensionalLayers( data ) {
 function emitSessionUserContext( data ) {
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'updateSessionUserContext', data, sessionId );
-  console.log( 'emit updateSessionUserContext:', data );
 }
 
 // the base Dimensional Layers
@@ -132,21 +198,50 @@ var layerList = [
 ];
 
 socketServer.on( 'roomnamerequest', function( data ) {
-  updateRoom( data );
+  sessionData = data;
+  updateRoom( data.sessionId );
+  logSessionData( data );
 } );
 
-  var sessionId = socketServer.sessionid;
-  socketServer.emit( 'roomnamerequest', 'roomreq', sessionId );
+//
+//  potential hack
+//  send request to server to get session data back
+//  session data included in the URL body to /
+//  data built on server and send back
+// .sessionId
+// .userID
+// .coreId
+
+var sessionId = socketServer.sessionid;
+socketServer.emit( 'roomnamerequest', 'channeldatareq', sessionId );
 
 function updateRoom( data ) {
  // var str = 'Channel:' + data;
   $( '#roomId' ).html( data );
   userContext.room = data;
+  userContext.sessionId = data;
   }
+
+
+// just a test
+
+function logSessionData( data ) {
+
+  console.log( 'logSessionData - from socket:', data.core, data.sessionId, data.userId );
+  console.log( 'logSessionData- from URL - session data:', getUrlParameter( 'coreId' ), getUrlParameter( 'coreId' ), getUrlParameter( 'userId' ) );
+}
 
 var layerPointerState = {};
 
 easyrtc.dontAddCloseButtons( false );
+
+
+// Footer Messages
+
+function messageBar( msg ) {
+  $( '#messageFooter' ).html( msg ).fadeIn( 500 );
+  $( '#messageFooter' ).html( msg ).fadeOut( 5000 );
+}
 
 // Utillity Functions
 
@@ -161,6 +256,7 @@ function setPeerUserContext( rtcId, param, state ) {
   data.rtcId = rtcId;
   data.param = param;
   data.state = state;
+  data.sessionId = userContext.sessionId;
 
   var sessionId = socketServer.sessionid;
   socketServer.emit( 'userContext', data, sessionId );
@@ -193,26 +289,22 @@ socketServer.on( 'userContext', function( data ) {
     userContext[ p ] = data.state;
 
     console.log( 'userContext at multiparty- data:', data );
-    console.log( 'userContext at multiparty:', userContext );
-  }
-} );
-
-// Footer Messages
-
-function messageBar( msg ) {
-  $( '#messageFooter' ).html( msg ).fadeIn( 500 );
-  $( '#messageFooter' ).html( msg ).fadeOut( 5000 );
 }
+} )
 
 // socket.io communication
 
-function emitMessage( data ) {
+function emitMessage( msg ) {
   var sessionId = socketServer.sessionid;
-  socketServer.emit( 'message', data, sessionId );
+
+  let emitData = {};
+  emitData.msg = msg;
+  emitData.sessionId = userContext.sessionId;
+  socketServer.emit( 'message', emitData, sessionId );
 }
 
 socketServer.on( 'message', function( data ) {
-      messageBar( data );
+      messageBar( data.msg );
       } );
 
 function getIdOfBox( boxNum ) {
@@ -843,7 +935,7 @@ $( function() {
 
     swal( {
       title: 'Enter a message',
-      text: 'Your text will be broadcast to all channel participants',
+      text: 'Your text will be broadcast to all session participants',
       input: 'text',
       showCancelButton: true,
       confirmButtonText: 'Submit',
@@ -862,6 +954,7 @@ $( function() {
             var easyrtcid = easyrtc.getIthCaller( i );
             if ( easyrtcid && easyrtcid !== '' ) {
                 easyrtc.sendPeerMessage( easyrtcid, 'im', result );
+                easyrtc.sendPeerMessage( easyrtcid, 'test', result );
               }
           }
         } );
@@ -886,6 +979,7 @@ function sendText( e ) {
             var easyrtcid = easyrtc.getIthCaller( i );
             if ( easyrtcid && easyrtcid !== '' ) {
                 easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
+                easyrtc.sendPeerMessage( easyrtcid, 'test', stringToSend );
             }
         }
     }
@@ -972,14 +1066,36 @@ function showMessage( startX, startY, content ) {
 }
 
 function messageListener( easyrtcid, msgType, content ) {
+
+  if ( msgType === 'im' ) {
+
+  console.log( 'messageListner:', easyrtcid, msgType, content );
+
     for ( var i = 0; i < maxCALLERS; i++ ) {
         if ( easyrtc.getIthCaller( i ) === easyrtcid ) {
             var startArea = document.getElementById( getIdOfBox( i + 1 ) );
             var startX = parseInt( startArea.offsetLeft ) + parseInt( startArea.offsetWidth ) / 2;
             var startY = parseInt( startArea.offsetTop ) + parseInt( startArea.offsetHeight ) / 2;
-            showMessage( startX, startY, content );
+
+            let string = 'coreId: ' + sessionData.coreId + ' ch: ' + sessionData.sessionId + ' - msgType: ' + msgType + ': ' + content;
+            showMessage( startX, startY, string );
         }
     }
+  }
+  if ( msgType === 'test' ) {
+
+    console.log( 'messageListner:', easyrtcid, msgType, content );
+
+    for ( var i = 0; i < maxCALLERS; i++ ) {
+        if ( easyrtc.getIthCaller( i ) === easyrtcid ) {
+            let string = 'app: ' + sessionData.coreId + ' ch: ' + sessionData.channelId + ' - msgType: ' + msgType + ': ' + content;
+
+            let foo = 'Test of dataChannel: ' + msgType + ' ' + content;
+
+            alert( foo );
+        }
+    }
+  }
 }
 
 function appInit() {
@@ -1011,16 +1127,16 @@ var isMobile = {
 
 function findBrowserType() {
   var sBrowser, sUsrAg = navigator.userAgent;
-  if ( sUsrAg.indexOf( "Chrome" ) > -1 ) {
-      sBrowser = "Chrome";
-  } else if ( sUsrAg.indexOf( "Safari" ) > -1 ) {
-      sBrowser = "Apple Safari";
-  } else if ( sUsrAg.indexOf( "Opera" ) > -1 ) {
-      sBrowser = "Opera";
-  } else if ( sUsrAg.indexOf( "Firefox" ) > -1 ) {
-      sBrowser = "Mozilla Firefox";
-  } else if ( sUsrAg.indexOf( "MSIE" ) > -1 ) {
-      sBrowser = "Microsoft Internet Explorer";
+  if ( sUsrAg.indexOf( 'Chrome' ) > -1 ) {
+      sBrowser = 'Chrome';
+  } else if ( sUsrAg.indexOf( 'Safari' ) > -1 ) {
+      sBrowser = 'Apple Safari';
+  } else if ( sUsrAg.indexOf( 'Opera' ) > -1 ) {
+      sBrowser = 'Opera';
+  } else if ( sUsrAg.indexOf( 'Firefox' ) > -1 ) {
+      sBrowser = 'Mozilla Firefox';
+  } else if ( sUsrAg.indexOf( 'MSIE' ) > -1 ) {
+      sBrowser = 'Microsoft Internet Explorer';
   }
   return sBrowser;
 }
@@ -1092,50 +1208,6 @@ _i = window.setInterval( function() {
 
 setBrowserDetails();
 
-//function isChromeMobile() {
-//  var mobile = isMobileDevice();
-//  var browserType = findBrowserType();
-//  userContext.browserType = browserType;
-//  userContext.mobile = true;
-//  if (mobile && browserType === 'Chrome') {
-// return true;
-//  } else {
-//    return false;
-//  }
-//}
-//console.log( 'Chrome and Mobile:', isChromeMobile() );
-
-//      // set the media source
-//      // from 3318
-//      //easyrtc.addStreamToCall( easyrtcid, streamname, receipthandler)
-//      //streamname is the id
-//      //var stream = getLocalMediaStreamByName(streamName);
-//
-//    navigator.getUserMedia = navigator.getUserMedia ||
-//      navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-//
-//    var videoElement = document.getElementById( 'box0' );
-//
-//   if ( !MediaStreamTrack.getSources ) {
-//       console.log( 'No media stream track enumeration' );
-//       return;
-//     } else {
-//
-//     MediaStreamTrack.getSources( gotSources );
-//  // }
-//
-//  function gotSources( sourceInfos ) {
-//      console.log( 'static-multi:', sourceInfos ) ;
-//      device = _.find( sourceInfos, function( sources ) { return sources.facing == 'environment';} );
-//      console.log( 'device:', device );
-//      console.log( 'facing:', device.facing );
-//      console.log( 'label:', device.label );
-//      console.log( 'id:', device.id );
-//
-//      //
-//      //  .....or
-//      //
-//
     easyrtc.getVideoSourceList( function( list ) {
       console.log( 'easyrtc.getVideoSourceList:', list );
         userContext.browserVideoDevices = list;
@@ -1149,59 +1221,6 @@ setBrowserDetails();
       console.log( 'easyrtc.getAudioSourceList:', list );
         userContext.browserAudioDevices = list;
       } );
-
-//
-//
-//
-//      var constraints = {
-//      //audio: {
-//      //  optional: [{
-//      //    sourceId: audioSource
-//      //  }]
-//      //},
-//       video: {
-//         optional: [{
-//           sourceId: device.id
-//         }]
-//       }
-//     };
-//
-//     function successCallback(stream) {
-//        var url = window.URL || window.webkitURL;
-//        videoElement.src = url ? url.createObjectURL(stream) : stream;
-//        videoElement.play();
-//
-//     //window.stream = stream; // make stream available to console
-//     //videoElement.src = window.URL.createObjectURL(stream);
-//     //videoElement.play();
-//    }
-//
-//     function errorCallback(error) {
-//     console.log('navigator.getUserMedia error: ', error);
-//    }
-//
-//     navigator.getUserMedia( constraints, successCallback, errorCallback );
-//    }
-//  }
-//
-//
-//   End experimental camera select
-//
-
- //if ( navigator.geolocation ) {
- //  userContext.geoLocation = true;
- //  }
- //if ( window.DeviceMotionEvent ) {
- //userContext.motion = true;
- //  }
- //if ( window.DeviceOrientationEvent ) {
- //  userContext.orientation = true;
- //  }
- //if ( userContext.orientation === true && userContext.motion === true) {
- //  userContext.arCapable = true;
- //  userContext.mobile =  true;
- //  messageBar( 'Device is AR Capable' );
- //  }
 
     // Prep for the top-down layout manager
     setReshaper( 'fullpage', reshapeFull );
@@ -1228,9 +1247,13 @@ setBrowserDetails();
 
 console.log( 'Join Room userContext:', userContext );
 
-    //var r = userContext.room;
-    //easyrtc.joinRoom( r );
+var sessionName = GET.sessionId;
 
+    easyrtc.joinRoom( sessionName );
+
+console.log( 'Joined Channel:', sessionName );
+
+console.log( 'channel Occupants:', easyrtc.getRoomOccupantsAsArray( sessionName ) );
 
 // added SDP filters  swh - 3/15/17
 
@@ -1243,12 +1266,27 @@ console.log( 'Join Room userContext:', userContext );
 
     easyrtc.setSdpFilters( localFilter, remoteFilter );
 
-   easyrtc.easyApp( 'weg2rt', 'box0', [ 'box1', 'box2', 'box3' ],
+    var coreId = getUrlParameter( 'coreId' );
+    console.log( 'at easyApp-coreId:', coreId );
+
+// added coreId as a input swh-4/1/17
+
+   easyrtc.easyApp( coreId, 'box0', [ 'box1', 'box2', 'box3' ],
      function( myId ) {
 
     console.log( 'Local Media Ids:', easyrtc.getLocalMediaIds()  );
 
        userContext.rtcId = myId;
+       userContext.coreId = sessionData.coreId;
+       userContext.channelId = sessionData.channelId;
+
+  let data = {};
+  data.userId = myId;
+  data.coreId = sessionData.coreId;
+  data.sessionId = sessionData.sessionId;
+
+  let sessionId = socketServer.sessionid;
+  socketServer.emit( 'newParticipant', data, sessionId );
 
    // First time through for all connections
 
@@ -1266,6 +1304,7 @@ console.log( 'Join Room userContext:', userContext );
    );
 
    easyrtc.setPeerListener( messageListener );
+
    easyrtc.setDisconnectListener( function() {
        easyrtc.showError( 'LOST-CONNECTION', 'Lost connection to signaling server' );
    } );
@@ -1296,12 +1335,14 @@ console.log( 'Join Room userContext:', userContext );
         }
         document.getElementById( getIdOfBox( slot + 1 ) ).style.visibility = 'visible';
         expandThumb( 0 );
+
+    alertWeg2rtEntry( 1 );
+
     } );
 
     easyrtc.setOnHangup( function( easyrtcid, slot ) {
-        boxUsed[slot + 1] = false;
+        boxUsed[ slot + 1 ] = false;
 
-        //console.log('hanging up on ' + easyrtcid);
         if ( activeBox > 0 && slot + 1 == activeBox ) {
             collapseToThumb();
         }
@@ -1325,6 +1366,7 @@ console.log( 'Join Room userContext:', userContext );
 
 initDraw();
 initUtil();
+
 //initUiManager();
 messageBar( 'User Session Initialized' );
 

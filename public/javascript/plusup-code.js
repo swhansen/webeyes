@@ -32,8 +32,7 @@ function useModeCode( modeCode ) {
       uiStructure = data;
       } );
       for ( var button in uiStructure.structure ) {
-      t = 1000;
-      $( uiStructure.structure[button].mainButton ).fadeOut( t );
+      $( uiStructure.structure[button].mainButton ).fadeOut( 1000 );
       }
       mainCollapsed = true;
     break;
@@ -57,8 +56,7 @@ function useModeCode( modeCode ) {
 
      mainCollapsed = true;
       for ( var button in uiStructure.structure ) {
-        t = 500;
-        $( uiStructure.structure[button].mainButton ).fadeOut( t );
+        $( uiStructure.structure[button].mainButton ).fadeOut( 500 );
       }
 
       userContext.addDimensionalLayer( 'arcanvaspane' );
@@ -76,7 +74,14 @@ function useModeCode( modeCode ) {
       isIotGrabOn = true;
     break;
 
+    case 'placear':
+    console.log( 'at dropar' );
+      placeArObjModal();
+    break;
+
   case 'vrme':
+
+   console.log( 'at vrme' );
 
     setPeerUserContext( 'all', 'modMeState', false );
     setPeerUserContext( 'all', 'mode', 'vr');
@@ -86,11 +91,15 @@ function useModeCode( modeCode ) {
     userContext.participantState = 'focus';
     userContext.uiState = 'vr';
 
-    $.getJSON( '../menudescriptors/vrMeStructure.json', function( data ) {
-      uiStructure = data;
-    } );
+
+  //  $.getJSON( '../menudescriptors/vrMeStructure.json', function( data ) {
+  //    uiStructure = data;
+  //  } );
 
     userContext.addDimensionalLayer( 'arcanvaspane') ;
+
+// for API
+
     emitSessionUserContext( userContext );
 
     for ( button in uiStructure.structure ) {
@@ -102,8 +111,8 @@ function useModeCode( modeCode ) {
 
 // Focus the AR initiator (modme)
 
- //   var sessionId = socketServer.sessionid;
- //       socketServer.emit( 'focus', userContext.rtcId, sessionId );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'focus', userContext.rtcId, sessionId );
 
     var msgString = 'User ' + userContext.rtcId + ' has become the focus in VR mode';
     emitMessage( msgString );
@@ -111,6 +120,7 @@ function useModeCode( modeCode ) {
     vrWorldModal();
 
     emitUtility( 'clearmoderator' );
+
     $( '#ismoderator' ).text( 'Moderator' );
 
   break;
@@ -209,6 +219,20 @@ function useModeCode( modeCode ) {
 
 // ------- end plus-up case -------------------------
 
+function placeArObjModal() {
+swal( {
+  title: 'AR Object Name',
+  input: 'text',
+  inputPlaceholder: 'Your AR object Name',
+  showCancelButton: true,
+  }).then(function (text) {
+  if (text) {
+    createArObject( text );
+  }
+});
+}
+
+
 function iotZoneModal() {
   swal( {
     title: 'Enter your sub-zone',
@@ -269,8 +293,8 @@ function vrWorldModal() {
       return new Promise(function (resolve, reject) {
         setVrWorld();
         shareArVrWorld();
-        var sessionId = socketServer.sessionid;
-        socketServer.emit( 'focus', userContext.rtcId, sessionId );
+    //var sessionId = socketServer.sessionid;
+    // socketServer.emit( 'focus', userContext.rtcId, sessionId );
           statusBox.updateElement( 'metaverse', inputValue );
           resolve();
         }
@@ -293,13 +317,16 @@ function arWorldModal() {
       'chuck': 'chuck',
       'test': 'test'
     },
-    inputPlaceholder: 'Select a VR World',
+    inputPlaceholder: 'Select a AR World',
     showCancelButton: true,
     inputValidator: function (inputValue) {
       return new Promise(function (resolve, reject) {
+          userContext.modMeState = true;
+          userContext.participantState = 'focus';
+          userContext.uiState = 'vr';
+          statusBox.updateElement( 'metaverse', inputValue );
           setArWorld();
           shareArVrWorld();
-          statusBox.updateElement( 'metaverse', inputValue );
           resolve();
         }
       );
@@ -340,8 +367,8 @@ $( '#codeDialogModal' ).dialog( {
         autoOpen: false
     } );
 
-var modalMultiple =  [ 'help', 'sphereme', 'augme', 'vrme',  'iotz' ];
-var plusupCodeArray = [ 'removevrtest', 'sphereme', 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
+var modalMultiple =  [ 'placear', 'help', 'sphereme', 'augme', 'vrme',  'iotz' ];
+var plusupCodeArray = [ 'placear', 'removevrtest', 'sphereme', 'help',  'augme', 'vrme',  'iotz', 'modme', 'iots', 'iotc', 'leapme',  'clearmodme', 'leapgrabon', 'leapgraboff'];
 
 $( '#codeDialogButton' ).click( function() {
   swal( {

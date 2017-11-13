@@ -5,14 +5,14 @@ function setupArInteractionEvents() {
 //  - set the cameraDriver based on AR/VR and focus/peer
 //
 
-socketServer.on( 'addNewArObject', function( data ) {
-    arShareData.operation = 'newObject';
-    arShareData.x = data.x;
-    arShareData.y = data.y;
-    arShareData.z = data.z;
-
-    addNewArObjectToWorld( arShareData );
-  } );
+//socketServer.on( 'addNewArObject', function( data ) {
+//    arShareData.operation = 'newObject';
+//    arShareData.x = data.x;
+//    arShareData.y = data.y;
+//    arShareData.z = data.z;
+//
+//    addNewArObjectToWorld( arShareData );
+//  } );
 
 var arCanvas = document.getElementById( 'arcanvaspane' );
 var ar0 = document.getElementById( 'arcanvas' );
@@ -36,7 +36,9 @@ $( function() {
 } );
 
   function emitArObject( data ) {
+    data.sessionId = userContext.sessionId;
     var sessionId = socketServer.sessionid;
+    console.log( 'emitArObject-arObjectShare:', data );
     socketServer.emit( 'arObjectShare', data, sessionId );
   }
 
@@ -76,7 +78,7 @@ $( function() {
 
     var pos = cameraDriver.position.clone().add( dir.multiplyScalar( 6 ) );
 
-        arShareData.operation = 'newObject';
+      //  arShareData.operation = 'newObject';
         arShareData.x = pos.x;
         arShareData.y = pos.y;
         arShareData.z = pos.z;
@@ -94,81 +96,68 @@ $( function() {
 function placeArObjectLongPress( data ) {
   swal( {
   title: 'Select an AR Object',
-  text: 'it will be places where you selected',
+  text: 'it will be placed where you selected',
   input: 'select',
   inputOptions: {
-    'bagel': 'bagel',
+    'torus': 'torus',
     'cube': 'cube'
   },
     inputPlaceholder: 'Select an AR Object',
     showCancelButton: true,
     inputValidator: function( value ) {
     return new Promise( function( resolve, reject ) {
-      switch ( value ) {
-        case 'bagel':
-          addNewArObjectToWorld( data );
+        if ( value === 'torus') {
           resolve();
-        break;
-        case 'cube':
-        loadArModel( 'geometry', data );
+        } else {
+       if (value === 'cube' ) {
         resolve();
-        break;
       }
+        }
     }
     ); }
   } ).then( function( result ) {
+    loadArModel( result, data );
   } );
 }
 
-  function addNewArObjectToWorld( d ) {
-      var materialTorus1 = new THREE.MeshLambertMaterial( { color: 'red' } );
-      var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
-      var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+  //function addNewArObjectToWorld( d ) {
+  //    var materialTorus1 = new THREE.MeshLambertMaterial( { color: 'red' } );
+  //    var geometryTorus1 = new THREE.TorusGeometry( 0.3, 0.2, 100, 16 );
+  //    var arUserCreatedObject = new THREE.Mesh( geometryTorus1, materialTorus1 );
+//
+  //    arUserCreatedObject.position.set( d.x, d.y, d.z );
+  //    arUserCreatedObject.userData.id = arUserCreatedObject.id;
+  //    arUserCreatedObject.name = 'torus';
+  //    arUserCreatedObject.userData.objectType =  'torus';
+  ////    arUserCreatedObject.name = arUserCreatedObject.id;
+  //    arUserCreatedObject.userData.isAnimated = false;
+  //    arUserCreatedObject.userData.isUserCreated = true;
+  //    arUserCreatedObject.userData.isSelectable = true;
+  //    arUserCreatedObject.userData.createdBy = userContext.rtcId;
+//
+  //    scene.add( arUserCreatedObject );
+  //    arSelectObjectArray.push( arUserCreatedObject );
+//
+  //// push the new object to peers
+//
+  //    var newArObj = {};
+  //    newArObj.operation = 'newObject';
+  //    newArObj.x = d.x;
+  //    newArObj.y = d.y;
+  //    newArObj.z = d.z;
+  //    newArObj.color = 'red';
+  //    newArObj.id = arUserCreatedObject.id;
+  //    newArObj.createdBy = userContext.rtcId;
+  //    newArObj.isSelectable = true;
+  //    newArObj.isUserCreated = true;
+  //    newArObj.objectType = 'torus';
+  //    newArObj.name = 'torus';
+//
+  //    emitArObject( newArObj );
+//
+  //    getArWorldSummary();
+  //  }
 
-      arUserCreatedObject.position.set( d.x, d.y, d.z );
-      arUserCreatedObject.userData.id = arUserCreatedObject.id;
-      arUserCreatedObject.name = 'bagel';
-      arUserCreatedObject.userData.objectType =  'bagel';
-      arUserCreatedObject.name = arUserCreatedObject.id;
-      arUserCreatedObject.userData.isAnimated = false;
-      arUserCreatedObject.userData.isUserCreated = true;
-      arUserCreatedObject.userData.isSelectable = true;
-      arUserCreatedObject.userData.createdBy = userContext.rtcId;
-
-      scene.add( arUserCreatedObject );
-      arSelectObjectArray.push( arUserCreatedObject );
-
-  // push the new object to peers
-
-      var newArObj = {};
-      newArObj.operation = 'newObject';
-      newArObj.x = d.x;
-      newArObj.y = d.y;
-      newArObj.z = d.z;
-      newArObj.color = 'red';
-      newArObj.id = arUserCreatedObject.id;
-      newArObj.createdBy = userContext.rtcId;
-      newArObj.isSelectable = true;
-      newArObj.isUserCreated = true;
-      newArObj.objectType = 'bagel';
-      newArObj.name = 'bagel';
-
-      emitArObject( newArObj );
-
-      getArWorldSummary();
-    }
-
-    function pushNewArObject( d ) {
-      var newArObj = {};
-      newArObj.operation = 'newObject';
-      newArObj.x = d.x;
-      newArObj.y = d.y;
-      newArObj.z = d.z;
-      newArObj.id = arUserCreatedObject.id;
-      newArObj.createdBy = userContext.rtcId;
-
-      emitArObject( newArObj );
-    }
 
 // Select an AR object with a single click
 
@@ -215,23 +204,24 @@ function placeArObjectLongPress( data ) {
 
  // User created objects
 
-       if ( selectedObject.userData.isUserCreated === true ) {
+   //   if ( selectedObject.userData.isUserCreated === true ) {
 
-        if ( selectedObject.userData.isAnimated === false ) {
-          selectedObject.userData.isAnimated = true;
-          } else {
-          selectedObject.userData.isAnimated = false;
-        }
-         arShareData.operation = 'animateSelectedObject';
-         arShareData.id = selectedObject.userData.iotDeviceId;
-         arShareData.isAnimated = selectedObject.userData.isAnimated;
-         arShareData.isUserCreated = true;
-         arShareData.name = 'bagel';
+   //    if ( selectedObject.userData.isAnimated === false ) {
+   //      selectedObject.userData.isAnimated = true;
+   //      } else {
+   //      selectedObject.userData.isAnimated = false;
+   //    }
+   //     arShareData.operation = 'animateSelectedObject';
+   //     arShareData.id = selectedObject.userData.iotDeviceId;
+   //     arShareData.isAnimated = selectedObject.userData.isAnimated;
+   //     arShareData.animate = selectedObject.userData.isAnimated;
+   //     arShareData.isUserCreated = true;
+   //     arShareData.name = 'torus';
 
-         emitArObject( arShareData );
+   //     emitArObject( arShareData );
 
-         return;
-       }
+   //     return;
+   //   }
 
     // Special Cases - Hardwired by name
 
@@ -240,6 +230,32 @@ function placeArObjectLongPress( data ) {
          animateArObjects();
          return;
      }
+
+    if ( selectedObject.name === 'torus' ) {
+        if ( selectedObject.userData.isAnimated === false ) {
+          selectedObject.userData.isAnimated = true;
+          } else {
+          selectedObject.userData.isAnimated = false;
+        }
+
+        if ( !selectedObject.userData.isAnimated ) {
+         intersects[0].object.material.color.setRGB( Math.random(), Math.random(), Math.random() );
+        }
+
+          arShareData.animate = selectedObject.userData.isAnimated;
+          arShareData.operation = 'animateSelectedObject';
+          arShareData.name = intersects[0].object.name;
+          arShareData.x = intersects[0].object.position.x;
+          arShareData.y = intersects[0].object.position.y;
+          arShareData.z = intersects[0].object.position.z;
+          arShareData.position = intersects[0].object.position;
+          arShareData.rotation = intersects[0].object.rotation;
+          arShareData.color = intersects[0].object.material.color;
+          arShareData.isAnimated = selectedObject.userData.isAnimated;
+
+          emitArObject( arShareData );
+     }
+
 
      if ( selectedObject.name === 'sheep' ) {
         if ( selectedObject.userData.isAnimated === false ) {
@@ -310,7 +326,11 @@ function placeArObjectLongPress( data ) {
 
 // Dynamic AR/VR Model Loading --peers
 
-socketServer.on( 'arDynamicLoadModel', function( data ) {
+socketServer.on( 'arDynamicLoadModel', function( data, id ) {
+
+console.log( 'socketServer.on(arDynamicLoadModel', data,  id );
+
+if ( data.rtcId === userContext.rtcId ) { return; }
 
   var pos = {};
   pos.x = data.x;
@@ -365,15 +385,40 @@ socketServer.on( 'arDynamicLoadModel', function( data ) {
         $( deferred.resolve );
         } )
       ).done( function() {
-        loadGeometry( pos );
+        loadGeometry( data );
       } );
     }
-  } );
+
+if ( data.modelName === 'torus' ) {
+
+if ( typeof loadTorus === 'function' ) {
+  loadTorus( data );
+} else {
+
+    let filePath =  'javascript/armodels/' + data.file;
+      $.when(
+        $.getScript( filePath ),
+        $.Deferred( function( deferred ) {
+        $( deferred.resolve );
+        } )
+      ).done( function() {
+        loadTorus( data );
+        console.log( 'loaded torus' );
+      } );
+    }
+  }
+
+} );
 
 function loadArModel( model, pos ) {
 
+  let data = {};
+  data.sessionId = userContext.sessionId;
+
+  console.log( 'at loadArModel:', model, pos );
+
   if ( typeof pos === 'undefined' ) {
-    var pos = {};
+    let pos = {};
     pos.x = -1.0;
     pos.y =  0.5;
     pos.z = -6.0;
@@ -424,6 +469,29 @@ function loadArModel( model, pos ) {
       ).done( function() {
        loadGeometry( pos );
       } );
+      var sessionId = socketServer.sessionid;
+      socketServer.emit( 'arDynamicLoadModel', data, sessionId );
+    break;
+
+    case 'torus':
+      data.file = 'ar-load-torus.js';
+      data.modelName = 'torus';
+      data.x = pos.x;
+      data.y = pos.y;
+      data.z = pos.z;
+      data.rtcId = userContext.rtcId;
+
+       $.getScript( 'javascript/armodels/ar-load-torus.js', function() { loadTorus( data ); } );
+   //   $.when(
+   //     $.getScript( 'javascript/armodels/ar-load-torus.js' ),
+   //     $.Deferred( function( deferred ) {
+   //     $( deferred.resolve );
+   //     } )
+   //   ).done( function() {
+   //    loadTorus( pos );
+   //    console.log( 'loadArMode, case:torus' );
+   //   } );
+//     console.log( 'loadarmode-arDynamicLoadModel emit-:', model, pos );
       var sessionId = socketServer.sessionid;
       socketServer.emit( 'arDynamicLoadModel', data, sessionId );
     break;

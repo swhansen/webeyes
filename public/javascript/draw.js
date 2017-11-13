@@ -1,22 +1,23 @@
-
- 'use strict';
+'use strict';
 
 var canvasPane = document.getElementById( 'canvaspane' );
-var canvas     = document.getElementById( 'canvas0' );
-var context    = canvas.getContext( '2d' );
-var data       = {};
-var points     = [];
-var line       = [];
-var lineArray  = [];
-var fade       = false;
+var canvas = document.getElementById( 'canvas0' );
+var context = canvas.getContext( '2d' );
+var data = {};
+var points = [];
+var line = [];
+var lineArray = [];
+var fade = false;
 var fadeTimer;
 var fadeSwitch = true;
 
 // cartesian distance(px) to capture a mouse move event while drawing
 
-var drawPixCartScale = 10; // was 25
+var drawPixCartScale = 10;
 
-var lineFadeRate = 20;
+// was 25
+
+var lineFadeRate = 100;
 
 function baseLineStyle() {
   context.lineWidth = 5;
@@ -48,20 +49,18 @@ function drawCanvaslineArray() {
       }
       context.lineTo( p.x, p.y );
       context.stroke();
-         if ( fadeSwitch === true ) {
-       l.line.shift();
-    }
+      if ( fadeSwitch === true ) {
+        l.line.shift();
+      }
     } );
   } );
 
-    if ( lineArray.length === 0 ) {
-      lineArray.length = 0;
-      fade = false;
-      clearInterval( fadeTimer );
-    }
+  if ( lineArray.length === 0 ) {
+    lineArray.length = 0;
+    fade = false;
+    clearInterval( fadeTimer );
+  }
 }
-
-
 
 //  for ( var i = 0; i < lineArray.length; i++ ) {
 //    var points = lineArray[i].line;
@@ -89,19 +88,23 @@ function drawCanvaslineArray() {
 //}
 
 function eraseSwitch() {
-    fadeSwitch = !fadeSwitch;
-    toggleFade();
-  }
+  fadeSwitch = !fadeSwitch;
+  toggleFade();
+}
 
 function toggleFade() {
-if ( fadeTimer ) {return;}
-  if ( fadeSwitch === true && fade === true  ) {
-      fadeTimer = setInterval( function() { drawCanvaslineArray(); }, lineFadeRate );
-    }
-  if ( fade === false || fadeSwitch === false ) {
-      clearInterval( fadeTimer );
-    }
+  if ( fadeTimer ) {
+    return;
   }
+  if ( fadeSwitch === true && fade === true ) {
+    fadeTimer = setInterval( function() {
+      drawCanvaslineArray();
+    }, lineFadeRate );
+  }
+  if ( fade === false || fadeSwitch === false ) {
+    clearInterval( fadeTimer );
+  }
+}
 
 // collect the points FROM the server and build the canvas lineArray
 // - draw the line when the data is recieved
@@ -134,8 +137,8 @@ function receiveLineFromClient( data ) {
       } );
       break;
     case 'pointerUp':
-     context.lineTo( data.x, data.y );
-     context.stroke();
+      context.lineTo( data.x, data.y );
+      context.stroke();
       lineArray.push( new Line( line, data.color, data.client ) );
       line = [];
       points = [];
@@ -144,15 +147,15 @@ function receiveLineFromClient( data ) {
       toggleFade();
       break;
     case 'hold':
-    break;
-    }
+      break;
+  }
 }
 
 // socket.io communication
 
-
 function emitDraw( data ) {
   var sessionId = socketServer.sessionid;
+  data.sessionId = userContext.sessionId;
   socketServer.emit( 'drawLine', data, sessionId );
 }
 
@@ -185,17 +188,17 @@ function toolPencil() {
       data.x = Math.round( ev._x );
       data.y = Math.round( ev._y );
 
-  // only capture point if the cartesian distance exceeds the sample limit
+      // only capture point if the cartesian distance exceeds the sample limit
 
-   d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
-    if ( d < drawPixCartScale ) {
+      d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
+      if ( d < drawPixCartScale ) {
         data.pointerState = 'hold';
       } else {
-      lastx = data.x;
-      lasty = data.y;
-      data.pointerState = 'pointerMove';
+        lastx = data.x;
+        lasty = data.y;
+        data.pointerState = 'pointerMove';
 
-      emitDraw( data );
+        emitDraw( data );
       }
     }
   };
@@ -218,12 +221,12 @@ var tool = new toolPencil();
 
 function evCanvas( ev ) {
 
-// Firefox
+  // Firefox
   if ( ev.layerX || ev.layerX === 0 ) {
     ev._x = ev.layerX;
     ev._y = ev.layerY;
 
-// Opera
+    // Opera
   } else if ( ev.offsetX || ev.offsetX === 0 ) {
     ev._x = ev.offsetX;
     ev._y = ev.offsetY;
@@ -239,10 +242,10 @@ function evCanvas( ev ) {
 
 function touchStartHandler( e ) {
   e.preventDefault();
-    tool.started = true;
-    data.pointerState = 'pointerDown';
-    emitDraw( data );
-  }
+  tool.started = true;
+  data.pointerState = 'pointerDown';
+  emitDraw( data );
+}
 
 function touchMoveHandler( e ) {
   var lastx = 0;
@@ -255,28 +258,28 @@ function touchMoveHandler( e ) {
     data.x = Math.round( touches.clientX - canvasLocation.left );
     data.y = Math.round( touches.clientY - canvasLocation.top );
 
-  // only capture point if the cartesian distance exceeds the sample limit
+    // only capture point if the cartesian distance exceeds the sample limit
 
-   d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
+    d = Math.sqrt( Math.pow( lastx - data.x, 2.0 ) + Math.pow( lasty - data.y, 2.0 ) );
     if ( d < drawPixCartScale ) {
-        data.pointerState = 'hold';
-      } else {
-       lastx = data.x;
-       lasty = data.y;
-       data.pointerState = 'pointerMove';
-       emitDraw( data );
-      }
-    }
-  }
-
-  function touchEndHandler( e ) {
-    e.preventDefault();
-    if ( tool.started ) {
-      data.pointerState = 'pointerUp';
+      data.pointerState = 'hold';
+    } else {
+      lastx = data.x;
+      lasty = data.y;
+      data.pointerState = 'pointerMove';
       emitDraw( data );
-      tool.started = false;
     }
   }
+}
+
+function touchEndHandler( e ) {
+  e.preventDefault();
+  if ( tool.started ) {
+    data.pointerState = 'pointerUp';
+    emitDraw( data );
+    tool.started = false;
+  }
+}
 
 function initDraw() {
 
@@ -285,7 +288,7 @@ function initDraw() {
   var b = getCenterBoxId();
   var box = $( '#' + b );
 
- // var box = $( '#box0' );
+  // var box = $( '#box0' );
   var boxPosition = box.offset();
   var boxWidth = box.outerWidth();
   var boxHeight = box.outerHeight();
@@ -298,17 +301,17 @@ function initDraw() {
   canvas.width = canvasPane.clientWidth;
   canvas.height = canvasPane.clientHeight;
 
-  context = canvas.getContext('2d');
+  context = canvas.getContext( '2d' );
 
   canvas.style.width = '100%';
   canvas.style.height = '100%';
 
   canvasPane.style.visibility = 'visible';
 
- //document.getElementById( 'canvaspane' ).className = 'canvascenter';
+  //document.getElementById( 'canvaspane' ).className = 'canvascenter';
 
- //canvas.width = canvas.offsetWidth;
- //canvas.height = canvas.offsetHeight;
+  //canvas.width = canvas.offsetWidth;
+  //canvas.height = canvas.offsetHeight;
 
   //canvasPane.offsetHeight = document.getElementById( 'box0' ).offsetHeight;
   //canvasPane.offsetWidth = document.getElementById( 'box0' ).offsetWidth;
