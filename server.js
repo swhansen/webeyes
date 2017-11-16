@@ -340,7 +340,7 @@ app.post( '/dropArObj', function( req, res ) {
 //    console.log( 'at dropARObj-stringify req.body:' + JSON.stringify( req.body ) );
 //    console.log( 'at dropARObj- req.body.creator:' + req.body.creator );
 //    console.log( 'at dropARObj- req.body.gimble:' + req.body.gimble );
-//    console.log( 'at dropARObj- req.body.geometry:' + req.body.geometry.coordinates );
+    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
 
 
   var newArObj = new GeoArObject( {
@@ -350,7 +350,7 @@ app.post( '/dropArObj', function( req, res ) {
     objectName: req.body.objectName,
     geometry: {
       type: 'Point',
-      coordinates: req.body.geometry.coordinates
+      coordinates: req.body.coordinates
     },
     north:  req.body.north,
     gimble:  req.body.gimble,
@@ -359,17 +359,24 @@ app.post( '/dropArObj', function( req, res ) {
   } );
 
   newArObj.save( function( err ) {
-    if ( err ) return console.log( err );
+    if ( err ) { return console.log( err ); }
 
     console.log( 'Geo AR Object saved successfully!' );
 
-      } )
+    res.send( req.body.objectName );
+
+      } );
 } );
 
-app.get ('/api/geoarobjects', function( req, res ) {
+app.get ( '/api/geoarobjects/', function( req, res ) {
+
+  // calculates radius of search
+
+let searchRadius = req.query.radius / 3963.2;
+
  var query =  GeoArObject.find(
-      { "geometry":{ $geoWithin:{ $centerSphere:[ [ -71.609225, 42.622359 ], 0.1/3963.2] } },
-       creator: 'ZZ' } );
+      { 'geometry':{ $geoWithin:{ $centerSphere:[ [ -71.6090909, 42.622015 ], searchRadius ] } },
+       creator: 'swhansen' } );
 
  query.exec( function( err, docs ) {
         if ( err ) {
@@ -377,10 +384,7 @@ app.get ('/api/geoarobjects', function( req, res ) {
         }
         res.json( { message: docs } );
     } );
-
-
 } );
-
 
 app.get( '/users', function( req, res ) {
   var query = User.find( {} ).limit( 10 );

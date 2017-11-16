@@ -38,9 +38,6 @@ function orientationCompass( data ) {
 }
 
 function emitArOrientationData() {
-//  window.addEventListener( 'orientationchange', function( c ) {
-//    arDeviceOrientation.orient = c.orientation || 0;
-//  } );
 
   window.addEventListener( 'deviceorientation', function( event ) {
   let arDeviceOrientation = {};

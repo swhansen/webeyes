@@ -1,58 +1,54 @@
-
-console.log( 'createArObject Loaded' );
-
 function createArObject( objName ) {
 
-  console.log( 'createArObject-objName:' + objName );
+var placeArObjMsg = {};
 
 //
 //  Create an AR object placed by a device
 //
 
-var placeArObjMsg = {
-    creator: 'ZZ',
-    publicPrivate: 'public',
-    objectName: objName,
-    createTime: '',
-    arworld: 'a world',
-    geometry: {
-      type: 'Point',
-      'coordinates': [ -71.609225, 42.622359 ]
-    },
-    north: '45.123',
-    gimble:  [ 20.0, 40.0, 60.0 ],
-    scale: '1',
-    isVisible: 'true'
-};
+function postPosition( position ) {
 
-if ( userContext.geoLocation === true ) {
+  var loc = [ position.coords.longitude, position.coords.latitude ];
 
-  navigator.geolocation.getCurrentPosition( function( position ) {
-    placeArObjMsg.geometry.coordinates[0] = position.coords.longitude;
-    placeArObjMsg.geometry.coordinates[1] = position.coords.latitude;
+  console.log( 'Latitude: ' + position.coords.latitude +
+                ' Longitude: ' + position.coords.longitude +
+                ',  ' + position.coords.accuracy );
+  console.log( 'altitude: ' + position.coords.altitude +
+                ', ' + position.coords.altitudeAccuracy );
+
+    placeArObjMsg.creator = 'swhansen';
+    placeArObjMsg.publicPrivate = 'public';
+    placeArObjMsg.objectName = objName;
+    placeArObjMsg.createTime = '';
+    placeArObjMsg.arworld = 'a world';
+    placeArObjMsg.type = 'Point';
+    placeArObjMsg.coordinates = loc;
+    placeArObjMsg.north = '45.123';
+    placeArObjMsg.gimble =  [ 20.0, 40.0, 60.0 ];
+    placeArObjMsg.scale = '1';
+    placeArObjMsg.isVisible = 'true';
+
+  $.post( '/dropArObj', placeArObjMsg, function( response, status ) {
+    if ( response === objName ) {
+      console.log( objName + '  placed in Mongodb' );
+      return;
+    }
   } );
-  }
-
-if ( userContext.orientation === true ) {
-   window.addEventListener( 'deviceorientation', function( event ) {
-      placeArObjMsg.gimble[0] = event.beta;
-      placeArObjMsg.gimble[1] = event.gamma;
-      placeArObjMsg.gimble[2] = event.alpha;
-      } );
-  }
-
-console.log( 'createArObject:' + placeArObjMsg );
-
-placeArObjMsg.createTime = Math.floor( ( new Date() ).getTime() / 1000 );
-
-console.log( 'createArObject:' + placeArObjMsg );
-
-//var geoObj = placeArObjMsg.serializeObject();;
-
-$.post( '/dropArObj', placeArObjMsg, function( response, status ) {
-
-  console.log( 'geoObj:' + placeArObjMsg );
-} );
-
 }
 
+function displayError( error ) {
+  var errors = {
+    1: 'Permission denied',
+    2: 'Position unavailable',
+    3: 'Request timeout'
+  };
+  alert( 'Error: ' + errors[ error.code ] );
+}
+
+if ( userContext.geoLocation === true ) {
+  var timeoutVal = 10 * 1000 * 1000;
+  navigator.geolocation.getCurrentPosition( postPosition, displayError,
+    { enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+    );
+  } else { alert( 'Geolocation is not supported by this browser' ); }
+}

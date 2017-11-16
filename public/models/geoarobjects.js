@@ -17,6 +17,10 @@ var GeoSchema = new Schema( {
 } );
 
 
+//
+//  Placed AR Object Schema
+//
+
 var visibility = [ 'public', 'private' ];
 
 var geoArSchema = new Schema( {
