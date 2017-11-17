@@ -1,3 +1,4 @@
+'use strict';
 
 //
 // Mongoose Schema for geo located AR object
@@ -16,7 +17,6 @@ var GeoSchema = new Schema( {
   }
 } );
 
-
 //
 //  Placed AR Object Schema
 //
@@ -26,10 +26,10 @@ var visibility = [ 'public', 'private' ];
 var geoArSchema = new Schema( {
 
     creator: String,
-    publicPrivate: { type: String, default: 'public', enum: visibility  },
+    publicPrivate: { type: String, default: 'public' },
     createTime: { type:Date, default:Date.now },
-    objectName: String,
-    arworld: String,
+    objectName: { type: String, default: 'AR Object' },
+    arworld: { $type: String },
 
     geometry: [ GeoSchema ],
 

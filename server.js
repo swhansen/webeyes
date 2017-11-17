@@ -337,8 +337,11 @@ var GeoArObject = require( './public/models/geoarobjects' );
 
 app.post( '/dropArObj', function( req, res ) {
 
+var aron = req.body.objectName;
+var oName = aron.toString;
+
 //    console.log( 'at dropARObj-stringify req.body:' + JSON.stringify( req.body ) );
-//    console.log( 'at dropARObj- req.body.creator:' + req.body.creator );
+    console.log( 'at dropARObj- req.body.arObjName string:' + req.body.objectName );
 //    console.log( 'at dropARObj- req.body.gimble:' + req.body.gimble );
     console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
 
