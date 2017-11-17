@@ -45,10 +45,8 @@ function displayError( error ) {
   alert( 'Error: ' + errors[ error.code ] );
 }
 
-if ( userContext.geoLocation === true ) {
   var timeoutVal = 10 * 1000 * 1000;
   navigator.geolocation.getCurrentPosition( postPosition, displayError,
     { enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
     );
-  } else { alert( 'Geolocation is not supported by this browser' ); }
 }
