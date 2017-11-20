@@ -39,6 +39,6 @@ var geoArSchema = new Schema( {
     gimble: { type: [ Number ] },
     scale: { type: Number, default: 1.0 },
     isVisible: { type: Boolean, default: true }
-  }, { typeKey: '$type' } );
+  } );
 
 module.exports = mongoose.model( 'GeoArObject', geoArSchema );
