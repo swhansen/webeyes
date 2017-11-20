@@ -9,6 +9,8 @@ var Schema = mongoose.Schema;
 var GeoSchema = new Schema( {
   type: {
     type: String,
+    required: true,
+    enum: [ 'Point', 'LineString', 'Polugon' ],
     default: 'Point'
   },
   coordinates: {
@@ -28,8 +30,8 @@ var geoArSchema = new Schema( {
     creator: String,
     publicPrivate: { type: String, default: 'public' },
     createTime: { type:Date, default:Date.now },
-    objectName: { type: String, default: 'AR Object' },
-    arworld: { $type: String },
+    objectName: { type: String },
+    arworld: { type: String },
 
     geometry: [ GeoSchema ],
 
@@ -37,6 +39,6 @@ var geoArSchema = new Schema( {
     gimble: { type: [ Number ] },
     scale: { type: Number, default: 1.0 },
     isVisible: { type: Boolean, default: true }
-} );
+  }, { typeKey: '$type' } );
 
 module.exports = mongoose.model( 'GeoArObject', geoArSchema );

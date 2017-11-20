@@ -341,25 +341,33 @@ var aron = req.body.objectName;
 var oName = aron.toString;
 
 //    console.log( 'at dropARObj-stringify req.body:' + JSON.stringify( req.body ) );
-    console.log( 'at dropARObj- req.body.arObjName string:' + req.body.objectName );
+//    console.log( 'at dropARObj- req.body.arObjName string:' + req.body.objectName );
 //    console.log( 'at dropARObj- req.body.gimble:' + req.body.gimble );
-    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
+//    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
 
 
   var newArObj = new GeoArObject( {
     creator: req.body.creator,
     publicPrivate: req.body.publicPrivate,
     arworld: req.body.arworld,
-    objectName: req.body.objectName,
+  //  objectName: req.body.objectName,
     geometry: {
-      type: 'Point',
-      coordinates: req.body.coordinates
+      type: 'Point'
+  //    coordinates: req.body.coordinates
     },
     north:  req.body.north,
     gimble:  req.body.gimble,
     scale:   req.body.scale,
     isVisible: req.body.isVisible
   } );
+
+
+  newArObj.geometry[0].coordinates = req.body.coordinates;
+  newArObj.objectName = req.body.objectName;
+
+  console.log( newArObj.objectName );
+  console.log( newArObj.geometry[0].coordinates );
+  console.log( JSON.stringify( newArObj ) );
 
   newArObj.save( function( err ) {
     if ( err ) { return console.log( err ); }
@@ -370,6 +378,15 @@ var oName = aron.toString;
 
       } );
 } );
+
+
+
+
+
+
+
+
+
 
 app.get ( '/api/geoarobjects/', function( req, res ) {
 

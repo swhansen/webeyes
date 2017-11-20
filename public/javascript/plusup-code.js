@@ -223,10 +223,11 @@ function placeArObjModal() {
 swal( {
   title: 'AR Object Name',
   input: 'text',
+  confirmButtonText: 'Submit',
   inputPlaceholder: 'Your AR object Name',
   showCancelButton: true,
   }).then(function (text) {
-  if (text) {
+  if ( text ) {
     createArObject( text );
   }
 });
@@ -243,7 +244,7 @@ function iotZoneModal() {
     preConfirm: function ( inputValue) {
       return new Promise( function ( resolve, reject ) {
       setTimeout(function() {
-      if ( inputValue === false ) { reject( 'Please Enter  aCode!' ) }
+      if ( inputValue === false ) { reject( 'Please Enter Code!' ) }
       if (inputValue === '') { reject( 'Please Enter a Code!') }
 
         var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
