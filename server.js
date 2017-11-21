@@ -362,7 +362,7 @@ var oName = aron.toString;
 
  // newArObj.geometry[0].coordinates = req.body.coordinates;
  // newArObj.geometry[0].type = req.body.type;
-  newArObj.objectName = req.body.objectName;
+ // newArObj.objectName = req.body.objectName;
 
   console.log( newArObj.objectName );
   console.log( newArObj.geometry[0].coordinates );
