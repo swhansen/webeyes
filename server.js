@@ -311,13 +311,7 @@ app.get( '/video', function( req, res ) {
   }
 } );
 
-
-
 // -------------------
-
-
-
-
 
 mongoose.connect( mongoUriString, function( err, res ) {
   if ( err ) {
@@ -378,9 +372,6 @@ app.post( '/dropArObj', function( req, res ) {
       } );
 } );
 
-
-
-
 app.get ( '/api/geoarobjects/', function( req, res ) {
 
   // calculates radius of search
@@ -398,11 +389,6 @@ let searchRadius = req.query.radius / 3963.2;
         res.json( { message: docs } );
     } );
 } );
-
-
-
-
-
 
 app.get( '/users', function( req, res ) {
   var query = User.find( {} ).limit( 10 );
