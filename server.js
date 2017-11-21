@@ -313,6 +313,9 @@ app.get( '/video', function( req, res ) {
 
 
 
+// -------------------
+
+
 
 
 
@@ -329,25 +332,17 @@ mongoose.connect( mongoUriString, function( err, res ) {
 var User        = require( './public/models/users' );
 var GeoArObject = require( './public/models/geoarobjects' );
 
-
 //
-// save an AR object to Mongo
+// Save a geo AR object to Mongo
+//  - conforms to geoJson
 //
 
 app.post( '/dropArObj', function( req, res ) {
-
-var aron = req.body.objectName;
-var oName = aron.toString;
 
 //    console.log( 'at dropARObj-stringify req.body:' + JSON.stringify( req.body ) );
     console.log( 'at dropARObj- req.body.arObjName string:' + req.body.objectName );
 //    console.log( 'at dropARObj- req.body.gimble:' + req.body.gimble );
 //    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
-
-
-// Note: Mon Night hardwired the objectName and didnt use it over the post
-//Something to do with the type coming out of swal
-// changed swal2 code updated to newest version
 
   var newArObj = new GeoArObject( {
     creator: req.body.creator,
@@ -368,15 +363,15 @@ var oName = aron.toString;
  // newArObj.geometry[0].type = req.body.type;
  // newArObj.objectName = req.body.objectName;
 
-  console.log( newArObj.objectName );
-  console.log( newArObj.geometry[0].coordinates );
-  console.log( newArObj.geometry[0].type );
+//  console.log( newArObj.objectName );
+//  console.log( newArObj.geometry[0].coordinates );
+//  console.log( newArObj.geometry[0].type );
   console.log( JSON.stringify( newArObj ) );
 
   newArObj.save( function( err ) {
     if ( err ) { return console.log( err ); }
 
-    console.log( 'Geo AR Object saved successfully!' );
+    console.log( 'Geo AR Object' + newArObj.objectName + 'saved successfully!' );
 
     res.send( req.body.objectName );
 
