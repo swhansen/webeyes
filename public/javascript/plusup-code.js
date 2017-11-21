@@ -219,20 +219,34 @@ function useModeCode( modeCode ) {
 
 // ------- end plus-up case -------------------------
 
-function placeArObjModal() {
-swal( {
-  title: 'AR Object Name',
-  input: 'text',
-  confirmButtonText: 'Submit',
-  inputPlaceholder: 'Your AR object Name',
-  showCancelButton: true,
-  }).then(function (text) {
-  if ( text ) {
-    createArObject( text );
-  }
-});
-}
+//function placeArObjModal() {
+//swal( {
+//  title: 'AR Object Name',
+//  input: 'text',
+//  confirmButtonText: 'Submit',
+//  inputPlaceholder: 'Your AR object Name',
+//  showCancelButton: true,
+//  }).then(function (text) {
+//  if ( text ) {
+//    createArObject( text );
+//  }
+//});
 
+
+async function placeArObjModal() {
+const { value: name } = await swal( {
+  title: 'AR Obj Name?',
+  input: 'text',
+  inputPlaceholder: 'an AR object name',
+  showCancelButton: true,
+  inputValidator: function ( value ) {
+    return !value && 'You need to write something!';
+  }
+} );
+if ( name ) {
+  createArObject( name );
+}
+}
 
 function iotZoneModal() {
   swal( {
@@ -244,8 +258,8 @@ function iotZoneModal() {
     preConfirm: function ( inputValue) {
       return new Promise( function ( resolve, reject ) {
       setTimeout(function() {
-      if ( inputValue === false ) { reject( 'Please Enter Code!' ) }
-      if (inputValue === '') { reject( 'Please Enter a Code!') }
+      if ( inputValue === false ) { reject( 'Please Enter Code!' ); }
+      if (inputValue === '') { reject( 'Please Enter a Code!'); }
 
         var zoneReg =  /^([1-9][0-9]{0,2}|1000)$/;
         if ( !( inputValue ).match( zoneReg ) ) {

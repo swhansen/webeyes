@@ -345,11 +345,15 @@ var oName = aron.toString;
 //    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
 
 
+// Note: Mon Night hardwired the objectName and didnt use it over the post
+//Something to do with the type coming out of swal
+// changed swal2 code updated to newest version
+
   var newArObj = new GeoArObject( {
     creator: req.body.creator,
     publicPrivate: req.body.publicPrivate,
     arworld: req.body.arworld,
-    objectName: 'bill the cat',
+    objectName: req.body.objectName,
     geometry: {
       type: 'Point',
       coordinates: req.body.coordinates
