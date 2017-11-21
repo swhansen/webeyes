@@ -7,12 +7,7 @@ var mongoose = require( 'mongoose' );
 var Schema = mongoose.Schema;
 
 var GeoSchema = new Schema( {
-  type: {
-    type: String,
-    required: true,
-    enum: [ 'Point', 'LineString', 'Polugon' ],
-    default: 'Point'
-  },
+  type: '',
   coordinates: {
     type: [ Number ],
     index: '2dsphere'
@@ -26,9 +21,8 @@ var GeoSchema = new Schema( {
 var visibility = [ 'public', 'private' ];
 
 var geoArSchema = new Schema( {
-
     creator: String,
-    publicPrivate: { type: String, default: 'public' },
+    publicPrivate: { type: String, enum: visibility, default: 'public' },
     createTime: { type:Date, default:Date.now },
     objectName: { type: String },
     arworld: { type: String },

@@ -23,7 +23,7 @@ function postPosition( position ) {
     placeArObjMsg.objectName = objName;
     placeArObjMsg.createTime = '';
     placeArObjMsg.arworld = 'a world';
-  //  placeArObjMsg.type = 'Point';
+    placeArObjMsg.type = 'Point';
     placeArObjMsg.coordinates = loc;
     placeArObjMsg.north = '45.123';
     placeArObjMsg.gimble =  [ 20.0, 40.0, 60.0 ];

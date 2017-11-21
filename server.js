@@ -12,7 +12,6 @@ var http        = require( 'http' );
 var bson        = require( 'bson' );
 var _           = require( 'lodash' );
 
-
 var session = {
   sessionId: '',
   sessionStartTime: '',
@@ -350,10 +349,10 @@ var oName = aron.toString;
     creator: req.body.creator,
     publicPrivate: req.body.publicPrivate,
     arworld: req.body.arworld,
-  //  objectName: req.body.objectName,
+    objectName: req.body.objectName,
     geometry: {
-      type: 'Point'
-  //    coordinates: req.body.coordinates
+      type: 'Point',
+      coordinates: req.body.coordinates
     },
     north:  req.body.north,
     gimble:  req.body.gimble,
@@ -361,12 +360,13 @@ var oName = aron.toString;
     isVisible: req.body.isVisible
   } );
 
-
-  newArObj.geometry[0].coordinates = req.body.coordinates;
+ // newArObj.geometry[0].coordinates = req.body.coordinates;
+ // newArObj.geometry[0].type = req.body.type;
   newArObj.objectName = req.body.objectName;
 
   console.log( newArObj.objectName );
   console.log( newArObj.geometry[0].coordinates );
+  console.log( newArObj.geometry[0].type );
   console.log( JSON.stringify( newArObj ) );
 
   newArObj.save( function( err ) {
@@ -382,12 +382,6 @@ var oName = aron.toString;
 
 
 
-
-
-
-
-
-
 app.get ( '/api/geoarobjects/', function( req, res ) {
 
   // calculates radius of search
@@ -395,7 +389,7 @@ app.get ( '/api/geoarobjects/', function( req, res ) {
 let searchRadius = req.query.radius / 3963.2;
 
  var query =  GeoArObject.find(
-      { 'geometry':{ $geoWithin:{ $centerSphere:[ [ -71.6090909, 42.622015 ], searchRadius ] } },
+      { geometry:{ $geoWithin:{ $centerSphere:[ [ -71.6090909, 42.622015 ], searchRadius ] } },
        creator: 'swhansen' } );
 
  query.exec( function( err, docs ) {
@@ -405,6 +399,11 @@ let searchRadius = req.query.radius / 3963.2;
         res.json( { message: docs } );
     } );
 } );
+
+
+
+
+
 
 app.get( '/users', function( req, res ) {
   var query = User.find( {} ).limit( 10 );
