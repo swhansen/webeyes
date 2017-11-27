@@ -14,7 +14,7 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "*",
-    "bower": "^1.4.1",
+    "bower": "*",
     "bson": "*",
     "cors": "2.7.x",
     "easyrtc": "1.0.x",

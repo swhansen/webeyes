@@ -333,9 +333,9 @@ var GeoArObject = require( './public/models/geoarobjects' );
 
 app.post( '/dropArObj', function( req, res ) {
 
-    console.log( 'at dropARObj-stringify req.body:' + JSON.stringify( req.body ) );
+    console.log( 'at dropARObj-stringify req.body: ' + JSON.stringify( req.body ) );
 //    console.log( 'at dropARObj- req.body.arObjName string:' + req.body.objectName );
-    console.log( 'at dropARObj- req.body.gimble:' + req.body.gimble );
+    console.log( 'at dropARObj- req.body.gimble: ' + req.body.gimble );
 //    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
 
   var newArObj = new GeoArObject( {
@@ -365,7 +365,7 @@ app.post( '/dropArObj', function( req, res ) {
   newArObj.save( function( err ) {
     if ( err ) { return console.log( err ); }
 
-    console.log( 'Geo AR Object' + newArObj.objectName + 'saved successfully!' );
+    console.log( 'Geo AR Object ' + newArObj.objectName + ' saved successfully!' );
 
     res.send( req.body.objectName );
 
