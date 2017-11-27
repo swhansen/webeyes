@@ -1,6 +1,9 @@
+
 function createArObject( objName ) {
 
 var placeArObjMsg = {};
+var orientation = [];
+var loc = [];
 
 //
 //  Create an AR object placed by a device
@@ -8,7 +11,7 @@ var placeArObjMsg = {};
 
 function postPosition( position ) {
 
-  var loc = [ position.coords.longitude, position.coords.latitude ];
+  loc = [ position.coords.longitude, position.coords.latitude ];
 
   console.log( 'objName:' + objName );
 
@@ -18,15 +21,28 @@ function postPosition( position ) {
   console.log( 'altitude: ' + position.coords.altitude +
                 ', ' + position.coords.altitudeAccuracy );
 
+  function handleOrientation( event ) {
+
+     orientation[ 0 ] = event.alpha;
+     orientation[ 1 ] = event.beta;
+     orientation[ 2 ] = event.gamma;
+    }
+
+  if ( window.deviceOrientation ) {
+    window.addEventListener( 'deviceorientation', handleOrientation, true );
+    } else {
+     orientation = [ 1.0, 1.0, 1.0 ];
+    }
+
     placeArObjMsg.creator = 'swhansen';
     placeArObjMsg.publicPrivate = 'public';
     placeArObjMsg.objectName = objName;
     placeArObjMsg.createTime = '';
-    placeArObjMsg.arworld = 'a world';
+    placeArObjMsg.arworld = 'test';
     placeArObjMsg.type = 'Point';
     placeArObjMsg.coordinates = loc;
     placeArObjMsg.north = '45.123';
-    placeArObjMsg.gimble =  [ 20.0, 40.0, 60.0 ];
+    placeArObjMsg.gimble =  orientation;
     placeArObjMsg.scale = '1';
     placeArObjMsg.isVisible = 'true';
 
@@ -38,17 +54,18 @@ function postPosition( position ) {
   } );
 }
 
-function displayError( error ) {
+function positionError( error ) {
   var errors = {
     1: 'Permission denied',
     2: 'Position unavailable',
     3: 'Request timeout'
   };
-  alert( 'Error: ' + errors[ error.code ] );
+  console.log( 'Error: ' + errors[ error.code ] );
 }
 
   var timeoutVal = 10 * 1000 * 1000;
-  navigator.geolocation.getCurrentPosition( postPosition, displayError,
+  navigator.geolocation.getCurrentPosition( postPosition, positionError,
     { enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
     );
+
 }

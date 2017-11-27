@@ -6,6 +6,8 @@
 var mongoose = require( 'mongoose' );
 var Schema = mongoose.Schema;
 
+// geo schema per geoJson
+
 var GeoSchema = new Schema( {
   type: {
     type: String,
@@ -35,7 +37,7 @@ var geoArSchema = new Schema( {
     geometry: [ GeoSchema ],
 
     north: { type: Number, min: 0, max: 360 },
-    gimble: { type: [ Number ] },
+    gimble: { type: [ Number ], default: [ 0.0, 0.0, 0.0 ] },
     scale: { type: Number, default: 1.0 },
     isVisible: { type: Boolean, default: true }
   } );

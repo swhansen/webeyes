@@ -8,16 +8,24 @@
 * node.js
 * express - node application framework (http://expressjs.com/)
 * Handlebars - semantic templating (http://handlebarsjs.com/)
+* mongodb and mongoose
 * socket.io
-* WebRTC
-* WebGL - three.js
-* Jasmine - TDD framework
+* WebRTC - P2P infrastructue (https://webrtc.org/)
+* WebGL - three.js - AR/VR infrastructure, vector math stuff(https://threejs.org/)
 * HTML5 Canvas
+* Jasmine - TDD framework
 * jQuery, jQuery-UI
 * lo-dash - functional infrastructure
-* mongodb and mongoose
-* Bower
+
+## Tools
+
 * Browserify
+* Bower
+
+## Standards
+
+* geoJson(http://geojson.org/)
+* SVG - icons, radial menus
 
 ## Repository:
 

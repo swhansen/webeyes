@@ -333,9 +333,9 @@ var GeoArObject = require( './public/models/geoarobjects' );
 
 app.post( '/dropArObj', function( req, res ) {
 
-//    console.log( 'at dropARObj-stringify req.body:' + JSON.stringify( req.body ) );
-    console.log( 'at dropARObj- req.body.arObjName string:' + req.body.objectName );
-//    console.log( 'at dropARObj- req.body.gimble:' + req.body.gimble );
+    console.log( 'at dropARObj-stringify req.body:' + JSON.stringify( req.body ) );
+//    console.log( 'at dropARObj- req.body.arObjName string:' + req.body.objectName );
+    console.log( 'at dropARObj- req.body.gimble:' + req.body.gimble );
 //    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
 
   var newArObj = new GeoArObject( {
@@ -344,7 +344,7 @@ app.post( '/dropArObj', function( req, res ) {
     arworld: req.body.arworld,
     objectName: req.body.objectName,
     geometry: {
-      type: 'Point',
+      type: req.body.type,
       coordinates: req.body.coordinates
     },
     north:  req.body.north,
@@ -358,9 +358,9 @@ app.post( '/dropArObj', function( req, res ) {
  // newArObj.objectName = req.body.objectName;
 
 //  console.log( newArObj.objectName );
-//  console.log( newArObj.geometry[0].coordinates );
+  console.log( newArObj.geometry[0].coordinates );
 //  console.log( newArObj.geometry[0].type );
-  console.log( JSON.stringify( newArObj ) );
+//  console.log( JSON.stringify( newArObj ) );
 
   newArObj.save( function( err ) {
     if ( err ) { return console.log( err ); }

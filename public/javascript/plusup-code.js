@@ -244,6 +244,7 @@ const { value: name } = await swal( {
   }
 } );
 if ( name ) {
+  console.log( 'placeModal:' + name );
   createArObject( name );
 }
 }
