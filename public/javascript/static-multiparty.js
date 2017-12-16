@@ -93,7 +93,8 @@ function exitFullscreen() {
 
 function getCenterBoxId() {
   var boxes = [ 'box0', 'box1', 'box2', 'box3' ];
-  var maxBox = _.max( boxes, function( o ) { return document.getElementById( o ).clientWidth} );
+  var maxBox = _.maxBy( boxes, function( o ) { return document.getElementById( o ).clientWidth } );
+  console.log( 'maxBox:' + maxBox + document.getElementById( maxBox ).clientWidth );
  return maxBox;
  }
 
@@ -778,7 +779,7 @@ function focusUser( rtcid ) {
 
   var b = _( connectList )
     .filter( function( connectList ) { return connectList.rtcid == rtcid; } )
-    .pluck( 'boxno' )
+    .map( 'boxno' )
     .value();
 
    console.log( 'at focusUser with:', rtcid, 'and box is', b );
@@ -834,7 +835,7 @@ function expandThumb( whichBox ) {
       console.log( 'modMeState:', userContext.modMeState );
       var rtcidToExpand = _( connectList )
       .filter( function( connectList ) { return connectList.boxno == whichBox; } )
-      .pluck( 'rtcid' )
+      .map( 'rtcid' )
       .value();
 
   //    console.log('Expand Thumb-Sending - modme rtcidToExpand:', rtcidToExpand, ' for boxno:', whichBox);

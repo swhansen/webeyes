@@ -2,38 +2,17 @@ function  loadIotAr() {
 
  var hueGeometrySphere = new THREE.SphereGeometry( 0.2, 16, 16 );
 
-  var hueLightmaterial1 = new THREE.MeshPhongMaterial( {
+  var hueLightmaterial = new THREE.MeshPhongMaterial( {
       color: 0xff00ff,
       shininess: 66,
       opacity:0.5,
       transparent: true
   } );
 
-  var hueLightmaterial2 = new THREE.MeshPhongMaterial( {
-      color: 0xff00ff,
-      shininess: 66,
-      opacity:0.5,
-     transparent: true
-   } );
-
-   var hueLightmaterial3 = new THREE.MeshPhongMaterial( {
-      color: 0xff00ff,
-      shininess: 66,
-      opacity:0.5,
-      transparent: true
-  } );
-
-  var hueLightmaterial4 = new THREE.MeshPhongMaterial( {
-      color: 0xff00ff,
-      shininess: 66,
-      opacity:0.5,
-      transparent: true
-  } );
-
-    hueLight1 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial1 );
-    hueLight2 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial2 );
-    hueLight3 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial3 );
-    hueLight4 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial4 );
+    hueLight1 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial );
+    hueLight2 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial );
+    hueLight3 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial );
+    hueLight4 = new THREE.Mesh( hueGeometrySphere, hueLightmaterial );
 
     hueLight1.position.set( -0.809, -0.737, -5.227 );
     hueLight2.position.set( 1.077, 1.606, -5.17 );
@@ -69,6 +48,8 @@ function  loadIotAr() {
     scene.add( hueLight2 );
     scene.add( hueLight3 );
     scene.add( hueLight4 );
+
+    console.log( 'hueLight1 Length: ' + hueLight1.position.length() );
 
     arSelectObjectArray.push( hueLight1 );
     arSelectObjectArray.push( hueLight2 );

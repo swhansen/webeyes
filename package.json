@@ -6,9 +6,9 @@
     "lint": "jshint .",
     "validate": "npm ls"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
-    "node": "4.0.x"
+    "node": "7.9.0"
   },
   "description": "Experimental WebRTC Augmented Collaboration System",
   "main": "server.js",
@@ -16,29 +16,20 @@
     "body-parser": "*",
     "bower": "*",
     "bson": "*",
-    "cors": "2.7.x",
-    "easyrtc": "1.0.x",
-    "express": "^4.x.x",
-    "express-handlebars": "2.0.x",
-    "lodash": "^4.17.4",
+    "cors": "*",
+    "easyrtc": "^1.1.0",
+    "express": "~4.x.x",
+    "express-handlebars": "^3.0.0",
+    "lodash": "*",
     "mongoose": "*",
-    "sendgrid": "1.9.x",
-    "socket.io": "0.9.x",
-    "lodash": "*"
+    "sendgrid": "^5.2.3",
+    "socket.io": "^1.4.5"
   },
   "devDependencies": {
     "assert": "^1.1.2",
-    "chai": "3.3.x",
-    "grunt": "latest",
-    "grunt-cafe-mocha": "^0.1.13",
-    "grunt-contrib-jshint": "^0.11.3",
-    "grunt-exec": "^0.4.6",
-    "grunt-link-checker": "^0.1.0",
     "js-yaml": "*",
     "mocha": "*",
-    "nodemon": "*",
-    "precommit-hook": "*",
-    "zombie": "4.1.x"
+    "precommit-hook": "*"
   },
   "repository": {
     "type": "git",

@@ -123,6 +123,8 @@ app.use( '/css', express.static( __dirname + '/easyrtc/css' ) );
 app.use( express.static( __dirname + '/public' ) );
 app.use( express.static( __dirname + '/views' ) );
 
+console.log( '__dirname:' + __dirname );
+
 app.use( '/bower', express.static( __dirname + '/bower_components' ) );
 
 app.use( bodyParser.urlencoded( { extended: true } ) );
@@ -139,11 +141,8 @@ var handlebars = require( 'express-handlebars' )
 app.engine( 'hbs', handlebars.engine );
 app.set( 'view engine', 'hbs' );
 
-
-
-
-
 // test for tests....
+
 app.use( function( req, res, next ) {
   res.locals.showTests = app.get( 'env' ) !== 'production' &&
     req.query.test === '1';
@@ -313,13 +312,15 @@ app.get( '/video', function( req, res ) {
 
 // -------------------
 
-mongoose.connect( mongoUriString, function( err, res ) {
+mongoose.connect( mongoUriString, function( err ) {
   if ( err ) {
   console.log( 'ERROR connecting to:' + mongoUriString + '. '  + err );
   } else {
   console.log ( 'Succeeded connecting to: ' + mongoUriString );
   }
 } );
+
+
 
 // Mongoose Schemas
 

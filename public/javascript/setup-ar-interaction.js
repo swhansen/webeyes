@@ -100,25 +100,22 @@ function placeArObjectLongPress( data ) {
   input: 'select',
   inputOptions: {
     'torus': 'torus',
-    'cube': 'cube'
+    'geometry': 'cube'
   },
     inputPlaceholder: 'Select an AR Object',
     showCancelButton: true,
     inputValidator: function( value ) {
     return new Promise( function( resolve, reject ) {
-        if ( value === 'torus') {
-          resolve();
-        } else {
-       if (value === 'cube' ) {
-        resolve();
-      }
+        if ( value ) {
+          resolve( value );
         }
     }
-    ); }
-  } ).then( function( result ) {
-    loadArModel( result, data );
+
+   ).then( ( value ) => {
+    loadArModel( value, data );
   } );
 }
+} ) }
 
   //function addNewArObjectToWorld( d ) {
   //    var materialTorus1 = new THREE.MeshLambertMaterial( { color: 'red' } );

@@ -70,15 +70,16 @@ switch ( utilImage ) {
   }
 }
 
-function openFileModal() {
-  swal( {
+async function openFileModal() {
+  const { value: file } = await swal( {
     title: 'Select image',
     input: 'file',
     showCancelButton: true,
     inputAttributes: {
       accept: 'image/*'
     }
-    } ).then( function( e ) {
+    } );
+    if ( file ) {
         var reader = new FileReader();
         reader.onload = function( event ) {
             var imgSend = new Image();
@@ -90,13 +91,12 @@ function openFileModal() {
             };
             imgSend.src = event.target.result;
         };
-        reader.readAsDataURL( e );
+        reader.readAsDataURL( file );
       }
-      );
 }
 
-function setDocAlpha() {
-  swal( {
+async function setDocAlpha() {
+  const { value: v } = await swal( {
   title: 'Set document load opacity',
   text: 'Opacity will be set for broadcast images',
   showCancelButton: true,
@@ -106,13 +106,13 @@ function setDocAlpha() {
     max: 1.0,
     step: 0.1
   },
-  inputValue: docAlpha
-  } ).then( function( inputValue ) {
-    docAlpha = inputValue;
-    docctx.globalAlpha = inputValue;
-
-  //  console.log( 'docctx.globalAlpha:', docctx.globalAlpha );
-  } );
+  inputValue: 0.5
+  } )
+  if( v ) {
+    docAlpha = v;
+    docctx.globalAlpha = v;
+  //  console.log( 'docctx.globalAlpha: ', docctx.globalAlpha );
+  } ;
 }
 
 socketServer.on( 'shareImage', function( data ) {

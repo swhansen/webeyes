@@ -96,7 +96,7 @@ var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
 // build the cardinal orientation points
 
   var cardinalMat = new THREE.MeshLambertMaterial( { color: 'red' } );
-  var geometrySphere = new THREE.CircleGeometry( 0.1, 16 );
+  var geometrySphere = new THREE.SphereGeometry( 0.1, 16, 16 );
 
   var sphereN = new THREE.Mesh( geometrySphere, cardinalMat );
   var sphereS = new THREE.Mesh( geometrySphere, cardinalMat );
