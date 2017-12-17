@@ -933,33 +933,30 @@ function loginSuccess() {
 
 $( function() {
   $( '#textEntryButton' ).click( function() {
-
     swal( {
-      title: 'Enter a message',
-      text: 'Your text will be broadcast to all session participants',
-      input: 'text',
-      showCancelButton: true,
-      confirmButtonText: 'Submit',
-      showLoaderOnConfirm: true,
-      preConfirm: function( inputValue ) {
-        return new Promise( function( resolve, reject ) {
-          if ( inputValue ) {
-              resolve();
-          } else {
-            reject( 'Please enter a message!' );
-          }
-        } );
-      }
-      } ).then( function( result ) {
-          for ( var i = 0; i < maxCALLERS; i++ ) {
-            var easyrtcid = easyrtc.getIthCaller( i );
-            if ( easyrtcid && easyrtcid !== '' ) {
-                easyrtc.sendPeerMessage( easyrtcid, 'im', result );
-                easyrtc.sendPeerMessage( easyrtcid, 'test', result );
+        title: 'Enter a message',
+        text: 'Your text will be broadcast to all session participants',
+        input: 'text',
+        showCancelButton: true,
+        confirmButtonText: 'Submit',
+        showLoaderOnConfirm: true,
+        preConfirm: inputValue => {
+          return new Promise( ( resolve, reject ) => {
+              if ( inputValue === false ) { reject( 'Please enter a message' ); }
+              if ( inputValue === '' ) { reject( 'Please enter a message' ); }
+              if ( inputValue ) {
+                  for ( var i = 0; i < maxCALLERS; i++ ) {
+                    var easyrtcid = easyrtc.getIthCaller( i );
+                    if ( easyrtcid && easyrtcid !== '' ) {
+                        easyrtc.sendPeerMessage( easyrtcid, 'im', inputValue );
+                    }
+                  }
+                  resolve();
               }
-          }
-        } );
+          } );
+        }
     } );
+  } );
 } );
 
 function cancelText() {
@@ -980,7 +977,7 @@ function sendText( e ) {
             var easyrtcid = easyrtc.getIthCaller( i );
             if ( easyrtcid && easyrtcid !== '' ) {
                 easyrtc.sendPeerMessage( easyrtcid, 'im', stringToSend );
-                easyrtc.sendPeerMessage( easyrtcid, 'test', stringToSend );
+              //  easyrtc.sendPeerMessage( easyrtcid, 'test', stringToSend );
             }
         }
     }
@@ -1010,7 +1007,7 @@ function showMessage( startX, startY, content ) {
     var centerEndY = 0.2 * startY + 0.8 * fullH / 2;
 
     var cloudObject = document.createElement( 'img' );
-    cloudObject.src = 'images/cloud.png';
+    cloudObject.src = 'img/cloud.png';
     cloudObject.style.width = '1px';
     cloudObject.style.height = '1px';
     cloudObject.style.left = startX + 'px';
@@ -1078,25 +1075,26 @@ function messageListener( easyrtcid, msgType, content ) {
             var startX = parseInt( startArea.offsetLeft ) + parseInt( startArea.offsetWidth ) / 2;
             var startY = parseInt( startArea.offsetTop ) + parseInt( startArea.offsetHeight ) / 2;
 
-            let string = 'coreId: ' + sessionData.coreId + ' ch: ' + sessionData.sessionId + ' - msgType: ' + msgType + ': ' + content;
+          //  let string = 'coreId: ' + sessionData.coreId + ' ch: ' + sessionData.sessionId + ' - msgType: ' + msgType + ': ' + content;
+            let string = content;
             showMessage( startX, startY, string );
         }
     }
   }
-  if ( msgType === 'test' ) {
+ //if ( msgType === 'test' ) {
 
-    console.log( 'messageListner:', easyrtcid, msgType, content );
+ //  console.log( 'messageListner:', easyrtcid, msgType, content );
 
-    for ( var i = 0; i < maxCALLERS; i++ ) {
-        if ( easyrtc.getIthCaller( i ) === easyrtcid ) {
-            let string = 'app: ' + sessionData.coreId + ' ch: ' + sessionData.channelId + ' - msgType: ' + msgType + ': ' + content;
+ //  for ( var i = 0; i < maxCALLERS; i++ ) {
+ //      if ( easyrtc.getIthCaller( i ) === easyrtcid ) {
+ //          let string = 'app: ' + sessionData.coreId + ' ch: ' + sessionData.channelId + ' - msgType: ' + msgType + ': ' + content;
 
-            let foo = 'Test of dataChannel: ' + msgType + ' ' + content;
+ //          let foo = 'Test of dataChannel: ' + msgType + ' ' + content;
 
-            alert( foo );
-        }
-    }
-  }
+ //          alert( foo );
+ //      }
+ //  }
+ //}
 }
 
 function appInit() {
