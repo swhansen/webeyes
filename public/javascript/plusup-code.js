@@ -208,7 +208,7 @@ var useModeCode = ( modeCode ) => {
 var placeArObjModal = () => {
     setTimeout( () => {
         swal( {
-            title: 'Enter your sub-zone',
+            title: 'Name your AR Object',
             input: 'text',
             showCancelButton: true,
             confirmButtonText: 'Submit',
