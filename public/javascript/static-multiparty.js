@@ -932,7 +932,7 @@ function loginSuccess() {
 }
 
 $( function() {
-  $( '#textEntryButton' ).click( function() {
+  $( '#textEntryButton' ).click( () => {
     swal( {
         title: 'Enter a message',
         text: 'Your text will be broadcast to all session participants',
