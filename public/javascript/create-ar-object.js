@@ -21,18 +21,24 @@ function postPosition( position ) {
   console.log( 'altitude: ' + position.coords.altitude +
                 ', ' + position.coords.altitudeAccuracy );
 
-  function handleOrientation( event ) {
+//  function handleOrientation( event ) {
+//
+//     orientation[ 0 ] = event.alpha;
+//     orientation[ 1 ] = event.beta;
+//     orientation[ 2 ] = event.gamma;
+//    }
+//
+//  if ( window.deviceOrientation ) {
+//    window.addEventListener( 'deviceorientation', handleOrientation, true );
+//    } else {
+//     orientation = [ 1.0, 1.0, 1.0 ];
+//    }
 
-     orientation[ 0 ] = event.alpha;
-     orientation[ 1 ] = event.beta;
-     orientation[ 2 ] = event.gamma;
-    }
-
-  if ( window.deviceOrientation ) {
-    window.addEventListener( 'deviceorientation', handleOrientation, true );
-    } else {
-     orientation = [ 1.0, 1.0, 1.0 ];
-    }
+window.addEventListener( 'deviceorientation', event => {
+    orientation[ 0 ] = event.alpha;
+    orientation[ 1 ] = event.beta;
+    orientation[ 2 ] = event.gamma;
+   }
 
     placeArObjMsg.creator = 'swhansen';
     placeArObjMsg.publicPrivate = 'public';
