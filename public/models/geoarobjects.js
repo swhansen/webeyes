@@ -12,7 +12,7 @@ var GeoSchema = new Schema( {
   type: {
     type: String,
     required: true,
-    enum: [ 'Point', 'LineString', 'Polugon' ],
+    enum: [ 'Point', 'LineString', 'Polygon' ],
     default: 'Point'
   },
   coordinates: {

@@ -324,7 +324,7 @@ mongoose.connect( mongoUriString, function( err ) {
 
 // Mongoose Schemas
 
-var User        = require( './public/models/users' );
+var User = require( './public/models/users' );
 var GeoArObject = require( './public/models/geoarobjects' );
 
 //
@@ -335,9 +335,8 @@ var GeoArObject = require( './public/models/geoarobjects' );
 app.post( '/dropArObj', function( req, res ) {
 
     console.log( 'at dropARObj-stringify req.body: ' + JSON.stringify( req.body ) );
-//    console.log( 'at dropARObj- req.body.arObjName string:' + req.body.objectName );
     console.log( 'at dropARObj- req.body.gimble: ' + req.body.gimble );
-//    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
+    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
 
   var newArObj = new GeoArObject( {
     creator: req.body.creator,
@@ -353,15 +352,6 @@ app.post( '/dropArObj', function( req, res ) {
     scale:   req.body.scale,
     isVisible: req.body.isVisible
   } );
-
- // newArObj.geometry[0].coordinates = req.body.coordinates;
- // newArObj.geometry[0].type = req.body.type;
- // newArObj.objectName = req.body.objectName;
-
-//  console.log( newArObj.objectName );
-  console.log( newArObj.geometry[0].coordinates );
-//  console.log( newArObj.geometry[0].type );
-//  console.log( JSON.stringify( newArObj ) );
 
   newArObj.save( function( err ) {
     if ( err ) { return console.log( err ); }
