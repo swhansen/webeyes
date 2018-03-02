@@ -2,11 +2,7 @@
 var activeBox = -1; // nothing selected
 var aspectRatio = 4 / 3;
 
-var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 
-if ( deviceWidth < 350 ) { userContext.isPhone = true };
-console.log( 'deviceWidth: ', deviceWidth );
-console.log( userContext );
 
  // standard definition video aspect ratio
 var maxCALLERS = 3;
@@ -71,6 +67,12 @@ socketServer = io.connect( '/' );
 /*jshint +W020 */
 
 // Detect browser diff for full screen mode
+
+var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+
+if ( deviceWidth < 350 ) { userContext.isPhone = true };
+console.log( 'deviceWidth: ', deviceWidth );
+console.log( userContext );
 
 function launchIntoFullscreen( element ) {
   if ( element.requestFullscreen ) {
