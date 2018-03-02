@@ -320,8 +320,6 @@ mongoose.connect( mongoUriString, function( err ) {
   }
 } );
 
-
-
 // Mongoose Schemas
 
 var User = require( './public/models/users' );
@@ -332,53 +330,49 @@ var GeoArObject = require( './public/models/geoarobjects' );
 //  - conforms to geoJson
 //
 
-app.post( '/dropArObj', function( req, res ) {
-
-    console.log( 'at dropARObj-stringify req.body: ' + JSON.stringify( req.body ) );
-    console.log( 'at dropARObj- req.body.gimble: ' + req.body.gimble );
-    console.log( 'at dropARObj- req.body.coordinates:' + req.body.coordinates );
+app.post( '/createGeoArObj', function( req, res ) {
+  console.log( 'at createGeoArObj-stringify req.body: ' + JSON.stringify( req.body ) );
 
   var newArObj = new GeoArObject( {
     creator: req.body.creator,
     publicPrivate: req.body.publicPrivate,
     arworld: req.body.arworld,
     objectName: req.body.objectName,
+    color: req.body.color,
     geometry: {
       type: req.body.type,
       coordinates: req.body.coordinates
     },
-    north:  req.body.north,
-    gimble:  req.body.gimble,
-    scale:   req.body.scale,
+    size: req.body.size,
+    north: req.body.north,
+    gimble: req.body.gimble,
+    scale: req.body.scale,
     isVisible: req.body.isVisible
   } );
 
   newArObj.save( function( err ) {
     if ( err ) { return console.log( err ); }
-
     console.log( 'Geo AR Object ' + newArObj.objectName + ' saved successfully!' );
-
     res.send( req.body.objectName );
-
-      } );
+  } );
 } );
 
-app.get ( '/api/geoarobjects/', function( req, res ) {
+app.get( '/api/geoarobjects/', function( req, res ) {
 
   // calculates radius of search
 
-let searchRadius = req.query.radius / 3963.2;
+  let searchRadius = req.query.radius / 3963.2;
 
- var query =  GeoArObject.find(
-      { geometry:{ $geoWithin:{ $centerSphere:[ [ -71.6090909, 42.622015 ], searchRadius ] } },
-       creator: 'swhansen' } );
+  var query = GeoArObject.find(
+    { geometry: { $geoWithin: { $centerSphere: [ [ -71.6090909, 42.622015 ], searchRadius ] } },
+      creator: 'swhansen' } );
 
- query.exec( function( err, docs ) {
-        if ( err ) {
-            throw Error;
-        }
-        res.json( { message: docs } );
-    } );
+  query.exec( function( err, docs ) {
+    if ( err ) {
+      throw Error;
+    }
+    res.json( { message: docs } );
+  } );
 } );
 
 app.get( '/users', function( req, res ) {
@@ -392,15 +386,15 @@ app.get( '/users', function( req, res ) {
 } );
 
 app.get( '/users/:lastName', function( req, res ) {
-        if ( req.params.lastName ) {
-        User.findOne( { lastName: req.params.lastName },
-         function( err, docs ) {
-            if ( err ) {
-                throw Error;
-            }
-            res.render( 'lastname', docs );
-        } );
-    }
+  if ( req.params.lastName ) {
+    User.findOne( { lastName: req.params.lastName },
+      function( err, docs ) {
+        if ( err ) {
+          throw Error;
+        }
+        res.render( 'lastname', docs );
+      } );
+  }
 } );
 
 //
@@ -409,36 +403,35 @@ app.get( '/users/:lastName', function( req, res ) {
 //  User Based API
 
 app.get( '/api', function( req, res ) {
-    res.json( { message: 'Welcome to the WebEyes API!' } );
+  res.json( { message: 'Welcome to the WebEyes API!' } );
 } );
 
 //  User Based API
 
 app.get( '/api/user', function( req, res ) {
-
   var queryObject = {};
-    for ( var key in req.query ) {
-        queryObject[ key ] = req.query[ key ];
+  for ( var key in req.query ) {
+    queryObject[ key ] = req.query[ key ];
+  }
+  User.find( queryObject, function( err, docs ) {
+    if ( err ) {
+      throw Error;
     }
-    User.find( queryObject, function( err, docs ) {
-            if ( err ) {
-                throw Error;
-            }
-            res.json( { message: docs } );
-        } );
-    }
+    res.json( { message: docs } );
+  } );
+}
 );
 
 app.get( '/api/user/:lastName', function( req, res ) {
-        if ( req.params.lastName ) {
-        User.findOne( { lastName: req.params.lastName },
-         function( err, docs ) {
-            if ( err ) {
-                throw Error;
-            }
-            res.json( { message: docs } );
-        } );
-    }
+  if ( req.params.lastName ) {
+    User.findOne( { lastName: req.params.lastName },
+      function( err, docs ) {
+        if ( err ) {
+          throw Error;
+        }
+        res.json( { message: docs } );
+      } );
+  }
 } );
 
 app.post( '/api/user', function( req, res ) {
@@ -461,13 +454,14 @@ app.post( '/api/user', function( req, res ) {
 } );
 
 app.delete( '/api/user/:user_id', function( req, res ) {
-        User.remove( { _id: req.params.user_id },
-             function( err, user ) {
-            if ( err )
-                res.send( err );
-            res.json( { message: 'Successfully deleted' } );
-        } );
+  User.remove( { _id: req.params.user_id },
+    function( err, user ) {
+      if ( err ) {
+        res.send( err );
+      }
+      res.json( { message: 'Successfully deleted' } );
     } );
+} );
 
 //
 //  AR/VR Based API
@@ -503,7 +497,7 @@ app.get( '/api/system/getDimensionalLayers', function( req, res ) {
 
 app.get( '/api/system/getChannelUserContext', function( req, res ) {
   res.json( { message: sessionUserContext } );
-  } );
+} );
 
 //
 // Experiment with the obliquevision spatial data server (COSAAR)
@@ -541,10 +535,14 @@ app.get( '/cosaar', function( req, res ) {
     } );
   };
   http.request( cosaarOptions, cb ).end();
- } );
+} );
 
 app.get( '/about', function( req, res ) {
-   res.render( 'about' );
+  res.render( 'about' );
+} );
+
+app.get( '/placeobjects', function( req, res ) {
+  res.sendfile( __dirname + '/views/placeobjects.html' );
 } );
 
 var port = process.env.PORT || 8080;
@@ -562,15 +560,15 @@ var clients = [];
 var sids = [];
 
 function findSocketioSessions() {
-    let availableSessions = [];
-    let rooms = socketServer.sockets.manager.rooms;
-    if ( rooms ) {
-        for ( var room in rooms ) {
-            if ( !rooms[ room ].hasOwnProperty( room ) ) {
-                availableSessions.push( room );
-            }
-        }
+  let availableSessions = [];
+  let rooms = socketServer.sockets.manager.rooms;
+  if ( rooms ) {
+    for ( var room in rooms ) {
+      if ( !rooms[ room ].hasOwnProperty( room ) ) {
+        availableSessions.push( room );
+      }
     }
+  }
     return availableSessions;
 }
 
@@ -582,7 +580,7 @@ socketServer.sockets.on( 'connection', function( socket ) {
   socket.join( newUserData.sessionId );
  // socket.join( newUserData.sessionId );
 
-console.log( 'connection- ' + socket.id + ' connected' );
+  console.log( 'connection- ' + socket.id + ' connected' );
 
 //console.log( 'test rooms:', socketServer.sockets.sockets( 'session1' ) );
 //console.log( 'socketServer rooms:', socketServer.sockets.manager.rooms );
@@ -725,8 +723,8 @@ console.log( 'connection- ' + socket.id + ' connected' );
     socketServer.sockets.in( data.sessionId ).emit( 'arObjectShare', data );
     //  socket.in( data.sessionId ).emit( 'arObjectShare', data );
 
-
   } );
+
 
 // set an IOT device
 

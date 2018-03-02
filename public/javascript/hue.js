@@ -34,7 +34,7 @@ function setIotZone( iotZone ) {
 
 function setIotSubZone( subZoneId ) {
   var szStr = 'IOT sub-zone: ' + subZoneId;
-  if ( userContext.iotZone === 'iotc' ) {
+  if ( userContext.iotZone === 'iot' ) {
     hueURL = 'http://192.168.1.' + userContext.iotSubZone + '/api/52927745603325e730bd719e2a8bf2cb';
     } else if ( userContext.iotZone === 'iots' ) {
       hueURL = iotZones.steve;
@@ -60,11 +60,11 @@ var hueSetLightState = function( lightNo, state, hue, sat, bri ) {
     dataObject.bri = bri;
     var URL = hueURL + '/lights/' + lightNo + '/state';
     $.ajax( {
-    type: 'PUT',
-    dataType: 'json',
-    url: URL,
-    data: JSON.stringify( dataObject ),
-    error: function( a, err ) { }
+        type: 'PUT',
+        dataType: 'json',
+        url: URL,
+        data: JSON.stringify( dataObject ),
+        error: function( a, err ) { }
     } );
 };
 
@@ -107,6 +107,7 @@ var hueGetLightState = function( lightNo ) {
   } );
     lightState.done( function( data ) {
       hueLightState = data;
+      return data;
     }
     );
   };
@@ -123,8 +124,10 @@ var hueGetAllLights = function() {
     allLightState.done( function( data ) {
       hueLightList = data;
       hueLightListLength = Object.keys( hueLightList ).length;
+
     }
     );
+    return hueLightList;
   };
 
 console.log( 'hue lights:', hueGetAllLights() );

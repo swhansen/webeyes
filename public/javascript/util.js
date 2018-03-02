@@ -184,13 +184,13 @@ function emitUtility( data ) {
   var sessionId = socketServer.sessionid;
   let emitUtil = {};
   emitUtil.data = data;
-  emitUtil.sessionId = userContext.sessionId
+  emitUtil.sessionId = userContext.sessionId;
   socketServer.emit( 'utility', emitUtil, sessionId );
 }
 
 socketServer.on( 'utility', function( data ) {
 
-console.log( 'ss.on - utility:', data );
+console.log( 'socketServer.on - utility:', data );
 
   switch ( data.data ) {
     case 'statusbox':
@@ -217,10 +217,10 @@ console.log( 'ss.on - utility:', data );
       userContext.modMeState = false;
     break;
     case 'arClientInit':
-        loadAr( 'peer' );
+        loadAr( data.world );
     break;
     case 'vrClientInit':
-        loadAr( 'peer' );
+        loadAr( data.world );
     break;
     case 'leapClientInit':
 

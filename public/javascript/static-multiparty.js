@@ -1,5 +1,4 @@
 
-
 var activeBox = -1; // nothing selected
 var aspectRatio = 4 / 3;
 

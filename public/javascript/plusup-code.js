@@ -133,11 +133,15 @@ var useModeCode = ( modeCode ) => {
 
             userContext.modMeState = true;
             userContext.participantState = 'focus';
+            userContext.uiState = 'ar';
+            userContext.mode = 'ar';
+            userContext.addDimensionalLayer( 'arcanvaspane' );
+
             emitSessionUserContext( userContext );
 
-            $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
-                uiStructure = data;
-            } );
+        //    $.getJSON( '../menudescriptors/augMeStructure.json', function( data ) {
+        //        uiStructure = data;
+        //    } );
 
             for ( button in uiStructure.structure ) {
                 $( uiStructure.structure[ button ].mainButton ).fadeOut( 1000 );
@@ -200,31 +204,62 @@ var useModeCode = ( modeCode ) => {
         case 'help':
             helpModal();
             break;
+
+        case 'testmodal':
+            testModal();
+            break;
     }
 }
 
 // ------- end plus-up case -------------------------
 
+var opt = {1:1, 2:2, 3:3};
+
+
+async function testModal() {
+const {value: iot} = await swal({
+  title: 'Select IOT Device',
+  input: 'select',
+  inputOptions:
+    opt,
+  inputPlaceholder: 'IOT ID',
+  showCancelButton: true,
+  inputValidator: (value) => {
+    return new Promise((resolve) => {
+      if ( value )  {
+        resolve()
+      } else {
+        resolve('You need to select Ukraine :)')
+      }
+    })
+  }
+})
+
+if (iot) {
+  swal('You selected: ' + iot)
+}
+}
+
 var placeArObjModal = () => {
-    setTimeout( () => {
-        swal( {
-            title: 'Name your AR Object',
-            input: 'text',
-            showCancelButton: true,
-            confirmButtonText: 'Submit',
-            showLoaderOnConfirm: true,
-            preConfirm: inputValue => {
-                return new Promise( ( resolve, reject ) => {
-                    if ( inputValue === false ) { reject( 'Please Enter name' ); }
-                    if ( inputValue === '' ) { reject( 'Please Enter a name' ); }
-                    if ( inputValue ) {
-                        createArObject( inputValue );
-                        resolve();
-                    }
-                } );
-            }
+  setTimeout( () => {
+    swal( {
+      title: 'Name your AR Object',
+      input: 'text',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      showLoaderOnConfirm: true,
+      preConfirm: inputValue => {
+        return new Promise( ( resolve, reject ) => {
+          if ( inputValue === false ) { reject( 'Please Enter name' ); }
+          if ( inputValue === '' ) { reject( 'Please Enter a name' ); }
+          if ( inputValue ) {
+            liveCreateGeoArObject( inputValue );
+            resolve();
+          }
         } );
-    }, 10 ) ;
+      }
+    } );
+  }, 10 );
 }
 
 var iotZoneModal = () => {
@@ -273,134 +308,133 @@ async function sphereVrModal() {
 
 
 var vrWorldModal = () => {
+  swal( {
+    title: 'Select a VR World',
+    input: 'select',
+    // closeOnCancel: false,
+    inputOptions: {
+      'steve': 'steve',
+      'chuck': 'chuck',
+      'geotest': 'geotest',
+      'dollytest': 'dollytest'
+    },
+    inputPlaceholder: 'Select a VR World',
+    showCancelButton: true,
+    inputValidator: inputValue => {
+      return new Promise( ( resolve, reject ) => {
+        setVrWorld( inputValue );
+        shareArVrWorld( inputValue );
+        // var sessionId = socketServer.sessionid;
+        // socketServer.emit( 'focus', userContext.rtcId, sessionId );
+        statusBox.updateElement( 'metaverse', inputValue );
+        resolve();
+      } );
+    }
+  } ).then( ( result ) => {
     swal( {
-        title: 'Select a VR World',
-        input: 'select',
-        // closeOnCancel: false,
-        inputOptions: {
-            'steve': 'steve',
-            'chuck': 'chuck',
-            'test': 'test'
-        },
-        inputPlaceholder: 'Select a VR World',
-        showCancelButton: true,
-        inputValidator: inputValue => {
-            return new Promise( ( resolve, reject ) => {
-                setVrWorld();
-                shareArVrWorld();
-                //var sessionId = socketServer.sessionid;
-                // socketServer.emit( 'focus', userContext.rtcId, sessionId );
-                statusBox.updateElement( 'metaverse', inputValue );
-                resolve();
-            } );
-        }
-    } ).then( ( result ) => {
-        swal( {
-            type: 'success',
-            html: 'Your entering ' + result + ' world...Enjoy'
-        } );
+      type: 'success',
+      html: 'Your entering ' + result + ' world...Enjoy'
     } );
+  } );
 }
 
 var arWorldModal = () => {
+  swal( {
+    title: 'Select a AR World',
+    input: 'select',
+    inputOptions: {
+      'steve': 'steve',
+      'chuck': 'chuck',
+      'geotest': 'geotest'
+    },
+    inputPlaceholder: 'Select a AR World',
+    showCancelButton: true,
+    inputValidator: inputValue => {
+      return new Promise( ( resolve, reject ) => {
+        setArWorld( inputValue );
+        statusBox.updateElement( 'metaverse', inputValue );
+        shareArVrWorld( inputValue );
+        console.log( 'arWorldModal-setArWorld: ', inputValue );
+        resolve();
+      } );
+    }
+  } ).then( ( result ) => {
     swal( {
-        title: 'Select a AR World',
-        input: 'select',
-        inputOptions: {
-            'steve': 'steve',
-            'chuck': 'chuck',
-            'test': 'test'
-        },
-        inputPlaceholder: 'Select a AR World',
-        showCancelButton: true,
-        inputValidator: ( inputValue ) => {
-            return new Promise( ( resolve, reject ) => {
-                userContext.modMeState = true;
-                userContext.participantState = 'focus';
-                userContext.uiState = 'vr';
-                statusBox.updateElement( 'metaverse', inputValue );
-                setArWorld();
-                shareArVrWorld();
-                resolve();
-            } );
-        }
-    } ).then( ( result ) => {
-        swal( {
-            type: 'success',
-            html: 'Your entering ' + result + ' world...Enjoy'
-        } );
+      type: 'success',
+      html: 'Your entering ' + result + ' world...Enjoy'
     } );
-}
+  } );
+};
 
 var helpModal = () => {
-    swal( {
-        title: '<i>WEBEYES plus-up codes</i>',
-        type: 'info',
-        width: '700px',
-        animation: false,
-        html: '<ul>' +
-            '<li><b>modme: </b> participant controls centering of all participants video</li>' +
-            '<li><b>clearmodme: </b> clears moderator privledges</li>' +
-            '<li><b>augme: </b> augmented reality mode, requires sensor enabled device</li> ' +
-            '<li><b>vrme: </b> virtual reality mode, moderator controls world locally</li>' +
-            '<li><b>iots, iotc: </b> set the IOT zone. <b>note:</b> must be preceded by a vrme/augme</li>' +
-            '<li><b> iotz: </b> set the IOT sub-zone; int( 1-999 )</li>' +
-            '<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
-            '<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
-            '</ul>' +
-            'You can use find more info at, ' +
-            '<a href="//blablabla.com">links</a> ',
-        showCloseButton: true,
-    } );
+  swal( {
+    title: '<i>WEBEYES plus-up codes</i>',
+    type: 'info',
+    width: '700px',
+    animation: false,
+    html: '<ul>' +
+          '<li><b>modme: </b> participant controls centering of all participants video</li>' +
+          '<li><b>clearmodme: </b> clears moderator privledges</li>' +
+          '<li><b>augme: </b> augmented reality mode, requires sensor enabled device</li> ' +
+          '<li><b>vrme: </b> virtual reality mode, moderator controls world locally</li>' +
+          '<li><b>iots, iotc: </b> set the IOT zone. <b>note:</b> must be preceded by a vrme/augme</li>' +
+          '<li><b> iotz: </b> set the IOT sub-zone; int( 1-999 )</li>' +
+          '<li><b> leapme: </b> initialized the Leap Motion hands, reqiores Leap sensor</li>' +
+          '<li><b>leapgrabon, leapgraboff: </b> toggel Leap hand IOT interaction</li>' +
+          '</ul>' +
+          'You can use find more info at, ' +
+          '<a href="//blablabla.com">links</a> ',
+    showCloseButton: true
+  } );
 }
 
 // UI code input dialog
 
 $( '#codeDialogModal' ).dialog( {
-    autoOpen: false
+  autoOpen: false
 } );
 
 // var modalMultiple =  [ 'placear', 'help', 'sphereme', 'augme', 'vrme',  'iotz' ];
 
-var plusupCodeArray = [ 'placear', 'removevrtest', 'sphereme', 'help', 'augme', 'vrme', 'iotz', 'modme', 'iots', 'iotc', 'leapme', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
+var plusupCodeArray = [ 'testmodal', 'placear', 'removevrtest', 'sphereme', 'help', 'augme', 'vrme', 'iotz', 'modme', 'iots', 'iotc', 'leapme', 'clearmodme', 'leapgrabon', 'leapgraboff' ];
 
 $( '#codeDialogButton' ).click( () => { runModal(); } );
 
 // the main plusup modal menu. Checks for valid codes.
 
 var runModal = () => {
-    swal( {
-        title: 'Enter your super secret code',
-        input: 'text',
-        showCancelButton: true,
-        confirmButtonText: 'Submit',
-        showLoaderOnConfirm: true,
-        animation: false,
-        preConfirm: ( text ) => {
-            return new Promise( ( resolve, reject ) => {
-                if ( text === false ) {
-                    reject( 'Please Enter Code!' );
-                }
-                if ( text === '' ) {
-                    reject( 'Please Enter Code!' );
-                }
-                if ( !( _.includes( plusupCodeArray, text.toLowerCase() ) ) ) {
-                    reject( 'Please enter a valid code - hint: enter help' );
-                }
-                if ( text.toLowerCase() === 'augme' && userContext.orientation === false ) {
-                    reject( 'Bummer...your device is not AR capable' );
-                }
-                if ( _.includes( plusupCodeArray, text.toLowerCase() ) ) {
-                    resolve( text.toLowerCase() );
-                }
-            } ).then(  mode  => {
-                setTimeout( () => { useModeCode( mode ); }, 100 );
-            } ).catch(  msg  => {
-                swal.showValidationError( msg );
-            } );
+  swal( {
+    title: 'Enter your super secret code',
+    input: 'text',
+    showCancelButton: true,
+    confirmButtonText: 'Submit',
+    showLoaderOnConfirm: true,
+    animation: false,
+    preConfirm: ( text ) => {
+      return new Promise( ( resolve, reject ) => {
+        if ( text === false ) {
+          reject( 'Please Enter Code!' );
         }
-    } );
-}
+        if ( text === '' ) {
+          reject( 'Please Enter Code!' );
+        }
+        if ( !( _.includes( plusupCodeArray, text.toLowerCase() ) ) ) {
+          reject( 'Please enter a valid code - hint: enter help' );
+        }
+        if ( text.toLowerCase() === 'augme' && userContext.orientation === false ) {
+          reject( 'Bummer...your device is not AR capable' );
+        }
+        if ( _.includes( plusupCodeArray, text.toLowerCase() ) ) {
+          resolve( text.toLowerCase() );
+        }
+      } ).then( mode => {
+        setTimeout( () => { useModeCode( mode ); }, 100 );
+      } ).catch( msg => {
+        swal.showValidationError( msg );
+      } );
+    }
+  } );
+};
 
 // recieving unique rtcID
 

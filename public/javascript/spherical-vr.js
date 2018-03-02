@@ -56,6 +56,7 @@ function sphericalVr( sphereTexture ) {
   var sphereCamera = new THREE.PerspectiveCamera( 75, boxWidth / boxHeight, 1, 1000 );
   sphereCamera.position.x = 0.01;
 
+
   var renderer = new THREE.WebGLRenderer( { canvas: sphereCanvas } );
   renderer.setSize( boxWidth, boxHeight );
 
@@ -106,6 +107,8 @@ function sphericalVr( sphereTexture ) {
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     light.name = 'HemisphereLight';
     scene.add( light );
+
+
 
   spherePane.appendChild( renderer.domElement );
 

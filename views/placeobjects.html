@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebEyes AR</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 80%;
+        margin: 10px;
+        padding: 10px;
+      }
+
+    </style>
+     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-fxmh0dtB28qaNV8zXR6OiXM5W4XU_3Q&callback=initMap"> </script>
+     <script type="text/javascript" src="bower/jquery/dist/jquery.min.js"></script>
+     <script type="text/javascript" src="bower/axios/dist/axios.min.js"></script>
+     <script type="text/javascript" src="bower/lodash/dist/lodash.min.js"></script>
+     <script type="text/javascript"  src="javascript/geo-ar-objects.js"></script>
+     <script src= "javascript/spectrum.js" > </script>
+
+    <link rel='stylesheet' href='css/spectrum.css' />
+  </head>
+  <body>
+    <div id="map"></div>
+    <h2>Location</h2>
+        <form action="javascript:submitArObject();">
+            <input type="text" id="lat" readonly="yes">
+            <input type="text" id="lng" readonly="yes"><br><br>
+            Object Name:
+            <input type="text" id="name" >
+            Object World:
+            <input type="text" id="world" ><br><br>
+            Object Size:
+            <input type="text" maxlength="4" size="4" id="sizex" value="1" >
+            <input type="text" maxlength="4" size="4" id="sizey" value="1" >
+            <input type="text" maxlength="4" size="4" id="sizez" value="1" >
+            <input type="text" value="" id="result"/>
+            <input type='text' id="custom" />
+            <input type="submit" value="Save AR Object">
+        </form>
+      <button type="button" onclick="initMap()">Re-Center</button>
+
+ <script>
+  var map, infoWindow;
+  var marker = false;
+
+ function initMap() {
+   var centerOfMap = new google.maps.LatLng(42.623, -71.609040);
+   var options = {
+     center: centerOfMap,
+     zoom: 17
+   };
+   map = new google.maps.Map(document.getElementById('map'), options);
+   infoWindow = new google.maps.InfoWindow;
+   var isMobile = {
+   Android: function() {
+       return navigator.userAgent.match( /Android/i );
+   },
+   BlackBerry: function() {
+       return navigator.userAgent.match( /BlackBerry/i );
+   },
+   iOS: function() {
+       return navigator.userAgent.match( /iPhone|iPad|iPod/i );
+   },
+   Opera: function() {
+       return navigator.userAgent.match( /Opera Mini/i );
+   },
+   Windows: function() {
+       return navigator.userAgent.match( /IEMobile/i );
+   },
+   any: function() {
+       return ( isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows( ) );
+   }
+};
+
+  $( '#custom' ).spectrum( {
+    color: '#f00',
+    move: function( color ) {
+      $( '#result' ).css( 'background-color', color.toRgbString() );
+      $( '#result' ).val( color.toHexString() );
+    }
+  } );
+
+
+console.log ( 'isMobile', isMobile.any() );
+
+  if ( isMobile.any() ) {
+    navigator.geolocation.getCurrentPosition( function( position ) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      document.getElementById( 'lng' ).value = pos.lng;
+      document.getElementById( 'lat' ).value = pos.lat;
+
+      infoWindow.setPosition( pos );
+      infoWindow.setContent( 'Location found.' );
+      infoWindow.open( map );
+      map.setCenter( pos );
+    }, function() {
+      handleLocationError( true, infoWindow, map.getCenter() );
+    } );
+  } else {
+    handleLocationError( false, infoWindow, map.getCenter() );
+  }
+
+  function handleLocationError( browserHasGeolocation, infoWindow, pos ) {
+    infoWindow.setPosition( pos );
+    infoWindow.setContent( browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.' );
+    infoWindow.open( map );
+  }
+
+  var base = [ 42.622035, -71.609048 ];
+
+  function plotGeoArObjects( base ) {
+    axios.get( '/api/geoarobjects/?radius=2.0' )
+      .then( function( response ) {
+        var objs = response.data.message;
+        _.forEach( objs, function( obj ) {
+          var myLatLng = { lat: obj.geometry[0].coordinates[1], lng: obj.geometry[0].coordinates[0] };
+            var marker = new google.maps.Marker( {
+            position: myLatLng,
+            map: map
+          } );
+        } );
+      } )
+      .catch( function( error ) {
+        console.log( error );
+      } );
+  }
+  plotGeoArObjects( base );
+
+  google.maps.event.addListener( map, 'click', function( event ) {
+    var clickedLocation = event.latLng;
+    if ( marker === false ) {
+      marker = new google.maps.Marker( {
+        position: clickedLocation,
+        map: map,
+        draggable: true
+      } );
+      google.maps.event.addListener( marker, 'dragend', function( event ) {
+        markerLocation();
+      } );
+    } else {
+      marker.setPosition( clickedLocation );
+    }
+    markerLocation();
+  } );
+}
+
+function submitArObject() {
+  let lon = $( '#lng' ).val();
+  let lat = $( '#lat' ).val();
+  let name = document.getElementById( 'name' ).value;
+  let world = document.getElementById( 'world' ).value;
+  let size = [ document.getElementById( 'sizex' ).value,
+    document.getElementById( 'sizey' ).value,
+    document.getElementById( 'sizez' ).value ];
+  let color = document.getElementById( 'result' ).value;
+
+  createGeoArObject( name, world, lat, lon, size, color );
+}
+
+function markerLocation() {
+  var currentLocation = marker.getPosition();
+  document.getElementById( 'lat' ).value = currentLocation.lat();
+  document.getElementById( 'lng' ).value = currentLocation.lng();
+}
+    </script>
+  </body>
+</html>
+

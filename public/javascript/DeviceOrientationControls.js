@@ -53,45 +53,33 @@ WEBEYES.DeviceOrientationControls = function( object ) {
       quaternion.multiply( q1 );                                      // camera looks out the back of the device, not the top
 
       quaternion.multiply( q0.setFromAxisAngle( zee, - orient ) );    // adjust for screen orientation
-
     };
-
   }();
 
   this.connect = function() {
-
     onScreenOrientationChangeEvent(); // run once on load
-
     window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
     window.addEventListener( 'deviceorientation', onDeviceOrientationChangeEvent, false );
-
     scope.enabled = true;
-
   };
 
   this.disconnect = function() {
-
     window.removeEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
     window.removeEventListener( 'deviceorientation', onDeviceOrientationChangeEvent, false );
-
     scope.enabled = false;
-
   };
 
-  this.update = function () {
-
+  this.update = function() {
     if ( scope.enabled === false ) return;
 
-    var alpha  = scope.deviceOrientation.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
-    var beta   = scope.deviceOrientation.beta  ? THREE.Math.degToRad( scope.deviceOrientation.beta  ) : 0; // X'
-    var gamma  = scope.deviceOrientation.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
-    var orient = scope.screenOrientation       ? THREE.Math.degToRad( scope.screenOrientation       ) : 0; // O
+    var alpha = scope.deviceOrientation.alpha ? THREE.Math.degToRad( scope.deviceOrientation.alpha ) : 0; // Z
+    var beta = scope.deviceOrientation.beta ? THREE.Math.degToRad( scope.deviceOrientation.beta ) : 0; // X'
+    var gamma = scope.deviceOrientation.gamma ? THREE.Math.degToRad( scope.deviceOrientation.gamma ) : 0; // Y''
+    var orient = scope.screenOrientation ? THREE.Math.degToRad( scope.screenOrientation ) : 0; // O
 
     setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma, orient );
     this.alpha = alpha;
-
   };
 
   this.connect();
-
 };

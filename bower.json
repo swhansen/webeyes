@@ -20,6 +20,7 @@
     "tests"
   ],
   "dependencies": {
+    "axios": "^0.18.0",
     "jquery": "~2.x.x",
     "jquery-ui": "~1.x.x",
     "lodash": "~4.x.x",
@@ -28,7 +29,8 @@
     "leapjs": "~0.6.4",
     "jquery-serialize-object": "~2.5.0",
     "gsap": "~1.x.x",
-    "sweetalert2": "*"
+    "sweetalert2": "*",
+    "axios": "^0.18.0"
   },
   "moduleType": [
     "amd",

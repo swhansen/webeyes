@@ -111,31 +111,6 @@ $( document ).ready( function() {
     } );
 } );
 
-function setArWorld() {
-
-    //     buildSideMenu( 'augme' );
-
-    userContext.modMeState = true;
-    userContext.uiState = 'ar';
-    userContext.mode = 'ar';
-    emitSessionUserContext( userContext );
-
-    setPeerUserContext( 'all', 'mode', 'ar' );
-    setPeerUserContext( 'all', 'participantState', 'peer' );
-    userContext.participantState = 'focus';
-
-    loadAr();
-
-    document.getElementById( 'canvaspane' ).style.zIndex = '10';
-    document.getElementById( 'arcanvaspane' ).style.zIndex = '200';
-
-    //    document.getElementById( 'sticky-ar' ).style.display = 'visible';
-    setDomPointerEvent( 'canvas0', 'none' );
-    setDomPointerEvent( 'arcanvaspane', 'auto' );
-
-    // inform all the peers of the mode
-}
-
 function setTestWorld() {
 
     //     buildSideMenu( 'augme' );
@@ -161,11 +136,41 @@ function setTestWorld() {
 
 }
 
-function setVrWorld() {
+function setArWorld( world ) {
 
-    //     buildSideMenu( 'vrme' );
+    //     buildSideMenu( 'augme' );
+
+    userContext.modMeState = true;
+    userContext.uiState = 'ar';
+    userContext.mode = 'ar';
+
+    setPeerUserContext( 'all', 'mode', 'ar' );
+    setPeerUserContext( 'all', 'uiState', 'ar' );
+    setPeerUserContext( 'all', 'participantState', 'peer' );
+
+    userContext.participantState = 'focus';
+    emitSessionUserContext( userContext );
+
+    console.log( 'setVrWorld:', world, userContext.participantState );
+    loadAr( world );
+
+    document.getElementById( 'canvaspane' ).style.zIndex = '10';
+    document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
+
+    //    document.getElementById( 'sticky-ar' ).style.display = 'visible';
+    setDomPointerEvent( 'canvas0', 'none' );
+    setDomPointerEvent( 'arcanvaspane', 'auto' );
+
+    // inform all the peers of the mode
+
+    msgString = 'User ' + userContext.rtcId + ' has entered AR Mode';
+    emitMessage( msgString );
+}
+
+function setVrWorld( world ) {
 
     //   userContext.participantState = 'focus';
+
     userContext.modMeState = true;
     userContext.uiState = 'vr';
     userContext.mode = 'vr';
@@ -175,12 +180,10 @@ function setVrWorld() {
     setPeerUserContext( 'all', 'participantState', 'peer' );
 
     userContext.participantState = 'focus';
-
-    console.log( 'setVRWorld:', userContext );
-
     emitSessionUserContext( userContext );
 
-    loadAr();
+    console.log( 'setVrWorld:', world, userContext.participantState );
+    loadAr( world );
 
     document.getElementById( 'canvaspane' ).style.zIndex = '10';
     document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
@@ -193,10 +196,9 @@ function setVrWorld() {
 
     msgString = 'User ' + userContext.rtcId + ' has entered VR Mode';
     emitMessage( msgString );
-
 }
 
-function shareArVrWorld() {
+function shareArVrWorld( world ) {
     if ( userContext.mode === 'ar' ) {
 
         // Tell everyone to initialize
@@ -205,6 +207,7 @@ function shareArVrWorld() {
         let data = {};
         data.sessionId = userContext.sessionId;
         data.data = 'arClientInit';
+        data.world = world;
 
         socketServer.emit( 'utility', data, sessionId );
 
@@ -217,10 +220,10 @@ function shareArVrWorld() {
         // Tell everyone to initialize AR
 
         var sessionId = socketServer.sessionid;
-
         let data = {};
         data.sessionId = userContext.sessionId;
         data.data = 'vrClientInit';
+        data.world = world;
 
         socketServer.emit( 'utility', data, sessionId );
 

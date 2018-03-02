@@ -1,6 +1,6 @@
 /**
  *
- * Utility to "neck" a camera based on broadcast of mose based VR control
+ * Utility to "neck" a camera based on broadcast of mouse based VR control
  * orientation data(alpha, beta, gamma) from a peer device over socket.io
  *
  *    --swh 9/27/15

@@ -14,7 +14,7 @@ var knot;
 
 function getArWorldSummary() {
 
-  // for experimental API
+  // for experimental API...
 
   var sceneChildren = [];
   var child = {};
@@ -37,19 +37,63 @@ function getArWorldSummary() {
 // ----------  Main AR/VR entry point --------------------------
 //
 
-function loadAr() {
+function loadAr( world ) {
 
-  console.log( 'loadAr:', userContext.mode );
+  console.log( 'loadAr-entry:', world, userContext.mode );
 
-  if ( userContext.mode === 'ar') {
-  orientationCompass( true );
-}
+//  if ( userContext.mode === 'ar') {
+//  //orientationCompass( true );
+//}
 
   var renderer, projector, arContainer, cameraDriver;
   var sensorDrivenCamera, broadcastDrivenCamera, sensorCameraControls, broadcastCameraControls;
   var vrDrivenCamera, vrBroadcastDrivenCamera, vrDrivenCameraControls, vrBroadcastCameraControls;
 
   var loader = new THREE.JSONLoader();
+
+  var load = ( function() {
+  // Function which returns a function: https://davidwalsh.name/javascript-functions
+    function _load( tag ) {
+      return function( url ) {
+        return new Promise( function( resolve, reject ) {
+          var element = document.createElement( tag );
+          var parent = 'body';
+          var attr = 'src';
+
+          // Important success and error for the promise
+          element.onload = function() {
+            resolve( url );
+          };
+          element.onerror = function() {
+            reject( url );
+          };
+
+          // Need to set different attributes depending on tag type
+
+          switch ( tag ) {
+            case 'script':
+              element.async = true;
+              break;
+            case 'link':
+              element.type = 'text/css';
+              element.rel = 'stylesheet';
+              attr = 'href';
+              parent = 'head';
+          }
+
+          // Inject into document to kick off loading
+
+          element[ attr ] = url;
+          document[ parent ].appendChild( element );
+        } );
+      };
+    }
+    return {
+      css: _load( 'link' ),
+      js: _load( 'script' ),
+      img: _load( 'img' )
+    };
+  } )();
 
   // Build the Dimensional Layer
 
@@ -62,8 +106,6 @@ function loadAr() {
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
   document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
-  // document.getElementById( 'sticky-ui-container' ).style.zIndex = '50';
-  // document.getElementById( 'sticky-ui-container' ).style.display = 'visible';
   setDomPointerEvent( 'canvas0', 'none' );
   setDomPointerEvent( 'arcanvaspane', 'auto' );
 
@@ -72,16 +114,48 @@ function loadAr() {
 
   // load the AR world and interaction
 
-  $.when(
-    $.getScript( 'javascript/armodels/ar-load-core.js' ),
-    $.getScript( 'javascript/setup-ar-interaction.js' ),
-    $.getScript( 'javascript/ar-object-communication.js' ),
-    $.Deferred( function( deferred ) {
-      $( deferred.resolve );
-    } )
-  ).done( function() {
-    setUpArLayer();
-    setupArInteractionEvents();
+  var worldModel;
+
+  switch ( world ) {
+    case 'steve':
+      worldModel = 'javascript/armodels/ar-load-core.js';
+      break;
+    case 'chuck':
+      worldModel = 'javascript/armodels/ar-load-core.js';
+      break;
+    case 'geotest':
+      worldModel = 'javascript/armodels/ar-load-geo.js';
+      break;
+      case 'dollytest':
+      worldModel = 'javascript/armodels/dolly-test.js';
+      break;
+  }
+
+  Promise.all( [
+    load.js( worldModel ),
+    load.js( 'javascript/ar-interaction-handler.js' ),
+    load.js( 'javascript/ar-object-broadcast-handler.js' )
+
+  ] ).then( function() {
+    arInteractionEventsHandler();
     $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+    console.log( 'Models and Handlers loaded!');
+  } ).catch( function() {
+    console.log( 'Oh no, epic failure!' );
   } );
+
+//  $.when(
+//    $.getScript( worldModel ),
+//    $.getScript( 'javascript/ar-interaction-handler.js' ),
+//    $.getScript( 'javascript/ar-object-broadcast-handler.js' ),
+//    $.Deferred( function( deferred ) {
+//      $( deferred.resolve );
+//    } )
+//  ).done( function() {
+//   // setUpArLayer();
+//    arInteractionEventsHandler();
+//    $( '#ar-radial-menu' ).css( 'visibility', 'visible' );
+//    console.log( 'loadAr-done:', world, userContext.mode );
+//  } );
+
 }
