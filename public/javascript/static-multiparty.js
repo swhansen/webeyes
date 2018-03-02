@@ -68,12 +68,6 @@ socketServer = io.connect( '/' );
 
 // Detect browser diff for full screen mode
 
-var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-
-if ( deviceWidth < 350 ) { userContext.isPhone = true };
-console.log( 'deviceWidth: ', deviceWidth );
-console.log( userContext );
-
 function launchIntoFullscreen( element ) {
   if ( element.requestFullscreen ) {
     element.requestFullscreen();
@@ -1172,6 +1166,12 @@ function setBrowserDetails() {
  //   console.log( 'DeviceOrientationEvent Supported:', window.DeviceOrientationEvent  )
  //   userContext.orientation = true;
  //   }
+
+ var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+console.log( 'deviceWidth: ', deviceWidth );
+
+if ( deviceWidth <= 350 ) { userContext.isPhone = true };
+console.log( 'userContext.isPhone:', userContext.isPhone );
 
   if ( userContext.geoLocation && userContext.mobile ) {
       userContext.arCapable = true;
