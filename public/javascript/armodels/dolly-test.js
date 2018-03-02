@@ -38,7 +38,7 @@ var texture1 = THREE.ImageUtils.loadTexture( '../../spheres/circle.jpg' );
 var material1 = new THREE.MeshBasicMaterial( { map: texture1 } );
 
   var sphere = new THREE.Mesh(
-      new THREE.SphereGeometry(25, 20, 20 ), material1 );
+      new THREE.SphereGeometry( 25, 20, 20 ), material1 );
 
 
 

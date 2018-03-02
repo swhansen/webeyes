@@ -2,6 +2,9 @@
 var activeBox = -1; // nothing selected
 var aspectRatio = 4 / 3;
 
+var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+console.log( 'deviceWidth: ', deviceWidth );
+
  // standard definition video aspect ratio
 var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS + 1;
