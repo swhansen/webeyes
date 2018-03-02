@@ -1170,7 +1170,7 @@ function setBrowserDetails() {
  var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 console.log( 'deviceWidth: ', deviceWidth );
 
-if ( deviceWidth <= 350 ) { userContext.isPhone = true };
+if ( 350 <= deviceWidth ) { userContext.isPhone = true };
 console.log( 'userContext.isPhone:', userContext.isPhone );
 
   if ( userContext.geoLocation && userContext.mobile ) {
