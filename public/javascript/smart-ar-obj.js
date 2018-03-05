@@ -126,7 +126,7 @@ function FrustumObject( camera ) {
   this.participantState = userContext.participantState;
   this.participantState = userContext.arCapable;
 
-  this.geometry = new THREE.SphereGeometry( 0.1, 16, 16 );
+  this.geometry = new THREE.SphereGeometry( 0.05, 16, 16 );
   this.material = new THREE.MeshPhongMaterial( {
     color: 0x0000ff,
     shininess: 30,
@@ -139,7 +139,7 @@ function FrustumObject( camera ) {
 
   this.init = function( ) {
     scene.add( this.camera );
-    sensorDrivenCamera.add( this );
+    sphereDrivenCamera.add( this );
     this.position.z = -3;
 
     scene.add( new THREE.CameraHelper( this.camera ) );

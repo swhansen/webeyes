@@ -2,8 +2,6 @@
 var activeBox = -1; // nothing selected
 var aspectRatio = 4 / 3;
 
-
-
  // standard definition video aspect ratio
 var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS + 1;
@@ -1167,11 +1165,11 @@ function setBrowserDetails() {
  //   userContext.orientation = true;
  //   }
 
- var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-console.log( 'deviceWidth: ', deviceWidth );
+  var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  console.log( 'deviceWidth: ', deviceWidth );
 
-if ( 350 <= deviceWidth ) { userContext.isPhone = true };
-console.log( 'userContext.isPhone:', userContext.isPhone );
+  if ( 350 <= deviceWidth ) { userContext.isPhone = true };
+  console.log( 'userContext.isPhone:', userContext.isPhone );
 
   if ( userContext.geoLocation && userContext.mobile ) {
       userContext.arCapable = true;

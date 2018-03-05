@@ -4,6 +4,7 @@
 
   scene = null;
   renderer = null;
+  var dollyOn = true;
 
   var b = getCenterBoxId();
   var boxFocus = $( '#' + b );
@@ -41,7 +42,6 @@ var material1 = new THREE.MeshBasicMaterial( { map: texture1 } );
       new THREE.SphereGeometry( 25, 20, 20 ), material1 );
 
 
-
   var arCanvasPane = document.getElementById( 'arcanvaspane' );
   var arCanvas = document.getElementById( 'arcanvas' );
   document.getElementById( 'canvaspane' ).style.zIndex = '10';
@@ -59,20 +59,20 @@ var material1 = new THREE.MeshBasicMaterial( { map: texture1 } );
   // console.log( 'userContext:', userContext );
   //  console.log( 'setUpArLayer:', boxPosition, boxWidth, boxHeight );
 
-  $( '#arcanvaspane' ).css( boxPosition );
-  $( '#arcanvaspane' ).css( 'width', boxWidth );
-  $( '#arcanvaspane' ).css( 'height', boxHeight );
-  $( '#arcanvaspane' ).css( 'z-index', 50 );
+//$( '#arcanvaspane' ).css( boxPosition );
+//$( '#arcanvaspane' ).css( 'width', boxWidth );
+//$( '#arcanvaspane' ).css( 'height', boxHeight );
+//$( '#arcanvaspane' ).css( 'z-index', 50 );
 
-  $( '#arcanvas' ).css( boxPosition );
-  arCanvas.width = arCanvasPane.clientWidth;
-  arCanvas.height = arCanvasPane.clientHeight;
+//$( '#arcanvas' ).css( boxPosition );
+//arCanvas.width = arCanvasPane.clientWidth;
+//arCanvas.height = arCanvasPane.clientHeight;
 
-  //  console.log( 'ar-load-core: box0-position:', boxPosition );
-  //  console.log( 'ar-load-core: box0:', box0Width, box0Height );
+////  console.log( 'ar-load-core: box0-position:', boxPosition );
+////  console.log( 'ar-load-core: box0:', box0Width, box0Height );
 
-  arCanvasPane.style.visibility = 'visible';
-  arCanvas.style.visibility = 'visible';
+//arCanvasPane.style.visibility = 'visible';
+//arCanvas.style.visibility = 'visible';
 
   var CANVAS_WIDTH = 300;
   var CANVAS_HEIGHT = 300;
@@ -177,12 +177,39 @@ scene.add( sphere );
 var axis = new THREE.Vector3( 0.0,1.0,0 );
 sphere.rotateOnAxis( axis, -1.57 );
 
-// var geo = new THREE.CircleGeometry( 0.5, 32 );
-// var mat = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
-// var cir = new THREE.Mesh( geo, mat );
-// scene.add( cir );
-// cir.position.set( -10, -2, -10 );
-// cir.rotation.set(new THREE.Vector3( 0,  Math.PI / 2, 0) );
+
+
+
+// hardwired selectable objects
+
+
+ var geo = new THREE.SphereGeometry( 0.5, 16, 16 );
+ //var mat = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+ mat = new THREE.MeshPhongMaterial( {
+    color: 0xffff00,
+    shininess: 66,
+    opacity: 0.5,
+    transparent: true
+  } );
+ var cir1 = new THREE.Mesh( geo, mat );
+ cir1.name = 'select-cir1';
+ scene.add( cir1 );
+ cir1.position.set( -9, -3, -13 );
+ arSelectObjectArray.push( cir1 );
+
+ var cir2 = new THREE.Mesh( geo, mat );
+ cir2.name = 'select-cir2';
+ scene.add( cir2 );
+ cir2.position.set( 4, -3, -12 );
+ arSelectObjectArray.push( cir2 );
+
+ var cir3 = new THREE.Mesh( geo, mat );
+ cir3.name = 'select-cir3';
+ scene.add( cir3 );
+ cir3.position.set( -15, -3, -2 );
+ arSelectObjectArray.push( cir3 );
+
+
 
 
 // Bring in the objects from geo-mongo
@@ -248,6 +275,7 @@ spherePane.appendChild( renderer.domElement );
 function connectToVrController() {
   sphereDrivenCameraControls.update();
   animateArObjects();
+  cameraIntersectsHandler();
   renderer.render( scene, sphereDrivenCamera );
   requestAnimationFrame( connectToVrController );
 }
@@ -276,18 +304,28 @@ function connectToBroadcastSensors() {
   requestAnimationFrame( connectToBroadcastSensors );
 }
 
+
+var frustumCenter = new FrustumObject( sphereDrivenCamera );
+
 function cameraIntersectsHandler() {
   arSelectObjectArray.forEach( function( obj ) {
-        obj.material.opacity = 0.1;
+        obj.material.opacity = 0.4;
+        obj.material.color.set( 0xffff00 );
+        obj.scale.set( 1, 1, 1 );
   }
   );
-  cRaycaster.setFromCamera( v2, sensorDrivenCamera );
+  cRaycaster.setFromCamera( v2, sphereDrivenCamera );
   var cameraIntersects = cRaycaster.intersectObjects( arSelectObjectArray );
+  //console.log( cameraIntersects );
 
   cameraIntersects.forEach( function( obj ) {
    // if ( obj.object.name !== 'northpane' ) {
    //   obj.object.material.color.set( 0x993399 );
-      obj.object.material.opacity = 0.9;
+      obj.object.material.opacity = 1.0;
+
+       obj.object.material.color.set( 0xff0000 );
+        obj.object.scale.set( 3, 3 ,3 );
+
     }
 
   //  if ( obj.object.name == 'northpane' ) {
@@ -297,6 +335,25 @@ function cameraIntersectsHandler() {
 
   );
 }
+
+//$(document).unbind( 'keydown');
+//$(document).unbind( 'keypress');
+var counter = 0;
+var forBack = 1;
+
+//document.addEventListener( 'keyup', keyBoardEvent, false );
+
+document.addEventListener( 'keyup', function (event) {
+  counter += 1;
+  if ( event.keyCode == 70 ) { forBack = -1 }
+  if ( event.keyCode == 66 ) { forBack = 1 }
+  if ( event.keyCode == 83 ) {
+    if ( counter % 2 == 0 ) {
+    dollyOn = dollyOn ? false : true;
+    return dollyOn;
+  }
+  }
+} );
 
 var zMax = 18.0;
 var zMin = -18.0;
@@ -322,15 +379,23 @@ function animateArObjects() {
     }
   }
   );
-
-  if ( sphereDrivenCamera.position.z < zMin ) dir = 1;
-  if ( sphereDrivenCamera.position.z > zMax ) dir = -1;
+  if ( dollyOn ) {
+     dir = forBack;
+    if ( sphereDrivenCamera.position.z < zMin ) {
+      dir = 1;
+      forBack = 1;
+    }
+    if ( sphereDrivenCamera.position.z > zMax ) {
+      dir = -1;
+      forback = -1;
+    }
 
   cameraZ += dt * dir * 2.0;
   cameraY = 0.1 * ( Math.cos( cameraZ ) );
 
   sphereDrivenCamera.position.z = cameraZ;
   sphereDrivenCamera.position.y = cameraY;
+}
 }
 
 

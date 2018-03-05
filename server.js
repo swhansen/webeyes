@@ -116,14 +116,14 @@ var sendgrid = require( 'sendgrid' )( sendgridUsername, sendgridPassword );
 
 app.use( cors() );
 
-app.use( '/js', express.static( __dirname + '/easyrtc/js' ) );
-app.use( '/images', express.static( __dirname + '/easyrtc/images' ) );
-app.use( '/css', express.static( __dirname + '/easyrtc/css' ) );
+//app.use( '/js', express.static( __dirname + '/easyrtc/js' ) );
+//app.use( '/images', express.static( __dirname + '/easyrtc/images' ) );
+//app.use( '/css', express.static( __dirname + '/easyrtc/css' ) );
 
 app.use( express.static( __dirname + '/public' ) );
 app.use( express.static( __dirname + '/views' ) );
 
-console.log( '__dirname:' + __dirname );
+//console.log( '__dirname:' + __dirname );
 
 app.use( '/bower', express.static( __dirname + '/bower_components' ) );
 
