@@ -398,14 +398,6 @@ function animateArObjects() {
 }
 }
 
-
-
-
-
-
-
-
-
 //    var foo = clock.getElapsedTime() - clock.startTime;
 
 //    sphere.position.x =  1.4 + ( 0.8 * ( Math.cos( foo ) ) ) ;
