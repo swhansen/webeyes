@@ -324,12 +324,6 @@ function connectToVrController() {
   renderer.render( scene, vrDrivenCamera );
   requestAnimationFrame( connectToVrController );
 
-  if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
-    videoImageContext.drawImage( video, 0, 0, videoImage.width, videoImage.height );
-    if ( videoTexture ) {
-      videoTexture.needsUpdate = true;
-    }
-  }
 }
 
 function connectToVrBroadcast() {
@@ -379,6 +373,13 @@ function cameraIntersectsHandler() {
 
 
 function animateArObjects() {
+
+  if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
+    videoImageContext.drawImage( video, 0, 0, videoImage.width, videoImage.height );
+    if ( videoTexture ) {
+      videoTexture.needsUpdate = true;
+    }
+  }
   var dt = clock.getDelta();
 
   arSelectObjectArray.forEach( function( arObj ) {

@@ -11,8 +11,7 @@
 
   "env": {
     "es6": true,
-    "node": true,
-    "jquery": true
+    "node": true
   },
 
   "plugins": [
