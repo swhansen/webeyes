@@ -39,7 +39,7 @@ var boxPosition = box0Focus.offset();
 var boxWidth = box0Focus.outerWidth();
 var boxHeight = box0Focus.outerHeight();
 var curCanvas = $( '#spherecanvas' );
-var curPane = $( '#spherecanvas' );
+var curPane = $( '#spherepane' );
 
 curCanvas.css( boxPosition );
 curCanvas.css( 'width', boxWidth );
