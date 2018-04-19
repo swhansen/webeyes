@@ -45,10 +45,10 @@ curCanvas.css( boxPosition );
 curCanvas.css( 'width', boxWidth );
 curCanvas.css( 'height', boxHeight );
 curCanvas.css( 'z-index', 200 );
-$( '#spherepane' ).css( 'z-index', 200 );
-$( '#spherepane' ).css( boxPosition );
-$( '#spherepane' ).css( 'width', boxWidth );
-$( '#spherepane' ).css( 'height', boxHeight );
+curPane.css( 'z-index', 200 );
+curPane.css( boxPosition );
+curPane.css( 'width', boxWidth );
+curPane.css( 'height', boxHeight );
 
 
 var arCanvasPane = document.getElementById( 'arcanvaspane' );
