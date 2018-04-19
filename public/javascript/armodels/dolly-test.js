@@ -21,7 +21,7 @@ function createDimensionalLayer( layerName ) {
   fp.appendChild( t1 );
 }
 
-createDimensionalLayer( foo-bar );
+createDimensionalLayer( 'foo-bar' );
 
 
 var spherePane = document.getElementById( 'spherepane' );
