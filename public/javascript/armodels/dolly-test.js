@@ -42,14 +42,14 @@ var curCanvas = $( '#spherecanvas' );
 var curPane = $( '#spherecanvas' );
 
 curCanvas.css( boxPosition );
-$( '#spherecanvas' ).css( 'width', boxWidth );
-$( '#spherecanvas' ).css( 'height', boxHeight );
+curCanvas.css( 'width', boxWidth );
+curCanvas.css( 'height', boxHeight );
+curCanvas.css( 'z-index', 200 );
 $( '#spherepane' ).css( 'z-index', 200 );
-$( '#spherecanvas' ).css( 'z-index', 200 );
 $( '#spherepane' ).css( boxPosition );
 $( '#spherepane' ).css( 'width', boxWidth );
 $( '#spherepane' ).css( 'height', boxHeight );
-$( '#spherepane' ).css( 'z-index', 200 );
+
 
 var arCanvasPane = document.getElementById( 'arcanvaspane' );
 var arCanvas = document.getElementById( 'arcanvas' );
