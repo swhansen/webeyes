@@ -12,13 +12,13 @@ var v2 = new THREE.Vector2();
 
 
 function createDimensionalLayer( layerName ) {
-  var video = document.createElement( layerName );
-  video.setAttribute( 'title', "Test" );
-  video.setAttribute( 'width', "440" );
-  video.setAttribute( 'height', "390" );
-  video.setAttribute( 'frameborder', "0" );
+  var t1 = document.createElement( 'div' );
+  t1.setAttribute( 'title', "Test" );
+  t1.setAttribute( 'width', "440" );
+  t1.setAttribute( 'height', "390" );
+  t1.setAttribute( 'frameborder', "0" );
   var fp = document.getElementById( "fullpage" );
-  fp.appendChild( video );
+  fp.appendChild( t1 );
 }
 
 createDimensionalLayer( foo-bar );
