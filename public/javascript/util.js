@@ -78,21 +78,21 @@ async function openFileModal() {
     inputAttributes: {
       accept: 'image/*'
     }
-    } );
-    if ( file ) {
-        var reader = new FileReader();
-        reader.onload = function( event ) {
-            var imgSend = new Image();
-            imgSend.onload = function() {
-                docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
-                var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
-                var data = { sessionId: userContext.sessionId, alpha: docAlpha, width: docCanvas.width, height: docCanvas.height, source:imgdata };
-                emitDocImage( data );
-            };
-            imgSend.src = event.target.result;
-        };
-        reader.readAsDataURL( file );
-      }
+  } );
+  if ( file ) {
+    var reader = new FileReader();
+    reader.onload = function( event ) {
+      var imgSend = new Image();
+      imgSend.onload = function() {
+        docctx.drawImage( imgSend, 5, 5,  box0Width, box0Height );
+        var imgdata = docCanvas.toDataURL( 'image/jpg', 0.5 );
+        var data = { sessionId: userContext.sessionId, alpha: docAlpha, width: docCanvas.width, height: docCanvas.height, source:imgdata };
+        emitDocImage( data );
+      };
+      imgSend.src = event.target.result;
+    };
+    reader.readAsDataURL( file );
+  }
 }
 
 async function setDocAlpha() {

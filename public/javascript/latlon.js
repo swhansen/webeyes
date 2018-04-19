@@ -9,7 +9,6 @@
  * @requires dms
  */
 
-
 /**
  * Creates a LatLon point on the earth's surface at the specified latitude / longitude.
  *
@@ -20,12 +19,11 @@
  * @example
  *     var p1 = new LatLon(52.205, 0.119);
  */
-function LatLon(lat, lon) {
-    // allow instantiation without 'new'
-    if (!(this instanceof LatLon)) return new LatLon(lat, lon);
-
-    this.lat = Number(lat);
-    this.lon = Number(lon);
+function LatLon( lat, lon ){
+  // allow instantiation without 'new'
+  if ( !( this instanceof LatLon ) ) { return new LatLon( lat, lon ); }
+  this.lat = Number( lat );
+  this.lon = Number( lon );
 }
 
 /**
@@ -64,7 +62,7 @@ LatLon.prototype.distanceTo = function(point, radius) {
 };
 
 /**
- * Returns threejs x-z cartesian component of destination pointin in meters.
+ * Returns threejs x-z cartesian component of destination point in meters.
  *
  * @param   {LatLon} point - Latitude/longitude of destination point.
  * @param   {number} [radius=6371e3] - (Mean) radius of earth (defaults to radius in metres).

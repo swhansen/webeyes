@@ -24,7 +24,7 @@ var sessionData = {};
 // Container for User Context
 
 var userContext = {
-  rtcId               : '',
+  rtcId               : "",
   coreId              : '',
   channelId           : '',
   isSessionInitiator  : false,

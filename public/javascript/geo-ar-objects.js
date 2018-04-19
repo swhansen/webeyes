@@ -110,7 +110,7 @@ function getGeoArObjects( origin ) {
         objParams.name = obj.objectName;
         objParams.world = obj.arworld;
 
-        scene.add( new SpatialObject( objParams ) );
+        scene.add( new SpatialObjectFromGeo( objParams ) );
         console.log( 'added spatial object: ', objParams );
       } );
     } )

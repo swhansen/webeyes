@@ -67,14 +67,9 @@ function gotStream( stream ) {
 function noStream(e) {
   var msg = 'No camera available.';
   if ( e.code == 1 )
-  {   msg = 'User denied access to use camera.'; }
+  { msg = 'User denied access to use camera.'; }
   document.getElementById( 'errorMessage' ).textContent = msg;
 }
-
-
-
-
-
 
 //
 // AR world model
