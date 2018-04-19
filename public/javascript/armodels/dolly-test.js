@@ -34,10 +34,10 @@ createDimensionalLayer( 'foo-bar' );
 var curCanvas = $( '#spherecanvas' );
 var curPane = $( '#spherepane' );
 
-var spherePane = document.getElementById( 'spherepane' );
-var sphereCanvas = document.getElementById( 'spherecanvas' );
+//var spherePane = document.getElementById( 'spherepane' );
+//var sphereCanvas = document.getElementById( 'spherecanvas' );
 
-spherePane.style.visibility = 'visible';
+curPane.style.visibility = 'visible';
 var box0Focus = $( '#box0' );
 
 
@@ -110,9 +110,9 @@ const sphere = new LoadSphericalImage( 'circlesphere', 'circle.jpg' );
 const hud1 = new HudObjectImage( 'hudImage1', sphereDrivenCamera, 'exploded.png', -3.0, 0.0, -2.0 );
 const hud2 = new HudObjectRtc( 'hudVideo1', sphereDrivenCamera, 'box0', 3.0, 0.0, -2.0 );
 
-var renderer = new THREE.WebGLRenderer( { canvas: sphereCanvas } );
+var renderer = new THREE.WebGLRenderer( { canvas: curCanvas } );
 renderer.setSize( boxWidth, boxHeight );
-spherePane.appendChild( renderer.domElement );
+curPane.appendChild( renderer.domElement );
 
 //  create a frustum center pointer
 
