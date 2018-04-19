@@ -21,6 +21,13 @@ function createDimensionalLayer( layerName ) {
   fp.appendChild( t1 );
 }
 
+
+
+
+
+
+
+
 createDimensionalLayer( 'foo-bar' );
 
 
@@ -31,15 +38,18 @@ var box0Focus = $( '#box0' );
 var boxPosition = box0Focus.offset();
 var boxWidth = box0Focus.outerWidth();
 var boxHeight = box0Focus.outerHeight();
-$( '#spherecanvas' ).css( boxPosition );
-$( '#spherecanvas' ).css( 'width', boxWidth );
-$( '#spherecanvas' ).css( 'height', boxHeight );
-$( '#spherepane' ).css( 'z-index', 200 );
-$( '#spherecanvas' ).css( 'z-index', 200 );
-$( '#spherepane' ).css( boxPosition );
-$( '#spherepane' ).css( 'width', boxWidth );
-$( '#spherepane' ).css( 'height', boxHeight );
-$( '#spherepane' ).css( 'z-index', 200 );
+var curCanvas = $( '#spherecanvas' );
+var curPane = $( '#spherecanvas' );
+
+curCanvas.css( boxPosition );
+curCanvas.css( 'width', boxWidth );
+curCanvas.css( 'height', boxHeight );
+curCanvas.css( 'z-index', 200 );
+curPane.css( 'z-index', 200 );
+curPane.css( boxPosition );
+curPane.css( 'width', boxWidth );
+curPane.css( 'height', boxHeight );
+curPane.css( 'z-index', 200 );
 
 var arCanvasPane = document.getElementById( 'arcanvaspane' );
 var arCanvas = document.getElementById( 'arcanvas' );
