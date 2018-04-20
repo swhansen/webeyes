@@ -33,7 +33,9 @@ var sphereCanvas = document.getElementById( 'spherecanvas' );
 var fooPane = $( '#spherepane' ) [0];
 fooPane.style.visibility = 'visible';
 
-var box0Focus = $( '#box0' );
+//var box0Focus = $( '#box0' );
+
+var box0Focus = document.getElementById( 'box0' );
 
 //var boxPosition = box0Focus.offset();
 
