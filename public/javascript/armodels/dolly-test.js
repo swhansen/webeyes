@@ -12,7 +12,7 @@ var v2 = new THREE.Vector2();
 
 function createDimensionalLayer( layerName ) {
   var t1 = document.createElement( 'div' );
-  t1.setAttribute( 'title', "Test" );
+  t1.setAttribute( 'title', "foo-bar" );
   t1.setAttribute( 'width', "440" );
   t1.setAttribute( 'height', "390" );
   t1.setAttribute( 'frameborder', "0" );
