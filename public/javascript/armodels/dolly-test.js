@@ -17,9 +17,10 @@ function createDimensionalLayer( layerName ) {
   t1.style.height = "390px";
   //t1.setAttribute.opacity = 0.5;
   t1.style.color = 'red';
-  t1.style.zIndex = 500;
+  t1.style.zIndex = 300;
+  t1.innerHTML = "Hello";
   var fp = document.getElementById( "fullpage" );
-  fp.appendChild( t1 );
+  document.body.appendChild( t1 );
 }
 
 createDimensionalLayer( 'foo-bar' );
