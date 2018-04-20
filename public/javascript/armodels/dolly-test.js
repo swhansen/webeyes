@@ -45,6 +45,8 @@ var boxLeft = box0Focus.offsetLeft;
 var boxWidth = box0Focus.clientWidth;
 var boxHeight = box0Focus.clientHeight;
 
+console.log( 'box dim: ', boxTop, boxLeft, boxWidth, boxHeight );
+
 // curCanvas.css( boxPosition );
 // curCanvas.css( 'width', boxWidth );
 // curCanvas.css( 'height', boxHeight );
