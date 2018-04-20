@@ -102,7 +102,7 @@ const hud2 = new HudObjectRtc( 'hudVideo1', sphereDrivenCamera, 'box0', 3.0, 0.0
 
 var renderer = new THREE.WebGLRenderer( { canvas: sphereCanvas } );
 renderer.setSize( boxWidth, boxHeight );
-curPane.appendChild( renderer.domElement );
+spherePane.appendChild( renderer.domElement );
 
 //  create a frustum center pointer
 
