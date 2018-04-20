@@ -100,7 +100,7 @@ const sphere = new LoadSphericalImage( 'circlesphere', 'circle.jpg' );
 const hud1 = new HudObjectImage( 'hudImage1', sphereDrivenCamera, 'exploded.png', -3.0, 0.0, -2.0 );
 const hud2 = new HudObjectRtc( 'hudVideo1', sphereDrivenCamera, 'box0', 3.0, 0.0, -2.0 );
 
-var renderer = new THREE.WebGLRenderer( { canvas: curCanvas } );
+var renderer = new THREE.WebGLRenderer( { canvas: sphereCanvas } );
 renderer.setSize( boxWidth, boxHeight );
 curPane.appendChild( renderer.domElement );
 
