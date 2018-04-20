@@ -15,8 +15,8 @@ function createDimensionalLayer( layerName ) {
   t1.style.title = "foo-bar";
   t1.style.width = "440px";
   t1.style.height = "390px";
-  //t1.setAttribute.opacity = 0.5;
-  t1.style.color = 'red';
+  t1.setAttribute.opacity = 0.5;
+  t1.style.backgroundColor = 'red';
   t1.style.zIndex = 300;
   t1.innerHTML = "Hello";
   var fp = document.getElementById( "fullpage" );
