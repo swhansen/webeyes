@@ -21,26 +21,26 @@ function createDimensionalLayer( layerName ) {
   fp.appendChild( t1 );
 }
 
-
 createDimensionalLayer( 'foo-bar' );
 
-var curCanvas = $( '#spherecanvas' ) [0];
-var curPane = $( '#spherepane' ) [0];
+var curCanvas = $( '#spherecanvas' );
+var curPane = $( '#spherepane' );
 
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
 
-curPane.style.visibility = 'visible';
+spherePane.style.visibility = 'visible';
 var box0Focus = $( '#box0' );
 
 var boxPosition = box0Focus.offset();
+
 var boxWidth = box0Focus.outerWidth();
 var boxHeight = box0Focus.outerHeight();
 
-curCanvas.css( boxPosition );
-curCanvas.css( 'width', boxWidth );
-curCanvas.css( 'height', boxHeight );
-curCanvas.css( 'z-index', 200 );
+//curCanvas.css( boxPosition );
+//curCanvas.css( 'width', boxWidth );
+//curCanvas.css( 'height', boxHeight );
+//curCanvas.css( 'z-index', 200 );
 curPane.css( boxPosition );
 curPane.css( 'width', boxWidth );
 curPane.css( 'height', boxHeight );
