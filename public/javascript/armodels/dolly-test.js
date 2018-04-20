@@ -11,8 +11,8 @@ var v2 = new THREE.Vector2();
 // to build a Dimensional Layer Object
 
 
-function DimensionalLayer( layerName ) {
-  t1 = document.createElement( 'div' );
+function createDimensionalLayer( layerName ) {
+  var t1 = document.createElement( 'div' );
   t1.setAttribute( 'title', "Test" );
   t1.setAttribute( 'width', "440" );
   t1.setAttribute( 'height', "390" );
@@ -21,15 +21,16 @@ function DimensionalLayer( layerName ) {
   fp.appendChild( t1 );
 }
 
-//DimensionalLayer.prototype = Object.create( DimensionalLayer.prototype );
-//DimensionalLayer.prototype.constructor = DimensionalLayer;
 
-//createDimensionalLayer( 'foo-bar' );
+createDimensionalLayer( 'foo-bar' );
 
 var curCanvas = $( '#spherecanvas' );
 var curPane = $( '#spherepane' );
 
-curPane.style.visibility = 'visible';
+var spherePane = document.getElementById( 'spherepane' );
+var sphereCanvas = document.getElementById( 'spherecanvas' );
+
+spherePane.style.visibility = 'visible';
 var box0Focus = $( '#box0' );
 
 var boxPosition = box0Focus.offset();
