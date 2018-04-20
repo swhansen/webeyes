@@ -24,7 +24,7 @@ function DimensionalLayer( layerName ) {
 DimensionalLayer.prototype = Object.create( DimensionalLayer.prototype );
 DimensionalLayer.prototype.constructor = DimensionalLayer;
 
-const bla = new DimensionalLayer( 'foobar' );
+const blablabla = new DimensionalLayer( 'foobar' );
 
 var curCanvas = $( '#spherecanvas' );
 var curPane = $( '#spherepane' );
