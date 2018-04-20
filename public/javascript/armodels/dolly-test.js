@@ -21,15 +21,15 @@ function DimensionalLayer( layerName ) {
   fp.appendChild( t1 );
 }
 
-DimensionalLayer.prototype = Object.create( DimensionalLayer.prototype );
-DimensionalLayer.prototype.constructor = DimensionalLayer;
+//DimensionalLayer.prototype = Object.create( DimensionalLayer.prototype );
+//DimensionalLayer.prototype.constructor = DimensionalLayer;
 
 //const blablabla = new DimensionalLayer( 'foobar' );
 
 var curCanvas = $( '#spherecanvas' );
 var curPane = $( '#spherepane' );
 
-//curPane.style.visibility = 'visible';
+curPane.style.visibility = 'visible';
 var box0Focus = $( '#box0' );
 
 var boxPosition = box0Focus.offset();
