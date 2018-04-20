@@ -55,19 +55,12 @@ console.log( 'box dim: ', boxTop, boxLeft, boxWidth, boxHeight );
 //curPane.css( boxPosition );
 
 
-spherePane.style.top = boxTop;
-spherePane.style.left = boxLeft;
+spherePane.style.top = 10;
+spherePane.style.left = 200;
 
 spherePane.style.width = boxWidth;
 spherePane.style.height = boxHeight;
 spherePane.style.zIndex = 200;
-
-sphereCanvas.style.top = boxTop;
-sphereCanvas.style.left = boxLeft;
-
-sphereCanvas.style.width = boxWidth;
-sphereCanvas.style.height = boxHeight;
-sphereCanvas.style.zIndex = 200;
 
 // curPane.css( 'width', boxWidth );
 // curPane.css( 'height', boxHeight );
