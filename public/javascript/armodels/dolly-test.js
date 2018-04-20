@@ -11,8 +11,8 @@ var v2 = new THREE.Vector2();
 // to build a Dimensional Layer Object
 
 
-function createDimensionalLayer( layerName ) {
-  var t1 = document.createElement( 'div' );
+function DimensionalLayer( layerName ) {
+  t1 = document.createElement( 'div' );
   t1.setAttribute( 'title', "Test" );
   t1.setAttribute( 'width', "440" );
   t1.setAttribute( 'height', "390" );
@@ -21,40 +21,29 @@ function createDimensionalLayer( layerName ) {
   fp.appendChild( t1 );
 }
 
+DimensionalLayer.prototype = Object.create( DimensionalLayer.prototype );
+DimensionalLayer.prototype.constructor = DimensionalLayer;
 
-
-
-
-
-
-
-createDimensionalLayer( 'foo-bar' );
-
+const bla = new DimensionalLayer( 'foobar' );
 
 var curCanvas = $( '#spherecanvas' );
 var curPane = $( '#spherepane' );
 
-//var spherePane = document.getElementById( 'spherepane' );
-//var sphereCanvas = document.getElementById( 'spherecanvas' );
-
 curPane.style.visibility = 'visible';
 var box0Focus = $( '#box0' );
-
 
 var boxPosition = box0Focus.offset();
 var boxWidth = box0Focus.outerWidth();
 var boxHeight = box0Focus.outerHeight();
 
-
 curCanvas.css( boxPosition );
 curCanvas.css( 'width', boxWidth );
 curCanvas.css( 'height', boxHeight );
 curCanvas.css( 'z-index', 200 );
-curPane.css( 'z-index', 200 );
 curPane.css( boxPosition );
 curPane.css( 'width', boxWidth );
 curPane.css( 'height', boxHeight );
-
+curPane.css( 'z-index', 200 );
 
 var arCanvasPane = document.getElementById( 'arcanvaspane' );
 var arCanvas = document.getElementById( 'arcanvas' );
