@@ -30,41 +30,26 @@ var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
 
 // test
-var fooPane = $( '#spherepane' ) [0];
-fooPane.style.visibility = 'visible';
+//var fooPane = $( '#spherepane' ) [0];
+//fooPane.style.visibility = 'visible';
 
 //var box0Focus = $( '#box0' );
 
 var box0Focus = document.getElementById( 'box0' );
 
-//var boxPosition = box0Focus.offset();
-
 var boxTop = box0Focus.offsetTop;
 var boxLeft = box0Focus.offsetLeft;
-
 var boxWidth = box0Focus.clientWidth;
 var boxHeight = box0Focus.clientHeight;
 
 console.log( 'box dim: ', boxTop, boxLeft, boxWidth, boxHeight );
 
-// curCanvas.css( boxPosition );
-// curCanvas.css( 'width', boxWidth );
-// curCanvas.css( 'height', boxHeight );
-// curCanvas.css( 'z-index', 200 );
-
-//curPane.css( boxPosition );
-
-
 spherePane.style.top = boxTop + 'px';
 spherePane.style.left = boxLeft + 'px';
-
 spherePane.style.width = boxWidth;
 spherePane.style.height = boxHeight;
 spherePane.style.zIndex = 200;
-
-// curPane.css( 'width', boxWidth );
-// curPane.css( 'height', boxHeight );
-// curPane.css( 'z-index', 200 );
+spherePane.style.visibility = 'visible';
 
 var arCanvasPane = document.getElementById( 'arcanvaspane' );
 var arCanvas = document.getElementById( 'arcanvas' );
