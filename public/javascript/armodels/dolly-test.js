@@ -13,9 +13,8 @@ var v2 = new THREE.Vector2();
 function createDimensionalLayer( layerName ) {
   var t1 = document.createElement( 'div' );
   t1.style.title = "foo-bar";
-  t1.style.width = "440" ;
-  t1.style.height = "390" ;
-  t1.style.frameborder = "0" ;
+  t1.style.width = "440";
+  t1.style.height = "390";
   //t1.setAttribute.opacity = 0.5;
   t1.style.color = 'red';
   t1.style.zIndex = 500;
