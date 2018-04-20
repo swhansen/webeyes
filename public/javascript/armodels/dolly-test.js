@@ -24,8 +24,8 @@ function createDimensionalLayer( layerName ) {
 
 createDimensionalLayer( 'foo-bar' );
 
-var curCanvas = $( '#spherecanvas' );
-var curPane = $( '#spherepane' );
+var curCanvas = $( '#spherecanvas' ) [0];
+var curPane = $( '#spherepane' ) [0];
 
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
@@ -102,7 +102,7 @@ const hud2 = new HudObjectRtc( 'hudVideo1', sphereDrivenCamera, 'box0', 3.0, 0.0
 
 var renderer = new THREE.WebGLRenderer( { canvas: sphereCanvas } );
 renderer.setSize( boxWidth, boxHeight );
-spherePane.appendChild( renderer.domElement );
+curPane.appendChild( renderer.domElement );
 
 //  create a frustum center pointer
 
