@@ -29,14 +29,13 @@ var curPane = $( '#spherepane' );
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
 
-
+// test
 var fooPane = $( '#spherepane' ) [0];
 fooPane.style.visibility = 'visible';
 
 var box0Focus = $( '#box0' );
 
 var boxPosition = box0Focus.offset();
-
 var boxWidth = box0Focus.outerWidth();
 var boxHeight = box0Focus.outerHeight();
 
@@ -46,8 +45,12 @@ var boxHeight = box0Focus.outerHeight();
 // curCanvas.css( 'z-index', 200 );
 
 curPane.css( boxPosition );
-curPane.css( 'width', boxWidth );
-curPane.css( 'height', boxHeight );
+
+spherePane.style.width = boxWidth;
+spherePane.style.height = boxHeight;
+
+//curPane.css( 'width', boxWidth );
+//curPane.css( 'height', boxHeight );
 curPane.css( 'z-index', 200 );
 
 var arCanvasPane = document.getElementById( 'arcanvaspane' );
