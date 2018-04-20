@@ -40,10 +40,10 @@ var box0Focus = document.getElementById( 'box0' );
 //var boxPosition = box0Focus.offset();
 
 var boxTop = box0Focus.offsetTop;
-var boxLeft = box0Focus.offsetTop;
+var boxLeft = box0Focus.offsetLeft;
 
-var boxWidth = box0Focus.outerWidth();
-var boxHeight = box0Focus.outerHeight();
+var boxWidth = box0Focus.clientWidth;
+var boxHeight = box0Focus.clientHeight;
 
 // curCanvas.css( boxPosition );
 // curCanvas.css( 'width', boxWidth );
