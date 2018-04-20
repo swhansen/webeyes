@@ -35,7 +35,11 @@ fooPane.style.visibility = 'visible';
 
 var box0Focus = $( '#box0' );
 
-var boxPosition = box0Focus.offset();
+//var boxPosition = box0Focus.offset();
+
+var boxTop = box0Focus.offsetTop;
+var boxLeft = box0Focus.offsetTop;
+
 var boxWidth = box0Focus.outerWidth();
 var boxHeight = box0Focus.outerHeight();
 
@@ -44,14 +48,19 @@ var boxHeight = box0Focus.outerHeight();
 // curCanvas.css( 'height', boxHeight );
 // curCanvas.css( 'z-index', 200 );
 
-curPane.css( boxPosition );
+//curPane.css( boxPosition );
+
+
+spherePane.style.top = boxTop;
+spherePane.style.left = boxLeft;
 
 spherePane.style.width = boxWidth;
 spherePane.style.height = boxHeight;
+spherePane.style.zIndex = 200;
 
-//curPane.css( 'width', boxWidth );
-//curPane.css( 'height', boxHeight );
-curPane.css( 'z-index', 200 );
+// curPane.css( 'width', boxWidth );
+// curPane.css( 'height', boxHeight );
+// curPane.css( 'z-index', 200 );
 
 var arCanvasPane = document.getElementById( 'arcanvaspane' );
 var arCanvas = document.getElementById( 'arcanvas' );
