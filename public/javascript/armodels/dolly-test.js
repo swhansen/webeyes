@@ -10,39 +10,28 @@ var v2 = new THREE.Vector2();
 
 // to build a Dimensional Layer Object
 
-
 function createDimensionalLayer( layerName ) {
   var t1 = document.createElement( 'div' );
   t1.setAttribute( 'title', "Test" );
   t1.setAttribute( 'width', "440" );
   t1.setAttribute( 'height', "390" );
   t1.setAttribute( 'frameborder', "0" );
+  t1.setAttribute( 'opacity', 0.5 );
+  t1.style.color = 'red';
   var fp = document.getElementById( "fullpage" );
   fp.appendChild( t1 );
 }
 
 createDimensionalLayer( 'foo-bar' );
 
-var curCanvas = $( '#spherecanvas' );
-var curPane = $( '#spherepane' );
-
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
-
-// test
-//var fooPane = $( '#spherepane' ) [0];
-//fooPane.style.visibility = 'visible';
-
-//var box0Focus = $( '#box0' );
-
 var box0Focus = document.getElementById( 'box0' );
 
 var boxTop = box0Focus.offsetTop;
 var boxLeft = box0Focus.offsetLeft;
 var boxWidth = box0Focus.clientWidth;
 var boxHeight = box0Focus.clientHeight;
-
-console.log( 'box dim: ', boxTop, boxLeft, boxWidth, boxHeight );
 
 spherePane.style.top = boxTop + 'px';
 spherePane.style.left = boxLeft + 'px';
