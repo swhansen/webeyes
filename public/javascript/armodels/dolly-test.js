@@ -29,7 +29,7 @@ DimensionalLayer.prototype.constructor = DimensionalLayer;
 var curCanvas = $( '#spherecanvas' );
 var curPane = $( '#spherepane' );
 
-curPane.style.visibility = 'visible';
+//curPane.style.visibility = 'visible';
 var box0Focus = $( '#box0' );
 
 var boxPosition = box0Focus.offset();
