@@ -37,8 +37,8 @@ var boxPosition = box0Focus.offset();
 var boxWidth = box0Focus.outerWidth();
 var boxHeight = box0Focus.outerHeight();
 
-curCanvas.css( boxPosition );
-curCanvas.css( 'width', boxWidth );
+curCanvas.setAttribute( boxPosition );
+curCanvas.setAttribute( 'width', boxWidth );
 curCanvas.css( 'height', boxHeight );
 curCanvas.css( 'z-index', 200 );
 curPane.css( boxPosition );
