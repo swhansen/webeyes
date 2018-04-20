@@ -24,8 +24,8 @@ function createDimensionalLayer( layerName ) {
 
 createDimensionalLayer( 'foo-bar' );
 
-var curCanvas = $( '#spherecanvas' ) [0];
-var curPane = $( '#spherepane' ) [0];
+var curCanvas = $( '#spherecanvas' );
+var curPane = $( '#spherepane' );
 
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
@@ -37,8 +37,8 @@ var boxPosition = box0Focus.offset();
 var boxWidth = box0Focus.outerWidth();
 var boxHeight = box0Focus.outerHeight();
 
-curCanvas.setAttribute( boxPosition );
-curCanvas.setAttribute( 'width', boxWidth );
+curCanvas.css( boxPosition );
+curCanvas.css( 'width', boxWidth );
 curCanvas.css( 'height', boxHeight );
 curCanvas.css( 'z-index', 200 );
 curPane.css( boxPosition );
