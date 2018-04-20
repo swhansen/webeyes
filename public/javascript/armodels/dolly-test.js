@@ -55,8 +55,8 @@ console.log( 'box dim: ', boxTop, boxLeft, boxWidth, boxHeight );
 //curPane.css( boxPosition );
 
 
-spherePane.style.top = 10;
-spherePane.style.left = 200;
+spherePane.style.top = boxTop + 'px';
+spherePane.style.left = boxLeft + 'px';
 
 spherePane.style.width = boxWidth;
 spherePane.style.height = boxHeight;
