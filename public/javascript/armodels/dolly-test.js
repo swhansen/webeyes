@@ -20,7 +20,7 @@ function createDimensionalLayer( layerName ) {
   t1.style.zIndex = 300;
   t1.innerHTML = "Hello";
   var fp = document.getElementById( "fullpage" );
-  document.body.appendChild( t1 );
+  fp.appendChild( t1 );
 }
 
 createDimensionalLayer( 'foo-bar' );
