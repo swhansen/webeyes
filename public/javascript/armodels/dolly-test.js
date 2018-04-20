@@ -16,8 +16,9 @@ function createDimensionalLayer( layerName ) {
   t1.setAttribute( 'width', "440" );
   t1.setAttribute( 'height', "390" );
   t1.setAttribute( 'frameborder', "0" );
-  t1.setAttribute( 'opacity', 0.5 );
+  //t1.setAttribute.opacity = 0.5;
   t1.style.color = 'red';
+  t1.style.zIndex = 500;
   var fp = document.getElementById( "fullpage" );
   fp.appendChild( t1 );
 }
@@ -47,8 +48,8 @@ document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
 userContext.addDimensionalLayer( 'arcanvaspane' );
 
-const CANVAS_WIDTH = 300;
-const CANVAS_HEIGHT = 300;
+var CANVAS_WIDTH = 300;
+var CANVAS_HEIGHT = 300;
 
 if ( arSelectObjectArray ) { arSelectObjectArray = []; }
 
