@@ -24,13 +24,13 @@ function createDimensionalLayer( layerName ) {
 
 createDimensionalLayer( 'foo-bar' );
 
-var curCanvas = $( '#spherecanvas' );
-var curPane = $( '#spherepane' );
+var curCanvas = $( '#spherecanvas' ) [0];
+var curPane = $( '#spherepane' ) [0];
 
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
 
-spherePane.style.visibility = 'visible';
+curPane.style.visibility = 'visible';
 var box0Focus = $( '#box0' );
 
 var boxPosition = box0Focus.offset();
