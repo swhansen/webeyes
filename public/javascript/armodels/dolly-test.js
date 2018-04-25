@@ -35,11 +35,10 @@ t1.style.visibility = 'visible';
 
 
   t1.innerHTML = "Hello";
-//  var fp = document.getElementById( "fullpage" );
-//  fp.appendChild( t1 );
+  var fp = document.getElementById( "fullpage" );
+  fp.appendChild( t1 );
 }
 
-createDimensionalLayer( 'foo-bar' );
 
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
@@ -63,6 +62,8 @@ document.getElementById( 'canvaspane' ).style.zIndex = '10';
 document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
 userContext.addDimensionalLayer( 'arcanvaspane' );
+
+createDimensionalLayer( 'foo-bar' );
 
 var CANVAS_WIDTH = 300;
 var CANVAS_HEIGHT = 300;
