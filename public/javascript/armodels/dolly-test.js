@@ -27,11 +27,12 @@ var boxWidth = box0Focus.clientWidth;
 var boxHeight = box0Focus.clientHeight;
 
 t1.style.top = boxTop + 'px';
-t1.style.left = boxLeft + 'px';
+t1.style.left = '10px';
 t1.style.width = boxWidth + 'px';
 t1.style.height = boxHeight + 'px';
 t1.style.zIndex = 300;
 t1.style.visibility = 'visible';
+
 
   t1.innerHTML = "Hello";
   var fp = document.getElementById( "fullpage" );
