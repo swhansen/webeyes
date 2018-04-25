@@ -35,8 +35,8 @@ t1.style.visibility = 'visible';
 
 
   t1.innerHTML = "Hello";
-  var fp = document.getElementById( "fullpage" );
-  fp.appendChild( t1 );
+  //var fp = document.getElementById( "fullpage" );
+  document.body.appendChild( t1 );
 }
 
 
