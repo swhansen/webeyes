@@ -12,12 +12,39 @@ var v2 = new THREE.Vector2();
 
 function createDimensionalLayer( layerName ) {
   var t1 = document.createElement( 'div' );
+  var box0Focus = document.getElementById( 'box0' );
   t1.style.title = "foo-bar";
-  t1.style.width = "440px";
-  t1.style.height = "390px";
+//  t1.style.width = "440px";
+//  t1.style.height = "390px";
   t1.setAttribute.opacity = 0.5;
   t1.style.backgroundColor = 'red';
-  t1.style.zIndex = 300;
+//  t1.style.zIndex = 300;
+
+
+var boxTop = box0Focus.offsetTop;
+var boxLeft = box0Focus.offsetLeft;
+var boxWidth = box0Focus.clientWidth;
+var boxHeight = box0Focus.clientHeight;
+
+t1.style.top = boxTop + 'px';
+t1.style.left = boxLeft + 'px';
+t1.style.width = boxWidth;
+t1.style.height = boxHeight;
+t1.style.zIndex = 300;
+t1.style.visibility = 'visible';
+
+
+
+
+
+
+
+
+
+
+
+
+
   t1.innerHTML = "Hello";
   var fp = document.getElementById( "fullpage" );
   fp.appendChild( t1 );
