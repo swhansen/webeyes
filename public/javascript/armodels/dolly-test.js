@@ -34,20 +34,9 @@ t1.style.zIndex = 300;
 t1.style.visibility = 'visible';
 
 
-
-
-
-
-
-
-
-
-
-
-
   t1.innerHTML = "Hello";
-  var fp = document.getElementById( "fullpage" );
-  fp.appendChild( t1 );
+//  var fp = document.getElementById( "fullpage" );
+//  fp.appendChild( t1 );
 }
 
 createDimensionalLayer( 'foo-bar' );
