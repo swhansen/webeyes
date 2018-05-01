@@ -35,13 +35,12 @@ function createDimensionalLayer( layerName ) {
   t1.innerHTML = "Hello";
   //var fp = document.getElementById( "fullpage" );
   document.body.appendChild( t1 );
-
-  return t1;
 }
 
 // End experimental dimensional layer create
 
-createDimensionalLayer( 'foo-bar' );
+var blaBla = createDimensionalLayer( 'foo-bar' );
+console.log( 'exp dim layer:', blaBla );
 
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
