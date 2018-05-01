@@ -13,9 +13,6 @@ var v2 = new THREE.Vector2();
 function createDimensionalLayer( layerName ) {
   var t1 = document.createElement( 'div' );
   var box0Focus = document.getElementById( 'box0' );
-  t1.style.title = "foo-bar";
-  t1.style.opacity = 0.5;
-  t1.style.backgroundColor = 'red';
 
   var boxTop = box0Focus.offsetTop;
   var boxLeft = box0Focus.offsetLeft;
@@ -23,6 +20,10 @@ function createDimensionalLayer( layerName ) {
   var boxHeight = box0Focus.clientHeight;
 
   t1.classList.add( 'boxCommon' );
+
+  t1.style.title = "foo-bar";
+  t1.style.opacity = 0.5;
+  t1.style.backgroundColor = 'red';
 
   t1.style.top = boxTop + 'px';
   t1.style.left = boxLeft + 'px';
@@ -34,7 +35,11 @@ function createDimensionalLayer( layerName ) {
   t1.innerHTML = "Hello";
   //var fp = document.getElementById( "fullpage" );
   document.body.appendChild( t1 );
+
+  return t1;
 }
+
+// End experimental dimensional layer create
 
 createDimensionalLayer( 'foo-bar' );
 
@@ -60,7 +65,6 @@ document.getElementById( 'canvaspane' ).style.zIndex = '10';
 document.getElementById( 'arcanvaspane' ).style.zIndex = '50';
 
 userContext.addDimensionalLayer( 'arcanvaspane' );
-
 
 var CANVAS_WIDTH = 300;
 var CANVAS_HEIGHT = 300;
