@@ -8,7 +8,7 @@ var cameraDriver;
 var cRaycaster = new THREE.Raycaster();
 var v2 = new THREE.Vector2();
 
-// to build a Dimensional Layer Object
+//  build a Dimensional Layer Object
 
 function createDimensionalLayer( layerName ) {
   var t1 = document.createElement( 'div' );
@@ -21,26 +21,25 @@ function createDimensionalLayer( layerName ) {
 
   t1.classList.add( 'boxCommon' );
 
-  t1.style.title = "foo-bar";
+  t1.style.title = 'foo-bar';
   t1.style.opacity = 0.5;
   t1.style.backgroundColor = 'red';
 
-  t1.style.top = boxTop + 'px';
-  t1.style.left = boxLeft + 'px';
-  t1.style.width = boxWidth + 'px';
-  t1.style.height = boxHeight + 'px';
+  t1.style.top = boxTop.concat( 'px' );
+  t1.style.left = boxLeft.concat( 'px' );
+  t1.style.width = boxWidth.concat( 'px ' );
+  t1.style.height = boxHeight.concat( 'px' );
   t1.style.zIndex = 300;
   t1.style.visibility = 'visible';
 
-  t1.innerHTML = "Hello";
-  //var fp = document.getElementById( "fullpage" );
+  t1.innerHTML = 'Hello';
+
+  // var fp = document.getElementById( "fullpage" );
+
   document.body.appendChild( t1 );
 }
 
 // End experimental dimensional layer create
-
-var blaBla = createDimensionalLayer( 'foo-bar' );
-console.log( 'exp dim layer:', blaBla );
 
 var spherePane = document.getElementById( 'spherepane' );
 var sphereCanvas = document.getElementById( 'spherecanvas' );
@@ -51,8 +50,8 @@ var boxLeft = box0Focus.offsetLeft;
 var boxWidth = box0Focus.clientWidth;
 var boxHeight = box0Focus.clientHeight;
 
-spherePane.style.top = boxTop + 'px';
-spherePane.style.left = boxLeft + 'px';
+spherePane.style.top = boxTop.concat( 'px' );
+spherePane.style.left = boxLeft.concat( 'px' );
 spherePane.style.width = boxWidth;
 spherePane.style.height = boxHeight;
 spherePane.style.zIndex = 200;
